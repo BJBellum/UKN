@@ -37,10 +37,25 @@ window.PharosMap = (function () {
   const ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright" style="color:#545d72">OSM</a> &copy; <a href="https://carto.com/" style="color:#545d72">CARTO</a>';
 
   const SITES = [
-    { lat: 29.34013, lon: 30.94513, label: 'NILDU', sub: 'Centrale nucléaire · Médinet El-Fayoum', ref: 'NILDU-REF-001', status: 'En construction', color: '#1bbd8a' },
-    { lat: 30.21796, lon: 31.25895, label: 'MEMPHIS', sub: 'Pile atomique · Le Caire', ref: 'MEMPHIS-PILE-001', status: 'En service', color: '#8b6fd4' },
-    { lat: 23.96933, lon: 32.87741, label: "Barrage d'Assouan", sub: 'Centrale hydroélectrique · Nil', ref: 'ASSOUAN-HDA-001', status: 'En service', color: '#3b82f6' }
+    { lat: 29.34013, lon: 30.94513, label: 'NILDU', sub: 'Centrale nucléaire · Médinet El-Fayoum', ref: 'NILDU-REF-001', status: 'En construction', color: '#1bbd8a', nuclear: true },
+    { lat: 30.21796, lon: 31.25895, label: 'MEMPHIS', sub: 'Pile atomique · Le Caire', ref: 'MEMPHIS-PILE-001', status: 'En service', color: '#8b6fd4', nuclear: true },
+    { lat: 23.96933, lon: 32.87741, label: "Barrage d'Assouan", sub: 'Centrale hydroélectrique · Nil', ref: 'ASSOUAN-HDA-001', status: 'En service', color: '#3b82f6', nuclear: false }
   ];
+
+  /* ── Vérifie si l'utilisateur est autorisé (ID whitelisté) ── */
+  function isAuthorized() {
+    // Utilise pharos-auth.js s'il est chargé
+    if (typeof window.__pharosIsAuthorized === 'function') {
+      return window.__pharosIsAuthorized();
+    }
+    // Fallback : lecture directe du localStorage
+    try {
+      const s = JSON.parse(localStorage.getItem('pharos_session') || 'null');
+      if (!s) return false;
+      if (s.expires && Date.now() > s.expires) return false;
+      return s.authorized === true;
+    } catch { return false; }
+  }
 
   function makeIcon(color, active) {
     const size = active ? 28 : 20;
@@ -64,8 +79,15 @@ window.PharosMap = (function () {
     // Territoire désactivé (frontières masquées)
     // L.polygon(TERRITORY, ...).addTo(map);
 
-    // Marqueurs
+    // ── Contrôle d'accès aux marqueurs nucléaires ──
+    // Les sites nuclear:true ne sont affichés que si l'utilisateur est autorisé (ID whitelisté).
+    // Un utilisateur non connecté ou connecté sans autorisation ne voit que les sites publics.
+    const authorized = isAuthorized();
+
     SITES.forEach(site => {
+      // Masquer les sites nucléaires pour les non-autorisés
+      if (site.nuclear && !authorized) return;
+
       const active = opts.siteRef === site.ref;
       const marker = L.marker([site.lat, site.lon], { icon: makeIcon(site.color, active) }).addTo(map);
       marker.bindPopup(
