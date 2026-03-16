@@ -143,21 +143,26 @@
 
   /* MAP LINK */
   .loc-map-link {
-    margin-left:auto;
-    font-family:'IBM Plex Mono',monospace;
-    font-size:11px;
-    color:#1bbd8a;
-    text-decoration:none;
-    padding:4px 10px;
-    border:1px solid rgba(27,189,138,0.3);
-    border-radius:4px;
-    white-space:nowrap;
-    transition:background .15s, border-color .15s;
-    display:flex;
-    align-items:center;
-    gap:0;
+    margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#1bbd8a;
+    text-decoration:none; padding:4px 10px; border:1px solid rgba(27,189,138,0.3);
+    border-radius:4px; white-space:nowrap; transition:background .15s,border-color .15s;
+    display:flex; align-items:center; gap:0;
   }
   .loc-map-link:hover { background:rgba(27,189,138,0.08); border-color:rgba(27,189,138,0.6); }
+
+  /* MAP CARD */
+  .map-card { background:var(--bg2); border:1px solid var(--border2); border-radius:10px; overflow:hidden; margin-bottom:22px; }
+  .map-card-header { display:flex; align-items:center; justify-content:space-between; padding:9px 16px; border-bottom:1px solid var(--border); background:var(--bg3); font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text2); letter-spacing:0.07em; text-transform:uppercase; }
+  .map-card-header span { font-size:10px; color:#1bbd8a; }
+  #pharos-map-nildu { height:320px; width:100%; background:var(--bg); }
+  .pharos-popup .leaflet-popup-content-wrapper { background:var(--bg2,#111520); border:1px solid rgba(27,189,138,0.3); border-radius:8px; box-shadow:0 4px 20px rgba(0,0,0,0.5); padding:0; }
+  .pharos-popup .leaflet-popup-content { margin:12px 14px; }
+  .pharos-popup .leaflet-popup-tip-container { display:none; }
+  .leaflet-control-zoom { border:1px solid var(--border2,rgba(255,255,255,0.13)) !important; }
+  .leaflet-control-zoom a { background:var(--bg2,#111520) !important; color:var(--text2,#8b93a8) !important; border-color:var(--border,rgba(255,255,255,0.08)) !important; }
+  .leaflet-control-zoom a:hover { background:var(--bg3,#161b26) !important; color:var(--text,#e2e6f0) !important; }
+  .leaflet-attribution-flag { display:none !important; }
+  .leaflet-control-attribution { background:transparent !important; font-size:9px !important; color:var(--text3) !important; }
 
   /* FOOTER */
   .footer { margin-top:36px; padding-top:20px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px; }
@@ -262,6 +267,15 @@
     <a href="https://map.projet-resurgence.fr/?region=42" target="_blank" rel="noopener" class="loc-map-link">
       <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:4px"><rect x="1" y="4" width="4" height="11" rx="1" fill="currentColor" opacity="0.7"/><rect x="6" y="1" width="4" height="14" rx="1" fill="currentColor"/><rect x="11" y="3" width="4" height="10" rx="1" fill="currentColor" opacity="0.7"/><polyline points="1,4 6,1 11,3 15,1" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/></svg>Voir sur la carte
     </a>
+  </div>
+
+  <!-- CARTE INTERACTIVE -->
+  <div class="map-card">
+    <div class="map-card-header">
+      <span style="color:var(--text2);letter-spacing:0.07em;text-transform:uppercase;font-size:11px">Localisation · Royaume-Uni du Nil</span>
+      <span>29.34013, 30.94513</span>
+    </div>
+    <div id="pharos-map-nildu"></div>
   </div>
 
   <!-- DIAGRAM CARD -->
@@ -631,6 +645,8 @@
 </div>
 
 <script>
+  let _pharosMap = null;
+
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     const lbl = document.getElementById('toggle-lbl');
@@ -643,6 +659,7 @@
       if (sun)  sun.style.display  = theme === 'dark'  ? 'block' : 'none';
       if (moon) moon.style.display = theme === 'light' ? 'block' : 'none';
     }
+    if (_pharosMap && window.PharosMap) PharosMap.setTheme(_pharosMap, theme);
     localStorage.setItem('pharos-theme', theme);
   }
 
@@ -659,6 +676,38 @@
       if (!localStorage.getItem('pharos-theme')) applyTheme(e.matches ? 'dark' : 'light');
     });
   })();
+</script>
+
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css"/>
+<script>
+/* ── Leaflet inline loader ── */
+(function(){
+  var s = document.createElement('script');
+  s.src = 'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js';
+  s.onload = function() { loadPharosMap(); };
+  s.onerror = function() { console.warn('Leaflet CDN failed'); };
+  document.head.appendChild(s);
+
+  function loadPharosMap() {
+    var s2 = document.createElement('script');
+    s2.src = '../pharos-map.js';
+    s2.onload = function() { initMap(); };
+    s2.onerror = function() { console.warn('pharos-map.js failed'); };
+    document.head.appendChild(s2);
+  }
+
+  function initMap() {
+    var theme = document.documentElement.getAttribute('data-theme') || 'dark';
+    _pharosMap = PharosMap.init('pharos-map-nildu', {
+      siteRef: 'NILDU-REF-001',
+      zoom: 6,
+      centerLat: 28.5,
+      centerLon: 31.5,
+      theme: theme
+    });
+  }
+})();
 </script>
 </body>
 </html>

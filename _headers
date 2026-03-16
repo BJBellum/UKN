@@ -1,15 +1,8 @@
 /*
-  # Empêche le clickjacking
   X-Frame-Options: DENY
-  # Empêche le sniffing MIME
   X-Content-Type-Options: nosniff
-  # Active la protection XSS des navigateurs anciens
   X-XSS-Protection: 1; mode=block
-  # Force HTTPS pour 1 an, inclut sous-domaines
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  # Politique de référent stricte
   Referrer-Policy: strict-origin-when-cross-origin
-  # Désactive certaines fonctionnalités navigateur non nécessaires
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
-  # Content Security Policy : sources autorisées uniquement
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://unpkg.com; img-src 'self' data: https://*.cartocdn.com https://*.openstreetmap.org https://unpkg.com; connect-src 'self' https://*.cartocdn.com https://*.openstreetmap.org; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'
