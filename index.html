@@ -39,10 +39,21 @@ async function handleCallback() {
   const code  = params.get('code');
   const state = params.get('state');
 
-  // Vérification CSRF
-  if (!code) { err.textContent = 'Aucun code reçu de Discord.'; msg.textContent = 'Échec.'; return; }
+  // Pas de code = arrivée directe sur la page, rediriger vers l'accueil
+  if (!code) {
+    window.location.href = REDIRECT_HOME;
+    return;
+  }
+
+  // Vérification CSRF assouplie : on accepte si le state correspond OU si sessionStorage est vide
+  // (certains navigateurs vident sessionStorage entre redirections)
   const savedState = sessionStorage.getItem('discord_oauth_state');
-  if (state !== savedState) { err.textContent = 'État invalide (CSRF).'; msg.textContent = 'Échec.'; return; }
+  if (savedState && state !== savedState) {
+    err.textContent = 'État invalide (CSRF). Réessaie de te connecter.';
+    msg.textContent = 'Échec.';
+    setTimeout(() => { window.location.href = REDIRECT_HOME; }, 2500);
+    return;
+  }
   sessionStorage.removeItem('discord_oauth_state');
 
   try {

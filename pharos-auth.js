@@ -60,7 +60,6 @@
       response_type: 'code',
       scope: SCOPES,
       state,
-      prompt: 'none'  // Ne re-demande pas si déjà autorisé
     });
     window.location.href = `https://discord.com/oauth2/authorize?${params}`;
   }
