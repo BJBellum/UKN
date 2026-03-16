@@ -141,6 +141,24 @@
   .spec-value { font-size:17px; font-weight:500; color:var(--text); line-height:1.2; }
   .spec-unit  { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text2); margin-top:3px; }
 
+  /* MAP LINK */
+  .loc-map-link {
+    margin-left:auto;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:#1bbd8a;
+    text-decoration:none;
+    padding:4px 10px;
+    border:1px solid rgba(27,189,138,0.3);
+    border-radius:4px;
+    white-space:nowrap;
+    transition:background .15s, border-color .15s;
+    display:flex;
+    align-items:center;
+    gap:0;
+  }
+  .loc-map-link:hover { background:rgba(27,189,138,0.08); border-color:rgba(27,189,138,0.6); }
+
   /* FOOTER */
   .footer { margin-top:36px; padding-top:20px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:12px; }
   .footer-left { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text3); line-height:1.8; }
@@ -206,7 +224,7 @@
       <div class="badge-row">
         <span class="badge badge-teal">Eau lourde D₂O</span>
         <span class="badge badge-amber">Uranium naturel 0,71 %</span>
-        <span class="badge badge-blue">Pression horizontale CANDU</span>
+        <span class="badge badge-blue">Tubes de force horizontaux NILDU</span>
         <span class="badge badge-red">Rechargement en marche</span>
         <span class="badge badge-orange">En construction</span>
       </div>
@@ -241,13 +259,15 @@
       <div class="loc-sub">Région fédérale d'Assiout · Gouvernorat du Fayoum</div>
     </div>
     <div class="loc-coords">29°20′24″ N · 30°56′42″ E<br>29.34013, 30.94513</div>
+    <a href="https://map.projet-resurgence.fr/?region=42" target="_blank" rel="noopener" class="loc-map-link">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" style="vertical-align:-2px;margin-right:4px"><rect x="1" y="4" width="4" height="11" rx="1" fill="currentColor" opacity="0.7"/><rect x="6" y="1" width="4" height="14" rx="1" fill="currentColor"/><rect x="11" y="3" width="4" height="10" rx="1" fill="currentColor" opacity="0.7"/><polyline points="1,4 6,1 11,3 15,1" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/></svg>Voir sur la carte
+    </a>
   </div>
 
   <!-- DIAGRAM CARD -->
-  <div class="diagram-card">
     <div class="diagram-card-header">
       <span class="diagram-card-title">Schéma d'architecture — Vue en coupe longitudinale</span>
-      <span class="badge badge-teal" style="font-size:10px">Type CANDU · 1ère génération</span>
+      <span class="badge badge-teal" style="font-size:10px">Type NILDU · 1ère génération</span>
     </div>
     <div class="scroll-hint">← défiler pour voir le schéma complet →</div>
     <div class="diagram-card-body">
@@ -333,7 +353,7 @@
           <rect x="534" y="239" width="9" height="11" rx="1"/>
         </g>
         <rect x="220" y="257" width="304" height="13" rx="3" fill="#0a0e16" fill-opacity="0.75"/>
-        <text font-family="'IBM Plex Mono',monospace" font-size="9" fill="#f0a030" x="372" y="267" text-anchor="middle">← Faisceau 37 crayons UO₂ — tube central détaillé →</text>
+        <text font-family="'IBM Plex Mono',monospace" font-size="9" fill="#f0a030" x="372" y="267" text-anchor="middle">← Faisceau 19 crayons UO₂ — tube central détaillé →</text>
 
         <!-- BARRES DE CONTRÔLE -->
         <g fill="#e84848" stroke="#a83030" stroke-width="0.6">
@@ -469,7 +489,7 @@
         <line x1="180" y1="310" x2="154" y2="328" stroke="#4a5168" stroke-width="0.5" stroke-dasharray="2 2"/>
         <circle cx="180" cy="310" r="2.5" fill="#c07818" opacity="0.8"/>
         <text font-family="'IBM Plex Sans',sans-serif" font-size="11" font-weight="500" fill="#9ba3b8" x="8" y="324" text-anchor="start">Faisceaux UO₂</text>
-        <text font-family="'IBM Plex Mono',monospace" font-size="9" fill="#545d72" x="8" y="337" text-anchor="start">Uranium naturel · 37 crayons/faisceau</text>
+        <text font-family="'IBM Plex Mono',monospace" font-size="9" fill="#545d72" x="8" y="337" text-anchor="start">Uranium naturel · 19 crayons/faisceau</text>
 
         <line x1="156" y1="430" x2="148" y2="408" stroke="#4a5168" stroke-width="0.5" stroke-dasharray="2 2"/>
         <circle cx="156" cy="430" r="2.5" fill="#4a5168" opacity="0.8"/>
@@ -505,18 +525,18 @@
   <div class="specs-grid">
     <div class="spec-cell">
       <div class="spec-label">Puissance thermique</div>
-      <div class="spec-value">~200</div>
-      <div class="spec-unit">MWth · Réacteur prototype</div>
+      <div class="spec-value">~1 060</div>
+      <div class="spec-unit">MWth · centrale de puissance</div>
     </div>
     <div class="spec-cell">
       <div class="spec-label">Puissance électrique nette</div>
-      <div class="spec-value">~60</div>
-      <div class="spec-unit">MWe · Rendement ~30 %</div>
+      <div class="spec-value">~320</div>
+      <div class="spec-unit">MWe · rendement thermique ~30 %</div>
     </div>
     <div class="spec-cell">
       <div class="spec-label">Production annuelle prévue</div>
       <div class="spec-value">2 400 000</div>
-      <div class="spec-unit">MWh/an · une fois opérationnel</div>
+      <div class="spec-unit">MWh/an · facteur de charge ~86 %</div>
     </div>
     <div class="spec-cell">
       <div class="spec-label">Statut</div>
@@ -526,27 +546,27 @@
     <div class="spec-cell">
       <div class="spec-label">Modérateur / caloporteur</div>
       <div class="spec-value">D₂O</div>
-      <div class="spec-unit">Eau lourde · 99,75 % pureté</div>
+      <div class="spec-unit">Eau lourde · 99,75 % pureté isotopique</div>
     </div>
     <div class="spec-cell">
       <div class="spec-label">Combustible</div>
       <div class="spec-value">UO₂ nat.</div>
-      <div class="spec-unit">0,71 % U-235 · faisceaux 37 crayons</div>
+      <div class="spec-unit">0,71 % U-235 · faisceaux 19 crayons</div>
     </div>
     <div class="spec-cell">
       <div class="spec-label">Pression circuit primaire</div>
-      <div class="spec-value">~87</div>
-      <div class="spec-unit">bars · tubes de force Zircaloy</div>
+      <div class="spec-value">~83</div>
+      <div class="spec-unit">bars · tubes de force Zircaloy-2</div>
     </div>
     <div class="spec-cell">
       <div class="spec-label">Temp. caloporteur sortie</div>
-      <div class="spec-value">~295</div>
-      <div class="spec-unit">°C · entrée ~265 °C</div>
+      <div class="spec-value">~290</div>
+      <div class="spec-unit">°C · entrée ~260 °C</div>
     </div>
     <div class="spec-cell">
       <div class="spec-label">Spectre neutronique</div>
       <div class="spec-value">Therm.</div>
-      <div class="spec-unit">E &lt; 0,1 eV · capture minimale</div>
+      <div class="spec-unit">E &lt; 0,1 eV · capture D₂O minimale</div>
     </div>
     <div class="spec-cell">
       <div class="spec-label">Rechargement</div>
@@ -556,7 +576,7 @@
     <div class="spec-cell">
       <div class="spec-label">Matériau tubes de force</div>
       <div class="spec-value">Zr-2</div>
-      <div class="spec-unit">Zircaloy-2 · ⌀ int. 83 mm</div>
+      <div class="spec-unit">Zircaloy-2 · ⌀ int. 82,6 mm</div>
     </div>
     <div class="spec-cell">
       <div class="spec-label">Géométrie cœur</div>
@@ -575,23 +595,23 @@
     </div>
     <div class="spec-cell">
       <div class="spec-label">Durée de vie prévue</div>
-      <div class="spec-value">40 ans</div>
+      <div class="spec-value">30 ans</div>
       <div class="spec-unit">Maintenance décennale · remplacement tubes</div>
     </div>
     <div class="spec-cell">
       <div class="spec-label">Débit caloporteur primaire</div>
-      <div class="spec-value">~7 500</div>
+      <div class="spec-value">~24 000</div>
       <div class="spec-unit">t/h · circulation forcée D₂O</div>
     </div>
     <div class="spec-cell">
       <div class="spec-label">Nombre de tubes de force</div>
-      <div class="spec-value">380</div>
+      <div class="spec-value">480</div>
       <div class="spec-unit">Canaux combustibles · réseau 28,6 cm</div>
     </div>
     <div class="spec-cell">
       <div class="spec-label">Consommation uranium</div>
-      <div class="spec-value">~110</div>
-      <div class="spec-unit">t U nat./an · non enrichi · 0,71 % U-235</div>
+      <div class="spec-value">~130</div>
+      <div class="spec-unit">t U nat./an · recharge en marche · 0,71 % U-235<br><span style="font-size:10px;color:var(--text3)">Chargement initial cœur : ~260 t</span></div>
     </div>
   </div>
 

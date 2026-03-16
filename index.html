@@ -237,6 +237,7 @@
   .accent-blue  { background:#4a9eff; }
   .accent-red   { background:#e84848; }
   .accent-gray  { background:#4a5168; }
+  .accent-purple{ background:#8b6fd4; }
 
   .proj-card-body { padding:20px; flex:1; }
   .proj-card-top { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:12px; }
@@ -387,11 +388,15 @@
         <div class="hstat-lbl">Réacteur en construction</div>
       </div>
       <div class="hstat">
+        <div class="hstat-val">1</div>
+        <div class="hstat-lbl">Pile prototype en service</div>
+      </div>
+      <div class="hstat">
         <div class="hstat-val">2,4M MWh</div>
         <div class="hstat-lbl">Production annuelle prévue</div>
       </div>
       <div class="hstat">
-        <div class="hstat-val">~200 MWth</div>
+        <div class="hstat-val">~1 060 MWth</div>
         <div class="hstat-lbl">Puissance thermique NILDU</div>
       </div>
       <div class="hstat">
@@ -413,6 +418,31 @@
 
     <div class="projects-grid">
 
+      <!-- MEMPHIS — Pile atomique prototype, actif -->
+      <a href="memphis-pile.html" class="proj-card active-link">
+        <div class="proj-card-accent accent-purple"></div>
+        <div class="proj-card-body">
+          <div class="proj-card-top">
+            <span class="proj-ref">MEMPHIS-PILE-001</span>
+            <span class="proj-status status-actif">En service</span>
+          </div>
+          <div class="proj-name">MEMPHIS</div>
+          <div class="proj-full">Pile Atomique de Recherche · Le Caire</div>
+          <p class="proj-desc">Premier réacteur nucléaire du Royaume-Uni du Nil, mis en service en 2305. Pile de recherche utilisant le procédé Girdler pour la production d'eau lourde D₂O. Fondement expérimental de la filière NILDU.</p>
+          <div class="proj-tags">
+            <span class="ptag">Prototype</span>
+            <span class="ptag">Procédé Girdler</span>
+            <span class="ptag">D₂O</span>
+            <span class="ptag">Recherche</span>
+            <span class="ptag">2305</span>
+          </div>
+        </div>
+        <div class="proj-card-footer">
+          <span class="proj-loc"><svg width="11" height="14" viewBox="0 0 12 16" fill="none" style="flex-shrink:0;margin-right:4px;vertical-align:-2px"><path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5z" fill="currentColor" opacity="0.7"/><circle cx="6" cy="5" r="2" fill="var(--bg2)"/></svg>Le Caire · 30.21796, 31.25895</span>
+          <span class="proj-arrow">→</span>
+        </div>
+      </a>
+
       <!-- NILDU — lien actif -->
       <a href="nildu-reactor.html" class="proj-card active-link">
         <div class="proj-card-accent accent-teal"></div>
@@ -427,8 +457,8 @@
           <div class="proj-tags">
             <span class="ptag">Filière NILDU</span>
             <span class="ptag">D₂O</span>
-            <span class="ptag">200 MWth</span>
-            <span class="ptag">~60 MWe</span>
+            <span class="ptag">1 060 MWth</span>
+            <span class="ptag">~320 MWe</span>
             <span class="ptag">On-power</span>
           </div>
         </div>
