@@ -5,11 +5,11 @@ window.PharosMap = (function () {
   const LIGHT_TILE = 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png';
   const ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright" style="color:#545d72">OSM</a> &copy; <a href="https://carto.com/" style="color:#545d72">CARTO</a>';
 
-  // nuclear: true  → marqueur réservé aux utilisateurs autorisés (Discord)
+  // nuclear: true → visible uniquement pour accès complet (authorized === true)
   const SITES = [
-    { lat: 29.34013, lon: 30.94513, label: 'NILDU',            sub: 'Centrale nucléaire · Médinet El-Fayoum', ref: 'NILDU-REF-001',    status: 'En construction', color: '#1bbd8a', nuclear: true  },
-    { lat: 30.21796, lon: 31.25895, label: 'MEMPHIS',          sub: 'Pile atomique · Le Caire',               ref: 'MEMPHIS-PILE-001', status: 'En service',      color: '#8b6fd4', nuclear: true  },
-    { lat: 23.96933, lon: 32.87741, label: "Barrage d'Assouan", sub: 'Centrale hydroélectrique · Nil',        ref: 'ASSOUAN-HDA-001',  status: 'En service',      color: '#3b82f6', nuclear: false },
+    { lat: 29.34013, lon: 30.94513, label: 'NILDU',             sub: 'Centrale nucléaire · Médinet El-Fayoum', ref: 'NILDU-REF-001',    status: 'En construction', color: '#1bbd8a', nuclear: true  },
+    { lat: 30.21796, lon: 31.25895, label: 'MEMPHIS',           sub: 'Pile atomique · Le Caire',               ref: 'MEMPHIS-PILE-001', status: 'En service',      color: '#8b6fd4', nuclear: true  },
+    { lat: 23.96933, lon: 32.87741, label: "Barrage d'Assouan", sub: 'Centrale hydroélectrique · Nil',         ref: 'ASSOUAN-HDA-001',  status: 'En service',      color: '#3b82f6', nuclear: false },
   ];
 
   function makeIcon(color, active) {
@@ -22,9 +22,19 @@ window.PharosMap = (function () {
     return L.divIcon({ html: svg, className: '', iconSize: [size, Math.round(size*1.33)], iconAnchor: [size/2, Math.round(size*1.33)], popupAnchor: [0, -Math.round(size*1.33)-2] });
   }
 
-  /* Vérifie si l'utilisateur est autorisé via pharos-auth.js */
-  function isAuthorized() {
-    return typeof window.__pharosIsAuthorized === 'function' && window.__pharosIsAuthorized();
+  /*
+   * Lecture directe de la session localStorage — indépendante du timing de pharos-auth.js.
+   * Seuls les IDs dans ALLOWED_IDS ont authorized === true dans la session.
+   */
+  function hasFullAccess() {
+    try {
+      const s = JSON.parse(localStorage.getItem('pharos_session') || 'null');
+      if (!s) return false;
+      if (s.expires && Date.now() > s.expires) return false;
+      return s.authorized === true;
+    } catch {
+      return false;
+    }
   }
 
   function init(containerId, opts) {
@@ -34,13 +44,13 @@ window.PharosMap = (function () {
     map.attributionControl.setPrefix('');
 
     const tileUrl = opts.theme === 'light' ? LIGHT_TILE : DARK_TILE;
-    const tileLayer = L.tileLayer(tileUrl, { attribution: ATTR, maxZoom: 18 }).addTo(map);
+    let tileLayer = L.tileLayer(tileUrl, { attribution: ATTR, maxZoom: 18 }).addTo(map);
 
-    const authorized = isAuthorized();
+    const fullAccess = hasFullAccess();
 
-    // Marqueurs — les sites nucléaires ne sont affichés qu'aux utilisateurs autorisés
+    // Marqueurs — sites nucléaires visibles uniquement si accès complet autorisé
     SITES.forEach(site => {
-      if (site.nuclear && !authorized) return;
+      if (site.nuclear && !fullAccess) return;
 
       const active = opts.siteRef === site.ref;
       const marker = L.marker([site.lat, site.lon], { icon: makeIcon(site.color, active) }).addTo(map);
