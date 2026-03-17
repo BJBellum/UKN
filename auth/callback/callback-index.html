@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connexion · Pharos Energy</title>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    background:#090c12; color:#dce8f8;
+    font-family:'IBM Plex Mono',monospace,'Courier New',monospace;
+    display:flex; align-items:center; justify-content:center;
+    min-height:100vh; flex-direction:column; gap:16px;
+  }
+  .logo { font-size:13px; color:#3b82f6; letter-spacing:0.12em; text-transform:uppercase; }
+  .status { font-size:12px; color:#7a9ac0; }
+  .dot { display:inline-block; width:8px; height:8px; border-radius:50%; background:#3b82f6; margin-right:8px; animation:pulse 1s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+  .err { color:#e84848; font-size:12px; }
+</style>
+</head>
+<body>
+<div class="logo">Pharos Energy · Authentification</div>
+<div class="status"><span class="dot"></span><span id="msg">Vérification en cours…</span></div>
+<div class="err" id="err"></div>
+
+<script>
+// ══ CONFIGURATION ══
+const WORKER_URL    = 'https://nileworker.kaffirbj.workers.dev';
+const ALLOWED_IDS   = [
+  '772821169664426025',
+  '1014832884764393523',
+  '293869524091142144',
+  '928291843958014014',
+  '1302403450566610944',
+  '660762879741526026',
+  '172750036982038529',
+  '1113422056525144104'
+];
+// URL absolue pour éviter toute boucle de redirection
+const REDIRECT_HOME = 'https://BJBellum.github.io/PharosEnergy/';
+// ═══════════════════
+
+async function handleCallback() {
+  const msg = document.getElementById('msg');
+  const err = document.getElementById('err');
+
+  const params = new URLSearchParams(window.location.search);
+  const code  = params.get('code');
+  const state = params.get('state');
+
+  // Garde anti-boucle : si on est sur la page callback sans code, on renvoie vers l'accueil absolu
+  if (!code) {
+    window.location.replace(REDIRECT_HOME);
+    return;
+  }
+
+  // Vérification CSRF assouplie : on accepte si le state correspond OU si sessionStorage est vide
+  // (certains navigateurs vident sessionStorage entre redirections)
+  const savedState = sessionStorage.getItem('discord_oauth_state');
+  if (savedState && state !== savedState) {
+    err.textContent = 'État invalide (CSRF). Réessaie de te connecter.';
+    msg.textContent = 'Échec.';
+    setTimeout(() => { window.location.replace(REDIRECT_HOME); }, 2500);
+    return;
+  }
+  sessionStorage.removeItem('discord_oauth_state');
+
+  try {
+    msg.textContent = 'Échange du token…';
+
+    // 1. Échange du code via Cloudflare Worker
+    const tokenRes = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code })
+    });
+    const tokenData = await tokenRes.json();
+
+    if (!tokenData.access_token) {
+      err.textContent = 'Erreur token : ' + (tokenData.error_description || tokenData.error || 'inconnue');
+      msg.textContent = 'Échec.';
+      // On ne redirige pas automatiquement sur erreur token, pour que l'erreur soit lisible
+      return;
+    }
+
+    msg.textContent = 'Récupération du profil…';
+
+    // 2. Récupérer l'utilisateur Discord
+    const userRes = await fetch('https://discord.com/api/users/@me', {
+      headers: { Authorization: `Bearer ${tokenData.access_token}` }
+    });
+    const user = await userRes.json();
+
+    if (!user.id) { err.textContent = 'Impossible de récupérer le profil Discord.'; msg.textContent = 'Échec.'; return; }
+
+    msg.textContent = 'Vérification des autorisations…';
+
+    // 3. Vérifier si l'ID est autorisé
+    // Force en string — l'API Discord peut retourner l'ID en number selon le contexte
+    const authorized = ALLOWED_IDS.includes(String(user.id));
+
+    // 4. Stocker la session
+    const session = {
+      id: String(user.id),
+      username: user.username,
+      discriminator: user.discriminator || '0',
+      avatar: user.avatar,
+      authorized,
+      token: tokenData.access_token,
+      expires: Date.now() + (tokenData.expires_in || 604800) * 1000,
+      loginAt: Date.now()
+    };
+    localStorage.setItem('pharos_session', JSON.stringify(session));
+
+    if (authorized) {
+      msg.textContent = `Bienvenue, ${user.username} — accès complet autorisé.`;
+    } else {
+      msg.textContent = `Connecté en tant que ${user.username} — accès standard.`;
+    }
+
+    // 5. Rediriger — utilise pharos_return si disponible, sinon accueil absolu
+    setTimeout(() => {
+      const returnTo = localStorage.getItem('pharos_return') || REDIRECT_HOME;
+      localStorage.removeItem('pharos_return');
+      // Sécurité : si returnTo pointe vers le callback lui-même, forcer l'accueil
+      if (returnTo.includes('/auth/callback')) {
+        window.location.replace(REDIRECT_HOME);
+      } else {
+        window.location.replace(returnTo);
+      }
+    }, 1200);
+
+  } catch(e) {
+    err.textContent = 'Erreur réseau : ' + e.message;
+    msg.textContent = 'Échec.';
+  }
+}
+
+handleCallback();
+</script>
+</body>
+</html>
