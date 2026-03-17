@@ -96,7 +96,7 @@
   .nav-link:hover { color:var(--text); background:var(--border); }
   .nav-right { display:flex; align-items:center; gap:10px; flex-shrink:0; }
 
-  /* ── TOGGLE DAY/NIGHT ── */
+  /* TOGGLE DAY/NIGHT */
   .theme-toggle {
     display:flex; align-items:center; gap:6px;
     background:var(--toggle-bg);
@@ -190,6 +190,7 @@
   .htag-amber { background:rgba(240,160,48,0.1);  color:#f0a030; border-color:#c07818; }
   .htag-blue  { background:rgba(74,158,255,0.1);  color:#4a9eff; border-color:#1c6fcc; }
   .htag-gray  { background:var(--bg3); color:var(--text2); border-color:var(--border2); }
+  .htag-orange { background:rgba(240,120,30,0.1); color:#f07820; border-color:#b05010; }
 
   /* STAT ROW */
   .hero-stats {
@@ -232,7 +233,11 @@
   .proj-card.inactive { cursor:default; opacity:0.72; }
   .proj-card.inactive:hover { transform:none; }
 
-  .proj-card-accent { height:3px; width:100%; flex-shrink:0; }
+  .proj-card-accent {
+    height:3px;
+    width:100%;
+    flex-shrink:0;
+  }
   .accent-teal   { background:#1bbd8a; }
   .accent-amber  { background:#f0a030; }
   .accent-blue   { background:#4a9eff; }
@@ -240,6 +245,7 @@
   .accent-gray   { background:#4a5168; }
   .accent-purple { background:#8b6fd4; }
   .accent-green  { background:#22c55e; }
+  .accent-orange { background:#f07820; }
 
   .proj-card-body { padding:20px; flex:1; }
   .proj-card-top { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:12px; }
@@ -271,6 +277,10 @@
     gap:8px;
     flex-wrap:wrap;
   }
+  .toggle-icon[data-mode="dark"] .icon-sun  { display:block; }
+  .toggle-icon[data-mode="dark"] .icon-moon { display:none;  }
+  .toggle-icon[data-mode="light"] .icon-sun  { display:none;  }
+  .toggle-icon[data-mode="light"] .icon-moon { display:block; }
   .proj-loc { display:flex; align-items:center; }
   .proj-arrow { color:var(--text3); font-size:14px; transition:transform .15s, color .15s; }
   .proj-card.active-link:hover .proj-arrow { transform:translateX(4px); color:var(--text2); }
@@ -317,6 +327,201 @@
     .topnav { padding:0 16px; }
     .nav-center { display:none; }
   }
+
+  /* ══════════════════════════════════════════════
+     BILAN ÉNERGÉTIQUE — styles dédiés
+  ══════════════════════════════════════════════ */
+  .bilan-section {
+    margin-bottom: 56px;
+  }
+
+  /* KPI row */
+  .bilan-kpi-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .bilan-kpi {
+    background: var(--card-bg);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .bilan-kpi-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .bilan-kpi-value {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .bilan-kpi-value.val-conso  { color: #4a9eff; }
+  .bilan-kpi-value.val-prod   { color: #1bbd8a; }
+  .bilan-kpi-value.val-deficit{ color: #e84848; }
+  .bilan-kpi-unit {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  /* Charts row */
+  .bilan-charts-row {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 16px;
+  }
+  .bilan-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+  .bilan-card-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text2);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+
+  /* Donut chart */
+  .donut-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    height: 100%;
+  }
+  .donut-canvas-wrap {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #donutSVG {
+    display: block;
+    overflow: visible; /* permet le lift */
+  }
+  /* lift au survol — les <path> sont animés via JS transform */
+  #donut-hydro, #donut-geo {
+    transition: transform 0.25s cubic-bezier(.4,0,.2,1), filter 0.25s;
+  }
+  .donut-legend {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .donut-leg-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--text2);
+    cursor: default;
+    padding: 4px 0;
+    transition: color .15s;
+  }
+  .donut-leg-item:hover { color: var(--text); }
+  .donut-leg-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .donut-leg-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .donut-leg-pct {
+    color: var(--text3);
+    font-size: 11px;
+  }
+
+  /* Bar chart (prod vs conso) */
+  .barchart-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .barchart-row-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--text2);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+  .barchart-row-label span:last-child {
+    color: var(--text3);
+  }
+  .barchart-track {
+    height: 16px;
+    background: var(--bg3);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .barchart-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1.2s cubic-bezier(.4,0,.2,1);
+  }
+  .fill-prod    { background: #1bbd8a; }
+  .fill-deficit { background: #e84848; }
+  .fill-conso-prod    { background: #1bbd8a; }
+  .fill-conso-deficit { background: rgba(232,72,72,0.7); }
+
+  /* Composite bar for consommation totale */
+  .barchart-composite {
+    height: 16px;
+    background: var(--bg3);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+  }
+
+  /* Summary note */
+  .bilan-note {
+    margin-top: 18px;
+    padding: 12px 16px;
+    background: rgba(232,72,72,0.05);
+    border-left: 3px solid rgba(232,72,72,0.4);
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+  .bilan-note strong { color: var(--text); }
+
+  @media(max-width:900px) {
+    .bilan-kpi-row { grid-template-columns: 1fr 1fr; }
+    .bilan-kpi-row .bilan-kpi:last-child { grid-column: 1 / -1; }
+    .bilan-charts-row { grid-template-columns: 1fr; }
+    .bilan-kpi-value { font-size: 24px; }
+  }
+  @media(max-width:600px) {
+    .bilan-kpi-row { grid-template-columns: 1fr; }
+    .bilan-kpi-row .bilan-kpi:last-child { grid-column: auto; }
+  }
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&family=Noto+Kufi+Arabic:wght@400;500&display=swap">
 </head>
@@ -327,14 +532,19 @@
       <svg viewBox="0 0 20 20" fill="none">
         <circle cx="10" cy="10" r="3" fill="#1bbd8a"/>
         <circle cx="10" cy="10" r="7" stroke="#1bbd8a" stroke-width="1" fill="none" stroke-dasharray="2 1.5"/>
-        <circle cx="10" cy="10" r="9.5" stroke="#1bbd8a" stroke-width="0.5" fill="none" opacity="0.4"/>
+        <line x1="10" y1="1" x2="10" y2="4" stroke="#1bbd8a" stroke-width="1.2"/>
+        <line x1="10" y1="16" x2="10" y2="19" stroke="#1bbd8a" stroke-width="1.2"/>
+        <line x1="1" y1="10" x2="4" y2="10" stroke="#1bbd8a" stroke-width="1.2"/>
+        <line x1="16" y1="10" x2="19" y2="10" stroke="#1bbd8a" stroke-width="1.2"/>
       </svg>
     </div>
     <span class="nav-brand">Pharos Energy</span>
   </div>
   <div class="nav-center">
-    <a href="index.html" class="nav-link">Accueil</a>
+    <a href="#projets" class="nav-link">Nucléaire</a>
     <a href="#hydro" class="nav-link">Hydroélectrique</a>
+    <a href="#geothermie" class="nav-link">Géothermie</a>
+    <a href="#bilan" class="nav-link">Bilan énergétique</a>
     <a href="#apropos" class="nav-link">À propos</a>
   </div>
   <div class="nav-right">
@@ -363,23 +573,24 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Opérateur Énergétique · Royaume-Uni du Nil</div>
-    <div class="hero-title">Pharos Energy</div>
-    <div class="hero-title-ar">طاقة فاروس · تاقات فاروس</div>
+    <div class="hero-eyebrow">طاقة فاروس · Pharos Energy</div>
+    <h1 class="hero-title">Pharos Energy</h1>
+    <div class="hero-title-ar">طاقة فاروس</div>
     <p class="hero-sub">
-      Pharos Energy assure le développement et l'exploitation des infrastructures énergétiques
-      du <strong>Royaume-Uni du Nil</strong>. Production d'électricité au service du pays.
+      Opérateur énergétique du <strong>Royaume-Uni du Nil</strong>.
+      Production d'électricité au service du pays.
     </p>
     <div class="hero-tags">
       <span class="htag htag-blue">Hydroélectricité</span>
       <span class="htag htag-amber">Royaume-Uni du Nil</span>
       <span class="htag htag-teal">Fleuve Nil</span>
       <span class="htag htag-gray">En service depuis 2304</span>
+      <span class="htag htag-orange">Géothermie</span>
     </div>
     <div class="hero-stats">
       <div class="hstat"><div class="hstat-val">1</div><div class="hstat-lbl">Barrage en service</div></div>
       <div class="hstat"><div class="hstat-val">2 100 MWe</div><div class="hstat-lbl">Puissance installée</div></div>
-      <div class="hstat"><div class="hstat-val">1,5M MWh</div><div class="hstat-lbl">Production annuelle</div></div>
+      <div class="hstat"><div class="hstat-val">2,945M MWh</div><div class="hstat-lbl">Production annuelle</div></div>
       <div class="hstat"><div class="hstat-val">Nil</div><div class="hstat-lbl">Fleuve · Assouan</div></div>
       <div class="hstat"><div class="hstat-val">2304</div><div class="hstat-lbl">En service depuis</div></div>
     </div>
@@ -388,7 +599,9 @@
 
 <div class="page">
 
-  <!-- DIVISION NUCLÉAIRE — visible uniquement si connecté (data-auth="required") -->
+  <!-- ══════════════════════════════════════════
+       SECTION NUCLÉAIRE — accès restreint
+  ══════════════════════════════════════════ -->
   <section id="projets" data-auth="required">
     <div class="section-header">
       <span class="section-title">Division Énergie Nucléaire</span>
@@ -465,7 +678,9 @@
     </div>
   </section>
 
-  <!-- DIVISION HYDROÉLECTRIQUE -->
+  <!-- ══════════════════════════════════════════
+       SECTION HYDROÉLECTRIQUE — publique
+  ══════════════════════════════════════════ -->
   <section id="hydro">
     <div class="section-header">
       <span class="section-title">Division Hydroélectrique</span>
@@ -490,6 +705,230 @@
           <span class="proj-arrow">→</span>
         </div>
       </a>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SECTION GÉOTHERMIE — publique, skeleton
+  ══════════════════════════════════════════ -->
+  <section id="geothermie">
+    <div class="section-header">
+      <span class="section-title">Division Géothermique</span>
+      <div class="section-line"></div>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);white-space:nowrap">3 centrales · données à venir</span>
+    </div>
+    <div class="projects-grid">
+
+      <!-- Centrale géothermique 1 -->
+      <div class="proj-card inactive">
+        <div class="proj-card-accent accent-orange"></div>
+        <div class="proj-card-body">
+          <div class="proj-card-top">
+            <span class="proj-ref">GEO-001</span>
+            <span class="proj-status status-etude">À définir</span>
+          </div>
+          <div class="proj-name">Centrale Géothermique I</div>
+          <div class="proj-full" style="color:#f07820;">Division Géothermique · طاقة حرارية أرضية</div>
+          <p class="proj-desc">Première centrale géothermique du parc Pharos Energy. Données techniques et localisation en cours de définition.</p>
+          <div class="proj-tags"><span class="ptag">Géothermie</span><span class="ptag">En étude</span><span class="ptag">Chaleur terrestre</span></div>
+        </div>
+        <div class="proj-card-footer">
+          <span class="proj-loc"><svg width="11" height="14" viewBox="0 0 12 16" fill="none" style="flex-shrink:0;margin-right:4px;vertical-align:-2px"><path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5z" fill="currentColor" opacity="0.4"/><circle cx="6" cy="5" r="2" fill="var(--bg2)"/></svg>Localisation non définie</span>
+          <span class="proj-locked">Dossier non disponible</span>
+        </div>
+      </div>
+
+      <!-- Centrale géothermique 2 -->
+      <div class="proj-card inactive">
+        <div class="proj-card-accent accent-orange"></div>
+        <div class="proj-card-body">
+          <div class="proj-card-top">
+            <span class="proj-ref">GEO-002</span>
+            <span class="proj-status status-etude">À définir</span>
+          </div>
+          <div class="proj-name">Centrale Géothermique II</div>
+          <div class="proj-full" style="color:#f07820;">Division Géothermique · طاقة حرارية أرضية</div>
+          <p class="proj-desc">Deuxième centrale géothermique du parc Pharos Energy. Données techniques et localisation en cours de définition.</p>
+          <div class="proj-tags"><span class="ptag">Géothermie</span><span class="ptag">En étude</span><span class="ptag">Chaleur terrestre</span></div>
+        </div>
+        <div class="proj-card-footer">
+          <span class="proj-loc"><svg width="11" height="14" viewBox="0 0 12 16" fill="none" style="flex-shrink:0;margin-right:4px;vertical-align:-2px"><path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5z" fill="currentColor" opacity="0.4"/><circle cx="6" cy="5" r="2" fill="var(--bg2)"/></svg>Localisation non définie</span>
+          <span class="proj-locked">Dossier non disponible</span>
+        </div>
+      </div>
+
+      <!-- Centrale géothermique 3 -->
+      <div class="proj-card inactive">
+        <div class="proj-card-accent accent-orange"></div>
+        <div class="proj-card-body">
+          <div class="proj-card-top">
+            <span class="proj-ref">GEO-003</span>
+            <span class="proj-status status-etude">À définir</span>
+          </div>
+          <div class="proj-name">Centrale Géothermique III</div>
+          <div class="proj-full" style="color:#f07820;">Division Géothermique · طاقة حرارية أرضية</div>
+          <p class="proj-desc">Troisième centrale géothermique du parc Pharos Energy. Données techniques et localisation en cours de définition.</p>
+          <div class="proj-tags"><span class="ptag">Géothermie</span><span class="ptag">En étude</span><span class="ptag">Chaleur terrestre</span></div>
+        </div>
+        <div class="proj-card-footer">
+          <span class="proj-loc"><svg width="11" height="14" viewBox="0 0 12 16" fill="none" style="flex-shrink:0;margin-right:4px;vertical-align:-2px"><path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5z" fill="currentColor" opacity="0.4"/><circle cx="6" cy="5" r="2" fill="var(--bg2)"/></svg>Localisation non définie</span>
+          <span class="proj-locked">Dossier non disponible</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       BILAN ÉNERGÉTIQUE — public, avant #hydro
+       Données : 17 954 603 hab.
+       Conso : 14 004 590 MWh/an (0,78 MWh/hab)
+       Prod  :  2 945 000 MWh/an
+         → Hydroélectricité : 2 000 000 MWh (67,9%)
+         → Géothermie       :   945 000 MWh (32,1%)
+       Déficit : −11 059 590 MWh (−79,0%)
+  ══════════════════════════════════════════ -->
+  <section id="bilan" class="bilan-section">
+    <div class="section-header">
+      <span class="section-title">Bilan Énergétique National</span>
+      <div class="section-line"></div>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);white-space:nowrap">17 954 603 habitants · Exercice 2305</span>
+    </div>
+
+    <!-- KPI row -->
+    <div class="bilan-kpi-row">
+      <div class="bilan-kpi">
+        <div class="bilan-kpi-label">Consommation totale</div>
+        <div class="bilan-kpi-value val-conso">14 004 590</div>
+        <div class="bilan-kpi-unit">MWh / an · (0,78 MWh × hab.)</div>
+      </div>
+      <div class="bilan-kpi">
+        <div class="bilan-kpi-label">Production totale</div>
+        <div class="bilan-kpi-value val-prod">2 945 000</div>
+        <div class="bilan-kpi-unit">MWh / an</div>
+      </div>
+      <div class="bilan-kpi">
+        <div class="bilan-kpi-label">Déficit énergétique</div>
+        <div class="bilan-kpi-value val-deficit">−11 059 590</div>
+        <div class="bilan-kpi-unit">MWh / an · soit −79,0 %</div>
+      </div>
+    </div>
+
+    <!-- Charts row -->
+    <div class="bilan-charts-row">
+
+      <!-- Donut : répartition production -->
+      <div class="bilan-card" style="display:flex;flex-direction:column;">
+        <div class="bilan-card-title">Répartition de la production (MWh)</div>
+        <div class="donut-wrap">
+          <div class="donut-canvas-wrap">
+            <svg id="donutSVG" viewBox="0 0 200 200" width="180" height="180" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible;">
+              <!-- piste de fond -->
+              <circle cx="100" cy="100" r="66" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="26"/>
+              <!-- arc géothermie (orange) -->
+              <path id="donut-geo"   fill="none" stroke="#f07820" stroke-width="26" stroke-linecap="butt" d=""/>
+              <!-- arc hydroélectricité (bleu) -->
+              <path id="donut-hydro" fill="none" stroke="#4a9eff" stroke-width="26" stroke-linecap="butt" d=""/>
+              <!-- zones hover invisibles (plus larges) -->
+              <path id="donut-hover-hydro" fill="transparent" stroke="transparent" stroke-width="44" d=""
+                style="cursor:pointer;" data-label="Hydroélectricité" data-mwh="2 000 000" data-pct="67,9" data-color="#4a9eff"/>
+              <path id="donut-hover-geo" fill="transparent" stroke="transparent" stroke-width="44" d=""
+                style="cursor:pointer;" data-label="Géothermie" data-mwh="945 000" data-pct="32,1" data-color="#f07820"/>
+            </svg>
+            <!-- Tooltip -->
+            <div id="donut-tooltip" style="
+              display:none;
+              position:fixed;
+              pointer-events:none;
+              background:var(--bg4,#1c2232);
+              border:1px solid var(--border2,rgba(255,255,255,0.13));
+              border-radius:7px;
+              padding:9px 14px;
+              font-family:'IBM Plex Mono',monospace;
+              font-size:11px;
+              color:var(--text,#e2e6f0);
+              white-space:nowrap;
+              box-shadow:0 4px 20px rgba(0,0,0,0.5);
+              z-index:999;
+              transform:translate(-50%,-120%);
+            ">
+              <div id="tt-label" style="font-size:12px;font-weight:500;margin-bottom:4px;"></div>
+              <div id="tt-mwh"   style="color:var(--text2,#8b93a8);margin-bottom:1px;"></div>
+              <div id="tt-pct"   style="color:var(--text2,#8b93a8);"></div>
+            </div>
+          </div>
+          <div class="donut-legend">
+            <div class="donut-leg-item" data-arc="hydro">
+              <div class="donut-leg-left">
+                <div class="donut-leg-swatch" style="background:#4a9eff;"></div>
+                <span>Hydroélectricité</span>
+              </div>
+              <div style="text-align:right">
+                <span>2 000 000 MWh</span>
+                <span class="donut-leg-pct"> · 67,9 %</span>
+              </div>
+            </div>
+            <div class="donut-leg-item" data-arc="geo">
+              <div class="donut-leg-left">
+                <div class="donut-leg-swatch" style="background:#f07820;"></div>
+                <span>Géothermie</span>
+              </div>
+              <div style="text-align:right">
+                <span>945 000 MWh</span>
+                <span class="donut-leg-pct"> · 32,1 %</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bar chart : production vs consommation -->
+      <div class="bilan-card">
+        <div class="bilan-card-title">Production vs consommation (MWh)</div>
+        <div class="barchart-rows">
+
+          <!-- Production -->
+          <div>
+            <div class="barchart-row-label">
+              <span>Production</span>
+              <span>2 945 000</span>
+            </div>
+            <div class="barchart-track">
+              <div class="barchart-fill fill-prod" id="bar-prod" style="width:0%"></div>
+            </div>
+          </div>
+
+          <!-- Déficit -->
+          <div>
+            <div class="barchart-row-label">
+              <span>Déficit</span>
+              <span>11 059 590</span>
+            </div>
+            <div class="barchart-track">
+              <div class="barchart-fill fill-deficit" id="bar-deficit" style="width:0%"></div>
+            </div>
+          </div>
+
+          <!-- Consommation totale (composite) -->
+          <div>
+            <div class="barchart-row-label">
+              <span>Consommation totale</span>
+              <span>14 004 590</span>
+            </div>
+            <div class="barchart-composite" id="bar-conso">
+              <div class="barchart-fill fill-conso-prod" id="bar-conso-prod" style="width:0%;flex-shrink:0"></div>
+              <div class="barchart-fill fill-conso-deficit" id="bar-conso-deficit" style="width:0%;flex-shrink:0"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="bilan-note">
+          La production couvre <strong>21,0 %</strong> des besoins — le déficit représente
+          <strong>11 059 590 MWh</strong>, soit 79,0 % de la consommation annuelle totale.
+        </div>
+      </div>
 
     </div>
   </section>
@@ -534,6 +973,7 @@
 </div>
 
 <script>
+  /* ── Thème ── */
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     const lbl  = document.getElementById('toggle-lbl');
@@ -553,12 +993,187 @@
   }
   (function() {
     const saved = localStorage.getItem('pharos-theme');
-    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    const mq    = window.matchMedia('(prefers-color-scheme: dark)');
     applyTheme(saved || (mq.matches ? 'dark' : 'light'));
     mq.addEventListener('change', e => {
       if (!localStorage.getItem('pharos-theme')) applyTheme(e.matches ? 'dark' : 'light');
     });
   })();
+
+  /* ── Barres + donut animés via IntersectionObserver ── */
+  document.addEventListener('DOMContentLoaded', function () {
+    const total   = 14004590;
+    const prod    = 2945000;
+    const deficit = 11059590;
+
+    /* — barres — */
+    const barProd         = document.getElementById('bar-prod');
+    const barDeficit      = document.getElementById('bar-deficit');
+    const barConsoProd    = document.getElementById('bar-conso-prod');
+    const barConsoDeficit = document.getElementById('bar-conso-deficit');
+
+    function triggerBars() {
+      if (barProd)         barProd.style.width         = (prod    / total * 100).toFixed(2) + '%';
+      if (barDeficit)      barDeficit.style.width      = (deficit / total * 100).toFixed(2) + '%';
+      if (barConsoProd)    barConsoProd.style.width    = (prod    / total * 100).toFixed(2) + '%';
+      if (barConsoDeficit) barConsoDeficit.style.width = (deficit / total * 100).toFixed(2) + '%';
+    }
+
+    /* — donut SVG avec <path> arc précis — */
+    function polarToXY(cx, cy, r, angleDeg) {
+      var rad = (angleDeg - 90) * Math.PI / 180;
+      return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+    }
+
+    function arcPath(cx, cy, r, startDeg, endDeg) {
+      var start = polarToXY(cx, cy, r, startDeg);
+      var end   = polarToXY(cx, cy, r, endDeg);
+      var large = (endDeg - startDeg) > 180 ? 1 : 0;
+      return 'M ' + start.x + ' ' + start.y + ' A ' + r + ' ' + r + ' 0 ' + large + ' 1 ' + end.x + ' ' + end.y;
+    }
+
+    function triggerDonut() {
+      var R   = 66;
+      var cx  = 100, cy = 100;
+      var gap = 2.5;  /* degrés de séparation entre arcs */
+
+      var hydroDeg = (2000000 / prod) * 360;  /* 244.45° */
+      var geoDeg   = ( 945000 / prod) * 360;  /* 115.55° */
+
+      /* Hydro : 0° → hydroDeg (moins gap des deux côtés) */
+      var h0 = gap / 2,       h1 = hydroDeg - gap / 2;
+      /* Geo  : hydroDeg → 360° */
+      var g0 = hydroDeg + gap / 2, g1 = 360 - gap / 2;
+
+      var hydPath = arcPath(cx, cy, R, h0, h1);
+      var geoPath = arcPath(cx, cy, R, g0, g1);
+
+      var arcHydro      = document.getElementById('donut-hydro');
+      var arcGeo        = document.getElementById('donut-geo');
+      var hoverHydro    = document.getElementById('donut-hover-hydro');
+      var hoverGeo      = document.getElementById('donut-hover-geo');
+
+      if (arcHydro)   arcHydro.setAttribute('d', hydPath);
+      if (arcGeo)     arcGeo.setAttribute('d', geoPath);
+      if (hoverHydro) hoverHydro.setAttribute('d', hydPath);
+      if (hoverGeo)   hoverGeo.setAttribute('d', geoPath);
+    }
+
+    /* — Tooltip + lift donut — */
+    (function setupDonutInteraction() {
+      var tt      = document.getElementById('donut-tooltip');
+      var ttLabel = document.getElementById('tt-label');
+      var ttMwh   = document.getElementById('tt-mwh');
+      var ttPct   = document.getElementById('tt-pct');
+
+      /* Vecteur du centre de l'arc vers l'extérieur pour l'effet lift */
+      var liftMap = {
+        'hydro': { dx:  8, dy: -8 },   /* hydro occupe ~11h→8h → lift vers haut-droite */
+        'geo':   { dx: -8, dy:  8 }    /* geo  occupe ~8h→11h  → lift vers bas-gauche */
+      };
+
+      function getArcEl(key) {
+        return document.getElementById(key === 'hydro' ? 'donut-hydro' : 'donut-geo');
+      }
+
+      function liftArc(key, on) {
+        var el = getArcEl(key);
+        if (!el) return;
+        if (on) {
+          var v = liftMap[key];
+          el.style.transform = 'translate(' + v.dx + 'px,' + v.dy + 'px)';
+          el.style.filter    = 'brightness(1.25) drop-shadow(0 2px 8px ' + (key === 'hydro' ? 'rgba(74,158,255,0.5)' : 'rgba(240,120,32,0.5)') + ')';
+        } else {
+          el.style.transform = '';
+          el.style.filter    = '';
+        }
+      }
+
+      function showTip(label, mwh, pct, color, evt) {
+        if (!tt) return;
+        ttLabel.textContent = label;
+        ttLabel.style.color = color;
+        ttMwh.textContent   = mwh + ' MWh';
+        ttPct.textContent   = pct + ' %';
+        tt.style.display = 'block';
+        moveTip(evt);
+      }
+
+      function moveTip(evt) {
+        if (!tt) return;
+        tt.style.left = evt.clientX + 'px';
+        tt.style.top  = evt.clientY + 'px';
+      }
+
+      function hideTip() {
+        if (tt) tt.style.display = 'none';
+      }
+
+      /* Hover sur les zones SVG invisibles */
+      [
+        { id: 'donut-hover-hydro', key: 'hydro' },
+        { id: 'donut-hover-geo',   key: 'geo'   }
+      ].forEach(function(item) {
+        var el = document.getElementById(item.id);
+        if (!el) return;
+        el.addEventListener('mouseenter', function(e) {
+          liftArc(item.key, true);
+          showTip(
+            el.getAttribute('data-label'),
+            el.getAttribute('data-mwh'),
+            el.getAttribute('data-pct'),
+            el.getAttribute('data-color'),
+            e
+          );
+        });
+        el.addEventListener('mousemove', moveTip);
+        el.addEventListener('mouseleave', function() {
+          liftArc(item.key, false);
+          hideTip();
+        });
+      });
+
+      /* Hover sur les items de légende */
+      document.querySelectorAll('.donut-leg-item[data-arc]').forEach(function(legEl) {
+        var key = legEl.getAttribute('data-arc');
+        var hoverEl = document.getElementById('donut-hover-' + key);
+        legEl.addEventListener('mouseenter', function(e) {
+          liftArc(key, true);
+          if (hoverEl) showTip(
+            hoverEl.getAttribute('data-label'),
+            hoverEl.getAttribute('data-mwh'),
+            hoverEl.getAttribute('data-pct'),
+            hoverEl.getAttribute('data-color'),
+            e
+          );
+        });
+        legEl.addEventListener('mousemove', moveTip);
+        legEl.addEventListener('mouseleave', function() {
+          liftArc(key, false);
+          hideTip();
+        });
+      });
+    })();
+
+    /* Observer la section bilan */
+    const bilanSection = document.getElementById('bilan');
+    if (bilanSection && 'IntersectionObserver' in window) {
+      const obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            triggerBars();
+            triggerDonut();
+            obs.disconnect();
+          }
+        });
+      }, { threshold: 0.1 });
+      obs.observe(bilanSection);
+    } else {
+      /* fallback immédiat si IntersectionObserver absent */
+      triggerBars();
+      triggerDonut();
+    }
+  });
 </script>
 <script src="pharos-auth.js"></script>
 </body>
