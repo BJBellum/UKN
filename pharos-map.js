@@ -1,105 +1,47 @@
 /* pharos-map.js — Carte interactive Pharos Energy · Projet Résurgence */
 window.PharosMap = (function () {
 
+  // Territoire conservé en données mais non affiché (désactivé)
   const TERRITORY = [
-    // ═══════════════════════════════════════════════════
-    // Royaume-Uni du Nil — Frontières nationales
-    // Égypte + Cyrénaïque libyenne + nord-est du Soudan
-    // ═══════════════════════════════════════════════════
-
-    // ─── Cyrénaïque libyenne (lobe nord-ouest) ───
-    // Pointe ouest Cyrénaïque (env. Benghazi)
-    [32.10, 20.0],  [32.30, 20.5],  [32.50, 21.0],
-    [32.65, 21.5],  [32.75, 22.0],  [32.80, 22.5],
-    [32.80, 23.0],  [32.70, 23.3],
-    // Jonction côte libyenne → frontière Égypte
-    [32.40, 23.5],  [32.10, 23.8],
-    [31.90, 24.0],  [31.70, 24.5],
-    [31.58, 25.0],
-
-    // ─── Côte méditerranéenne Égypte ───
-    // Sallum → Matruh → Alexandrie → Delta
-    [31.55, 25.15], [31.50, 25.8],  [31.40, 26.5],
-    [31.30, 27.0],  [31.25, 27.5],  [31.30, 28.0],
-    [31.35, 28.5],  [31.40, 29.0],  [31.45, 29.5],
-
-    // ─── Delta du Nil (côte nord) ───
-    [31.50, 29.8],  [31.52, 30.2],  [31.53, 30.5],
-    [31.52, 30.8],  [31.50, 31.0],  [31.55, 31.3],
-
-    // ─── Sinaï (nord) → Canal de Suez ───
-    [31.30, 31.8],  [31.10, 32.2],  [30.90, 32.5],
-    [30.50, 32.58],
-
-    // ─── Côte mer Rouge — descente Égypte ───
-    [30.05, 32.60], [29.60, 32.70], [29.10, 32.85],
-    [28.60, 33.10], [28.10, 33.30], [27.60, 33.55],
-    [27.10, 33.80], [26.60, 34.00], [26.10, 34.20],
-    [25.60, 34.40], [25.10, 34.55],
-
-    // ─── Côte mer Rouge — Soudan (Hala'ib → Port-Soudan) ───
-    [24.60, 34.80], [24.10, 35.10], [23.60, 35.40],
-    [23.10, 35.70], [22.60, 36.00], [22.10, 36.30],
-    [21.60, 36.60], [21.10, 36.90],
-    [20.60, 37.10], [20.10, 37.40],
-
-    // ─── Pointe sud-est (Soudan côte — env. Port-Soudan) ───
-    [19.60, 37.50], [19.10, 37.60],
-    [18.70, 37.70],
-
-    // ─── Frontière sud — intérieur Soudan ───
-    // Retour vers l'ouest le long ~18°N → ~15°N
-    [18.50, 37.0],  [18.30, 36.0],  [18.10, 35.5],
-    [17.90, 35.0],  [17.70, 34.5],  [17.50, 34.0],
-    [17.30, 33.5],  [17.10, 33.0],
-    [16.90, 32.5],  [16.50, 32.0],
-
-    // ─── Frontière sud-ouest (Soudan / limite Nil Bleu) ───
-    [16.10, 31.5],  [15.80, 31.0],
-    [15.60, 30.5],  [15.60, 30.0],
-
-    // ─── Frontière ouest Soudan — remontée désert ───
-    [16.0,  29.5],  [16.5,  29.0],
-    [17.0,  28.5],  [17.5,  28.0],
-    [18.0,  27.5],  [18.5,  27.0],
-    [19.0,  26.5],  [19.5,  26.0],
-    [20.0,  25.5],  [20.5,  25.2],
-
-    // ─── Frontière Égypte-Libye-Soudan (22°N) — désert ───
-    [21.0,  25.0],  [21.5,  25.0],
-    [22.0,  25.0],
-
-    // ─── Frontière ouest Égypte (25°E méridien libyen) ───
-    [22.5,  25.0],  [23.0,  25.0],
-    [23.5,  25.0],  [24.0,  25.0],
-    [24.5,  25.0],  [25.0,  25.0],
-
-    // ─── Remontée frontière libyenne ───
-    [25.5,  25.0],  [26.0,  25.0],
-    [26.5,  25.0],  [27.0,  25.0],
-    [27.5,  25.0],  [28.0,  25.0],
-    [28.5,  25.0],  [29.0,  25.0],
-    [29.5,  25.0],
-
-    // ─── Frontière Libye intérieure → côte Cyrénaïque ───
-    [30.0,  24.5],  [30.3,  24.0],
-    [30.6,  23.5],  [30.8,  23.0],
-    [31.0,  22.5],  [31.2,  22.0],
-    [31.4,  21.5],  [31.6,  21.0],
-    [31.8,  20.5],  [32.0,  20.2],
-
+    // Lobe NW (désert occidental / grand blob)
+    [31.18, 23.53], [31.59, 24.42], [31.54, 25.83],
+    [31.11, 26.87], [30.83, 27.77],
+    // Jonction blob → delta
+    [31.07, 28.37],
+    // Delta du Nil (bande nord)
+    [31.28, 29.0], [31.37, 29.7], [31.21, 30.1],
+    [31.42, 30.4], [31.15, 30.8],
+    // Sinaï / golfe de Suez
+    [30.76, 31.0], [30.26, 30.8],
+    // Vallée du Nil - côté est (descente S)
+    [29.69, 30.67], [29.05, 30.83], [28.43, 31.0],
+    [27.77, 31.17], [27.12, 31.4], [26.5, 31.8],
+    [25.9, 32.13], [25.35, 32.5],
+    // Extension SE (mer Rouge / Nubie)
+    [24.79, 32.67],
+    // Retour côté ouest (remontée)
+    [24.52, 31.58], [24.7, 30.63], [25.19, 30.13],
+    [25.86, 29.97], [26.45, 30.17], [27.04, 29.9],
+    [27.68, 29.67], [28.31, 29.5], [28.93, 29.43],
+    [29.57, 29.5], [30.24, 29.37],
+    // Bas du lobe NW
+    [30.0, 28.8], [29.81, 27.97], [29.65, 27.27],
+    [29.46, 26.47], [29.29, 25.6], [29.48, 24.8],
+    [29.69, 24.0], [30.12, 23.43], [30.59, 23.17],
+    [30.99, 23.33],
     // Fermeture
-    [32.10, 20.0],
+    [31.18, 23.53],
   ];
 
   const DARK_TILE  = 'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png';
   const LIGHT_TILE = 'https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png';
   const ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright" style="color:#545d72">OSM</a> &copy; <a href="https://carto.com/" style="color:#545d72">CARTO</a>';
 
+  // nuclear: true  → marqueur réservé aux utilisateurs autorisés
   const SITES = [
-    { lat: 29.34013, lon: 30.94513, label: 'NILDU', sub: 'Centrale nucléaire · Médinet El-Fayoum', ref: 'NILDU-REF-001', status: 'En construction', color: '#1bbd8a' },
-    { lat: 30.21796, lon: 31.25895, label: 'MEMPHIS', sub: 'Pile atomique · Le Caire', ref: 'MEMPHIS-PILE-001', status: 'En service', color: '#8b6fd4' },
-    { lat: 23.96933, lon: 32.87741, label: "Barrage d'Assouan", sub: 'Centrale hydroélectrique · Nil', ref: 'ASSOUAN-HDA-001', status: 'En service', color: '#3b82f6' }
+    { lat: 29.34013, lon: 30.94513, label: 'NILDU',   sub: 'Centrale nucléaire · Médinet El-Fayoum', ref: 'NILDU-REF-001',    status: 'En construction', color: '#1bbd8a', nuclear: true  },
+    { lat: 30.21796, lon: 31.25895, label: 'MEMPHIS', sub: 'Pile atomique · Le Caire',               ref: 'MEMPHIS-PILE-001', status: 'En service',      color: '#8b6fd4', nuclear: true  },
+    { lat: 23.96933, lon: 32.87741, label: "Barrage d'Assouan", sub: 'Centrale hydroélectrique · Nil', ref: 'ASSOUAN-HDA-001', status: 'En service',     color: '#3b82f6', nuclear: false },
   ];
 
   function makeIcon(color, active) {
@@ -112,8 +54,13 @@ window.PharosMap = (function () {
     return L.divIcon({ html: svg, className: '', iconSize: [size, Math.round(size*1.33)], iconAnchor: [size/2, Math.round(size*1.33)], popupAnchor: [0, -Math.round(size*1.33)-2] });
   }
 
+  /* Vérifie si l'utilisateur est autorisé via pharos-auth.js */
+  function isAuthorized() {
+    return typeof window.__pharosIsAuthorized === 'function' && window.__pharosIsAuthorized();
+  }
+
   function init(containerId, opts) {
-    opts = Object.assign({ siteRef: null, zoom: 5, centerLat: 25.0, centerLon: 30.0, theme: document.documentElement.getAttribute('data-theme') || 'dark' }, opts);
+    opts = Object.assign({ siteRef: null, zoom: 5, centerLat: 27.5, centerLon: 30.5, theme: document.documentElement.getAttribute('data-theme') || 'dark' }, opts);
 
     const map = L.map(containerId, { center: [opts.centerLat, opts.centerLon], zoom: opts.zoom, zoomControl: true, attributionControl: true, scrollWheelZoom: false });
     map.attributionControl.setPrefix('');
@@ -121,18 +68,16 @@ window.PharosMap = (function () {
     const tileUrl = opts.theme === 'light' ? LIGHT_TILE : DARK_TILE;
     let tileLayer = L.tileLayer(tileUrl, { attribution: ATTR, maxZoom: 18 }).addTo(map);
 
-    // Territoire du Royaume-Uni du Nil
-    L.polygon(TERRITORY, {
-      color: '#1bbd8a',
-      weight: 1.5,
-      opacity: 0.7,
-      fillColor: '#1bbd8a',
-      fillOpacity: 0.15,
-      dashArray: null
-    }).addTo(map);
+    // Territoire désactivé (frontières masquées)
+    // L.polygon(TERRITORY, ...).addTo(map);
 
-    // Marqueurs
+    const authorized = isAuthorized();
+
+    // Marqueurs — les sites nucléaires ne sont affichés qu'aux utilisateurs autorisés
     SITES.forEach(site => {
+      // Si le site est nucléaire et que l'utilisateur n'est pas autorisé → on ne l'ajoute pas
+      if (site.nuclear && !authorized) return;
+
       const active = opts.siteRef === site.ref;
       const marker = L.marker([site.lat, site.lon], { icon: makeIcon(site.color, active) }).addTo(map);
       marker.bindPopup(
