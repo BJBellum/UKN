@@ -97,11 +97,12 @@ async function handleCallback() {
     msg.textContent = 'Vérification des autorisations…';
 
     // 3. Vérifier si l'ID est autorisé
-    const authorized = ALLOWED_IDS.includes(user.id);
+    // Force en string — l'API Discord peut retourner l'ID en number selon le contexte
+    const authorized = ALLOWED_IDS.includes(String(user.id));
 
     // 4. Stocker la session
     const session = {
-      id: user.id,
+      id: String(user.id),
       username: user.username,
       discriminator: user.discriminator || '0',
       avatar: user.avatar,
