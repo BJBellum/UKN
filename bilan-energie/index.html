@@ -11,7 +11,7 @@
 <meta property="og:site_name"   content="Pharos Energy · Bilan Énergétique">
 <meta name="theme-color"        content="#1bbd8a">
 
-<link rel="icon" type="image/png" href="https://BJBellum.github.io/PharosEnergy/assets/PharosEnergy.png">
+<link rel="icon" type="image/png" href="https://BJBellum.github.io/PharosEnergy/assets/icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&family=Noto+Kufi+Arabic:wght@400;500&display=swap">
@@ -104,13 +104,25 @@
   .barchart-rows { display:flex; flex-direction:column; gap:20px; }
   .barchart-row-label { font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text2); display:flex; justify-content:space-between; margin-bottom:6px; }
   .barchart-row-label span:last-child { color:var(--text3); }
-  .barchart-track { height:16px; background:var(--bg3); border-radius:4px; overflow:hidden; }
-  .barchart-fill { height:100%; border-radius:4px; transition:width 1.2s cubic-bezier(.4,0,.2,1); }
-  .fill-prod    { background:#1bbd8a; }
-  .fill-deficit { background:#e84848; }
-  .fill-conso-prod    { background:#1bbd8a; }
-  .fill-conso-deficit { background:rgba(232,72,72,0.7); }
-  .barchart-composite { height:16px; background:var(--bg3); border-radius:4px; overflow:hidden; display:flex; }
+  .barchart-track { height:16px; background:var(--bg3); border-radius:4px; overflow:hidden; cursor:pointer; }
+  .barchart-fill { height:100%; border-radius:4px; transition:width 1.2s cubic-bezier(.4,0,.2,1), filter .2s, opacity .2s; }
+  .fill-prod    { background:#1bbd8a; animation:bar-pulse-green 2.4s ease-in-out infinite; }
+  .fill-deficit { background:#e84848; animation:bar-pulse-red 2.4s ease-in-out infinite; }
+  .fill-conso-prod    { background:#1bbd8a; animation:bar-pulse-green 2.4s ease-in-out infinite; }
+  .fill-conso-deficit { background:rgba(232,72,72,0.7); animation:bar-pulse-red 2.4s ease-in-out infinite; }
+  .barchart-track:hover .fill-prod,
+  .barchart-track:hover .fill-conso-prod    { filter:brightness(1.4) drop-shadow(0 0 6px rgba(27,189,138,0.7)); animation:none; }
+  .barchart-track:hover .fill-deficit,
+  .barchart-track:hover .fill-conso-deficit { filter:brightness(1.4) drop-shadow(0 0 6px rgba(232,72,72,0.7)); animation:none; }
+  @keyframes bar-pulse-green {
+    0%,100% { opacity:1; filter:brightness(1); }
+    50%     { opacity:0.75; filter:brightness(0.8); }
+  }
+  @keyframes bar-pulse-red {
+    0%,100% { opacity:1; filter:brightness(1); }
+    50%     { opacity:0.72; filter:brightness(0.75); }
+  }
+  .barchart-composite { height:16px; background:var(--bg3); border-radius:4px; overflow:hidden; display:flex; cursor:pointer; }
   .bilan-note { margin-top:18px; padding:12px 16px; background:rgba(232,72,72,0.05); border-left:3px solid rgba(232,72,72,0.4); border-radius:0 6px 6px 0; font-size:13px; color:var(--text2); line-height:1.6; }
   .bilan-note strong { color:var(--text); }
 
