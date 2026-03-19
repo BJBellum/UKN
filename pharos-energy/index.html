@@ -5,16 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pharos Energy · Accueil</title>
 
+<!-- Discord / Open Graph embed -->
 <meta property="og:type"        content="website">
 <meta property="og:title"       content="Pharos Energy · Opérateur énergétique du Nil">
-<meta property="og:description" content="Pharos Energy (طاقة فاروس) — Opérateur énergétique du Royaume-Uni du Nil. Division Hydroélectrique · Haut-Barrage d'Assouan · Fleuve Nil.">
+<meta property="og:description" content="Pharos Energy (طاقة فاروس) — Opérateur énergétique du Royaume-Uni du Nil. Divisions Hydroélectrique, Géothermique &amp; Nucléaire. Fleuve Nil · Le Caire.">
 <meta property="og:url"         content="https://BJBellum.github.io/UKN/pharos-energy/">
 <meta property="og:image"       content="https://BJBellum.github.io/UKN/assets/og-hero.png">
 <meta property="og:image:width" content="1512">
 <meta property="og:image:height" content="496">
+<meta property="og:site_name"   content="Pharos Energy · Royaume-Uni du Nil">
 <meta name="twitter:card"       content="summary_large_image">
 <meta name="twitter:title"      content="Pharos Energy · Opérateur énergétique du Nil">
-<meta name="twitter:description" content="Pharos Energy — Opérateur énergétique du Royaume-Uni du Nil. Division Hydroélectrique · Haut-Barrage d'Assouan.">
+<meta name="twitter:description" content="Pharos Energy — Opérateur énergétique du Royaume-Uni du Nil. Division Hydroélectrique · Géothermique · Nucléaire.">
 <meta name="twitter:image"      content="https://BJBellum.github.io/UKN/assets/og-hero.png">
 <meta name="theme-color"        content="#1bbd8a">
 
@@ -26,155 +28,96 @@
 <style>
   /* ── THEME VARIABLES ── */
   :root[data-theme="dark"] {
-    --bg:          #0a0c10;
-    --bg2:         #111520;
-    --bg3:         #161b26;
-    --bg4:         #1c2232;
-    --border:      rgba(255,255,255,0.07);
-    --border2:     rgba(255,255,255,0.13);
-    --border3:     rgba(255,255,255,0.2);
-    --text:        #e2e6f0;
-    --text2:       #8b93a8;
-    --text3:       #545d72;
-    --card-bg:     #111520;
-    --card-hover:  #161b28;
-    --toggle-bg:   #1c2232;
+    --bg:#0a0c10; --bg2:#111520; --bg3:#161b26; --bg4:#1c2232;
+    --border:rgba(255,255,255,0.07); --border2:rgba(255,255,255,0.13); --border3:rgba(255,255,255,0.2);
+    --text:#e2e6f0; --text2:#8b93a8; --text3:#545d72;
+    --card-bg:#111520; --card-hover:#161b28; --toggle-bg:#1c2232;
   }
   :root[data-theme="light"] {
-    --bg:          #f4f5f7;
-    --bg2:         #ffffff;
-    --bg3:         #eef0f4;
-    --bg4:         #e4e7ef;
-    --border:      rgba(0,0,0,0.07);
-    --border2:     rgba(0,0,0,0.12);
-    --border3:     rgba(0,0,0,0.2);
-    --text:        #1a1e2a;
-    --text2:       #4a5168;
-    --text3:       #8b93a8;
-    --card-bg:     #ffffff;
-    --card-hover:  #f0f3fa;
-    --toggle-bg:   #e4e7ef;
+    --bg:#f4f5f7; --bg2:#ffffff; --bg3:#eef0f4; --bg4:#e4e7ef;
+    --border:rgba(0,0,0,0.07); --border2:rgba(0,0,0,0.12); --border3:rgba(0,0,0,0.2);
+    --text:#1a1e2a; --text2:#4a5168; --text3:#8b93a8;
+    --card-bg:#ffffff; --card-hover:#f0f3fa; --toggle-bg:#e4e7ef;
   }
 
   *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
   html { scroll-behavior:smooth; }
-  body {
-    background:var(--bg); color:var(--text);
-    font-family:'IBM Plex Sans', sans-serif;
-    font-size:14px; line-height:1.6; min-height:100vh;
-    transition: background .25s, color .25s;
-  }
+  body { background:var(--bg); color:var(--text); font-family:'IBM Plex Sans',sans-serif; font-size:14px; line-height:1.6; min-height:100vh; transition:background .25s,color .25s; }
 
   /* ── NAV ── */
   .topnav {
     position:sticky; top:0; z-index:100;
     display:flex; align-items:center; justify-content:space-between;
-    padding:0 32px; height:56px;
+    padding:0 20px; height:56px;
     background:var(--bg2); border-bottom:1px solid var(--border2);
-    flex-wrap:nowrap; gap:16px;
-    transition:background .25s;
+    flex-wrap:nowrap; gap:12px; transition:background .25s;
   }
-  .nav-left { display:flex; align-items:center; gap:14px; flex-shrink:0; }
+  .nav-left { display:flex; align-items:center; gap:12px; flex-shrink:0; min-width:0; }
   .nav-logo {
-    width:34px; height:34px; border:1px solid #1bbd8a; border-radius:6px;
-    display:flex; align-items:center; justify-content:center;
-    background:rgba(27,189,138,0.1); flex-shrink:0;
+    width:32px; height:32px; border-radius:8px;
+    border:1px solid rgba(27,189,138,0.35);
+    background:rgba(27,189,138,0.08);
+    overflow:hidden; flex-shrink:0;
   }
-  .nav-logo svg { width:18px; height:18px; }
-  .nav-brand { font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500; color:var(--text2); letter-spacing:0.06em; text-transform:uppercase; }
-  .nav-center { display:flex; align-items:center; gap:4px; flex:1; justify-content:center; flex-wrap:wrap; }
-  .nav-link {
-    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text3);
-    text-decoration:none; letter-spacing:0.04em; padding:4px 10px;
-    border-radius:4px; transition:color .15s, background .15s;
-  }
-  .nav-link:hover { color:var(--text); background:var(--bg3); }
+  .nav-logo img { width:100%; height:100%; object-fit:contain; }
+  .nav-brand { display:flex; flex-direction:column; gap:1px; min-width:0; }
+  .nav-brand-main { font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:500; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .nav-brand-sub  { font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--text3); letter-spacing:0.06em; white-space:nowrap; }
   .nav-right { display:flex; align-items:center; gap:10px; flex-shrink:0; }
-  .nav-back {
-    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text3);
-    text-decoration:none; letter-spacing:0.04em; padding:4px 8px;
-    border-radius:4px; transition:color .15s, background .15s;
-  }
-  .nav-back:hover { color:var(--text); background:var(--bg3); }
-  .nav-dot { width:6px; height:6px; border-radius:50%; background:#1bbd8a; display:inline-block; margin-right:6px; animation:pulse 2s ease-in-out infinite; }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
-  .theme-toggle {
+  .nav-back { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--text3); text-decoration:none; padding:4px 10px; border:1px solid var(--border2); border-radius:4px; transition:color .15s,border-color .15s; white-space:nowrap; }
+  .nav-back:hover { color:var(--text); border-color:var(--border3); }
+  .toggle-btn {
     display:flex; align-items:center; gap:6px;
-    background:var(--toggle-bg); border:1px solid var(--border2); border-radius:20px;
-    padding:4px 10px; cursor:pointer;
+    background:var(--toggle-bg); border:1px solid var(--border2);
+    border-radius:20px; padding:5px 10px; cursor:pointer;
     font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--text2);
-    transition:all .2s; user-select:none;
   }
-  .theme-toggle:hover { border-color:var(--border3); color:var(--text); }
-  .toggle-icon[data-mode="dark"]  .icon-sun  { display:block; }
-  .toggle-icon[data-mode="dark"]  .icon-moon { display:none;  }
-  .toggle-icon[data-mode="light"] .icon-sun  { display:none;  }
-  .toggle-icon[data-mode="light"] .icon-moon { display:block; }
 
   /* ── HERO ── */
-  .hero {
-    position:relative; min-height:72vh;
-    display:flex; align-items:center; justify-content:center;
-    overflow:hidden; background:var(--bg);
-  }
-  .hero-bg {
-    position:absolute; inset:0; pointer-events:none;
-    background:radial-gradient(ellipse 90% 60% at 50% 0%, rgba(27,189,138,0.10) 0%, transparent 70%);
-  }
+  .hero { position:relative; overflow:hidden; border-bottom:1px solid var(--border2); }
+  .hero-bg { position:absolute; inset:0; pointer-events:none; background:radial-gradient(ellipse 90% 60% at 50% 0%, rgba(27,189,138,0.10) 0%, transparent 70%); }
   .hero-bg::after {
     content:''; position:absolute; inset:0;
-    background:repeating-linear-gradient(
-      -35deg, transparent 0, transparent 60px,
-      rgba(27,189,138,0.025) 60px, rgba(27,189,138,0.025) 61px
-    );
+    background:repeating-linear-gradient(-35deg,transparent 0,transparent 60px,rgba(27,189,138,0.025) 60px,rgba(27,189,138,0.025) 61px);
     animation:hbgShift 20s linear infinite; opacity:0.7;
   }
   @keyframes hbgShift { from{background-position:0 0} to{background-position:120px 0} }
-  .hero-content {
-    position:relative; z-index:2;
-    text-align:center; padding:64px 28px 72px;
-    max-width:780px; margin:0 auto;
-  }
+  .hero-content { position:relative; z-index:2; text-align:center; padding:52px 20px 60px; max-width:780px; margin:0 auto; }
   .hero-eyebrow {
-    font-family:'IBM Plex Mono',monospace; font-size:11px;
-    letter-spacing:0.16em; text-transform:uppercase; color:#1bbd8a;
-    margin-bottom:20px;
-    display:flex; align-items:center; justify-content:center; gap:10px;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#1bbd8a;
+    margin-bottom:18px; display:flex; align-items:center; justify-content:center; gap:10px;
   }
-  .hero-eyebrow::before, .hero-eyebrow::after {
-    content:''; display:block; height:1px; width:36px; background:rgba(27,189,138,0.4);
-  }
-  .hero-title { font-size:52px; font-weight:600; color:var(--text); letter-spacing:0.01em; line-height:1.1; margin-bottom:8px; }
-  .hero-title-ar { font-family:'Noto Kufi Arabic',sans-serif; font-size:28px; font-weight:500; color:#f0a030; direction:rtl; margin-bottom:20px; line-height:1.3; }
-  .hero-sub { font-size:15px; color:var(--text2); max-width:520px; margin:0 auto 32px; line-height:1.7; }
-  .hero-tags { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-bottom:36px; }
+  .hero-eyebrow::before,.hero-eyebrow::after { content:''; display:block; height:1px; width:28px; background:rgba(27,189,138,0.4); }
+  .hero-title { font-size:48px; font-weight:600; color:var(--text); letter-spacing:0.01em; line-height:1.1; margin-bottom:8px; }
+  .hero-title-ar { font-family:'Noto Kufi Arabic',sans-serif; font-size:26px; font-weight:500; color:#f0a030; direction:rtl; margin-bottom:18px; line-height:1.3; }
+  .hero-sub { font-size:14px; color:var(--text2); max-width:520px; margin:0 auto 28px; line-height:1.7; }
+  .hero-tags { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-bottom:32px; }
   .htag { font-family:'IBM Plex Mono',monospace; font-size:11px; padding:3px 10px; border-radius:4px; border:1px solid; letter-spacing:0.03em; }
-  .htag-teal   { background:rgba(27,189,138,0.1);  color:#1bbd8a; border-color:#0d9e74; }
-  .htag-amber  { background:rgba(240,160,48,0.1);  color:#f0a030; border-color:#c07818; }
-  .htag-blue   { background:rgba(74,158,255,0.1);  color:#4a9eff; border-color:#1c6fcc; }
+  .htag-teal   { background:rgba(27,189,138,0.1); color:#1bbd8a; border-color:#0d9e74; }
+  .htag-amber  { background:rgba(240,160,48,0.1); color:#f0a030; border-color:#c07818; }
+  .htag-blue   { background:rgba(74,158,255,0.1); color:#4a9eff; border-color:#1c6fcc; }
   .htag-gray   { background:var(--bg3); color:var(--text2); border-color:var(--border2); }
-  .htag-orange { background:rgba(240,120,30,0.1);  color:#f07820; border-color:#b05010; }
-  .hero-stats { display:inline-flex; gap:0; background:var(--bg2); border:1px solid var(--border2); border-radius:10px; overflow:hidden; }
-  .hstat { padding:16px 32px; text-align:center; border-right:1px solid var(--border); display:flex; flex-direction:column; align-items:center; gap:4px; }
+  .htag-orange { background:rgba(240,120,30,0.1); color:#f07820; border-color:#b05010; }
+  .hero-stats { display:inline-flex; gap:0; background:var(--bg2); border:1px solid var(--border2); border-radius:10px; overflow:hidden; flex-wrap:wrap; }
+  .hstat { padding:14px 24px; text-align:center; border-right:1px solid var(--border); display:flex; flex-direction:column; align-items:center; gap:4px; }
   .hstat:last-child { border-right:none; }
   .hstat-lbl { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.07em; text-transform:uppercase; }
-  .hstat-val { font-family:'IBM Plex Mono',monospace; font-size:22px; font-weight:500; color:var(--text); }
-  @media(max-width:600px){.hero-title{font-size:34px;}.hstat{padding:12px 18px;}.hstat-val{font-size:17px;}}
+  .hstat-val { font-family:'IBM Plex Mono',monospace; font-size:20px; font-weight:500; color:var(--text); }
 
   /* ── PAGE ── */
-  .page { max-width:1200px; margin:0 auto; padding:48px 28px 80px; }
-  .section-header { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:20px; gap:16px; flex-wrap:wrap; }
-  .section-title  { font-size:11px; font-family:'IBM Plex Mono',monospace; color:var(--text3); letter-spacing:0.1em; text-transform:uppercase; }
-  .section-line   { flex:1; height:1px; background:var(--border); min-width:20px; }
+  .page { max-width:1200px; margin:0 auto; padding:40px 16px 80px; }
+  @media(min-width:640px) { .page { padding:48px 28px 80px; } }
+  .section-header { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:18px; gap:12px; flex-wrap:wrap; }
+  .section-title { font-size:11px; font-family:'IBM Plex Mono',monospace; color:var(--text3); letter-spacing:0.1em; text-transform:uppercase; }
+  .section-line { flex:1; height:1px; background:var(--border); min-width:20px; }
 
   /* ── CARDS ── */
-  .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:16px; margin-bottom:56px; }
+  .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px; margin-bottom:48px; }
   .proj-card {
     background:var(--card-bg); border:1px solid var(--border2); border-radius:12px;
     overflow:hidden; text-decoration:none; color:inherit;
     display:flex; flex-direction:column;
-    transition:border-color .2s, background .2s, transform .15s;
-    position:relative;
+    transition:border-color .2s,background .2s,transform .15s; position:relative;
   }
   .proj-card:hover { background:var(--card-hover); border-color:var(--border3); transform:translateY(-2px); }
   .proj-card.active-link { cursor:pointer; }
@@ -184,113 +127,106 @@
   .accent-teal   { background:#1bbd8a; }
   .accent-amber  { background:#f0a030; }
   .accent-blue   { background:#4a9eff; }
-  .accent-red    { background:#e84848; }
   .accent-gray   { background:#4a5168; }
   .accent-purple { background:#8b6fd4; }
   .accent-green  { background:#22c55e; }
   .accent-orange { background:#f07820; }
-  .proj-card-body { padding:20px; flex:1; }
-  .proj-card-top  { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:12px; }
-  .proj-ref { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.08em; }
-  .proj-status { font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:500; padding:2px 8px; border-radius:3px; border:1px solid; white-space:nowrap; flex-shrink:0; }
-  .status-construction { color:#f0a030; border-color:#c07818; background:rgba(240,160,48,0.08); }
-  .status-conception   { color:#4a9eff; border-color:#1c6fcc; background:rgba(74,158,255,0.08); }
-  .status-etude        { color:#8b93a8; border-color:#4a5168; background:rgba(74,81,104,0.12); }
-  .status-actif        { color:#1bbd8a; border-color:#0d9e74; background:rgba(27,189,138,0.08); }
-  .proj-name { font-size:17px; font-weight:500; color:var(--text); margin-bottom:4px; letter-spacing:0.01em; }
-  .proj-full { font-family:'IBM Plex Mono',monospace; font-size:10px; color:#1bbd8a; margin-bottom:10px; }
-  .proj-desc { font-size:13px; color:var(--text2); line-height:1.65; margin-bottom:14px; }
+  .proj-card-body { padding:18px 18px 12px; flex:1; }
+  .proj-card-top { display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:10px; flex-wrap:wrap; }
+  .proj-ref { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--text3); letter-spacing:0.05em; }
+  .proj-status { font-family:'IBM Plex Mono',monospace; font-size:10px; padding:2px 8px; border-radius:3px; border:1px solid; }
+  .status-actif  { color:#1bbd8a; border-color:rgba(27,189,138,0.4); background:rgba(27,189,138,0.08); }
+  .status-etude  { color:#8b93a8; border-color:rgba(139,147,168,0.3); background:rgba(139,147,168,0.06); }
+  .proj-name { font-size:17px; font-weight:600; color:var(--text); margin-bottom:4px; }
+  .proj-full { font-size:12px; color:var(--text3); margin-bottom:10px; line-height:1.5; }
+  .proj-desc { font-size:13px; color:var(--text2); line-height:1.65; margin-bottom:12px; }
   .proj-tags { display:flex; flex-wrap:wrap; gap:6px; }
   .ptag { font-family:'IBM Plex Mono',monospace; font-size:10px; padding:2px 7px; border-radius:3px; background:var(--bg3); color:var(--text3); border:1px solid var(--border); }
-  .proj-card-footer {
-    padding:12px 20px; border-top:1px solid var(--border);
-    display:flex; align-items:center; justify-content:space-between;
-    font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--text3);
-    gap:8px; flex-wrap:wrap;
-  }
+  .proj-card-footer { padding:12px 18px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text3); flex-wrap:wrap; }
   .proj-loc { display:flex; align-items:center; }
-  .proj-arrow { color:var(--text3); font-size:14px; transition:transform .15s, color .15s; }
-  .proj-card.active-link:hover .proj-arrow { transform:translateX(4px); color:var(--text2); }
-  .proj-locked { font-size:11px; opacity:0.5; }
+  .proj-arrow { color:var(--text3); transition:color .15s; }
+  .proj-card:hover .proj-arrow { color:var(--text); }
+  .proj-locked { font-size:10px; color:var(--text3); font-style:italic; }
 
   /* ── BILAN CTA ── */
-  .bilan-cta-card { background:var(--card-bg); border:1px solid var(--border2); }
-  .bilan-cta-card:hover { border-color:rgba(27,189,138,0.35); }
-  .bilan-cta-card:hover .bilan-cta-arrow { transform:translateX(4px); color:var(--text2); }
-  .bilan-cta-arrow { color:var(--text3); font-size:13px; transition:color .15s,transform .15s; }
+  .bilan-cta-card { background:var(--card-bg); border:1px solid var(--border2); border-radius:12px; text-decoration:none; color:inherit; display:block; overflow:hidden; transition:border-color .2s,background .2s; }
+  .bilan-cta-card:hover { background:var(--card-hover); border-color:var(--border3); }
+  .bilan-cta-arrow { font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--text3); transition:color .15s; }
+  .bilan-cta-card:hover .bilan-cta-arrow { color:var(--text); }
 
   /* ── ABOUT ── */
-  .about-strip { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:56px; }
-  @media(max-width:700px){ .about-strip { grid-template-columns:1fr; } }
-  .about-card { background:var(--card-bg); border:1px solid var(--border2); border-radius:10px; padding:22px 24px; }
-  .about-card-title { font-size:12px; font-family:'IBM Plex Mono',monospace; color:var(--text3); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px; }
-  .about-card-body  { font-size:13px; color:var(--text2); line-height:1.7; }
-  .about-card-body strong { color:var(--text); font-weight:500; }
+  .about-strip { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px; }
+  .about-card { background:var(--bg2); border:1px solid var(--border2); border-radius:10px; padding:20px; }
+  .about-card-title { font-size:13px; font-weight:600; color:var(--text); margin-bottom:10px; }
+  .about-card-body { font-size:13px; color:var(--text2); line-height:1.7; }
 
   /* ── FOOTER ── */
-  .footer { margin-top:64px; padding-top:24px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
-  .footer-left { font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text3); line-height:1.8; }
-  .footer-right { font-family:'Noto Kufi Arabic',sans-serif; font-size:13px; color:#f0a030; direction:rtl; }
-  .footer-credit { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--text3); opacity:0.6; margin-top:6px; }
+  .footer {
+    border-top:1px solid var(--border2); margin-top:72px; padding:24px 20px;
+    font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--text3);
+    display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:12px;
+  }
+  .footer-left { line-height:1.7; }
+  .footer-credit { margin-top:6px; color:var(--text3); }
+  .footer-right { text-align:right; font-size:12px; color:var(--text3); direction:rtl; }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:600px) {
+    .hero-title { font-size:32px; }
+    .hero-title-ar { font-size:20px; }
+    .hstat { padding:10px 14px; }
+    .hstat-val { font-size:16px; }
+    .hero-content { padding:40px 16px 48px; }
+    .topnav { padding:0 12px; }
+    .nav-brand-main { font-size:11px; }
+    .projects-grid { grid-template-columns:1fr; }
+  }
 </style>
 </head>
 <body>
 
 <nav class="topnav">
   <div class="nav-left">
-    <!-- ⬅ NOUVEAU lien retour vers le portail national -->
-    <a href="../" class="nav-back">← Royaume-Uni du Nil</a>
     <div class="nav-logo">
-      <svg viewBox="0 0 20 20" fill="none">
-        <circle cx="10" cy="10" r="3" fill="#1bbd8a"/>
-        <circle cx="10" cy="10" r="7" stroke="#1bbd8a" stroke-width="1" fill="none" stroke-dasharray="2 1.5"/>
-        <line x1="10" y1="1" x2="10" y2="4"   stroke="#1bbd8a" stroke-width="1.2"/>
-        <line x1="10" y1="16" x2="10" y2="19" stroke="#1bbd8a" stroke-width="1.2"/>
-        <line x1="1"  y1="10" x2="4"  y2="10" stroke="#1bbd8a" stroke-width="1.2"/>
-        <line x1="16" y1="10" x2="19" y2="10" stroke="#1bbd8a" stroke-width="1.2"/>
-      </svg>
+      <img src="https://BJBellum.github.io/UKN/assets/PharosEnergy.png" alt="Pharos Energy">
     </div>
-    <span class="nav-brand">Pharos Energy</span>
-  </div>
-  <div class="nav-center">
-    <a href="#nucleaire"   class="nav-link">Nucléaire</a>
-    <a href="#hydro"       class="nav-link">Hydroélectrique</a>
-    <a href="#geothermie"  class="nav-link">Géothermie</a>
-    <a href="#bilan"       class="nav-link">Bilan énergétique</a>
-    <a href="#apropos"     class="nav-link">À propos</a>
+    <div class="nav-brand">
+      <span class="nav-brand-main">Pharos Energy</span>
+      <span class="nav-brand-sub">طاقة فاروس · Division Énergie</span>
+    </div>
   </div>
   <div class="nav-right">
-    <div class="theme-toggle" onclick="toggleTheme()" title="Basculer jour / nuit">
-      <svg class="toggle-icon" data-mode="dark" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;transition:transform .3s">
-        <g class="icon-sun">
+    <a href="https://BJBellum.github.io/UKN/" class="nav-back">← Portail RUN</a>
+    <div class="toggle-btn" onclick="toggleTheme()">
+      <svg class="toggle-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" data-mode="dark">
+        <g class="icon-sun" style="display:block">
           <circle cx="12" cy="12" r="4.5" fill="currentColor"/>
-          <line x1="12" y1="2"  x2="12" y2="5"  stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="12" y1="2" x2="12" y2="5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           <line x1="12" y1="19" x2="12" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <line x1="2"  y1="12" x2="5"  y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="2" y1="12" x2="5" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           <line x1="19" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <line x1="4.22"  y1="4.22"  x2="6.34"  y2="6.34"  stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="4.22" y1="4.22" x2="6.34" y2="6.34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           <line x1="17.66" y1="17.66" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <line x1="19.78" y1="4.22"  x2="17.66" y2="6.34"  stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <line x1="6.34"  y1="17.66" x2="4.22"  y2="19.78" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </g>
-        <g class="icon-moon">
+        <g class="icon-moon" style="display:none">
           <path d="M21 12.79A9 9 0 0 1 12 21a9 9 0 0 1 0-18 7 7 0 0 0 9 9.79z" fill="currentColor"/>
         </g>
       </svg>
-      <span id="toggle-lbl" style="font-size:10px;letter-spacing:0.06em">NUIT</span>
+      <span id="toggle-lbl">NUIT</span>
     </div>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">طاقة فاروس · Pharos Energy</div>
-    <h1 class="hero-title">Pharos Energy</h1>
+    <div class="hero-eyebrow">Opérateur Énergétique National</div>
+    <div class="hero-title">Pharos Energy</div>
     <div class="hero-title-ar">طاقة فاروس</div>
     <p class="hero-sub">
-      Opérateur énergétique du <strong>Royaume-Uni du Nil</strong>.
-      Production d'électricité au service du pays.
+      Société d'État, opérateur des infrastructures de production d'électricité du
+      <strong>Royaume-Uni du Nil</strong>. Production d'électricité au service du pays.
     </p>
     <div class="hero-tags">
       <span class="htag htag-teal">Hydroélectricité</span>
@@ -306,7 +242,7 @@
       </div>
       <div class="hstat">
         <span class="hstat-lbl">Unité</span>
-        <span class="hstat-val" style="font-size:16px;">MWe</span>
+        <span class="hstat-val" style="font-size:15px;">MWe</span>
       </div>
       <div class="hstat">
         <span class="hstat-lbl">Production 2305</span>
@@ -314,7 +250,7 @@
       </div>
       <div class="hstat">
         <span class="hstat-lbl">Unité</span>
-        <span class="hstat-val" style="font-size:16px;">MWh/an</span>
+        <span class="hstat-val" style="font-size:15px;">MWh/an</span>
       </div>
     </div>
   </div>
@@ -322,8 +258,9 @@
 
 <div class="page">
 
-  <!-- NUCLÉAIRE -->
-  <section id="nucleaire" style="margin-bottom:56px;">
+  <!-- NUCLÉAIRE — connectés uniquement -->
+  <div id="nucleaire-section" style="display:none;">
+  <section id="nucleaire" style="margin-bottom:48px;">
     <div class="section-header">
       <span class="section-title">Division Nucléaire</span>
       <div class="section-line"></div>
@@ -339,46 +276,27 @@
             <span class="proj-status status-actif">En service</span>
           </div>
           <div class="proj-name">NILDU-I</div>
-          <div class="proj-full">Réacteur CANDU I · <span style="font-family:'Noto Kufi Arabic',sans-serif;direction:rtl">نيلدو-١</span> · D₂O · 600 MWe</div>
-          <p class="proj-desc">Premier réacteur de la filière NILDU, eau lourde (D₂O), 600 MWe. Implanté à Assouan. En service depuis 2304.</p>
-          <div class="proj-tags"><span class="ptag">Filière NILDU</span><span class="ptag">D₂O</span><span class="ptag">600 MWe</span><span class="ptag">En service</span></div>
+          <div class="proj-full">Réacteur CANDU I · نيلدو-١ · D₂O · 600 MWe</div>
+          <p class="proj-desc">Premier réacteur de la filière NILDU, eau lourde (D₂O), 600 MWe. Médinet El-Fayoum.</p>
+          <div class="proj-tags"><span class="ptag">CANDU</span><span class="ptag">600 MWe</span><span class="ptag">D₂O</span><span class="ptag">En service</span></div>
         </div>
         <div class="proj-card-footer">
-          <span class="proj-loc">
-            <svg width="11" height="14" viewBox="0 0 12 16" fill="none" style="flex-shrink:0;margin-right:4px;vertical-align:-2px"><path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5z" fill="currentColor" opacity="0.7"/><circle cx="6" cy="5" r="2" fill="var(--bg2)"/></svg>
-            Assouan · 24.12212, 32.91429
+          <span class="proj-loc" id="loc-nildu-i">
+            <svg width="11" height="14" viewBox="0 0 12 16" fill="none" style="flex-shrink:0;margin-right:4px;vertical-align:-2px"><path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5z" fill="currentColor" opacity="0.4"/><circle cx="6" cy="5" r="2" fill="var(--bg2)"/></svg>
+            <span class="nuclear-loc-text">Localisation classifiée</span>
           </span>
           <span class="proj-arrow">→</span>
         </div>
       </a>
 
-      <!-- NILDU-II -->
+      <!-- NILDU-II placeholder -->
       <div class="proj-card inactive">
-        <div class="proj-card-accent accent-green"></div>
+        <div class="proj-card-accent accent-gray"></div>
         <div class="proj-card-body">
-          <div class="proj-card-top"><span class="proj-ref">NILDU-REF-002</span><span class="proj-status status-construction">Construction</span></div>
+          <div class="proj-card-top"><span class="proj-ref">NILDU-REF-002</span><span class="proj-status status-etude">En étude</span></div>
           <div class="proj-name">NILDU-II</div>
-          <div class="proj-full">Réacteur CANDU II · <span style="font-family:'Noto Kufi Arabic',sans-serif;direction:rtl">نيلدو-٢</span> · D₂O</div>
-          <p class="proj-desc">Deuxième unité de la filière NILDU. En cours de construction. Implantation à Assouan, Région fédérale d'Assouan.</p>
-          <div class="proj-tags"><span class="ptag">Filière NILDU</span><span class="ptag">D₂O</span><span class="ptag">Puissance</span><span class="ptag">On-power</span></div>
-        </div>
-        <div class="proj-card-footer">
-          <span class="proj-loc">
-            <svg width="11" height="14" viewBox="0 0 12 16" fill="none" style="flex-shrink:0;margin-right:4px;vertical-align:-2px"><path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5z" fill="currentColor" opacity="0.7"/><circle cx="6" cy="5" r="2" fill="var(--bg2)"/></svg>
-            Assouan · 24.12212, 32.91429
-          </span>
-          <span class="proj-locked">Dossier non disponible</span>
-        </div>
-      </div>
-
-      <!-- NILDU-III -->
-      <div class="proj-card inactive">
-        <div class="proj-card-accent accent-green"></div>
-        <div class="proj-card-body">
-          <div class="proj-card-top"><span class="proj-ref">NILDU-REF-003</span><span class="proj-status status-etude">Étude</span></div>
-          <div class="proj-name">NILDU-III</div>
-          <div class="proj-full">Réacteur CANDU III · <span style="font-family:'Noto Kufi Arabic',sans-serif;direction:rtl">نيلدو-٣</span> · D₂O · Étude</div>
-          <p class="proj-desc">Troisième unité de la filière NILDU, en phase d'étude de faisabilité. Localisation non encore définie.</p>
+          <div class="proj-full" style="color:#4a5168;">Réacteur CANDU II · Filière NILDU · D₂O</div>
+          <p class="proj-desc">Deuxième réacteur de la filière NILDU. Localisation non encore définie.</p>
           <div class="proj-tags"><span class="ptag">Filière NILDU</span><span class="ptag">D₂O</span><span class="ptag">Étude</span></div>
         </div>
         <div class="proj-card-footer">
@@ -404,9 +322,9 @@
           <div class="proj-tags"><span class="ptag">Recherche</span><span class="ptag">D₂O</span><span class="ptag">Girdler</span><span class="ptag">Delta</span></div>
         </div>
         <div class="proj-card-footer">
-          <span class="proj-loc">
-            <svg width="11" height="14" viewBox="0 0 12 16" fill="none" style="flex-shrink:0;margin-right:4px;vertical-align:-2px"><path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5z" fill="currentColor" opacity="0.7"/><circle cx="6" cy="5" r="2" fill="var(--bg2)"/></svg>
-            Delta · 30.21796, 31.25895
+          <span class="proj-loc" id="loc-memphis">
+            <svg width="11" height="14" viewBox="0 0 12 16" fill="none" style="flex-shrink:0;margin-right:4px;vertical-align:-2px"><path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5z" fill="currentColor" opacity="0.4"/><circle cx="6" cy="5" r="2" fill="var(--bg2)"/></svg>
+            <span class="nuclear-loc-text">Localisation classifiée</span>
           </span>
           <span class="proj-arrow">→</span>
         </div>
@@ -414,9 +332,31 @@
 
     </div>
   </section>
+  </div><!-- /nucleaire-section -->
+
+  <!-- NUCLÉAIRE LOCK — non-connectés -->
+  <div id="nucleaire-lock" style="display:none;margin-bottom:48px;">
+    <div class="section-header">
+      <span class="section-title">Division Nucléaire</span>
+      <div class="section-line"></div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:32px 20px;text-align:center;background:var(--card-bg);border:1px solid var(--border2);border-radius:12px;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style="color:var(--text3);opacity:.55">
+        <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="12" cy="16" r="1.5" fill="currentColor"/>
+      </svg>
+      <div style="font-size:14px;font-weight:600;color:var(--text2);">Accès restreint</div>
+      <div style="font-size:12px;color:var(--text3);max-width:320px;line-height:1.7;">La Division Nucléaire est réservée aux membres connectés via Discord.</div>
+      <a id="nucl-login-btn" href="#" style="display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5865F2;text-decoration:none;background:rgba(88,101,242,0.08);border:1px solid rgba(88,101,242,0.3);border-radius:6px;padding:8px 16px;margin-top:4px;transition:background .15s;">
+        <svg width="14" height="11" viewBox="0 0 71 55" fill="#5865F2"><path d="M60.1 4.9A58.5 58.5 0 0 0 45.4.9a41 41 0 0 0-1.8 3.6 54 54 0 0 0-16.2 0A40 40 0 0 0 25.6.9 58.4 58.4 0 0 0 10.9 5C1.6 18.6-.9 31.8.3 44.8a58.9 58.9 0 0 0 17.9 9 42 42 0 0 0 3.7-6 38.3 38.3 0 0 1-6-2.9l1.5-1.1a41.9 41.9 0 0 0 36 0l1.5 1.1a38 38 0 0 1-6 2.9 42 42 0 0 0 3.7 6 58.7 58.7 0 0 0 17.9-9.1C72 29.7 67.9 16.6 60.1 4.9ZM23.8 37.1c-3.5 0-6.4-3.2-6.4-7.1s2.8-7.1 6.4-7.1 6.4 3.2 6.4 7.1-2.9 7.1-6.4 7.1Zm23.4 0c-3.5 0-6.4-3.2-6.4-7.1s2.8-7.1 6.4-7.1 6.4 3.2 6.4 7.1-2.9 7.1-6.4 7.1Z"/></svg>
+        Se connecter avec Discord
+      </a>
+    </div>
+  </div>
 
   <!-- HYDROÉLECTRIQUE -->
-  <section id="hydro" style="margin-bottom:56px;">
+  <section id="hydro" style="margin-bottom:48px;">
     <div class="section-header">
       <span class="section-title">Division Hydroélectrique</span>
       <div class="section-line"></div>
@@ -448,108 +388,107 @@
   </section>
 
   <!-- GÉOTHERMIE -->
-  <section id="geothermie" style="margin-bottom:56px;">
+  <section id="geothermie" style="margin-bottom:48px;">
     <div class="section-header">
       <span class="section-title">Division Géothermique</span>
       <div class="section-line"></div>
     </div>
     <div class="projects-grid">
 
-      <div class="proj-card inactive">
+      <!-- GEO-001 · LOUXOR -->
+      <a href="../centrale-louxor/" class="proj-card active-link">
         <div class="proj-card-accent accent-orange"></div>
         <div class="proj-card-body">
-          <div class="proj-card-top"><span class="proj-ref">GEO-001</span><span class="proj-status status-etude">À définir</span></div>
-          <div class="proj-name">Centrale Géothermique I</div>
-          <div class="proj-full" style="color:#f07820;">Division Géothermique · طاقة حرارية أرضية</div>
-          <p class="proj-desc">Première centrale géothermique du parc Pharos Energy. Données techniques et localisation en cours de définition.</p>
-          <div class="proj-tags"><span class="ptag">Géothermie</span><span class="ptag">En étude</span><span class="ptag">Chaleur terrestre</span></div>
+          <div class="proj-card-top">
+            <span class="proj-ref">GEO-LOX-001</span>
+            <span class="proj-status status-actif">En service</span>
+          </div>
+          <div class="proj-name">Centrale de Louxor</div>
+          <div class="proj-full" style="color:#f07820;">Division Géothermique · طاقة حرارية أرضية · الأقصر</div>
+          <p class="proj-desc">Centrale géothermique à vapeur sèche. 4 groupes turbine-alternateur de type back-pressure, installation 1950s. Région d'Assouan.</p>
+          <div class="proj-tags"><span class="ptag">Géothermie</span><span class="ptag">315 000 MWh/an</span><span class="ptag">Vapeur sèche</span><span class="ptag">En service</span></div>
         </div>
         <div class="proj-card-footer">
           <span class="proj-loc">
-            <svg width="11" height="14" viewBox="0 0 12 16" fill="none" style="flex-shrink:0;margin-right:4px;vertical-align:-2px"><path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5z" fill="currentColor" opacity="0.4"/><circle cx="6" cy="5" r="2" fill="var(--bg2)"/></svg>
-            Localisation non définie
+            <svg width="11" height="14" viewBox="0 0 12 16" fill="none" style="flex-shrink:0;margin-right:4px;vertical-align:-2px"><path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5z" fill="currentColor" opacity="0.7"/><circle cx="6" cy="5" r="2" fill="var(--bg2)"/></svg>
+            Louxor · 25.6872, 32.6396
           </span>
-          <span class="proj-locked">Dossier non disponible</span>
+          <span class="proj-arrow">→</span>
         </div>
-      </div>
+      </a>
 
-      <div class="proj-card inactive">
+      <!-- GEO-002 · HURGHADA -->
+      <a href="../centrale-hurghada/" class="proj-card active-link">
         <div class="proj-card-accent accent-orange"></div>
         <div class="proj-card-body">
-          <div class="proj-card-top"><span class="proj-ref">GEO-002</span><span class="proj-status status-etude">À définir</span></div>
-          <div class="proj-name">Centrale Géothermique II</div>
-          <div class="proj-full" style="color:#f07820;">Division Géothermique · طاقة حرارية أرضية</div>
-          <p class="proj-desc">Deuxième centrale géothermique du parc Pharos Energy. Données techniques et localisation en cours de définition.</p>
-          <div class="proj-tags"><span class="ptag">Géothermie</span><span class="ptag">En étude</span><span class="ptag">Chaleur terrestre</span></div>
+          <div class="proj-card-top">
+            <span class="proj-ref">GEO-HRG-001</span>
+            <span class="proj-status status-actif">En service</span>
+          </div>
+          <div class="proj-name">Centrale d'Hurghada</div>
+          <div class="proj-full" style="color:#f07820;">Division Géothermique · طاقة حرارية أرضية · الغردقة</div>
+          <p class="proj-desc">Centrale géothermique à vapeur sèche. 4 groupes turbine-alternateur de type back-pressure, installation 1950s. Côte de la mer Rouge.</p>
+          <div class="proj-tags"><span class="ptag">Géothermie</span><span class="ptag">315 000 MWh/an</span><span class="ptag">Vapeur sèche</span><span class="ptag">En service</span></div>
         </div>
         <div class="proj-card-footer">
           <span class="proj-loc">
-            <svg width="11" height="14" viewBox="0 0 12 16" fill="none" style="flex-shrink:0;margin-right:4px;vertical-align:-2px"><path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5z" fill="currentColor" opacity="0.4"/><circle cx="6" cy="5" r="2" fill="var(--bg2)"/></svg>
-            Localisation non définie
+            <svg width="11" height="14" viewBox="0 0 12 16" fill="none" style="flex-shrink:0;margin-right:4px;vertical-align:-2px"><path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5z" fill="currentColor" opacity="0.7"/><circle cx="6" cy="5" r="2" fill="var(--bg2)"/></svg>
+            Hurghada · 27.2579, 33.8116
           </span>
-          <span class="proj-locked">Dossier non disponible</span>
+          <span class="proj-arrow">→</span>
         </div>
-      </div>
+      </a>
 
-      <div class="proj-card inactive">
+      <!-- GEO-003 · MATRUH -->
+      <a href="../centrale-matruh/" class="proj-card active-link">
         <div class="proj-card-accent accent-orange"></div>
         <div class="proj-card-body">
-          <div class="proj-card-top"><span class="proj-ref">GEO-003</span><span class="proj-status status-etude">À définir</span></div>
-          <div class="proj-name">Centrale Géothermique III</div>
-          <div class="proj-full" style="color:#f07820;">Division Géothermique · طاقة حرارية أرضية</div>
-          <p class="proj-desc">Troisième centrale géothermique du parc Pharos Energy. Données techniques et localisation en cours de définition.</p>
-          <div class="proj-tags"><span class="ptag">Géothermie</span><span class="ptag">En étude</span><span class="ptag">Chaleur terrestre</span></div>
+          <div class="proj-card-top">
+            <span class="proj-ref">GEO-MAT-001</span>
+            <span class="proj-status status-actif">En service</span>
+          </div>
+          <div class="proj-name">Centrale de Matruh</div>
+          <div class="proj-full" style="color:#f07820;">Division Géothermique · طاقة حرارية أرضية · مطروح</div>
+          <p class="proj-desc">Centrale géothermique à vapeur sèche. 4 groupes turbine-alternateur de type back-pressure, installation 1950s. Côte méditerranéenne.</p>
+          <div class="proj-tags"><span class="ptag">Géothermie</span><span class="ptag">315 000 MWh/an</span><span class="ptag">Vapeur sèche</span><span class="ptag">En service</span></div>
         </div>
         <div class="proj-card-footer">
           <span class="proj-loc">
-            <svg width="11" height="14" viewBox="0 0 12 16" fill="none" style="flex-shrink:0;margin-right:4px;vertical-align:-2px"><path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5z" fill="currentColor" opacity="0.4"/><circle cx="6" cy="5" r="2" fill="var(--bg2)"/></svg>
-            Localisation non définie
+            <svg width="11" height="14" viewBox="0 0 12 16" fill="none" style="flex-shrink:0;margin-right:4px;vertical-align:-2px"><path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5z" fill="currentColor" opacity="0.7"/><circle cx="6" cy="5" r="2" fill="var(--bg2)"/></svg>
+            Matruh · 31.3528, 27.2373
           </span>
-          <span class="proj-locked">Dossier non disponible</span>
+          <span class="proj-arrow">→</span>
         </div>
-      </div>
+      </a>
 
     </div>
   </section>
 
   <!-- BILAN ÉNERGÉTIQUE -->
-  <section id="bilan" style="margin-bottom:56px;">
+  <section id="bilan" style="margin-bottom:48px;">
     <div class="section-header">
       <span class="section-title">Bilan Énergétique National</span>
       <div class="section-line"></div>
     </div>
 
-    <a href="../bilan-energie/" class="proj-card active-link bilan-cta-card">
+    <a href="../bilan-energie/" class="bilan-cta-card">
       <div class="proj-card-accent" style="background:linear-gradient(90deg,#4a9eff,#1bbd8a,#f07820);height:3px;"></div>
-      <div class="proj-card-body" style="padding:28px 28px 24px;">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap;">
+      <div class="proj-card-body" style="padding:24px 24px 20px;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px;flex-wrap:wrap;">
           <div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:0.08em;margin-bottom:8px;">BEN-NAT-001 · Exercice 2303–2305</div>
-            <div style="font-size:24px;font-weight:600;color:var(--text);margin-bottom:4px;letter-spacing:0.01em;">Bilan Énergétique National</div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#4a9eff;">Production · Consommation · Déficit · Évolution annuelle</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:0.09em;text-transform:uppercase;margin-bottom:6px;">Bilan national · 2303–2305</div>
+            <div style="font-size:18px;font-weight:600;color:var(--text);">Bilan Énergétique du Royaume-Uni du Nil</div>
+            <div style="font-size:12px;color:var(--text3);margin-top:4px;">Hydroélectricité · Géothermie · Nucléaire · Consommation nationale</div>
           </div>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;padding:3px 10px;border-radius:3px;border:1px solid rgba(27,189,138,0.5);color:#1bbd8a;background:rgba(27,189,138,0.07);white-space:nowrap;flex-shrink:0;">Données publiques</span>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--border);border:1px solid var(--border2);border-radius:8px;overflow:hidden;margin-bottom:20px;">
-          <div style="background:var(--bg3);padding:12px 16px;">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Production 2305</div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:500;color:#1bbd8a;">2 945 000</div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);">MWh / an</div>
-          </div>
-          <div style="background:var(--bg3);padding:12px 16px;">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Consommation 2305</div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:500;color:#4a9eff;">14 004 590</div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);">MWh / an</div>
-          </div>
-          <div style="background:var(--bg3);padding:12px 16px;">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Déficit 2305</div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:500;color:#e84848;">−79,0 %</div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);">couverture 21,0 %</div>
-          </div>
-          <div style="background:var(--bg3);padding:12px 16px;">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Population 2305</div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:500;color:var(--text);">17,95M</div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);">hab. · 0,78 MWh/hab</div>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;">
+            <div style="text-align:center;">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:500;color:#4a9eff;">2 945 000</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);text-transform:uppercase;">MWh produits</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:500;color:#1bbd8a;">0,78 MWh/hab</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);text-transform:uppercase;">par habitant</div>
+            </div>
           </div>
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
@@ -566,7 +505,7 @@
   </section>
 
   <!-- À PROPOS -->
-  <section id="apropos" style="margin-top:72px;">
+  <section id="apropos" style="margin-top:64px;">
     <div class="section-header">
       <span class="section-title">À propos</span>
       <div class="section-line"></div>
@@ -577,15 +516,22 @@
         <div class="about-card-body">
           Pharos Energy est l'opérateur énergétique du <strong>Royaume-Uni du Nil</strong>.
           Fondée pour développer les infrastructures de production d'électricité du pays,
-          elle exploite des installations sur le <strong>fleuve Nil</strong>. Siège au <strong>Caire</strong>.
+          elle exploite des installations hydroélectriques, géothermiques et nucléaires. Siège au <strong>Caire</strong>.
         </div>
       </div>
       <div class="about-card">
         <div class="about-card-title">Division Hydroélectrique</div>
         <div class="about-card-body">
           Pharos Energy exploite le <strong>Haut-Barrage d'Assouan</strong> sur le Nil —
-          barrage à enrochement de 111 m, 12 turbines Francis, <strong>2 100 MWe installés</strong>,
-          en service depuis <strong>2304</strong>.
+          barrage à enrochement de 111 m, 12 turbines Francis, <strong>2 100 MWe installés</strong>, en service depuis <strong>2304</strong>.
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-title">Division Géothermique</div>
+        <div class="about-card-body">
+          Trois centrales géothermiques en service : <strong>Louxor, Hurghada et Matruh</strong>.
+          Technologie vapeur sèche 1950s, 4 groupes back-pressure par site. Production totale :
+          <strong>945 000 MWh/an</strong>.
         </div>
       </div>
     </div>
@@ -595,11 +541,11 @@
     <div>
       <div class="footer-left">
         Pharos Energy · طاقة فاروس · Royaume-Uni du Nil<br>
-        Division Hydroélectrique · Le Caire · Projet Résurgence
+        Divisions Hydroélectrique · Géothermique · Nucléaire · Le Caire · Projet Résurgence
       </div>
       <div class="footer-credit">Projet Résurgence © 2026</div>
     </div>
-    <div class="footer-right">طاقة فاروس · قسم الطاقة الكهرومائية · مملكة النيل</div>
+    <div class="footer-right">طاقة فاروس · مملكة النيل</div>
   </footer>
 
 </div>
@@ -609,7 +555,7 @@
     document.documentElement.setAttribute('data-theme', theme);
     const lbl  = document.getElementById('toggle-lbl');
     const icon = document.querySelector('.toggle-icon');
-    if (lbl)  lbl.textContent = theme === 'dark' ? 'NUIT' : 'JOUR';
+    if (lbl) lbl.textContent = theme === 'dark' ? 'NUIT' : 'JOUR';
     if (icon) {
       icon.setAttribute('data-mode', theme);
       const sun  = icon.querySelector('.icon-sun');
@@ -624,14 +570,54 @@
     applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
   }
   (function() {
-    const saved = localStorage.getItem('run-theme') || localStorage.getItem('pharos-theme');
-    const mq    = window.matchMedia('(prefers-color-scheme: dark)');
+    const saved = localStorage.getItem('pharos-theme') || localStorage.getItem('run-theme');
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
     applyTheme(saved || (mq.matches ? 'dark' : 'light'));
-    mq.addEventListener('change', e => {
-      if (!localStorage.getItem('run-theme')) applyTheme(e.matches ? 'dark' : 'light');
-    });
   })();
+
+  /* ── AUTH GATE (Division Nucléaire) ── */
+  function applyNuclAuth(user) {
+    const show = document.getElementById('nucleaire-section');
+    const lock = document.getElementById('nucleaire-lock');
+    if (user) {
+      show.style.display = 'block';
+      lock.style.display = 'none';
+    } else {
+      show.style.display = 'none';
+      lock.style.display = 'block';
+      const btn = document.getElementById('nucl-login-btn');
+      if (btn && window.PharosAuth && window.PharosAuth.CFG) {
+        const cfg = window.PharosAuth.CFG;
+        const state = btoa(encodeURIComponent(window.location.href));
+        btn.href = 'https://discord.com/oauth2/authorize?client_id=' + cfg.DISCORD_CLIENT_ID
+          + '&redirect_uri=' + encodeURIComponent(cfg.REDIRECT_URI)
+          + '&response_type=token&scope=identify&state=' + state;
+      }
+    }
+  }
+
+  function revealNucLoc(user) {
+    var authorized = user != null;
+    if (!authorized) {
+      try {
+        var s = JSON.parse(localStorage.getItem('pharos_session') || 'null');
+        authorized = s && (!s.expires || Date.now() < s.expires) && s.authorized === true;
+      } catch(e) {}
+    }
+    var nildu = document.getElementById('loc-nildu-i');
+    var mem   = document.getElementById('loc-memphis');
+    if (authorized) {
+      if (nildu)  nildu.querySelector('.nuclear-loc-text').textContent = 'Médinet El-Fayoum · 29.31, 30.84';
+      if (mem)    mem.querySelector('.nuclear-loc-text').textContent   = 'Delta · 30.21796, 31.25895';
+    }
+  }
+  function checkNuclAuth() {
+    var t = 0;
+    (function poll(){
+      if (!window.PharosAuth) { if(t++<60) setTimeout(poll,80); return; }
+      applyNuclAuth(window.PharosAuth.getUser()); revealNucLoc(window.PharosAuth.getUser()); revealNucLoc(window.PharosAuth.getUser());
+    })();
+  }
+  document.addEventListener('DOMContentLoaded', checkNuclAuth);
 </script>
-<script src="../pharos-auth.js"></script>
-</body>
-</html>
+<script src="https://BJBellum.github.io/UKN/pharos-auth.js"></script>
