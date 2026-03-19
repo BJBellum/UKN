@@ -203,12 +203,12 @@
     Notation pondérée sur 6 critères : Équité (×5), Santé (×4), Transparence (×7), Innovation (×8), Écologie (×6), Fiabilité (×8).
   </p>
   <div class="kpi-row">
-    <div class="kpi"><span class="kpi-lbl">Total cotées</span><span class="kpi-val" style="color:#f0a030;">30</span></div>
-    <div class="kpi"><span class="kpi-lbl">Nationales</span><span class="kpi-val" style="color:#1bbd8a;">27</span></div>
-    <div class="kpi"><span class="kpi-lbl">Étrangères</span><span class="kpi-val" style="color:#4a9eff;">3</span></div>
-    <div class="kpi"><span class="kpi-lbl">Classe A</span><span class="kpi-val" style="color:#1bbd8a;">2</span></div>
-    <div class="kpi"><span class="kpi-lbl">Classe B</span><span class="kpi-val" style="color:#4a9eff;">21</span></div>
-    <div class="kpi"><span class="kpi-lbl">Classe C</span><span class="kpi-val" style="color:#f0a030;">7</span></div>
+    <div class="kpi"><span class="kpi-lbl">Total cotées</span><span class="kpi-val" id="kpi-total" style="color:#f0a030;">…</span></div>
+    <div class="kpi"><span class="kpi-lbl">Nationales</span><span class="kpi-val" id="kpi-nat" style="color:#1bbd8a;">…</span></div>
+    <div class="kpi"><span class="kpi-lbl">Étrangères</span><span class="kpi-val" id="kpi-for" style="color:#4a9eff;">…</span></div>
+    <div class="kpi"><span class="kpi-lbl">Classe A</span><span class="kpi-val" id="kpi-a" style="color:#1bbd8a;">…</span></div>
+    <div class="kpi"><span class="kpi-lbl">Classe B</span><span class="kpi-val" id="kpi-b" style="color:#4a9eff;">…</span></div>
+    <div class="kpi"><span class="kpi-lbl">Classe C</span><span class="kpi-val" id="kpi-c" style="color:#f0a030;">…</span></div>
   </div>
 </div>
 
@@ -345,71 +345,116 @@
 </div>
 
 <script>
-/* ── DATA ── */
-const COMPANIES = [
-  {rang:1,  nom:"Coopérative Agricole de Matruh",    nat:"Royaume-Uni du Nil",          cat:"Agriculture & Agroalimentaire", eq:10,sa:10,tr:9, inn:7, ec:10,fi:8, score:8.76,cls:"A"},
-  {rang:2,  nom:"Coopérative Agricole d'Assouan",     nat:"Royaume-Uni du Nil",          cat:"Agriculture & Agroalimentaire", eq:10,sa:9, tr:10,inn:7, ec:9, fi:8, score:8.68,cls:"A"},
-  {rang:3,  nom:"Nile Desalination PLC",              nat:"Royaume-Uni du Nil",          cat:"Services d'Eau",                eq:8, sa:9, tr:10,inn:7, ec:8, fi:9, score:8.47,cls:"B"},
-  {rang:4,  nom:"Nile Broadcasting and Television",   nat:"Royaume-Uni du Nil",          cat:"Télécommunications",            eq:9, sa:9, tr:8, inn:10,ec:6, fi:8, score:8.34,cls:"B"},
-  {rang:4,  nom:"Royal Hydro-Electric Group",         nat:"Royaume-Uni du Nil",          cat:"Énergie",                       eq:9, sa:8, tr:8, inn:7, ec:8, fi:10,score:8.34,cls:"B"},
-  {rang:5,  nom:"Imhotep Medical PLC",                nat:"Royaume-Uni du Nil",          cat:"Santé & Pharmacie",             eq:9, sa:10,tr:10,inn:8, ec:5, fi:8, score:8.24,cls:"B"},
-  {rang:6,  nom:"Coopérative Agricole de Mansourah",  nat:"Royaume-Uni du Nil",          cat:"Agriculture & Agroalimentaire", eq:6, sa:10,tr:10,inn:6, ec:10,fi:8, score:8.21,cls:"B"},
-  {rang:7,  nom:"Union Air & Defense Systems",        nat:"Royaume-Uni du Nil",          cat:"Industrie Aéronautique",        eq:9, sa:6, tr:6, inn:10,ec:4, fi:10,score:7.76,cls:"B"},
-  {rang:8,  nom:"Obelisk Construction Group",         nat:"Royaume-Uni du Nil",          cat:"BTP & Infrastructures",         eq:7, sa:6, tr:9, inn:6, ec:7, fi:10,score:7.68,cls:"B"},
-  {rang:9,  nom:"Sphinx Motors",                      nat:"Royaume-Uni du Nil",          cat:"Industrie Automobile",          eq:8, sa:7, tr:7, inn:9, ec:3, fi:10,score:7.55,cls:"B"},
-  {rang:10, nom:"Royal Crown Aviation & Defense",     nat:"Royaume-Uni du Nil",          cat:"Industrie Aéronautique",        eq:8, sa:7, tr:5, inn:10,ec:5, fi:9, score:7.50,cls:"B"},
-  {rang:10, nom:"Coopérative Agricole du Caire",      nat:"Royaume-Uni du Nil",          cat:"Agriculture & Agroalimentaire", eq:7, sa:10,tr:10,inn:5, ec:6, fi:8, score:7.50,cls:"B"},
-  {rang:11, nom:"The Delta Times",                    nat:"Royaume-Uni du Nil",          cat:"Médias",                        eq:10,sa:7, tr:6, inn:8, ec:6, fi:8, score:7.47,cls:"B"},
-  {rang:12, nom:"Alexandria Naval Company",           nat:"Royaume-Uni du Nil",          cat:"Industrie Naval & Portuaire",   eq:8, sa:7, tr:8, inn:7, ec:4, fi:9, score:7.26,cls:"B"},
-  {rang:13, nom:"MISRAIR Company",                    nat:"Royaume-Uni du Nil",          cat:"Transport aérien & Tourisme",   eq:8, sa:8, tr:7, inn:9, ec:3, fi:8, score:7.24,cls:"B"},
-  {rang:14, nom:"Nubian Mining PLC",                  nat:"Royaume-Uni du Nil",          cat:"Secteur Minier",                eq:6, sa:5, tr:10,inn:7, ec:3, fi:10,score:7.21,cls:"B"},
-  {rang:15, nom:"Sun Corridor Roadways",              nat:"Royaume-Uni du Nil",          cat:"Transport & Logistique",        eq:9, sa:7, tr:8, inn:6, ec:4, fi:9, score:7.18,cls:"B"},
-  {rang:16, nom:"Nile Stream Railways",               nat:"Royaume-Uni du Nil",          cat:"Transport & Logistique",        eq:6, sa:7, tr:8, inn:9, ec:5, fi:7, score:7.16,cls:"B"},
-  {rang:17, nom:"Delta Port & Hub",                   nat:"Royaume-Uni du Nil",          cat:"Industrie Naval & Portuaire",   eq:9, sa:7, tr:8, inn:7, ec:5, fi:7, score:7.13,cls:"B"},
-  {rang:18, nom:"The Sun's Stores",                   nat:"Royaume-Uni du Nil",          cat:"Commerce",                      eq:7, sa:9, tr:8, inn:5, ec:5, fi:9, score:7.08,cls:"B"},
-  {rang:19, nom:"Bank of Thebes",                     nat:"Royaume-Uni du Nil",          cat:"Finance",                       eq:8, sa:7, tr:8, inn:7, ec:4, fi:8, score:7.05,cls:"B"},
-  {rang:19, nom:"Kushite Cotton",                     nat:"Royaume-Uni du Nil",          cat:"Textile",                       eq:6, sa:6, tr:8, inn:7, ec:5, fi:9, score:7.05,cls:"B"},
-  {rang:20, nom:"Yassin Heavy Industries",            nat:"Royaume-Uni du Nil",          cat:"Industrie de Défense",          eq:8, sa:8, tr:3, inn:8, ec:5, fi:10,score:7.03,cls:"B"},
-  {rang:21, nom:"Nile Helicopters & Vertical Systems",nat:"Royaume-Uni du Nil",          cat:"Industrie Aéronautique",        eq:9, sa:6, tr:8, inn:9, ec:3, fi:6, score:6.92,cls:"C"},
-  {rang:22, nom:"Theban Heavy Forges",                nat:"Royaume-Uni du Nil",          cat:"Industrie lourde",              eq:5, sa:7, tr:9, inn:5, ec:3, fi:10,score:6.68,cls:"C"},
-  {rang:23, nom:"Nile Petroleum & Refining Corp",     nat:"Royaume-Uni du Nil",          cat:"Énergie",                       eq:7, sa:5, tr:9, inn:6, ec:1, fi:9, score:6.42,cls:"C"},
-  {rang:24, nom:"Union Auto Motor",                   nat:"Union Démocratique d'Asie",   cat:"Industrie Automobile",          eq:8, sa:7, tr:6, inn:6, ec:3, fi:7, score:6.11,cls:"C"},
-  {rang:25, nom:"Memphis Steel & Iron Works",         nat:"Royaume-Uni du Nil",          cat:"Industrie lourde",              eq:6, sa:5, tr:8, inn:5, ec:3, fi:8, score:6.00,cls:"C"},
-  {rang:26, nom:"SHEIN",                              nat:"Union Démocratique d'Asie",   cat:"Textile",                       eq:5, sa:7, tr:4, inn:6, ec:4, fi:9, score:5.92,cls:"C"},
-  {rang:27, nom:"UDA Textile",                        nat:"Union Démocratique d'Asie",   cat:"Textile",                       eq:7, sa:7, tr:5, inn:6, ec:3, fi:7, score:5.79,cls:"C"},
-];
+/* ══════════════════════════════════════════════════════
+   BOURSE DU CAIRE — chargement dynamique depuis GitHub
+═══════════════════════════════════════════════════════ */
 
+const RAW_JSON = 'https://raw.githubusercontent.com/BJBellum/UKN/main/data/bourse.json';
+const W = {eq:5,sa:4,tr:7,inn:8,ec:6,fi:8,total:38};
 const CLS_COLORS = {A:'#1bbd8a',B:'#4a9eff',C:'#f0a030',D:'#e84848',E:'#c03030',F:'#8b93a8'};
 
-let data = [...COMPANIES];
-let sortKey = 'rang';
-let sortDir = 1;
+let COMPANIES = [];
+let sortKey = 'score';
+let sortDir = -1;
 
+/* ── Score utils ── */
+function computeScore(c) {
+  return Math.round(((c.eq*W.eq)+(c.sa*W.sa)+(c.tr*W.tr)+(c.inn*W.inn)+(c.ec*W.ec)+(c.fi*W.fi))/W.total * 100) / 100;
+}
+function getClass(s) {
+  if (s >= 8.5) return 'A'; if (s >= 7) return 'B'; if (s >= 5.5) return 'C';
+  if (s >= 4)   return 'D'; if (s >= 2.5) return 'E'; return 'F';
+}
 function scoreColor(c) { return CLS_COLORS[c] || '#8b93a8'; }
-
 function barFill(score) {
   const pct = (score / 10 * 100).toFixed(1);
   const col = score >= 8.5 ? '#1bbd8a' : score >= 7 ? '#4a9eff' : score >= 5.5 ? '#f0a030' : '#e84848';
   return `<div class="score-bar-wrap"><div class="score-bar-fill" style="width:${pct}%;background:${col};"></div></div>`;
 }
 
+/* ── Load from GitHub ── */
+async function loadData() {
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = `<tr><td colspan="13" style="text-align:center;padding:32px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text3);">Chargement…</td></tr>`;
+
+  try {
+    const r = await fetch(RAW_JSON + '?t=' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const db = await r.json();
+
+    // Compute scores & classes from raw notes
+    COMPANIES = db.companies.map(c => ({
+      ...c,
+      score: computeScore(c),
+      cls  : getClass(computeScore(c)),
+    }));
+
+    // Update KPIs
+    updateKPIs(db.updated);
+    // Render
+    document.getElementById('th-score').classList.add('sorted-desc');
+    filterTable();
+
+  } catch(e) {
+    tbody.innerHTML = `<tr><td colspan="13" style="text-align:center;padding:32px;color:#e84848;font-family:'IBM Plex Mono',monospace;font-size:12px;">
+      Erreur chargement : ${e.message}<br>
+      <span style="color:var(--text3);font-size:11px;margin-top:6px;display:block;">Actualise la page dans quelques secondes.</span>
+    </td></tr>`;
+  }
+}
+
+/* ── Update header KPIs ── */
+function updateKPIs(updated) {
+  const total = COMPANIES.length;
+  const nat   = COMPANIES.filter(c => c.nat === 'Royaume-Uni du Nil').length;
+  const fore  = total - nat;
+  const clsA  = COMPANIES.filter(c => c.cls === 'A').length;
+  const clsB  = COMPANIES.filter(c => c.cls === 'B').length;
+  const clsC  = COMPANIES.filter(c => c.cls === 'C').length;
+
+  const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  set('kpi-total', total);
+  set('kpi-nat', nat);
+  set('kpi-for', fore);
+  set('kpi-a', clsA);
+  set('kpi-b', clsB);
+  set('kpi-c', clsC);
+  if (updated) set('kpi-date', updated);
+
+  // Also update footer text
+  const fl = document.querySelector('.footer-left');
+  if (fl) fl.innerHTML = `Bourse du Caire · بورصة القاهرة · Royaume-Uni du Nil<br>Système ESS · ${total} société${total>1?'s':''} cotée${total>1?'s':''} · Exercice 2305`;
+}
+
+/* ── Render table ── */
 function renderTable(rows) {
   const tbody = document.getElementById('tbody');
+  // Assign ranks
+  const sorted = [...rows].sort((a,b) => b.score - a.score);
+  let rank = 0, prevScore = null;
+  sorted.forEach((c, i) => {
+    if (c.score !== prevScore) { rank = i + 1; prevScore = c.score; }
+    c._rang = rank;
+  });
+
   tbody.innerHTML = rows.map(c => {
-    const natCls = c.nat === "Royaume-Uni du Nil" ? 'nat-nat' : 'nat-for';
-    const natShort = c.nat === "Royaume-Uni du Nil" ? 'RUN' : 'UDA';
-    return `<tr data-cls="${c.cls}" data-nat="${c.nat}" data-cat="${c.cat}" data-nom="${c.nom.toLowerCase()}">
-      <td class="td-rang">${c.rang}</td>
+    const natShort = c.nat === 'Royaume-Uni du Nil' ? 'RUN' : 'UDA';
+    const natStyle = c.nat === 'Royaume-Uni du Nil'
+      ? 'background:rgba(27,189,138,0.08);color:#1bbd8a;border:1px solid rgba(27,189,138,0.2);'
+      : 'background:rgba(74,158,255,0.08);color:#4a9eff;border:1px solid rgba(74,158,255,0.2);';
+    const col = scoreColor(c.cls);
+    return `<tr>
+      <td class="td-rang">${c._rang}</td>
       <td class="td-nom">${c.nom}</td>
-      <td class="td-nat hide-mobile"><span class="${natCls}">${natShort}</span></td>
+      <td class="td-nat hide-mobile"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:1px 6px;border-radius:3px;${natStyle}">${natShort}</span></td>
       <td class="td-cat hide-mobile">${c.cat}</td>
-      <td class="hide-mobile" style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:${scoreColor(c.cls)};">${c.eq}</td>
-      <td class="hide-mobile" style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:${scoreColor(c.cls)};">${c.sa}</td>
-      <td class="hide-mobile" style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:${scoreColor(c.cls)};">${c.tr}</td>
-      <td class="hide-mobile" style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:${scoreColor(c.cls)};">${c.inn}</td>
-      <td class="hide-mobile" style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:${scoreColor(c.cls)};">${c.ec}</td>
-      <td class="hide-mobile" style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:${scoreColor(c.cls)};">${c.fi}</td>
-      <td class="td-score" style="color:${scoreColor(c.cls)};">${c.score.toFixed(2)}</td>
+      <td class="hide-mobile" style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:${col};">${c.eq}</td>
+      <td class="hide-mobile" style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:${col};">${c.sa}</td>
+      <td class="hide-mobile" style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:${col};">${c.tr}</td>
+      <td class="hide-mobile" style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:${col};">${c.inn}</td>
+      <td class="hide-mobile" style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:${col};">${c.ec}</td>
+      <td class="hide-mobile" style="text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:${col};">${c.fi}</td>
+      <td class="td-score" style="color:${col};">${c.score.toFixed(2)}</td>
       <td class="td-class"><span class="cls-badge cls-${c.cls}">${c.cls}</span></td>
       <td class="td-bar hide-mobile">${barFill(c.score)}</td>
     </tr>`;
@@ -417,23 +462,24 @@ function renderTable(rows) {
   document.getElementById('count-lbl').textContent = rows.length + ' société' + (rows.length > 1 ? 's' : '');
 }
 
+/* ── Filter ── */
 function filterTable() {
   const q   = document.getElementById('search').value.toLowerCase();
   const cls = document.getElementById('filterCls').value;
   const nat = document.getElementById('filterNat').value;
   const cat = document.getElementById('filterCat').value;
-  let rows  = COMPANIES.filter(c => {
+  let rows = COMPANIES.filter(c => {
     if (q   && !c.nom.toLowerCase().includes(q) && !c.cat.toLowerCase().includes(q)) return false;
-    if (cls && c.cls !== cls)  return false;
-    if (nat && c.nat !== nat)  return false;
-    if (cat && !c.cat.includes(cat.split(' ')[0])) return false;
+    if (cls && c.cls !== cls) return false;
+    if (nat && c.nat !== nat) return false;
+    if (cat && cat !== '' && !c.cat.includes(cat.split(' ')[0])) return false;
     return true;
   });
   sortRows(rows);
 }
 
+/* ── Sort ── */
 function sortRows(rows) {
-  rows = rows || data;
   rows.sort((a, b) => {
     let va = a[sortKey], vb = b[sortKey];
     if (typeof va === 'string') { va = va.toLowerCase(); vb = vb.toLowerCase(); }
@@ -445,14 +491,14 @@ function sortRows(rows) {
 }
 
 function sortTable(key) {
-  if (sortKey === key) { sortDir *= -1; } else { sortKey = key; sortDir = 1; }
-  document.querySelectorAll('th').forEach(th => { th.classList.remove('sorted-asc','sorted-desc'); });
+  if (sortKey === key) { sortDir *= -1; } else { sortKey = key; sortDir = key === 'score' ? -1 : 1; }
+  document.querySelectorAll('th').forEach(th => th.classList.remove('sorted-asc','sorted-desc'));
   const th = document.getElementById('th-' + key);
   if (th) th.classList.add(sortDir === 1 ? 'sorted-asc' : 'sorted-desc');
   filterTable();
 }
 
-/* ── THEME ── */
+/* ── Theme ── */
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   const lbl  = document.getElementById('toggle-lbl');
@@ -460,24 +506,22 @@ function applyTheme(theme) {
   if (lbl)  lbl.textContent = theme === 'dark' ? 'NUIT' : 'JOUR';
   if (icon) {
     icon.setAttribute('data-mode', theme);
-    const sun  = icon.querySelector('.icon-sun');
-    const moon = icon.querySelector('.icon-moon');
-    if (sun)  sun.style.display  = theme === 'dark'  ? 'block' : 'none';
-    if (moon) moon.style.display = theme === 'light' ? 'block' : 'none';
+    icon.querySelector('.icon-sun').style.display  = theme === 'dark'  ? 'block' : 'none';
+    icon.querySelector('.icon-moon').style.display = theme === 'light' ? 'block' : 'none';
   }
   localStorage.setItem('run-theme', theme);
 }
 function toggleTheme() {
   applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
 }
+
+/* ── Boot ── */
 (function() {
   const saved = localStorage.getItem('run-theme') || localStorage.getItem('pharos-theme');
-  const mq    = window.matchMedia('(prefers-color-scheme: dark)');
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
   applyTheme(saved || (mq.matches ? 'dark' : 'light'));
   mq.addEventListener('change', e => { if (!localStorage.getItem('run-theme')) applyTheme(e.matches ? 'dark' : 'light'); });
-  // Initial render
-  document.getElementById('th-rang').classList.add('sorted-asc');
-  sortRows(COMPANIES);
+  document.addEventListener('DOMContentLoaded', loadData);
 })();
 </script>
 <script src="../../pharos-auth.js"></script>
