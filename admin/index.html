@@ -685,7 +685,7 @@ async function saveToGitHub() {
 
   DB.updated = new Date().toISOString().slice(0, 10);
 
-  // Strip computed score/cls before saving (recomputed on load)
+  // Strip computed fields before saving (recomputed on load)
   const toSave = {
     ...DB,
     companies: DB.companies.map(({id,nom,nat,cat,eq,sa,tr,inn,ec,fi}) => ({id,nom,nat,cat,eq,sa,tr,inn,ec,fi}))
@@ -723,8 +723,10 @@ async function saveToGitHub() {
 
     dirtyFlag = false;
     btn.disabled = false;
-    btn.textContent = '✓ Sauvegardé sur GitHub';
-    showToast('✓ Données sauvegardées ! GitHub Pages se mettra à jour dans ~1 minute.', 'ok');
+    btn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none"><polyline points="20 6 9 17 4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Sauvegardé`;
+    showToast('✓ Données sauvegardées sur GitHub ! La Bourse du Caire se mettra à jour dans ~1 minute.', 'ok');
+    // Re-render from local DB (don't re-fetch — CDN cache peut mettre 1-2min à se rafraîchir)
+    renderTable();
     updateKPIs();
 
   } catch(e) {
