@@ -4,590 +4,228 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin · Bourse du Caire</title>
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&family=Noto+Kufi+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/dune.css">
 <style>
-/* ══════════════════════════════════════════
-   ADMIN DASHBOARD — DA DUNE
-   ══════════════════════════════════════════ */
-
-/* Admin topnav override */
-.topnav-admin {
-  position: sticky; top: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 32px; height: 60px;
-  background: rgba(10,6,0,0.96);
-  border-bottom: 1px solid rgba(232,92,13,0.25);
-  backdrop-filter: blur(12px);
-  gap: 16px;
-}
-
-[data-theme="light"] .topnav-admin {
-  background: rgba(224,200,160,0.96);
-  border-bottom-color: rgba(180,70,10,0.2);
-}
-
-.admin-badge {
-  font-family: 'Dune Rise', serif;
-  font-size: 9px; letter-spacing: 0.22em;
-  color: var(--spice); text-transform: uppercase;
-  border: 1px solid rgba(232,92,13,0.4);
-  padding: 3px 10px; border-radius: 2px;
-  background: rgba(232,92,13,0.06);
-}
+/* ── ADMIN TOPNAV ── */
+.topnav-admin{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:60px;background:rgba(10,6,0,.96);border-bottom:1px solid rgba(232,92,13,.25);backdrop-filter:blur(12px);gap:16px;}
+[data-theme="light"] .topnav-admin{background:rgba(224,200,160,.96);}
+.admin-badge{font-family:'Dune Rise',serif;font-size:9px;letter-spacing:.22em;color:var(--spice);text-transform:uppercase;border:1px solid rgba(232,92,13,.4);padding:3px 10px;border-radius:2px;background:rgba(232,92,13,.06);}
 
 /* ── ACCESS WALL ── */
-.access-wall {
-  position: fixed; inset: 0; z-index: 200;
-  background: var(--bg);
-  display: flex; align-items: center; justify-content: center;
-  flex-direction: column; gap: 0;
-}
-
-.access-wall::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: repeating-linear-gradient(
-    0deg, transparent 0px, transparent 3px,
-    rgba(200,150,12,0.012) 3px, rgba(200,150,12,0.012) 4px
-  );
-  pointer-events: none;
-}
-
-.access-inner {
-  position: relative; z-index: 1;
-  text-align: center; padding: 60px 40px;
-  border: 1px solid var(--border2);
-  background: var(--card-bg);
-  max-width: 440px; width: 90%;
-}
-.access-inner::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--spice), transparent);
-}
-
-.access-icon {
-  width: 56px; height: 56px;
-  border: 1px solid rgba(232,92,13,0.4);
-  border-radius: 2px;
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 24px;
-  background: rgba(232,92,13,0.06);
-}
-
-.access-title {
-  font-family: 'Dune Rise', serif;
-  font-size: 18px; color: var(--gold-pale);
-  letter-spacing: 0.08em; margin-bottom: 6px;
-}
-.access-sub {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; color: var(--text3);
-  letter-spacing: 0.1em; margin-bottom: 32px;
-}
-.access-desc {
-  font-size: 12px; color: var(--text2);
-  line-height: 1.75; margin-bottom: 28px;
-}
-
-.discord-btn-full {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: transparent; border: 1px solid rgba(232,92,13,0.5);
-  color: var(--spice); padding: 11px 28px;
-  font-family: 'Dune Rise', serif; font-size: 11px;
-  letter-spacing: 0.14em; cursor: pointer; text-decoration: none;
-  border-radius: 2px; transition: all .25s; width: 100%;
-  justify-content: center;
-}
-.discord-btn-full:hover {
-  background: rgba(232,92,13,0.12);
-  border-color: var(--spice);
-  box-shadow: 0 0 20px rgba(232,92,13,0.15);
-}
+.access-wall{position:fixed;inset:0;z-index:200;background:var(--bg);display:flex;align-items:center;justify-content:center;}
+.access-wall::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0px,transparent 3px,rgba(200,150,12,.012) 3px,rgba(200,150,12,.012) 4px);pointer-events:none;}
+.access-inner{position:relative;z-index:1;text-align:center;padding:52px 40px;border:1px solid var(--border2);background:var(--card-bg);max-width:420px;width:90%;}
+.access-inner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--spice),transparent);}
+.access-icon{width:52px;height:52px;border:1px solid rgba(232,92,13,.4);border-radius:2px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;background:rgba(232,92,13,.06);}
+.access-title{font-family:'Dune Rise',serif;font-size:17px;color:var(--gold-pale);letter-spacing:.08em;margin-bottom:4px;}
+.access-sub{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:.1em;margin-bottom:24px;}
+.access-desc{font-size:12px;color:var(--text2);line-height:1.75;margin-bottom:24px;}
+.discord-btn{display:inline-flex;align-items:center;gap:10px;background:transparent;border:1px solid rgba(232,92,13,.5);color:var(--spice);padding:11px 28px;font-family:'Dune Rise',serif;font-size:11px;letter-spacing:.14em;cursor:pointer;text-decoration:none;border-radius:2px;transition:all .25s;width:100%;justify-content:center;}
+.discord-btn:hover{background:rgba(232,92,13,.12);box-shadow:0 0 20px rgba(232,92,13,.15);}
 
 /* ── USER PILL ── */
-.user-pill {
-  display: flex; align-items: center; gap: 8px;
-  background: rgba(200,150,12,0.08);
-  border: 1px solid var(--border2); padding: 4px 12px 4px 4px;
-  border-radius: 2px; cursor: pointer; transition: all .2s;
-}
-.user-pill:hover { border-color: var(--border3); }
-.user-avatar {
-  width: 26px; height: 26px; border-radius: 2px;
-  border: 1px solid var(--border2); object-fit: cover;
-  background: var(--sand-mid);
-}
-.user-name {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; color: var(--text2); letter-spacing: 0.06em;
-}
-.user-star { color: var(--gold-mid); font-size: 10px; }
+.user-pill{display:flex;align-items:center;gap:8px;background:rgba(200,150,12,.08);border:1px solid var(--border2);padding:4px 12px 4px 4px;border-radius:2px;}
+.user-avatar{width:26px;height:26px;border-radius:2px;border:1px solid var(--border2);object-fit:cover;}
+.user-name{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text2);letter-spacing:.06em;}
+.disc-btn{background:transparent;border:1px solid var(--border);color:var(--text3);padding:5px 12px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;cursor:pointer;border-radius:2px;transition:all .2s;}
+.disc-btn:hover{border-color:var(--spice);color:var(--spice);}
 
-.disconnect-btn {
-  background: transparent; border: 1px solid var(--border);
-  color: var(--text3); padding: 5px 12px;
-  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
-  letter-spacing: 0.08em; cursor: pointer; border-radius: 2px;
-  transition: all .2s;
-}
-.disconnect-btn:hover { border-color: var(--spice); color: var(--spice); }
+/* ── LAYOUT ── */
+.admin-layout{max-width:1280px;margin:0 auto;padding:36px 32px 80px;}
+.dash-header{margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border);}
+.dash-title{font-family:'Dune Rise',serif;font-size:10px;letter-spacing:.22em;color:var(--spice);text-transform:uppercase;margin-bottom:4px;}
+.dash-sub{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:.08em;line-height:1.8;}
 
-/* ── DASHBOARD LAYOUT ── */
-.admin-layout {
-  max-width: 1280px; margin: 0 auto; padding: 40px 32px 80px;
-}
+/* ── STATS ── */
+.stats-strip{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:24px;}
+@media(max-width:900px){.stats-strip{grid-template-columns:repeat(4,1fr);}}
+.stat-tile{background:var(--card-bg);border:1px solid var(--border);border-top:2px solid var(--border2);padding:14px 12px;text-align:center;}
+.stat-val{font-family:'Dune Rise',serif;font-size:22px;letter-spacing:.04em;margin-bottom:4px;line-height:1;}
+.stat-lbl{font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;}
 
-/* ── DASHBOARD HEADER ── */
-.dash-header {
-  margin-bottom: 32px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--border);
-}
-.dash-title {
-  font-family: 'Dune Rise', serif;
-  font-size: 11px; letter-spacing: 0.22em;
-  color: var(--spice); text-transform: uppercase; margin-bottom: 4px;
-}
-.dash-subtitle {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px; color: var(--text3); letter-spacing: 0.1em;
-  line-height: 1.8;
-}
+/* ── PAT ── */
+.pat-bar{background:var(--card-bg);border:1px solid var(--border);border-left:2px solid rgba(232,92,13,.5);padding:14px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px;}
+.pat-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--text3);text-transform:uppercase;white-space:nowrap;}
+.pat-in{flex:1;min-width:200px;background:var(--bg);border:1px solid var(--border2);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:11px;padding:7px 10px;border-radius:2px;outline:none;transition:border-color .2s;}
+.pat-in:focus{border-color:var(--gold-mid);}
+.pat-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.pat-dot.ok{background:var(--teal-bright);box-shadow:0 0 6px var(--teal-bright);}
+.pat-dot.no{background:var(--spice);}
+.pat-status{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;display:flex;align-items:center;gap:6px;}
 
-/* ── STATS STRIP ── */
-.stats-strip {
-  display: grid; grid-template-columns: repeat(7, 1fr);
-  gap: 10px; margin-bottom: 28px;
-}
-@media(max-width:900px) { .stats-strip { grid-template-columns: repeat(4,1fr); } }
-@media(max-width:560px) { .stats-strip { grid-template-columns: repeat(2,1fr); } }
+/* ── BUTTONS ── */
+.btn{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;padding:8px 16px;border-radius:2px;cursor:pointer;border:1px solid;transition:all .2s;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;}
+.btn-sm{font-size:9px;padding:5px 10px;letter-spacing:.08em;}
+.btn-primary{background:rgba(200,150,12,.15);border-color:var(--gold-mid);color:var(--gold);}
+.btn-primary:hover{background:rgba(200,150,12,.28);}
+.btn-ghost{background:transparent;border-color:var(--border2);color:var(--text3);}
+.btn-ghost:hover{border-color:var(--border3);color:var(--text2);}
+.btn-danger{background:rgba(232,92,13,.1);border-color:rgba(232,92,13,.35);color:var(--spice);}
+.btn-danger:hover{background:rgba(232,92,13,.2);}
+.btn-gh{background:rgba(200,150,12,.08);border-color:var(--gold-dim);color:var(--gold-mid);}
+.btn-gh:hover{background:rgba(200,150,12,.2);border-color:var(--gold-mid);}
+.action-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
 
-.stat-tile {
-  background: var(--card-bg); border: 1px solid var(--border);
-  border-top: 2px solid var(--border2);
-  padding: 14px 12px; text-align: center;
-  transition: border-color .2s;
-}
-.stat-tile:hover { border-color: var(--border2); }
-.stat-val {
-  font-family: 'Dune Rise', serif;
-  font-size: 22px; letter-spacing: 0.04em; margin-bottom: 4px; line-height: 1;
-}
-.stat-lbl {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 8px; color: var(--text3);
-  letter-spacing: 0.12em; text-transform: uppercase;
-}
-
-/* ── PAT SECTION ── */
-.pat-bar {
-  background: var(--card-bg); border: 1px solid var(--border);
-  border-left: 2px solid rgba(232,92,13,0.5);
-  padding: 16px 20px;
-  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-.pat-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px; letter-spacing: 0.14em;
-  color: var(--text3); text-transform: uppercase; white-space: nowrap;
-}
-.pat-input {
-  flex: 1; min-width: 220px;
-  background: var(--bg); border: 1px solid var(--border2);
-  color: var(--text); font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px; padding: 7px 12px; border-radius: 2px; outline: none;
-  transition: border-color .2s; letter-spacing: 0.06em;
-}
-.pat-input:focus { border-color: var(--gold-mid); }
-.pat-input::placeholder { color: var(--text3); }
-
-.pat-status {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px; letter-spacing: 0.1em;
-  display: flex; align-items: center; gap: 6px;
-}
-.pat-dot {
-  width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0;
-}
-.pat-dot.ok { background: var(--teal-bright); box-shadow: 0 0 6px var(--teal-bright); }
-.pat-dot.no { background: var(--spice); }
-
-/* ── ACTION BAR ── */
-.action-bar {
-  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
-  margin-bottom: 16px;
-}
-
-.btn {
-  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
-  letter-spacing: 0.1em; padding: 8px 18px; border-radius: 2px;
-  cursor: pointer; border: 1px solid; transition: all .2s;
-  white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;
-}
-.btn-primary {
-  background: rgba(200,150,12,0.15); border-color: var(--gold-mid);
-  color: var(--gold);
-}
-.btn-primary:hover { background: rgba(200,150,12,0.28); box-shadow: 0 0 16px rgba(200,150,12,0.15); }
-.btn-ghost {
-  background: transparent; border-color: var(--border2); color: var(--text3);
-}
-.btn-ghost:hover { border-color: var(--border3); color: var(--text2); }
-.btn-danger {
-  background: rgba(232,92,13,0.1); border-color: rgba(232,92,13,0.35); color: var(--spice);
-}
-.btn-danger:hover { background: rgba(232,92,13,0.2); }
-.btn-github {
-  background: rgba(200,150,12,0.08); border-color: var(--gold-dim);
-  color: var(--gold-mid);
-}
-.btn-github:hover { background: rgba(200,150,12,0.2); border-color: var(--gold-mid); }
-
-.btn-sm {
-  font-size: 9px; padding: 5px 10px; letter-spacing: 0.08em;
-}
-
-/* ── ADMIN TABLE ── */
-.admin-table-wrap {
-  overflow-x: auto; border: 1px solid var(--border2); border-radius: 2px;
-  margin-bottom: 24px;
-}
-.admin-table {
-  width: 100%; border-collapse: collapse;
-  font-family: 'IBM Plex Mono', monospace; font-size: 11px;
-}
-.admin-table thead tr {
-  background: rgba(30,24,16,0.8); border-bottom: 1px solid var(--border2);
-}
-[data-theme="light"] .admin-table thead tr { background: rgba(200,170,110,0.4); }
-.admin-table th {
-  padding: 10px 12px; text-align: left;
-  color: var(--text3); font-weight: 400;
-  letter-spacing: 0.1em; font-size: 8px;
-  text-transform: uppercase; white-space: nowrap;
-}
-.admin-table td {
-  padding: 8px 12px; border-bottom: 1px solid var(--border);
-  color: var(--text2); white-space: nowrap; vertical-align: middle;
-}
-.admin-table tr:last-child td { border-bottom: none; }
-.admin-table tr:hover td { background: rgba(200,150,12,0.03); }
-
-.td-edit-name { color: var(--text); font-family: 'IBM Plex Sans',sans-serif; font-size: 11px; max-width: 200px; white-space: normal; line-height: 1.3; }
-.nat-badge { display: inline-flex; align-items: center; font-size: 8px; padding: 2px 7px; border-radius: 2px; border: 1px solid; letter-spacing: 0.08em; }
-.nat-run { background: rgba(26,143,122,0.1); border-color: rgba(26,143,122,0.3); color: #22B89A; }
-.nat-uda { background: rgba(240,160,48,0.1); border-color: rgba(240,160,48,0.3); color: var(--amber); }
-
-.class-dot {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 22px; height: 22px; font-family: 'Dune Rise', serif;
-  font-size: 11px; border-radius: 2px; border: 1px solid;
-}
-.cls-A { background: rgba(34,184,154,0.12); border-color: rgba(34,184,154,0.3); color: #22B89A; }
-.cls-B { background: rgba(212,168,67,0.10); border-color: rgba(212,168,67,0.3); color: #D4A843; }
-.cls-C { background: rgba(240,160,48,0.10); border-color: rgba(240,160,48,0.3); color: #F0A030; }
-.cls-D { background: rgba(200,112,32,0.10); border-color: rgba(200,112,32,0.3); color: #C87020; }
-.cls-E { background: rgba(232,72,72,0.10);  border-color: rgba(232,72,72,0.3);  color: #E84848; }
-.cls-F { background: rgba(139,26,26,0.10);  border-color: rgba(139,26,26,0.3);  color: #B02020; }
-
-.score-inline { font-weight: 500; font-size: 11px; }
+/* ── TABLE ── */
+.admin-tbl-wrap{overflow-x:auto;border:1px solid var(--border2);border-radius:2px;margin-bottom:20px;}
+.admin-tbl{width:100%;border-collapse:collapse;font-family:'IBM Plex Mono',monospace;font-size:11px;}
+.admin-tbl thead tr{background:rgba(30,24,16,.8);border-bottom:1px solid var(--border2);}
+[data-theme="light"] .admin-tbl thead tr{background:rgba(200,170,110,.4);}
+.admin-tbl th{padding:9px 11px;text-align:left;color:var(--text3);font-weight:400;letter-spacing:.1em;font-size:8px;text-transform:uppercase;white-space:nowrap;}
+.admin-tbl td{padding:7px 11px;border-bottom:1px solid var(--border);color:var(--text2);white-space:nowrap;vertical-align:middle;}
+.admin-tbl tr:last-child td{border-bottom:none;}
+.admin-tbl tr:hover td{background:rgba(200,150,12,.03);}
+.nat-b{display:inline-flex;align-items:center;font-size:8px;padding:2px 6px;border-radius:2px;border:1px solid;letter-spacing:.08em;}
+.nat-run-b{background:rgba(26,143,122,.1);border-color:rgba(26,143,122,.3);color:#22B89A;}
+.nat-uda-b{background:rgba(240,160,48,.1);border-color:rgba(240,160,48,.3);color:var(--amber);}
+.cls-dot{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;font-family:'Dune Rise',serif;font-size:11px;border-radius:2px;border:1px solid;}
+.cd-A{background:rgba(34,184,154,.12);border-color:rgba(34,184,154,.3);color:#22B89A;}
+.cd-B{background:rgba(212,168,67,.1);border-color:rgba(212,168,67,.3);color:#D4A843;}
+.cd-C{background:rgba(240,160,48,.1);border-color:rgba(240,160,48,.3);color:#F0A030;}
+.cd-D{background:rgba(200,112,32,.1);border-color:rgba(200,112,32,.3);color:#C87020;}
+.cd-E{background:rgba(232,72,72,.1);border-color:rgba(232,72,72,.3);color:#E84848;}
+.cd-F{background:rgba(139,26,26,.1);border-color:rgba(139,26,26,.3);color:#B02020;}
 
 /* ── TOAST ── */
-.toast {
-  position: fixed; bottom: 28px; right: 28px; z-index: 999;
-  background: var(--card-bg); border: 1px solid var(--border2);
-  border-left: 3px solid var(--gold-mid);
-  padding: 14px 20px; font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px; color: var(--text2); letter-spacing: 0.06em;
-  border-radius: 2px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-  transform: translateY(20px); opacity: 0;
-  transition: all .3s ease; pointer-events: none;
-  max-width: 360px;
-}
-.toast.show { transform: translateY(0); opacity: 1; }
-.toast.ok   { border-left-color: var(--teal-bright); }
-.toast.err  { border-left-color: var(--spice); }
+.toast{position:fixed;bottom:24px;right:24px;z-index:999;background:var(--card-bg);border:1px solid var(--border2);border-left:3px solid var(--gold-mid);padding:12px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text2);letter-spacing:.06em;border-radius:2px;box-shadow:0 8px 32px rgba(0,0,0,.4);transform:translateY(20px);opacity:0;transition:all .3s ease;pointer-events:none;max-width:340px;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast.ok{border-left-color:var(--teal-bright);}
+.toast.err{border-left-color:var(--spice);}
 
 /* ── MODAL ── */
-.modal-overlay {
-  position: fixed; inset: 0; z-index: 500;
-  background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
-  display: none; align-items: center; justify-content: center;
-}
-.modal-overlay.open { display: flex; }
+.modal-ov{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;}
+.modal-ov.open{display:flex;}
+.modal-box{background:var(--bg2);border:1px solid var(--border2);width:520px;max-width:95vw;max-height:90vh;overflow-y:auto;}
+.modal-box::before{content:'';display:block;height:2px;background:linear-gradient(90deg,transparent,var(--gold-mid),transparent);}
+.modal-hdr{display:flex;align-items:center;justify-content:space-between;padding:18px 22px 14px;border-bottom:1px solid var(--border);}
+.modal-ttl{font-family:'Dune Rise',serif;font-size:12px;letter-spacing:.16em;color:var(--gold-pale);}
+.modal-cls{background:transparent;border:none;color:var(--text3);cursor:pointer;font-size:16px;padding:4px 8px;transition:color .2s;}
+.modal-cls:hover{color:var(--text);}
+.modal-body{padding:22px;}
+.modal-ftr{display:flex;gap:10px;justify-content:flex-end;padding:14px 22px;border-top:1px solid var(--border);}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.form-grp{display:flex;flex-direction:column;gap:4px;}
+.form-grp.full{grid-column:1/-1;}
+.form-lbl{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.14em;color:var(--text3);text-transform:uppercase;}
+.form-in,.form-sel{background:var(--bg);border:1px solid var(--border2);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:11px;padding:7px 10px;border-radius:2px;outline:none;transition:border-color .2s;appearance:none;}
+.form-in:focus,.form-sel:focus{border-color:var(--gold-mid);}
+.form-sel option{background:#1E1810;color:var(--text);}
+.score-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:12px;}
+.score-fld{display:flex;flex-direction:column;gap:4px;align-items:center;text-align:center;}
+.form-in.sc-in{width:100%;text-align:center;font-size:14px;padding:7px 4px;}
+.computed{background:var(--bg);border:1px solid var(--border2);padding:10px 14px;display:flex;align-items:center;gap:14px;margin-bottom:12px;border-left:2px solid var(--gold-dim);}
+.cs-val{font-family:'Dune Rise',serif;font-size:22px;color:var(--gold);letter-spacing:.04em;}
+.cs-cls{font-family:'Dune Rise',serif;font-size:18px;margin-left:auto;}
+.cs-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);}
 
-.modal-box {
-  background: var(--bg2); border: 1px solid var(--border2);
-  width: 520px; max-width: 95vw; max-height: 90vh; overflow-y: auto;
-  position: relative;
-}
-.modal-box::before {
-  content: ''; display: block; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold-mid), transparent);
-}
-.modal-header {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 20px 24px 16px; border-bottom: 1px solid var(--border);
-}
-.modal-title {
-  font-family: 'Dune Rise', serif;
-  font-size: 12px; letter-spacing: 0.16em; color: var(--gold-pale);
-}
-.modal-close {
-  background: transparent; border: none; color: var(--text3);
-  cursor: pointer; font-size: 16px; padding: 4px 8px; transition: color .2s;
-}
-.modal-close:hover { color: var(--text); }
-.modal-body { padding: 24px; }
-.modal-footer {
-  display: flex; gap: 10px; justify-content: flex-end;
-  padding: 16px 24px; border-top: 1px solid var(--border);
-}
+/* ── CONFIRM ── */
+.confirm-box{background:var(--bg2);border:1px solid rgba(232,92,13,.4);width:380px;max-width:90vw;padding:26px;text-align:center;}
+.confirm-box::before{content:'';display:block;height:2px;margin-bottom:18px;background:linear-gradient(90deg,transparent,var(--spice),transparent);}
+.confirm-ttl{font-family:'Dune Rise',serif;font-size:13px;color:var(--gold-pale);letter-spacing:.08em;margin-bottom:8px;}
+.confirm-msg{font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:20px;}
+.confirm-act{display:flex;gap:10px;justify-content:center;}
 
-/* FORM */
-.form-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 14px; margin-bottom: 14px;
-}
-.form-group { display: flex; flex-direction: column; gap: 5px; }
-.form-group.full { grid-column: 1 / -1; }
-.form-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 8px; letter-spacing: 0.14em; color: var(--text3); text-transform: uppercase;
-}
-.form-input, .form-select {
-  background: var(--bg); border: 1px solid var(--border2);
-  color: var(--text); font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px; padding: 8px 10px; border-radius: 2px; outline: none;
-  transition: border-color .2s; letter-spacing: 0.04em;
-  -webkit-appearance: none; appearance: none;
-}
-.form-input:focus, .form-select:focus { border-color: var(--gold-mid); }
-.form-select option { background: #1E1810; color: var(--text); }
-
-.form-score-grid {
-  display: grid; grid-template-columns: repeat(6,1fr); gap: 10px; margin-bottom: 14px;
-}
-.score-field { display: flex; flex-direction: column; gap: 5px; align-items: center; text-align: center; }
-.score-field .form-label { text-align: center; }
-.form-input.score-in {
-  width: 100%; text-align: center; font-size: 14px;
-  padding: 8px 4px;
-}
-
-.computed-score {
-  background: var(--bg); border: 1px solid var(--border2);
-  padding: 12px 16px; display: flex; align-items: center; gap: 16px;
-  margin-bottom: 14px; border-left: 2px solid var(--gold-dim);
-}
-.cs-val {
-  font-family: 'Dune Rise', serif;
-  font-size: 24px; color: var(--gold);
-  letter-spacing: 0.04em;
-}
-.cs-class { font-family: 'Dune Rise', serif; font-size: 20px; margin-left: auto; }
-.cs-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: var(--text3); letter-spacing: 0.1em; }
-
-/* ── CONFIRM MODAL ── */
-.confirm-box {
-  background: var(--bg2); border: 1px solid rgba(232,92,13,0.4);
-  width: 400px; max-width: 90vw; padding: 28px;
-  position: relative; text-align: center;
-}
-.confirm-box::before {
-  content: ''; display: block; height: 2px; margin-bottom: 20px;
-  background: linear-gradient(90deg, transparent, var(--spice), transparent);
-}
-.confirm-title {
-  font-family: 'Dune Rise', serif;
-  font-size: 14px; color: var(--gold-pale);
-  letter-spacing: 0.08em; margin-bottom: 10px;
-}
-.confirm-msg { font-size: 12px; color: var(--text2); line-height: 1.7; margin-bottom: 24px; }
-.confirm-actions { display: flex; gap: 10px; justify-content: center; }
-
-/* ── GITHUB MODAL ── */
-.github-box {
-  background: var(--bg2); border: 1px solid var(--border2);
-  width: 460px; max-width: 90vw; max-height: 80vh; overflow-y: auto;
-  position: relative;
-}
-.github-box::before {
-  content: ''; display: block; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--teal), transparent);
-}
-.github-log {
-  background: var(--bg); border: 1px solid var(--border);
-  margin: 12px 0; padding: 12px 14px;
-  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
-  color: var(--text3); letter-spacing: 0.06em; line-height: 1.8;
-  max-height: 200px; overflow-y: auto;
-}
-.log-ok   { color: var(--teal-bright); }
-.log-err  { color: var(--spice); }
-.log-info { color: var(--gold-mid); }
+/* ── GITHUB LOG ── */
+.github-box{background:var(--bg2);border:1px solid var(--border2);width:460px;max-width:90vw;max-height:80vh;overflow-y:auto;}
+.github-box::before{content:'';display:block;height:2px;background:linear-gradient(90deg,transparent,var(--teal),transparent);}
+.gh-log{background:var(--bg);border:1px solid var(--border);margin:10px 0;padding:10px 12px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:.06em;line-height:1.8;max-height:200px;overflow-y:auto;}
+.log-ok{color:var(--teal-bright);}
+.log-err{color:var(--spice);}
+.log-info{color:var(--gold-mid);}
 </style>
 </head>
 <body>
 
-<!-- ── ACCESS WALL ── -->
+<!-- ACCESS WALL -->
 <div id="access-wall" class="access-wall">
   <div class="access-inner">
     <div class="access-icon">
-      <svg viewBox="0 0 24 24" fill="none" width="28" height="28">
+      <svg viewBox="0 0 24 24" fill="none" width="26" height="26">
         <rect x="5" y="11" width="14" height="10" rx="1" stroke="#E85C0D" stroke-width="1.2" fill="none"/>
         <path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="#E85C0D" stroke-width="1.2" fill="none" stroke-linecap="round"/>
         <circle cx="12" cy="16" r="1.5" fill="#E85C0D"/>
       </svg>
     </div>
-    <div class="access-title">Accès Restreint</div>
+    <div class="access-title">Acces Restreint</div>
     <div class="access-sub">ADMIN · BOURSE DU CAIRE</div>
-    <p class="access-desc">
-      Cette interface est réservée aux administrateurs du <strong>Royaume-Uni du Nil</strong>.
-      Connectez-vous via Discord pour accéder au panneau de gestion.
-    </p>
-    <a id="discord-auth-btn" href="#" class="discord-btn-full">
-      <svg viewBox="0 0 24 24" fill="none" width="16" height="16">
-        <path d="M20.3 4.4C18.8 3.7 17.2 3.2 15.5 3c-.2.3-.4.8-.6 1.1a16 16 0 0 0-4.8 0C9.9 3.8 9.7 3.3 9.5 3 7.8 3.2 6.2 3.7 4.7 4.4A19.8 19.8 0 0 0 1.5 17.8a20.2 20.2 0 0 0 6.2 3.2c.5-.7.9-1.5 1.3-2.2-.7-.3-1.4-.6-2-1 .2-.1.4-.3.5-.4a14.4 14.4 0 0 0 12.5 0c.2.1.4.3.5.4-.6.4-1.3.7-2 1 .4.8.8 1.5 1.3 2.2a20 20 0 0 0 6.2-3.2A19.7 19.7 0 0 0 20.3 4.4z" fill="#E85C0D"/>
-      </svg>
+    <p class="access-desc">Interface réservée aux administrateurs du <strong>Royaume-Uni du Nil</strong>. Connectez-vous via Discord.</p>
+    <a id="discord-btn" href="#" class="discord-btn">
+      <svg viewBox="0 0 24 24" fill="none" width="15" height="15"><path d="M20.3 4.4C18.8 3.7 17.2 3.2 15.5 3c-.2.3-.4.8-.6 1.1a16 16 0 0 0-4.8 0C9.9 3.8 9.7 3.3 9.5 3 7.8 3.2 6.2 3.7 4.7 4.4A19.8 19.8 0 0 0 1.5 17.8a20.2 20.2 0 0 0 6.2 3.2c.5-.7.9-1.5 1.3-2.2-.7-.3-1.4-.6-2-1 .2-.1.4-.3.5-.4a14.4 14.4 0 0 0 12.5 0c.2.1.4.3.5.4-.6.4-1.3.7-2 1 .4.8.8 1.5 1.3 2.2a20 20 0 0 0 6.2-3.2A19.7 19.7 0 0 0 20.3 4.4z" fill="#E85C0D"/></svg>
       Se connecter avec Discord
     </a>
   </div>
 </div>
 
-<!-- ── TOPNAV ── -->
+<!-- TOPNAV (hidden until auth) -->
 <nav class="topnav-admin" id="admin-nav" style="display:none;">
-  <div class="nav-left" style="display:flex;align-items:center;gap:16px;">
-    <div class="nav-logo" style="border-color:rgba(232,92,13,0.5);background:rgba(232,92,13,0.06);">
-      <svg viewBox="0 0 20 20" fill="none">
-        <rect x="3" y="5" width="14" height="10" rx="1" stroke="#E85C0D" stroke-width="1" fill="none"/>
-        <line x1="3" y1="9" x2="17" y2="9" stroke="#E85C0D" stroke-width="0.8" opacity="0.5"/>
-        <line x1="10" y1="5" x2="10" y2="15" stroke="#E85C0D" stroke-width="0.8" opacity="0.4"/>
-      </svg>
+  <div class="nav-left" style="display:flex;align-items:center;gap:14px;">
+    <div class="nav-logo" style="border-color:rgba(232,92,13,.5);background:rgba(232,92,13,.06);">
+      <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="5" width="14" height="10" rx="1" stroke="#E85C0D" stroke-width="1" fill="none"/><line x1="3" y1="9" x2="17" y2="9" stroke="#E85C0D" stroke-width=".8" opacity=".5"/></svg>
     </div>
     <span class="nav-brand" style="color:var(--spice);">Admin</span>
     <span class="admin-badge">Bourse du Caire</span>
-    <a href="../" class="nav-back" style="border-color:rgba(232,92,13,0.2);">← Portail</a>
+    <a href="../" class="nav-back" style="border-color:rgba(232,92,13,.2);">← Portail</a>
   </div>
   <div style="display:flex;align-items:center;gap:10px;">
-    <div id="user-pill" class="user-pill">
-      <img id="user-avatar" src="" alt="" class="user-avatar">
-      <span class="user-star">★</span>
+    <div class="user-pill">
+      <img id="user-avatar" src="" alt="" class="user-avatar" style="display:none;">
+      <span style="color:var(--gold-mid);font-size:10px;">★</span>
       <span class="user-name" id="user-name">—</span>
     </div>
-    <a id="admin-link" href="../admin/" style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--gold-mid);text-decoration:none;letter-spacing:0.08em;">Admin ↗</a>
-    <button class="disconnect-btn" onclick="logout()">Déconnexion</button>
+    <button class="disc-btn" onclick="logout()">Déconnexion</button>
     <button class="theme-toggle" onclick="toggleTheme()">
-      <svg id="toggle-icon" width="12" height="12" viewBox="0 0 24 24" fill="none">
-        <path id="icon-path" d="M21 12.79A9 9 0 0 1 12 21a9 9 0 0 1 0-18 7 7 0 0 0 9 9.79z" fill="currentColor"/>
-      </svg>
+      <svg id="toggle-icon" width="12" height="12" viewBox="0 0 24 24" fill="none"><path id="icon-path" d="M21 12.79A9 9 0 0 1 12 21a9 9 0 0 1 0-18 7 7 0 0 0 9 9.79z" fill="currentColor"/></svg>
       <span id="toggle-lbl">NUIT</span>
     </button>
   </div>
 </nav>
 
-<!-- ── ADMIN BODY (hidden until auth) ── -->
+<!-- ADMIN BODY (hidden until auth) -->
 <div id="admin-body" style="display:none;">
 <div class="admin-layout">
 
-  <!-- Header -->
   <div class="dash-header">
     <div class="dash-title">★ Dashboard Admin · Bourse du Caire</div>
-    <div class="dash-subtitle">
-      Gestion des Sociétés — Ajouter, modifier, supprimer.<br>
-      Les données sont sauvegardées sur GitHub et visibles en temps réel par tous les visiteurs.
-    </div>
+    <div class="dash-sub">Gestion des sociétés — Ajouter, modifier, supprimer.<br>Les données sont sauvegardées sur GitHub et visibles en temps réel.</div>
   </div>
 
-  <!-- Stats strip -->
-  <div class="stats-strip" id="stats-strip">
-    <div class="stat-tile" style="border-top-color:var(--gold-mid);">
-      <div class="stat-val" id="s-total" style="color:var(--gold)">—</div>
-      <div class="stat-lbl">Total</div>
-    </div>
-    <div class="stat-tile" style="border-top-color:#22B89A;">
-      <div class="stat-val" id="s-a" style="color:#22B89A">—</div>
-      <div class="stat-lbl">Classe A</div>
-    </div>
-    <div class="stat-tile" style="border-top-color:#D4A843;">
-      <div class="stat-val" id="s-b" style="color:#D4A843">—</div>
-      <div class="stat-lbl">Classe B</div>
-    </div>
-    <div class="stat-tile" style="border-top-color:#F0A030;">
-      <div class="stat-val" id="s-c" style="color:#F0A030">—</div>
-      <div class="stat-lbl">Classe C</div>
-    </div>
-    <div class="stat-tile" style="border-top-color:var(--teal);">
-      <div class="stat-val" id="s-nat" style="color:var(--teal-bright)">—</div>
-      <div class="stat-lbl">Nationales</div>
-    </div>
-    <div class="stat-tile" style="border-top-color:var(--amber);">
-      <div class="stat-val" id="s-for" style="color:var(--amber)">—</div>
-      <div class="stat-lbl">Étrangères</div>
-    </div>
-    <div class="stat-tile" style="border-top-color:var(--text3);">
-      <div class="stat-val" id="s-date" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text3);letter-spacing:0.04em;">—</div>
-      <div class="stat-lbl">Mise à jour</div>
-    </div>
+  <div class="stats-strip">
+    <div class="stat-tile" style="border-top-color:var(--gold-mid);"><div class="stat-val" id="s-total" style="color:var(--gold)">—</div><div class="stat-lbl">Total</div></div>
+    <div class="stat-tile" style="border-top-color:#22B89A;"><div class="stat-val" id="s-a" style="color:#22B89A">—</div><div class="stat-lbl">Classe A</div></div>
+    <div class="stat-tile" style="border-top-color:#D4A843;"><div class="stat-val" id="s-b" style="color:#D4A843">—</div><div class="stat-lbl">Classe B</div></div>
+    <div class="stat-tile" style="border-top-color:#F0A030;"><div class="stat-val" id="s-c" style="color:#F0A030">—</div><div class="stat-lbl">Classe C</div></div>
+    <div class="stat-tile" style="border-top-color:var(--teal);"><div class="stat-val" id="s-nat" style="color:var(--teal-bright)">—</div><div class="stat-lbl">Nationales</div></div>
+    <div class="stat-tile" style="border-top-color:var(--amber);"><div class="stat-val" id="s-for" style="color:var(--amber)">—</div><div class="stat-lbl">Etrangères</div></div>
+    <div class="stat-tile" style="border-top-color:var(--text3);"><div class="stat-val" id="s-date" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text3);letter-spacing:.04em;">—</div><div class="stat-lbl">Mise à jour</div></div>
   </div>
 
-  <!-- PAT -->
   <div class="pat-bar">
-    <span class="pat-label">GitHub PAT</span>
-    <input type="password" class="pat-input" id="pat-input" placeholder="github_pat_…" oninput="savePat()">
+    <span class="pat-lbl">GitHub PAT</span>
+    <input type="password" class="pat-in" id="pat-in" placeholder="github_pat_…" oninput="savePat()">
     <button class="btn btn-ghost btn-sm" onclick="savePat()">Enregistrer</button>
-    <div class="pat-status" id="pat-status">
-      <div class="pat-dot no" id="pat-dot"></div>
-      <span id="pat-txt" style="color:var(--text3);font-size:9px;letter-spacing:0.1em;">Non configuré</span>
-    </div>
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:0.06em;opacity:0.7;flex-basis:100%;margin-top:4px;">
-      (Créer sur github.com → Settings → Developer settings → Tokens → Fine-grained → permission Contents: Write)
-    </div>
+    <div class="pat-status" id="pat-status"><div class="pat-dot no" id="pat-dot"></div><span id="pat-txt" style="color:var(--text3);font-size:9px;letter-spacing:.1em;">Non configuré</span></div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);opacity:.7;flex-basis:100%;margin-top:2px;">(github.com → Settings → Developer settings → Tokens → Fine-grained → Contents: Write)</div>
   </div>
 
-  <!-- Action bar -->
   <div class="action-bar">
-    <button class="btn btn-primary" onclick="openModal()">
-      <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><line x1="6" y1="1" x2="6" y2="11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      Ajouter une société
-    </button>
-    <button class="btn btn-ghost" onclick="loadFromGitHub()">
-      <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M10 6A4 4 0 1 1 6 2" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/><polyline points="10,2 10,6 6,6" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Actualiser
-    </button>
-    <button class="btn btn-github" onclick="openGithubModal()">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.8c.85 0 1.71.11 2.51.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z" fill="currentColor"/></svg>
-      Sauvegarder sur GitHub
-    </button>
-    <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:0.08em;" id="company-count">— sociétés</div>
+    <button class="btn btn-primary" onclick="openModal()">+ Ajouter une société</button>
+    <button class="btn btn-ghost" onclick="loadFromGH()">↺ Actualiser</button>
+    <button class="btn btn-gh" onclick="openGhModal()">⬆ Sauvegarder sur GitHub</button>
+    <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:.08em;" id="ccount">—</div>
   </div>
 
-  <!-- Table -->
-  <div class="admin-table-wrap">
-    <table class="admin-table">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Société</th>
-          <th>Nat.</th>
-          <th>Secteur</th>
-          <th title="Équité ×5">Éq.</th>
-          <th title="Santé ×4">Sa.</th>
-          <th title="Transparence ×7">Tr.</th>
-          <th title="Innovation ×8">In.</th>
-          <th title="Écologie ×6">Éc.</th>
-          <th title="Fiabilité ×8">Fi.</th>
-          <th>Score</th>
-          <th>Cl.</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
+  <div class="admin-tbl-wrap">
+    <table class="admin-tbl">
+      <thead><tr>
+        <th>#</th><th>Société</th><th>Nat.</th><th>Secteur</th>
+        <th title="Equite ×5">Eq.</th><th title="Sante ×4">Sa.</th><th title="Transp. ×7">Tr.</th>
+        <th title="Innov. ×8">In.</th><th title="Ecologie ×6">Ec.</th><th title="Fiabilite ×8">Fi.</th>
+        <th>Score</th><th>Cl.</th><th>Actions</th>
+      </tr></thead>
       <tbody id="admin-tbody"></tbody>
     </table>
   </div>
@@ -595,516 +233,359 @@
 </div>
 </div>
 
-<!-- ── MODAL SOCIÉTÉ ── -->
-<div class="modal-overlay" id="modal-overlay">
+<!-- MODAL SOCIÉTÉ -->
+<div class="modal-ov" id="modal-ov">
   <div class="modal-box">
-    <div class="modal-header">
-      <div class="modal-title" id="modal-title">Ajouter une société</div>
-      <button class="modal-close" onclick="closeModal()">✕</button>
-    </div>
+    <div class="modal-hdr"><div class="modal-ttl" id="modal-ttl">Ajouter une societe</div><button class="modal-cls" onclick="closeModal()">✕</button></div>
     <div class="modal-body">
       <div class="form-grid">
-        <div class="form-group full">
-          <label class="form-label">Nom de la société</label>
-          <input type="text" class="form-input" id="f-nom" placeholder="Nom officiel…">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Nationalité</label>
-          <select class="form-select" id="f-nat">
-            <option value="RUN">Royaume-Uni du Nil (RUN)</option>
-            <option value="UDA">Union Démocratique d'Asie (UDA)</option>
+        <div class="form-grp full"><label class="form-lbl">Nom de la société</label><input type="text" class="form-in" id="f-nom" placeholder="Nom officiel…"></div>
+        <div class="form-grp"><label class="form-lbl">Nationalité</label>
+          <select class="form-sel" id="f-nat">
+            <option value="Royaume-Uni du Nil">Royaume-Uni du Nil</option>
+            <option value="Union Démocratique d'Asie">Union Démocratique d'Asie</option>
           </select>
         </div>
-        <div class="form-group">
-          <label class="form-label">Secteur</label>
-          <select class="form-select" id="f-cat">
-            <option>Agriculture & Agroalimentaire</option>
-            <option>BTP & Infrastructures</option>
-            <option>Commerce</option>
-            <option>Énergie</option>
-            <option>Finance</option>
-            <option>Industrie Aéronautique</option>
-            <option>Industrie Automobile</option>
-            <option>Industrie de Défense</option>
-            <option>Industrie lourde</option>
-            <option>Industrie Naval & Portuaire</option>
-            <option>Médias</option>
-            <option>Santé & Pharmacie</option>
-            <option>Secteur Minier</option>
-            <option>Services d'Eau</option>
-            <option>Télécommunications</option>
-            <option>Textile</option>
-            <option>Transport & Logistique</option>
-            <option>Transport aérien & Tourisme</option>
+        <div class="form-grp"><label class="form-lbl">Secteur</label>
+          <select class="form-sel" id="f-cat">
+            <option>Agriculture &amp; Agroalimentaire</option><option>BTP &amp; Infrastructures</option>
+            <option>Commerce</option><option>Énergie</option><option>Finance</option>
+            <option>Industrie Aéronautique</option><option>Industrie Automobile</option>
+            <option>Industrie de Défense</option><option>Industrie lourde</option>
+            <option>Industrie Naval &amp; Portuaire</option><option>Médias</option>
+            <option>Santé &amp; Pharmacie</option><option>Secteur Minier</option>
+            <option>Services d'Eau</option><option>Télécommunications</option>
+            <option>Textile</option><option>Transport &amp; Logistique</option>
+            <option>Transport aérien &amp; Tourisme</option>
           </select>
         </div>
       </div>
-
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;">Notation ESS (0–10 par critère)</div>
-      <div class="form-score-grid">
-        <div class="score-field">
-          <label class="form-label">Équité<br><span style="color:var(--gold-mid)">×5</span></label>
-          <input type="number" class="form-input score-in" id="f-eq" min="0" max="10" value="5" oninput="calcScore()">
-        </div>
-        <div class="score-field">
-          <label class="form-label">Santé<br><span style="color:var(--gold-mid)">×4</span></label>
-          <input type="number" class="form-input score-in" id="f-sa" min="0" max="10" value="5" oninput="calcScore()">
-        </div>
-        <div class="score-field">
-          <label class="form-label">Transp.<br><span style="color:var(--gold-mid)">×7</span></label>
-          <input type="number" class="form-input score-in" id="f-tr" min="0" max="10" value="5" oninput="calcScore()">
-        </div>
-        <div class="score-field">
-          <label class="form-label">Innov.<br><span style="color:var(--gold-mid)">×8</span></label>
-          <input type="number" class="form-input score-in" id="f-inn" min="0" max="10" value="5" oninput="calcScore()">
-        </div>
-        <div class="score-field">
-          <label class="form-label">Écologie<br><span style="color:var(--gold-mid)">×6</span></label>
-          <input type="number" class="form-input score-in" id="f-ec" min="0" max="10" value="5" oninput="calcScore()">
-        </div>
-        <div class="score-field">
-          <label class="form-label">Fiabilité<br><span style="color:var(--gold-mid)">×8</span></label>
-          <input type="number" class="form-input score-in" id="f-fi" min="0" max="10" value="5" oninput="calcScore()">
-        </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;">Notation ESS (0–10 par critère)</div>
+      <div class="score-grid">
+        <div class="score-fld"><label class="form-lbl">Equite<br><span style="color:var(--gold-mid)">×5</span></label><input type="number" class="form-in sc-in" id="f-eq" min="0" max="10" value="5" oninput="calcScore()"></div>
+        <div class="score-fld"><label class="form-lbl">Sante<br><span style="color:var(--gold-mid)">×4</span></label><input type="number" class="form-in sc-in" id="f-sa" min="0" max="10" value="5" oninput="calcScore()"></div>
+        <div class="score-fld"><label class="form-lbl">Transp.<br><span style="color:var(--gold-mid)">×7</span></label><input type="number" class="form-in sc-in" id="f-tr" min="0" max="10" value="5" oninput="calcScore()"></div>
+        <div class="score-fld"><label class="form-lbl">Innov.<br><span style="color:var(--gold-mid)">×8</span></label><input type="number" class="form-in sc-in" id="f-inn" min="0" max="10" value="5" oninput="calcScore()"></div>
+        <div class="score-fld"><label class="form-lbl">Ecologie<br><span style="color:var(--gold-mid)">×6</span></label><input type="number" class="form-in sc-in" id="f-ec" min="0" max="10" value="5" oninput="calcScore()"></div>
+        <div class="score-fld"><label class="form-lbl">Fiabilite<br><span style="color:var(--gold-mid)">×8</span></label><input type="number" class="form-in sc-in" id="f-fi" min="0" max="10" value="5" oninput="calcScore()"></div>
       </div>
-
-      <div class="computed-score">
-        <div>
-          <div class="cs-label">Score ESS calculé</div>
-          <div class="cs-val" id="cs-val">5.00</div>
-        </div>
-        <div>
-          <div class="cs-label">Classe</div>
-          <div class="cs-class cls-B" id="cs-class">B</div>
-        </div>
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);margin-left:12px;line-height:1.7;" id="cs-label-text">Engagée</div>
+      <div class="computed">
+        <div><div class="cs-lbl">Score ESS calcule</div><div class="cs-val" id="cs-val">5.00</div></div>
+        <div><div class="cs-lbl">Classe</div><div class="cs-cls cd-B" id="cs-cls">B</div></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);margin-left:10px;line-height:1.7;" id="cs-label">Engagée</div>
       </div>
     </div>
-    <div class="modal-footer">
+    <div class="modal-ftr">
       <button class="btn btn-ghost btn-sm" onclick="closeModal()">Annuler</button>
-      <button class="btn btn-primary btn-sm" onclick="submitForm()">
-        <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Enregistrer
-      </button>
+      <button class="btn btn-primary btn-sm" onclick="submitForm()">✓ Enregistrer</button>
     </div>
   </div>
 </div>
 
-<!-- ── CONFIRM DELETE ── -->
-<div class="modal-overlay" id="confirm-overlay">
+<!-- CONFIRM DELETE -->
+<div class="modal-ov" id="confirm-ov">
   <div class="confirm-box">
-    <div class="confirm-title">Supprimer la société</div>
+    <div class="confirm-ttl">Supprimer la societe</div>
     <div class="confirm-msg" id="confirm-msg">Confirmer la suppression ?</div>
-    <div class="confirm-actions">
+    <div class="confirm-act">
       <button class="btn btn-ghost btn-sm" onclick="closeConfirm()">Annuler</button>
-      <button class="btn btn-danger btn-sm" onclick="confirmDelete()">Supprimer</button>
+      <button class="btn btn-danger btn-sm" onclick="doDelete()">Supprimer</button>
     </div>
   </div>
 </div>
 
-<!-- ── GITHUB MODAL ── -->
-<div class="modal-overlay" id="github-overlay">
+<!-- GITHUB MODAL -->
+<div class="modal-ov" id="gh-ov">
   <div class="github-box">
-    <div class="modal-header">
-      <div class="modal-title" style="color:var(--teal-bright);">Sauvegarde GitHub</div>
-      <button class="modal-close" onclick="document.getElementById('github-overlay').classList.remove('open')">✕</button>
-    </div>
+    <div class="modal-hdr"><div class="modal-ttl" style="color:var(--teal-bright);">Sauvegarde GitHub</div><button class="modal-cls" onclick="document.getElementById('gh-ov').classList.remove('open')">✕</button></div>
     <div class="modal-body">
-      <div style="font-size:12px;color:var(--text2);margin-bottom:12px;line-height:1.75;">
-        Pousse <code style="font-family:'IBM Plex Mono',monospace;color:var(--gold-mid)">data/bourse.json</code> vers le dépôt GitHub.
-        Requiert un Personal Access Token (PAT) avec permission <strong>Contents: Write</strong>.
-      </div>
-      <div class="github-log" id="github-log">En attente…</div>
+      <div style="font-size:12px;color:var(--text2);margin-bottom:10px;line-height:1.75;">Pousse <code style="font-family:'IBM Plex Mono',monospace;color:var(--gold-mid)">data/bourse.json</code> vers GitHub.</div>
+      <div class="gh-log" id="gh-log">En attente…</div>
     </div>
-    <div class="modal-footer">
-      <button class="btn btn-ghost btn-sm" onclick="document.getElementById('github-overlay').classList.remove('open')">Fermer</button>
-      <button class="btn btn-github btn-sm" id="github-push-btn" onclick="pushToGitHub()">Pousser vers GitHub</button>
+    <div class="modal-ftr">
+      <button class="btn btn-ghost btn-sm" onclick="document.getElementById('gh-ov').classList.remove('open')">Fermer</button>
+      <button class="btn btn-gh btn-sm" id="gh-push-btn" onclick="pushToGH()">Pousser vers GitHub</button>
     </div>
   </div>
 </div>
 
-<!-- ── TOAST ── -->
 <div class="toast" id="toast"></div>
 
 <script>
-// ══════════════════════════════════════════════
-//  STATE
-// ══════════════════════════════════════════════
-let companies = [];
-let editIdx = null;
-let deleteIdx = null;
+// ══════════════════════════
+//  CONFIG
+// ══════════════════════════
+const REPO='BJBellum/UKN', FILE='data/bourse.json';
+// Admin IDs — must have isAdmin() = true via PharosAuth, OR be in this list
+const ADMIN_IDS=['772821169664426025'];
 
-const ADMINS = ['772821169664426025']; // BJ_Bellum Discord ID
-const REPO   = 'BJBellum/UKN';
-const FILE   = 'data/bourse.json';
-
-// ══════════════════════════════════════════════
+// ══════════════════════════
 //  THEME
-// ══════════════════════════════════════════════
-function applyTheme(t) {
-  document.documentElement.setAttribute('data-theme', t);
-  const lbl = document.getElementById('toggle-lbl');
-  const path = document.getElementById('icon-path');
-  if (lbl) lbl.textContent = t === 'dark' ? 'NUIT' : 'JOUR';
-  if (path) path.setAttribute('d', t === 'dark'
-    ? 'M21 12.79A9 9 0 0 1 12 21a9 9 0 0 1 0-18 7 7 0 0 0 9 9.79z'
-    : 'M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 2a8 8 0 1 1 0 16A8 8 0 0 1 12 4z');
-  localStorage.setItem('run-theme', t);
+// ══════════════════════════
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  const lbl=document.getElementById('toggle-lbl'),path=document.getElementById('icon-path');
+  if(lbl)lbl.textContent=t==='dark'?'NUIT':'JOUR';
+  if(path)path.setAttribute('d',t==='dark'
+    ?'M21 12.79A9 9 0 0 1 12 21a9 9 0 0 1 0-18 7 7 0 0 0 9 9.79z'
+    :'M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 2a8 8 0 1 1 0 16A8 8 0 0 1 12 4z');
+  localStorage.setItem('run-theme',t);
 }
-function toggleTheme() {
-  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-}
-(function() {
-  const saved = localStorage.getItem('run-theme');
-  const mq = window.matchMedia('(prefers-color-scheme: dark)');
-  applyTheme(saved || (mq.matches ? 'dark' : 'light'));
+function toggleTheme(){applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');}
+(function(){
+  const s=localStorage.getItem('run-theme');
+  const mq=window.matchMedia('(prefers-color-scheme: dark)');
+  applyTheme(s||(mq.matches?'dark':'light'));
 })();
 
-// ══════════════════════════════════════════════
+// ══════════════════════════
 //  TOAST
-// ══════════════════════════════════════════════
-function toast(msg, type = 'ok') {
-  const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.className = 'toast show ' + type;
-  clearTimeout(window._toastTimer);
-  window._toastTimer = setTimeout(() => el.classList.remove('show'), 3200);
+// ══════════════════════════
+function toast(msg,type='ok'){
+  const el=document.getElementById('toast');
+  el.textContent=msg; el.className='toast show '+type;
+  clearTimeout(window._tt);
+  window._tt=setTimeout(()=>el.classList.remove('show'),3000);
 }
 
-// ══════════════════════════════════════════════
+// ══════════════════════════
 //  ESS CALC
-// ══════════════════════════════════════════════
-function calcESS(eq,sa,tr,inn,ec,fi) {
-  const score = ((eq*5) + (sa*4) + (tr*7) + (inn*8) + (ec*6) + (fi*8)) / 38;
-  return Math.round(score * 100) / 100;
-}
-function scoreToClass(s) {
-  if (s >= 8.5) return 'A';
-  if (s >= 7.0) return 'B';
-  if (s >= 5.5) return 'C';
-  if (s >= 4.0) return 'D';
-  if (s >= 2.5) return 'E';
-  return 'F';
-}
-const classLabels = {A:'Exemplaire',B:'Engagée',C:'En transition',D:'Vulnérable',E:'Critique',F:'Défaillante'};
+// ══════════════════════════
+function calcESS(eq,sa,tr,inn,ec,fi){return Math.round(((eq*5)+(sa*4)+(tr*7)+(inn*8)+(ec*6)+(fi*8))/38*100)/100;}
+function toClass(s){if(s>=8.5)return'A';if(s>=7)return'B';if(s>=5.5)return'C';if(s>=4)return'D';if(s>=2.5)return'E';return'F';}
+const CLS_LABELS={A:'Exemplaire',B:'Engagée',C:'En transition',D:'Vulnérable',E:'Critique',F:'Défaillante'};
 
-function calcScore() {
-  const vals = ['f-eq','f-sa','f-tr','f-inn','f-ec','f-fi'].map(id => parseInt(document.getElementById(id).value)||0);
-  const score = calcESS(...vals);
-  const cl = scoreToClass(score);
-  const csEl = document.getElementById('cs-val');
-  const ccEl = document.getElementById('cs-class');
-  const ctEl = document.getElementById('cs-label-text');
-  if(csEl) { csEl.textContent = score.toFixed(2); }
-  if(ccEl) { ccEl.textContent = cl; ccEl.className = 'cs-class cls-' + cl; }
-  if(ctEl) { ctEl.textContent = classLabels[cl] || ''; }
+function calcScore(){
+  const g=id=>parseInt(document.getElementById(id).value)||0;
+  const s=calcESS(g('f-eq'),g('f-sa'),g('f-tr'),g('f-inn'),g('f-ec'),g('f-fi'));
+  const cl=toClass(s);
+  const v=document.getElementById('cs-val'),c=document.getElementById('cs-cls'),l=document.getElementById('cs-label');
+  if(v)v.textContent=s.toFixed(2);
+  if(c){c.textContent=cl;c.className='cs-cls cd-'+cl;}
+  if(l)l.textContent=CLS_LABELS[cl]||'';
 }
 
-// ══════════════════════════════════════════════
+// ══════════════════════════
 //  PAT
-// ══════════════════════════════════════════════
-function savePat() {
-  const v = document.getElementById('pat-input').value.trim();
-  if (v) localStorage.setItem('ukn-pat', v);
-  updatePatUI();
-}
-function getPat() { return document.getElementById('pat-input').value.trim() || localStorage.getItem('ukn-pat') || ''; }
-function updatePatUI() {
-  const p = getPat();
-  const dot = document.getElementById('pat-dot');
-  const txt = document.getElementById('pat-txt');
-  if (!dot || !txt) return;
-  if (p && p.length > 10) {
-    dot.className = 'pat-dot ok';
-    txt.textContent = 'Configuré (' + p.substring(0,8) + '…)';
-    txt.style.color = 'var(--teal-bright)';
-  } else {
-    dot.className = 'pat-dot no';
-    txt.textContent = 'Non configuré';
-    txt.style.color = 'var(--text3)';
-  }
+// ══════════════════════════
+function savePat(){const v=document.getElementById('pat-in').value.trim();if(v)localStorage.setItem('pharos_gh_pat',v);updatePat();}
+function getPat(){return document.getElementById('pat-in').value.trim()||localStorage.getItem('pharos_gh_pat')||'';}
+function updatePat(){
+  const p=getPat(),dot=document.getElementById('pat-dot'),txt=document.getElementById('pat-txt');
+  if(!dot||!txt)return;
+  if(p&&p.length>10){dot.className='pat-dot ok';txt.textContent='Configuré ('+p.substring(0,8)+'…)';txt.style.color='var(--teal-bright)';}
+  else{dot.className='pat-dot no';txt.textContent='Non configuré';txt.style.color='var(--text3)';}
 }
 
-// ══════════════════════════════════════════════
-//  RENDER TABLE
-// ══════════════════════════════════════════════
-function colorFor(v) {
-  const colors = {10:'#22B89A',9:'#22B89A',8:'#4ACB9A',7:'#D4A843',6:'#F0A030',5:'#E07028',4:'#D04828',3:'#C04040',2:'#A03030',1:'#882020',0:'#666'};
-  return colors[Math.max(0,Math.min(10,v))] || '#888';
-}
-function scoreColor(s) {
-  if(s>=8.5)return'#22B89A'; if(s>=7)return'#D4A843'; if(s>=5.5)return'#F0A030'; if(s>=4)return'#C87020'; return'#E84848';
+// ══════════════════════════
+//  STATE
+// ══════════════════════════
+let companies=[], editIdx=null, delIdx=null;
+
+function processCompanies(raw){
+  const proc=raw.map(c=>{
+    const score=calcESS(c.eq,c.sa,c.tr,c.inn,c.ec,c.fi);
+    return{...c,score,classe:toClass(score)};
+  });
+  proc.sort((a,b)=>b.score-a.score);
+  let rank=1;
+  proc.forEach((c,i)=>{
+    if(i>0&&c.score===proc[i-1].score)c.rank=proc[i-1].rank;
+    else c.rank=rank;
+    rank=i+2;
+  });
+  return proc;
 }
 
-function renderAdminTable() {
-  const tbody = document.getElementById('admin-tbody');
-  if(!companies.length) {
-    tbody.innerHTML = '<tr><td colspan="13" style="text-align:center;padding:28px;color:var(--text3);font-family:\'IBM Plex Mono\',monospace;font-size:11px;letter-spacing:0.1em;">AUCUNE SOCIÉTÉ</td></tr>';
-    return;
-  }
-  tbody.innerHTML = companies.map((c, i) => {
-    const sc = scoreColor(c.score);
-    const cl = c.classe;
-    return `<tr>
-      <td style="color:var(--text3);font-size:10px">${c.rank||i+1}</td>
-      <td class="td-edit-name">${c.nom}</td>
-      <td><span class="nat-badge nat-${(c.nat||'RUN').toLowerCase()}">${c.nat||'RUN'}</span></td>
-      <td style="color:var(--text3);font-size:10px;max-width:160px;white-space:normal;line-height:1.3">${c.secteur||'—'}</td>
+function colorFor(v){const c=['#882020','#A03030','#C04040','#D04828','#E07028','#F0A030','#D4A843','#8ACA60','#4ACB9A','#22B89A','#22B89A'];return c[Math.max(0,Math.min(10,v))];}
+function scoreColor(s){if(s>=8.5)return'#22B89A';if(s>=7)return'#D4A843';if(s>=5.5)return'#F0A030';if(s>=4)return'#C87020';return'#E84848';}
+function natCode(nat){if(!nat||nat==='Royaume-Uni du Nil')return'RUN';return'UDA';}
+function natCls(nat){return natCode(nat)==='RUN'?'nat-run-b':'nat-uda-b';}
+
+function renderAdminTable(){
+  const tbody=document.getElementById('admin-tbody');
+  if(!companies.length){tbody.innerHTML=`<tr><td colspan="13" style="text-align:center;padding:24px;color:var(--text3);font-family:'IBM Plex Mono',monospace;font-size:11px;">AUCUNE SOCIETE</td></tr>`;return;}
+  const el=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+  el('s-total',companies.length);
+  el('s-a',companies.filter(c=>c.classe==='A').length);
+  el('s-b',companies.filter(c=>c.classe==='B').length);
+  el('s-c',companies.filter(c=>c.classe==='C').length);
+  el('s-nat',companies.filter(c=>c.nat==='Royaume-Uni du Nil').length);
+  el('s-for',companies.filter(c=>c.nat!=='Royaume-Uni du Nil').length);
+  el('s-date',new Date().toISOString().slice(0,10));
+  el('ccount',companies.length+' sociétés');
+  tbody.innerHTML=companies.map((c,i)=>{
+    const sc=scoreColor(c.score);
+    return`<tr>
+      <td style="color:var(--text3);font-size:9px">${c.rank||i+1}</td>
+      <td style="color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:11px;max-width:190px;white-space:normal;line-height:1.3">${c.nom}</td>
+      <td><span class="nat-b ${natCls(c.nat)}">${natCode(c.nat)}</span></td>
+      <td style="color:var(--text3);font-size:10px;max-width:150px;white-space:normal;line-height:1.3">${c.cat||'—'}</td>
       <td style="color:${colorFor(c.eq)};text-align:center">${c.eq}</td>
       <td style="color:${colorFor(c.sa)};text-align:center">${c.sa}</td>
       <td style="color:${colorFor(c.tr)};text-align:center">${c.tr}</td>
       <td style="color:${colorFor(c.inn)};text-align:center">${c.inn}</td>
       <td style="color:${colorFor(c.ec)};text-align:center">${c.ec}</td>
       <td style="color:${colorFor(c.fi)};text-align:center">${c.fi}</td>
-      <td><span class="score-inline" style="color:${sc}">${c.score}</span></td>
-      <td><span class="class-dot cls-${cl}">${cl}</span></td>
-      <td style="display:flex;gap:6px;padding:8px 12px;">
-        <button class="btn btn-ghost btn-sm" onclick="editCompany(${i})">Modifier</button>
+      <td style="color:${sc};font-weight:500">${c.score.toFixed(2)}</td>
+      <td><span class="cls-dot cd-${c.classe}">${c.classe}</span></td>
+      <td style="display:flex;gap:6px;padding:7px 11px;">
+        <button class="btn btn-ghost btn-sm" onclick="openModal(${i})">Modifier</button>
         <button class="btn btn-danger btn-sm" onclick="openConfirm(${i})">Suppr.</button>
       </td>
     </tr>`;
   }).join('');
-
-  // stats
-  const t = companies.length;
-  const el = (id, v) => { const e = document.getElementById(id); if(e) e.textContent = v; };
-  el('s-total', t);
-  el('s-a', companies.filter(c=>c.classe==='A').length);
-  el('s-b', companies.filter(c=>c.classe==='B').length);
-  el('s-c', companies.filter(c=>c.classe==='C').length);
-  el('s-nat', companies.filter(c=>c.nat==='RUN').length);
-  el('s-for', companies.filter(c=>c.nat!=='RUN').length);
-  el('s-date', new Date().toISOString().slice(0,10));
-  el('company-count', t + ' sociétés');
 }
 
-function recalcRanks() {
-  companies.sort((a,b) => b.score - a.score);
-  let rank = 1;
-  companies.forEach((c, i) => {
-    if (i > 0 && c.score === companies[i-1].score) c.rank = companies[i-1].rank;
-    else { c.rank = rank; }
-    rank = i + 2;
-  });
-}
-
-// ══════════════════════════════════════════════
+// ══════════════════════════
 //  MODAL
-// ══════════════════════════════════════════════
-function openModal(idx = null) {
-  editIdx = idx;
-  const title = document.getElementById('modal-title');
-  if (idx !== null) {
-    const c = companies[idx];
-    title.textContent = 'Modifier — ' + c.nom;
-    document.getElementById('f-nom').value = c.nom;
-    document.getElementById('f-nat').value = c.nat || 'RUN';
-    document.getElementById('f-cat').value = c.secteur || '';
-    document.getElementById('f-eq').value  = c.eq;
-    document.getElementById('f-sa').value  = c.sa;
-    document.getElementById('f-tr').value  = c.tr;
-    document.getElementById('f-inn').value = c.inn;
-    document.getElementById('f-ec').value  = c.ec;
-    document.getElementById('f-fi').value  = c.fi;
-  } else {
-    title.textContent = 'Ajouter une société';
-    document.getElementById('f-nom').value = '';
-    document.getElementById('f-nat').value = 'RUN';
-    document.getElementById('f-cat').value = 'Énergie';
-    ['f-eq','f-sa','f-tr','f-inn','f-ec','f-fi'].forEach(id => document.getElementById(id).value = 5);
+// ══════════════════════════
+function openModal(idx=null){
+  editIdx=idx;
+  const ttl=document.getElementById('modal-ttl');
+  if(idx!==null){
+    const c=companies[idx];
+    ttl.textContent='Modifier — '+c.nom;
+    document.getElementById('f-nom').value=c.nom;
+    document.getElementById('f-nat').value=c.nat;
+    document.getElementById('f-cat').value=c.cat||'';
+    ['eq','sa','tr','inn','ec','fi'].forEach(k=>document.getElementById('f-'+k).value=c[k]);
+  }else{
+    ttl.textContent='Ajouter une societe';
+    document.getElementById('f-nom').value='';
+    document.getElementById('f-nat').value='Royaume-Uni du Nil';
+    document.getElementById('f-cat').value='Énergie';
+    ['eq','sa','tr','inn','ec','fi'].forEach(k=>document.getElementById('f-'+k).value=5);
   }
   calcScore();
-  document.getElementById('modal-overlay').classList.add('open');
+  document.getElementById('modal-ov').classList.add('open');
 }
-function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); }
-
-function submitForm() {
-  const nom = document.getElementById('f-nom').value.trim();
-  if (!nom) { toast('Le nom est obligatoire.', 'err'); return; }
-  const eq  = parseInt(document.getElementById('f-eq').value)||0;
-  const sa  = parseInt(document.getElementById('f-sa').value)||0;
-  const tr  = parseInt(document.getElementById('f-tr').value)||0;
-  const inn = parseInt(document.getElementById('f-inn').value)||0;
-  const ec  = parseInt(document.getElementById('f-ec').value)||0;
-  const fi  = parseInt(document.getElementById('f-fi').value)||0;
-  const score  = calcESS(eq,sa,tr,inn,ec,fi);
-  const classe = scoreToClass(score);
-  const obj = { nom, nat: document.getElementById('f-nat').value, secteur: document.getElementById('f-cat').value, eq,sa,tr,inn,ec,fi, score, classe };
-
-  if (editIdx !== null) {
-    companies[editIdx] = { ...companies[editIdx], ...obj };
-    toast('Société modifiée.', 'ok');
-  } else {
-    companies.push(obj);
-    toast('Société ajoutée.', 'ok');
-  }
-  recalcRanks();
+function closeModal(){document.getElementById('modal-ov').classList.remove('open');}
+function submitForm(){
+  const nom=document.getElementById('f-nom').value.trim();
+  if(!nom){toast('Le nom est obligatoire.','err');return;}
+  const g=id=>parseInt(document.getElementById(id).value)||0;
+  const eq=g('f-eq'),sa=g('f-sa'),tr=g('f-tr'),inn=g('f-inn'),ec=g('f-ec'),fi=g('f-fi');
+  const score=calcESS(eq,sa,tr,inn,ec,fi);
+  const obj={nom,nat:document.getElementById('f-nat').value,cat:document.getElementById('f-cat').value,eq,sa,tr,inn,ec,fi,score,classe:toClass(score)};
+  if(editIdx!==null) companies[editIdx]={...companies[editIdx],...obj};
+  else companies.push(obj);
+  companies=processCompanies(companies);
   renderAdminTable();
   closeModal();
+  toast(editIdx!==null?'Société modifiée.':'Société ajoutée.');
 }
 
-// ══════════════════════════════════════════════
+// ══════════════════════════
 //  DELETE
-// ══════════════════════════════════════════════
-function openConfirm(idx) {
-  deleteIdx = idx;
-  const msg = document.getElementById('confirm-msg');
-  if (msg) msg.textContent = `Supprimer « ${companies[idx].nom} » ? Cette action est irréversible.`;
-  document.getElementById('confirm-overlay').classList.add('open');
+// ══════════════════════════
+function openConfirm(idx){
+  delIdx=idx;
+  const msg=document.getElementById('confirm-msg');
+  if(msg)msg.textContent=`Supprimer « ${companies[idx].nom} » ? Action irréversible.`;
+  document.getElementById('confirm-ov').classList.add('open');
 }
-function closeConfirm() { document.getElementById('confirm-overlay').classList.remove('open'); }
-function confirmDelete() {
-  if (deleteIdx === null) return;
-  companies.splice(deleteIdx, 1);
-  recalcRanks();
+function closeConfirm(){document.getElementById('confirm-ov').classList.remove('open');}
+function doDelete(){
+  if(delIdx===null)return;
+  companies.splice(delIdx,1);
+  companies=processCompanies(companies);
   renderAdminTable();
   closeConfirm();
-  toast('Société supprimée.', 'ok');
+  toast('Société supprimée.');
 }
 
-function editCompany(idx) { openModal(idx); }
-
-// ══════════════════════════════════════════════
+// ══════════════════════════
 //  GITHUB
-// ══════════════════════════════════════════════
-function openGithubModal() {
-  document.getElementById('github-overlay').classList.add('open');
-  document.getElementById('github-log').innerHTML = '<span class="log-info">Prêt. Cliquez sur "Pousser vers GitHub".</span>';
+// ══════════════════════════
+function openGhModal(){
+  document.getElementById('gh-ov').classList.add('open');
+  document.getElementById('gh-log').innerHTML='<span class="log-info">Prêt. Cliquer sur "Pousser vers GitHub".</span>';
+}
+function logGh(msg,type='info'){
+  const log=document.getElementById('gh-log');
+  if(!log)return;
+  const cls={ok:'log-ok',err:'log-err',info:'log-info'}[type]||'log-info';
+  log.innerHTML+=`\n<span class="${cls}">${msg}</span>`;
+  log.scrollTop=log.scrollHeight;
+}
+async function pushToGH(){
+  const pat=getPat();
+  if(!pat||pat.length<10){toast('Configurez votre PAT GitHub.','err');return;}
+  const btn=document.getElementById('gh-push-btn');
+  if(btn)btn.disabled=true;
+  logGh('→ Récupération du SHA actuel…','info');
+  try{
+    const sr=await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`,{headers:{'Authorization':`token ${pat}`,'Accept':'application/vnd.github.v3+json'}});
+    let sha=null;
+    if(sr.ok){const sd=await sr.json();sha=sd.sha;logGh(`✓ SHA: ${sha.substring(0,10)}…`,'ok');}
+    else if(sr.status===404)logGh('✓ Nouveau fichier.','ok');
+    else{logGh(`✗ Erreur SHA: ${sr.status}`,'err');if(btn)btn.disabled=false;return;}
+    const content={companies,meta:{updated:new Date().toISOString().slice(0,10),total:companies.length}};
+    const encoded=btoa(unescape(encodeURIComponent(JSON.stringify(content,null,2))));
+    const body={message:`update bourse.json — ${companies.length} sociétés`,content:encoded};
+    if(sha)body.sha=sha;
+    logGh('→ Envoi…','info');
+    const pr=await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`,{method:'PUT',headers:{'Authorization':`token ${pat}`,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)});
+    if(pr.ok){const pd=await pr.json();logGh(`✓ Poussé ! Commit: ${pd.commit?.sha?.substring(0,10)||'—'}`,'ok');toast('Données sauvegardées sur GitHub !','ok');}
+    else{const ed=await pr.json();logGh(`✗ Erreur: ${pr.status} — ${ed.message||''}`,'err');toast('Erreur sauvegarde.','err');}
+  }catch(e){logGh(`✗ Erreur réseau: ${e.message}`,'err');toast('Erreur réseau.','err');}
+  if(btn)btn.disabled=false;
 }
 
-function logGithub(msg, type='info') {
-  const log = document.getElementById('github-log');
-  if (!log) return;
-  const cls = {ok:'log-ok', err:'log-err', info:'log-info'}[type] || 'log-info';
-  log.innerHTML += `\n<span class="${cls}">${msg}</span>`;
-  log.scrollTop = log.scrollHeight;
+async function loadFromGH(){
+  try{
+    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`,{headers:{'Accept':'application/vnd.github.v3.raw'},cache:'no-store'});
+    if(!r.ok)throw new Error();
+    const db=await r.json();
+    const raw=db.companies||db;
+    if(raw&&raw.length){companies=processCompanies(raw);renderAdminTable();toast(`${companies.length} sociétés chargées.`);}
+  }catch(e){toast('Erreur de chargement.','err');}
 }
 
-async function pushToGitHub() {
-  const pat = getPat();
-  if (!pat || pat.length < 10) { toast('Configurez votre PAT GitHub d\'abord.', 'err'); return; }
-
-  const btn = document.getElementById('github-push-btn');
-  if (btn) btn.disabled = true;
-  logGithub('→ Récupération du SHA du fichier actuel…', 'info');
-
-  try {
-    // Get current file SHA
-    const shaResp = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`, {
-      headers: { 'Authorization': `token ${pat}`, 'Accept': 'application/vnd.github.v3+json' }
-    });
-
-    let sha = null;
-    if (shaResp.ok) {
-      const shaData = await shaResp.json();
-      sha = shaData.sha;
-      logGithub(`✓ SHA récupéré : ${sha.substring(0,10)}…`, 'ok');
-    } else if (shaResp.status === 404) {
-      logGithub('✓ Nouveau fichier (pas de SHA).', 'ok');
-    } else {
-      logGithub(`✗ Erreur SHA : ${shaResp.status}`, 'err');
-      if (btn) btn.disabled = false;
-      return;
-    }
-
-    // Prepare content
-    const content = {
-      companies: companies,
-      meta: { updated: new Date().toISOString().slice(0,10), total: companies.length }
-    };
-    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2))));
-
-    logGithub('→ Envoi du fichier…', 'info');
-    const body = { message: `update bourse.json — ${companies.length} sociétés [admin]`, content: encoded };
-    if (sha) body.sha = sha;
-
-    const pushResp = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `token ${pat}`,
-        'Accept': 'application/vnd.github.v3+json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    });
-
-    if (pushResp.ok) {
-      const pushData = await pushResp.json();
-      logGithub(`✓ Fichier poussé avec succès !`, 'ok');
-      logGithub(`  Commit : ${pushData.commit?.sha?.substring(0,10)||'—'}`, 'ok');
-      toast('Données sauvegardées sur GitHub !', 'ok');
-    } else {
-      const errData = await pushResp.json();
-      logGithub(`✗ Erreur push : ${pushResp.status} — ${errData.message || ''}`, 'err');
-      toast('Erreur lors de la sauvegarde.', 'err');
-    }
-  } catch(e) {
-    logGithub(`✗ Erreur réseau : ${e.message}`, 'err');
-    toast('Erreur réseau.', 'err');
-  }
-
-  if (btn) btn.disabled = false;
+// ══════════════════════════
+//  AUTH — uses PharosAuth
+// ══════════════════════════
+function showAdmin(user){
+  document.getElementById('access-wall').style.display='none';
+  document.getElementById('admin-nav').style.display='flex';
+  document.getElementById('admin-body').style.display='block';
+  const av=document.getElementById('user-avatar'),nm=document.getElementById('user-name');
+  if(av&&user.avatar){av.src=`https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=32`;av.style.display='block';}
+  if(nm)nm.textContent=user.global_name||user.username||'—';
+  const savedPat=localStorage.getItem('pharos_gh_pat');
+  if(savedPat){document.getElementById('pat-in').value=savedPat;}
+  updatePat();
+  loadFromGH();
 }
 
-// ══════════════════════════════════════════════
-//  LOAD FROM GITHUB
-// ══════════════════════════════════════════════
-async function loadFromGitHub() {
-  try {
-    const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`, {
-      headers: { 'Accept': 'application/vnd.github.v3.raw' }, cache: 'no-store'
-    });
-    if (!r.ok) { toast('Impossible de charger les données.', 'err'); return; }
-    const db = await r.json();
-    const cs = db.companies || db;
-    if (cs && cs.length) {
-      companies = cs;
-      recalcRanks();
-      renderAdminTable();
-      toast(`${companies.length} sociétés chargées.`, 'ok');
-    }
-  } catch(e) { toast('Erreur de chargement.', 'err'); }
+function logout(){
+  if(window.PharosAuth?.logout)window.PharosAuth.logout();
+  else{['ukn_token','ukn_user','pharos_session','pharos-discord-token'].forEach(k=>localStorage.removeItem(k));}
+  location.href='../';
 }
 
-// ══════════════════════════════════════════════
-//  LOGOUT
-// ══════════════════════════════════════════════
-function logout() {
-  localStorage.removeItem('pharos-discord-token');
-  localStorage.removeItem('pharos-user');
-  location.href = '../';
-}
-
-// ══════════════════════════════════════════════
-//  AUTH (pharos-auth.js compatible)
-// ══════════════════════════════════════════════
-function showAdmin(user) {
-  document.getElementById('access-wall').style.display = 'none';
-  document.getElementById('admin-nav').style.display   = 'flex';
-  document.getElementById('admin-body').style.display  = 'block';
-  const avatar = document.getElementById('user-avatar');
-  const name   = document.getElementById('user-name');
-  if (avatar && user.avatar) {
-    avatar.src = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=32`;
-    avatar.style.display = 'block';
-  }
-  if (name) name.textContent = user.username || user.global_name || '—';
-
-  const savedPat = localStorage.getItem('ukn-pat');
-  if (savedPat) { document.getElementById('pat-input').value = savedPat; }
-  updatePatUI();
-  loadFromGitHub();
-}
-
-// Attach Discord OAuth URL
-(function() {
-  const STATE = btoa(encodeURIComponent(window.location.href));
-  const OAuthURL = `https://discord.com/oauth2/authorize?client_id=1483200078092042300&redirect_uri=${encodeURIComponent('https://BJBellum.github.io/UKN/auth/callback/')}&response_type=token&scope=identify&state=${STATE}`;
-  const btn = document.getElementById('discord-auth-btn');
-  if (btn) btn.href = OAuthURL;
+// Build Discord OAuth URL
+(function(){
+  const STATE=btoa(encodeURIComponent(window.location.href));
+  const url=`https://discord.com/oauth2/authorize?client_id=1483200078092042300&redirect_uri=${encodeURIComponent('https://BJBellum.github.io/UKN/auth/callback/')}&response_type=token&scope=identify&state=${STATE}`;
+  const btn=document.getElementById('discord-btn');
+  if(btn)btn.href=url;
 })();
+
+// Check auth after pharos-auth.js has run
+window.addEventListener('DOMContentLoaded',()=>{
+  // pharos-auth.js runs synchronously before this, so PharosAuth is ready
+  const pa=window.PharosAuth;
+  if(pa){
+    const user=pa.getUser();
+    const isAdmin=pa.isAdmin();
+    if(user&&isAdmin) showAdmin(user);
+    // not admin — access wall stays visible
+  }
+});
 </script>
-<script src="../assets/dune-init.js"></script>
+<!-- pharos-auth.js MUST be loaded before DOMContentLoaded fires -->
 <script src="../pharos-auth.js"></script>
 </body>
 </html>
