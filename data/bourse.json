@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updated": "2026-03-21",
-  "description": "Bourse du Caire Â· SystÃ¨me ESS Â· Royaume-Uni du Nil",
+  "description": "Bourse du Caire ÃÂ· SystÃÂ¨me ESS ÃÂ· Royaume-Uni du Nil",
   "formula": "((eq*5)+(sa*4)+(tr*7)+(inn*8)+(ec*6)+(fi*8))/38",
   "weights": {
     "eq": 5,
@@ -384,17 +384,6 @@
       "inn": 6,
       "ec": 3,
       "fi": 7
-    },
-    {
-      "nom": "AnnonyWOLFRODA",
-      "nat": "Royaume-Uni du Nil",
-      "cat": "Énergie",
-      "eq": 5,
-      "sa": 5,
-      "tr": 5,
-      "inn": 5,
-      "ec": 5,
-      "fi": 5
     }
   ]
 }
