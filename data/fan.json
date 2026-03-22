@@ -291,7 +291,7 @@
         "nom": "BN-05",
         "categorie": "Terrestre",
         "niveau_requis": 3,
-        "cout_slots": 2,
+        "cout_slots": 3,
         "cout_prod": 460,
         "cout_vente": 999
       },
@@ -309,7 +309,7 @@
         "nom": "RK-01",
         "categorie": "Terrestre",
         "niveau_requis": 3,
-        "cout_slots": 4,
+        "cout_slots": 6,
         "cout_prod": 764,
         "cout_vente": 1549
       },
@@ -318,7 +318,7 @@
         "nom": "RD-04",
         "categorie": "Terrestre",
         "niveau_requis": 2,
-        "cout_slots": 4,
+        "cout_slots": 6,
         "cout_prod": 647,
         "cout_vente": 1799
       },
@@ -336,7 +336,7 @@
         "nom": "MD-114",
         "categorie": "Terrestre",
         "niveau_requis": 3,
-        "cout_slots": 20,
+        "cout_slots": 200,
         "cout_prod": 13088,
         "cout_vente": 26999
       },
@@ -345,7 +345,7 @@
         "nom": "MD-D-47",
         "categorie": "Terrestre",
         "niveau_requis": 3,
-        "cout_slots": 10,
+        "cout_slots": 120,
         "cout_prod": 9288,
         "cout_vente": 20000
       },
@@ -354,7 +354,7 @@
         "nom": "MD-O-122",
         "categorie": "Terrestre",
         "niveau_requis": 3,
-        "cout_slots": 20,
+        "cout_slots": 200,
         "cout_prod": 12666,
         "cout_vente": 24999
       },
@@ -363,7 +363,7 @@
         "nom": "MD-T-88",
         "categorie": "Terrestre",
         "niveau_requis": 3,
-        "cout_slots": 20,
+        "cout_slots": 320,
         "cout_prod": 12244,
         "cout_vente": 24999
       },
@@ -372,7 +372,7 @@
         "nom": "NM-20 \"Sobek\"",
         "categorie": "Terrestre",
         "niveau_requis": 3,
-        "cout_slots": 5000,
+        "cout_slots": 1200,
         "cout_prod": 90355,
         "cout_vente": 199999
       },
@@ -381,7 +381,7 @@
         "nom": "DB-01 \"Saqr\"",
         "categorie": "Terrestre",
         "niveau_requis": 3,
-        "cout_slots": 6000,
+        "cout_slots": 2140,
         "cout_prod": 116533,
         "cout_vente": 229999
       },
@@ -399,7 +399,7 @@
         "nom": "Classe \"Aqrab\"",
         "categorie": "Maritime",
         "niveau_requis": 2,
-        "cout_slots": 20000,
+        "cout_slots": 27000,
         "cout_prod": 4753332,
         "cout_vente": 10000000
       },
@@ -408,7 +408,7 @@
         "nom": "Classe \"Qahir\"",
         "categorie": "Maritime",
         "niveau_requis": 2,
-        "cout_slots": 35000,
+        "cout_slots": 36000,
         "cout_prod": 12400000,
         "cout_vente": 25000000
       },
@@ -417,7 +417,7 @@
         "nom": "Classe \"Al-Temsah\"",
         "categorie": "Maritime",
         "niveau_requis": 2,
-        "cout_slots": 20000,
+        "cout_slots": 18000,
         "cout_prod": 1047111,
         "cout_vente": 2099999
       },
@@ -426,7 +426,7 @@
         "nom": "MQ-05",
         "categorie": "Aerospatiale",
         "niveau_requis": 4,
-        "cout_slots": 3000,
+        "cout_slots": 4400,
         "cout_prod": 329000,
         "cout_vente": 999999
       },
@@ -435,7 +435,7 @@
         "nom": "MQ-33 \"Cobra\"",
         "categorie": "Aerospatiale",
         "niveau_requis": 4,
-        "cout_slots": 3000,
+        "cout_slots": 4400,
         "cout_prod": 329000,
         "cout_vente": 1499999
       }
