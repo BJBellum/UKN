@@ -49,6 +49,10 @@
 .qty-btn{background:transparent;border:1px solid var(--border2);color:var(--text3);width:20px;height:20px;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:all .15s;line-height:1;}
 .qty-btn:hover{border-color:var(--spice);color:var(--spice);}
 .qty-val-sm{width:32px;height:20px;background:var(--bg);border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);border-left:none;border-right:none;text-align:center;font-family:'Dune Rise',serif;font-size:10px;color:var(--spice);outline:none;}
+/* Step selector */
+.step-btn{background:transparent;border:1px solid var(--border2);color:var(--text3);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.04em;padding:3px 6px;border-radius:2px;cursor:pointer;transition:all .15s;line-height:1.2;}
+.step-btn:hover{border-color:var(--spice);color:var(--spice);}
+.step-btn.active{background:rgba(232,92,13,.15);border-color:var(--spice);color:var(--spice);font-weight:500;}
 
 /* RIGHT PANEL */
 .prod-panel{padding:24px 28px;overflow-y:auto;}
@@ -151,6 +155,23 @@
         <option value="Aerospatiale">Aérien</option>
       </select>
     </div>
+    <!-- STEP SELECTOR -->
+    <div style="padding:8px 12px;border-bottom:1px solid var(--border);background:var(--bg2);display:flex;align-items:center;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:8;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.14em;color:var(--text3);white-space:nowrap;">PAS</span>
+      <div style="display:flex;gap:3px;flex-wrap:wrap;" id="step-btns">
+        <button class="step-btn active" data-step="1" onclick="setStep(1)">1</button>
+        <button class="step-btn" data-step="25" onclick="setStep(25)">25</button>
+        <button class="step-btn" data-step="50" onclick="setStep(50)">50</button>
+        <button class="step-btn" data-step="100" onclick="setStep(100)">100</button>
+        <button class="step-btn" data-step="500" onclick="setStep(500)">500</button>
+        <button class="step-btn" data-step="1000" onclick="setStep(1000)">1k</button>
+        <button class="step-btn" data-step="2000" onclick="setStep(2000)">2k</button>
+        <button class="step-btn" data-step="5000" onclick="setStep(5000)">5k</button>
+        <button class="step-btn" data-step="10000" onclick="setStep(10000)">10k</button>
+        <button class="step-btn" data-step="20000" onclick="setStep(20000)">20k</button>
+        <button class="step-btn" data-step="50000" onclick="setStep(50000)">50k</button>
+      </div>
+    </div>
     <div id="equip-list"></div>
   </div>
 
@@ -231,7 +252,18 @@ const DEFAULT_EQUIP=[
   {id:'eq_17',nom:'MQ-33 "Cobra"',categorie:'Aerospatiale',niveau_requis:4,cout_slots:3000,cout_prod:329000,cout_vente:1499999},
 ];
 
+// ── TECH LEVELS ──
+const TECH_MAP={1:"1910-1919",2:"1920-1929",3:"1930-1939",4:"1940-1949",5:"1950-1959",6:"1960-1969",7:"1970-1979",8:"1980-1989",9:"1990-1999",10:"2000-2009",11:"2010-2019",12:"2020-∞"};
+function nivLabel(n){const d=TECH_MAP[n];return d?'NIV '+n+' · '+d:'NIV '+n;}
+
 // ── STATE ──
+let currentStep = 1;
+function setStep(v){
+  currentStep=v;
+  document.querySelectorAll('.step-btn').forEach(b=>{
+    b.classList.toggle('active', parseInt(b.dataset.step)===v);
+  });
+}
 let factories=[], equipements=[], orders={};
 
 function loadState(){
@@ -296,7 +328,7 @@ function renderEquipList(){
       <div class="equip-cat-dot" style="background:${col};"></div>
       <div>
         <div class="equip-item-name">${e.nom}</div>
-        <div class="equip-cost">${e.cout_slots.toLocaleString('fr')} slots · NIV ${e.niveau_requis}</div>
+        <div class="equip-cost">${e.cout_slots.toLocaleString('fr')} slots · ${nivLabel(e.niveau_requis)}</div>
       </div>
       <div class="equip-qty-ctrl">
         <button class="qty-btn" onclick="changeOrder('${e.id}',-1)">−</button>
@@ -313,7 +345,7 @@ function setFactoryLevel(id,lvl){
   if(f){f.niveau=parseInt(lvl);saveState();render();}
 }
 function changeOrder(id,delta){
-  orders[id]=Math.max(0,(orders[id]||0)+delta);
+  orders[id]=Math.max(0,(orders[id]||0)+delta*currentStep);
   saveState();render();
 }
 function setOrder(id,v){
@@ -389,7 +421,7 @@ function renderOrders(){
     return`<tr>
       <td style="color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:11px;">${e.nom}</td>
       <td><span class="cat-badge ${CAT_CLS[e.categorie]||''}">${e.categorie==='Aerospatiale'?'Aérien':e.categorie}</span></td>
-      <td style="color:var(--text3);">NIV ${e.niveau_requis}</td>
+      <td style="color:var(--text3);white-space:nowrap;">${nivLabel(e.niveau_requis)}</td>
       <td class="num-r" style="color:var(--spice);font-family:'Dune Rise',serif;font-size:12px;">${qty}</td>
       <td class="num-r">${fmt(e.cout_slots)}</td>
       <td class="num-r spice">${fmt(slotsT)}</td>

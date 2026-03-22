@@ -440,7 +440,20 @@
       <div class="form-grid">
         <div class="fg fg-full"><label class="fl">Nom de l'équipement</label><input type="text" class="fi fan" id="eq-nom" placeholder="Ex : RK-01…"></div>
         <div class="fg"><label class="fl">Catégorie</label><select class="fs" id="eq-cat"><option value="Terrestre">Terrestre</option><option value="Maritime">Maritime</option><option value="Aerospatiale">Aérien (Aérospatiale)</option></select></div>
-        <div class="fg"><label class="fl">Niveau usine requis</label><select class="fs" id="eq-niv"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option></select></div>
+        <div class="fg"><label class="fl">Niveau technologique</label><select class="fs" id="eq-niv">
+          <option value="1">NIV 1 · 1910-1919</option>
+          <option value="2">NIV 2 · 1920-1929</option>
+          <option value="3">NIV 3 · 1930-1939</option>
+          <option value="4">NIV 4 · 1940-1949</option>
+          <option value="5">NIV 5 · 1950-1959</option>
+          <option value="6">NIV 6 · 1960-1969</option>
+          <option value="7">NIV 7 · 1970-1979</option>
+          <option value="8">NIV 8 · 1980-1989</option>
+          <option value="9">NIV 9 · 1990-1999</option>
+          <option value="10">NIV 10 · 2000-2009</option>
+          <option value="11">NIV 11 · 2010-2019</option>
+          <option value="12">NIV 12 · 2020-∞</option>
+        </select></div>
         <div class="fg"><label class="fl">Coût en slots</label><input type="number" class="fi fan" id="eq-slots" min="0" placeholder="0"></div>
         <div class="fg"><label class="fl">Coût de production (Cr)</label><input type="number" class="fi fan" id="eq-prod" min="0" placeholder="0"></div>
         <div class="fg"><label class="fl">Coût de vente (Cr)</label><input type="number" class="fi fan" id="eq-vente" min="0" placeholder="0"></div>
@@ -735,6 +748,8 @@ function applyBulk(){
 // ════════════════════════════════════════════════
 //  FAN: PRODUCTION ADMIN
 // ════════════════════════════════════════════════
+const TECH_MAP={1:"1910-1919",2:"1920-1929",3:"1930-1939",4:"1940-1949",5:"1950-1959",6:"1960-1969",7:"1970-1979",8:"1980-1989",9:"1990-1999",10:"2000-2009",11:"2010-2019",12:"2020-∞"};
+function nivLabel(n){const d=TECH_MAP[n];return d?'NIV '+n+' · '+d:'NIV '+n;}
 function renderProdAdmin(){
   // Factory levels
   const fg=document.getElementById('fact-grid');
@@ -761,7 +776,7 @@ function renderProdAdmin(){
   tbody.innerHTML=fanEquip.map((e,i)=>`<tr>
     <td style="color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:11px;">${e.nom}</td>
     <td><span class="cat-b ${catCls[e.categorie]||''}">${e.categorie==='Aerospatiale'?'Aérien':e.categorie}</span></td>
-    <td style="color:var(--text3);">NIV ${e.niveau_requis}</td>
+    <td style="color:var(--text3);">${nivLabel(e.niveau_requis)}</td>
     <td style="text-align:right;color:var(--spice);">${fmt(e.cout_slots)}</td>
     <td style="text-align:right;">${fmt(e.cout_prod)}</td>
     <td style="text-align:right;color:var(--teal-bright);">${fmt(e.cout_vente)}</td>
