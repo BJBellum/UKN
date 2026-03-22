@@ -168,7 +168,7 @@
     </div>
   </div>
 
-  <!-- CARTE -->
+  <!-- LOCALISATION -->
   <div class="section-header" style="margin-bottom:12px;">
     <span class="section-eyebrow">Localisation · Assouan</span>
     <div class="section-line"></div>
@@ -177,18 +177,37 @@
     <div class="coord-bar">
       <svg viewBox="0 0 16 16" width="12" height="12" fill="none"><circle cx="8" cy="8" r="6" stroke="#22B89A" stroke-width="1.2"/><circle cx="8" cy="8" r="2" fill="#22B89A"/></svg>
       <span>LOCALISATION</span>
-      <span class="coord-val">23°58′09″ N · 32°52′38″ E</span>
+      <span class="coord-val">23°58′10″ N · 32°52′39″ E</span>
       <span style="opacity:.5">|</span>
       <span class="coord-val">23.96933, 32.87741</span>
       <span style="margin-left:auto;color:var(--text3);">Rég. féd. d'Assouan · Nil Supérieur</span>
     </div>
-    <iframe
-      src="https://www.openstreetmap.org/export/embed.html?bbox=32.6,23.7,33.2,24.2&layer=mapnik&marker=23.96933,32.87741"
-      style="width:100%;height:360px;border:0;"
-      loading="lazy"
-      title="Barrage d'Assouan">
-    </iframe>
+    <div id="map-assouan" style="width:100%;height:360px;background:#0C0804;"></div>
   </div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <style>
+  #map-assouan .leaflet-control-zoom a{background:#1A1410!important;color:#C8960C!important;border-color:#3D3220!important;}
+  #map-assouan .leaflet-control-zoom a:hover{background:#2A2018!important;}
+  #map-assouan .leaflet-control-attribution{background:rgba(12,8,4,.85)!important;color:#4A3C28!important;font-size:9px;}
+  #map-assouan .leaflet-control-attribution a{color:#C8960C!important;}
+  #map-assouan .leaflet-popup-content-wrapper{background:#0E0B06;border:1px solid #C8960C;border-radius:2px;box-shadow:0 4px 20px rgba(0,0,0,.6);padding:0;}
+  #map-assouan .leaflet-popup-tip{background:#0E0B06;}
+  #map-assouan .leaflet-popup-content{margin:0;}
+  </style>
+  <script>
+  (function(){
+    if(typeof L==='undefined')return;
+    var m=L.map('map-assouan',{zoomControl:true,attributionControl:true}).setView([23.96933,32.87741],12);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
+      attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors &copy; <a href="https://carto.com">CARTO</a>',
+      subdomains:'abcd',maxZoom:19
+    }).addTo(m);
+    var ic=L.divIcon({html:'<div style="width:16px;height:16px;border-radius:50%;background:#E85C0D;border:2px solid #F0A030;box-shadow:0 0 14px rgba(232,92,13,.8);"></div>',className:'',iconAnchor:[8,8]});
+    L.marker([23.96933,32.87741],{icon:ic}).addTo(m)
+     .bindPopup('<div style="font-family:monospace;font-size:10px;padding:8px 12px;background:#0E0B06;color:#C8960C;min-width:160px;"><strong>Barrage d'Assouan · السد العالي</strong><br><span style="color:#666;font-size:9px;">23.96933, 32.87741</span></div>',{offset:[0,-4]});
+  })();
+  </script>
 
   <!-- ABOUT CARDS -->
   <div class="section-header" style="margin-bottom:14px;">

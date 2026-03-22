@@ -109,7 +109,7 @@
     </div>
     <div style="margin-bottom:32px;"><div class="status-construction">En construction · Mise en service non fixée</div></div>
     <p class="hero-desc">
-      Réacteur de puissance de type CANDU à eau lourde D₂O, premier de la filière NILDU.
+      Réacteur de puissance à eau lourde D₂O, premier de la filière NILDU (Nile Deuterium Uranium).
       Site de <strong>Médinet El-Fayoum</strong>, Oasis du Fayoum.
       Production annuelle prévue : <strong>2 400 000 MWh</strong> une fois opérationnel.
     </p>
@@ -147,81 +147,253 @@
     <span class="section-eyebrow">Schema d'Architecture · Vue en coupe longitudinale</span>
     <div class="section-line"></div>
   </div>
+  <!-- SCHEMA NILDU — Vue en coupe longitudinale -->
+  <div class="section-header" style="margin-bottom:12px;">
+    <span class="section-eyebrow">Schema d'architecture · Vue en coupe longitudinale</span>
+    <div class="section-line"></div>
+  </div>
   <div class="schema-box" style="margin-bottom:28px;">
-    <div class="schema-header">Type NILDU · 1ère génération · NILDU-REF-001 · Pharos Energy © 2306</div>
-    <div class="schema-body" style="padding:24px 20px;">
-      <svg viewBox="0 0 800 360" width="100%" style="min-width:560px;display:block;" xmlns="http://www.w3.org/2000/svg">
+    <div class="schema-header" style="display:flex;justify-content:space-between;align-items:center;">
+      <span>Type NILDU · 1ère génération · NILDU-REF-001 · Pharos Energy © 2306</span>
+      <span style="color:var(--text3);font-size:8px;">Schéma technique — Document interne</span>
+    </div>
+    <div class="schema-body" style="padding:20px;overflow-x:auto;">
+      <svg viewBox="0 0 960 480" width="100%" style="min-width:640px;display:block;" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="bg-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1E1810"/><stop offset="100%" stop-color="#13100A"/></linearGradient>
-          <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse"><line x1="0" y1="8" x2="8" y2="0" stroke="#2A2218" stroke-width="1"/></pattern>
+          <linearGradient id="nildu-bg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1A1408"/>
+            <stop offset="100%" stop-color="#0E0B06"/>
+          </linearGradient>
+          <pattern id="concrete" width="10" height="10" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="10" x2="10" y2="0" stroke="#2E2518" stroke-width=".8"/>
+            <line x1="-5" y1="5" x2="5" y2="-5" stroke="#2E2518" stroke-width=".8"/>
+          </pattern>
+          <pattern id="steel" width="6" height="6" patternUnits="userSpaceOnUse">
+            <rect width="6" height="6" fill="#1E1810"/>
+            <line x1="0" y1="3" x2="6" y2="3" stroke="#2A2218" stroke-width=".5"/>
+          </pattern>
+          <marker id="arr-teal" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 z" fill="#22B89A" opacity=".8"/>
+          </marker>
+          <marker id="arr-gold" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 z" fill="#C8960C"/>
+          </marker>
+          <marker id="arr-spice" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 z" fill="#E85C0D"/>
+          </marker>
         </defs>
-        <rect width="800" height="360" fill="url(#bg-g)"/>
-        <!-- Blindage biologique -->
-        <rect x="60" y="40" width="680" height="280" rx="4" fill="url(#hatch)" stroke="#3D3220" stroke-width="1.5"/>
-        <text x="400" y="30" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#6B5A3A" letter-spacing="2">BLINDAGE BIOLOGIQUE · béton lourd + Pb</text>
-        <!-- Calandria -->
-        <rect x="100" y="70" width="600" height="240" rx="4" fill="#1c1812" stroke="#C8960C" stroke-width="1.5"/>
-        <text x="400" y="68" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#C8960C" letter-spacing="2">CALANDRIA — Modérateur D₂O · 99,75% pureté isotopique</text>
-        <!-- Tubes de force horizontaux -->
-        <g stroke="#22B89A" stroke-width="2" fill="none">
-          <line x1="110" y1="105" x2="690" y2="105"/>
-          <line x1="110" y1="125" x2="690" y2="125"/>
-          <line x1="110" y1="145" x2="690" y2="145"/>
-          <line x1="110" y1="165" x2="690" y2="165"/>
-          <line x1="110" y1="185" x2="690" y2="185"/>
-          <line x1="110" y1="205" x2="690" y2="205"/>
-          <line x1="110" y1="225" x2="690" y2="225"/>
-          <line x1="110" y1="245" x2="690" y2="245"/>
-          <line x1="110" y1="265" x2="690" y2="265"/>
-          <line x1="110" y1="285" x2="690" y2="285"/>
+
+        <!-- Background -->
+        <rect width="960" height="480" fill="url(#nildu-bg)"/>
+
+        <!-- Title bar -->
+        <text x="480" y="20" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#4A3C28" letter-spacing="3" text-transform="uppercase">SCHEMA D'ARCHITECTURE · VUE EN COUPE LONGITUDINALE</text>
+
+        <!-- ═══ BLINDAGE BIOLOGIQUE (enceinte extérieure) ═══ -->
+        <rect x="30" y="36" width="740" height="400" rx="3" fill="url(#concrete)" stroke="#3A2E1E" stroke-width="2"/>
+        <text x="400" y="31" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#4A3C28" letter-spacing="2">BLINDAGE BIOLOGIQUE · béton lourd + Pb · épaisseur 2,4 m</text>
+
+        <!-- ═══ RÉSERVOIR DE MODÉRATEUR (calandria vessel) ═══ -->
+        <rect x="70" y="66" width="500" height="340" rx="4" fill="#151108" stroke="#C8960C" stroke-width="1.5"/>
+        <text x="320" y="62" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#C8960C" letter-spacing="2">CUVE DE MODÉRATION D₂O · pureté isotopique 99,75%</text>
+
+        <!-- ═══ END SHIELDS (plaques terminales) ═══ -->
+        <rect x="70" y="66" width="20" height="340" fill="#1E1810" stroke="#6B5A3A" stroke-width="1"/>
+        <rect x="550" y="66" width="20" height="340" fill="#1E1810" stroke="#6B5A3A" stroke-width="1"/>
+        <text x="80" y="250" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6" fill="#5A4A30" letter-spacing="1" transform="rotate(-90 80 250)">PLAQUE TERMINALE</text>
+        <text x="560" y="250" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6" fill="#5A4A30" letter-spacing="1" transform="rotate(90 560 250)">PLAQUE TERMINALE</text>
+
+        <!-- ═══ TUBES DE FORCE (pressure tubes) — 480 total, schématisé ═══ -->
+        <!-- 16 rows représentatifs -->
+        <g stroke="#22B89A" stroke-width="1.8" fill="none" opacity=".9">
+          <line x1="90" y1="105" x2="550" y2="105"/><line x1="90" y1="125" x2="550" y2="125"/>
+          <line x1="90" y1="145" x2="550" y2="145"/><line x1="90" y1="165" x2="550" y2="165"/>
+          <line x1="90" y1="185" x2="550" y2="185"/><line x1="90" y1="205" x2="550" y2="205"/>
+          <line x1="90" y1="225" x2="550" y2="225"/><line x1="90" y1="245" x2="550" y2="245"/>
+          <line x1="90" y1="265" x2="550" y2="265"/><line x1="90" y1="285" x2="550" y2="285"/>
+          <line x1="90" y1="305" x2="550" y2="305"/><line x1="90" y1="325" x2="550" y2="325"/>
+          <line x1="90" y1="345" x2="550" y2="345"/><line x1="90" y1="365" x2="550" y2="365"/>
+          <line x1="90" y1="385" x2="550" y2="385"/>
         </g>
-        <!-- Label tubes -->
-        <text x="400" y="195" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8" fill="rgba(34,184,154,.5)" letter-spacing="1">← Faisceau 19 crayons UO₂ — tube central →</text>
-        <!-- Barres de controle (vertical) -->
-        <g fill="#E85C0D" stroke="#E85C0D">
-          <rect x="200" y="70" width="6" height="240" rx="1" opacity=".7"/>
-          <rect x="320" y="70" width="6" height="240" rx="1" opacity=".7"/>
-          <rect x="440" y="70" width="6" height="240" rx="1" opacity=".7"/>
-          <rect x="560" y="70" width="6" height="240" rx="1" opacity=".7"/>
+        <!-- Label faisceau -->
+        <text x="320" y="237" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7.5" fill="rgba(34,184,154,.45)" letter-spacing="1.5">← 480 tubes de force Zircaloy-2 · ⌀82,6 mm · faisceau 37 crayons UO₂ natif →</text>
+
+        <!-- ═══ BARRES DE CONTRÔLE VERTICALES (Cd/B) ═══ -->
+        <!-- 6 groupes -->
+        <g fill="#E85C0D" opacity=".8">
+          <rect x="138" y="66" width="5" height="340" rx="1"/>
+          <rect x="198" y="66" width="5" height="340" rx="1"/>
+          <rect x="278" y="66" width="5" height="340" rx="1"/>
+          <rect x="358" y="66" width="5" height="340" rx="1"/>
+          <rect x="438" y="66" width="5" height="340" rx="1"/>
+          <rect x="508" y="66" width="5" height="340" rx="1"/>
         </g>
-        <text x="200" y="65" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#E85C0D" letter-spacing="1">Cd/B</text>
-        <text x="320" y="65" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#E85C0D" letter-spacing="1">Cd/B</text>
-        <text x="440" y="65" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#E85C0D" letter-spacing="1">Cd/B</text>
-        <text x="560" y="65" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#E85C0D" letter-spacing="1">Cd/B</text>
-        <!-- Echangeur chaleur -->
-        <rect x="710" y="110" width="60" height="140" rx="3" fill="#13100A" stroke="#D4A843" stroke-width="1"/>
-        <text x="740" y="100" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#D4A843" letter-spacing="1">ECHANGEUR</text>
-        <text x="740" y="145" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#6B5A3A" letter-spacing="1">Vapeur</text>
-        <text x="740" y="158" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#6B5A3A" letter-spacing="1">→ turbine</text>
-        <!-- Circuit -->
-        <line x1="690" y1="185" x2="710" y2="185" stroke="#D4A843" stroke-width="1.5" stroke-dasharray="4 2"/>
-        <!-- Labels -->
-        <text x="90" y="195" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#C8960C" letter-spacing="1" transform="rotate(-90 90 195)">D₂O caloporteur</text>
-        <text x="400" y="350" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#3D3220" letter-spacing="3">NILDU-I · Site Médinet El-Fayoum · 29.34013, 30.94513</text>
+        <!-- Labels barres de contrôle -->
+        <g font-family="'IBM Plex Mono',monospace" font-size="6.5" fill="#E85C0D" letter-spacing="1" text-anchor="middle">
+          <text x="140" y="60">Cd/B</text>
+          <text x="200" y="60">Cd/B</text>
+          <text x="280" y="60">Cd/B</text>
+          <text x="360" y="60">Cd/B</text>
+          <text x="440" y="60">Cd/B</text>
+          <text x="510" y="60">Cd/B</text>
+        </g>
+        <!-- Mécanisme de barres (en haut) -->
+        <g stroke="#E85C0D" stroke-width=".8" fill="none" opacity=".5">
+          <rect x="130" y="26" width="20" height="10" rx="1"/>
+          <rect x="190" y="26" width="20" height="10" rx="1"/>
+          <rect x="270" y="26" width="20" height="10" rx="1"/>
+          <rect x="350" y="26" width="20" height="10" rx="1"/>
+          <rect x="430" y="26" width="20" height="10" rx="1"/>
+          <rect x="500" y="26" width="20" height="10" rx="1"/>
+        </g>
+
+        <!-- ═══ D₂O CALOPORTEUR — collecteurs ═══ -->
+        <!-- Collecteur d'entrée (gauche) -->
+        <rect x="40" y="120" width="30" height="220" rx="3" fill="#13100A" stroke="#C8960C" stroke-width="1.2"/>
+        <text x="55" y="240" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6" fill="#C8960C" letter-spacing="1" transform="rotate(-90 55 240)">COLLECTEUR ENTRÉE D₂O</text>
+        <!-- Collecteur de sortie (droite) -->
+        <rect x="570" y="120" width="30" height="220" rx="3" fill="#13100A" stroke="#C8960C" stroke-width="1.2"/>
+        <text x="585" y="240" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6" fill="#C8960C" letter-spacing="1" transform="rotate(90 585 240)">COLLECTEUR SORTIE D₂O</text>
+
+        <!-- ═══ POMPES DE CIRCULATION ═══ -->
+        <ellipse cx="55" cy="90" rx="18" ry="12" fill="#1A1408" stroke="#6B5A3A" stroke-width="1"/>
+        <text x="55" y="94" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="5.5" fill="#6B5A3A">POMPE</text>
+        <ellipse cx="585" cy="90" rx="18" ry="12" fill="#1A1408" stroke="#6B5A3A" stroke-width="1"/>
+        <text x="585" y="94" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="5.5" fill="#6B5A3A">POMPE</text>
+
+        <!-- ═══ CIRCUIT CALOPORTEUR D₂O — tuyauteries ═══ -->
+        <!-- Sortie vers échangeurs -->
+        <line x1="600" y1="200" x2="650" y2="200" stroke="#C8960C" stroke-width="2" marker-end="url(#arr-gold)"/>
+        <line x1="600" y1="270" x2="650" y2="270" stroke="#C8960C" stroke-width="2" marker-end="url(#arr-gold)"/>
+        <!-- Retour depuis échangeurs -->
+        <line x1="650" y1="420" x2="40" y2="420" stroke="#C8960C" stroke-width="1.5" stroke-dasharray="5 3" opacity=".6"/>
+        <line x1="40" y1="420" x2="40" y2="102" stroke="#C8960C" stroke-width="1.5" stroke-dasharray="5 3" opacity=".6" marker-end="url(#arr-gold)"/>
+
+        <!-- ═══ ÉCHANGEURS DE CHALEUR (2) ═══ -->
+        <rect x="650" y="160" width="70" height="80" rx="3" fill="#13100A" stroke="#D4A843" stroke-width="1.2"/>
+        <text x="685" y="196" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#D4A843">ÉCHAN.</text>
+        <text x="685" y="207" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#D4A843">1</text>
+        <!-- Intérieur échangeur 1 -->
+        <g stroke="#22B89A" stroke-width=".8" opacity=".5">
+          <line x1="658" y1="175" x2="712" y2="175"/>
+          <line x1="658" y1="185" x2="712" y2="185"/>
+          <line x1="658" y1="195" x2="712" y2="195"/>
+          <line x1="658" y1="205" x2="712" y2="205"/>
+          <line x1="658" y1="215" x2="712" y2="215"/>
+          <line x1="658" y1="225" x2="712" y2="225"/>
+        </g>
+
+        <rect x="650" y="255" width="70" height="80" rx="3" fill="#13100A" stroke="#D4A843" stroke-width="1.2"/>
+        <text x="685" y="291" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#D4A843">ÉCHAN.</text>
+        <text x="685" y="302" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#D4A843">2</text>
+        <g stroke="#22B89A" stroke-width=".8" opacity=".5">
+          <line x1="658" y1="268" x2="712" y2="268"/>
+          <line x1="658" y1="278" x2="712" y2="278"/>
+          <line x1="658" y1="288" x2="712" y2="288"/>
+          <line x1="658" y1="298" x2="712" y2="298"/>
+          <line x1="658" y1="308" x2="712" y2="308"/>
+          <line x1="658" y1="318" x2="712" y2="318"/>
+        </g>
+
+        <!-- ═══ CIRCUIT SECONDAIRE (eau légère) → TURBINES ═══ -->
+        <!-- Vapeur sortant échangeurs -->
+        <line x1="720" y1="195" x2="760" y2="195" stroke="#4A9EFF" stroke-width="1.5" stroke-dasharray="4 2" marker-end="url(#arr-spice)"/>
+        <line x1="720" y1="290" x2="760" y2="290" stroke="#4A9EFF" stroke-width="1.5" stroke-dasharray="4 2" marker-end="url(#arr-spice)"/>
+        <!-- Turbogénérateur -->
+        <rect x="760" y="170" width="80" height="140" rx="4" fill="#13100A" stroke="#E85C0D" stroke-width="1.2"/>
+        <text x="800" y="232" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#E85C0D">TURBO-</text>
+        <text x="800" y="244" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#E85C0D">GÉN.</text>
+        <!-- Roue turbine stylisée -->
+        <ellipse cx="800" cy="215" rx="20" ry="20" fill="none" stroke="#E85C0D" stroke-width=".8" opacity=".5"/>
+        <ellipse cx="800" cy="215" rx="8" ry="8" fill="none" stroke="#E85C0D" stroke-width="1" opacity=".7"/>
+        <g stroke="#E85C0D" stroke-width=".6" opacity=".5">
+          <line x1="800" y1="195" x2="800" y2="207"/><line x1="800" y1="223" x2="800" y2="235"/>
+          <line x1="780" y1="215" x2="792" y2="215"/><line x1="808" y1="215" x2="820" y2="215"/>
+          <line x1="786" y1="201" x2="793" y2="208"/><line x1="807" y1="222" x2="814" y2="229"/>
+        </g>
+        <!-- Sortie réseau -->
+        <line x1="840" y1="240" x2="900" y2="240" stroke="#D4A843" stroke-width="2" marker-end="url(#arr-gold)"/>
+        <text x="880" y="255" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#D4A843">220 kV</text>
+        <text x="880" y="266" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#6B5A3A">réseau</text>
+        <!-- Condenseur (retour eau) -->
+        <rect x="760" y="330" width="80" height="50" rx="3" fill="#13100A" stroke="#4A9EFF" stroke-width="1"/>
+        <text x="800" y="358" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#4A9EFF">COND.</text>
+        <line x1="800" y1="310" x2="800" y2="330" stroke="#4A9EFF" stroke-width="1.2" stroke-dasharray="3 2"/>
+        <!-- Retour eau vers échangeurs -->
+        <line x1="760" y1="355" x2="720" y2="355" stroke="#4A9EFF" stroke-width="1" stroke-dasharray="3 2" opacity=".6"/>
+
+        <!-- ═══ RECHARGEMENT EN MARCHE (on-power) ═══ -->
+        <!-- Machine de rechargement gauche -->
+        <rect x="0" y="230" width="28" height="50" rx="2" fill="#13100A" stroke="#6B5A3A" stroke-width="1"/>
+        <text x="14" y="258" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="5.5" fill="#6B5A3A" transform="rotate(-90 14 258)">MACHINE RECH. A</text>
+        <line x1="28" y1="255" x2="90" y2="225" stroke="#6B5A3A" stroke-width=".8" stroke-dasharray="3 2" opacity=".5"/>
+        <!-- Machine de rechargement droite -->
+        <rect x="572" y="230" width="28" height="50" rx="2" fill="#13100A" stroke="#6B5A3A" stroke-width="1"/>
+        <text x="586" y="258" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="5.5" fill="#6B5A3A" transform="rotate(90 586 258)">MACHINE RECH. B</text>
+        <line x1="572" y1="255" x2="550" y2="225" stroke="#6B5A3A" stroke-width=".8" stroke-dasharray="3 2" opacity=".5"/>
+
+        <!-- ═══ LABELS LATÉRAUX ═══ -->
+        <text x="25" y="350" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6.5" fill="#C8960C" letter-spacing="1" transform="rotate(-90 25 350)">D₂O CALOPORTEUR 290°C · 83 bar</text>
+
+        <!-- ═══ LÉGENDE ═══ -->
+        <g font-family="'IBM Plex Mono',monospace" font-size="7" fill="#4A3C28">
+          <line x1="30" y1="460" x2="55" y2="460" stroke="#22B89A" stroke-width="2"/><text x="60" y="464">Tubes de force / caloporteur D₂O</text>
+          <line x1="200" y1="460" x2="225" y2="460" stroke="#E85C0D" stroke-width="3" opacity=".8"/><text x="230" y="464">Barres de contrôle Cd/B</text>
+          <line x1="370" y1="460" x2="395" y2="460" stroke="#C8960C" stroke-width="1.5"/><text x="400" y="464">Circuit modérateur</text>
+          <line x1="520" y1="460" x2="545" y2="460" stroke="#4A9EFF" stroke-width="1.5" stroke-dasharray="4 2"/><text x="550" y="464">Circuit secondaire H₂O</text>
+        </g>
+
+        <!-- ═══ PIED DE PAGE ═══ -->
+        <text x="480" y="475" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#2E2518" letter-spacing="3">NILDU-I · Site Médinet El-Fayoum · 29.34013°N 30.94513°E · Pharos Energy © 2306</text>
       </svg>
     </div>
   </div>
 
   <!-- LOCALISATION -->
-  <div class="section-header" style="margin-bottom:14px;">
-    <span class="section-eyebrow">Localisation · Classifiee</span>
+  <div class="section-header" style="margin-bottom:12px;">
+    <span class="section-eyebrow">Localisation · Site Classifie</span>
     <div class="section-line"></div>
   </div>
+  <div style="border:1px solid var(--border2);border-radius:2px;overflow:hidden;margin-bottom:26px;">
+    <div class="coord-bar">
+      <svg viewBox="0 0 16 16" width="12" height="12" fill="none"><circle cx="8" cy="8" r="6" stroke="#22B89A" stroke-width="1.2"/><circle cx="8" cy="8" r="2" fill="#22B89A"/></svg>
+      <span>LOCALISATION</span>
+      <span class="coord-val">29°20′24″ N · 30°56′42″ E</span>
+      <span style="opacity:.5">|</span>
+      <span class="coord-val">29.34013, 30.94513</span>
+      <span style="margin-left:auto;color:var(--text3);">Rég. féd. du Fayoum · Site classifié</span>
+    </div>
+    <div id="map-nildu" style="width:100%;height:360px;background:#0C0804;"></div>
+  </div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <style>
+  #map-nildu .leaflet-control-zoom a{background:#1A1410!important;color:#C8960C!important;border-color:#3D3220!important;}
+  #map-nildu .leaflet-control-zoom a:hover{background:#2A2018!important;}
+  #map-nildu .leaflet-control-attribution{background:rgba(12,8,4,.85)!important;color:#4A3C28!important;font-size:9px;}
+  #map-nildu .leaflet-control-attribution a{color:#C8960C!important;}
+  #map-nildu .leaflet-popup-content-wrapper{background:#0E0B06;border:1px solid #C8960C;border-radius:2px;box-shadow:0 4px 20px rgba(0,0,0,.6);padding:0;}
+  #map-nildu .leaflet-popup-tip{background:#0E0B06;}
+  #map-nildu .leaflet-popup-content{margin:0;}
+  </style>
+  <script>
+  (function(){
+    if(typeof L==='undefined')return;
+    var m=L.map('map-nildu',{zoomControl:true,attributionControl:true}).setView([29.34013,30.94513],12);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
+      attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors &copy; <a href="https://carto.com">CARTO</a>',
+      subdomains:'abcd',maxZoom:19
+    }).addTo(m);
+    var ic=L.divIcon({html:'<div style="width:16px;height:16px;border-radius:50%;background:#E85C0D;border:2px solid #F0A030;box-shadow:0 0 14px rgba(232,92,13,.8);"></div>',className:'',iconAnchor:[8,8]});
+    L.marker([29.34013,30.94513],{icon:ic}).addTo(m)
+     .bindPopup('<div style="font-family:monospace;font-size:10px;padding:8px 12px;background:#0E0B06;color:#C8960C;min-width:160px;"><strong>NILDU-I · Site de Médinet El-Fayoum</strong><br><span style="color:#666;font-size:9px;">29.34013, 30.94513</span></div>',{offset:[0,-4]});
+  })();
+  </script>
   <div class="about-grid" style="margin-bottom:28px;">
     <div class="about-card" style="border-left-color:var(--spice-dim);">
-      <div class="about-card-title">Site nucleaire · Medinet El-Fayoum</div>
-      <div class="about-card-body">
-        Oasis du Fayoum · Bassin du Nil occidental<br>
-        <strong>Royaume-Uni du Nil</strong><br>
-        Région fédérale d'Assiout · Gouvernorat du Fayoum<br>
-        <span style="color:var(--spice);font-family:'IBM Plex Mono',monospace;font-size:10px;">29°20′24″ N · 30°56′42″ E</span><br>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);">29.34013, 30.94513</span>
-      </div>
-    </div>
-    <div class="about-card">
       <div class="about-card-title">Filiere NILDU</div>
       <div class="about-card-body">
-        La filière <strong>NILDU</strong> (Nile Deuterium Uranium) est basée sur la technologie CANDU canadienne, adaptée au contexte du Royaume-Uni du Nil. Eau lourde D₂O produite par la pile <strong>MEMPHIS</strong> via procédé Girdler (échange isotopique H₂S/H₂O). Rechargement en marche (on-power) sans arrêt du réacteur.
+        La filière <strong>NILDU</strong> (Nile Deuterium Uranium) est une filière nationale développée par Pharos Energy, basée sur un réacteur à eau lourde D₂O à tubes de force horizontaux. Eau lourde D₂O produite par la pile <strong>MEMPHIS</strong> via procédé Girdler (échange isotopique H₂S/H₂O). Rechargement en marche (on-power) sans arrêt du réacteur.
       </div>
     </div>
   </div>

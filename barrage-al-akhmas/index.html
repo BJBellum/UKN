@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barrage de Al-Akhmas · Division Hydroelectrique · Pharos Energy</title>
+<meta name="theme-color" content="#22B89A">
+<meta property="og:image" content="https://BJBellum.github.io/UKN/assets/images/UKNSite.png">
+<meta property="og:image:alt" content="Portail National — Royaume-Uni du Nil">
+<link rel="icon" type="image/png" href="../assets/images/UKNSite.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&family=Noto+Kufi+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/dune.css">
+<style>
+.hero-barrage{min-height:70vh;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(26,143,122,.13) 0%,transparent 58%);}
+.hero-title-a{font-family:'Dune Rise',serif;font-size:13px;letter-spacing:.22em;color:var(--teal-bright);margin-bottom:8px;}
+.specs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+@media(max-width:900px){.specs-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:500px){.specs-grid{grid-template-columns:1fr;}}
+.spec-tile{background:var(--card-bg);border:1px solid var(--border);padding:16px 13px;transition:border-color .2s;}
+.spec-tile:hover{border-color:var(--border2);}
+.spec-key{font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px;}
+.spec-val{font-family:'Dune Rise',serif;font-size:21px;color:var(--gold-pale);letter-spacing:.04em;line-height:1.1;margin-bottom:2px;}
+.spec-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:.06em;line-height:1.5;}
+.spec-val.teal{color:var(--teal-bright);}
+.spec-val.amber{color:var(--amber);}
+.spec-val.gold{color:var(--gold);}
+.coord-bar{display:flex;align-items:center;gap:12px;padding:10px 16px;background:rgba(26,143,122,.06);border-bottom:1px solid var(--border);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--text3);flex-wrap:wrap;}
+.coord-val{color:var(--teal-bright);}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <div class="nav-left">
+    <div class="nav-logo" style="border-color:rgba(34,184,154,.5);background:rgba(34,184,154,.06);">
+      <svg viewBox="0 0 20 20" fill="none"><path d="M2 14 Q4 8 10 8 Q16 8 18 14" stroke="#22B89A" stroke-width="1.2" fill="none"/><rect x="4" y="13" width="12" height="4" fill="#22B89A" opacity=".2"/><line x1="10" y1="8" x2="10" y2="4" stroke="#22B89A" stroke-width="1.2"/></svg>
+    </div>
+    <span class="nav-brand" style="color:var(--teal-bright)">Barrage de Al-Akhmas</span>
+    <span class="nav-sub">سد الأخماس</span>
+  </div>
+  <div class="nav-right">
+    <a href="../pharos-energy/" class="nav-back">← Pharos Energy</a>
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <svg id="toggle-icon" width="12" height="12" viewBox="0 0 24 24" fill="none"><path id="icon-path" d="M21 12.79A9 9 0 0 1 12 21a9 9 0 0 1 0-18 7 7 0 0 0 9 9.79z" fill="currentColor"/></svg>
+      <span id="toggle-lbl">NUIT</span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero hero-barrage">
+  <div class="hero-desert"></div>
+  <div class="hero-content" style="padding-top:44px;padding-bottom:60px;">
+    <div class="hero-eyebrow" style="color:var(--teal-bright);">ALAKHMAS-HDA-001 · Pharos Energy · Division Hydroelectrique</div>
+    <h1 class="hero-title-a">BARRAGE DE AL-AKHMAS</h1>
+    <div class="hero-arabic">سد الأخماس · قسم الكهرومائية</div>
+    <div class="hero-ornament">
+      <div class="hero-ornament-line" style="background:linear-gradient(90deg,transparent,var(--teal))"></div>
+      <div class="hero-ornament-diamond" style="background:var(--teal-bright);"></div>
+      <div class="hero-ornament-line" style="background:linear-gradient(90deg,var(--teal),transparent)"></div>
+    </div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
+      <span class="tag active">En service</span>
+      <span class="tag" style="color:var(--teal-bright);border-color:rgba(34,184,154,.3)">Hydroélectrique</span>
+      <span class="tag" style="color:var(--amber);border-color:rgba(240,160,48,.3)">~21 MWe</span>
+      <span class="tag" style="color:var(--gold);border-color:rgba(212,168,67,.3)">150 000 MWh/an</span>
+    </div>
+    <p class="hero-desc">Barrage hydroélectrique du système de barrages en cascade du Delta central du Nil, mis en service en 2305. Ouvrage jumeau du barrage Al-Khatatba, situé 2,6 km en amont.</p>
+    <div class="hero-stats">
+      <div class="hstat"><span class="hstat-lbl">Puissance installée</span><span class="hstat-val" style="color:var(--teal-bright)">~21 MWe</span></div>
+      <div class="hstat"><span class="hstat-lbl">Production annuelle</span><span class="hstat-val amber">150 000 MWh/an</span></div>
+      <div class="hstat"><span class="hstat-lbl">Mise en service</span><span class="hstat-val gold">2305</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="page">
+  <!-- SPECS -->
+  <div class="section-header" style="margin-bottom:16px;">
+    <span class="section-eyebrow">Parametres techniques · ALAKHMAS-HDA-001</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="specs-grid" style="margin-bottom:28px;">
+    <div class="spec-tile"><div class="spec-key">Référence</div><div class="spec-val teal" style="font-size:14px;">ALAKHMAS-HDA-001</div><div class="spec-sub">Division Hydroélectrique</div></div>
+    <div class="spec-tile"><div class="spec-key">Puissance installée</div><div class="spec-val teal">~21 MWe</div><div class="spec-sub">3 groupes Francis</div></div>
+    <div class="spec-tile"><div class="spec-key">Production annuelle</div><div class="spec-val amber">150 000</div><div class="spec-sub">MWh/an · Régime nominal</div></div>
+    <div class="spec-tile"><div class="spec-key">Hauteur de barrage</div><div class="spec-val gold">18 m</div><div class="spec-sub">Barrage-poids béton</div></div>
+    <div class="spec-tile"><div class="spec-key">Longueur en crête</div><div class="spec-val">360 m</div><div class="spec-sub">Crête déversante</div></div>
+    <div class="spec-tile"><div class="spec-key">Débit nominal</div><div class="spec-val">1 350 m³/s</div><div class="spec-sub">Débit turbiné</div></div>
+    <div class="spec-tile"><div class="spec-key">Localisation</div><div class="spec-val" style="font-size:13px;font-family:'IBM Plex Mono',monospace;color:var(--text);">Delta · Menoufiya</div><div class="spec-sub">30.40322, 30.84016</div></div>
+    <div class="spec-tile"><div class="spec-key">Statut</div><div class="spec-val" style="font-size:14px;color:var(--teal-bright);">En service</div><div class="spec-sub">Exercice 2305</div></div>
+  </div>
+
+  <!-- LOCALISATION MAP -->
+  <div class="section-header" style="margin-bottom:12px;">
+    <span class="section-eyebrow">Localisation · Delta · Menoufiya</span>
+    <div class="section-line"></div>
+  </div>
+  <div style="border:1px solid var(--border2);border-radius:2px;overflow:hidden;margin-bottom:26px;">
+    <div class="coord-bar">
+      <svg viewBox="0 0 16 16" width="12" height="12" fill="none"><circle cx="8" cy="8" r="6" stroke="#22B89A" stroke-width="1.2"/><circle cx="8" cy="8" r="2" fill="#22B89A"/></svg>
+      <span>LOCALISATION</span>
+      <span class="coord-val">30°24′12″ N · 30°50′25″ E</span>
+      <span style="opacity:.5">|</span>
+      <span class="coord-val">30.40322, 30.84016</span>
+      <span style="margin-left:auto;color:var(--text3);">Delta du Nil · Rég. féd. de Menoufiya</span>
+    </div>
+    <div id="map-al-akhmas" style="width:100%;height:360px;background:#0C0804;"></div>
+  </div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <style>
+  #map-al-akhmas .leaflet-control-zoom a{background:#1A1410!important;color:#C8960C!important;border-color:#3D3220!important;}
+  #map-al-akhmas .leaflet-control-zoom a:hover{background:#2A2018!important;}
+  #map-al-akhmas .leaflet-control-attribution{background:rgba(12,8,4,.85)!important;color:#4A3C28!important;font-size:9px;}
+  #map-al-akhmas .leaflet-control-attribution a{color:#C8960C!important;}
+  #map-al-akhmas .leaflet-popup-content-wrapper{background:#0E0B06;border:1px solid #C8960C;border-radius:2px;box-shadow:0 4px 20px rgba(0,0,0,.6);padding:0;}
+  #map-al-akhmas .leaflet-popup-tip{background:#0E0B06;}
+  #map-al-akhmas .leaflet-popup-content{margin:0;}
+  </style>
+  <script>
+  (function(){
+    if(typeof L==='undefined')return;
+    var m=L.map('map-al-akhmas',{zoomControl:true,attributionControl:true}).setView([30.40322,30.84016],13);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
+      attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors &copy; <a href="https://carto.com">CARTO</a>',
+      subdomains:'abcd',maxZoom:19
+    }).addTo(m);
+    var ic=L.divIcon({html:'<div style="width:16px;height:16px;border-radius:50%;background:#E85C0D;border:2px solid #F0A030;box-shadow:0 0 14px rgba(232,92,13,.8);"></div>',className:'',iconAnchor:[8,8]});
+    L.marker([30.40322,30.84016],{icon:ic}).addTo(m)
+     .bindPopup('<div style="font-family:monospace;font-size:10px;padding:8px 12px;background:#0E0B06;color:#C8960C;min-width:160px;"><strong>Barrage de Al-Akhmas</strong><br><span style="color:#666;font-size:9px;">30.40322, 30.84016</span></div>',{offset:[0,-4]});
+  })();
+  </script>
+
+  <!-- SCHEMA coupe transversale type delta -->
+  <div class="section-header" style="margin-bottom:14px;">
+    <span class="section-eyebrow">Schema d'architecture · Vue en coupe transversale</span>
+    <div class="section-line"></div>
+  </div>
+  <div style="background:var(--card-bg);border:1px solid var(--border2);overflow:hidden;margin-bottom:28px;">
+    <div style="padding:10px 16px;border-bottom:1px solid var(--border);font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;display:flex;justify-content:space-between;">
+      <span>ALAKHMAS-HDA-001 · Barrage-poids · Coupe transversale type</span>
+      <span style="color:var(--text3);font-size:8px;">Pharos Energy © 2305</span>
+    </div>
+    <div style="padding:20px;overflow-x:auto;">
+      <svg viewBox="0 0 700 280" width="100%" style="min-width:480px;display:block;" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bg-delta" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A1408"/><stop offset="100%" stop-color="#0E0B06"/></linearGradient>
+          <pattern id="beton" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" fill="#1E1A12"/><line x1="0" y1="12" x2="12" y2="0" stroke="#2A2418" stroke-width=".8"/></pattern>
+          <linearGradient id="eau-delta" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A4A6A" stop-opacity=".8"/><stop offset="100%" stop-color="#0E2A42" stop-opacity=".6"/></linearGradient>
+          <pattern id="alluvion" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#231E16"/><circle cx="2" cy="2" r="1" fill="#2E2818" opacity=".6"/><circle cx="6" cy="6" r="1" fill="#2E2818" opacity=".4"/></pattern>
+        </defs>
+        <rect width="700" height="280" fill="url(#bg-delta)"/>
+        <!-- Fond alluvionnaire (delta) -->
+        <rect x="0" y="210" width="700" height="70" fill="url(#alluvion)"/>
+        <text x="350" y="268" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#3D3220" letter-spacing="2">FONDATION ALLUVIONNAIRE · Dépôts deltaïques consolidés</text>
+        <!-- Niveau amont (retenue) -->
+        <rect x="0" y="130" width="280" height="80" fill="url(#eau-delta)" opacity=".9"/>
+        <line x1="0" y1="130" x2="280" y2="130" stroke="#22B89A" stroke-width="1" stroke-dasharray="6 3" opacity=".7"/>
+        <text x="20" y="122" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#22B89A" letter-spacing="1">NHE amont</text>
+        <!-- Corps du barrage (trapèze) -->
+        <polygon points="250,70 450,70 480,210 220,210" fill="url(#beton)" stroke="#3D3220" stroke-width="1.5"/>
+        <!-- Parement amont (vertical) -->
+        <line x1="250" y1="70" x2="220" y2="210" stroke="#4A3C28" stroke-width="2.5"/>
+        <!-- Évacuateur de crues (surface) -->
+        <rect x="290" y="68" width="120" height="12" rx="2" fill="#1A1408" stroke="#22B89A" stroke-width="1"/>
+        <text x="350" y="77" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#22B89A" letter-spacing="1">DÉVERSOIR</text>
+        <!-- Galerie de visite -->
+        <ellipse cx="350" cy="160" rx="18" ry="8" fill="#0E0B06" stroke="#6B5A3A" stroke-width=".8" opacity=".8"/>
+        <text x="350" y="163" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="5.5" fill="#6B5A3A">galerie</text>
+        <!-- Prise d'eau / conduite forcée -->
+        <rect x="235" y="160" width="50" height="12" rx="2" fill="#0E0B06" stroke="#C8960C" stroke-width="1"/>
+        <line x1="285" y1="166" x2="450" y2="166" stroke="#C8960C" stroke-width="2"/>
+        <text x="230" y="155" font-family="'IBM Plex Mono',monospace" font-size="6.5" fill="#C8960C" letter-spacing="1">PRISE D'EAU</text>
+        <!-- Turbine / Centrale -->
+        <rect x="450" y="148" width="70" height="62" rx="2" fill="#13100A" stroke="#22B89A" stroke-width="1.2"/>
+        <text x="485" y="173" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#22B89A">CENTRALE</text>
+        <ellipse cx="485" cy="189" rx="16" ry="16" fill="none" stroke="#22B89A" stroke-width="1" opacity=".6"/>
+        <ellipse cx="485" cy="189" rx="6" ry="6" fill="none" stroke="#22B89A" stroke-width="1.2"/>
+        <!-- Niveau aval -->
+        <rect x="520" y="178" width="180" height="32" fill="url(#eau-delta)" opacity=".6"/>
+        <line x1="520" y1="178" x2="700" y2="178" stroke="#22B89A" stroke-width=".8" stroke-dasharray="4 3" opacity=".5"/>
+        <text x="600" y="172" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#22B89A" opacity=".6" letter-spacing="1">NHE aval</text>
+        <!-- Remblai / berge aval -->
+        <polygon points="520,178 560,210 700,210 700,178" fill="#231E16" opacity=".6"/>
+        <!-- Etanchéité -->
+        <polyline points="250,70 248,100 242,140 232,180 220,210" fill="none" stroke="#E85C0D" stroke-width="1.5" stroke-dasharray="4 2" opacity=".7"/>
+        <text x="196" y="130" font-family="'IBM Plex Mono',monospace" font-size="6.5" fill="#E85C0D" opacity=".8" letter-spacing="1" transform="rotate(-80 196 130)">VOILE D'ÉTANCHÉITÉ</text>
+        <!-- Ligne de réseau -->
+        <line x1="520" y1="162" x2="590" y2="110" stroke="#D4A843" stroke-width="1.5"/>
+        <rect x="590" y="90" width="60" height="35" rx="2" fill="#13100A" stroke="#D4A843" stroke-width="1"/>
+        <text x="620" y="107" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#D4A843">66 kV</text>
+        <text x="620" y="117" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#6B5A3A">réseau</text>
+        <!-- Dimensions -->
+        <line x1="250" y1="55" x2="450" y2="55" stroke="#6B5A3A" stroke-width=".7" marker-start="url(#dim-arr)" marker-end="url(#dim-arr)"/>
+        <text x="350" y="50" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#6B5A3A">360 m en crête</text>
+        <!-- Hauteur -->
+        <line x1="205" y1="70" x2="205" y2="210" stroke="#6B5A3A" stroke-width=".7"/>
+        <text x="195" y="145" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#6B5A3A" transform="rotate(-90 195 145)">18 m</text>
+        <!-- Footer -->
+        <text x="350" y="272" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#2E2518" letter-spacing="3">ALAKHMAS-HDA-001 · 30.40322°N 30.84016°E · Pharos Energy © 2305</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ABOUT CARDS -->
+  <div class="section-header" style="margin-bottom:14px;">
+    <span class="section-eyebrow">A propos</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="about-card-title">Barrage de Al-Akhmas · سد الأخماس</div>
+      <div class="about-card-body">Barrage hydroélectrique du système de barrages en cascade du Delta central du Nil, mis en service en 2305. Ouvrage jumeau du barrage Al-Khatatba, situé 2,6 km en amont. Puissance installée : <strong>~21 MWe</strong>. Production annuelle : <strong>150 000 MWh/an</strong>.</div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-title">Retenue</div>
+      <div class="about-card-body">Ouvrage de tête du système en cascade. Volume utile : ~0,55 km³. Superficie : ~28 km². Cote de retenue : +11 m NGN. Alimentation en eau douce du Delta nord.</div>
+    </div>
+    <div class="about-card">
+      <div class="about-card-title">Groupes turbine-alternateur</div>
+      <div class="about-card-body">3 groupes turbine-alternateur Francis, puissance unitaire ~7 MWe. Conduites forcées ⌀3,6 m. Tension réseau : 66 kV. Génie civil : béton armé imperméabilisé (fondation alluvionnaire).</div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-left">PHAROS ENERGY · ALAKHMAS-HDA-001 · ROYAUME-UNI DU NIL<br>DIVISION HYDROELECTRIQUE · DELTA DU NIL · RÉG. FÉD. DE MENOUFIYA</div>
+        <div class="footer-credit">Projet Résurgence © 2026 · Police: Dune Rise — Fontswan (SIL OFL 1.1)</div>
+      </div>
+      <div class="footer-right">سد الأخماس · طاقة فاروس</div>
+    </div>
+  </footer>
+</div>
+
+<script>
+function applyTheme(t){document.documentElement.setAttribute('data-theme',t);const lbl=document.getElementById('toggle-lbl'),path=document.getElementById('icon-path');if(lbl)lbl.textContent=t==='dark'?'NUIT':'JOUR';if(path)path.setAttribute('d',t==='dark'?'M21 12.79A9 9 0 0 1 12 21a9 9 0 0 1 0-18 7 7 0 0 0 9 9.79z':'M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 2a8 8 0 1 1 0 16A8 8 0 0 1 12 4z');localStorage.setItem('run-theme',t);}
+function toggleTheme(){applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');}
+(function(){const s=localStorage.getItem('run-theme'),mq=window.matchMedia('(prefers-color-scheme: dark)');applyTheme(s||(mq.matches?'dark':'light'));mq.addEventListener('change',e=>{if(!localStorage.getItem('run-theme'))applyTheme(e.matches?'dark':'light');});}
+)();
+</script>
+</body>
+</html>

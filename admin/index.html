@@ -175,6 +175,19 @@
 .cat-A{background:rgba(232,92,13,.1);border-color:rgba(232,92,13,.3);color:var(--spice);}
 /* NEW BAT */
 .nb-equip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px;margin-bottom:8px;}
+/* Step selector for bat quantities */
+.nb-step-bar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:8px 0 12px;border-bottom:1px solid var(--border);margin-bottom:14px;}
+.nb-step-lbl{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.14em;color:var(--text3);white-space:nowrap;}
+.nb-step-btn{background:transparent;border:1px solid var(--border2);color:var(--text3);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.04em;padding:3px 7px;border-radius:2px;cursor:pointer;transition:all .15s;line-height:1.2;}
+.nb-step-btn:hover{border-color:var(--spice);color:var(--spice);}
+.nb-step-btn.active{background:rgba(232,92,13,.15);border-color:var(--spice);color:var(--spice);}
+/* Group headers in eq form */
+.eq-group-hdr{font-family:'IBM Plex Mono',monospace;font-size:7px;letter-spacing:.2em;color:var(--text3);text-transform:uppercase;padding:7px 0 4px;border-bottom:1px solid var(--border);margin:12px 0 8px;display:flex;align-items:center;gap:6px;}
+.eq-group-hdr::before{content:'';width:3px;height:9px;border-radius:1px;flex-shrink:0;}
+/* ef with step-aware +/- buttons */
+.ef-with-ctrl{display:flex;align-items:center;gap:6px;}
+.ef-btn{background:transparent;border:1px solid var(--border2);color:var(--text3);width:20px;height:20px;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;border-radius:1px;line-height:1;}
+.ef-btn:hover{border-color:var(--spice);color:var(--spice);}
 /* SUB-TABS */
 .sub-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);}
 .sub-tab{background:transparent;border:none;border-bottom:2px solid transparent;color:var(--text3);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;padding:8px 18px;cursor:pointer;transition:all .2s;margin-bottom:-1px;}
@@ -381,8 +394,10 @@
         <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.14em;color:var(--spice);text-transform:uppercase;">Équipement de base par unité</span>
         <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.06em;" id="nb-field-count">— champs</span>
       </div>
-      <!-- ALL FIELDS (standard + custom, merged) -->
-      <div class="nb-equip-grid" id="nb-equip-grid"></div>
+      <!-- STEP BAR -->
+      <div class="nb-step-bar" id="nb-step-bar"></div>
+      <!-- ALL FIELDS grouped -->
+      <div id="nb-equip-grid"></div>
       <div style="display:flex;gap:8px;margin-top:16px;">
         <button class="btn btn-fan" onclick="createNewBat()">✓ Créer ce bataillon</button>
         <button class="btn btn-ghost" onclick="clearNewBat()">✕ Effacer</button>
@@ -787,15 +802,7 @@ function renderBatAdmin(){
         <button class="btn btn-danger btn-xs" onclick="event.stopPropagation();deleteBat('${b.id}')">✕ Suppr.</button>
       </div>
       <div class="equip-panel" id="ep-${b.id}">
-        <div class="equip-grid-edit">
-          ${EQUIP_FIELDS.map(f=>`
-            <div class="ef">
-              <span class="ef-lbl">${f}</span>
-              <input class="ef-in" type="number" min="0" value="${b.equip[f]||0}"
-                onchange="updateEquip('${b.id}','${f}',this.value)">
-            </div>
-          `).join('')}
-        </div>
+        <div id="ep-grid-${b.id}"></div>
       </div>
     </div>
   `).join('');
@@ -803,8 +810,64 @@ function renderBatAdmin(){
 function toggleExpand(id){
   const ep=document.getElementById('ep-'+id);
   const eb=document.getElementById('eb-'+id);
+  const wasOpen=ep?.classList.contains('open');
   if(ep)ep.classList.toggle('open');
   if(eb)eb.classList.toggle('open');
+  if(!wasOpen&&ep){
+    const grid=document.getElementById('ep-grid-'+id);
+    if(grid&&!grid.dataset.rendered){
+      grid.dataset.rendered='1';
+      const b=fanBats.find(x=>x.id===id);
+      if(b) renderBatEquipGrid(grid,b);
+    }
+  }
+}
+function renderBatEquipGrid(container,b){
+  const staticKnown=new Set(Object.values(FIELD_GROUPS).flat());
+  let html='';
+  Object.entries(FIELD_GROUPS).forEach(([g,fields])=>{
+    const present=fields.filter(f=>EQUIP_FIELDS.includes(f));
+    if(!present.length)return;
+    const col=GROUP_COLORS_ADM[g]||'#888';
+    html+=`<div class="eq-group-hdr"><span style="color:${col};">${g.toUpperCase()}</span></div><div class="equip-grid-edit">`;
+    present.forEach(f=>{
+      const fesc=f.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+      html+=`<div class="ef"><span class="ef-lbl">${f}</span><div class="ef-with-ctrl">
+        <button class="ef-btn" onclick="updDelta('${b.id}','${fesc}',-1)">−</button>
+        <input class="ef-in" type="number" min="0" value="${b.equip[f]||0}" style="width:64px;text-align:center;"
+          onchange="updateEquip('${b.id}','${fesc}',this.value)">
+        <button class="ef-btn" onclick="updDelta('${b.id}','${fesc}',+1)">+</button>
+      </div></div>`;
+    });
+    html+='</div>';
+  });
+  const ungrouped=EQUIP_FIELDS.filter(f=>!staticKnown.has(f));
+  if(ungrouped.length){
+    const sg={};
+    ungrouped.forEach(f=>{const cf=customEquipFields.find(x=>x.nom===f);const g2=cf?cf.groupe:'Autre';if(!sg[g2])sg[g2]=[];sg[g2].push(f);});
+    Object.entries(sg).forEach(([g2,fields])=>{
+      const col=GROUP_COLORS_ADM[g2]||'#9B59B6';
+      html+=`<div class="eq-group-hdr"><span style="color:${col};">${g2.toUpperCase()}</span></div><div class="equip-grid-edit">`;
+      fields.forEach(f=>{
+        const fesc=f.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+        html+=`<div class="ef"><span class="ef-lbl" style="color:rgba(232,92,13,.85);">${f}</span><div class="ef-with-ctrl">
+          <button class="ef-btn" onclick="updDelta('${b.id}','${fesc}',-1)">−</button>
+          <input class="ef-in" type="number" min="0" value="${b.equip[f]||0}" style="width:64px;text-align:center;border-color:rgba(232,92,13,.25);"
+            onchange="updateEquip('${b.id}','${fesc}',this.value)">
+          <button class="ef-btn" onclick="updDelta('${b.id}','${fesc}',+1)">+</button>
+        </div></div>`;
+      });
+      html+='</div>';
+    });
+  }
+  container.innerHTML=html;
+}
+function updDelta(id,field,d){
+  const b=fanBats.find(x=>x.id===id);if(!b)return;
+  b.equip[field]=Math.max(0,(b.equip[field]||0)+d);
+  const grid=document.getElementById('ep-grid-'+id);
+  if(grid){grid.querySelectorAll('.ef').forEach(el=>{if(el.querySelector('.ef-lbl')?.textContent.trim()===field){const inp=el.querySelector('input');if(inp)inp.value=b.equip[field]||0;}});}
+  saveFanState();
 }
 function adminDelta(id,d){const b=fanBats.find(x=>x.id===id);if(b){b.quantite=Math.max(0,(b.quantite||0)+d);saveFanState();renderBatAdmin();}}
 function adminSetQty(id,v){const b=fanBats.find(x=>x.id===id);if(b){b.quantite=Math.max(0,parseInt(v)||0);saveFanState();}}
@@ -889,15 +952,110 @@ function deleteEquip(i){if(!confirm('Supprimer cet équipement ?'))return;fanEqu
 // ════════════════════════════════════════════════
 //  FAN: NOUVEAU BATAILLON
 // ════════════════════════════════════════════════
+// ── Step for new bat form ──
+let nbStep=1;
+function setNbStep(v){
+  nbStep=v;
+  document.querySelectorAll('.nb-step-btn').forEach(b=>b.classList.toggle('active',parseInt(b.dataset.s)===v));
+}
+function nbFieldDelta(f,d){
+  const id='nb-'+f.replace(/[^a-zA-Z0-9]/g,'_');
+  const el=document.getElementById(id);
+  if(el)el.value=Math.max(0,(parseInt(el.value)||0)+d*nbStep);
+}
+
+// Static group map for field display
+const FIELD_GROUPS={
+  'Personnel':['Hommes'],
+  'Armement léger':['Fusils','Fusils (Rechange)','Pistolets','Pistolets (Rechange)'],
+  'Mitrailleuses':['Mit. Moyennes','Mit. Moy. (Rechange)','Mit. Lourdes','Mit. Lourdes (Rechange)'],
+  'Grenades':['Grenades Fragmentation','Grenades Fumigène'],
+  'Véhicules':['Véh. Blindés','Chars Légers','Motos','Camions (Transport)','Camions (Logistique)','Camions (Utilitaires)'],
+  'Artillerie':['Canons (Campagne)','Canons (Obusier)','Canons (AA)','Canons Antichar'],
+};
+const GROUP_COLORS_ADM={
+  'Personnel':'#E85C0D','Armement léger':'#D4A843','Mitrailleuses':'#F0A030',
+  'Grenades':'#22B89A','Véhicules':'#C8960C','Artillerie':'#8B5A20',
+  'Blindés':'#C8960C','Missile':'#E84848','Aviation':'#4A9EFF',
+  'Marine':'#1A8F7A','Infanterie':'#D4A843','Soutien':'#888888','Autre':'#9B59B6',
+};
+
+function renderEquipGrouped(container, getValFn, setFn, deletable=false){
+  if(!container)return;
+  // Build ordered groups
+  const allFields=EQUIP_FIELDS;
+  const staticKnown=Object.values(FIELD_GROUPS).flat();
+  const placed=new Set();
+  let html='';
+  // Known groups in order
+  const orderedGroups=Object.entries(FIELD_GROUPS);
+  orderedGroups.forEach(([g,fields])=>{
+    const present=fields.filter(f=>allFields.includes(f));
+    if(!present.length)return;
+    const col=GROUP_COLORS_ADM[g]||'#888';
+    html+=`<div class="eq-group-hdr" style="--spice:${col};"><span style="color:${col};">${g.toUpperCase()}</span></div>`;
+    html+='<div class="nb-equip-grid" style="margin-bottom:4px;">';
+    present.forEach(f=>{
+      placed.add(f);
+      const fid='nb-'+f.replace(/[^a-zA-Z0-9]/g,'_');
+      const val=getValFn(f);
+      html+=`<div class="ef">
+        <span class="ef-lbl">${f}</span>
+        <div class="ef-with-ctrl">
+          <button class="ef-btn" onclick="nbFieldDelta('${f.replace(/'/g,"\'")}', -1)">−</button>
+          <input class="ef-in" type="number" min="0" value="${val}" id="${fid}" style="width:68px;text-align:center;">
+          <button class="ef-btn" onclick="nbFieldDelta('${f.replace(/'/g,"\'")}', +1)">+</button>
+        </div>
+      </div>`;
+    });
+    html+='</div>';
+  });
+  // Custom / ungrouped fields
+  const ungrouped=allFields.filter(f=>!placed.has(f));
+  if(ungrouped.length){
+    // Sub-group by groupe property
+    const subgroups={};
+    ungrouped.forEach(f=>{
+      const cf=customEquipFields.find(x=>x.nom===f);
+      const g2=cf?cf.groupe:'Autre';
+      if(!subgroups[g2])subgroups[g2]=[];
+      subgroups[g2].push(f);
+    });
+    Object.entries(subgroups).forEach(([g2,fields])=>{
+      const col=GROUP_COLORS_ADM[g2]||'#9B59B6';
+      html+=`<div class="eq-group-hdr" style="--spice:${col};"><span style="color:${col};">${g2.toUpperCase()}</span></div>`;
+      html+='<div class="nb-equip-grid" style="margin-bottom:4px;">';
+      fields.forEach(f=>{
+        const fid='nb-'+f.replace(/[^a-zA-Z0-9]/g,'_');
+        const val=getValFn(f);
+        html+=`<div class="ef">
+          <span class="ef-lbl" style="color:rgba(232,92,13,.85);">${f}</span>
+          <div class="ef-with-ctrl">
+            <button class="ef-btn" onclick="nbFieldDelta('${f.replace(/'/g,"\'")}', -1)">−</button>
+            <input class="ef-in" type="number" min="0" value="${val}" id="${fid}" style="width:68px;text-align:center;border-color:rgba(232,92,13,.25);">
+            <button class="ef-btn" onclick="nbFieldDelta('${f.replace(/'/g,"\'")}', +1)">+</button>
+          </div>
+        </div>`;
+      });
+      html+='</div>';
+    });
+  }
+  container.innerHTML=html;
+}
+
 function renderNewBatForm(){
-  const el=document.getElementById('nb-equip-grid');if(!el)return;
-  // EQUIP_FIELDS contient déjà standard + custom — tout affiché uniformément
-  el.innerHTML=EQUIP_FIELDS.map(f=>`
-    <div class="ef">
-      <span class="ef-lbl">${f}</span>
-      <input class="ef-in" type="number" min="0" value="0" id="nb-${f.replace(/[^a-zA-Z0-9]/g,'_')}">
-    </div>
-  `).join('');
+  // Step selector
+  const stepBar=document.getElementById('nb-step-bar');
+  if(stepBar&&!stepBar.dataset.rendered){
+    stepBar.dataset.rendered='1';
+    stepBar.innerHTML=`<span class="nb-step-lbl">PAS +/−</span>`+
+      [1,5,10,25,50,100,250,500,1000].map(v=>
+        `<button class="nb-step-btn${v===1?' active':''}" data-s="${v}" onclick="setNbStep(${v})">${v>=1000?v/1000+'k':v}</button>`
+      ).join('');
+  }
+  // Render grouped fields
+  const el=document.getElementById('nb-equip-grid');
+  renderEquipGrouped(el, ()=>0, null);
   const cnt=document.getElementById('nb-field-count');
   if(cnt)cnt.textContent=EQUIP_FIELDS.length+' champs';
 }
@@ -952,7 +1110,8 @@ function renderCustomFieldsList(){
         <span class="cf-nom">${f}</span>
         <span class="cf-groupe-badge" style="border-color:rgba(200,150,12,.3);color:var(--gold-mid);background:rgba(200,150,12,.06);">Standard</span>
         <div style="display:flex;gap:5px;flex-shrink:0;">
-          <button class="btn btn-danger btn-xs" onclick="deleteStandardField('${f.replace(/'/g,"\'")}')">✕ Suppr.</button>
+          <button class="btn btn-ghost btn-xs" onclick="openRenameModal('${f.replace(/\'/g,\"\\\'\")}', '')">Modifier</button>
+          <button class="btn btn-danger btn-xs" onclick="deleteStandardField('${f.replace(/\'/g,\"\\\'\")}')">✕ Suppr.</button>
         </div>
       </div>
     `).join('');
