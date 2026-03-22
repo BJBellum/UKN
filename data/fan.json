@@ -441,5 +441,34 @@
       }
     ]
   },
-  "custom_equip_fields": []
+  "custom_equip_fields": [
+    {
+      "nom": "Char de combat principal",
+      "groupe": "Blindés"
+    },
+    {
+      "nom": "Système portatif de défense antiaérienne",
+      "groupe": "Infanterie"
+    },
+    {
+      "nom": "Lance-roquette",
+      "groupe": "Infanterie"
+    },
+    {
+      "nom": "Char lourd",
+      "groupe": "Infanterie"
+    },
+    {
+      "nom": "Char moyen",
+      "groupe": "Infanterie"
+    },
+    {
+      "nom": "Missile surface-air",
+      "groupe": "Artillerie"
+    },
+    {
+      "nom": "Mortier",
+      "groupe": "Artillerie"
+    }
+  ]
 }
