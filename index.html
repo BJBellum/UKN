@@ -129,7 +129,7 @@
     <div class="hero-ornament">
       <div class="hero-ornament-line"></div>
       <div class="hero-ornament-diamond"></div>
-      <div class="hero-ornament-line" style="background:linear-gradient(90deg,var(--gold-mid),transparent);transform:scaleX(-1);"></div>
+      <div class="hero-ornament-line"></div>
     </div>
     <p class="hero-desc">
       Portail officiel du <strong>Royaume-Uni du Nil</strong> — accédez aux entités nationales,
@@ -215,7 +215,7 @@
       </a>
 
       <!-- ── FORCES ARMÉES DU NIL ── -->
-      <a href="./fan/" class="portal-card fan-card" id="fan-portal-card" style="border-color:rgba(232,92,13,.25);opacity:.7;cursor:default;pointer-events:none;">
+      <a href="./fan/" class="portal-card fan-card" id="fan-portal-card" style="opacity:.7;cursor:default;pointer-events:none;">
         <div class="portal-card-accent" style="background:linear-gradient(90deg,#8B2800,#E85C0D,#8B2800);"></div>
         <div class="portal-card-body">
           <div class="portal-card-icon" style="background:rgba(232,92,13,0.08); border-color:rgba(232,92,13,0.3);">
@@ -383,7 +383,7 @@ window.addEventListener('DOMContentLoaded', () => {
       card.style.opacity = '1';
       card.style.cursor = 'pointer';
       card.style.pointerEvents = 'auto';
-      card.style.borderColor = 'rgba(232,92,13,.4)';
+      card.style.borderColor = '';  // let CSS :hover handle it
     }
     if (badge) badge.style.display = 'none'; // hide classified badge
     if (lock) lock.classList.remove('visible');
