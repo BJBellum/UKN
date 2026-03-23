@@ -1539,8 +1539,12 @@ function handleImgUpload(input){
   const file=input.files[0];if(!file)return;
   catImgFile=file;
   const ext=file.name.split('.').pop().toLowerCase();
-  const safeName=document.getElementById('cat-f-nom')?.value.trim().replace(/[^a-zA-Z0-9]/g,'-').toLowerCase()||'image';
-  const filename=`${safeName}.${ext}`;
+  // Generate unique sequential name per category: e.g. armes-feu-1, armes-feu-2…
+  const cat=document.getElementById('cat-f-categorie')?.value||'equip';
+  // Count existing images in same category (exclude current item if editing)
+  const samecat=catItems.filter(i=>i.categorie===cat&&i.image_path&&(!catEditId||i.id!==catEditId));
+  const nextNum=samecat.length+1;
+  const filename=`${cat}-${nextNum}.${ext}`;
   const imgPath=CAT_IMAGES_PATH+filename;
   document.getElementById('cat-img-path').value=imgPath;
   document.getElementById('cat-img-filename').textContent=filename;
