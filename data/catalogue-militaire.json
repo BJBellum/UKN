@@ -22,5 +22,29 @@
       "Équipements possibles": "Trépied M3 (ou M2), montages anti-aériens (naval/AA), viseur optique basique, montages véhicules ou fixes"
     },
     "image_path": "assets/images/catalogue/armes-feu-1.png"
+  },
+  {
+    "id": "cat_1774380705876",
+    "nom": "BN-05",
+    "categorie": "armes-feu",
+    "niveau": 3,
+    "fabricant": "Yassin Heavy Industries",
+    "cout_unite": "999",
+    "inspiration": "M1 Garand + SVT-38",
+    "disponibilite": "En service",
+    "specs": {
+      "Calibre": "7,62 × 63 mm",
+      "Masse (non chargé)": "4,2 kg",
+      "Longueur": "1 160 mm",
+      "Longueur du canon": "610 mm",
+      "Cadence de tir": "30 à 40 coups/min en tir soutenu",
+      "Vitesse initiale": "~840 m/s",
+      "Portée pratique": "500 m",
+      "Portée maximale": "1 100 m",
+      "Capacité": "15 coups",
+      "Type de munitions": "Cartouches à percussion centrale",
+      "Équipements possibles": "Baïonnette, Montage d'un rail latéral sur le boîtier de culasse pour lunette de précision, sangle"
+    },
+    "image_path": "assets/images/catalogue/armes-feu-2.png"
   }
 ]
