@@ -95,7 +95,10 @@ html,body{height:100%;overflow:hidden;}
 
 /* Right: square image */
 .item-img-side{
-  width:260px;flex-shrink:0;align-self:stretch;
+  flex-shrink:0;align-self:stretch;
+  width:auto;
+  aspect-ratio:1/1;
+  min-width:180px;max-width:340px;
   overflow:hidden;background:var(--bg2);
   border-left:1px solid var(--border);
   order:2;
@@ -144,7 +147,7 @@ html,body{height:100%;overflow:hidden;}
 /* Mobile */
 @media(max-width:600px){
   .cat-item{flex-direction:column;}
-  .item-img-side{width:100%;height:140px;border-left:none;border-top:1px solid var(--border);order:0;}
+  .item-img-side{width:100%;aspect-ratio:2/1;max-width:100%;border-left:none;border-top:1px solid var(--border);order:0;}
 }
 
 /* NIV colors */
@@ -253,8 +256,12 @@ var activeCat='';
 var searchQ='';
 
 function loadLocal(){
-  try{var s=localStorage.getItem('cat_militaire');catalogue=s?JSON.parse(s):[];}
-  catch(e){catalogue=[];}
+  try{
+    var s=localStorage.getItem('cat_militaire');
+    catalogue=s?JSON.parse(s):[];
+    // Strip any cached image_data (use image_path + remote URL instead)
+    catalogue.forEach(function(item){delete item.image_data;});
+  }catch(e){catalogue=[];}
 }
 function syncGH(){
   fetch('https://api.github.com/repos/BJBellum/UKN/contents/data/catalogue-militaire.json',{
@@ -267,7 +274,13 @@ function syncGH(){
       if(loc&&loc.image_data&&!remote.image_data)remote.image_data=loc.image_data;
     });
     catalogue=d;
-    localStorage.setItem('cat_militaire',JSON.stringify(catalogue));
+    // Strip image_data before caching (fetch from image_path instead)
+    var toCache=catalogue.map(function(item){
+      var copy=Object.assign({},item);
+      delete copy.image_data;
+      return copy;
+    });
+    localStorage.setItem('cat_militaire',JSON.stringify(toCache));
     renderSidebar();renderContent();
   }).catch(function(){});
 }
