@@ -49,8 +49,8 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Forces Armées du Nil · FAN-SYS-001">
   <meta property="og:description" content="Portail des Forces Armées du Nil — gestion des bataillons, calculateurs de déploiement et système de production industrielle militaire.">
-  <meta property="og:url" content="https://BJBellum.github.io/UKN/fan/">
-  <meta property="og:image" content="https://BJBellum.github.io/UKN/assets/images/UKNSite.png">
+  <meta property="og:url" content="https://ukn-seven.vercel.app/fan/">
+  <meta property="og:image" content="https://ukn-seven.vercel.app/assets/images/UKNSite.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Portail National — Royaume-Uni du Nil">
@@ -58,7 +58,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Forces Armées du Nil · FAN-SYS-001">
   <meta name="twitter:description" content="Portail des Forces Armées du Nil — gestion des bataillons, calculateurs de déploiement et système de production industrielle militaire.">
-  <meta name="twitter:image" content="https://BJBellum.github.io/UKN/assets/images/UKNSite.png">
+  <meta name="twitter:image" content="https://ukn-seven.vercel.app/assets/images/UKNSite.png">
   <meta name="description" content="Portail des Forces Armées du Nil — gestion des bataillons, calculateurs de déploiement et système de production industrielle militaire.">
 </head>
 <body>
@@ -226,7 +226,7 @@ const FAN_IDS=['772821169664426025','928291843958014014','1014832884764393523','
 function applyTheme(t){document.documentElement.setAttribute('data-theme',t);const lbl=document.getElementById('toggle-lbl'),path=document.getElementById('icon-path');if(lbl)lbl.textContent=t==='dark'?'NUIT':'JOUR';if(path)path.setAttribute('d',t==='dark'?'M21 12.79A9 9 0 0 1 12 21a9 9 0 0 1 0-18 7 7 0 0 0 9 9.79z':'M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 2a8 8 0 1 1 0 16A8 8 0 0 1 12 4z');localStorage.setItem('run-theme',t);}
 function toggleTheme(){applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');}
 (function(){const s=localStorage.getItem('run-theme'),mq=window.matchMedia('(prefers-color-scheme: dark)');applyTheme(s||(mq.matches?'dark':'light'));})();
-(function(){const STATE=btoa(encodeURIComponent(window.location.href));const url=`https://discord.com/oauth2/authorize?client_id=1483200078092042300&redirect_uri=${encodeURIComponent('https://BJBellum.github.io/UKN/auth/callback/')}&response_type=token&scope=identify&state=${STATE}`;const btn=document.getElementById('auth-btn');if(btn)btn.href=url;})();
+(function(){const STATE=btoa(encodeURIComponent(window.location.href));const url=`https://discord.com/oauth2/authorize?client_id=1483200078092042300&redirect_uri=${encodeURIComponent('https://ukn-seven.vercel.app/auth/callback/')}&response_type=token&scope=identify&state=${STATE}`;const btn=document.getElementById('auth-btn');if(btn)btn.href=url;})();
 window.addEventListener('DOMContentLoaded',()=>{
   const pa=window.PharosAuth,user=pa?.getUser();
   if(user&&FAN_IDS.includes(user.id)){

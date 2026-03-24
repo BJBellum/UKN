@@ -179,8 +179,8 @@ html,body{height:100%;overflow:hidden;}
   <meta property="og:type" content="website">
   <meta property="og:title" content="Catalogue Militaire · Forces Armées du Nil">
   <meta property="og:description" content="Répertoire complet des équipements militaires en service — armes à feu, véhicules terrestres, artillerie, missiles, aéronefs et navires de guerre.">
-  <meta property="og:url" content="https://BJBellum.github.io/UKN/catalogues/militaire/">
-  <meta property="og:image" content="https://BJBellum.github.io/UKN/assets/images/UKNSite.png">
+  <meta property="og:url" content="https://ukn-seven.vercel.app/catalogues/militaire/">
+  <meta property="og:image" content="https://ukn-seven.vercel.app/assets/images/UKNSite.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Portail National — Royaume-Uni du Nil">
@@ -188,7 +188,7 @@ html,body{height:100%;overflow:hidden;}
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Catalogue Militaire · Forces Armées du Nil">
   <meta name="twitter:description" content="Répertoire complet des équipements militaires en service — armes à feu, véhicules terrestres, artillerie, missiles, aéronefs et navires de guerre.">
-  <meta name="twitter:image" content="https://BJBellum.github.io/UKN/assets/images/UKNSite.png">
+  <meta name="twitter:image" content="https://ukn-seven.vercel.app/assets/images/UKNSite.png">
   <meta name="description" content="Répertoire complet des équipements militaires en service — armes à feu, véhicules terrestres, artillerie, missiles, aéronefs et navires de guerre.">
 </head>
 <body>
@@ -341,7 +341,7 @@ function onSearch(){
 function buildItemHTML(item){
   var niv=item.niveau||1;
   var nivLbl='NIV '+niv+' · '+(TECH[niv]||'');
-  var imgSrc=item.image_data||(item.image_path?'https://bjbellum.github.io/UKN/'+item.image_path:'');
+  var imgSrc=item.image_data||(item.image_path?'https://ukn-seven.vercel.app/'+item.image_path:'');
   var specs=item.specs||{};
   var specKeys=Object.keys(specs).filter(function(k){return specs[k];});
   var coutFmt=item.cout_unite?Number(item.cout_unite).toLocaleString('fr')+' N\u00a3':'—';

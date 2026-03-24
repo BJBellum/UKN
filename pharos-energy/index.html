@@ -36,8 +36,8 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Pharos Energy · طاقة فاروس · Opérateur d'État">
   <meta property="og:description" content="Opérateur énergétique national du Royaume-Uni du Nil — hydroélectricité, géothermie, filière nucléaire NILDU. 2 945 000 MWh/an produits.">
-  <meta property="og:url" content="https://BJBellum.github.io/UKN/pharos-energy/">
-  <meta property="og:image" content="https://BJBellum.github.io/UKN/assets/images/UKNSite.png">
+  <meta property="og:url" content="https://ukn-seven.vercel.app/pharos-energy/">
+  <meta property="og:image" content="https://ukn-seven.vercel.app/assets/images/UKNSite.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Portail National — Royaume-Uni du Nil">
@@ -45,7 +45,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Pharos Energy · طاقة فاروس · Opérateur d'État">
   <meta name="twitter:description" content="Opérateur énergétique national du Royaume-Uni du Nil — hydroélectricité, géothermie, filière nucléaire NILDU. 2 945 000 MWh/an produits.">
-  <meta name="twitter:image" content="https://BJBellum.github.io/UKN/assets/images/UKNSite.png">
+  <meta name="twitter:image" content="https://ukn-seven.vercel.app/assets/images/UKNSite.png">
   <meta name="description" content="Opérateur énergétique national du Royaume-Uni du Nil — hydroélectricité, géothermie, filière nucléaire NILDU. 2 945 000 MWh/an produits.">
 </head>
 <body>
@@ -342,7 +342,7 @@ function toggleTheme(){applyTheme(document.documentElement.getAttribute('data-th
 // Build Discord OAuth URL for locked card
 (function(){
   const STATE=btoa(encodeURIComponent(window.location.href));
-  const url=`https://discord.com/oauth2/authorize?client_id=1483200078092042300&redirect_uri=${encodeURIComponent('https://BJBellum.github.io/UKN/auth/callback/')}&response_type=token&scope=identify&state=${STATE}`;
+  const url=`https://discord.com/oauth2/authorize?client_id=1483200078092042300&redirect_uri=${encodeURIComponent('https://ukn-seven.vercel.app/auth/callback/')}&response_type=token&scope=identify&state=${STATE}`;
   const btn=document.getElementById('nuclear-discord-btn');
   if(btn)btn.href=url;
 })();

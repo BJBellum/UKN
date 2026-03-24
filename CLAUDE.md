@@ -9,7 +9,7 @@ Guide de référence pour Claude lors de travaux sur ce dépôt.
 **Portail national fictif** pour un jeu de rôle géopolitique (Projet Résurgence). Simule les institutions d'un État fictif, le **Royaume-Uni du Nil**, avec une esthétique Dune/cyberpunk désertique.
 
 - **Repo** : `BJBellum/UKN`
-- **Live** : `https://bjbellum.github.io/UKN/`
+- **Live** : `https://ukn-seven.vercel.app/`
 - **Type** : Site statique GitHub Pages — HTML/CSS/JS pur, zéro framework, zéro build step
 
 ---
@@ -123,7 +123,7 @@ FAN_IDS = [
 - Il injecte un badge utilisateur (avatar + nom + "Admin ↗" si admin + "✕" déconnexion)
 - **Ne pas ajouter de user-pill manuel** dans les pages — pharos-auth le gère
 - OAuth2 Implicit Flow — `client_id: 1483200078092042300`
-- Redirect : `https://BJBellum.github.io/UKN/auth/callback/`
+- Redirect : `https://ukn-seven.vercel.app/auth/callback/`
 
 ---
 
@@ -348,7 +348,7 @@ Graphiques : PIB en barres horizontales + canvas line charts (chômage, pauvret�
 
 ### À toujours faire
 
-- Ajouter `<meta property="og:image" content="https://BJBellum.github.io/UKN/assets/images/UKNSite.png">` et `<link rel="icon">` sur chaque nouvelle page
+- Ajouter `<meta property="og:image" content="https://ukn-seven.vercel.app/assets/images/UKNSite.png">` et `<link rel="icon">` sur chaque nouvelle page
 - Charger `pharos-auth.js` en dernier script de chaque page (`<script src="../pharos-auth.js"></script>`)
 - Utiliser `dune.css` comme base CSS et n'ajouter que le CSS spécifique à la page dans un `<style>` local
 - Tester la syntaxe JS avec `node --check` avant de commiter
@@ -372,7 +372,7 @@ Graphiques : PIB en barres horizontales + canvas line charts (chômage, pauvret�
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TITRE · Royaume-Uni du Nil</title>
-  <meta property="og:image" content="https://BJBellum.github.io/UKN/assets/images/UKNSite.png">
+  <meta property="og:image" content="https://ukn-seven.vercel.app/assets/images/UKNSite.png">
   <meta property="og:image:alt" content="Portail National — Royaume-Uni du Nil">
   <link rel="icon" type="image/png" href="../assets/images/UKNSite.png">
   <!-- Google Fonts -->
