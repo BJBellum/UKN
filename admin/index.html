@@ -221,6 +221,7 @@
 .ec-btn-gold{background:rgba(200,150,12,.06);border-color:rgba(200,150,12,.25);color:var(--gold-mid);width:auto;padding:0 8px;}
 .ec-btn-gold:hover{background:rgba(200,150,12,.15);border-color:var(--gold);}
 .ec-char{width:28px;height:24px;font-size:13px;font-family:inherit;}
+#ec-bold-toggle.bold-active{background:rgba(200,150,12,.18);border-color:var(--gold);color:var(--gold);box-shadow:0 0 6px rgba(200,150,12,.3);}
 .ec-char-sep{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);align-self:center;margin:0 1px;}
 #ec-editor{caret-color:var(--gold);border-radius:0;}
 #ec-editor::placeholder{color:rgba(255,255,255,.2);font-style:italic;}
@@ -764,6 +765,10 @@
       <button class="ec-btn" onclick="ecFmt('bullet')" title="Liste à puces (- )"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><circle cx="2.5" cy="4.5" r="1" fill="currentColor"/><circle cx="2.5" cy="7.5" r="1" fill="currentColor"/><circle cx="2.5" cy="10.5" r="1" fill="currentColor"/><line x1="5" y1="4.5" x2="12" y2="4.5" stroke="currentColor" stroke-width=".9"/><line x1="5" y1="7.5" x2="12" y2="7.5" stroke="currentColor" stroke-width=".9"/><line x1="5" y1="10.5" x2="10" y2="10.5" stroke="currentColor" stroke-width=".9"/></svg></button>
       <button class="ec-btn" onclick="ecFmt('numbered')" title="Liste numérotée (1. )" style="font-size:10px;padding:0 7px;">1.</button>
       <button class="ec-btn" onclick="ecFmt('rule')" title="Séparateur (---)" style="font-size:10px;padding:0 7px;">—</button>
+      <div style="width:1px;background:var(--border);margin:0 4px;align-self:stretch;"></div>
+      <button class="ec-btn" id="ec-bold-font-btn" onclick="ecToggleBoldFont()" title="Police grasse Unicode (toggle — reste actif à l'écriture)" style="width:auto;padding:0 9px;font-size:13px;letter-spacing:.04em;" title="Activer la saisie en police grasse Unicode">𝐁𝐨𝐥𝐝</button>
+      <div style="width:1px;background:var(--border);margin:0 4px;align-self:stretch;"></div>
+      <button class="ec-btn" id="ec-bold-toggle" onclick="ecToggleBoldFont()" title="Police grasse Unicode — cliquer pour activer la saisie en 𝐛𝐨𝐥𝐝" style="font-size:12px;padding:0 8px;width:auto;">𝐀𝐚</button>
       <div style="flex:1;"></div>
       <!-- Doc management -->
       <button class="ec-btn ec-btn-gold" onclick="ecNewDoc()" title="Nouveau document" style="padding:0 10px;font-size:9px;gap:4px;">
@@ -808,9 +813,9 @@
     <div style="position:relative;">
       <textarea id="ec-editor"
         oninput="ecSave();ecCount()"
-        onkeydown="ecKeyDown(event)"
+        onkeydown="ecKeyDown(event);ecBoldFontKeyHandler(event)"
         placeholder="Commencez à écrire… Utilisez la barre d'outils pour le formatage Discord (gras, italique, ` code `, > citation, || spoiler ||…)"
-        style="width:100%;min-height:520px;resize:vertical;
+        style="width:100%;min-height:520px;resize:both;
           background:var(--card-bg);
           border:1px solid var(--border);border-top:none;
           color:rgba(255,255,255,.90);
@@ -2319,6 +2324,87 @@ function ecInsert(chars){
   }
   ta.focus();ecSave();ecCount();
 }
+
+// ── BOLD UNICODE FONT TOGGLE ──
+var ecBoldFontActive = false;
+var BOLD_MAP = (function(){
+  var upper='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var lower='abcdefghijklmnopqrstuvwxyz';
+  var boldU='𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙';
+  var boldL='𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳';
+  var map={};
+  // Each bold char is 2 JS chars (surrogate pair) — build array of chars
+  function splitChars(s){var a=[];for(var i=0;i<s.length;){var cp=s.codePointAt(i);a.push(String.fromCodePoint(cp));i+=cp>0xFFFF?2:1;}return a;}
+  var bu=splitChars(boldU);
+  var bl=splitChars(boldL);
+  for(var i=0;i<26;i++){map[upper[i]]=bu[i];map[lower[i]]=bl[i];}
+  return map;
+})();
+
+function toBoldFont(text){
+  var out='';
+  for(var i=0;i<text.length;){
+    var cp=text.codePointAt(i);
+    var ch=String.fromCodePoint(cp);
+    out+=BOLD_MAP[ch]||ch;
+    i+=cp>0xFFFF?2:1;
+  }
+  return out;
+}
+
+function ecToggleBoldFont(){
+  ecBoldFontActive=!ecBoldFontActive;
+  var btn=document.getElementById('ec-bold-font-btn');
+  if(btn){
+    btn.style.background=ecBoldFontActive?'rgba(200,150,12,.18)':'';
+    btn.style.borderColor=ecBoldFontActive?'var(--gold)':'';
+    btn.style.color=ecBoldFontActive?'var(--gold)':'';
+    btn.title=ecBoldFontActive?'Police grasse active — cliquer pour désactiver':'Police grasse Unicode (toggle)';
+  }
+}
+
+function ecBoldFontKeyHandler(e){
+  if(!ecBoldFontActive)return;
+  // Only convert printable single chars
+  if(e.ctrlKey||e.metaKey||e.altKey||e.key.length!==1)return;
+  var mapped=BOLD_MAP[e.key];
+  if(!mapped)return; // digits, symbols etc pass through normal
+  e.preventDefault();
+  var ta=document.getElementById('ec-editor');if(!ta)return;
+  var s=ta.selectionStart,en=ta.selectionEnd;
+  ta.value=ta.value.substring(0,s)+mapped+ta.value.substring(en);
+  ta.selectionStart=ta.selectionEnd=s+mapped.length;
+  ecSave();ecCount();
+}
+
+var ecBoldMode=false;
+
+function ecToggleBoldFont(){
+  ecBoldMode=!ecBoldMode;
+  var btn=document.getElementById('ec-bold-toggle');
+  if(btn)btn.classList.toggle('bold-active',ecBoldMode);
+  // Convert selection immediately if mode turned ON
+  if(ecBoldMode){
+    var ta=document.getElementById('ec-editor');
+    if(ta&&ta.selectionStart!==ta.selectionEnd){
+      var s=ta.selectionStart,en=ta.selectionEnd;
+      var converted=ecToBold(ta.value.substring(s,en));
+      ta.value=ta.value.substring(0,s)+converted+ta.value.substring(en);
+      ta.selectionStart=s;ta.selectionEnd=s+converted.length;
+      ecSave();ecCount();
+    }
+  }
+}
+
+function ecToBold(str){
+  return str.split('').map(function(ch){
+    var code=ch.charCodeAt(0);
+    if(code>=65&&code<=90) return String.fromCodePoint(0x1D400+code-65);
+    if(code>=97&&code<=122)return String.fromCodePoint(0x1D41A+code-97);
+    return ch;
+  }).join('');
+}
+
 function ecKeyDown(e){
   var sc={b:'bold',i:'italic',u:'underline'};
   if((e.ctrlKey||e.metaKey)&&sc[e.key]){e.preventDefault();ecFmt(sc[e.key]);return;}
@@ -2326,6 +2412,17 @@ function ecKeyDown(e){
     e.preventDefault();var ta=e.target,s=ta.selectionStart,en=ta.selectionEnd;
     ta.value=ta.value.substring(0,s)+'  '+ta.value.substring(en);
     ta.selectionStart=ta.selectionEnd=s+2;ecSave();ecCount();
+    return;
+  }
+  if(ecBoldMode&&e.key.length===1&&!e.ctrlKey&&!e.metaKey&&!e.altKey){
+    var bold=ecToBold(e.key);
+    if(bold!==e.key){
+      e.preventDefault();
+      var ta=e.target,s=ta.selectionStart,en=ta.selectionEnd;
+      ta.value=ta.value.substring(0,s)+bold+ta.value.substring(en);
+      ta.selectionStart=ta.selectionEnd=s+bold.length;
+      ecSave();ecCount();
+    }
   }
 }
 
