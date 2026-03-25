@@ -214,6 +214,16 @@
 .img-preview-ph{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);text-align:center;}
 .cat-niv-select{background:var(--bg);border:1px solid var(--border2);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:11px;padding:6px 10px;border-radius:2px;outline:none;appearance:none;width:100%;}
 .niv-badge{font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 8px;border-radius:2px;border:1px solid;display:inline-block;}
+
+/* ── ESPACE D'ECRITURE ── */
+.ec-btn{background:var(--bg2);border:1px solid var(--border2);color:var(--text2);width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;border-radius:2px;transition:all .12s;font-family:'IBM Plex Mono',monospace;flex-shrink:0;padding:0;}
+.ec-btn:hover{background:rgba(200,150,12,.08);border-color:rgba(200,150,12,.4);color:var(--gold);}
+.ec-btn-gold{background:rgba(200,150,12,.06);border-color:rgba(200,150,12,.25);color:var(--gold-mid);width:auto;padding:0 8px;}
+.ec-btn-gold:hover{background:rgba(200,150,12,.15);border-color:var(--gold);}
+#ec-editor{caret-color:var(--gold);border-radius:0;}
+#ec-editor::placeholder{color:rgba(255,255,255,.2);font-style:italic;}
+[data-theme="light"] #ec-editor{color:rgba(0,0,0,.84);}
+[data-theme="light"] #ec-count{color:rgba(0,0,0,.28);}
 </style>
   <meta property="og:type" content="website">
   <meta property="og:title" content="Dashboard Admin · Royaume-Uni du Nil">
@@ -294,7 +304,15 @@
   </a>
 
   <div class="sb-sep"></div>
-  <div class="sb-sec"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" style="opacity:.6;margin-right:4px;vertical-align:middle;"><path d="M6 1a5 5 0 1 0 0 10A5 5 0 0 0 6 1Z" stroke="currentColor" stroke-width=".9" fill="none"/><path d="M4 11c0-2 1-3 2-3s2 1 2 3" stroke="currentColor" stroke-width=".8" fill="none"/><circle cx="6" cy="4.5" r=".8" fill="currentColor"/></svg>GitHub</div>
+  <div class="sb-sep"></div>
+  <div class="sb-sec"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" style="opacity:.6;margin-right:4px;vertical-align:middle;"><path d="M2 9.5L3.5 8l5.5-5.5 1.5 1.5L5 9.5l-1.5.5-.5-1.5z" stroke="currentColor" stroke-width=".9" fill="none" stroke-linejoin="round"/><line x1="8" y1="3.5" x2="9.5" y2="5" stroke="currentColor" stroke-width=".9"/></svg>Ecriture</div>
+  <a class="sb-item" id="nav-ecriture" onclick="showSection('ecriture')">
+    <svg viewBox="0 0 14 14" fill="none" width="13" height="13"><rect x="1" y="1" width="12" height="12" rx="1" stroke="currentColor" stroke-width="1" fill="none"/><line x1="3" y1="4" x2="11" y2="4" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/><line x1="3" y1="6.5" x2="11" y2="6.5" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/><line x1="3" y1="9" x2="8" y2="9" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/></svg>
+    Espace d'Ecriture
+  </a>
+
+  <div class="sb-sep"></div>
+    <div class="sb-sec"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" style="opacity:.6;margin-right:4px;vertical-align:middle;"><path d="M6 1a5 5 0 1 0 0 10A5 5 0 0 0 6 1Z" stroke="currentColor" stroke-width=".9" fill="none"/><path d="M4 11c0-2 1-3 2-3s2 1 2 3" stroke="currentColor" stroke-width=".8" fill="none"/><circle cx="6" cy="4.5" r=".8" fill="currentColor"/></svg>GitHub</div>
   <a class="sb-item" id="nav-fan-sync" onclick="showSection('fan-sync')">
     <svg viewBox="0 0 14 14" fill="none" width="13" height="13"><path d="M1.5 7A5.5 5.5 0 0 1 12.5 7" stroke="currentColor" stroke-width="1" stroke-linecap="round"/><path d="M12.5 7A5.5 5.5 0 0 1 1.5 7" stroke="currentColor" stroke-width="1" stroke-linecap="round"/><polyline points="10,4.5 12.5,7 10,9.5" stroke="currentColor" stroke-width="1" fill="none"/></svg>
     Sync FAN · GitHub
@@ -711,6 +729,73 @@
     </div>
     <div id="parl-admin-list" style="max-width:680px;"></div>
   </div>
+
+  <!-- ══════════════════════════════════
+       SECTION: ESPACE D'ECRITURE
+  ══════════════════════════════════ -->
+  <div class="sec-pane" id="sec-ecriture">
+    <div class="dash-hdr">
+      <div class="dash-title" style="color:var(--gold-mid);">&#9998; Espace d'Ecriture</div>
+      <div class="dash-sub">Editeur de texte enrichi — formatage Discord, sauvegarde locale JSON.</div>
+    </div>
+
+    <!-- Toolbar -->
+    <div id="ec-toolbar" style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;padding:8px 10px;background:var(--card-bg);border:1px solid var(--border);border-bottom:none;">
+      <button class="ec-btn" onclick="ecFmt('bold')" title="Gras (Ctrl+B)"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><text x="2" y="11" font-family="monospace" font-size="11" font-weight="900" fill="currentColor">B</text></svg></button>
+      <button class="ec-btn" onclick="ecFmt('italic')" title="Italique (Ctrl+I)"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><text x="3" y="11" font-family="monospace" font-size="11" font-style="italic" fill="currentColor">I</text></svg></button>
+      <button class="ec-btn" onclick="ecFmt('underline')" title="Souligné (Ctrl+U)"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><text x="2" y="10" font-family="monospace" font-size="11" fill="currentColor" text-decoration="underline">U</text><line x1="2" y1="12" x2="12" y2="12" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      <button class="ec-btn" onclick="ecFmt('strikethrough')" title="Barré"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><text x="2" y="10" font-family="monospace" font-size="11" fill="currentColor">S</text><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      <div style="width:1px;background:var(--border);margin:0 4px;align-self:stretch;"></div>
+      <button class="ec-btn" onclick="ecFmt('h1')" title="Grand titre Discord (# )" style="font-size:10px;font-weight:700;padding:0 7px;">H1</button>
+      <button class="ec-btn" onclick="ecFmt('h2')" title="Titre moyen (## )" style="font-size:10px;font-weight:700;padding:0 7px;">H2</button>
+      <button class="ec-btn" onclick="ecFmt('h3')" title="Petit titre (### )" style="font-size:10px;font-weight:700;padding:0 7px;">H3</button>
+      <div style="width:1px;background:var(--border);margin:0 4px;align-self:stretch;"></div>
+      <button class="ec-btn" onclick="ecFmt('code')" title="Code inline"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><polyline points="4,4 1,7 4,10" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/><polyline points="10,4 13,7 10,10" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></button>
+      <button class="ec-btn" onclick="ecFmt('codeblock')" title="Bloc de code (```)"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><rect x="1" y="2" width="12" height="10" rx="1" stroke="currentColor" stroke-width=".9" fill="none"/><line x1="1" y1="5.5" x2="13" y2="5.5" stroke="currentColor" stroke-width=".7" opacity=".5"/><line x1="3" y1="7.5" x2="7" y2="7.5" stroke="currentColor" stroke-width=".8"/><line x1="3" y1="9.5" x2="5.5" y2="9.5" stroke="currentColor" stroke-width=".8"/></svg></button>
+      <button class="ec-btn" onclick="ecFmt('quote')" title="Citation (> )"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><line x1="2" y1="4" x2="12" y2="4" stroke="currentColor" stroke-width=".9"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width=".9"/><line x1="2" y1="10" x2="9" y2="10" stroke="currentColor" stroke-width=".9"/><line x1="0" y1="3" x2="0" y2="11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      <button class="ec-btn" onclick="ecFmt('spoiler')" title="Spoiler (|| ||)" style="font-size:10px;padding:0 7px;font-weight:600;">||</button>
+      <div style="width:1px;background:var(--border);margin:0 4px;align-self:stretch;"></div>
+      <button class="ec-btn" onclick="ecFmt('bullet')" title="Liste à puces (- )"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><circle cx="2.5" cy="4.5" r="1" fill="currentColor"/><circle cx="2.5" cy="7.5" r="1" fill="currentColor"/><circle cx="2.5" cy="10.5" r="1" fill="currentColor"/><line x1="5" y1="4.5" x2="12" y2="4.5" stroke="currentColor" stroke-width=".9"/><line x1="5" y1="7.5" x2="12" y2="7.5" stroke="currentColor" stroke-width=".9"/><line x1="5" y1="10.5" x2="10" y2="10.5" stroke="currentColor" stroke-width=".9"/></svg></button>
+      <button class="ec-btn" onclick="ecFmt('numbered')" title="Liste numérotée (1. )" style="font-size:10px;padding:0 7px;">1.</button>
+      <button class="ec-btn" onclick="ecFmt('rule')" title="Séparateur (---)" style="font-size:10px;padding:0 7px;">—</button>
+      <div style="flex:1;"></div>
+      <!-- Doc management -->
+      <button class="ec-btn ec-btn-gold" onclick="ecNewDoc()" title="Nouveau document" style="padding:0 10px;font-size:9px;gap:4px;">
+        <svg viewBox="0 0 12 12" fill="none" width="11" height="11"><rect x="2" y="1" width="8" height="10" rx="1" stroke="currentColor" stroke-width=".9" fill="none"/><line x1="4" y1="6" x2="8" y2="6" stroke="currentColor" stroke-width=".8" stroke-linecap="round"/><line x1="6" y1="4" x2="6" y2="8" stroke="currentColor" stroke-width=".8" stroke-linecap="round"/></svg>
+        Nouveau
+      </button>
+      <button class="ec-btn ec-btn-gold" onclick="ecExportJSON()" title="Exporter en JSON" style="padding:0 10px;font-size:9px;">&#8595; Export</button>
+      <button class="ec-btn ec-btn-gold" onclick="document.getElementById('ec-import-file').click()" title="Importer JSON" style="padding:0 10px;font-size:9px;">&#8593; Import</button>
+      <input type="file" id="ec-import-file" accept=".json" style="display:none;" onchange="ecImportJSON(this)">
+    </div>
+
+    <!-- Doc title + selector -->
+    <div style="display:flex;gap:8px;margin-bottom:0;padding:6px 10px;background:var(--card-bg);border:1px solid var(--border);border-bottom:none;border-top:1px solid rgba(200,150,12,.15);align-items:center;flex-wrap:wrap;">
+      <input type="text" id="ec-doc-title" class="fi" placeholder="Titre du document…" oninput="ecSave()" style="flex:1;min-width:160px;font-size:12px;padding:5px 10px;">
+      <select id="ec-doc-select" class="fs" onchange="ecLoadDoc(this.value)" style="min-width:180px;font-size:10px;padding:5px 8px;">
+        <option value="">— Documents sauvegardés —</option>
+      </select>
+      <button class="btn btn-danger btn-xs" onclick="ecDeleteDoc()" title="Supprimer ce document">✕ Supprimer</button>
+    </div>
+
+    <!-- Editor -->
+    <div style="position:relative;">
+      <textarea id="ec-editor"
+        oninput="ecSave();ecCount()"
+        onkeydown="ecKeyDown(event)"
+        placeholder="Commencez à écrire… Utilisez la barre d'outils pour le formatage Discord (gras, italique, ` code `, > citation, || spoiler ||…)"
+        style="width:100%;min-height:520px;resize:vertical;
+          background:var(--card-bg);
+          border:1px solid var(--border);border-top:none;
+          color:rgba(255,255,255,.90);
+          font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.7;
+          padding:18px 20px 40px;outline:none;
+          letter-spacing:.02em;
+          tab-size:2;"></textarea>
+      <!-- Character count bottom-right inside textarea -->
+      <div id="ec-count" style="position:absolute;bottom:10px;right:14px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.28);letter-spacing:.08em;pointer-events:none;">0 car.</div>
+    </div>
+  </div>
 </div><!-- /admin-main -->
 
 <!-- ═══════════ MODALS ═══════════ -->
@@ -803,7 +888,8 @@ const SECTION_TITLES={
   'fan-new':'⚔ NOUVEAU BATAILLON',
   'fan-sync':'⚔ SYNC · GITHUB',
   'catalogue':'📖 CATALOGUE MILITAIRE',
-  'parlement':'🏛 PARLEMENT DU NIL'
+  'parlement':'🏛 PARLEMENT DU NIL',
+  'ecriture':'✍ ESPACE D\'ECRITURE'
 };
 function showSection(key){
   Object.keys(SECTION_TITLES).forEach(k=>{
@@ -821,6 +907,7 @@ function showSection(key){
   if(key==='fan-bat')renderBatAdmin();
   if(key==='catalogue')renderCatalogueAdmin();
   if(key==='parlement')renderParlementAdmin();
+  if(key==='ecriture')initEcriture();
   if(key==='fan-prod')renderProdAdmin();
   if(key==='fan-new'){switchSubTab('bat');renderNewBatForm();}
 }
@@ -1969,6 +2056,167 @@ async function parlLoadFromGH(){
     const d=await r.json();
     if(d&&d.partis){parlData=d;localStorage.setItem('parlement_data',JSON.stringify(d));renderParlementAdmin();toast('Parlement chargé depuis GitHub.');}
   }catch(e){toast('Erreur chargement: '+e.message,'err');}
+}
+
+
+// ════════════════════════════════════════════════
+//  ESPACE D'ECRITURE
+// ════════════════════════════════════════════════
+var EC_LS_KEY='ecriture_docs';
+var ecDocs={};
+var ecCurrentId=null;
+
+function ecLoadAll(){try{ecDocs=JSON.parse(localStorage.getItem(EC_LS_KEY)||'{}');}catch(e){ecDocs={};}}
+function ecSaveAll(){localStorage.setItem(EC_LS_KEY,JSON.stringify(ecDocs));}
+
+function initEcriture(){
+  ecLoadAll();ecRefreshSelect();
+  var last=localStorage.getItem('ecriture_last');
+  if(last&&ecDocs[last])ecOpenDoc(last);
+  else ecNewDoc();
+  ecCount();
+}
+
+function ecRefreshSelect(){
+  var sel=document.getElementById('ec-doc-select');if(!sel)return;
+  var ids=Object.keys(ecDocs).sort(function(a,b){return (ecDocs[b].updated||0)-(ecDocs[a].updated||0);});
+  var html='<option value="">— Documents ('+ids.length+') —</option>';
+  ids.forEach(function(id){
+    var d=ecDocs[id];
+    var date=d.updated?new Date(d.updated).toLocaleDateString('fr'):'';
+    html+='<option value="'+id+'"'+(id===ecCurrentId?' selected':'')+'>'+( d.title||'Sans titre')+' · '+date+'</option>';
+  });
+  sel.innerHTML=html;
+}
+
+function ecNewDoc(){
+  var id='doc_'+Date.now();
+  ecDocs[id]={title:'',content:'',updated:Date.now()};
+  ecSaveAll();ecOpenDoc(id);
+}
+
+function ecOpenDoc(id){
+  if(!ecDocs[id])return;
+  ecCurrentId=id;
+  localStorage.setItem('ecriture_last',id);
+  var doc=ecDocs[id];
+  var t=document.getElementById('ec-doc-title');
+  var e=document.getElementById('ec-editor');
+  if(t)t.value=doc.title||'';
+  if(e)e.value=doc.content||'';
+  ecRefreshSelect();ecCount();
+}
+
+function ecLoadDoc(id){if(id)ecOpenDoc(id);}
+
+function ecSave(){
+  if(!ecCurrentId)return;
+  var t=document.getElementById('ec-doc-title');
+  var e=document.getElementById('ec-editor');
+  if(!ecDocs[ecCurrentId])ecDocs[ecCurrentId]={};
+  ecDocs[ecCurrentId].title=t?t.value.trim():'';
+  ecDocs[ecCurrentId].content=e?e.value:'';
+  ecDocs[ecCurrentId].updated=Date.now();
+  ecSaveAll();ecRefreshSelect();
+}
+
+function ecDeleteDoc(){
+  if(!ecCurrentId)return;
+  var doc=ecDocs[ecCurrentId];
+  if(!confirm('Supprimer "'+(doc&&doc.title?doc.title:'ce document')+'" ?'))return;
+  delete ecDocs[ecCurrentId];ecSaveAll();
+  var ids=Object.keys(ecDocs);
+  if(ids.length)ecOpenDoc(ids[0]);else{ecCurrentId=null;ecNewDoc();}
+}
+
+function ecCount(){
+  var e=document.getElementById('ec-editor');
+  var c=document.getElementById('ec-count');
+  if(!e||!c)return;
+  c.textContent=e.value.length.toLocaleString('fr')+' car.';
+}
+
+function ecFmt(type){
+  var ta=document.getElementById('ec-editor');if(!ta)return;
+  var s=ta.selectionStart,en=ta.selectionEnd;
+  var sel=ta.value.substring(s,en);
+  var before=ta.value.substring(0,s);
+  var after=ta.value.substring(en);
+  var result,cursor;
+
+  function wrap(open,close){
+    if(sel){result=before+open+sel+close+after;cursor=s+open.length;}
+    else{result=before+open+close+after;cursor=s+open.length;}
+  }
+  function prefix(pfx){
+    var ls=ta.value.lastIndexOf('\n',s-1)+1;
+    var le=ta.value.indexOf('\n',en);if(le===-1)le=ta.value.length;
+    var pre=ta.value.substring(0,ls),post=ta.value.substring(le);
+    var mid=ta.value.substring(ls,le).split('\n').map(function(l){return l.startsWith(pfx)?l.substring(pfx.length):pfx+l;});
+    result=pre+mid.join('\n')+post;cursor=s+pfx.length;
+  }
+
+  switch(type){
+    case 'bold':          wrap('**','**');break;
+    case 'italic':        wrap('*','*');break;
+    case 'underline':     wrap('__','__');break;
+    case 'strikethrough': wrap('~~','~~');break;
+    case 'spoiler':       wrap('||','||');break;
+    case 'code':          wrap('`','`');break;
+    case 'codeblock':
+      if(sel){result=before+'```\n'+sel+'\n```'+after;cursor=s+4;}
+      else{result=before+'```\n\n```'+after;cursor=s+4;}
+      break;
+    case 'quote':   prefix('> ');break;
+    case 'h1':      prefix('# ');break;
+    case 'h2':      prefix('## ');break;
+    case 'h3':      prefix('### ');break;
+    case 'bullet':  prefix('- ');break;
+    case 'numbered':
+      var n=1,ls2=ta.value.lastIndexOf('\n',s-1)+1;
+      var le2=ta.value.indexOf('\n',en);if(le2===-1)le2=ta.value.length;
+      var pre2=ta.value.substring(0,ls2),post2=ta.value.substring(le2);
+      var mid2=ta.value.substring(ls2,le2).split('\n').map(function(l){return (n++)+'. '+l;});
+      result=pre2+mid2.join('\n')+post2;cursor=s+3;break;
+    case 'rule':
+      result=before+(before.endsWith('\n')?'':'\n')+'---\n'+after;cursor=s+4;break;
+  }
+  ta.value=result;ta.selectionStart=ta.selectionEnd=cursor||s;ta.focus();
+  ecSave();ecCount();
+}
+
+function ecKeyDown(e){
+  var sc={b:'bold',i:'italic',u:'underline'};
+  if((e.ctrlKey||e.metaKey)&&sc[e.key]){e.preventDefault();ecFmt(sc[e.key]);return;}
+  if(e.key==='Tab'){
+    e.preventDefault();var ta=e.target,s=ta.selectionStart,en=ta.selectionEnd;
+    ta.value=ta.value.substring(0,s)+'  '+ta.value.substring(en);
+    ta.selectionStart=ta.selectionEnd=s+2;ecSave();ecCount();
+  }
+}
+
+function ecExportJSON(){
+  ecSave();
+  var data={exported:new Date().toISOString(),docs:ecDocs};
+  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');a.href=url;a.download='ecriture-'+Date.now()+'.json';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+}
+function ecImportJSON(input){
+  var file=input.files[0];if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(ev){
+    try{
+      var data=JSON.parse(ev.target.result);
+      var docs=data.docs||data;
+      if(typeof docs!=='object')throw new Error('Format invalide');
+      Object.assign(ecDocs,docs);ecSaveAll();ecRefreshSelect();
+      var ids=Object.keys(docs);if(ids.length)ecOpenDoc(ids[0]);
+      toast('Import reussi — '+ids.length+' document(s).');
+    }catch(err){toast('Erreur import: '+err.message,'err');}
+  };
+  reader.readAsText(file);input.value='';
 }
 
 // ════════════════════════════════════════════════
