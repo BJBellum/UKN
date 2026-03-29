@@ -238,6 +238,8 @@
 <script>
 const FAN_IDS=['772821169664426025','928291843958014014','1014832884764393523','1113422056525144104','293869524091142144','1302403450566610944'];
 const SLOT_CAP={1:15000,2:22500,3:33000,4:48000,5:69000,6:102000,7:150000};
+// Coefficient boost par niveau technologique (appliqué aux slots de l'usine)
+const COEF_BOOST={1:1,2:1.16,3:1.34,4:1.55,5:1.80,6:2.08,7:2.41,8:2.78,9:3.22,10:3.73,11:4.32,12:5};
 const CAT_COLOR={Terrestre:'#22B89A',Maritime:'#4A9EFF',Aerospatiale:'#E85C0D'};
 const CAT_CLS={Terrestre:'cat-T',Maritime:'cat-M',Aerospatiale:'cat-A'};
 
@@ -270,6 +272,12 @@ const DEFAULT_EQUIP=[
 // ── TECH LEVELS ──
 const TECH_MAP={1:"1910-1919",2:"1920-1929",3:"1930-1939",4:"1940-1949",5:"1950-1959",6:"1960-1969",7:"1970-1979",8:"1980-1989",9:"1990-1999",10:"2000-2009",11:"2010-2019",12:"2020-∞"};
 function nivLabel(n){const d=TECH_MAP[n];return d?'NIV '+n+' · '+d:'NIV '+n;}
+
+function getEffectiveCap(factory){
+  const base=SLOT_CAP[factory.niveau]||150000;
+  const coef=COEF_BOOST[factory.niv_tech_coef||1]||1;
+  return Math.round(base*coef);
+}
 
 // ── STATE ──
 let currentStep = 1;
@@ -306,19 +314,28 @@ function renderFactoryList(){
   const el=document.getElementById('factory-list');
   if(!el)return;
   el.innerHTML=factories.map(f=>{
-    const cap=SLOT_CAP[f.niveau]||150000;
+    const cap=getEffectiveCap(f);
     const used=computeSlotsUsed(f.categorie);
     const pct=Math.min(100,Math.round(used/cap*100));
     const col=CAT_COLOR[f.categorie]||'#E85C0D';
     const overflow=used>cap;
+    const coefVal=COEF_BOOST[f.niv_tech_coef||1]||1;
+    const coefDisplay=coefVal===1?'×1':`×${coefVal}`;
     return`<div class="factory-card" style="border-left:2px solid ${col}20;">
       <div class="factory-name" style="color:${col}">${f.nom}</div>
       <div class="factory-row">
-        <span class="factory-lbl">Niveau</span>
+        <span class="factory-lbl">Niveau usine</span>
         <select class="level-select" onchange="setFactoryLevel('${f.id}',this.value)">
           ${[1,2,3,4,5,6,7].map(n=>`<option value="${n}"${f.niveau===n?' selected':''}>${n}</option>`).join('')}
         </select>
         <span class="factory-slots" style="color:${col}">${cap.toLocaleString('fr')}</span>
+      </div>
+      <div class="factory-row" style="margin-top:2px;">
+        <span class="factory-lbl" style="color:var(--spice);">Coef. boost NIV</span>
+        <select class="level-select" style="border-color:rgba(232,92,13,.4);" onchange="setFactoryCoef('${f.id}',this.value)">
+          ${Object.keys(COEF_BOOST).map(n=>`<option value="${n}"${(f.niv_tech_coef||1)==n?' selected':''}>NIV ${n} · ×${COEF_BOOST[n]}</option>`).join('')}
+        </select>
+        <span class="factory-slots" style="color:var(--spice);font-size:11px;">${coefDisplay}</span>
       </div>
       <div class="slots-used" style="color:${overflow?'#E84848':col};">
         ${used.toLocaleString('fr')} / ${cap.toLocaleString('fr')} slots
@@ -359,6 +376,10 @@ function setFactoryLevel(id,lvl){
   const f=factories.find(x=>x.id===id);
   if(f){f.niveau=parseInt(lvl);saveState();render();}
 }
+function setFactoryCoef(id,niv){
+  const f=factories.find(x=>x.id===id);
+  if(f){f.niv_tech_coef=parseInt(niv);saveState();render();}
+}
 function changeOrder(id,delta){
   orders[id]=Math.max(0,(orders[id]||0)+delta*currentStep);
   saveState();render();
@@ -393,15 +414,16 @@ function renderGauges(){
   const el=document.getElementById('gauge-grid');
   if(!el)return;
   el.innerHTML=factories.map(f=>{
-    const cap=SLOT_CAP[f.niveau]||150000;
+    const cap=getEffectiveCap(f);
     const used=computeSlotsUsed(f.categorie);
     const pct=Math.min(100,Math.round(used/cap*100));
     const col=CAT_COLOR[f.categorie]||'#E85C0D';
     const overflow=used>cap;
+    const coefTxt=COEF_BOOST[f.niv_tech_coef||1]!==1?` · ×${COEF_BOOST[f.niv_tech_coef||1]}`:'';
     return`<div class="gauge-card" style="border-top-color:${col};">
       <div class="gauge-name">${f.nom}</div>
       <div class="gauge-val" style="color:${overflow?'#E84848':col}">${(cap-used).toLocaleString('fr')}</div>
-      <div class="gauge-sub">slots restants · NIV ${f.niveau}</div>
+      <div class="gauge-sub">slots restants · NIV ${f.niveau}${coefTxt}</div>
       <div class="gauge-bar-bg"><div class="gauge-bar-fill" style="width:${pct}%;background:${overflow?'#E84848':col};"></div></div>
       <div class="gauge-pct">
         <span style="color:${overflow?'#E84848':col}">${used.toLocaleString('fr')} utilisés</span>
