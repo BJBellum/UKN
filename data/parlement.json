@@ -1,0 +1,33 @@
+{
+  "partis": [
+    {
+      "id": "us",
+      "nom": "Union Sociale",
+      "nom_ar": "الاتحاد الاجتماعي",
+      "chef": "Achraf Bazzi",
+      "couleur": "#CC1A1A",
+      "sieges_citoyens": 136,
+      "sieges_haute": 11
+    },
+    {
+      "id": "pa",
+      "nom": "Parti Agraire",
+      "nom_ar": "الحزب الزراعي",
+      "chef": "Ahmed Handal",
+      "couleur": "#E87D00",
+      "sieges_citoyens": 30,
+      "sieges_haute": 3
+    },
+    {
+      "id": "al",
+      "nom": "L'Action Liberale",
+      "nom_ar": "الحزب الليبرالي",
+      "chef": "Mustafa Srour",
+      "couleur": "#E8C800",
+      "sieges_citoyens": 8,
+      "sieges_haute": 2
+    }
+  ],
+  "independants_citoyens": 6,
+  "independants_haute": 2
+}
