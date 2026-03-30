@@ -46,5 +46,29 @@
       "Équipements possibles": "Baïonnette, Montage d'un rail latéral sur le boîtier de culasse pour lunette de précision, sangle"
     },
     "image_path": "assets/images/catalogue/armes-feu-2.png"
+  },
+  {
+    "id": "cat_1774887885083",
+    "nom": "BN-06",
+    "categorie": "armes-feu",
+    "niveau": 1,
+    "fabricant": "Yassin Heavy Industries",
+    "cout_unite": "",
+    "inspiration": "FN FAL",
+    "disponibilite": "Mai 2306",
+    "specs": {
+      "Calibre": "7,62 x 51 mm",
+      "Masse (non chargé)": "4,25 kg",
+      "Longueur": "109 cm",
+      "Longueur du canon": "53,3 cm",
+      "Cadence de tir": "550 à 600 coups par minute",
+      "Vitesse initiale": "850 m/s",
+      "Portée pratique": "600 m",
+      "Portée maximale": "2 000 m (avec optique)",
+      "Capacité": "20 cartouches à 30 cartouches",
+      "Type de munitions": "7,62 mm",
+      "Équipements possibles": "Baïonnette, Lunette de visée (pour le tir de précision), Bipied, Trépied"
+    },
+    "image_path": "assets/images/catalogue/armes-feu-3.png"
   }
 ]
