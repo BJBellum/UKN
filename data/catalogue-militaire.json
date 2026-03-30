@@ -29,7 +29,7 @@
     "categorie": "armes-feu",
     "niveau": 5,
     "fabricant": "Yassin Heavy Industries",
-    "cout_unite": "1099",
+    "cout_unite": "1499",
     "inspiration": "FN FAL",
     "disponibilite": "Mai 2306",
     "specs": {
@@ -53,7 +53,7 @@
     "categorie": "vehicules-terrestres",
     "niveau": 5,
     "fabricant": "Yassin Heavy Industries",
-    "cout_unite": "199999",
+    "cout_unite": "299999",
     "inspiration": "AMX-13 VCI",
     "disponibilite": "Août 2306",
     "specs": {
@@ -91,7 +91,7 @@
     "categorie": "vehicules-terrestres",
     "niveau": 5,
     "fabricant": "Yassin Heavy Industries",
-    "cout_unite": "169999",
+    "cout_unite": "249999",
     "inspiration": "AMX-13 VCI",
     "disponibilite": "Juin 2306",
     "specs": {
@@ -129,7 +129,7 @@
     "categorie": "vehicules-terrestres",
     "niveau": 5,
     "fabricant": "Yassin Heavy Industries",
-    "cout_unite": "239999",
+    "cout_unite": "349999",
     "inspiration": "E.B.R (1954)",
     "disponibilite": "Août 2306",
     "specs": {
@@ -167,7 +167,7 @@
     "categorie": "aeronefs",
     "niveau": 5,
     "fabricant": "Royal Crown Aviation & Defense",
-    "cout_unite": "400000",
+    "cout_unite": "629999",
     "inspiration": "Super Mystère B2",
     "disponibilite": "Septembre 2306",
     "specs": {
@@ -195,7 +195,7 @@
     "categorie": "aeronefs",
     "niveau": 5,
     "fabricant": "Royal Crown Aviation & Defense",
-    "cout_unite": "299999",
+    "cout_unite": "399999",
     "inspiration": "UH-1 \"Huey\"",
     "disponibilite": "349999",
     "specs": {
