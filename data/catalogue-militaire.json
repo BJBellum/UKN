@@ -53,7 +53,7 @@
     "categorie": "armes-feu",
     "niveau": 1,
     "fabricant": "Yassin Heavy Industries",
-    "cout_unite": "",
+    "cout_unite": "1100",
     "inspiration": "FN FAL",
     "disponibilite": "Mai 2306",
     "specs": {
@@ -69,6 +69,6 @@
       "Type de munitions": "7,62 mm",
       "Équipements possibles": "Baïonnette, Lunette de visée (pour le tir de précision), Bipied, Trépied"
     },
-    "image_path": "assets/images/catalogue/armes-feu-3.png"
+    "image_path": "assets/images/catalogue/armes-feu-4.png"
   }
 ]
