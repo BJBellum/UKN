@@ -1,0 +1,30 @@
+[
+  {
+    "nom": "Royaume-Uni du Nil",
+    "code": "RUN"
+  },
+  {
+    "nom": "Union Démocratique d'Asie",
+    "code": "UDA"
+  },
+  {
+    "nom": "Suzeraineté Populaire de Chine",
+    "code": "SPC"
+  },
+  {
+    "nom": "Royaume d'Asha",
+    "code": "RAH"
+  },
+  {
+    "nom": "Grand-Duché de Bar-le-Duc",
+    "code": "BLD"
+  },
+  {
+    "nom": "Empire Romain d'Orient",
+    "code": "ERO"
+  },
+  {
+    "nom": "Royaume d'Angleterre",
+    "code": "RAG"
+  }
+]
