@@ -70,6 +70,7 @@ html,body{height:100%;overflow:hidden;}
 /* ── MAIN ── */
 .cat-main{flex:1;overflow-y:auto;background:var(--bg);}
 .cat-content{padding:20px 24px 60px;}
+.cat-items-grid{display:flex;flex-direction:column;gap:16px;}
 @media(max-width:760px){.cat-sidebar{display:none;}.cat-content{padding:12px;}}
 
 /* Section header */
@@ -95,8 +96,9 @@ html,body{height:100%;overflow:hidden;}
 
 /* Right: square image */
 .item-img-side{
-  flex-shrink:0;align-self:stretch;
-  width:clamp(320px,36vw,480px);
+  flex-shrink:0;
+  width:40%;
+  aspect-ratio:2/1;
   overflow:hidden;background:var(--bg2);
   border-left:1px solid var(--border);
   order:2;

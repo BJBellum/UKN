@@ -2046,22 +2046,9 @@ function handleImgUpload(input){
   const file=input.files[0];if(!file)return;
   catImgFile=file;
   const ext=file.name.split('.').pop().toLowerCase();
-  // Generate unique sequential image name: find highest existing number for this prefix
-  const cat=document.getElementById('cat-f-categorie')?.value||'equip';
-  const prefix=cat+'-';
-  // Find max existing number across ALL items (any category) to avoid any collision
-  let maxNum=0;
-  catItems.forEach(function(i){
-    if(!i.image_path)return;
-    const fname=i.image_path.split('/').pop(); // e.g. "armes-feu-3.jpg"
-    const m=fname.match(/^(.+?)-(\d+)\.[^.]+$/);
-    if(m){
-      const n=parseInt(m[2]);
-      if(!isNaN(n)&&n>maxNum)maxNum=n;
-    }
-  });
-  const nextNum=maxNum+1;
-  const filename=`${cat}-${nextNum}.${ext}`;
+  // Keep original filename — sanitize: spaces/special chars → _, keep extension
+  const sanitized=file.name.replace(/[^a-zA-Z0-9._-]/g,'_').toLowerCase();
+  const filename=sanitized;
   const imgPath=CAT_IMAGES_PATH+filename;
   document.getElementById('cat-img-path').value=imgPath;
   document.getElementById('cat-img-filename').textContent=filename;
