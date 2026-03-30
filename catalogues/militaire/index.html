@@ -84,67 +84,69 @@ html,body{height:100%;overflow:hidden;}
 .cat-item{
   background:var(--card-bg);
   border:1px solid var(--border);
-  border-right:3px solid rgba(232,92,13,.6);
-  display:flex;flex-direction:row;
+  border-top:2px solid rgba(232,92,13,.5);
   overflow:hidden;
-  transition:border-right-color .18s,box-shadow .18s;
+  transition:border-top-color .18s,box-shadow .18s;
 }
-.cat-item:hover{border-right-color:var(--spice);box-shadow:0 3px 16px rgba(232,92,13,.08);}
+.cat-item:hover{border-top-color:var(--spice);box-shadow:0 4px 18px rgba(232,92,13,.07);}
 
-/* Left: info */
-.item-right{flex:1;display:flex;flex-direction:column;min-width:0;order:1;}
-
-/* Right: square image */
-.item-img-side{
-  flex-shrink:0;
-  width:40%;
-  aspect-ratio:2/1;
+/* ── TOP: banner image 2:1 ── */
+.item-img-banner{
+  width:100%;aspect-ratio:2/1;
   overflow:hidden;background:var(--bg2);
-  border-left:1px solid var(--border);
-  order:2;
-  display:flex;align-items:center;justify-content:center;
+  position:relative;
 }
-.item-img-side img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .35s ease,filter .35s ease;}
-.cat-item:hover .item-img-side img{transform:scale(1.04);filter:brightness(1.08);}
-.item-img-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;}
-.item-img-ph-ico{opacity:.18;display:flex;}
-.item-img-ph-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text2);letter-spacing:.1em;text-align:center;padding:0 8px;}
+.item-img-banner img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease,filter .4s ease;}
+.cat-item:hover .item-img-banner img{transform:scale(1.02);filter:brightness(1.06);}
+.item-img-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
+.item-img-ph-ico{opacity:.14;display:flex;}
+.item-img-ph-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text2);letter-spacing:.12em;}
 
-/* Head bar */
-.item-head{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-bottom:1px solid var(--border);gap:10px;flex-wrap:wrap;}
-.item-head-name{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:rgba(255,255,255,.94);letter-spacing:.03em;}
-[data-theme="light"] .item-head-name{color:rgba(0,0,0,.86);}
-.item-head-meta{display:flex;align-items:center;gap:8px;flex-shrink:0;flex-wrap:wrap;}
-.item-niv{font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 8px;border-radius:2px;border:1px solid;display:inline-block;font-weight:500;}
-.item-fab{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.62);}
-[data-theme="light"] .item-fab{color:rgba(0,0,0,.56);}
-.item-dispo{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--teal-bright);}
+/* ── THREE BOLD BADGES ── */
+.item-badges{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  border-bottom:1px solid var(--border);
+}
+.item-badge{padding:13px 16px;text-align:center;border-right:1px solid var(--border);}
+.item-badge:last-child{border-right:none;}
+.ib-lbl{font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(255,255,255,.44);letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px;}
+[data-theme="light"] .ib-lbl{color:rgba(0,0,0,.40);}
+.ib-val{font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:700;color:rgba(255,255,255,.96);letter-spacing:.03em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+[data-theme="light"] .ib-val{color:rgba(0,0,0,.88);}
+.ib-val.nom{color:rgba(255,255,255,.97);font-size:16px;}
+.ib-val.date{color:var(--teal-bright);}
+.ib-val.prix{color:var(--gold);font-family:'Dune Rise',serif;font-size:15px;}
+[data-theme="light"] .ib-val.prix{color:#8B6500;}
 
-/* 3 key badges */
-.item-keys{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);}
-.item-key{padding:8px 12px;text-align:center;border-right:1px solid var(--border);}
-.item-key:last-child{border-right:none;}
-.ik-lbl{font-family:'IBM Plex Mono',monospace;font-size:7px;color:rgba(255,255,255,.42);letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px;}
-[data-theme="light"] .ik-lbl{color:rgba(0,0,0,.40);}
-.ik-val{font-family:'IBM Plex Mono',monospace;font-size:12px;color:rgba(255,255,255,.90);letter-spacing:.03em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-[data-theme="light"] .ik-val{color:rgba(0,0,0,.84);}
-.ik-val.spice{color:#FF6B35;font-weight:500;}
-[data-theme="light"] .ik-val.spice{color:#C84000;}
-.ik-val.gold{color:var(--gold);font-family:'Dune Rise',serif;font-size:12px;}
-.ik-val.bold{font-weight:600;}
+/* ── COLLAPSIBLE SPECS ── */
+.item-specs-toggle{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:9px 16px;cursor:pointer;user-select:none;
+  background:rgba(232,92,13,.04);border-bottom:1px solid transparent;
+  transition:background .15s;
+}
+.item-specs-toggle:hover{background:rgba(232,92,13,.08);}
+.cat-item.open .item-specs-toggle{border-bottom-color:rgba(232,92,13,.18);}
+.ist-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--spice);text-transform:uppercase;display:flex;align-items:center;gap:6px;}
+.ist-tri{font-size:12px;transition:transform .22s;display:inline-block;color:var(--spice);}
+.cat-item.open .ist-tri{transform:rotate(90deg);}
+.ist-meta{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);display:flex;gap:12px;flex-wrap:wrap;}
+.ist-niv{font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 8px;border-radius:2px;border:1px solid;display:inline-block;font-weight:500;}
+.ist-fab{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.56);}
+[data-theme="light"] .ist-fab{color:rgba(0,0,0,.50);}
 
-/* Specs */
-.item-specs-hdr{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.16em;color:var(--spice);text-transform:uppercase;padding:8px 14px 6px;border-bottom:1px solid rgba(232,92,13,.18);background:rgba(232,92,13,.04);}
-.item-specs-grid{display:grid;grid-template-columns:1fr 1fr;flex:1;}
+.item-specs-body{display:none;border-top:1px solid var(--border);}
+.cat-item.open .item-specs-body{display:block;}
+.item-specs-grid{display:grid;grid-template-columns:1fr 1fr;}
 @media(max-width:480px){.item-specs-grid{grid-template-columns:1fr;}}
-.isg-item{padding:6px 14px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);}
+.isg-item{padding:8px 16px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);}
 .isg-item:nth-child(even){border-right:none;}
 @media(max-width:480px){.isg-item{border-right:none;}}
-.isg-key{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.62);letter-spacing:.05em;margin-bottom:2px;}
-[data-theme="light"] .isg-key{color:rgba(0,0,0,.56);}
-.isg-val{font-family:'IBM Plex Mono',monospace;font-size:14px;color:rgba(255,255,255,.88);letter-spacing:.02em;}
+.isg-key{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.54);letter-spacing:.06em;margin-bottom:3px;}
+[data-theme="light"] .isg-key{color:rgba(0,0,0,.44);}
+.isg-val{font-family:'IBM Plex Mono',monospace;font-size:13px;color:rgba(255,255,255,.90);letter-spacing:.02em;}
 [data-theme="light"] .isg-val{color:rgba(0,0,0,.82);}
-.item-specs-empty{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text2);padding:12px 14px;}
+.item-specs-empty{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text2);padding:12px 16px;}
 
 /* Mobile */
 @media(max-width:600px){
@@ -200,6 +202,12 @@ html,body{height:100%;overflow:hidden;}
         <div class="sb-hdr-sub">Forces Armees du Nil · 2305</div>
       </div>
       <div class="sb-total" id="sb-total">— equipements</div>
+      <div style="padding:6px 10px;border-bottom:1px solid var(--border);">
+        <button onclick="selectAllTech()" id="btn-all-tech" style="width:100%;background:rgba(232,92,13,.07);border:1px solid rgba(232,92,13,.25);color:var(--spice);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;padding:6px 10px;cursor:pointer;border-radius:2px;transition:all .15s;text-align:left;display:flex;align-items:center;gap:6px;">
+          <svg viewBox="0 0 12 12" fill="none" width="10" height="10"><rect x="1" y="1" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1" fill="none"/><line x1="3" y1="4" x2="9" y2="4" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/><line x1="3" y1="6" x2="9" y2="6" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/><line x1="3" y1="8" x2="7" y2="8" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/></svg>
+          Toutes les Technologies
+        </button>
+      </div>
       <div class="sb-srch-wrap">
         <input type="text" class="sb-srch" id="cat-search" placeholder="Rechercher…" oninput="onSearch()">
       </div>
@@ -288,6 +296,8 @@ function syncGH(){
 }
 
 /* ── SIDEBAR ── */
+function toggleItem(id){var el=document.getElementById('item-'+id);if(el)el.classList.toggle('open');}
+
 function renderSidebar(){
   var tot=catalogue.length;
   var el=document.getElementById('sb-total');
@@ -322,12 +332,22 @@ function renderSidebar(){
 function toggleG(id){openG[id]=!openG[id];renderSidebar();}
 function selectCat(id){
   activeCat=id;searchQ='';
+  var btn=document.getElementById('btn-all-tech');if(btn)btn.style.background='';
   var si=document.getElementById('cat-search');if(si)si.value='';
   renderSidebar();renderContent();
   setTimeout(function(){
     var anchor=document.getElementById('sec-'+id);
     if(anchor){var m=document.getElementById('cat-main');if(m)m.scrollTo({top:anchor.offsetTop-6,behavior:'smooth'});}
   },60);
+}
+function selectAllTech(){
+  activeCat='';searchQ='';
+  var si=document.getElementById('cat-search');if(si)si.value='';
+  // highlight button
+  var btn=document.getElementById('btn-all-tech');
+  if(btn)btn.style.background='rgba(232,92,13,.18)';
+  renderSidebar();renderContent();
+  var m=document.getElementById('cat-main');if(m)m.scrollTo({top:0,behavior:'smooth'});
 }
 function onSearch(){
   searchQ=(document.getElementById('cat-search').value||'').toLowerCase();
@@ -343,32 +363,38 @@ function buildItemHTML(item){
   var specs=item.specs||{};
   var specKeys=Object.keys(specs).filter(function(k){return specs[k];});
   var coutFmt=item.cout_unite?Number(item.cout_unite).toLocaleString('fr')+' N\u00a3':'\u2014';
-  var dispo=item.disponibilite||'';
+  var periode=TECH[niv]||'—';
 
   var html='<div class="cat-item" id="item-'+item.id+'">';
 
-  // LEFT: text info (order:1)
-  html+='<div class="item-right">';
-
-  // Head bar: name + NIV + fabricant + dispo
-  html+='<div class="item-head">';
-  html+='<div class="item-head-name">'+(item.nom||'\u2014')+'</div>';
-  html+='<div class="item-head-meta">';
-  if(item.fabricant)html+='<span class="item-fab">'+item.fabricant+'</span>';
-  html+='<span class="item-niv niv-'+niv+'">'+nivLbl+'</span>';
-  if(dispo)html+='<span class="item-dispo">'+dispo+'</span>';
-  html+='</div></div>';
-
-  // 3 badges
-  html+='<div class="item-keys">';
-  html+='<div class="item-key"><div class="ik-lbl">Inspiration</div><div class="ik-val spice" title="'+(item.inspiration||'\u2014')+'">'+(item.inspiration||'\u2014')+'</div></div>';
-  html+='<div class="item-key"><div class="ik-lbl">Cout unitaire</div><div class="ik-val gold">'+coutFmt+'</div></div>';
-
+  // ── BANNER IMAGE (2:1) ──
+  html+='<div class="item-img-banner">';
+  if(imgSrc){
+    html+='<img src="'+imgSrc+'" alt="'+(item.nom||'')+'" loading="lazy">';
+  } else {
+    html+='<div class="item-img-ph"><div class="item-img-ph-ico"><svg viewBox="0 0 80 40" fill="none" width="80" height="40"><rect x="3" y="3" width="74" height="34" rx="2" stroke="#3A2E1E" stroke-width="1" fill="none"/><circle cx="18" cy="14" r="6" stroke="#3A2E1E" stroke-width="1" fill="none"/><path d="M3 30l14-10 12 8 9-6 24 12" stroke="#3A2E1E" stroke-width="1" fill="none"/></svg></div><span class="item-img-ph-lbl">FORMAT 2000 × 1000 px</span></div>';
+  }
   html+='</div>';
 
-  // Specs
+  // ── THREE BOLD BADGES: Nom / Période / Prix ──
+  html+='<div class="item-badges">';
+  html+='<div class="item-badge"><div class="ib-lbl">Designation</div><div class="ib-val nom" title="'+(item.nom||'—')+'">'+(item.nom||'—')+'</div></div>';
+  html+='<div class="item-badge"><div class="ib-lbl">Periode</div><div class="ib-val date">'+periode+'</div></div>';
+  html+='<div class="item-badge"><div class="ib-lbl">Cout unitaire</div><div class="ib-val prix">'+coutFmt+'</div></div>';
+  html+='</div>';
+
+  // ── COLLAPSIBLE SPECS TOGGLE ──
+  html+='<div class="item-specs-toggle" onclick="toggleItem(\''+item.id+'\')">';
+  html+='<div class="ist-label"><span class="ist-tri">&#8250;</span> Caracteristiques techniques <span style="color:var(--text3);font-size:9px;">('+specKeys.length+')</span></div>';
+  html+='<div class="ist-meta">';
+  if(item.fabricant)html+='<span class="ist-fab">'+item.fabricant+'</span>';
+  html+='<span class="ist-niv niv-'+niv+'">'+nivLbl+'</span>';
+  if(item.disponibilite)html+='<span style="color:var(--teal-bright);font-size:9px;">'+item.disponibilite+'</span>';
+  html+='</div></div>';
+
+  // ── COLLAPSIBLE SPECS BODY ──
+  html+='<div class="item-specs-body">';
   if(specKeys.length){
-    html+='<div class="item-specs-hdr">Caracteristiques techniques</div>';
     html+='<div class="item-specs-grid">';
     specKeys.forEach(function(k){
       html+='<div class="isg-item"><div class="isg-key">'+k+'</div><div class="isg-val">'+specs[k]+'</div></div>';
@@ -376,18 +402,9 @@ function buildItemHTML(item){
     if(specKeys.length%2===1)html+='<div class="isg-item"></div>';
     html+='</div>';
   } else {
-    html+='<div class="item-specs-empty">Aucune specification renseignee.</div>';
+    html+='<div class="item-specs-empty">Aucune caracteristique renseignee.</div>';
   }
-  html+='</div>'; // /item-right
-
-  // RIGHT: image (order:2), square
-  html+='<div class="item-img-side">';
-  if(imgSrc){
-    html+='<img src="'+imgSrc+'" alt="'+(item.nom||'')+'" loading="lazy">';
-  } else {
-    html+='<div class="item-img-ph"><div class="item-img-ph-ico"><svg viewBox="0 0 48 48" fill="none" width="36" height="36"><rect x="3" y="3" width="42" height="42" rx="2" stroke="#3A2E1E" stroke-width="1" fill="none"/><circle cx="15" cy="15" r="5" stroke="#3A2E1E" stroke-width="1" fill="none"/><path d="M3 32l12-10 10 8 8-6 15 13" stroke="#3A2E1E" stroke-width="1" fill="none"/></svg></div><span class="item-img-ph-lbl">500\u00d7500</span></div>';
-  }
-  html+='</div>'; // /item-img-side
+  html+='</div>';
 
   html+='</div>'; // /cat-item
   return html;
