@@ -38,6 +38,9 @@ html,body{height:100%;overflow:hidden;}
 .sb-total{font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.06em;padding:5px 16px;border-bottom:1px solid var(--border);}
 .sb-srch-wrap{padding:6px 10px;border-bottom:1px solid var(--border);}
 .sb-srch{width:100%;background:var(--bg);border:1px solid var(--border2);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:10px;padding:5px 8px;border-radius:2px;outline:none;}
+.sb-all-tech-btn{width:100%;background:rgba(232,92,13,.07);border:1px solid rgba(232,92,13,.25);color:var(--spice);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;padding:6px 10px;cursor:pointer;border-radius:2px;transition:background .15s,border-color .15s;text-align:left;display:flex;align-items:center;gap:6px;}
+.sb-all-tech-btn:hover{background:rgba(232,92,13,.14);border-color:rgba(232,92,13,.4);}
+.sb-all-tech-btn.active{background:rgba(232,92,13,.18);border-color:var(--spice);font-weight:600;}
 .sb-srch:focus{border-color:var(--spice);}
 .sb-scroll{flex:1;overflow-y:auto;}
 
@@ -80,7 +83,7 @@ html,body{height:100%;overflow:hidden;}
 .cat-section{margin-bottom:28px;}
 .cat-sec-anchor{scroll-margin-top:6px;}
 
-/* ── ITEM CARD — full layout inline ── */
+/* ── ITEM CARD — side-by-side layout ── */
 .cat-item{
   background:var(--card-bg);
   border:1px solid var(--border);
@@ -88,70 +91,100 @@ html,body{height:100%;overflow:hidden;}
   overflow:hidden;
   transition:border-top-color .18s,box-shadow .18s;
 }
-.cat-item:hover{border-top-color:var(--spice);box-shadow:0 4px 18px rgba(232,92,13,.07);}
+.cat-item:hover{border-top-color:var(--spice);}
 
-/* ── TOP: banner image 2:1 ── */
-.item-img-banner{
-  width:100%;aspect-ratio:2/1;
-  overflow:hidden;background:var(--bg2);
-  position:relative;
+/* ── SIDE-BY-SIDE LAYOUT ── */
+.item-layout{
+  display:flex;
+  flex-direction:row;
+  min-height:0;
 }
-.item-img-banner img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease,filter .4s ease;}
-.cat-item:hover .item-img-banner img{transform:scale(1.02);filter:brightness(1.06);}
-.item-img-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
-.item-img-ph-ico{opacity:.14;display:flex;}
-.item-img-ph-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text2);letter-spacing:.12em;}
 
-/* ── THREE BOLD BADGES ── */
-.item-badges{
-  display:grid;grid-template-columns:1fr 1fr 1fr;
+/* ── LEFT: image 2:1 ratio (half width) ── */
+.item-img-side{
+  width:50%;
+  flex-shrink:0;
+  aspect-ratio:2/1;
+  overflow:hidden;
+  background:var(--bg2);
+  position:relative;
+  border-right:1px solid var(--border);
+}
+.item-img-side img{width:100%;height:100%;object-fit:cover;display:block;}
+.item-img-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;}
+.item-img-ph-ico{opacity:.14;display:flex;}
+.item-img-ph-lbl{font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text2);letter-spacing:.10em;}
+
+/* ── RIGHT: info panel ── */
+.item-info-side{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  min-width:0;
+}
+
+/* NOM block */
+.item-nom-block{
+  padding:10px 14px 8px;
+  flex-shrink:0;
+}
+.item-nom-lbl{font-family:'IBM Plex Mono',monospace;font-size:7px;color:rgba(255,255,255,.38);letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px;}
+[data-theme="light"] .item-nom-lbl{color:rgba(0,0,0,.36);}
+.item-nom-val{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;color:rgba(255,255,255,.97);letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2;}
+[data-theme="light"] .item-nom-val{color:rgba(0,0,0,.90);}
+.item-prix-val{font-family:'Dune Rise',serif;font-size:11px;color:var(--gold);letter-spacing:.04em;margin-top:3px;}
+[data-theme="light"] .item-prix-val{color:#8B6500;}
+
+/* Separator */
+.item-sep{height:1px;background:rgba(232,92,13,.35);margin:0;flex-shrink:0;}
+
+/* NV + TECH row */
+.item-nv-tech{
+  padding:6px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  flex-shrink:0;
+  flex-wrap:wrap;
   border-bottom:1px solid var(--border);
 }
-.item-badge{padding:8px 14px;text-align:center;border-right:1px solid var(--border);}
-.item-badge:last-child{border-right:none;}
-.ib-lbl{font-family:'IBM Plex Mono',monospace;font-size:7px;color:rgba(255,255,255,.44);letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px;}
-[data-theme="light"] .ib-lbl{color:rgba(0,0,0,.40);}
-.ib-val{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:rgba(255,255,255,.96);letter-spacing:.03em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-[data-theme="light"] .ib-val{color:rgba(0,0,0,.88);}
-.ib-val.nom{color:rgba(255,255,255,.97);font-size:14px;}
-.ib-val.date{color:var(--teal-bright);}
-.ib-val.prix{color:var(--gold);font-family:'Dune Rise',serif;font-size:13px;}
-[data-theme="light"] .ib-val.prix{color:#8B6500;}
+.int-niv{font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 8px;border-radius:2px;border:1px solid;display:inline-block;font-weight:500;white-space:nowrap;}
+.int-tech{font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--teal-bright);letter-spacing:.06em;white-space:nowrap;}
+.int-fab{font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(255,255,255,.46);white-space:nowrap;}
+[data-theme="light"] .int-fab{color:rgba(0,0,0,.42);}
 
-/* ── COLLAPSIBLE SPECS ── */
+/* ── COLLAPSIBLE SPECS (inside right panel) ── */
 .item-specs-toggle{
   display:flex;align-items:center;justify-content:space-between;
-  padding:6px 14px;cursor:pointer;user-select:none;
-  background:rgba(232,92,13,.04);border-bottom:1px solid transparent;
+  padding:5px 14px;cursor:pointer;user-select:none;
+  background:rgba(232,92,13,.04);
   transition:background .15s;
+  flex-shrink:0;
 }
 .item-specs-toggle:hover{background:rgba(232,92,13,.08);}
-.cat-item.open .item-specs-toggle{border-bottom-color:rgba(232,92,13,.18);}
-.ist-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--spice);text-transform:uppercase;display:flex;align-items:center;gap:6px;}
+.cat-item.open .item-specs-toggle{border-bottom:1px solid rgba(232,92,13,.18);}
+.ist-label{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.12em;color:var(--spice);text-transform:uppercase;display:flex;align-items:center;gap:5px;}
 .ist-tri{font-size:12px;transition:transform .22s;display:inline-block;color:var(--spice);}
 .cat-item.open .ist-tri{transform:rotate(90deg);}
-.ist-meta{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);display:flex;gap:12px;flex-wrap:wrap;}
-.ist-niv{font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 8px;border-radius:2px;border:1px solid;display:inline-block;font-weight:500;}
-.ist-fab{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.56);}
-[data-theme="light"] .ist-fab{color:rgba(0,0,0,.50);}
+.ist-meta{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
 
-.item-specs-body{display:none;border-top:1px solid var(--border);}
+.item-specs-body{display:none;border-top:1px solid var(--border);overflow-y:auto;max-height:180px;}
 .cat-item.open .item-specs-body{display:block;}
 .item-specs-grid{display:grid;grid-template-columns:1fr 1fr;}
-@media(max-width:480px){.item-specs-grid{grid-template-columns:1fr;}}
-.isg-item{padding:5px 14px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);}
+.isg-item{padding:4px 14px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);}
 .isg-item:nth-child(even){border-right:none;}
-@media(max-width:480px){.isg-item{border-right:none;}}
-.isg-key{font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(255,255,255,.54);letter-spacing:.05em;margin-bottom:2px;}
+.isg-key{font-family:'IBM Plex Mono',monospace;font-size:7px;color:rgba(255,255,255,.50);letter-spacing:.05em;margin-bottom:1px;}
 [data-theme="light"] .isg-key{color:rgba(0,0,0,.44);}
-.isg-val{font-family:'IBM Plex Mono',monospace;font-size:12px;color:rgba(255,255,255,.90);letter-spacing:.02em;}
+.isg-val{font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(255,255,255,.90);letter-spacing:.02em;}
 [data-theme="light"] .isg-val{color:rgba(0,0,0,.82);}
-.item-specs-empty{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text2);padding:12px 16px;}
+.item-specs-empty{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text2);padding:10px 14px;}
 
-/* Mobile */
-@media(max-width:600px){
-  .cat-item{flex-direction:column;}
-  .item-img-side{width:100%;aspect-ratio:2/1;max-width:100%;border-left:none;border-top:1px solid var(--border);order:0;}
+/* Mobile: stack vertically */
+@media(max-width:640px){
+  .item-layout{flex-direction:column;}
+  .item-img-side{width:100%;aspect-ratio:2/1;border-right:none;border-bottom:1px solid var(--border);}
 }
 
 /* NIV colors */
@@ -292,7 +325,7 @@ html,body{height:100%;overflow:hidden;}
       </div>
       <div class="sb-total" id="sb-total">— equipements</div>
       <div style="padding:6px 10px;border-bottom:1px solid var(--border);">
-        <button onclick="selectAllTech()" id="btn-all-tech" style="width:100%;background:rgba(232,92,13,.07);border:1px solid rgba(232,92,13,.25);color:var(--spice);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;padding:6px 10px;cursor:pointer;border-radius:2px;transition:all .15s;text-align:left;display:flex;align-items:center;gap:6px;">
+        <button onclick="selectAllTech()" id="btn-all-tech" class="sb-all-tech-btn">
           <svg viewBox="0 0 12 12" fill="none" width="10" height="10"><rect x="1" y="1" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1" fill="none"/><line x1="3" y1="4" x2="9" y2="4" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/><line x1="3" y1="6" x2="9" y2="6" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/><line x1="3" y1="8" x2="7" y2="8" stroke="currentColor" stroke-width=".9" stroke-linecap="round"/></svg>
           Toutes les Technologies
         </button>
@@ -421,7 +454,7 @@ function renderSidebar(){
 function toggleG(id){openG[id]=!openG[id];renderSidebar();}
 function selectCat(id){
   activeCat=id;searchQ='';
-  var btn=document.getElementById('btn-all-tech');if(btn)btn.style.background='';
+  var btn=document.getElementById('btn-all-tech');if(btn)btn.classList.remove('active');
   var si=document.getElementById('cat-search');if(si)si.value='';
   renderSidebar();renderContent();
   setTimeout(function(){
@@ -432,15 +465,14 @@ function selectCat(id){
 function selectAllTech(){
   activeCat='';searchQ='';
   var si=document.getElementById('cat-search');if(si)si.value='';
-  // highlight button
   var btn=document.getElementById('btn-all-tech');
-  if(btn)btn.style.background='rgba(232,92,13,.18)';
+  if(btn)btn.classList.add('active');
   renderSidebar();renderContent();
   var m=document.getElementById('cat-main');if(m)m.scrollTo({top:0,behavior:'smooth'});
 }
 function onSearch(){
   searchQ=(document.getElementById('cat-search').value||'').toLowerCase();
-  if(searchQ)activeCat='';
+  if(searchQ){activeCat='';var btn=document.getElementById('btn-all-tech');if(btn)btn.classList.remove('active');}
   renderSidebar();renderContent();
 }
 
@@ -455,34 +487,45 @@ function buildItemHTML(item){
   var periode=TECH[niv]||'—';
 
   var html='<div class="cat-item" id="item-'+item.id+'">';
+  html+='<div class="item-layout">';
 
-  // ── BANNER IMAGE (2:1) ──
-  html+='<div class="item-img-banner">';
+  // ── LEFT: IMAGE 2:1 (50% width) ──
+  html+='<div class="item-img-side">';
   if(imgSrc){
     html+='<img src="'+imgSrc+'" alt="'+(item.nom||'')+'" loading="lazy">';
   } else {
-    html+='<div class="item-img-ph"><div class="item-img-ph-ico"><svg viewBox="0 0 80 40" fill="none" width="80" height="40"><rect x="3" y="3" width="74" height="34" rx="2" stroke="#3A2E1E" stroke-width="1" fill="none"/><circle cx="18" cy="14" r="6" stroke="#3A2E1E" stroke-width="1" fill="none"/><path d="M3 30l14-10 12 8 9-6 24 12" stroke="#3A2E1E" stroke-width="1" fill="none"/></svg></div><span class="item-img-ph-lbl">FORMAT 2000 × 1000 px</span></div>';
+    html+='<div class="item-img-ph"><div class="item-img-ph-ico"><svg viewBox="0 0 80 40" fill="none" width="80" height="40"><rect x="3" y="3" width="74" height="34" rx="2" stroke="#3A2E1E" stroke-width="1" fill="none"/><circle cx="18" cy="14" r="6" stroke="#3A2E1E" stroke-width="1" fill="none"/><path d="M3 30l14-10 12 8 9-6 24 12" stroke="#3A2E1E" stroke-width="1" fill="none"/></svg></div><span class="item-img-ph-lbl">2000 \u00d7 1000 px</span></div>';
   }
   html+='</div>';
 
-  // ── THREE BOLD BADGES: Nom / Période / Prix ──
-  html+='<div class="item-badges">';
-  html+='<div class="item-badge"><div class="ib-lbl">Designation</div><div class="ib-val nom" title="'+(item.nom||'—')+'">'+(item.nom||'—')+'</div></div>';
-  html+='<div class="item-badge"><div class="ib-lbl">Periode</div><div class="ib-val date">'+periode+'</div></div>';
-  html+='<div class="item-badge"><div class="ib-lbl">Cout unitaire</div><div class="ib-val prix">'+coutFmt+'</div></div>';
+  // ── RIGHT: INFO PANEL ──
+  html+='<div class="item-info-side">';
+
+  // NOM + Prix
+  html+='<div class="item-nom-block">';
+  html+='<div class="item-nom-lbl">Designation</div>';
+  html+='<div class="item-nom-val" title="'+(item.nom||'\u2014')+'">'+(item.nom||'\u2014')+'</div>';
+  html+='<div class="item-prix-val">'+coutFmt+'</div>';
   html+='</div>';
 
-  // ── COLLAPSIBLE SPECS TOGGLE ──
+  // Separator line (orange)
+  html+='<div class="item-sep"></div>';
+
+  // NV + TECH row
+  html+='<div class="item-nv-tech">';
+  html+='<span class="int-niv niv-'+niv+'">'+nivLbl+'</span>';
+  if(item.fabricant)html+='<span class="int-fab">'+item.fabricant+'</span>';
+  if(item.disponibilite)html+='<span class="int-tech">'+item.disponibilite+'</span>';
+  html+='</div>';
+
+  // Collapsible specs toggle
   html+='<div class="item-specs-toggle" onclick="toggleItem(\''+item.id+'\')">';
-  html+='<div class="ist-label"><span class="ist-tri">&#8250;</span> Caracteristiques techniques <span style="color:var(--text3);font-size:9px;">('+specKeys.length+')</span></div>';
+  html+='<div class="ist-label"><span class="ist-tri">&#8250;</span> Caracteristiques <span style="color:var(--text3);font-size:9px;">('+specKeys.length+')</span></div>';
   html+='<div class="ist-meta">';
-  if(item.fabricant)html+='<span class="ist-fab">'+item.fabricant+'</span>';
-  html+='<span class="ist-niv niv-'+niv+'">'+nivLbl+'</span>';
-  if(item.disponibilite)html+='<span style="color:var(--teal-bright);font-size:9px;">'+item.disponibilite+'</span>';
   html+='<button onclick="event.stopPropagation();calcQuickAdd(\''+item.id+'\');" title="Ajouter au panier" style="background:rgba(232,92,13,.12);border:1px solid rgba(232,92,13,.3);color:var(--spice);font-family:\'IBM Plex Mono\',monospace;font-size:9px;padding:1px 7px;border-radius:2px;cursor:pointer;letter-spacing:.06em;flex-shrink:0;">+ Panier</button>';
   html+='</div></div>';
 
-  // ── COLLAPSIBLE SPECS BODY ──
+  // Collapsible specs body (inside right panel)
   html+='<div class="item-specs-body">';
   if(specKeys.length){
     html+='<div class="item-specs-grid">';
@@ -494,8 +537,10 @@ function buildItemHTML(item){
   } else {
     html+='<div class="item-specs-empty">Aucune caracteristique renseignee.</div>';
   }
-  html+='</div>';
+  html+='</div>'; // /item-specs-body
 
+  html+='</div>'; // /item-info-side
+  html+='</div>'; // /item-layout
   html+='</div>'; // /cat-item
   return html;
 }
