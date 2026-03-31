@@ -216,5 +216,43 @@
       "Équipement": "Radio VHF/UHF pour les communications tactiques"
     },
     "image_path": "assets/images/catalogue/aeronefs-9.png"
+  },
+  {
+    "id": "cat_1774916891921",
+    "nom": "DB-110 \"Al-Mansour\"",
+    "categorie": "vehicules-terrestres",
+    "niveau": 5,
+    "fabricant": "Yassin Heavy Industries",
+    "cout_unite": "899999",
+    "inspiration": "M60",
+    "disponibilite": "Novembre 2306",
+    "specs": {
+      "Moteur": "V12 Diesel biturbo, 750 ch",
+      "Carburant": "Diesel",
+      "Transmission": "Cross-drive, 2 vitesses AV, 1 AR",
+      "Poids à vide": "46.3",
+      "Vitesse max. (Route)": "48 km/h",
+      "Vitesse max. (Tout-terrain)": "20~25 km/h",
+      "Autonomie (Route)": "480 km",
+      "Autonomie (Tout-terrain)": "250~275 km",
+      "Type de suspensions": "Barres de torsion avec amortisseurs hydrauliques",
+      "Longueur": "6,95 m (caisse) / 9,30 m (avec canon vers l'avant)",
+      "Largeur": "3,63 m",
+      "Hauteur": "3,21 m",
+      "Membres d'équipage": "4 (Chef de char, Tireur, Chargeur, Conducteur)",
+      "Passagers": "0",
+      "Cargaison": "N/A",
+      "Blindage Caisse : Arrière": "41 mm",
+      "Blindage Caisse : Côté": "74 mm",
+      "Blindage Caisse : Front": "93 mm (incliné)",
+      "Blindage Caisse : Plancher": "13 mm",
+      "Blindage Caisse : Toit": "36 mm",
+      "Blindage Tourelle : Arrière": "51 mm",
+      "Blindage Tourelle : Côté": "76 mm",
+      "Blindage Tourelle : Toit": "178 mm",
+      "Armement": "Canon de 105 mm — 1 mitrailleuse 12,7 mm, 1 mitrailleuse 7,5 mm",
+      "Munitions": "63 obus de 105 mm / 900 cartouches de 12,7 mm / 6 000 cartouches de 7,5 mm"
+    },
+    "image_path": "assets/images/catalogue/armes-feu-11.png"
   }
 ]
