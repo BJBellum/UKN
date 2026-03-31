@@ -51,17 +51,23 @@
   --bg3:      #DFD0A8;
   --card-bg:  #EDE0C4;
   --sand-deep: #F2E8D0;
-  --text:     #2A1F08;
-  --text2:    #6B5228;
-  --text3:    #A08840;
-  --border:   rgba(100,70,10,0.15);
-  --border2:  rgba(100,70,10,0.25);
-  --border3:  rgba(100,70,10,0.45);
-  --gold-mid: #9B6E08;
-  --gold:     #B8892A;
-  --gold-bright: #8B5E0A;
-  --gold-pale: #5A3E10;
-  --spice:    #C04000;
+  --text:     #1E1408;
+  --text2:    #5C3E18;
+  --text3:    #7B5A22;
+  --border:   rgba(100,70,10,0.22);
+  --border2:  rgba(100,70,10,0.38);
+  --border3:  rgba(100,70,10,0.60);
+  --gold-dim:    #C8960C;
+  --gold-mid:    #9B6E08;
+  --gold:        #7A5208;
+  --gold-bright: #B8890A;
+  --gold-pale:   #C8A040;
+  --spice:       #B83800;
+  --spice-dim:   #8C2800;
+  --teal:        #0A6B5C;
+  --teal-bright: #0D8870;
+  --teal-pale:   #4DAAA0;
+  --amber:       #C07010;
 }
 
 /* ── RESET ── */

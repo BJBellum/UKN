@@ -6,7 +6,7 @@
 <title>Royaume-Uni du Nil · مملكة النيل</title>
 <meta property="og:title" content="Royaume-Uni du Nil · Portail National">
 <meta property="og:description" content="Portail officiel du Royaume-Uni du Nil — Énergie, Économie, Finances.">
-<meta property="og:image" content="https://BJBellum.github.io/UKN/assets/images/UKNSite.png">
+<meta property="og:image" content="https://ukn-seven.vercel.app/assets/images/UKNSite.png">
 <meta property="og:image:alt" content="Portail National — Royaume-Uni du Nil">
 <meta name="theme-color" content="#C8960C">
 <link rel="icon" type="image/png" href="./assets/images/UKNSite.png">
@@ -72,16 +72,16 @@
 </style>
   <meta property="og:type"        content="website">
   <meta property="og:site_name"   content="Royaume-Uni du Nil">
-  <meta property="og:url"         content="https://bjbellum.github.io/UKN/">
+  <meta property="og:url"         content="https://ukn-seven.vercel.app/">
   <meta property="og:title"       content="Portail National - Royaume-Uni du Nil">
   <meta property="og:description" content="Portail officiel du Royaume-Uni du Nil. Entites nationales, operateurs d'Etat, institutions economiques et militaires.">
-  <meta property="og:image"       content="https://bjbellum.github.io/UKN/assets/images/UKNSite.png">
+  <meta property="og:image"       content="https://ukn-seven.vercel.app/assets/images/UKNSite.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:alt"   content="Royaume-Uni du Nil">
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:title"       content="Portail National - Royaume-Uni du Nil">
   <meta name="twitter:description" content="Portail officiel du Royaume-Uni du Nil. Entites nationales, operateurs d'Etat, institutions economiques et militaires.">
-  <meta name="twitter:image"       content="https://bjbellum.github.io/UKN/assets/images/UKNSite.png">
+  <meta name="twitter:image"       content="https://ukn-seven.vercel.app/assets/images/UKNSite.png">
 </head>
 <body>
 
@@ -136,7 +136,7 @@
     <div class="hero-stats">
       <div class="hstat">
         <span class="hstat-lbl">Population</span>
-        <span class="hstat-val gold">18,65M</span>
+        <span class="hstat-val gold">17,95M</span>
       </div>
       <div class="hstat">
         <span class="hstat-lbl">Capitale</span>
@@ -144,7 +144,7 @@
       </div>
       <div class="hstat">
         <span class="hstat-lbl">Exercice</span>
-        <span class="hstat-val amber">2306</span>
+        <span class="hstat-val amber">2305</span>
       </div>
       <div class="hstat">
         <span class="hstat-lbl">Entités listées</span>
@@ -174,7 +174,7 @@
           <div class="portal-card-sub" style="color:#22B89A;">طاقة فاروس · Opérateur d'État</div>
           <p class="portal-card-desc">
             Opérateur énergétique national. Hydroélectricité sur le Nil, filière nucléaire NILDU,
-            géothermie. Haut-Barrage d'Assouan en service depuis 2303.
+            géothermie. Haut-Barrage d'Assouan en service depuis 2304.
           </p>
         </div>
         <div class="portal-card-footer">
@@ -200,7 +200,7 @@
           <div class="portal-card-title">Economie & Finances</div>
           <div class="portal-card-sub" style="color:#D4A843;">بورصة القاهرة · Bourse du Caire</div>
           <p class="portal-card-desc">
-            Bilan macroeconomique national, Bourse du Caire — <span id="root-stat-desc">30 entreprises cotees dont 27 nationales</span>. ESS, statistiques annuelles et évolution economique.
+            Bilan macroeconomique national, Bourse du Caire — <span id="root-stat-desc">30 entreprises cotees dont 27 nationales</span>. ESS, statistiques annuelles et evolution economique.
           </p>
         </div>
         <div class="portal-card-footer">
@@ -794,10 +794,19 @@ window.addEventListener('DOMContentLoaded', () => {
     startTime = null;
     raf = requestAnimationFrame(draw);
   });
-  // Pause when tab hidden (save CPU)
+  // Pause when tab hidden — keep time continuous on resume to avoid NaN in bloom
+  var _pausedAt = null;
   document.addEventListener('visibilitychange', function() {
-    if (document.hidden) cancelAnimationFrame(raf);
-    else { startTime = null; raf = requestAnimationFrame(draw); }
+    if (document.hidden) {
+      cancelAnimationFrame(raf);
+      _pausedAt = performance.now();
+    } else {
+      if (_pausedAt !== null && startTime !== null) {
+        startTime += performance.now() - _pausedAt;
+      }
+      _pausedAt = null;
+      raf = requestAnimationFrame(draw);
+    }
   });
 
   resize();
