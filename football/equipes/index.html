@@ -752,7 +752,7 @@ function renderTeamDetail(p){
 
   var html='<div class="detail-hero">';
   html+=flagImg;
-  html+='<div><div class="detail-name">'+p.nom+'</div><div class="detail-meta">'+p.continent+' · '+p.culture+' · '+(p.joueurs?p.joueurs.length:0)+' joueurs</div></div>';
+  html+='<div><div class="detail-name">'+p.nom+'</div><div class="detail-meta">'+p.continent+' · '+(Array.isArray(p.culture)?p.culture.map(function(c){var f=ALL_CULTURES.find(function(x){return x.key===c.key;});return f?f.label:c.key;}).join(', '):p.culture)+' · '+(p.joueurs?p.joueurs.length:0)+' joueurs</div></div>';
   html+='<div class="detail-rating">'+p.note_globale+'</div>';
   html+='</div>';
 
@@ -845,6 +845,10 @@ function openCreateModal(){
   document.getElementById('flag-data').value='';
   document.getElementById('flag-filename').value='';
   document.getElementById('flag-preview-wrap').innerHTML='<svg viewBox="0 0 40 40" fill="none" width="36" height="36" style="opacity:.2;"><rect x="4" y="8" width="24" height="16" rx="1" stroke="currentColor" stroke-width="1.2" fill="none"/><line x1="4" y1="8" x2="4" y2="32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><div class="flag-ph">Cliquer pour uploader un drapeau</div>';
+  // Reset culture system
+  selectedCultures=[];
+  renderCulturePicks();
+  initCultureUI();
   document.getElementById('create-modal').classList.add('open');
 }
 
@@ -855,7 +859,6 @@ function openEditModal(teamId){
   document.getElementById('create-modal-ttl').textContent='Modifier · '+p.nom;
   document.getElementById('f-nom').value=p.nom;
   document.getElementById('f-continent').value=p.continent;
-  document.getElementById('f-culture').value=p.culture;
   document.getElementById('f-nb-joueurs').value=(p.joueurs||[]).length||23;
   document.getElementById('f-note').value=p.note_globale||70;
   document.getElementById('f-note-val').textContent=p.note_globale||70;
@@ -864,6 +867,15 @@ function openEditModal(teamId){
   if(p.flag_data){
     document.getElementById('flag-preview-wrap').innerHTML='<img src="'+p.flag_data+'" class="flag-preview"><div class="flag-ph" style="margin-top:8px;">Cliquer pour changer</div>';
   }
+  // Restore culture system from saved data
+  selectedCultures=[];
+  if(Array.isArray(p.culture)&&p.culture.length){
+    selectedCultures=p.culture.map(function(c){return{key:c.key,weight:c.weight};});
+  } else if(p.culture&&typeof p.culture==='string'){
+    selectedCultures=[{key:p.culture,weight:100}];
+  }
+  renderCulturePicks();
+  initCultureUI();
   document.getElementById('create-modal').classList.add('open');
 }
 
@@ -886,7 +898,7 @@ function generateTeam(){
   var nb=parseInt(document.getElementById('f-nb-joueurs').value)||23;
   nb=Math.max(23,Math.min(1000,nb));
   var note=parseInt(document.getElementById('f-note').value)||70;
-  var culture=document.getElementById('f-culture').value;
+  var culture=selectedCultures.length>0?selectedCultures:[{key:'anglais',weight:100}];
   var continent=document.getElementById('f-continent').value;
   var adjAtt=parseInt(document.getElementById('f-att').value)||0;
   var adjDef=parseInt(document.getElementById('f-def').value)||0;
