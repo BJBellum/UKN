@@ -293,6 +293,30 @@
         </div>
       </a>
 
+
+      <!-- ── FOOTBALL SIMULATION ── -->
+      <a href="./football/" class="portal-card" id="football-portal-card">
+        <div class="portal-card-accent" style="background:linear-gradient(90deg,#1A8F7A,#22B89A,#1A8F7A);"></div>
+        <div class="portal-card-body">
+          <div class="portal-card-icon" style="background:rgba(34,184,154,0.08); border-color:rgba(34,184,154,0.3);">
+            <svg viewBox="0 0 26 26" fill="none">
+              <circle cx="13" cy="13" r="9" stroke="#22B89A" stroke-width="1.2" fill="none"/>
+              <polygon points="13,5 15.5,10 21,10 16.8,13.5 18.5,19 13,15.5 7.5,19 9.2,13.5 5,10 10.5,10" stroke="#22B89A" stroke-width="1" fill="none" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="portal-card-label">Sport National · FOOT-001</div>
+          <div class="portal-card-title">Football Simulation</div>
+          <div class="portal-card-sub" style="color:#22B89A;">كرة القدم · Compétitions & Équipes</div>
+          <p class="portal-card-desc">
+            Gestion des équipes nationales, compétitions internationales et simulation de matchs. Créez des nations, générez des joueurs et simulez des tournois.
+          </p>
+        </div>
+        <div class="portal-card-footer" style="border-top-color:rgba(34,184,154,.15);">
+          <span>Équipes · Compétitions · Simulation</span>
+          <span class="portal-arrow">→</span>
+        </div>
+      </a>
+
     </div><!-- /portal-grid -->
   </div>
 </section>
@@ -794,19 +818,10 @@ window.addEventListener('DOMContentLoaded', () => {
     startTime = null;
     raf = requestAnimationFrame(draw);
   });
-  // Pause when tab hidden — keep time continuous on resume to avoid NaN in bloom
-  var _pausedAt = null;
+  // Pause when tab hidden (save CPU)
   document.addEventListener('visibilitychange', function() {
-    if (document.hidden) {
-      cancelAnimationFrame(raf);
-      _pausedAt = performance.now();
-    } else {
-      if (_pausedAt !== null && startTime !== null) {
-        startTime += performance.now() - _pausedAt;
-      }
-      _pausedAt = null;
-      raf = requestAnimationFrame(draw);
-    }
+    if (document.hidden) cancelAnimationFrame(raf);
+    else { startTime = null; raf = requestAnimationFrame(draw); }
   });
 
   resize();
