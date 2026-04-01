@@ -56153,6 +56153,8028 @@
         }
       ],
       "created": "2026-04-01T13:01:28.422Z"
+    },
+    {
+      "id": "team_1775049644469",
+      "nom": "Republique Narbonnaise",
+      "continent": "Europe",
+      "culture": "francais",
+      "note_globale": 73,
+      "flag_filename": "assets/images/football/flags/assets/images/football/flags/flag_nbs.png",
+      "coach": {
+        "nom": "Alexis Lefebvre",
+        "notes": {
+          "tactique": 80,
+          "motivation": 66,
+          "defence": 70,
+          "attaque": 78,
+          "gestion": 67
+        },
+        "global": 73
+      },
+      "joueurs": [
+        {
+          "id": "p_1775049652175_2939",
+          "nom": "Arnaud Garcia",
+          "poste": "DD",
+          "age": 18,
+          "notes": {
+            "off": 67,
+            "tec": 74,
+            "mouv": 75,
+            "pui": 74,
+            "ment": 78,
+            "def": 84,
+            "gk": 18
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652175_4150",
+          "nom": "Baptiste Dupont",
+          "poste": "DC",
+          "age": 34,
+          "notes": {
+            "off": 53,
+            "tec": 65,
+            "mouv": 64,
+            "pui": 70,
+            "ment": 77,
+            "def": 79,
+            "gk": 37
+          },
+          "global": 65
+        },
+        {
+          "id": "p_1775049652175_1708",
+          "nom": "Olivier Bertrand",
+          "poste": "DC",
+          "age": 23,
+          "notes": {
+            "off": 58,
+            "tec": 85,
+            "mouv": 77,
+            "pui": 86,
+            "ment": 75,
+            "def": 87,
+            "gk": 40
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652175_6839",
+          "nom": "Olivier Petit",
+          "poste": "DD",
+          "age": 20,
+          "notes": {
+            "off": 64,
+            "tec": 67,
+            "mouv": 67,
+            "pui": 80,
+            "ment": 78,
+            "def": 83,
+            "gk": 20
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652175_8886",
+          "nom": "Alexis Martin",
+          "poste": "DD",
+          "age": 18,
+          "notes": {
+            "off": 62,
+            "tec": 70,
+            "mouv": 75,
+            "pui": 89,
+            "ment": 82,
+            "def": 90,
+            "gk": 38
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652175_4971",
+          "nom": "Mathieu Legrand",
+          "poste": "DD",
+          "age": 29,
+          "notes": {
+            "off": 71,
+            "tec": 84,
+            "mouv": 78,
+            "pui": 89,
+            "ment": 72,
+            "def": 92,
+            "gk": 28
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652175_3925",
+          "nom": "Axel Henry",
+          "poste": "DD",
+          "age": 25,
+          "notes": {
+            "off": 65,
+            "tec": 71,
+            "mouv": 71,
+            "pui": 69,
+            "ment": 66,
+            "def": 77,
+            "gk": 28
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652175_6011",
+          "nom": "Tristan Blanc",
+          "poste": "DC",
+          "age": 19,
+          "notes": {
+            "off": 59,
+            "tec": 71,
+            "mouv": 79,
+            "pui": 78,
+            "ment": 79,
+            "def": 85,
+            "gk": 39
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652175_4650",
+          "nom": "François Laurent",
+          "poste": "DC",
+          "age": 32,
+          "notes": {
+            "off": 51,
+            "tec": 66,
+            "mouv": 68,
+            "pui": 80,
+            "ment": 76,
+            "def": 79,
+            "gk": 42
+          },
+          "global": 67
+        },
+        {
+          "id": "p_1775049652175_9104",
+          "nom": "Romain Moreau",
+          "poste": "DC",
+          "age": 32,
+          "notes": {
+            "off": 53,
+            "tec": 79,
+            "mouv": 72,
+            "pui": 78,
+            "ment": 81,
+            "def": 90,
+            "gk": 31
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652175_6690",
+          "nom": "Hugo Michel",
+          "poste": "DD",
+          "age": 35,
+          "notes": {
+            "off": 53,
+            "tec": 77,
+            "mouv": 65,
+            "pui": 73,
+            "ment": 77,
+            "def": 76,
+            "gk": 36
+          },
+          "global": 67
+        },
+        {
+          "id": "p_1775049652176_7424",
+          "nom": "Enzo Robin",
+          "poste": "DG",
+          "age": 36,
+          "notes": {
+            "off": 68,
+            "tec": 70,
+            "mouv": 81,
+            "pui": 90,
+            "ment": 81,
+            "def": 87,
+            "gk": 23
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_2156",
+          "nom": "Pierre Richard",
+          "poste": "DC",
+          "age": 26,
+          "notes": {
+            "off": 62,
+            "tec": 79,
+            "mouv": 78,
+            "pui": 77,
+            "ment": 76,
+            "def": 78,
+            "gk": 26
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_4676",
+          "nom": "Axel Richard",
+          "poste": "DG",
+          "age": 34,
+          "notes": {
+            "off": 61,
+            "tec": 72,
+            "mouv": 73,
+            "pui": 88,
+            "ment": 81,
+            "def": 84,
+            "gk": 34
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_7233",
+          "nom": "Kevin Garnier",
+          "poste": "DC",
+          "age": 31,
+          "notes": {
+            "off": 66,
+            "tec": 78,
+            "mouv": 67,
+            "pui": 85,
+            "ment": 76,
+            "def": 77,
+            "gk": 21
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_3191",
+          "nom": "Guillaume Thomas",
+          "poste": "DG",
+          "age": 35,
+          "notes": {
+            "off": 58,
+            "tec": 75,
+            "mouv": 76,
+            "pui": 90,
+            "ment": 73,
+            "def": 86,
+            "gk": 42
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_8479",
+          "nom": "Noé Roux",
+          "poste": "DC",
+          "age": 19,
+          "notes": {
+            "off": 63,
+            "tec": 71,
+            "mouv": 83,
+            "pui": 76,
+            "ment": 72,
+            "def": 87,
+            "gk": 36
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_1270",
+          "nom": "Noé François",
+          "poste": "DD",
+          "age": 21,
+          "notes": {
+            "off": 49,
+            "tec": 74,
+            "mouv": 75,
+            "pui": 86,
+            "ment": 77,
+            "def": 79,
+            "gk": 19
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_9392",
+          "nom": "Yann Legrand",
+          "poste": "DG",
+          "age": 18,
+          "notes": {
+            "off": 53,
+            "tec": 77,
+            "mouv": 77,
+            "pui": 74,
+            "ment": 76,
+            "def": 76,
+            "gk": 24
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_6155",
+          "nom": "Valentin Lambert",
+          "poste": "DG",
+          "age": 30,
+          "notes": {
+            "off": 64,
+            "tec": 84,
+            "mouv": 75,
+            "pui": 83,
+            "ment": 83,
+            "def": 92,
+            "gk": 36
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_9086",
+          "nom": "Alexandre Moreau",
+          "poste": "DD",
+          "age": 26,
+          "notes": {
+            "off": 53,
+            "tec": 74,
+            "mouv": 67,
+            "pui": 71,
+            "ment": 79,
+            "def": 83,
+            "gk": 21
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_1234",
+          "nom": "Dylan Bonnet",
+          "poste": "DC",
+          "age": 23,
+          "notes": {
+            "off": 61,
+            "tec": 68,
+            "mouv": 71,
+            "pui": 74,
+            "ment": 72,
+            "def": 81,
+            "gk": 22
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_6586",
+          "nom": "Nicolas Richard",
+          "poste": "DG",
+          "age": 31,
+          "notes": {
+            "off": 56,
+            "tec": 65,
+            "mouv": 71,
+            "pui": 84,
+            "ment": 75,
+            "def": 80,
+            "gk": 21
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_9961",
+          "nom": "Corentin Faure",
+          "poste": "DC",
+          "age": 20,
+          "notes": {
+            "off": 50,
+            "tec": 76,
+            "mouv": 70,
+            "pui": 79,
+            "ment": 79,
+            "def": 89,
+            "gk": 23
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_8574",
+          "nom": "Arnaud Fournier",
+          "poste": "DD",
+          "age": 22,
+          "notes": {
+            "off": 59,
+            "tec": 70,
+            "mouv": 73,
+            "pui": 76,
+            "ment": 74,
+            "def": 81,
+            "gk": 35
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_2657",
+          "nom": "Valentin François",
+          "poste": "DD",
+          "age": 21,
+          "notes": {
+            "off": 49,
+            "tec": 63,
+            "mouv": 76,
+            "pui": 72,
+            "ment": 69,
+            "def": 83,
+            "gk": 34
+          },
+          "global": 66
+        },
+        {
+          "id": "p_1775049652176_1385",
+          "nom": "Alexandre Faure",
+          "poste": "DC",
+          "age": 32,
+          "notes": {
+            "off": 54,
+            "tec": 77,
+            "mouv": 68,
+            "pui": 73,
+            "ment": 70,
+            "def": 81,
+            "gk": 40
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_6342",
+          "nom": "Thomas Vincent",
+          "poste": "DC",
+          "age": 29,
+          "notes": {
+            "off": 48,
+            "tec": 77,
+            "mouv": 74,
+            "pui": 82,
+            "ment": 66,
+            "def": 84,
+            "gk": 32
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_8280",
+          "nom": "Alexandre Rousseau",
+          "poste": "DD",
+          "age": 27,
+          "notes": {
+            "off": 50,
+            "tec": 80,
+            "mouv": 71,
+            "pui": 75,
+            "ment": 70,
+            "def": 83,
+            "gk": 27
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_7481",
+          "nom": "Théo Roux",
+          "poste": "DD",
+          "age": 22,
+          "notes": {
+            "off": 63,
+            "tec": 80,
+            "mouv": 71,
+            "pui": 72,
+            "ment": 81,
+            "def": 90,
+            "gk": 33
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_4449",
+          "nom": "Noé Martin",
+          "poste": "DD",
+          "age": 19,
+          "notes": {
+            "off": 62,
+            "tec": 73,
+            "mouv": 70,
+            "pui": 82,
+            "ment": 70,
+            "def": 81,
+            "gk": 31
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_9515",
+          "nom": "Guillaume Mercier",
+          "poste": "DG",
+          "age": 36,
+          "notes": {
+            "off": 56,
+            "tec": 70,
+            "mouv": 64,
+            "pui": 82,
+            "ment": 75,
+            "def": 87,
+            "gk": 35
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_9496",
+          "nom": "Nicolas Petit",
+          "poste": "DD",
+          "age": 27,
+          "notes": {
+            "off": 52,
+            "tec": 70,
+            "mouv": 70,
+            "pui": 85,
+            "ment": 77,
+            "def": 81,
+            "gk": 36
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_5510",
+          "nom": "Valentin André",
+          "poste": "DG",
+          "age": 18,
+          "notes": {
+            "off": 55,
+            "tec": 79,
+            "mouv": 77,
+            "pui": 84,
+            "ment": 70,
+            "def": 84,
+            "gk": 39
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_4985",
+          "nom": "Dylan Richard",
+          "poste": "DC",
+          "age": 23,
+          "notes": {
+            "off": 63,
+            "tec": 75,
+            "mouv": 72,
+            "pui": 80,
+            "ment": 70,
+            "def": 76,
+            "gk": 19
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_6045",
+          "nom": "Paul Laurent",
+          "poste": "DG",
+          "age": 24,
+          "notes": {
+            "off": 67,
+            "tec": 74,
+            "mouv": 72,
+            "pui": 88,
+            "ment": 82,
+            "def": 90,
+            "gk": 37
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_2691",
+          "nom": "Noé Robert",
+          "poste": "DG",
+          "age": 26,
+          "notes": {
+            "off": 56,
+            "tec": 77,
+            "mouv": 80,
+            "pui": 76,
+            "ment": 79,
+            "def": 78,
+            "gk": 42
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_9426",
+          "nom": "Sébastien André",
+          "poste": "DC",
+          "age": 17,
+          "notes": {
+            "off": 60,
+            "tec": 70,
+            "mouv": 72,
+            "pui": 85,
+            "ment": 73,
+            "def": 78,
+            "gk": 31
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_1341",
+          "nom": "Baptiste Simon",
+          "poste": "DG",
+          "age": 25,
+          "notes": {
+            "off": 65,
+            "tec": 71,
+            "mouv": 80,
+            "pui": 84,
+            "ment": 76,
+            "def": 81,
+            "gk": 26
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_3371",
+          "nom": "Maxime Morel",
+          "poste": "DC",
+          "age": 23,
+          "notes": {
+            "off": 48,
+            "tec": 72,
+            "mouv": 74,
+            "pui": 74,
+            "ment": 76,
+            "def": 88,
+            "gk": 28
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_4687",
+          "nom": "Tristan Muller",
+          "poste": "DC",
+          "age": 29,
+          "notes": {
+            "off": 58,
+            "tec": 81,
+            "mouv": 83,
+            "pui": 85,
+            "ment": 82,
+            "def": 85,
+            "gk": 41
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_1379",
+          "nom": "Léo Mercier",
+          "poste": "DC",
+          "age": 23,
+          "notes": {
+            "off": 63,
+            "tec": 77,
+            "mouv": 65,
+            "pui": 71,
+            "ment": 76,
+            "def": 87,
+            "gk": 34
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_9254",
+          "nom": "Yann Michel",
+          "poste": "DD",
+          "age": 30,
+          "notes": {
+            "off": 51,
+            "tec": 67,
+            "mouv": 77,
+            "pui": 76,
+            "ment": 71,
+            "def": 87,
+            "gk": 37
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_7213",
+          "nom": "Léo Morel",
+          "poste": "DG",
+          "age": 36,
+          "notes": {
+            "off": 60,
+            "tec": 84,
+            "mouv": 72,
+            "pui": 76,
+            "ment": 79,
+            "def": 92,
+            "gk": 28
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_3809",
+          "nom": "Gauthier Laurent",
+          "poste": "DG",
+          "age": 24,
+          "notes": {
+            "off": 64,
+            "tec": 84,
+            "mouv": 72,
+            "pui": 88,
+            "ment": 74,
+            "def": 83,
+            "gk": 38
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_2595",
+          "nom": "Baptiste Lefebvre",
+          "poste": "DC",
+          "age": 21,
+          "notes": {
+            "off": 52,
+            "tec": 76,
+            "mouv": 78,
+            "pui": 80,
+            "ment": 70,
+            "def": 84,
+            "gk": 26
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_1867",
+          "nom": "Léo Blanc",
+          "poste": "DD",
+          "age": 25,
+          "notes": {
+            "off": 66,
+            "tec": 80,
+            "mouv": 67,
+            "pui": 81,
+            "ment": 76,
+            "def": 79,
+            "gk": 22
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_2537",
+          "nom": "Morgan Muller",
+          "poste": "DC",
+          "age": 24,
+          "notes": {
+            "off": 49,
+            "tec": 75,
+            "mouv": 66,
+            "pui": 82,
+            "ment": 75,
+            "def": 86,
+            "gk": 18
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_9966",
+          "nom": "Raphaël Faure",
+          "poste": "DD",
+          "age": 34,
+          "notes": {
+            "off": 53,
+            "tec": 72,
+            "mouv": 75,
+            "pui": 78,
+            "ment": 80,
+            "def": 88,
+            "gk": 32
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_1989",
+          "nom": "Antoine Thomas",
+          "poste": "DG",
+          "age": 35,
+          "notes": {
+            "off": 59,
+            "tec": 65,
+            "mouv": 75,
+            "pui": 74,
+            "ment": 75,
+            "def": 82,
+            "gk": 20
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_7868",
+          "nom": "Théo Moreau",
+          "poste": "DC",
+          "age": 21,
+          "notes": {
+            "off": 48,
+            "tec": 64,
+            "mouv": 77,
+            "pui": 76,
+            "ment": 72,
+            "def": 80,
+            "gk": 25
+          },
+          "global": 66
+        },
+        {
+          "id": "p_1775049652176_6338",
+          "nom": "Alexis Dupont",
+          "poste": "DC",
+          "age": 24,
+          "notes": {
+            "off": 58,
+            "tec": 73,
+            "mouv": 80,
+            "pui": 89,
+            "ment": 74,
+            "def": 85,
+            "gk": 34
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_4673",
+          "nom": "Mathieu Martinez",
+          "poste": "DC",
+          "age": 26,
+          "notes": {
+            "off": 59,
+            "tec": 66,
+            "mouv": 75,
+            "pui": 69,
+            "ment": 70,
+            "def": 80,
+            "gk": 28
+          },
+          "global": 67
+        },
+        {
+          "id": "p_1775049652176_3142",
+          "nom": "François Legrand",
+          "poste": "DC",
+          "age": 20,
+          "notes": {
+            "off": 50,
+            "tec": 66,
+            "mouv": 78,
+            "pui": 83,
+            "ment": 77,
+            "def": 88,
+            "gk": 23
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_6977",
+          "nom": "Julien Lefebvre",
+          "poste": "DC",
+          "age": 36,
+          "notes": {
+            "off": 55,
+            "tec": 64,
+            "mouv": 73,
+            "pui": 81,
+            "ment": 69,
+            "def": 78,
+            "gk": 37
+          },
+          "global": 67
+        },
+        {
+          "id": "p_1775049652176_3045",
+          "nom": "Adrien Lefebvre",
+          "poste": "DC",
+          "age": 35,
+          "notes": {
+            "off": 60,
+            "tec": 85,
+            "mouv": 75,
+            "pui": 84,
+            "ment": 83,
+            "def": 85,
+            "gk": 21
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_9020",
+          "nom": "Raphaël Lefèvre",
+          "poste": "DC",
+          "age": 31,
+          "notes": {
+            "off": 51,
+            "tec": 71,
+            "mouv": 76,
+            "pui": 72,
+            "ment": 72,
+            "def": 81,
+            "gk": 33
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_5882",
+          "nom": "Julien Petit",
+          "poste": "DC",
+          "age": 30,
+          "notes": {
+            "off": 62,
+            "tec": 78,
+            "mouv": 78,
+            "pui": 79,
+            "ment": 77,
+            "def": 77,
+            "gk": 41
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_8844",
+          "nom": "Guillaume Bernard",
+          "poste": "DD",
+          "age": 21,
+          "notes": {
+            "off": 54,
+            "tec": 76,
+            "mouv": 76,
+            "pui": 76,
+            "ment": 74,
+            "def": 82,
+            "gk": 27
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_3796",
+          "nom": "Hugo Simon",
+          "poste": "DC",
+          "age": 29,
+          "notes": {
+            "off": 68,
+            "tec": 71,
+            "mouv": 78,
+            "pui": 77,
+            "ment": 76,
+            "def": 86,
+            "gk": 26
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_1060",
+          "nom": "Olivier Thomas",
+          "poste": "DC",
+          "age": 34,
+          "notes": {
+            "off": 57,
+            "tec": 68,
+            "mouv": 77,
+            "pui": 87,
+            "ment": 80,
+            "def": 89,
+            "gk": 33
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_5467",
+          "nom": "Yann David",
+          "poste": "DD",
+          "age": 28,
+          "notes": {
+            "off": 48,
+            "tec": 63,
+            "mouv": 75,
+            "pui": 77,
+            "ment": 66,
+            "def": 78,
+            "gk": 30
+          },
+          "global": 65
+        },
+        {
+          "id": "p_1775049652176_8065",
+          "nom": "Axel Petit",
+          "poste": "DG",
+          "age": 36,
+          "notes": {
+            "off": 62,
+            "tec": 83,
+            "mouv": 76,
+            "pui": 81,
+            "ment": 74,
+            "def": 92,
+            "gk": 38
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_3301",
+          "nom": "Corentin Legrand",
+          "poste": "DC",
+          "age": 24,
+          "notes": {
+            "off": 70,
+            "tec": 68,
+            "mouv": 73,
+            "pui": 80,
+            "ment": 79,
+            "def": 84,
+            "gk": 33
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_7789",
+          "nom": "Julien Guerin",
+          "poste": "DG",
+          "age": 34,
+          "notes": {
+            "off": 65,
+            "tec": 76,
+            "mouv": 76,
+            "pui": 79,
+            "ment": 73,
+            "def": 91,
+            "gk": 40
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_6290",
+          "nom": "Pierre Rousseau",
+          "poste": "DG",
+          "age": 28,
+          "notes": {
+            "off": 54,
+            "tec": 84,
+            "mouv": 83,
+            "pui": 80,
+            "ment": 78,
+            "def": 86,
+            "gk": 36
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_5638",
+          "nom": "Pierre Lefèvre",
+          "poste": "DC",
+          "age": 32,
+          "notes": {
+            "off": 52,
+            "tec": 69,
+            "mouv": 71,
+            "pui": 80,
+            "ment": 72,
+            "def": 86,
+            "gk": 26
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_2331",
+          "nom": "Thomas Morel",
+          "poste": "DD",
+          "age": 29,
+          "notes": {
+            "off": 64,
+            "tec": 71,
+            "mouv": 70,
+            "pui": 85,
+            "ment": 71,
+            "def": 90,
+            "gk": 37
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_1208",
+          "nom": "Morgan Thomas",
+          "poste": "DC",
+          "age": 25,
+          "notes": {
+            "off": 62,
+            "tec": 81,
+            "mouv": 80,
+            "pui": 84,
+            "ment": 82,
+            "def": 91,
+            "gk": 31
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_1365",
+          "nom": "Enzo Michel",
+          "poste": "DC",
+          "age": 21,
+          "notes": {
+            "off": 61,
+            "tec": 69,
+            "mouv": 71,
+            "pui": 72,
+            "ment": 67,
+            "def": 88,
+            "gk": 33
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_6428",
+          "nom": "Enzo Robert",
+          "poste": "DG",
+          "age": 20,
+          "notes": {
+            "off": 60,
+            "tec": 74,
+            "mouv": 72,
+            "pui": 77,
+            "ment": 67,
+            "def": 76,
+            "gk": 32
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_8979",
+          "nom": "Julien François",
+          "poste": "DG",
+          "age": 19,
+          "notes": {
+            "off": 58,
+            "tec": 73,
+            "mouv": 72,
+            "pui": 81,
+            "ment": 77,
+            "def": 90,
+            "gk": 35
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_3593",
+          "nom": "Hugo Faure",
+          "poste": "DC",
+          "age": 23,
+          "notes": {
+            "off": 56,
+            "tec": 72,
+            "mouv": 80,
+            "pui": 75,
+            "ment": 73,
+            "def": 83,
+            "gk": 34
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_9870",
+          "nom": "Ethan Lambert",
+          "poste": "DG",
+          "age": 18,
+          "notes": {
+            "off": 71,
+            "tec": 82,
+            "mouv": 75,
+            "pui": 77,
+            "ment": 76,
+            "def": 82,
+            "gk": 33
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_9177",
+          "nom": "Guillaume François",
+          "poste": "DG",
+          "age": 27,
+          "notes": {
+            "off": 69,
+            "tec": 78,
+            "mouv": 76,
+            "pui": 82,
+            "ment": 73,
+            "def": 79,
+            "gk": 40
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_8499",
+          "nom": "Thomas Dubois",
+          "poste": "DD",
+          "age": 26,
+          "notes": {
+            "off": 66,
+            "tec": 69,
+            "mouv": 78,
+            "pui": 75,
+            "ment": 69,
+            "def": 85,
+            "gk": 20
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_8694",
+          "nom": "Gauthier André",
+          "poste": "DD",
+          "age": 17,
+          "notes": {
+            "off": 53,
+            "tec": 69,
+            "mouv": 72,
+            "pui": 82,
+            "ment": 73,
+            "def": 87,
+            "gk": 26
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_8476",
+          "nom": "Nicolas André",
+          "poste": "DD",
+          "age": 30,
+          "notes": {
+            "off": 71,
+            "tec": 82,
+            "mouv": 73,
+            "pui": 81,
+            "ment": 78,
+            "def": 80,
+            "gk": 37
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_6367",
+          "nom": "Mathieu Faure",
+          "poste": "DC",
+          "age": 32,
+          "notes": {
+            "off": 60,
+            "tec": 71,
+            "mouv": 80,
+            "pui": 89,
+            "ment": 73,
+            "def": 86,
+            "gk": 32
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_3774",
+          "nom": "Axel Richard",
+          "poste": "DC",
+          "age": 20,
+          "notes": {
+            "off": 52,
+            "tec": 66,
+            "mouv": 68,
+            "pui": 73,
+            "ment": 69,
+            "def": 79,
+            "gk": 31
+          },
+          "global": 65
+        },
+        {
+          "id": "p_1775049652176_2979",
+          "nom": "François Petit",
+          "poste": "DC",
+          "age": 25,
+          "notes": {
+            "off": 65,
+            "tec": 68,
+            "mouv": 65,
+            "pui": 82,
+            "ment": 76,
+            "def": 87,
+            "gk": 18
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_9734",
+          "nom": "Clément Bertrand",
+          "poste": "DD",
+          "age": 24,
+          "notes": {
+            "off": 66,
+            "tec": 76,
+            "mouv": 69,
+            "pui": 86,
+            "ment": 68,
+            "def": 78,
+            "gk": 40
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_3364",
+          "nom": "Xavier Bernard",
+          "poste": "DC",
+          "age": 24,
+          "notes": {
+            "off": 58,
+            "tec": 76,
+            "mouv": 70,
+            "pui": 79,
+            "ment": 77,
+            "def": 81,
+            "gk": 41
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_4022",
+          "nom": "Valentin Roux",
+          "poste": "DC",
+          "age": 24,
+          "notes": {
+            "off": 67,
+            "tec": 72,
+            "mouv": 68,
+            "pui": 76,
+            "ment": 78,
+            "def": 88,
+            "gk": 19
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_4052",
+          "nom": "Yann Rousseau",
+          "poste": "DC",
+          "age": 33,
+          "notes": {
+            "off": 54,
+            "tec": 84,
+            "mouv": 78,
+            "pui": 87,
+            "ment": 76,
+            "def": 83,
+            "gk": 31
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_2231",
+          "nom": "Kevin Michel",
+          "poste": "DG",
+          "age": 27,
+          "notes": {
+            "off": 55,
+            "tec": 75,
+            "mouv": 84,
+            "pui": 89,
+            "ment": 71,
+            "def": 84,
+            "gk": 21
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_8267",
+          "nom": "François Vincent",
+          "poste": "DD",
+          "age": 18,
+          "notes": {
+            "off": 62,
+            "tec": 79,
+            "mouv": 77,
+            "pui": 76,
+            "ment": 79,
+            "def": 86,
+            "gk": 18
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_6896",
+          "nom": "Valentin Bernard",
+          "poste": "DC",
+          "age": 30,
+          "notes": {
+            "off": 70,
+            "tec": 83,
+            "mouv": 73,
+            "pui": 80,
+            "ment": 82,
+            "def": 84,
+            "gk": 42
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_1823",
+          "nom": "Sébastien Robin",
+          "poste": "DG",
+          "age": 36,
+          "notes": {
+            "off": 53,
+            "tec": 68,
+            "mouv": 65,
+            "pui": 71,
+            "ment": 74,
+            "def": 87,
+            "gk": 42
+          },
+          "global": 67
+        },
+        {
+          "id": "p_1775049652176_6272",
+          "nom": "Alexis Garnier",
+          "poste": "DC",
+          "age": 21,
+          "notes": {
+            "off": 67,
+            "tec": 81,
+            "mouv": 77,
+            "pui": 87,
+            "ment": 82,
+            "def": 89,
+            "gk": 18
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_1072",
+          "nom": "Mathieu Lambert",
+          "poste": "DD",
+          "age": 23,
+          "notes": {
+            "off": 57,
+            "tec": 77,
+            "mouv": 79,
+            "pui": 72,
+            "ment": 68,
+            "def": 77,
+            "gk": 22
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_8986",
+          "nom": "Guillaume Roussel",
+          "poste": "DC",
+          "age": 31,
+          "notes": {
+            "off": 56,
+            "tec": 78,
+            "mouv": 69,
+            "pui": 81,
+            "ment": 77,
+            "def": 76,
+            "gk": 19
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_5243",
+          "nom": "Corentin Bonnet",
+          "poste": "DG",
+          "age": 22,
+          "notes": {
+            "off": 61,
+            "tec": 80,
+            "mouv": 78,
+            "pui": 78,
+            "ment": 79,
+            "def": 87,
+            "gk": 26
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_6033",
+          "nom": "Olivier Morel",
+          "poste": "DC",
+          "age": 24,
+          "notes": {
+            "off": 68,
+            "tec": 69,
+            "mouv": 71,
+            "pui": 80,
+            "ment": 79,
+            "def": 92,
+            "gk": 37
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_1049",
+          "nom": "Raphaël Bonnet",
+          "poste": "DC",
+          "age": 22,
+          "notes": {
+            "off": 67,
+            "tec": 82,
+            "mouv": 74,
+            "pui": 75,
+            "ment": 73,
+            "def": 79,
+            "gk": 32
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_5825",
+          "nom": "Adrien Richard",
+          "poste": "DG",
+          "age": 23,
+          "notes": {
+            "off": 50,
+            "tec": 73,
+            "mouv": 73,
+            "pui": 83,
+            "ment": 71,
+            "def": 91,
+            "gk": 30
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_8119",
+          "nom": "Raphaël Petit",
+          "poste": "DC",
+          "age": 19,
+          "notes": {
+            "off": 53,
+            "tec": 81,
+            "mouv": 66,
+            "pui": 86,
+            "ment": 74,
+            "def": 89,
+            "gk": 26
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_3434",
+          "nom": "Mathieu Henry",
+          "poste": "DC",
+          "age": 24,
+          "notes": {
+            "off": 54,
+            "tec": 78,
+            "mouv": 80,
+            "pui": 76,
+            "ment": 80,
+            "def": 82,
+            "gk": 18
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_6736",
+          "nom": "Hugo Roux",
+          "poste": "DD",
+          "age": 21,
+          "notes": {
+            "off": 58,
+            "tec": 85,
+            "mouv": 84,
+            "pui": 90,
+            "ment": 71,
+            "def": 93,
+            "gk": 39
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_5670",
+          "nom": "Dylan Simon",
+          "poste": "DD",
+          "age": 31,
+          "notes": {
+            "off": 55,
+            "tec": 63,
+            "mouv": 73,
+            "pui": 75,
+            "ment": 71,
+            "def": 87,
+            "gk": 31
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_2874",
+          "nom": "Dylan André",
+          "poste": "DD",
+          "age": 19,
+          "notes": {
+            "off": 65,
+            "tec": 65,
+            "mouv": 66,
+            "pui": 76,
+            "ment": 74,
+            "def": 87,
+            "gk": 26
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_1639",
+          "nom": "Maxime Laurent",
+          "poste": "DC",
+          "age": 20,
+          "notes": {
+            "off": 52,
+            "tec": 76,
+            "mouv": 73,
+            "pui": 83,
+            "ment": 77,
+            "def": 83,
+            "gk": 39
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_5521",
+          "nom": "Arnaud Michel",
+          "poste": "DG",
+          "age": 22,
+          "notes": {
+            "off": 47,
+            "tec": 67,
+            "mouv": 75,
+            "pui": 76,
+            "ment": 75,
+            "def": 75,
+            "gk": 29
+          },
+          "global": 66
+        },
+        {
+          "id": "p_1775049652176_2041",
+          "nom": "Matteo Laurent",
+          "poste": "DG",
+          "age": 34,
+          "notes": {
+            "off": 53,
+            "tec": 79,
+            "mouv": 82,
+            "pui": 76,
+            "ment": 78,
+            "def": 82,
+            "gk": 42
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_3549",
+          "nom": "Ethan Lefèvre",
+          "poste": "DC",
+          "age": 17,
+          "notes": {
+            "off": 61,
+            "tec": 78,
+            "mouv": 79,
+            "pui": 80,
+            "ment": 76,
+            "def": 91,
+            "gk": 33
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_9810",
+          "nom": "Florian Bernard",
+          "poste": "DC",
+          "age": 35,
+          "notes": {
+            "off": 59,
+            "tec": 78,
+            "mouv": 68,
+            "pui": 77,
+            "ment": 74,
+            "def": 86,
+            "gk": 32
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_8502",
+          "nom": "Baptiste Lambert",
+          "poste": "DC",
+          "age": 32,
+          "notes": {
+            "off": 62,
+            "tec": 76,
+            "mouv": 72,
+            "pui": 71,
+            "ment": 72,
+            "def": 87,
+            "gk": 40
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_1267",
+          "nom": "Xavier Simon",
+          "poste": "DC",
+          "age": 30,
+          "notes": {
+            "off": 69,
+            "tec": 81,
+            "mouv": 74,
+            "pui": 76,
+            "ment": 77,
+            "def": 81,
+            "gk": 42
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_3249",
+          "nom": "Xavier Bonnet",
+          "poste": "DC",
+          "age": 36,
+          "notes": {
+            "off": 64,
+            "tec": 74,
+            "mouv": 78,
+            "pui": 81,
+            "ment": 79,
+            "def": 84,
+            "gk": 39
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_9016",
+          "nom": "Nicolas Bernard",
+          "poste": "DC",
+          "age": 27,
+          "notes": {
+            "off": 61,
+            "tec": 72,
+            "mouv": 77,
+            "pui": 78,
+            "ment": 71,
+            "def": 87,
+            "gk": 24
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_4070",
+          "nom": "Sébastien Laurent",
+          "poste": "DD",
+          "age": 25,
+          "notes": {
+            "off": 62,
+            "tec": 75,
+            "mouv": 77,
+            "pui": 71,
+            "ment": 72,
+            "def": 86,
+            "gk": 36
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_5844",
+          "nom": "Antoine Rousseau",
+          "poste": "DC",
+          "age": 34,
+          "notes": {
+            "off": 54,
+            "tec": 71,
+            "mouv": 74,
+            "pui": 71,
+            "ment": 72,
+            "def": 82,
+            "gk": 29
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_3589",
+          "nom": "Hugo Lefebvre",
+          "poste": "DG",
+          "age": 24,
+          "notes": {
+            "off": 61,
+            "tec": 81,
+            "mouv": 70,
+            "pui": 82,
+            "ment": 72,
+            "def": 91,
+            "gk": 42
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_4303",
+          "nom": "Florian Blanc",
+          "poste": "DG",
+          "age": 36,
+          "notes": {
+            "off": 69,
+            "tec": 75,
+            "mouv": 82,
+            "pui": 85,
+            "ment": 76,
+            "def": 82,
+            "gk": 20
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_6248",
+          "nom": "Florian Girard",
+          "poste": "DD",
+          "age": 18,
+          "notes": {
+            "off": 56,
+            "tec": 82,
+            "mouv": 75,
+            "pui": 88,
+            "ment": 81,
+            "def": 87,
+            "gk": 23
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_3537",
+          "nom": "Pierre François",
+          "poste": "DC",
+          "age": 19,
+          "notes": {
+            "off": 58,
+            "tec": 79,
+            "mouv": 69,
+            "pui": 85,
+            "ment": 78,
+            "def": 87,
+            "gk": 42
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_2880",
+          "nom": "Tristan Bernard",
+          "poste": "DD",
+          "age": 30,
+          "notes": {
+            "off": 59,
+            "tec": 80,
+            "mouv": 79,
+            "pui": 78,
+            "ment": 70,
+            "def": 88,
+            "gk": 31
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_8837",
+          "nom": "Kevin Leroy",
+          "poste": "DC",
+          "age": 34,
+          "notes": {
+            "off": 56,
+            "tec": 70,
+            "mouv": 78,
+            "pui": 82,
+            "ment": 78,
+            "def": 81,
+            "gk": 37
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_9367",
+          "nom": "François Dupont",
+          "poste": "DC",
+          "age": 23,
+          "notes": {
+            "off": 55,
+            "tec": 79,
+            "mouv": 79,
+            "pui": 73,
+            "ment": 74,
+            "def": 83,
+            "gk": 29
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_8069",
+          "nom": "Raphaël Blanc",
+          "poste": "DC",
+          "age": 28,
+          "notes": {
+            "off": 54,
+            "tec": 84,
+            "mouv": 75,
+            "pui": 77,
+            "ment": 73,
+            "def": 93,
+            "gk": 22
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_6363",
+          "nom": "Alexandre Martin",
+          "poste": "DD",
+          "age": 18,
+          "notes": {
+            "off": 53,
+            "tec": 73,
+            "mouv": 66,
+            "pui": 74,
+            "ment": 74,
+            "def": 79,
+            "gk": 42
+          },
+          "global": 67
+        },
+        {
+          "id": "p_1775049652176_3880",
+          "nom": "Clément Blanc",
+          "poste": "DD",
+          "age": 24,
+          "notes": {
+            "off": 64,
+            "tec": 72,
+            "mouv": 76,
+            "pui": 75,
+            "ment": 77,
+            "def": 80,
+            "gk": 39
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_4582",
+          "nom": "Corentin Lefebvre",
+          "poste": "DD",
+          "age": 31,
+          "notes": {
+            "off": 63,
+            "tec": 72,
+            "mouv": 77,
+            "pui": 72,
+            "ment": 76,
+            "def": 76,
+            "gk": 41
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_9853",
+          "nom": "Maxime Henry",
+          "poste": "DC",
+          "age": 30,
+          "notes": {
+            "off": 57,
+            "tec": 74,
+            "mouv": 82,
+            "pui": 86,
+            "ment": 74,
+            "def": 87,
+            "gk": 29
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_1324",
+          "nom": "Thomas Dupont",
+          "poste": "DC",
+          "age": 19,
+          "notes": {
+            "off": 63,
+            "tec": 81,
+            "mouv": 72,
+            "pui": 88,
+            "ment": 75,
+            "def": 86,
+            "gk": 27
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_6914",
+          "nom": "Mathieu Moreau",
+          "poste": "DC",
+          "age": 23,
+          "notes": {
+            "off": 54,
+            "tec": 81,
+            "mouv": 70,
+            "pui": 89,
+            "ment": 77,
+            "def": 83,
+            "gk": 37
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_2889",
+          "nom": "Axel Morel",
+          "poste": "DC",
+          "age": 24,
+          "notes": {
+            "off": 57,
+            "tec": 76,
+            "mouv": 69,
+            "pui": 78,
+            "ment": 74,
+            "def": 84,
+            "gk": 31
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_7988",
+          "nom": "Théo Robert",
+          "poste": "DG",
+          "age": 21,
+          "notes": {
+            "off": 61,
+            "tec": 82,
+            "mouv": 71,
+            "pui": 82,
+            "ment": 78,
+            "def": 87,
+            "gk": 39
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_7803",
+          "nom": "Axel Garcia",
+          "poste": "DC",
+          "age": 27,
+          "notes": {
+            "off": 54,
+            "tec": 74,
+            "mouv": 73,
+            "pui": 85,
+            "ment": 79,
+            "def": 88,
+            "gk": 28
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_9738",
+          "nom": "Tristan Laurent",
+          "poste": "DC",
+          "age": 19,
+          "notes": {
+            "off": 48,
+            "tec": 73,
+            "mouv": 67,
+            "pui": 77,
+            "ment": 73,
+            "def": 78,
+            "gk": 28
+          },
+          "global": 66
+        },
+        {
+          "id": "p_1775049652176_8473",
+          "nom": "Pierre Legrand",
+          "poste": "DG",
+          "age": 18,
+          "notes": {
+            "off": 61,
+            "tec": 69,
+            "mouv": 75,
+            "pui": 72,
+            "ment": 74,
+            "def": 79,
+            "gk": 21
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_8650",
+          "nom": "Ethan Moreau",
+          "poste": "DG",
+          "age": 34,
+          "notes": {
+            "off": 53,
+            "tec": 71,
+            "mouv": 79,
+            "pui": 78,
+            "ment": 68,
+            "def": 83,
+            "gk": 18
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_2473",
+          "nom": "Léo Moreau",
+          "poste": "DC",
+          "age": 19,
+          "notes": {
+            "off": 60,
+            "tec": 72,
+            "mouv": 71,
+            "pui": 74,
+            "ment": 79,
+            "def": 90,
+            "gk": 29
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_5119",
+          "nom": "Arnaud Fournier",
+          "poste": "DC",
+          "age": 30,
+          "notes": {
+            "off": 48,
+            "tec": 80,
+            "mouv": 78,
+            "pui": 69,
+            "ment": 72,
+            "def": 77,
+            "gk": 38
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_6284",
+          "nom": "Maxime Roussel",
+          "poste": "DG",
+          "age": 21,
+          "notes": {
+            "off": 64,
+            "tec": 68,
+            "mouv": 82,
+            "pui": 82,
+            "ment": 72,
+            "def": 81,
+            "gk": 18
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_1632",
+          "nom": "Théo Petit",
+          "poste": "DC",
+          "age": 28,
+          "notes": {
+            "off": 54,
+            "tec": 80,
+            "mouv": 73,
+            "pui": 78,
+            "ment": 71,
+            "def": 79,
+            "gk": 36
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_6330",
+          "nom": "Mathieu Michel",
+          "poste": "DC",
+          "age": 28,
+          "notes": {
+            "off": 68,
+            "tec": 70,
+            "mouv": 83,
+            "pui": 77,
+            "ment": 77,
+            "def": 81,
+            "gk": 29
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_4708",
+          "nom": "Paul Faure",
+          "poste": "DG",
+          "age": 25,
+          "notes": {
+            "off": 54,
+            "tec": 77,
+            "mouv": 81,
+            "pui": 85,
+            "ment": 82,
+            "def": 83,
+            "gk": 28
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_9238",
+          "nom": "Kevin Moreau",
+          "poste": "DC",
+          "age": 28,
+          "notes": {
+            "off": 64,
+            "tec": 69,
+            "mouv": 73,
+            "pui": 84,
+            "ment": 75,
+            "def": 83,
+            "gk": 41
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_3266",
+          "nom": "Corentin Bernard",
+          "poste": "DG",
+          "age": 36,
+          "notes": {
+            "off": 46,
+            "tec": 70,
+            "mouv": 71,
+            "pui": 68,
+            "ment": 73,
+            "def": 87,
+            "gk": 35
+          },
+          "global": 66
+        },
+        {
+          "id": "p_1775049652175_1402",
+          "nom": "Enzo Henry",
+          "poste": "MC",
+          "age": 21,
+          "notes": {
+            "off": 72,
+            "tec": 82,
+            "mouv": 84,
+            "pui": 78,
+            "ment": 69,
+            "def": 72,
+            "gk": 26
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652175_2975",
+          "nom": "Baptiste Blanc",
+          "poste": "MOG",
+          "age": 26,
+          "notes": {
+            "off": 71,
+            "tec": 75,
+            "mouv": 80,
+            "pui": 76,
+            "ment": 67,
+            "def": 71,
+            "gk": 23
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652175_5536",
+          "nom": "Ethan François",
+          "poste": "MOD",
+          "age": 24,
+          "notes": {
+            "off": 76,
+            "tec": 86,
+            "mouv": 77,
+            "pui": 68,
+            "ment": 72,
+            "def": 79,
+            "gk": 20
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652175_6786",
+          "nom": "Pierre Lefèvre",
+          "poste": "MO",
+          "age": 33,
+          "notes": {
+            "off": 72,
+            "tec": 80,
+            "mouv": 78,
+            "pui": 68,
+            "ment": 67,
+            "def": 79,
+            "gk": 29
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652175_4434",
+          "nom": "Florian Michel",
+          "poste": "MC",
+          "age": 26,
+          "notes": {
+            "off": 70,
+            "tec": 79,
+            "mouv": 80,
+            "pui": 72,
+            "ment": 74,
+            "def": 67,
+            "gk": 32
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652175_3802",
+          "nom": "Baptiste Legrand",
+          "poste": "MOG",
+          "age": 33,
+          "notes": {
+            "off": 72,
+            "tec": 79,
+            "mouv": 79,
+            "pui": 79,
+            "ment": 72,
+            "def": 79,
+            "gk": 35
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652175_8291",
+          "nom": "Axel Roussel",
+          "poste": "MDC",
+          "age": 32,
+          "notes": {
+            "off": 80,
+            "tec": 78,
+            "mouv": 82,
+            "pui": 67,
+            "ment": 73,
+            "def": 77,
+            "gk": 31
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652175_2587",
+          "nom": "Yann François",
+          "poste": "MOG",
+          "age": 27,
+          "notes": {
+            "off": 82,
+            "tec": 79,
+            "mouv": 74,
+            "pui": 82,
+            "ment": 76,
+            "def": 73,
+            "gk": 17
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652175_3111",
+          "nom": "Arnaud Bertrand",
+          "poste": "MOD",
+          "age": 36,
+          "notes": {
+            "off": 75,
+            "tec": 85,
+            "mouv": 77,
+            "pui": 77,
+            "ment": 79,
+            "def": 69,
+            "gk": 17
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652175_5023",
+          "nom": "Julien Lefèvre",
+          "poste": "MO",
+          "age": 32,
+          "notes": {
+            "off": 72,
+            "tec": 72,
+            "mouv": 74,
+            "pui": 68,
+            "ment": 68,
+            "def": 64,
+            "gk": 18
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652175_7027",
+          "nom": "Sébastien Bernard",
+          "poste": "MDC",
+          "age": 35,
+          "notes": {
+            "off": 71,
+            "tec": 75,
+            "mouv": 69,
+            "pui": 68,
+            "ment": 73,
+            "def": 67,
+            "gk": 26
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652175_2166",
+          "nom": "Tristan Leroy",
+          "poste": "MC",
+          "age": 29,
+          "notes": {
+            "off": 85,
+            "tec": 89,
+            "mouv": 77,
+            "pui": 85,
+            "ment": 82,
+            "def": 73,
+            "gk": 35
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775049652176_2637",
+          "nom": "Axel Laurent",
+          "poste": "MOD",
+          "age": 28,
+          "notes": {
+            "off": 78,
+            "tec": 75,
+            "mouv": 76,
+            "pui": 68,
+            "ment": 72,
+            "def": 73,
+            "gk": 19
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_1172",
+          "nom": "Julien Fournier",
+          "poste": "MC",
+          "age": 18,
+          "notes": {
+            "off": 79,
+            "tec": 79,
+            "mouv": 83,
+            "pui": 80,
+            "ment": 83,
+            "def": 79,
+            "gk": 19
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652176_5383",
+          "nom": "Gauthier Michel",
+          "poste": "MC",
+          "age": 21,
+          "notes": {
+            "off": 71,
+            "tec": 72,
+            "mouv": 82,
+            "pui": 78,
+            "ment": 72,
+            "def": 77,
+            "gk": 32
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_4525",
+          "nom": "Pierre Martinez",
+          "poste": "MO",
+          "age": 28,
+          "notes": {
+            "off": 80,
+            "tec": 85,
+            "mouv": 78,
+            "pui": 79,
+            "ment": 83,
+            "def": 79,
+            "gk": 28
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652176_7137",
+          "nom": "Noé Mercier",
+          "poste": "MO",
+          "age": 31,
+          "notes": {
+            "off": 75,
+            "tec": 81,
+            "mouv": 72,
+            "pui": 70,
+            "ment": 69,
+            "def": 74,
+            "gk": 20
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_7930",
+          "nom": "Thibault Guerin",
+          "poste": "MC",
+          "age": 22,
+          "notes": {
+            "off": 67,
+            "tec": 86,
+            "mouv": 80,
+            "pui": 77,
+            "ment": 80,
+            "def": 71,
+            "gk": 20
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_1585",
+          "nom": "Nicolas Simon",
+          "poste": "MC",
+          "age": 26,
+          "notes": {
+            "off": 73,
+            "tec": 71,
+            "mouv": 75,
+            "pui": 72,
+            "ment": 73,
+            "def": 71,
+            "gk": 30
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_2247",
+          "nom": "Lucas Michel",
+          "poste": "MOG",
+          "age": 20,
+          "notes": {
+            "off": 76,
+            "tec": 84,
+            "mouv": 85,
+            "pui": 73,
+            "ment": 76,
+            "def": 73,
+            "gk": 20
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_3263",
+          "nom": "Léo Muller",
+          "poste": "MDC",
+          "age": 18,
+          "notes": {
+            "off": 75,
+            "tec": 80,
+            "mouv": 78,
+            "pui": 68,
+            "ment": 73,
+            "def": 77,
+            "gk": 22
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_6945",
+          "nom": "Dylan Muller",
+          "poste": "MOD",
+          "age": 35,
+          "notes": {
+            "off": 70,
+            "tec": 81,
+            "mouv": 82,
+            "pui": 69,
+            "ment": 79,
+            "def": 78,
+            "gk": 28
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_9508",
+          "nom": "Dylan Mercier",
+          "poste": "MO",
+          "age": 36,
+          "notes": {
+            "off": 73,
+            "tec": 81,
+            "mouv": 79,
+            "pui": 69,
+            "ment": 80,
+            "def": 71,
+            "gk": 30
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_9152",
+          "nom": "Romain Roux",
+          "poste": "MDC",
+          "age": 31,
+          "notes": {
+            "off": 64,
+            "tec": 82,
+            "mouv": 73,
+            "pui": 77,
+            "ment": 72,
+            "def": 70,
+            "gk": 30
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_9843",
+          "nom": "Raphaël Laurent",
+          "poste": "MOG",
+          "age": 24,
+          "notes": {
+            "off": 75,
+            "tec": 86,
+            "mouv": 80,
+            "pui": 76,
+            "ment": 79,
+            "def": 76,
+            "gk": 27
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_6375",
+          "nom": "Florian Leroy",
+          "poste": "MDC",
+          "age": 34,
+          "notes": {
+            "off": 69,
+            "tec": 74,
+            "mouv": 82,
+            "pui": 67,
+            "ment": 67,
+            "def": 79,
+            "gk": 30
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_9345",
+          "nom": "Yann Lefebvre",
+          "poste": "MOD",
+          "age": 26,
+          "notes": {
+            "off": 74,
+            "tec": 74,
+            "mouv": 78,
+            "pui": 73,
+            "ment": 71,
+            "def": 76,
+            "gk": 20
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_4935",
+          "nom": "Matteo Roussel",
+          "poste": "MO",
+          "age": 36,
+          "notes": {
+            "off": 71,
+            "tec": 74,
+            "mouv": 77,
+            "pui": 65,
+            "ment": 69,
+            "def": 71,
+            "gk": 27
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_8783",
+          "nom": "Morgan Martin",
+          "poste": "MDC",
+          "age": 21,
+          "notes": {
+            "off": 76,
+            "tec": 84,
+            "mouv": 80,
+            "pui": 80,
+            "ment": 74,
+            "def": 80,
+            "gk": 24
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_3540",
+          "nom": "Ethan Michel",
+          "poste": "MO",
+          "age": 20,
+          "notes": {
+            "off": 68,
+            "tec": 78,
+            "mouv": 80,
+            "pui": 81,
+            "ment": 74,
+            "def": 74,
+            "gk": 27
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_9453",
+          "nom": "Alexis Garcia",
+          "poste": "MOD",
+          "age": 22,
+          "notes": {
+            "off": 72,
+            "tec": 84,
+            "mouv": 83,
+            "pui": 71,
+            "ment": 72,
+            "def": 66,
+            "gk": 35
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_3049",
+          "nom": "Noé Garcia",
+          "poste": "MO",
+          "age": 24,
+          "notes": {
+            "off": 69,
+            "tec": 84,
+            "mouv": 73,
+            "pui": 79,
+            "ment": 68,
+            "def": 70,
+            "gk": 33
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_4113",
+          "nom": "Paul Mercier",
+          "poste": "MO",
+          "age": 28,
+          "notes": {
+            "off": 73,
+            "tec": 79,
+            "mouv": 85,
+            "pui": 73,
+            "ment": 73,
+            "def": 69,
+            "gk": 25
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_6099",
+          "nom": "Noé Dubois",
+          "poste": "MO",
+          "age": 26,
+          "notes": {
+            "off": 71,
+            "tec": 79,
+            "mouv": 78,
+            "pui": 72,
+            "ment": 68,
+            "def": 69,
+            "gk": 30
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_4315",
+          "nom": "Pierre Roux",
+          "poste": "MO",
+          "age": 27,
+          "notes": {
+            "off": 72,
+            "tec": 85,
+            "mouv": 79,
+            "pui": 77,
+            "ment": 78,
+            "def": 80,
+            "gk": 35
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_6549",
+          "nom": "Morgan Garnier",
+          "poste": "MOD",
+          "age": 28,
+          "notes": {
+            "off": 69,
+            "tec": 79,
+            "mouv": 77,
+            "pui": 70,
+            "ment": 68,
+            "def": 70,
+            "gk": 29
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_5107",
+          "nom": "Adrien Mercier",
+          "poste": "MC",
+          "age": 34,
+          "notes": {
+            "off": 75,
+            "tec": 87,
+            "mouv": 82,
+            "pui": 71,
+            "ment": 71,
+            "def": 70,
+            "gk": 18
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_4431",
+          "nom": "Clément Henry",
+          "poste": "MC",
+          "age": 19,
+          "notes": {
+            "off": 78,
+            "tec": 81,
+            "mouv": 76,
+            "pui": 82,
+            "ment": 75,
+            "def": 80,
+            "gk": 15
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_8770",
+          "nom": "Morgan Leroy",
+          "poste": "MOG",
+          "age": 22,
+          "notes": {
+            "off": 67,
+            "tec": 75,
+            "mouv": 77,
+            "pui": 66,
+            "ment": 78,
+            "def": 76,
+            "gk": 15
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_8600",
+          "nom": "Hugo Garcia",
+          "poste": "MDC",
+          "age": 24,
+          "notes": {
+            "off": 78,
+            "tec": 70,
+            "mouv": 71,
+            "pui": 74,
+            "ment": 67,
+            "def": 81,
+            "gk": 31
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_7478",
+          "nom": "Yann Muller",
+          "poste": "MDC",
+          "age": 35,
+          "notes": {
+            "off": 65,
+            "tec": 72,
+            "mouv": 83,
+            "pui": 67,
+            "ment": 73,
+            "def": 64,
+            "gk": 35
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_1522",
+          "nom": "Antoine Garnier",
+          "poste": "MC",
+          "age": 32,
+          "notes": {
+            "off": 78,
+            "tec": 81,
+            "mouv": 81,
+            "pui": 70,
+            "ment": 72,
+            "def": 80,
+            "gk": 31
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_6389",
+          "nom": "Arnaud Roussel",
+          "poste": "MOG",
+          "age": 23,
+          "notes": {
+            "off": 77,
+            "tec": 75,
+            "mouv": 72,
+            "pui": 73,
+            "ment": 73,
+            "def": 73,
+            "gk": 16
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_3130",
+          "nom": "Antoine Thomas",
+          "poste": "MO",
+          "age": 24,
+          "notes": {
+            "off": 81,
+            "tec": 88,
+            "mouv": 77,
+            "pui": 70,
+            "ment": 78,
+            "def": 67,
+            "gk": 22
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_9922",
+          "nom": "Antoine Garnier",
+          "poste": "MOG",
+          "age": 30,
+          "notes": {
+            "off": 78,
+            "tec": 83,
+            "mouv": 82,
+            "pui": 75,
+            "ment": 70,
+            "def": 66,
+            "gk": 34
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_7301",
+          "nom": "Sébastien Thomas",
+          "poste": "MOD",
+          "age": 25,
+          "notes": {
+            "off": 80,
+            "tec": 77,
+            "mouv": 83,
+            "pui": 75,
+            "ment": 74,
+            "def": 86,
+            "gk": 31
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_6664",
+          "nom": "Gauthier Blanc",
+          "poste": "MDC",
+          "age": 18,
+          "notes": {
+            "off": 72,
+            "tec": 80,
+            "mouv": 87,
+            "pui": 78,
+            "ment": 69,
+            "def": 68,
+            "gk": 30
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_8877",
+          "nom": "Julien Henry",
+          "poste": "GK",
+          "age": 31,
+          "notes": {
+            "off": 42,
+            "tec": 62,
+            "mouv": 63,
+            "pui": 66,
+            "ment": 67,
+            "def": 59,
+            "gk": 92
+          },
+          "global": 60
+        },
+        {
+          "id": "p_1775049652176_6812",
+          "nom": "Tristan François",
+          "poste": "MC",
+          "age": 18,
+          "notes": {
+            "off": 80,
+            "tec": 77,
+            "mouv": 78,
+            "pui": 80,
+            "ment": 70,
+            "def": 72,
+            "gk": 21
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_7761",
+          "nom": "Kevin Roux",
+          "poste": "MDC",
+          "age": 18,
+          "notes": {
+            "off": 74,
+            "tec": 72,
+            "mouv": 83,
+            "pui": 72,
+            "ment": 72,
+            "def": 78,
+            "gk": 22
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_7570",
+          "nom": "Guillaume Martin",
+          "poste": "MOG",
+          "age": 27,
+          "notes": {
+            "off": 69,
+            "tec": 76,
+            "mouv": 72,
+            "pui": 64,
+            "ment": 72,
+            "def": 73,
+            "gk": 18
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_7727",
+          "nom": "Kevin Vincent",
+          "poste": "MC",
+          "age": 34,
+          "notes": {
+            "off": 77,
+            "tec": 83,
+            "mouv": 75,
+            "pui": 81,
+            "ment": 75,
+            "def": 69,
+            "gk": 15
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_9116",
+          "nom": "Gauthier Bernard",
+          "poste": "MO",
+          "age": 20,
+          "notes": {
+            "off": 68,
+            "tec": 84,
+            "mouv": 75,
+            "pui": 80,
+            "ment": 76,
+            "def": 76,
+            "gk": 19
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_3082",
+          "nom": "Sébastien Girard",
+          "poste": "MC",
+          "age": 34,
+          "notes": {
+            "off": 67,
+            "tec": 79,
+            "mouv": 71,
+            "pui": 76,
+            "ment": 68,
+            "def": 65,
+            "gk": 17
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_9948",
+          "nom": "Julien Fournier",
+          "poste": "MC",
+          "age": 36,
+          "notes": {
+            "off": 72,
+            "tec": 77,
+            "mouv": 75,
+            "pui": 76,
+            "ment": 73,
+            "def": 78,
+            "gk": 34
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_4982",
+          "nom": "Thibault Dubois",
+          "poste": "MOD",
+          "age": 32,
+          "notes": {
+            "off": 72,
+            "tec": 75,
+            "mouv": 70,
+            "pui": 67,
+            "ment": 65,
+            "def": 69,
+            "gk": 15
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_8562",
+          "nom": "Mathieu Fournier",
+          "poste": "MC",
+          "age": 22,
+          "notes": {
+            "off": 68,
+            "tec": 84,
+            "mouv": 82,
+            "pui": 68,
+            "ment": 70,
+            "def": 75,
+            "gk": 22
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_3053",
+          "nom": "Raphaël Laurent",
+          "poste": "MDC",
+          "age": 31,
+          "notes": {
+            "off": 68,
+            "tec": 83,
+            "mouv": 81,
+            "pui": 67,
+            "ment": 75,
+            "def": 69,
+            "gk": 27
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_6762",
+          "nom": "Alexis Dubois",
+          "poste": "MO",
+          "age": 24,
+          "notes": {
+            "off": 77,
+            "tec": 82,
+            "mouv": 75,
+            "pui": 73,
+            "ment": 81,
+            "def": 81,
+            "gk": 15
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_8055",
+          "nom": "Matteo Lefèvre",
+          "poste": "MDC",
+          "age": 32,
+          "notes": {
+            "off": 63,
+            "tec": 72,
+            "mouv": 76,
+            "pui": 66,
+            "ment": 74,
+            "def": 70,
+            "gk": 30
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_6034",
+          "nom": "Nicolas Morel",
+          "poste": "MDC",
+          "age": 18,
+          "notes": {
+            "off": 66,
+            "tec": 73,
+            "mouv": 80,
+            "pui": 81,
+            "ment": 78,
+            "def": 70,
+            "gk": 18
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_7334",
+          "nom": "Alexandre Michel",
+          "poste": "MC",
+          "age": 23,
+          "notes": {
+            "off": 70,
+            "tec": 72,
+            "mouv": 78,
+            "pui": 82,
+            "ment": 70,
+            "def": 67,
+            "gk": 27
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_5758",
+          "nom": "Maxime Legrand",
+          "poste": "MC",
+          "age": 35,
+          "notes": {
+            "off": 71,
+            "tec": 87,
+            "mouv": 82,
+            "pui": 79,
+            "ment": 75,
+            "def": 70,
+            "gk": 15
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_9825",
+          "nom": "François Fournier",
+          "poste": "MC",
+          "age": 26,
+          "notes": {
+            "off": 85,
+            "tec": 78,
+            "mouv": 88,
+            "pui": 76,
+            "ment": 75,
+            "def": 84,
+            "gk": 27
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775049652176_9914",
+          "nom": "Dylan Garnier",
+          "poste": "MOD",
+          "age": 21,
+          "notes": {
+            "off": 66,
+            "tec": 79,
+            "mouv": 81,
+            "pui": 71,
+            "ment": 79,
+            "def": 65,
+            "gk": 21
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_3971",
+          "nom": "Maxime Garnier",
+          "poste": "MC",
+          "age": 27,
+          "notes": {
+            "off": 68,
+            "tec": 75,
+            "mouv": 80,
+            "pui": 80,
+            "ment": 74,
+            "def": 77,
+            "gk": 32
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_7924",
+          "nom": "François Muller",
+          "poste": "GK",
+          "age": 36,
+          "notes": {
+            "off": 43,
+            "tec": 69,
+            "mouv": 67,
+            "pui": 77,
+            "ment": 81,
+            "def": 60,
+            "gk": 94
+          },
+          "global": 66
+        },
+        {
+          "id": "p_1775049652176_3921",
+          "nom": "Thomas Robert",
+          "poste": "MDC",
+          "age": 32,
+          "notes": {
+            "off": 72,
+            "tec": 79,
+            "mouv": 74,
+            "pui": 72,
+            "ment": 78,
+            "def": 64,
+            "gk": 35
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_5273",
+          "nom": "Adrien Robert",
+          "poste": "MC",
+          "age": 21,
+          "notes": {
+            "off": 74,
+            "tec": 77,
+            "mouv": 70,
+            "pui": 79,
+            "ment": 75,
+            "def": 73,
+            "gk": 25
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_5993",
+          "nom": "Thibault Moreau",
+          "poste": "MC",
+          "age": 28,
+          "notes": {
+            "off": 71,
+            "tec": 84,
+            "mouv": 74,
+            "pui": 76,
+            "ment": 79,
+            "def": 71,
+            "gk": 29
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_5150",
+          "nom": "Adrien Lambert",
+          "poste": "MOG",
+          "age": 22,
+          "notes": {
+            "off": 70,
+            "tec": 84,
+            "mouv": 75,
+            "pui": 70,
+            "ment": 80,
+            "def": 69,
+            "gk": 21
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_8480",
+          "nom": "Hugo Garcia",
+          "poste": "MO",
+          "age": 31,
+          "notes": {
+            "off": 75,
+            "tec": 81,
+            "mouv": 85,
+            "pui": 76,
+            "ment": 79,
+            "def": 82,
+            "gk": 26
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_8920",
+          "nom": "Alexandre Blanc",
+          "poste": "MC",
+          "age": 32,
+          "notes": {
+            "off": 74,
+            "tec": 80,
+            "mouv": 86,
+            "pui": 84,
+            "ment": 74,
+            "def": 72,
+            "gk": 15
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_4323",
+          "nom": "Thibault Dubois",
+          "poste": "MC",
+          "age": 26,
+          "notes": {
+            "off": 70,
+            "tec": 81,
+            "mouv": 74,
+            "pui": 78,
+            "ment": 69,
+            "def": 82,
+            "gk": 17
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_2485",
+          "nom": "Yann Dubois",
+          "poste": "MOG",
+          "age": 22,
+          "notes": {
+            "off": 72,
+            "tec": 82,
+            "mouv": 72,
+            "pui": 75,
+            "ment": 71,
+            "def": 75,
+            "gk": 28
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_5585",
+          "nom": "Alexandre Henry",
+          "poste": "MC",
+          "age": 35,
+          "notes": {
+            "off": 80,
+            "tec": 84,
+            "mouv": 81,
+            "pui": 77,
+            "ment": 67,
+            "def": 80,
+            "gk": 16
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_3269",
+          "nom": "Olivier Morel",
+          "poste": "MC",
+          "age": 25,
+          "notes": {
+            "off": 71,
+            "tec": 73,
+            "mouv": 82,
+            "pui": 71,
+            "ment": 67,
+            "def": 78,
+            "gk": 35
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_8959",
+          "nom": "Thibault Richard",
+          "poste": "MC",
+          "age": 20,
+          "notes": {
+            "off": 70,
+            "tec": 75,
+            "mouv": 80,
+            "pui": 71,
+            "ment": 79,
+            "def": 74,
+            "gk": 25
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_4095",
+          "nom": "Noé Garnier",
+          "poste": "MOD",
+          "age": 34,
+          "notes": {
+            "off": 75,
+            "tec": 74,
+            "mouv": 81,
+            "pui": 75,
+            "ment": 69,
+            "def": 74,
+            "gk": 19
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_9730",
+          "nom": "Xavier Dupont",
+          "poste": "MOG",
+          "age": 35,
+          "notes": {
+            "off": 73,
+            "tec": 86,
+            "mouv": 89,
+            "pui": 77,
+            "ment": 71,
+            "def": 80,
+            "gk": 24
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_3797",
+          "nom": "Pierre Bertrand",
+          "poste": "MOG",
+          "age": 32,
+          "notes": {
+            "off": 83,
+            "tec": 85,
+            "mouv": 81,
+            "pui": 79,
+            "ment": 73,
+            "def": 77,
+            "gk": 19
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652176_2531",
+          "nom": "Thibault Roux",
+          "poste": "MOG",
+          "age": 26,
+          "notes": {
+            "off": 69,
+            "tec": 73,
+            "mouv": 78,
+            "pui": 77,
+            "ment": 78,
+            "def": 65,
+            "gk": 18
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_1532",
+          "nom": "Alexandre Roux",
+          "poste": "MOD",
+          "age": 35,
+          "notes": {
+            "off": 72,
+            "tec": 81,
+            "mouv": 85,
+            "pui": 70,
+            "ment": 76,
+            "def": 79,
+            "gk": 18
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_5796",
+          "nom": "François Moreau",
+          "poste": "MC",
+          "age": 19,
+          "notes": {
+            "off": 64,
+            "tec": 75,
+            "mouv": 73,
+            "pui": 66,
+            "ment": 76,
+            "def": 73,
+            "gk": 16
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_4505",
+          "nom": "Kevin Michel",
+          "poste": "MOG",
+          "age": 29,
+          "notes": {
+            "off": 70,
+            "tec": 83,
+            "mouv": 72,
+            "pui": 67,
+            "ment": 71,
+            "def": 79,
+            "gk": 22
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_7355",
+          "nom": "Dylan Robin",
+          "poste": "MOG",
+          "age": 36,
+          "notes": {
+            "off": 73,
+            "tec": 78,
+            "mouv": 81,
+            "pui": 81,
+            "ment": 76,
+            "def": 82,
+            "gk": 30
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_5427",
+          "nom": "Matteo Dubois",
+          "poste": "MDC",
+          "age": 29,
+          "notes": {
+            "off": 74,
+            "tec": 74,
+            "mouv": 70,
+            "pui": 78,
+            "ment": 69,
+            "def": 71,
+            "gk": 16
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_2884",
+          "nom": "Morgan Bertrand",
+          "poste": "MO",
+          "age": 27,
+          "notes": {
+            "off": 69,
+            "tec": 85,
+            "mouv": 86,
+            "pui": 75,
+            "ment": 71,
+            "def": 68,
+            "gk": 15
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_9184",
+          "nom": "Tristan Lefèvre",
+          "poste": "MOD",
+          "age": 26,
+          "notes": {
+            "off": 65,
+            "tec": 71,
+            "mouv": 81,
+            "pui": 75,
+            "ment": 73,
+            "def": 70,
+            "gk": 16
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_3288",
+          "nom": "Guillaume Bernard",
+          "poste": "MOG",
+          "age": 23,
+          "notes": {
+            "off": 79,
+            "tec": 87,
+            "mouv": 79,
+            "pui": 75,
+            "ment": 79,
+            "def": 75,
+            "gk": 21
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_3594",
+          "nom": "Baptiste David",
+          "poste": "MO",
+          "age": 18,
+          "notes": {
+            "off": 68,
+            "tec": 81,
+            "mouv": 85,
+            "pui": 84,
+            "ment": 80,
+            "def": 82,
+            "gk": 25
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_6093",
+          "nom": "Yann Lefèvre",
+          "poste": "MC",
+          "age": 23,
+          "notes": {
+            "off": 70,
+            "tec": 79,
+            "mouv": 76,
+            "pui": 73,
+            "ment": 74,
+            "def": 64,
+            "gk": 23
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_4728",
+          "nom": "Pierre Guerin",
+          "poste": "MOD",
+          "age": 17,
+          "notes": {
+            "off": 77,
+            "tec": 81,
+            "mouv": 79,
+            "pui": 85,
+            "ment": 79,
+            "def": 70,
+            "gk": 17
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_8292",
+          "nom": "Paul Richard",
+          "poste": "MOD",
+          "age": 24,
+          "notes": {
+            "off": 80,
+            "tec": 85,
+            "mouv": 81,
+            "pui": 70,
+            "ment": 72,
+            "def": 74,
+            "gk": 34
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_7196",
+          "nom": "Lucas Bertrand",
+          "poste": "MC",
+          "age": 33,
+          "notes": {
+            "off": 67,
+            "tec": 86,
+            "mouv": 78,
+            "pui": 79,
+            "ment": 70,
+            "def": 80,
+            "gk": 30
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_5429",
+          "nom": "Paul Richard",
+          "poste": "MOD",
+          "age": 19,
+          "notes": {
+            "off": 67,
+            "tec": 85,
+            "mouv": 82,
+            "pui": 78,
+            "ment": 74,
+            "def": 68,
+            "gk": 34
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_4912",
+          "nom": "François Fournier",
+          "poste": "MDC",
+          "age": 36,
+          "notes": {
+            "off": 74,
+            "tec": 74,
+            "mouv": 73,
+            "pui": 66,
+            "ment": 77,
+            "def": 75,
+            "gk": 28
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_1972",
+          "nom": "Léo Martinez",
+          "poste": "MC",
+          "age": 29,
+          "notes": {
+            "off": 66,
+            "tec": 79,
+            "mouv": 75,
+            "pui": 75,
+            "ment": 74,
+            "def": 82,
+            "gk": 28
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_2702",
+          "nom": "Clément Girard",
+          "poste": "MC",
+          "age": 25,
+          "notes": {
+            "off": 76,
+            "tec": 77,
+            "mouv": 80,
+            "pui": 78,
+            "ment": 76,
+            "def": 68,
+            "gk": 19
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_9288",
+          "nom": "Maxime André",
+          "poste": "MOG",
+          "age": 17,
+          "notes": {
+            "off": 73,
+            "tec": 86,
+            "mouv": 87,
+            "pui": 82,
+            "ment": 71,
+            "def": 78,
+            "gk": 21
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_3077",
+          "nom": "Matteo Michel",
+          "poste": "MOD",
+          "age": 26,
+          "notes": {
+            "off": 64,
+            "tec": 80,
+            "mouv": 83,
+            "pui": 73,
+            "ment": 73,
+            "def": 71,
+            "gk": 35
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_2023",
+          "nom": "Guillaume Bertrand",
+          "poste": "MOG",
+          "age": 21,
+          "notes": {
+            "off": 84,
+            "tec": 82,
+            "mouv": 75,
+            "pui": 84,
+            "ment": 80,
+            "def": 83,
+            "gk": 31
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775049652176_4363",
+          "nom": "Axel Bernard",
+          "poste": "MDC",
+          "age": 35,
+          "notes": {
+            "off": 79,
+            "tec": 77,
+            "mouv": 77,
+            "pui": 73,
+            "ment": 68,
+            "def": 65,
+            "gk": 29
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_3094",
+          "nom": "Mathieu Fournier",
+          "poste": "MOD",
+          "age": 23,
+          "notes": {
+            "off": 70,
+            "tec": 83,
+            "mouv": 77,
+            "pui": 80,
+            "ment": 68,
+            "def": 81,
+            "gk": 16
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_6441",
+          "nom": "Raphaël Simon",
+          "poste": "MOD",
+          "age": 26,
+          "notes": {
+            "off": 73,
+            "tec": 80,
+            "mouv": 87,
+            "pui": 68,
+            "ment": 81,
+            "def": 75,
+            "gk": 30
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_3692",
+          "nom": "Enzo Rousseau",
+          "poste": "MC",
+          "age": 29,
+          "notes": {
+            "off": 76,
+            "tec": 82,
+            "mouv": 69,
+            "pui": 68,
+            "ment": 72,
+            "def": 70,
+            "gk": 17
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_7747",
+          "nom": "Florian Laurent",
+          "poste": "MDC",
+          "age": 19,
+          "notes": {
+            "off": 70,
+            "tec": 77,
+            "mouv": 82,
+            "pui": 67,
+            "ment": 70,
+            "def": 76,
+            "gk": 22
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_1216",
+          "nom": "Noé Dupont",
+          "poste": "MO",
+          "age": 30,
+          "notes": {
+            "off": 76,
+            "tec": 72,
+            "mouv": 83,
+            "pui": 73,
+            "ment": 68,
+            "def": 73,
+            "gk": 28
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_6726",
+          "nom": "Dylan Martinez",
+          "poste": "MO",
+          "age": 34,
+          "notes": {
+            "off": 75,
+            "tec": 80,
+            "mouv": 89,
+            "pui": 78,
+            "ment": 81,
+            "def": 71,
+            "gk": 18
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_7711",
+          "nom": "Valentin Henry",
+          "poste": "MOD",
+          "age": 25,
+          "notes": {
+            "off": 82,
+            "tec": 83,
+            "mouv": 87,
+            "pui": 71,
+            "ment": 81,
+            "def": 75,
+            "gk": 33
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652176_4520",
+          "nom": "Axel Girard",
+          "poste": "MOG",
+          "age": 21,
+          "notes": {
+            "off": 73,
+            "tec": 74,
+            "mouv": 86,
+            "pui": 77,
+            "ment": 76,
+            "def": 85,
+            "gk": 29
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_4636",
+          "nom": "Noé Robin",
+          "poste": "MC",
+          "age": 33,
+          "notes": {
+            "off": 80,
+            "tec": 76,
+            "mouv": 81,
+            "pui": 83,
+            "ment": 81,
+            "def": 85,
+            "gk": 34
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775049652176_5685",
+          "nom": "Théo Michel",
+          "poste": "MOG",
+          "age": 35,
+          "notes": {
+            "off": 69,
+            "tec": 81,
+            "mouv": 81,
+            "pui": 83,
+            "ment": 70,
+            "def": 81,
+            "gk": 26
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_4195",
+          "nom": "Guillaume Dubois",
+          "poste": "MOD",
+          "age": 20,
+          "notes": {
+            "off": 69,
+            "tec": 76,
+            "mouv": 86,
+            "pui": 71,
+            "ment": 79,
+            "def": 77,
+            "gk": 22
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_6501",
+          "nom": "Florian Guerin",
+          "poste": "MC",
+          "age": 24,
+          "notes": {
+            "off": 63,
+            "tec": 83,
+            "mouv": 77,
+            "pui": 63,
+            "ment": 76,
+            "def": 65,
+            "gk": 25
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_9875",
+          "nom": "Morgan Moreau",
+          "poste": "MOG",
+          "age": 31,
+          "notes": {
+            "off": 74,
+            "tec": 71,
+            "mouv": 74,
+            "pui": 67,
+            "ment": 74,
+            "def": 74,
+            "gk": 20
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_8715",
+          "nom": "Léo Faure",
+          "poste": "MDC",
+          "age": 21,
+          "notes": {
+            "off": 75,
+            "tec": 80,
+            "mouv": 82,
+            "pui": 81,
+            "ment": 81,
+            "def": 73,
+            "gk": 23
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_9056",
+          "nom": "Tristan Martin",
+          "poste": "MC",
+          "age": 27,
+          "notes": {
+            "off": 83,
+            "tec": 89,
+            "mouv": 84,
+            "pui": 73,
+            "ment": 79,
+            "def": 71,
+            "gk": 24
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652176_4558",
+          "nom": "Pierre Dubois",
+          "poste": "MDC",
+          "age": 20,
+          "notes": {
+            "off": 75,
+            "tec": 77,
+            "mouv": 81,
+            "pui": 82,
+            "ment": 69,
+            "def": 72,
+            "gk": 16
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_2333",
+          "nom": "Yann Thomas",
+          "poste": "MOD",
+          "age": 20,
+          "notes": {
+            "off": 77,
+            "tec": 82,
+            "mouv": 82,
+            "pui": 82,
+            "ment": 74,
+            "def": 77,
+            "gk": 20
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_2954",
+          "nom": "Nicolas Richard",
+          "poste": "MDC",
+          "age": 22,
+          "notes": {
+            "off": 76,
+            "tec": 76,
+            "mouv": 74,
+            "pui": 79,
+            "ment": 75,
+            "def": 80,
+            "gk": 25
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_1427",
+          "nom": "Noé Martinez",
+          "poste": "MO",
+          "age": 26,
+          "notes": {
+            "off": 77,
+            "tec": 76,
+            "mouv": 70,
+            "pui": 73,
+            "ment": 66,
+            "def": 76,
+            "gk": 27
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_7954",
+          "nom": "Hugo Leroy",
+          "poste": "MC",
+          "age": 20,
+          "notes": {
+            "off": 73,
+            "tec": 74,
+            "mouv": 77,
+            "pui": 66,
+            "ment": 74,
+            "def": 71,
+            "gk": 33
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_2143",
+          "nom": "Sébastien Robin",
+          "poste": "MO",
+          "age": 21,
+          "notes": {
+            "off": 77,
+            "tec": 81,
+            "mouv": 81,
+            "pui": 78,
+            "ment": 70,
+            "def": 78,
+            "gk": 22
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_1224",
+          "nom": "Valentin Moreau",
+          "poste": "MC",
+          "age": 25,
+          "notes": {
+            "off": 77,
+            "tec": 79,
+            "mouv": 84,
+            "pui": 69,
+            "ment": 79,
+            "def": 80,
+            "gk": 33
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_2441",
+          "nom": "Kevin Bernard",
+          "poste": "MC",
+          "age": 22,
+          "notes": {
+            "off": 77,
+            "tec": 77,
+            "mouv": 86,
+            "pui": 71,
+            "ment": 83,
+            "def": 81,
+            "gk": 21
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_9538",
+          "nom": "Enzo Garcia",
+          "poste": "MC",
+          "age": 21,
+          "notes": {
+            "off": 74,
+            "tec": 72,
+            "mouv": 81,
+            "pui": 79,
+            "ment": 72,
+            "def": 74,
+            "gk": 21
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_6804",
+          "nom": "Lucas Laurent",
+          "poste": "MDC",
+          "age": 25,
+          "notes": {
+            "off": 71,
+            "tec": 72,
+            "mouv": 76,
+            "pui": 69,
+            "ment": 74,
+            "def": 74,
+            "gk": 32
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_4625",
+          "nom": "Axel Dubois",
+          "poste": "MOD",
+          "age": 22,
+          "notes": {
+            "off": 70,
+            "tec": 84,
+            "mouv": 85,
+            "pui": 83,
+            "ment": 78,
+            "def": 82,
+            "gk": 26
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_2027",
+          "nom": "Guillaume Bonnet",
+          "poste": "MC",
+          "age": 30,
+          "notes": {
+            "off": 72,
+            "tec": 82,
+            "mouv": 86,
+            "pui": 82,
+            "ment": 76,
+            "def": 74,
+            "gk": 19
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_1335",
+          "nom": "Raphaël Richard",
+          "poste": "MC",
+          "age": 33,
+          "notes": {
+            "off": 78,
+            "tec": 72,
+            "mouv": 83,
+            "pui": 65,
+            "ment": 75,
+            "def": 67,
+            "gk": 29
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_6882",
+          "nom": "Lucas Moreau",
+          "poste": "MOD",
+          "age": 26,
+          "notes": {
+            "off": 72,
+            "tec": 79,
+            "mouv": 76,
+            "pui": 71,
+            "ment": 72,
+            "def": 76,
+            "gk": 32
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_2859",
+          "nom": "Enzo Durand",
+          "poste": "MC",
+          "age": 33,
+          "notes": {
+            "off": 70,
+            "tec": 77,
+            "mouv": 71,
+            "pui": 77,
+            "ment": 68,
+            "def": 64,
+            "gk": 22
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_7367",
+          "nom": "Alexis Petit",
+          "poste": "MC",
+          "age": 35,
+          "notes": {
+            "off": 84,
+            "tec": 81,
+            "mouv": 77,
+            "pui": 77,
+            "ment": 78,
+            "def": 81,
+            "gk": 33
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652176_8438",
+          "nom": "Axel Robert",
+          "poste": "MO",
+          "age": 31,
+          "notes": {
+            "off": 80,
+            "tec": 77,
+            "mouv": 87,
+            "pui": 82,
+            "ment": 74,
+            "def": 72,
+            "gk": 31
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_5366",
+          "nom": "Maxime Morel",
+          "poste": "MOG",
+          "age": 22,
+          "notes": {
+            "off": 77,
+            "tec": 89,
+            "mouv": 86,
+            "pui": 84,
+            "ment": 83,
+            "def": 75,
+            "gk": 30
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775049652176_8704",
+          "nom": "Antoine François",
+          "poste": "MOG",
+          "age": 27,
+          "notes": {
+            "off": 78,
+            "tec": 84,
+            "mouv": 77,
+            "pui": 76,
+            "ment": 74,
+            "def": 67,
+            "gk": 33
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_9360",
+          "nom": "Noé Henry",
+          "poste": "MC",
+          "age": 22,
+          "notes": {
+            "off": 66,
+            "tec": 82,
+            "mouv": 71,
+            "pui": 72,
+            "ment": 68,
+            "def": 80,
+            "gk": 31
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_2988",
+          "nom": "Baptiste Girard",
+          "poste": "MC",
+          "age": 26,
+          "notes": {
+            "off": 81,
+            "tec": 76,
+            "mouv": 84,
+            "pui": 74,
+            "ment": 73,
+            "def": 82,
+            "gk": 26
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_6057",
+          "nom": "Raphaël Bonnet",
+          "poste": "MDC",
+          "age": 32,
+          "notes": {
+            "off": 78,
+            "tec": 69,
+            "mouv": 73,
+            "pui": 73,
+            "ment": 66,
+            "def": 66,
+            "gk": 29
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_8280",
+          "nom": "Théo Bernard",
+          "poste": "MC",
+          "age": 22,
+          "notes": {
+            "off": 69,
+            "tec": 84,
+            "mouv": 74,
+            "pui": 80,
+            "ment": 78,
+            "def": 82,
+            "gk": 27
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_4388",
+          "nom": "Arnaud Lefèvre",
+          "poste": "MOG",
+          "age": 26,
+          "notes": {
+            "off": 63,
+            "tec": 81,
+            "mouv": 70,
+            "pui": 73,
+            "ment": 66,
+            "def": 63,
+            "gk": 24
+          },
+          "global": 67
+        },
+        {
+          "id": "p_1775049652176_5177",
+          "nom": "Alexis Guerin",
+          "poste": "MO",
+          "age": 19,
+          "notes": {
+            "off": 80,
+            "tec": 86,
+            "mouv": 83,
+            "pui": 82,
+            "ment": 72,
+            "def": 75,
+            "gk": 26
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652176_9420",
+          "nom": "Yann Martinez",
+          "poste": "MO",
+          "age": 26,
+          "notes": {
+            "off": 67,
+            "tec": 73,
+            "mouv": 80,
+            "pui": 77,
+            "ment": 73,
+            "def": 70,
+            "gk": 31
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_7555",
+          "nom": "Paul Garnier",
+          "poste": "MOG",
+          "age": 22,
+          "notes": {
+            "off": 69,
+            "tec": 81,
+            "mouv": 79,
+            "pui": 69,
+            "ment": 73,
+            "def": 68,
+            "gk": 18
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_9132",
+          "nom": "Sébastien Vincent",
+          "poste": "MOD",
+          "age": 30,
+          "notes": {
+            "off": 77,
+            "tec": 84,
+            "mouv": 88,
+            "pui": 72,
+            "ment": 72,
+            "def": 76,
+            "gk": 30
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_7308",
+          "nom": "Xavier Morel",
+          "poste": "MC",
+          "age": 31,
+          "notes": {
+            "off": 74,
+            "tec": 78,
+            "mouv": 81,
+            "pui": 69,
+            "ment": 75,
+            "def": 66,
+            "gk": 32
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_3637",
+          "nom": "Matteo Faure",
+          "poste": "MC",
+          "age": 31,
+          "notes": {
+            "off": 67,
+            "tec": 81,
+            "mouv": 85,
+            "pui": 73,
+            "ment": 73,
+            "def": 74,
+            "gk": 29
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_6176",
+          "nom": "Adrien Simon",
+          "poste": "MO",
+          "age": 27,
+          "notes": {
+            "off": 72,
+            "tec": 74,
+            "mouv": 87,
+            "pui": 81,
+            "ment": 79,
+            "def": 69,
+            "gk": 30
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_9078",
+          "nom": "Antoine Martinez",
+          "poste": "MC",
+          "age": 28,
+          "notes": {
+            "off": 72,
+            "tec": 72,
+            "mouv": 78,
+            "pui": 74,
+            "ment": 68,
+            "def": 71,
+            "gk": 34
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_3221",
+          "nom": "Matteo Morel",
+          "poste": "MO",
+          "age": 34,
+          "notes": {
+            "off": 74,
+            "tec": 75,
+            "mouv": 88,
+            "pui": 72,
+            "ment": 83,
+            "def": 81,
+            "gk": 16
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_3885",
+          "nom": "Léo Robert",
+          "poste": "MOG",
+          "age": 23,
+          "notes": {
+            "off": 67,
+            "tec": 74,
+            "mouv": 73,
+            "pui": 70,
+            "ment": 73,
+            "def": 77,
+            "gk": 33
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_1775",
+          "nom": "Pierre Dubois",
+          "poste": "MOD",
+          "age": 28,
+          "notes": {
+            "off": 77,
+            "tec": 71,
+            "mouv": 83,
+            "pui": 67,
+            "ment": 70,
+            "def": 75,
+            "gk": 34
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_5896",
+          "nom": "Guillaume Roux",
+          "poste": "MOG",
+          "age": 20,
+          "notes": {
+            "off": 69,
+            "tec": 77,
+            "mouv": 85,
+            "pui": 76,
+            "ment": 72,
+            "def": 81,
+            "gk": 33
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_1860",
+          "nom": "Julien Blanc",
+          "poste": "MDC",
+          "age": 27,
+          "notes": {
+            "off": 69,
+            "tec": 74,
+            "mouv": 84,
+            "pui": 68,
+            "ment": 76,
+            "def": 82,
+            "gk": 16
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_4726",
+          "nom": "Thibault Blanc",
+          "poste": "MDC",
+          "age": 22,
+          "notes": {
+            "off": 75,
+            "tec": 83,
+            "mouv": 75,
+            "pui": 67,
+            "ment": 80,
+            "def": 78,
+            "gk": 22
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_5297",
+          "nom": "Raphaël Lambert",
+          "poste": "MOD",
+          "age": 24,
+          "notes": {
+            "off": 69,
+            "tec": 72,
+            "mouv": 71,
+            "pui": 74,
+            "ment": 78,
+            "def": 80,
+            "gk": 32
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_4019",
+          "nom": "Mathieu Rousseau",
+          "poste": "MOD",
+          "age": 21,
+          "notes": {
+            "off": 79,
+            "tec": 81,
+            "mouv": 73,
+            "pui": 65,
+            "ment": 75,
+            "def": 73,
+            "gk": 35
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_5879",
+          "nom": "Romain Petit",
+          "poste": "MC",
+          "age": 31,
+          "notes": {
+            "off": 71,
+            "tec": 77,
+            "mouv": 74,
+            "pui": 72,
+            "ment": 73,
+            "def": 73,
+            "gk": 18
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_9594",
+          "nom": "Axel Lambert",
+          "poste": "MOD",
+          "age": 28,
+          "notes": {
+            "off": 64,
+            "tec": 80,
+            "mouv": 81,
+            "pui": 79,
+            "ment": 66,
+            "def": 74,
+            "gk": 15
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_2683",
+          "nom": "Antoine Martinez",
+          "poste": "MO",
+          "age": 23,
+          "notes": {
+            "off": 79,
+            "tec": 79,
+            "mouv": 74,
+            "pui": 68,
+            "ment": 78,
+            "def": 75,
+            "gk": 33
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_7662",
+          "nom": "Romain Leroy",
+          "poste": "MOG",
+          "age": 34,
+          "notes": {
+            "off": 80,
+            "tec": 71,
+            "mouv": 71,
+            "pui": 76,
+            "ment": 77,
+            "def": 74,
+            "gk": 22
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_3138",
+          "nom": "Clément Morel",
+          "poste": "MDC",
+          "age": 24,
+          "notes": {
+            "off": 72,
+            "tec": 75,
+            "mouv": 78,
+            "pui": 65,
+            "ment": 77,
+            "def": 73,
+            "gk": 16
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_4524",
+          "nom": "Romain Dubois",
+          "poste": "MC",
+          "age": 24,
+          "notes": {
+            "off": 80,
+            "tec": 87,
+            "mouv": 83,
+            "pui": 71,
+            "ment": 79,
+            "def": 78,
+            "gk": 24
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652176_4579",
+          "nom": "Théo Bernard",
+          "poste": "MC",
+          "age": 29,
+          "notes": {
+            "off": 77,
+            "tec": 82,
+            "mouv": 82,
+            "pui": 79,
+            "ment": 76,
+            "def": 69,
+            "gk": 27
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_3160",
+          "nom": "Tristan Girard",
+          "poste": "MO",
+          "age": 22,
+          "notes": {
+            "off": 67,
+            "tec": 81,
+            "mouv": 79,
+            "pui": 69,
+            "ment": 73,
+            "def": 82,
+            "gk": 18
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_1431",
+          "nom": "Paul Martin",
+          "poste": "MOG",
+          "age": 19,
+          "notes": {
+            "off": 75,
+            "tec": 85,
+            "mouv": 77,
+            "pui": 70,
+            "ment": 77,
+            "def": 76,
+            "gk": 34
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_2024",
+          "nom": "Adrien Mercier",
+          "poste": "MDC",
+          "age": 26,
+          "notes": {
+            "off": 70,
+            "tec": 70,
+            "mouv": 71,
+            "pui": 68,
+            "ment": 74,
+            "def": 63,
+            "gk": 27
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_2789",
+          "nom": "Sébastien André",
+          "poste": "MO",
+          "age": 17,
+          "notes": {
+            "off": 76,
+            "tec": 73,
+            "mouv": 76,
+            "pui": 67,
+            "ment": 71,
+            "def": 69,
+            "gk": 34
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_1307",
+          "nom": "Matteo Fournier",
+          "poste": "MDC",
+          "age": 31,
+          "notes": {
+            "off": 78,
+            "tec": 80,
+            "mouv": 82,
+            "pui": 73,
+            "ment": 76,
+            "def": 83,
+            "gk": 19
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_5610",
+          "nom": "Olivier Legrand",
+          "poste": "MC",
+          "age": 20,
+          "notes": {
+            "off": 82,
+            "tec": 76,
+            "mouv": 87,
+            "pui": 79,
+            "ment": 78,
+            "def": 74,
+            "gk": 28
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_6934",
+          "nom": "Tristan Richard",
+          "poste": "MC",
+          "age": 36,
+          "notes": {
+            "off": 77,
+            "tec": 83,
+            "mouv": 86,
+            "pui": 75,
+            "ment": 71,
+            "def": 65,
+            "gk": 34
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_1189",
+          "nom": "Ethan Roussel",
+          "poste": "MC",
+          "age": 24,
+          "notes": {
+            "off": 82,
+            "tec": 83,
+            "mouv": 86,
+            "pui": 69,
+            "ment": 70,
+            "def": 80,
+            "gk": 32
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_7314",
+          "nom": "Sébastien Richard",
+          "poste": "MDC",
+          "age": 22,
+          "notes": {
+            "off": 85,
+            "tec": 83,
+            "mouv": 81,
+            "pui": 83,
+            "ment": 79,
+            "def": 71,
+            "gk": 20
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652176_2433",
+          "nom": "Léo Thomas",
+          "poste": "MOG",
+          "age": 19,
+          "notes": {
+            "off": 69,
+            "tec": 76,
+            "mouv": 77,
+            "pui": 74,
+            "ment": 73,
+            "def": 78,
+            "gk": 21
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_8500",
+          "nom": "Sébastien François",
+          "poste": "MO",
+          "age": 24,
+          "notes": {
+            "off": 76,
+            "tec": 79,
+            "mouv": 85,
+            "pui": 67,
+            "ment": 79,
+            "def": 81,
+            "gk": 33
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_9051",
+          "nom": "François Leroy",
+          "poste": "MOG",
+          "age": 30,
+          "notes": {
+            "off": 70,
+            "tec": 75,
+            "mouv": 81,
+            "pui": 73,
+            "ment": 78,
+            "def": 66,
+            "gk": 21
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_4601",
+          "nom": "Alexandre Lefebvre",
+          "poste": "MC",
+          "age": 27,
+          "notes": {
+            "off": 80,
+            "tec": 80,
+            "mouv": 89,
+            "pui": 69,
+            "ment": 72,
+            "def": 86,
+            "gk": 15
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_8065",
+          "nom": "Ethan Richard",
+          "poste": "MOD",
+          "age": 19,
+          "notes": {
+            "off": 75,
+            "tec": 82,
+            "mouv": 84,
+            "pui": 67,
+            "ment": 73,
+            "def": 67,
+            "gk": 17
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_9167",
+          "nom": "Julien Laurent",
+          "poste": "MC",
+          "age": 19,
+          "notes": {
+            "off": 81,
+            "tec": 87,
+            "mouv": 80,
+            "pui": 68,
+            "ment": 75,
+            "def": 66,
+            "gk": 29
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_3570",
+          "nom": "Morgan Garcia",
+          "poste": "MDC",
+          "age": 28,
+          "notes": {
+            "off": 79,
+            "tec": 77,
+            "mouv": 85,
+            "pui": 68,
+            "ment": 71,
+            "def": 64,
+            "gk": 31
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_5433",
+          "nom": "François Robert",
+          "poste": "MOG",
+          "age": 21,
+          "notes": {
+            "off": 73,
+            "tec": 75,
+            "mouv": 79,
+            "pui": 72,
+            "ment": 71,
+            "def": 67,
+            "gk": 32
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_4599",
+          "nom": "Noé Bonnet",
+          "poste": "MC",
+          "age": 19,
+          "notes": {
+            "off": 79,
+            "tec": 79,
+            "mouv": 82,
+            "pui": 79,
+            "ment": 82,
+            "def": 77,
+            "gk": 23
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_4287",
+          "nom": "Enzo Fournier",
+          "poste": "MOG",
+          "age": 21,
+          "notes": {
+            "off": 68,
+            "tec": 70,
+            "mouv": 78,
+            "pui": 74,
+            "ment": 77,
+            "def": 66,
+            "gk": 27
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_1733",
+          "nom": "Morgan Lefebvre",
+          "poste": "MOG",
+          "age": 36,
+          "notes": {
+            "off": 68,
+            "tec": 73,
+            "mouv": 87,
+            "pui": 83,
+            "ment": 77,
+            "def": 78,
+            "gk": 19
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_2070",
+          "nom": "Mathieu Guerin",
+          "poste": "MOG",
+          "age": 23,
+          "notes": {
+            "off": 69,
+            "tec": 85,
+            "mouv": 83,
+            "pui": 72,
+            "ment": 83,
+            "def": 85,
+            "gk": 32
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_4459",
+          "nom": "Alexandre Girard",
+          "poste": "MC",
+          "age": 25,
+          "notes": {
+            "off": 78,
+            "tec": 79,
+            "mouv": 86,
+            "pui": 71,
+            "ment": 69,
+            "def": 74,
+            "gk": 25
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_7141",
+          "nom": "Léo David",
+          "poste": "MDC",
+          "age": 25,
+          "notes": {
+            "off": 69,
+            "tec": 78,
+            "mouv": 80,
+            "pui": 71,
+            "ment": 69,
+            "def": 67,
+            "gk": 34
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_1857",
+          "nom": "Olivier David",
+          "poste": "MC",
+          "age": 28,
+          "notes": {
+            "off": 76,
+            "tec": 80,
+            "mouv": 80,
+            "pui": 69,
+            "ment": 76,
+            "def": 78,
+            "gk": 32
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_6682",
+          "nom": "Thomas Bernard",
+          "poste": "MC",
+          "age": 24,
+          "notes": {
+            "off": 64,
+            "tec": 80,
+            "mouv": 70,
+            "pui": 78,
+            "ment": 74,
+            "def": 65,
+            "gk": 16
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_6042",
+          "nom": "Antoine Faure",
+          "poste": "MOG",
+          "age": 18,
+          "notes": {
+            "off": 82,
+            "tec": 78,
+            "mouv": 84,
+            "pui": 79,
+            "ment": 73,
+            "def": 68,
+            "gk": 17
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_8674",
+          "nom": "Kevin Petit",
+          "poste": "MC",
+          "age": 18,
+          "notes": {
+            "off": 79,
+            "tec": 86,
+            "mouv": 73,
+            "pui": 75,
+            "ment": 73,
+            "def": 79,
+            "gk": 30
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_1183",
+          "nom": "Baptiste Garcia",
+          "poste": "MDC",
+          "age": 25,
+          "notes": {
+            "off": 66,
+            "tec": 71,
+            "mouv": 82,
+            "pui": 67,
+            "ment": 78,
+            "def": 65,
+            "gk": 28
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_2815",
+          "nom": "Paul Lefebvre",
+          "poste": "MDC",
+          "age": 23,
+          "notes": {
+            "off": 79,
+            "tec": 73,
+            "mouv": 72,
+            "pui": 68,
+            "ment": 80,
+            "def": 74,
+            "gk": 33
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_2076",
+          "nom": "Axel Muller",
+          "poste": "MO",
+          "age": 36,
+          "notes": {
+            "off": 77,
+            "tec": 70,
+            "mouv": 80,
+            "pui": 79,
+            "ment": 71,
+            "def": 70,
+            "gk": 26
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_2684",
+          "nom": "Valentin Garnier",
+          "poste": "MOD",
+          "age": 17,
+          "notes": {
+            "off": 67,
+            "tec": 81,
+            "mouv": 81,
+            "pui": 65,
+            "ment": 68,
+            "def": 71,
+            "gk": 32
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_5634",
+          "nom": "Thibault Moreau",
+          "poste": "MO",
+          "age": 17,
+          "notes": {
+            "off": 65,
+            "tec": 77,
+            "mouv": 69,
+            "pui": 69,
+            "ment": 68,
+            "def": 78,
+            "gk": 17
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_3645",
+          "nom": "Raphaël Richard",
+          "poste": "MOD",
+          "age": 31,
+          "notes": {
+            "off": 71,
+            "tec": 85,
+            "mouv": 84,
+            "pui": 79,
+            "ment": 73,
+            "def": 76,
+            "gk": 34
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_1319",
+          "nom": "Julien Durand",
+          "poste": "MC",
+          "age": 33,
+          "notes": {
+            "off": 81,
+            "tec": 77,
+            "mouv": 77,
+            "pui": 71,
+            "ment": 77,
+            "def": 84,
+            "gk": 17
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_6494",
+          "nom": "Xavier Michel",
+          "poste": "MOD",
+          "age": 17,
+          "notes": {
+            "off": 73,
+            "tec": 85,
+            "mouv": 75,
+            "pui": 79,
+            "ment": 71,
+            "def": 79,
+            "gk": 30
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_5184",
+          "nom": "Sébastien Simon",
+          "poste": "MOG",
+          "age": 33,
+          "notes": {
+            "off": 75,
+            "tec": 83,
+            "mouv": 83,
+            "pui": 73,
+            "ment": 72,
+            "def": 72,
+            "gk": 27
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_4487",
+          "nom": "Hugo Richard",
+          "poste": "MC",
+          "age": 32,
+          "notes": {
+            "off": 79,
+            "tec": 77,
+            "mouv": 75,
+            "pui": 67,
+            "ment": 69,
+            "def": 80,
+            "gk": 18
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_5319",
+          "nom": "Matteo Muller",
+          "poste": "MC",
+          "age": 36,
+          "notes": {
+            "off": 74,
+            "tec": 78,
+            "mouv": 69,
+            "pui": 73,
+            "ment": 75,
+            "def": 78,
+            "gk": 24
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_2373",
+          "nom": "Ethan Fournier",
+          "poste": "MDC",
+          "age": 21,
+          "notes": {
+            "off": 80,
+            "tec": 74,
+            "mouv": 78,
+            "pui": 76,
+            "ment": 68,
+            "def": 75,
+            "gk": 35
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_2478",
+          "nom": "Adrien Richard",
+          "poste": "MDC",
+          "age": 30,
+          "notes": {
+            "off": 81,
+            "tec": 84,
+            "mouv": 83,
+            "pui": 81,
+            "ment": 78,
+            "def": 80,
+            "gk": 22
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775049652176_2248",
+          "nom": "Thomas Durand",
+          "poste": "MOD",
+          "age": 21,
+          "notes": {
+            "off": 73,
+            "tec": 78,
+            "mouv": 70,
+            "pui": 76,
+            "ment": 77,
+            "def": 74,
+            "gk": 26
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_9762",
+          "nom": "Axel Petit",
+          "poste": "MOD",
+          "age": 28,
+          "notes": {
+            "off": 77,
+            "tec": 76,
+            "mouv": 86,
+            "pui": 81,
+            "ment": 72,
+            "def": 69,
+            "gk": 24
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_7033",
+          "nom": "Matteo Mercier",
+          "poste": "MO",
+          "age": 32,
+          "notes": {
+            "off": 68,
+            "tec": 79,
+            "mouv": 85,
+            "pui": 70,
+            "ment": 77,
+            "def": 78,
+            "gk": 26
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_9150",
+          "nom": "Pierre Fournier",
+          "poste": "MC",
+          "age": 28,
+          "notes": {
+            "off": 74,
+            "tec": 72,
+            "mouv": 83,
+            "pui": 65,
+            "ment": 66,
+            "def": 69,
+            "gk": 32
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_7429",
+          "nom": "Lucas Girard",
+          "poste": "MO",
+          "age": 36,
+          "notes": {
+            "off": 65,
+            "tec": 76,
+            "mouv": 73,
+            "pui": 75,
+            "ment": 71,
+            "def": 70,
+            "gk": 30
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652175_3833",
+          "nom": "Léo Rousseau",
+          "poste": "AD",
+          "age": 26,
+          "notes": {
+            "off": 79,
+            "tec": 77,
+            "mouv": 85,
+            "pui": 75,
+            "ment": 71,
+            "def": 54,
+            "gk": 26
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652175_7916",
+          "nom": "Hugo Lambert",
+          "poste": "AD",
+          "age": 33,
+          "notes": {
+            "off": 93,
+            "tec": 76,
+            "mouv": 77,
+            "pui": 81,
+            "ment": 73,
+            "def": 56,
+            "gk": 29
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652175_8497",
+          "nom": "Noé Morel",
+          "poste": "AD",
+          "age": 25,
+          "notes": {
+            "off": 82,
+            "tec": 88,
+            "mouv": 83,
+            "pui": 68,
+            "ment": 75,
+            "def": 57,
+            "gk": 25
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652175_6523",
+          "nom": "Guillaume Roux",
+          "poste": "AC",
+          "age": 30,
+          "notes": {
+            "off": 89,
+            "tec": 75,
+            "mouv": 77,
+            "pui": 78,
+            "ment": 77,
+            "def": 56,
+            "gk": 16
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652175_2014",
+          "nom": "Théo Martinez",
+          "poste": "AC",
+          "age": 35,
+          "notes": {
+            "off": 77,
+            "tec": 83,
+            "mouv": 81,
+            "pui": 78,
+            "ment": 72,
+            "def": 53,
+            "gk": 15
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652175_8784",
+          "nom": "Matteo Simon",
+          "poste": "AD",
+          "age": 28,
+          "notes": {
+            "off": 78,
+            "tec": 85,
+            "mouv": 90,
+            "pui": 76,
+            "ment": 81,
+            "def": 68,
+            "gk": 20
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652175_9408",
+          "nom": "Romain André",
+          "poste": "AC",
+          "age": 35,
+          "notes": {
+            "off": 78,
+            "tec": 76,
+            "mouv": 79,
+            "pui": 74,
+            "ment": 79,
+            "def": 63,
+            "gk": 12
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652175_8169",
+          "nom": "Antoine Martinez",
+          "poste": "AD",
+          "age": 30,
+          "notes": {
+            "off": 83,
+            "tec": 84,
+            "mouv": 83,
+            "pui": 68,
+            "ment": 70,
+            "def": 61,
+            "gk": 30
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652175_5621",
+          "nom": "Clément Henry",
+          "poste": "AG",
+          "age": 30,
+          "notes": {
+            "off": 92,
+            "tec": 79,
+            "mouv": 84,
+            "pui": 74,
+            "ment": 82,
+            "def": 69,
+            "gk": 23
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652175_5337",
+          "nom": "Tristan David",
+          "poste": "AG",
+          "age": 23,
+          "notes": {
+            "off": 85,
+            "tec": 85,
+            "mouv": 77,
+            "pui": 76,
+            "ment": 77,
+            "def": 56,
+            "gk": 25
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652175_6774",
+          "nom": "Axel Martinez",
+          "poste": "AC",
+          "age": 29,
+          "notes": {
+            "off": 84,
+            "tec": 74,
+            "mouv": 85,
+            "pui": 64,
+            "ment": 71,
+            "def": 54,
+            "gk": 17
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_4509",
+          "nom": "Noé Lefebvre",
+          "poste": "AC",
+          "age": 30,
+          "notes": {
+            "off": 86,
+            "tec": 87,
+            "mouv": 79,
+            "pui": 83,
+            "ment": 80,
+            "def": 52,
+            "gk": 26
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_3334",
+          "nom": "Matteo Simon",
+          "poste": "AD",
+          "age": 36,
+          "notes": {
+            "off": 88,
+            "tec": 79,
+            "mouv": 90,
+            "pui": 82,
+            "ment": 81,
+            "def": 67,
+            "gk": 13
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775049652176_2759",
+          "nom": "Florian Girard",
+          "poste": "AC",
+          "age": 35,
+          "notes": {
+            "off": 84,
+            "tec": 79,
+            "mouv": 87,
+            "pui": 81,
+            "ment": 80,
+            "def": 56,
+            "gk": 13
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_3890",
+          "nom": "Gauthier Dubois",
+          "poste": "AD",
+          "age": 20,
+          "notes": {
+            "off": 87,
+            "tec": 77,
+            "mouv": 72,
+            "pui": 79,
+            "ment": 72,
+            "def": 63,
+            "gk": 16
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_6796",
+          "nom": "Alexandre Rousseau",
+          "poste": "AD",
+          "age": 25,
+          "notes": {
+            "off": 87,
+            "tec": 80,
+            "mouv": 76,
+            "pui": 70,
+            "ment": 69,
+            "def": 64,
+            "gk": 16
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_7574",
+          "nom": "Raphaël Faure",
+          "poste": "AC",
+          "age": 27,
+          "notes": {
+            "off": 88,
+            "tec": 74,
+            "mouv": 86,
+            "pui": 78,
+            "ment": 72,
+            "def": 66,
+            "gk": 20
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_2503",
+          "nom": "Yann Henry",
+          "poste": "AD",
+          "age": 36,
+          "notes": {
+            "off": 90,
+            "tec": 77,
+            "mouv": 88,
+            "pui": 77,
+            "ment": 76,
+            "def": 54,
+            "gk": 17
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_6298",
+          "nom": "Corentin Faure",
+          "poste": "AC",
+          "age": 18,
+          "notes": {
+            "off": 83,
+            "tec": 82,
+            "mouv": 84,
+            "pui": 83,
+            "ment": 82,
+            "def": 67,
+            "gk": 20
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652176_3437",
+          "nom": "Romain Muller",
+          "poste": "AG",
+          "age": 33,
+          "notes": {
+            "off": 89,
+            "tec": 85,
+            "mouv": 83,
+            "pui": 66,
+            "ment": 79,
+            "def": 55,
+            "gk": 19
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_6248",
+          "nom": "Sébastien Robert",
+          "poste": "AC",
+          "age": 32,
+          "notes": {
+            "off": 83,
+            "tec": 70,
+            "mouv": 84,
+            "pui": 67,
+            "ment": 69,
+            "def": 61,
+            "gk": 29
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_4795",
+          "nom": "Corentin Mercier",
+          "poste": "AD",
+          "age": 29,
+          "notes": {
+            "off": 88,
+            "tec": 71,
+            "mouv": 83,
+            "pui": 66,
+            "ment": 75,
+            "def": 66,
+            "gk": 27
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_4054",
+          "nom": "Kevin Faure",
+          "poste": "AC",
+          "age": 31,
+          "notes": {
+            "off": 89,
+            "tec": 81,
+            "mouv": 80,
+            "pui": 74,
+            "ment": 79,
+            "def": 54,
+            "gk": 12
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_6461",
+          "nom": "Pierre Bernard",
+          "poste": "AG",
+          "age": 21,
+          "notes": {
+            "off": 77,
+            "tec": 81,
+            "mouv": 79,
+            "pui": 76,
+            "ment": 72,
+            "def": 49,
+            "gk": 24
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_7983",
+          "nom": "Paul Richard",
+          "poste": "AG",
+          "age": 26,
+          "notes": {
+            "off": 82,
+            "tec": 73,
+            "mouv": 78,
+            "pui": 68,
+            "ment": 78,
+            "def": 47,
+            "gk": 27
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_3523",
+          "nom": "Maxime Petit",
+          "poste": "AC",
+          "age": 29,
+          "notes": {
+            "off": 84,
+            "tec": 79,
+            "mouv": 89,
+            "pui": 68,
+            "ment": 79,
+            "def": 68,
+            "gk": 26
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_1262",
+          "nom": "Thibault Vincent",
+          "poste": "AG",
+          "age": 19,
+          "notes": {
+            "off": 79,
+            "tec": 78,
+            "mouv": 84,
+            "pui": 62,
+            "ment": 67,
+            "def": 60,
+            "gk": 31
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_2932",
+          "nom": "Enzo Lambert",
+          "poste": "AG",
+          "age": 35,
+          "notes": {
+            "off": 79,
+            "tec": 70,
+            "mouv": 76,
+            "pui": 81,
+            "ment": 77,
+            "def": 56,
+            "gk": 22
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_3505",
+          "nom": "Valentin Leroy",
+          "poste": "AD",
+          "age": 20,
+          "notes": {
+            "off": 89,
+            "tec": 77,
+            "mouv": 89,
+            "pui": 71,
+            "ment": 76,
+            "def": 63,
+            "gk": 12
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_9867",
+          "nom": "Maxime Lefèvre",
+          "poste": "AG",
+          "age": 20,
+          "notes": {
+            "off": 92,
+            "tec": 83,
+            "mouv": 91,
+            "pui": 69,
+            "ment": 71,
+            "def": 70,
+            "gk": 12
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652176_7653",
+          "nom": "Xavier François",
+          "poste": "AC",
+          "age": 28,
+          "notes": {
+            "off": 83,
+            "tec": 69,
+            "mouv": 75,
+            "pui": 64,
+            "ment": 74,
+            "def": 49,
+            "gk": 16
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_2068",
+          "nom": "Hugo Durand",
+          "poste": "AC",
+          "age": 30,
+          "notes": {
+            "off": 80,
+            "tec": 83,
+            "mouv": 75,
+            "pui": 67,
+            "ment": 65,
+            "def": 57,
+            "gk": 23
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_1934",
+          "nom": "Théo Martin",
+          "poste": "AG",
+          "age": 25,
+          "notes": {
+            "off": 89,
+            "tec": 77,
+            "mouv": 80,
+            "pui": 82,
+            "ment": 68,
+            "def": 50,
+            "gk": 17
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_9428",
+          "nom": "Tristan Durand",
+          "poste": "AC",
+          "age": 33,
+          "notes": {
+            "off": 80,
+            "tec": 87,
+            "mouv": 82,
+            "pui": 66,
+            "ment": 77,
+            "def": 69,
+            "gk": 28
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_2839",
+          "nom": "Romain Mercier",
+          "poste": "AC",
+          "age": 19,
+          "notes": {
+            "off": 86,
+            "tec": 77,
+            "mouv": 90,
+            "pui": 84,
+            "ment": 75,
+            "def": 71,
+            "gk": 27
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775049652176_9871",
+          "nom": "Yann Lefèvre",
+          "poste": "AD",
+          "age": 34,
+          "notes": {
+            "off": 81,
+            "tec": 74,
+            "mouv": 79,
+            "pui": 74,
+            "ment": 78,
+            "def": 53,
+            "gk": 15
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_4622",
+          "nom": "Nicolas Faure",
+          "poste": "AD",
+          "age": 36,
+          "notes": {
+            "off": 80,
+            "tec": 80,
+            "mouv": 85,
+            "pui": 68,
+            "ment": 80,
+            "def": 49,
+            "gk": 26
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_1180",
+          "nom": "Romain Robert",
+          "poste": "AG",
+          "age": 27,
+          "notes": {
+            "off": 81,
+            "tec": 70,
+            "mouv": 85,
+            "pui": 79,
+            "ment": 69,
+            "def": 46,
+            "gk": 12
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_7956",
+          "nom": "Julien Dubois",
+          "poste": "AC",
+          "age": 18,
+          "notes": {
+            "off": 81,
+            "tec": 75,
+            "mouv": 86,
+            "pui": 80,
+            "ment": 78,
+            "def": 66,
+            "gk": 21
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_2236",
+          "nom": "Léo Lefebvre",
+          "poste": "AC",
+          "age": 21,
+          "notes": {
+            "off": 84,
+            "tec": 71,
+            "mouv": 81,
+            "pui": 68,
+            "ment": 70,
+            "def": 65,
+            "gk": 20
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_4860",
+          "nom": "Maxime André",
+          "poste": "AG",
+          "age": 18,
+          "notes": {
+            "off": 91,
+            "tec": 83,
+            "mouv": 78,
+            "pui": 69,
+            "ment": 72,
+            "def": 57,
+            "gk": 14
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_9458",
+          "nom": "Morgan Martinez",
+          "poste": "AD",
+          "age": 20,
+          "notes": {
+            "off": 88,
+            "tec": 69,
+            "mouv": 72,
+            "pui": 77,
+            "ment": 74,
+            "def": 59,
+            "gk": 23
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_6975",
+          "nom": "Axel Leroy",
+          "poste": "AC",
+          "age": 29,
+          "notes": {
+            "off": 93,
+            "tec": 80,
+            "mouv": 88,
+            "pui": 69,
+            "ment": 76,
+            "def": 70,
+            "gk": 29
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652176_1736",
+          "nom": "Noé Henry",
+          "poste": "AC",
+          "age": 34,
+          "notes": {
+            "off": 86,
+            "tec": 82,
+            "mouv": 79,
+            "pui": 82,
+            "ment": 69,
+            "def": 59,
+            "gk": 18
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_8616",
+          "nom": "Clément Robin",
+          "poste": "AG",
+          "age": 27,
+          "notes": {
+            "off": 80,
+            "tec": 73,
+            "mouv": 87,
+            "pui": 80,
+            "ment": 80,
+            "def": 50,
+            "gk": 31
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_1187",
+          "nom": "Florian Dupont",
+          "poste": "AD",
+          "age": 31,
+          "notes": {
+            "off": 78,
+            "tec": 83,
+            "mouv": 75,
+            "pui": 77,
+            "ment": 70,
+            "def": 54,
+            "gk": 21
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_6074",
+          "nom": "Guillaume Leroy",
+          "poste": "AC",
+          "age": 33,
+          "notes": {
+            "off": 77,
+            "tec": 78,
+            "mouv": 85,
+            "pui": 71,
+            "ment": 68,
+            "def": 54,
+            "gk": 20
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_6805",
+          "nom": "Yann Garcia",
+          "poste": "AD",
+          "age": 27,
+          "notes": {
+            "off": 88,
+            "tec": 81,
+            "mouv": 76,
+            "pui": 75,
+            "ment": 65,
+            "def": 62,
+            "gk": 28
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_2628",
+          "nom": "Gauthier Bertrand",
+          "poste": "AD",
+          "age": 24,
+          "notes": {
+            "off": 81,
+            "tec": 82,
+            "mouv": 76,
+            "pui": 70,
+            "ment": 77,
+            "def": 49,
+            "gk": 17
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_5919",
+          "nom": "Xavier Roux",
+          "poste": "AC",
+          "age": 27,
+          "notes": {
+            "off": 85,
+            "tec": 83,
+            "mouv": 75,
+            "pui": 71,
+            "ment": 75,
+            "def": 62,
+            "gk": 17
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_2673",
+          "nom": "Noé Lefèvre",
+          "poste": "AD",
+          "age": 29,
+          "notes": {
+            "off": 79,
+            "tec": 87,
+            "mouv": 81,
+            "pui": 83,
+            "ment": 78,
+            "def": 66,
+            "gk": 14
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_2082",
+          "nom": "Antoine Morel",
+          "poste": "AD",
+          "age": 20,
+          "notes": {
+            "off": 83,
+            "tec": 87,
+            "mouv": 76,
+            "pui": 77,
+            "ment": 81,
+            "def": 60,
+            "gk": 32
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_4605",
+          "nom": "Arnaud Rousseau",
+          "poste": "AC",
+          "age": 35,
+          "notes": {
+            "off": 82,
+            "tec": 86,
+            "mouv": 76,
+            "pui": 65,
+            "ment": 79,
+            "def": 57,
+            "gk": 27
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_3139",
+          "nom": "Romain Laurent",
+          "poste": "AG",
+          "age": 36,
+          "notes": {
+            "off": 87,
+            "tec": 74,
+            "mouv": 84,
+            "pui": 69,
+            "ment": 68,
+            "def": 56,
+            "gk": 25
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_1847",
+          "nom": "Gauthier Blanc",
+          "poste": "AC",
+          "age": 35,
+          "notes": {
+            "off": 81,
+            "tec": 83,
+            "mouv": 72,
+            "pui": 62,
+            "ment": 65,
+            "def": 48,
+            "gk": 17
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_3027",
+          "nom": "Hugo André",
+          "poste": "AG",
+          "age": 28,
+          "notes": {
+            "off": 88,
+            "tec": 88,
+            "mouv": 92,
+            "pui": 75,
+            "ment": 82,
+            "def": 56,
+            "gk": 25
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775049652176_6579",
+          "nom": "Mathieu Blanc",
+          "poste": "AG",
+          "age": 31,
+          "notes": {
+            "off": 87,
+            "tec": 72,
+            "mouv": 79,
+            "pui": 68,
+            "ment": 78,
+            "def": 58,
+            "gk": 19
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_9251",
+          "nom": "Morgan Morel",
+          "poste": "AG",
+          "age": 22,
+          "notes": {
+            "off": 89,
+            "tec": 82,
+            "mouv": 83,
+            "pui": 82,
+            "ment": 73,
+            "def": 66,
+            "gk": 27
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652176_7346",
+          "nom": "Alexandre Robin",
+          "poste": "AD",
+          "age": 36,
+          "notes": {
+            "off": 85,
+            "tec": 87,
+            "mouv": 85,
+            "pui": 69,
+            "ment": 78,
+            "def": 50,
+            "gk": 27
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_1773",
+          "nom": "Arnaud Muller",
+          "poste": "AC",
+          "age": 17,
+          "notes": {
+            "off": 90,
+            "tec": 84,
+            "mouv": 86,
+            "pui": 73,
+            "ment": 70,
+            "def": 65,
+            "gk": 20
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_7918",
+          "nom": "Sébastien Bernard",
+          "poste": "AG",
+          "age": 18,
+          "notes": {
+            "off": 84,
+            "tec": 80,
+            "mouv": 89,
+            "pui": 77,
+            "ment": 78,
+            "def": 56,
+            "gk": 23
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_5070",
+          "nom": "Matteo Durand",
+          "poste": "AC",
+          "age": 19,
+          "notes": {
+            "off": 88,
+            "tec": 80,
+            "mouv": 89,
+            "pui": 83,
+            "ment": 77,
+            "def": 60,
+            "gk": 22
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652176_2786",
+          "nom": "Raphaël Roussel",
+          "poste": "AC",
+          "age": 35,
+          "notes": {
+            "off": 83,
+            "tec": 72,
+            "mouv": 75,
+            "pui": 63,
+            "ment": 77,
+            "def": 53,
+            "gk": 30
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_9304",
+          "nom": "Léo Guerin",
+          "poste": "AG",
+          "age": 22,
+          "notes": {
+            "off": 77,
+            "tec": 78,
+            "mouv": 76,
+            "pui": 66,
+            "ment": 68,
+            "def": 62,
+            "gk": 24
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_4906",
+          "nom": "Thomas Robert",
+          "poste": "AG",
+          "age": 28,
+          "notes": {
+            "off": 79,
+            "tec": 72,
+            "mouv": 79,
+            "pui": 75,
+            "ment": 72,
+            "def": 49,
+            "gk": 23
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_4056",
+          "nom": "Maxime Robert",
+          "poste": "AC",
+          "age": 17,
+          "notes": {
+            "off": 81,
+            "tec": 83,
+            "mouv": 88,
+            "pui": 81,
+            "ment": 73,
+            "def": 65,
+            "gk": 20
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_5957",
+          "nom": "Alexis David",
+          "poste": "AC",
+          "age": 36,
+          "notes": {
+            "off": 89,
+            "tec": 87,
+            "mouv": 80,
+            "pui": 85,
+            "ment": 79,
+            "def": 71,
+            "gk": 17
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775049652176_1780",
+          "nom": "Axel Laurent",
+          "poste": "AG",
+          "age": 28,
+          "notes": {
+            "off": 88,
+            "tec": 71,
+            "mouv": 77,
+            "pui": 78,
+            "ment": 76,
+            "def": 52,
+            "gk": 17
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_9279",
+          "nom": "Alexandre Garcia",
+          "poste": "AC",
+          "age": 26,
+          "notes": {
+            "off": 83,
+            "tec": 87,
+            "mouv": 81,
+            "pui": 83,
+            "ment": 74,
+            "def": 70,
+            "gk": 31
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652176_2249",
+          "nom": "Pierre Lefebvre",
+          "poste": "AC",
+          "age": 36,
+          "notes": {
+            "off": 85,
+            "tec": 72,
+            "mouv": 74,
+            "pui": 79,
+            "ment": 75,
+            "def": 52,
+            "gk": 30
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_6851",
+          "nom": "Alexandre Legrand",
+          "poste": "AC",
+          "age": 17,
+          "notes": {
+            "off": 89,
+            "tec": 73,
+            "mouv": 76,
+            "pui": 72,
+            "ment": 78,
+            "def": 58,
+            "gk": 21
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_2857",
+          "nom": "Théo Guerin",
+          "poste": "AD",
+          "age": 23,
+          "notes": {
+            "off": 77,
+            "tec": 72,
+            "mouv": 74,
+            "pui": 79,
+            "ment": 75,
+            "def": 51,
+            "gk": 28
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_2687",
+          "nom": "Kevin Guerin",
+          "poste": "AC",
+          "age": 21,
+          "notes": {
+            "off": 88,
+            "tec": 81,
+            "mouv": 74,
+            "pui": 68,
+            "ment": 72,
+            "def": 61,
+            "gk": 24
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_8738",
+          "nom": "Pierre Michel",
+          "poste": "AC",
+          "age": 31,
+          "notes": {
+            "off": 82,
+            "tec": 81,
+            "mouv": 83,
+            "pui": 68,
+            "ment": 80,
+            "def": 70,
+            "gk": 21
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_8075",
+          "nom": "Ethan Durand",
+          "poste": "AG",
+          "age": 17,
+          "notes": {
+            "off": 87,
+            "tec": 82,
+            "mouv": 79,
+            "pui": 73,
+            "ment": 70,
+            "def": 64,
+            "gk": 12
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_8082",
+          "nom": "Julien Mercier",
+          "poste": "AC",
+          "age": 17,
+          "notes": {
+            "off": 89,
+            "tec": 76,
+            "mouv": 85,
+            "pui": 77,
+            "ment": 73,
+            "def": 65,
+            "gk": 32
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_5533",
+          "nom": "François Bernard",
+          "poste": "AG",
+          "age": 22,
+          "notes": {
+            "off": 88,
+            "tec": 86,
+            "mouv": 75,
+            "pui": 65,
+            "ment": 69,
+            "def": 59,
+            "gk": 23
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_4790",
+          "nom": "Matteo Martinez",
+          "poste": "AC",
+          "age": 20,
+          "notes": {
+            "off": 83,
+            "tec": 75,
+            "mouv": 85,
+            "pui": 75,
+            "ment": 72,
+            "def": 58,
+            "gk": 31
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_7676",
+          "nom": "François Bonnet",
+          "poste": "AG",
+          "age": 32,
+          "notes": {
+            "off": 80,
+            "tec": 79,
+            "mouv": 83,
+            "pui": 79,
+            "ment": 78,
+            "def": 57,
+            "gk": 19
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_4530",
+          "nom": "Kevin Legrand",
+          "poste": "AC",
+          "age": 30,
+          "notes": {
+            "off": 76,
+            "tec": 84,
+            "mouv": 77,
+            "pui": 68,
+            "ment": 74,
+            "def": 59,
+            "gk": 16
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_2584",
+          "nom": "Thomas Petit",
+          "poste": "AC",
+          "age": 28,
+          "notes": {
+            "off": 83,
+            "tec": 88,
+            "mouv": 85,
+            "pui": 69,
+            "ment": 77,
+            "def": 63,
+            "gk": 32
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_3160",
+          "nom": "Xavier Petit",
+          "poste": "AD",
+          "age": 20,
+          "notes": {
+            "off": 81,
+            "tec": 76,
+            "mouv": 76,
+            "pui": 70,
+            "ment": 71,
+            "def": 63,
+            "gk": 15
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_7362",
+          "nom": "Léo Dupont",
+          "poste": "AD",
+          "age": 33,
+          "notes": {
+            "off": 75,
+            "tec": 80,
+            "mouv": 86,
+            "pui": 64,
+            "ment": 66,
+            "def": 57,
+            "gk": 16
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_9993",
+          "nom": "Noé Dupont",
+          "poste": "AC",
+          "age": 34,
+          "notes": {
+            "off": 81,
+            "tec": 72,
+            "mouv": 76,
+            "pui": 62,
+            "ment": 71,
+            "def": 65,
+            "gk": 14
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_6018",
+          "nom": "Maxime Leroy",
+          "poste": "AC",
+          "age": 25,
+          "notes": {
+            "off": 78,
+            "tec": 79,
+            "mouv": 83,
+            "pui": 80,
+            "ment": 74,
+            "def": 66,
+            "gk": 18
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_2549",
+          "nom": "Adrien Martin",
+          "poste": "AC",
+          "age": 24,
+          "notes": {
+            "off": 82,
+            "tec": 89,
+            "mouv": 78,
+            "pui": 77,
+            "ment": 80,
+            "def": 62,
+            "gk": 29
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_7090",
+          "nom": "Alexis Muller",
+          "poste": "AC",
+          "age": 20,
+          "notes": {
+            "off": 85,
+            "tec": 79,
+            "mouv": 84,
+            "pui": 64,
+            "ment": 68,
+            "def": 51,
+            "gk": 12
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_9310",
+          "nom": "Alexis François",
+          "poste": "AG",
+          "age": 27,
+          "notes": {
+            "off": 78,
+            "tec": 83,
+            "mouv": 76,
+            "pui": 74,
+            "ment": 76,
+            "def": 50,
+            "gk": 26
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_9250",
+          "nom": "Maxime Laurent",
+          "poste": "AC",
+          "age": 35,
+          "notes": {
+            "off": 86,
+            "tec": 75,
+            "mouv": 80,
+            "pui": 81,
+            "ment": 79,
+            "def": 66,
+            "gk": 30
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_9241",
+          "nom": "Thomas Thomas",
+          "poste": "AG",
+          "age": 28,
+          "notes": {
+            "off": 88,
+            "tec": 76,
+            "mouv": 87,
+            "pui": 73,
+            "ment": 68,
+            "def": 61,
+            "gk": 32
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_9289",
+          "nom": "Nicolas Dupont",
+          "poste": "AD",
+          "age": 31,
+          "notes": {
+            "off": 89,
+            "tec": 74,
+            "mouv": 78,
+            "pui": 68,
+            "ment": 69,
+            "def": 52,
+            "gk": 12
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_7676",
+          "nom": "Gauthier Bonnet",
+          "poste": "AC",
+          "age": 35,
+          "notes": {
+            "off": 84,
+            "tec": 81,
+            "mouv": 85,
+            "pui": 79,
+            "ment": 78,
+            "def": 53,
+            "gk": 28
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_4223",
+          "nom": "Matteo Dubois",
+          "poste": "AC",
+          "age": 24,
+          "notes": {
+            "off": 91,
+            "tec": 74,
+            "mouv": 79,
+            "pui": 66,
+            "ment": 79,
+            "def": 66,
+            "gk": 26
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_8112",
+          "nom": "Alexis Muller",
+          "poste": "AC",
+          "age": 30,
+          "notes": {
+            "off": 83,
+            "tec": 77,
+            "mouv": 88,
+            "pui": 81,
+            "ment": 68,
+            "def": 57,
+            "gk": 18
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_3563",
+          "nom": "Corentin Thomas",
+          "poste": "AG",
+          "age": 19,
+          "notes": {
+            "off": 88,
+            "tec": 71,
+            "mouv": 80,
+            "pui": 64,
+            "ment": 73,
+            "def": 57,
+            "gk": 28
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_9970",
+          "nom": "Dylan Muller",
+          "poste": "AG",
+          "age": 24,
+          "notes": {
+            "off": 90,
+            "tec": 83,
+            "mouv": 91,
+            "pui": 79,
+            "ment": 76,
+            "def": 52,
+            "gk": 19
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_6463",
+          "nom": "Tristan Garnier",
+          "poste": "AC",
+          "age": 17,
+          "notes": {
+            "off": 82,
+            "tec": 82,
+            "mouv": 86,
+            "pui": 80,
+            "ment": 67,
+            "def": 47,
+            "gk": 29
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_2464",
+          "nom": "Maxime Fournier",
+          "poste": "AC",
+          "age": 29,
+          "notes": {
+            "off": 90,
+            "tec": 80,
+            "mouv": 76,
+            "pui": 69,
+            "ment": 75,
+            "def": 57,
+            "gk": 24
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_5185",
+          "nom": "Florian Moreau",
+          "poste": "AC",
+          "age": 28,
+          "notes": {
+            "off": 75,
+            "tec": 80,
+            "mouv": 81,
+            "pui": 76,
+            "ment": 66,
+            "def": 54,
+            "gk": 23
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_6429",
+          "nom": "Thomas Richard",
+          "poste": "AD",
+          "age": 23,
+          "notes": {
+            "off": 80,
+            "tec": 79,
+            "mouv": 80,
+            "pui": 80,
+            "ment": 66,
+            "def": 52,
+            "gk": 13
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_4585",
+          "nom": "Thibault Garcia",
+          "poste": "AC",
+          "age": 28,
+          "notes": {
+            "off": 85,
+            "tec": 87,
+            "mouv": 79,
+            "pui": 71,
+            "ment": 71,
+            "def": 65,
+            "gk": 13
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_1877",
+          "nom": "Guillaume Petit",
+          "poste": "AC",
+          "age": 34,
+          "notes": {
+            "off": 88,
+            "tec": 82,
+            "mouv": 72,
+            "pui": 74,
+            "ment": 76,
+            "def": 56,
+            "gk": 16
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_8050",
+          "nom": "Xavier Martinez",
+          "poste": "AC",
+          "age": 34,
+          "notes": {
+            "off": 89,
+            "tec": 81,
+            "mouv": 78,
+            "pui": 70,
+            "ment": 68,
+            "def": 55,
+            "gk": 21
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_6879",
+          "nom": "François Robin",
+          "poste": "AD",
+          "age": 22,
+          "notes": {
+            "off": 74,
+            "tec": 70,
+            "mouv": 83,
+            "pui": 64,
+            "ment": 75,
+            "def": 57,
+            "gk": 27
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_8187",
+          "nom": "Corentin Legrand",
+          "poste": "AC",
+          "age": 30,
+          "notes": {
+            "off": 80,
+            "tec": 80,
+            "mouv": 81,
+            "pui": 65,
+            "ment": 73,
+            "def": 56,
+            "gk": 13
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_6469",
+          "nom": "Paul Roux",
+          "poste": "AD",
+          "age": 17,
+          "notes": {
+            "off": 87,
+            "tec": 72,
+            "mouv": 86,
+            "pui": 81,
+            "ment": 74,
+            "def": 55,
+            "gk": 28
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_3235",
+          "nom": "Paul Martin",
+          "poste": "AC",
+          "age": 30,
+          "notes": {
+            "off": 83,
+            "tec": 74,
+            "mouv": 87,
+            "pui": 73,
+            "ment": 78,
+            "def": 58,
+            "gk": 19
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_2925",
+          "nom": "Raphaël Simon",
+          "poste": "AC",
+          "age": 33,
+          "notes": {
+            "off": 82,
+            "tec": 76,
+            "mouv": 82,
+            "pui": 70,
+            "ment": 70,
+            "def": 57,
+            "gk": 28
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_9479",
+          "nom": "Raphaël Simon",
+          "poste": "AD",
+          "age": 32,
+          "notes": {
+            "off": 75,
+            "tec": 79,
+            "mouv": 75,
+            "pui": 73,
+            "ment": 71,
+            "def": 62,
+            "gk": 30
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_2964",
+          "nom": "Dylan Garnier",
+          "poste": "AG",
+          "age": 30,
+          "notes": {
+            "off": 91,
+            "tec": 79,
+            "mouv": 85,
+            "pui": 80,
+            "ment": 82,
+            "def": 62,
+            "gk": 16
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652176_9593",
+          "nom": "Tristan Michel",
+          "poste": "AC",
+          "age": 21,
+          "notes": {
+            "off": 79,
+            "tec": 73,
+            "mouv": 76,
+            "pui": 70,
+            "ment": 71,
+            "def": 51,
+            "gk": 12
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_2063",
+          "nom": "Guillaume Bonnet",
+          "poste": "AG",
+          "age": 24,
+          "notes": {
+            "off": 87,
+            "tec": 84,
+            "mouv": 90,
+            "pui": 77,
+            "ment": 79,
+            "def": 51,
+            "gk": 13
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_3863",
+          "nom": "Paul Martin",
+          "poste": "AC",
+          "age": 34,
+          "notes": {
+            "off": 84,
+            "tec": 75,
+            "mouv": 75,
+            "pui": 77,
+            "ment": 79,
+            "def": 54,
+            "gk": 26
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_1054",
+          "nom": "Gauthier Thomas",
+          "poste": "AC",
+          "age": 23,
+          "notes": {
+            "off": 78,
+            "tec": 84,
+            "mouv": 81,
+            "pui": 78,
+            "ment": 67,
+            "def": 60,
+            "gk": 20
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_3098",
+          "nom": "Guillaume Morel",
+          "poste": "AC",
+          "age": 28,
+          "notes": {
+            "off": 85,
+            "tec": 77,
+            "mouv": 79,
+            "pui": 68,
+            "ment": 74,
+            "def": 51,
+            "gk": 28
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_6329",
+          "nom": "Pierre Lambert",
+          "poste": "AG",
+          "age": 33,
+          "notes": {
+            "off": 92,
+            "tec": 83,
+            "mouv": 89,
+            "pui": 69,
+            "ment": 72,
+            "def": 58,
+            "gk": 14
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_2674",
+          "nom": "Olivier Martin",
+          "poste": "AD",
+          "age": 27,
+          "notes": {
+            "off": 93,
+            "tec": 86,
+            "mouv": 90,
+            "pui": 81,
+            "ment": 83,
+            "def": 55,
+            "gk": 26
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775049652176_6850",
+          "nom": "Romain Roussel",
+          "poste": "AC",
+          "age": 31,
+          "notes": {
+            "off": 83,
+            "tec": 74,
+            "mouv": 73,
+            "pui": 62,
+            "ment": 77,
+            "def": 62,
+            "gk": 27
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_5885",
+          "nom": "Adrien Robert",
+          "poste": "AC",
+          "age": 22,
+          "notes": {
+            "off": 91,
+            "tec": 74,
+            "mouv": 77,
+            "pui": 77,
+            "ment": 72,
+            "def": 53,
+            "gk": 15
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_6330",
+          "nom": "Axel Roussel",
+          "poste": "AG",
+          "age": 36,
+          "notes": {
+            "off": 87,
+            "tec": 69,
+            "mouv": 85,
+            "pui": 80,
+            "ment": 71,
+            "def": 55,
+            "gk": 16
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_5583",
+          "nom": "Kevin David",
+          "poste": "AC",
+          "age": 30,
+          "notes": {
+            "off": 79,
+            "tec": 82,
+            "mouv": 76,
+            "pui": 80,
+            "ment": 67,
+            "def": 59,
+            "gk": 25
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_2158",
+          "nom": "Gauthier Bertrand",
+          "poste": "AD",
+          "age": 30,
+          "notes": {
+            "off": 76,
+            "tec": 83,
+            "mouv": 82,
+            "pui": 63,
+            "ment": 68,
+            "def": 61,
+            "gk": 27
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_3330",
+          "nom": "Romain Muller",
+          "poste": "AG",
+          "age": 21,
+          "notes": {
+            "off": 74,
+            "tec": 79,
+            "mouv": 72,
+            "pui": 64,
+            "ment": 75,
+            "def": 48,
+            "gk": 14
+          },
+          "global": 67
+        },
+        {
+          "id": "p_1775049652176_1310",
+          "nom": "Yann Bonnet",
+          "poste": "AC",
+          "age": 34,
+          "notes": {
+            "off": 78,
+            "tec": 81,
+            "mouv": 81,
+            "pui": 76,
+            "ment": 68,
+            "def": 55,
+            "gk": 20
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_4909",
+          "nom": "Corentin Garcia",
+          "poste": "AC",
+          "age": 18,
+          "notes": {
+            "off": 86,
+            "tec": 80,
+            "mouv": 84,
+            "pui": 82,
+            "ment": 73,
+            "def": 55,
+            "gk": 18
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775049652176_5642",
+          "nom": "Raphaël Dupont",
+          "poste": "AC",
+          "age": 29,
+          "notes": {
+            "off": 87,
+            "tec": 71,
+            "mouv": 85,
+            "pui": 77,
+            "ment": 76,
+            "def": 57,
+            "gk": 32
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_9106",
+          "nom": "Axel Mercier",
+          "poste": "AC",
+          "age": 31,
+          "notes": {
+            "off": 88,
+            "tec": 87,
+            "mouv": 91,
+            "pui": 82,
+            "ment": 72,
+            "def": 67,
+            "gk": 24
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775049652176_5548",
+          "nom": "Léo Bonnet",
+          "poste": "AC",
+          "age": 17,
+          "notes": {
+            "off": 77,
+            "tec": 72,
+            "mouv": 75,
+            "pui": 74,
+            "ment": 65,
+            "def": 64,
+            "gk": 29
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_7108",
+          "nom": "Mathieu Morel",
+          "poste": "AG",
+          "age": 20,
+          "notes": {
+            "off": 80,
+            "tec": 83,
+            "mouv": 74,
+            "pui": 65,
+            "ment": 69,
+            "def": 61,
+            "gk": 13
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_1199",
+          "nom": "Adrien Bernard",
+          "poste": "AD",
+          "age": 35,
+          "notes": {
+            "off": 84,
+            "tec": 81,
+            "mouv": 89,
+            "pui": 76,
+            "ment": 73,
+            "def": 68,
+            "gk": 32
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_2345",
+          "nom": "Mathieu Richard",
+          "poste": "AD",
+          "age": 29,
+          "notes": {
+            "off": 86,
+            "tec": 73,
+            "mouv": 80,
+            "pui": 67,
+            "ment": 72,
+            "def": 62,
+            "gk": 29
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_6480",
+          "nom": "Guillaume Blanc",
+          "poste": "AD",
+          "age": 32,
+          "notes": {
+            "off": 80,
+            "tec": 84,
+            "mouv": 88,
+            "pui": 80,
+            "ment": 76,
+            "def": 49,
+            "gk": 17
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_5660",
+          "nom": "Axel Bernard",
+          "poste": "AG",
+          "age": 26,
+          "notes": {
+            "off": 91,
+            "tec": 78,
+            "mouv": 86,
+            "pui": 84,
+            "ment": 76,
+            "def": 52,
+            "gk": 28
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_7265",
+          "nom": "Léo Martinez",
+          "poste": "AC",
+          "age": 23,
+          "notes": {
+            "off": 89,
+            "tec": 84,
+            "mouv": 88,
+            "pui": 79,
+            "ment": 71,
+            "def": 51,
+            "gk": 30
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775049652176_5759",
+          "nom": "Nicolas Lefèvre",
+          "poste": "AC",
+          "age": 29,
+          "notes": {
+            "off": 88,
+            "tec": 78,
+            "mouv": 88,
+            "pui": 78,
+            "ment": 75,
+            "def": 63,
+            "gk": 19
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775049652176_6523",
+          "nom": "Antoine Henry",
+          "poste": "AD",
+          "age": 22,
+          "notes": {
+            "off": 83,
+            "tec": 80,
+            "mouv": 83,
+            "pui": 80,
+            "ment": 65,
+            "def": 59,
+            "gk": 15
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_5745",
+          "nom": "Baptiste Michel",
+          "poste": "AD",
+          "age": 29,
+          "notes": {
+            "off": 86,
+            "tec": 77,
+            "mouv": 80,
+            "pui": 73,
+            "ment": 75,
+            "def": 52,
+            "gk": 25
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_3761",
+          "nom": "Florian Henry",
+          "poste": "AC",
+          "age": 20,
+          "notes": {
+            "off": 84,
+            "tec": 81,
+            "mouv": 90,
+            "pui": 86,
+            "ment": 80,
+            "def": 57,
+            "gk": 32
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775049652176_1052",
+          "nom": "Valentin Faure",
+          "poste": "AG",
+          "age": 32,
+          "notes": {
+            "off": 89,
+            "tec": 82,
+            "mouv": 80,
+            "pui": 69,
+            "ment": 76,
+            "def": 57,
+            "gk": 23
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775049652176_1397",
+          "nom": "Adrien Laurent",
+          "poste": "AG",
+          "age": 34,
+          "notes": {
+            "off": 77,
+            "tec": 79,
+            "mouv": 79,
+            "pui": 74,
+            "ment": 72,
+            "def": 54,
+            "gk": 19
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_9999",
+          "nom": "Alexis Martin",
+          "poste": "AD",
+          "age": 24,
+          "notes": {
+            "off": 76,
+            "tec": 71,
+            "mouv": 82,
+            "pui": 68,
+            "ment": 77,
+            "def": 51,
+            "gk": 22
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775049652176_9815",
+          "nom": "Tristan Lefèvre",
+          "poste": "AC",
+          "age": 29,
+          "notes": {
+            "off": 77,
+            "tec": 78,
+            "mouv": 87,
+            "pui": 76,
+            "ment": 77,
+            "def": 49,
+            "gk": 25
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_4637",
+          "nom": "Matteo Mercier",
+          "poste": "AD",
+          "age": 20,
+          "notes": {
+            "off": 93,
+            "tec": 88,
+            "mouv": 85,
+            "pui": 71,
+            "ment": 75,
+            "def": 71,
+            "gk": 15
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775049652176_3731",
+          "nom": "Alexandre Girard",
+          "poste": "AC",
+          "age": 19,
+          "notes": {
+            "off": 87,
+            "tec": 69,
+            "mouv": 74,
+            "pui": 68,
+            "ment": 71,
+            "def": 55,
+            "gk": 19
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775049652176_9931",
+          "nom": "Ethan Petit",
+          "poste": "AG",
+          "age": 29,
+          "notes": {
+            "off": 79,
+            "tec": 73,
+            "mouv": 74,
+            "pui": 72,
+            "ment": 78,
+            "def": 56,
+            "gk": 28
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_5471",
+          "nom": "Xavier Michel",
+          "poste": "AC",
+          "age": 18,
+          "notes": {
+            "off": 75,
+            "tec": 78,
+            "mouv": 73,
+            "pui": 66,
+            "ment": 76,
+            "def": 50,
+            "gk": 13
+          },
+          "global": 68
+        },
+        {
+          "id": "p_1775049652176_7116",
+          "nom": "Ethan Lambert",
+          "poste": "AC",
+          "age": 31,
+          "notes": {
+            "off": 85,
+            "tec": 84,
+            "mouv": 77,
+            "pui": 73,
+            "ment": 72,
+            "def": 58,
+            "gk": 12
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775049652176_2028",
+          "nom": "Mathieu Lefèvre",
+          "poste": "AC",
+          "age": 23,
+          "notes": {
+            "off": 82,
+            "tec": 74,
+            "mouv": 85,
+            "pui": 69,
+            "ment": 76,
+            "def": 51,
+            "gk": 31
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775049652176_2761",
+          "nom": "Sébastien Moreau",
+          "poste": "AC",
+          "age": 22,
+          "notes": {
+            "off": 77,
+            "tec": 82,
+            "mouv": 82,
+            "pui": 72,
+            "ment": 70,
+            "def": 51,
+            "gk": 12
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775049652176_4697",
+          "nom": "Lucas Richard",
+          "poste": "AC",
+          "age": 35,
+          "notes": {
+            "off": 78,
+            "tec": 84,
+            "mouv": 85,
+            "pui": 70,
+            "ment": 73,
+            "def": 60,
+            "gk": 16
+          },
+          "global": 73
+        }
+      ],
+      "created": "2026-04-01T13:20:52.176Z"
     }
   ],
   "competitions": [],
