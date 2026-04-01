@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Équipes Nationales · Football · UKN</title>
+  <link rel="stylesheet" href="../../assets/dune.css">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospace;min-height:100vh;}
+
+    /* NAV */
+    .eq-nav{position:sticky;top:0;z-index:100;height:54px;background:rgba(12,8,4,.97);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px;gap:12px;backdrop-filter:blur(8px);}
+    .eq-nav-brand{font-family:'Dune Rise',serif;font-size:10px;letter-spacing:.16em;color:var(--teal-bright);white-space:nowrap;}
+    .eq-nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+    .btn-sm{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;padding:5px 12px;border-radius:2px;border:1px solid var(--border2);background:transparent;color:var(--text2);cursor:pointer;transition:all .15s;white-space:nowrap;}
+    .btn-sm:hover{border-color:var(--border3);color:var(--text);}
+    .btn-teal{background:rgba(34,184,154,.1);border-color:rgba(34,184,154,.35);color:var(--teal-bright);}
+    .btn-teal:hover{background:rgba(34,184,154,.2);border-color:var(--teal-bright);}
+    .btn-spice{background:rgba(232,92,13,.1);border-color:rgba(232,92,13,.35);color:var(--spice);}
+    .btn-spice:hover{background:rgba(232,92,13,.2);border-color:var(--spice);}
+    .btn-gold{background:rgba(200,150,12,.1);border-color:rgba(200,150,12,.3);color:var(--gold);}
+    .btn-gold:hover{background:rgba(200,150,12,.18);border-color:var(--gold);}
+    .btn-danger{background:rgba(232,92,13,.08);border-color:rgba(232,92,13,.3);color:#E84848;font-size:8px;padding:3px 8px;}
+    .btn-danger:hover{background:rgba(232,50,50,.15);border-color:#E84848;}
+
+    /* LAYOUT */
+    .eq-shell{display:flex;height:calc(100vh - 54px);}
+    .eq-sidebar{width:280px;flex-shrink:0;border-right:1px solid var(--border);overflow-y:auto;display:flex;flex-direction:column;}
+    .eq-main{flex:1;overflow-y:auto;background:var(--bg);}
+    .eq-content{padding:24px;max-width:1000px;}
+
+    /* SIDEBAR */
+    .sb-hdr{padding:14px 16px;border-bottom:1px solid var(--border);}
+    .sb-hdr-title{font-size:7px;letter-spacing:.2em;color:var(--text3);text-transform:uppercase;margin-bottom:6px;}
+    .sb-count{font-family:'Dune Rise',serif;font-size:16px;color:var(--teal-bright);}
+    .sb-add-btn{margin:12px;display:block;width:calc(100% - 24px);background:rgba(34,184,154,.08);border:1px solid rgba(34,184,154,.25);color:var(--teal-bright);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;padding:8px;cursor:pointer;border-radius:2px;transition:all .15s;text-align:center;}
+    .sb-add-btn:hover{background:rgba(34,184,154,.16);border-color:var(--teal-bright);}
+    .sb-list{flex:1;overflow-y:auto;}
+    .sb-item{padding:10px 14px;border-bottom:1px solid var(--border);cursor:pointer;display:flex;align-items:center;gap:10px;transition:background .12s;}
+    .sb-item:hover{background:rgba(34,184,154,.04);}
+    .sb-item.active{background:rgba(34,184,154,.08);border-left:2px solid var(--teal-bright);}
+    .sb-flag{width:32px;height:22px;border-radius:2px;object-fit:cover;background:var(--bg2);border:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;}
+    .sb-flag img{width:100%;height:100%;object-fit:cover;border-radius:2px;}
+    .sb-item-info{min-width:0;}
+    .sb-item-name{font-size:11px;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+    .sb-item-meta{font-size:8px;color:var(--text3);margin-top:2px;}
+    .sb-item-rating{flex-shrink:0;font-family:'Dune Rise',serif;font-size:13px;color:var(--gold);}
+
+    /* FORMS */
+    .form-section{margin-bottom:24px;}
+    .form-sec-title{font-size:7px;letter-spacing:.2em;color:var(--spice);text-transform:uppercase;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid rgba(232,92,13,.2);display:flex;align-items:center;gap:8px;}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .form-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+    .fg{display:flex;flex-direction:column;gap:5px;}
+    .fg.full{grid-column:1/-1;}
+    .fl{font-size:8px;letter-spacing:.12em;color:var(--text3);text-transform:uppercase;}
+    .fi,.fs{background:var(--bg2);border:1px solid var(--border2);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:11px;padding:6px 10px;border-radius:2px;outline:none;transition:border-color .2s;width:100%;appearance:none;}
+    .fi:focus,.fs:focus{border-color:var(--teal-bright);}
+    .fi[type=range]{padding:6px 0;accent-color:var(--teal-bright);}
+    .range-val{font-family:'Dune Rise',serif;font-size:16px;color:var(--teal-bright);letter-spacing:.06em;text-align:center;}
+
+    /* FLAG UPLOAD */
+    .flag-upload-zone{border:2px dashed var(--border2);border-radius:4px;padding:20px;text-align:center;cursor:pointer;transition:border-color .2s;background:var(--bg2);position:relative;}
+    .flag-upload-zone:hover{border-color:var(--teal-bright);}
+    .flag-upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+    .flag-preview{width:150px;height:150px;object-fit:cover;border-radius:4px;border:1px solid var(--border);margin:0 auto;display:block;}
+    .flag-ph{font-size:9px;color:var(--text3);margin-top:8px;letter-spacing:.1em;}
+
+    /* RATING BARS */
+    .rating-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+    .rating-item{background:var(--bg2);border:1px solid var(--border);padding:10px 12px;border-radius:2px;}
+    .rating-lbl{font-size:7px;letter-spacing:.12em;color:var(--text3);text-transform:uppercase;margin-bottom:4px;}
+    .rating-row{display:flex;align-items:center;gap:8px;}
+    .rating-row input[type=range]{flex:1;accent-color:var(--spice);}
+    .rating-num{font-family:'Dune Rise',serif;font-size:14px;color:var(--spice);min-width:28px;text-align:right;}
+
+    /* PLAYER LIST */
+    .player-list-hdr{display:grid;grid-template-columns:32px 1fr 80px 60px 60px 60px 60px 60px 60px 60px 36px;gap:6px;padding:6px 10px;background:var(--bg2);border:1px solid var(--border);font-size:7px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;position:sticky;top:0;z-index:5;}
+    .player-row{display:grid;grid-template-columns:32px 1fr 80px 60px 60px 60px 60px 60px 60px 60px 36px;gap:6px;padding:5px 10px;border-bottom:1px solid var(--border);align-items:center;transition:background .1s;}
+    .player-row:hover{background:rgba(34,184,154,.03);}
+    .p-num{font-size:9px;color:var(--text3);text-align:center;}
+    .p-name{font-size:10px;color:var(--text);}
+    .p-pos{font-size:8px;padding:1px 5px;border-radius:2px;text-align:center;font-weight:600;}
+    .pos-GK{background:rgba(232,92,13,.15);color:var(--spice);}
+    .pos-DEF{background:rgba(34,184,154,.12);color:var(--teal-bright);}
+    .pos-MIL{background:rgba(212,168,67,.12);color:var(--gold);}
+    .pos-ATT{background:rgba(232,50,50,.15);color:#E84848;}
+    .p-note{font-family:'Dune Rise',serif;font-size:12px;text-align:center;color:var(--text);}
+    .p-note.high{color:#22B89A;}
+    .p-note.mid{color:var(--gold);}
+    .p-note.low{color:var(--spice);}
+    .p-edit{font-size:8px;padding:2px 5px;background:transparent;border:1px solid var(--border);color:var(--text3);cursor:pointer;border-radius:2px;}
+    .p-edit:hover{border-color:var(--teal-bright);color:var(--teal-bright);}
+
+    /* COACH */
+    .coach-card{background:var(--card-bg);border:1px solid var(--border);border-left:3px solid var(--gold);padding:16px;margin-bottom:20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+    .coach-name{font-size:14px;color:var(--text);font-weight:500;flex:1;}
+    .coach-notes{display:flex;gap:16px;flex-wrap:wrap;}
+    .coach-note-item{text-align:center;}
+    .cn-lbl{font-size:7px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;}
+    .cn-val{font-family:'Dune Rise',serif;font-size:16px;color:var(--gold);}
+
+    /* MODAL */
+    .modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:500;display:none;align-items:center;justify-content:center;}
+    .modal-ov.open{display:flex;}
+    .modal-box{background:var(--bg2);border:1px solid var(--border2);border-top:2px solid var(--spice);width:700px;max-width:95vw;max-height:92vh;overflow-y:auto;border-radius:2px;}
+    .modal-hdr{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--bg2);z-index:5;}
+    .modal-ttl{font-family:'Dune Rise',serif;font-size:11px;letter-spacing:.12em;color:var(--spice);}
+    .modal-cls{background:none;border:none;color:var(--text3);font-size:18px;cursor:pointer;}
+    .modal-body{padding:18px;}
+    .modal-ftr{padding:12px 18px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px;position:sticky;bottom:0;background:var(--bg2);}
+
+    /* TOAST */
+    #toast{position:fixed;bottom:24px;right:24px;z-index:9999;font-family:'IBM Plex Mono',monospace;font-size:10px;padding:10px 16px;border-radius:2px;pointer-events:none;opacity:0;transition:opacity .25s;}
+    #toast.ok{background:rgba(34,184,154,.9);color:#fff;border:1px solid var(--teal-bright);}
+    #toast.err{background:rgba(232,80,13,.9);color:#fff;}
+
+    /* ACCESS WALL */
+    #eq-wall{position:fixed;inset:0;z-index:200;background:rgba(8,4,0,.97);display:flex;align-items:center;justify-content:center;}
+    .eq-wall-box{text-align:center;padding:48px 36px;border:1px solid var(--border2);border-top:2px solid var(--spice);background:var(--card-bg);max-width:380px;width:90%;}
+    .eq-wall-title{font-family:'Dune Rise',serif;font-size:13px;letter-spacing:.14em;color:var(--spice);margin-bottom:8px;margin-top:16px;}
+    .eq-wall-sub{font-size:9px;color:var(--text3);line-height:1.8;margin-bottom:20px;}
+    .eq-wall-btn{background:var(--spice);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;padding:9px 22px;border:none;cursor:pointer;border-radius:2px;}
+
+    /* EMPTY STATE */
+    .empty-state{text-align:center;padding:72px 24px;color:var(--text3);}
+    .empty-state svg{opacity:.15;margin-bottom:16px;}
+    .empty-state-title{font-size:11px;letter-spacing:.1em;margin-bottom:8px;}
+    .empty-state-sub{font-size:9px;line-height:1.8;}
+
+    /* DETAIL VIEW */
+    .detail-hero{background:var(--card-bg);border:1px solid var(--border);border-top:2px solid var(--teal-bright);padding:20px;margin-bottom:20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+    .detail-flag{width:80px;height:56px;object-fit:cover;border-radius:3px;border:1px solid var(--border);flex-shrink:0;}
+    .detail-name{font-family:'Dune Rise',serif;font-size:18px;letter-spacing:.08em;color:var(--text);}
+    .detail-meta{font-size:9px;color:var(--text3);margin-top:4px;}
+    .detail-rating{font-family:'Dune Rise',serif;font-size:36px;color:var(--teal-bright);letter-spacing:.04em;margin-left:auto;}
+    .detail-actions{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+    .tab-btns{display:flex;gap:0;margin-bottom:16px;border-bottom:1px solid var(--border);}
+    .tab-btn{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;padding:8px 16px;background:none;border:none;border-bottom:2px solid transparent;color:var(--text3);cursor:pointer;transition:all .15s;margin-bottom:-1px;}
+    .tab-btn.active{color:var(--teal-bright);border-bottom-color:var(--teal-bright);}
+
+    /* ── TACTICS ── */
+    .tactic-shell{display:flex;gap:20px;flex-wrap:wrap;}
+    .tactic-pitch-wrap{flex:1;min-width:280px;}
+    .tactic-side{width:240px;flex-shrink:0;}
+    @media(max-width:700px){.tactic-side{width:100%;}}
+
+    .formation-btns{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
+    .formation-btn{font-family:'IBM Plex Mono',monospace;font-size:9px;padding:4px 10px;background:var(--bg2);border:1px solid var(--border2);color:var(--text2);cursor:pointer;border-radius:2px;transition:all .12s;}
+    .formation-btn:hover,.formation-btn.active{background:rgba(34,184,154,.14);border-color:var(--teal-bright);color:var(--teal-bright);}
+
+    .pitch-svg{width:100%;display:block;cursor:default;}
+    .pitch-zone{fill:#0a2e0a;stroke:#1a4d1a;stroke-width:1;}
+    .pitch-line{stroke:rgba(255,255,255,.18);stroke-width:1;fill:none;}
+
+    .player-token{cursor:grab;}
+    .player-token:active{cursor:grabbing;}
+    .player-token circle.bg{transition:fill .15s;}
+    .player-token:hover circle.bg{fill-opacity:.9;}
+    .player-token.dragging{opacity:.7;}
+    .player-token.selected circle.bg{stroke:#fff;stroke-width:2;}
+
+    /* Substitutes */
+    .subs-list{background:var(--bg2);border:1px solid var(--border);padding:10px;border-radius:2px;max-height:320px;overflow-y:auto;}
+    .sub-item{display:flex;align-items:center;gap:8px;padding:5px 6px;border-bottom:1px solid var(--border);cursor:grab;transition:background .1s;}
+    .sub-item:hover{background:rgba(34,184,154,.05);}
+    .sub-item:last-child{border-bottom:none;}
+    .sub-pos{font-size:7px;padding:1px 5px;border-radius:2px;font-weight:600;flex-shrink:0;}
+    .sub-name{font-size:9px;color:var(--text);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+    .sub-note{font-family:'Dune Rise',serif;font-size:11px;color:var(--gold);flex-shrink:0;}
+
+    .tactic-save-bar{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center;}
+    .tactic-info{font-size:8px;color:var(--text3);letter-spacing:.06em;}
+
+    /* SPINNER */
+    .spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(34,184,154,.3);border-top-color:var(--teal-bright);border-radius:50%;animation:spin .7s linear infinite;}
+    @keyframes spin{to{transform:rotate(360deg);}}
+
+    @media(max-width:760px){.eq-sidebar{display:none;}.eq-content{padding:12px;}.player-list-hdr,.player-row{grid-template-columns:24px 1fr 70px 50px 50px 36px;}.player-row .p-note:nth-child(n+5){display:none;}}
+  </style>
+</head>
+<body>
+
+<!-- ACCESS WALL -->
+<div id="eq-wall">
+  <div class="eq-wall-box">
+    <svg viewBox="0 0 48 48" fill="none" width="44" height="44" style="opacity:.4;">
+      <circle cx="24" cy="24" r="4" stroke="#22B89A" stroke-width="1.2" fill="none"/>
+      <circle cx="24" cy="24" r="14" stroke="#22B89A" stroke-width="1" fill="none" stroke-dasharray="3 2"/>
+    </svg>
+    <div class="eq-wall-title">ACCES RESTREINT</div>
+    <div class="eq-wall-sub">Module réservé aux administrateurs.<br>Connexion Discord requise.</div>
+    <button class="eq-wall-btn" id="eq-login-btn">Connexion Discord</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="eq-nav">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <a href="../" style="color:var(--text3);font-size:9px;text-decoration:none;border:1px solid var(--border);padding:3px 9px;border-radius:2px;">←</a>
+    <div class="eq-nav-brand">Équipes Nationales</div>
+  </div>
+  <div class="eq-nav-right">
+    <div id="nav-right-user"></div>
+    <button class="btn-sm btn-gold" id="btn-gh-save" onclick="saveToGitHub()">⬆ GitHub</button>
+    <input type="password" id="pat-in" placeholder="GitHub PAT…" style="width:130px;background:var(--bg);border:1px solid var(--border2);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:9px;padding:5px 8px;border-radius:2px;outline:none;" oninput="localStorage.setItem('pharos_gh_pat',this.value)">
+  </div>
+</nav>
+
+<div class="eq-shell">
+  <!-- SIDEBAR -->
+  <aside class="eq-sidebar">
+    <div class="sb-hdr">
+      <div class="sb-hdr-title">Nations enregistrées</div>
+      <div class="sb-count" id="sb-count">0</div>
+    </div>
+    <button class="sb-add-btn" onclick="openCreateModal()">+ Nouvelle équipe nationale</button>
+    <div class="sb-list" id="sb-list"></div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="eq-main">
+    <div class="eq-content" id="eq-content">
+      <div class="empty-state" id="empty-state">
+        <svg viewBox="0 0 48 48" fill="none" width="52" height="52"><circle cx="24" cy="24" r="4" stroke="#22B89A" stroke-width="1.2" fill="none"/><circle cx="24" cy="24" r="14" stroke="#22B89A" stroke-width="1" fill="none" stroke-dasharray="3 2"/><circle cx="24" cy="24" r="20" stroke="#22B89A" stroke-width=".6" fill="none" stroke-dasharray="2 3" opacity=".4"/></svg>
+        <div class="empty-state-title">AUCUNE ÉQUIPE NATIONALE</div>
+        <div class="empty-state-sub">Créez votre première équipe nationale<br>avec le bouton dans la barre latérale.</div>
+      </div>
+      <div id="team-detail" style="display:none;"></div>
+    </div>
+  </main>
+</div>
+
+<!-- CREATE MODAL -->
+<div class="modal-ov" id="create-modal">
+  <div class="modal-box">
+    <div class="modal-hdr">
+      <div class="modal-ttl" id="create-modal-ttl">Nouvelle Équipe Nationale</div>
+      <button class="modal-cls" onclick="closeCreateModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <!-- Section: Pays -->
+      <div class="form-section">
+        <div class="form-sec-title">Identité du Pays</div>
+        <div class="form-grid">
+          <div class="fg full"><label class="fl">Nom du pays</label><input type="text" class="fi" id="f-nom" placeholder="ex: Royaume-Uni du Nil…"></div>
+          <div class="fg"><label class="fl">Continent</label>
+            <select class="fs" id="f-continent">
+              <option value="Afrique">Afrique</option>
+              <option value="Amérique du Nord">Amérique du Nord</option>
+              <option value="Amérique du Sud">Amérique du Sud</option>
+              <option value="Asie">Asie</option>
+              <option value="Europe">Europe</option>
+              <option value="Océanie">Océanie</option>
+            </select>
+          </div>
+          <div class="fg full">
+            <label class="fl">Cultures des noms (plusieurs possibles)</label>
+            <div id="culture-picks" style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;"></div>
+            <select class="fs" id="f-culture-add" onchange="addCulture(this.value);this.value='';" style="margin-bottom:6px;">
+              <option value="">+ Ajouter une culture…</option>
+            </select>
+            <div id="culture-sliders" style="display:flex;flex-direction:column;gap:5px;"></div>
+            <div style="font-size:8px;color:var(--text3);margin-top:5px;letter-spacing:.06em;">Ajustez le curseur pour pondérer chaque culture</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Drapeau -->
+      <div class="form-section">
+        <div class="form-sec-title">Drapeau (format 150×150 px)</div>
+        <div class="flag-upload-zone" id="flag-zone" onclick="document.getElementById('flag-input').click()">
+          <input type="file" id="flag-input" accept="image/*" style="display:none;" onchange="handleFlag(this)">
+          <div id="flag-preview-wrap">
+            <svg viewBox="0 0 40 40" fill="none" width="36" height="36" style="opacity:.2;"><rect x="4" y="8" width="24" height="16" rx="1" stroke="currentColor" stroke-width="1.2" fill="none"/><line x1="4" y1="8" x2="4" y2="32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <div class="flag-ph">Cliquer pour uploader un drapeau</div>
+            <div style="font-size:8px;color:var(--text3);margin-top:4px;letter-spacing:.08em;">Recommandé : 150 × 150 px · PNG ou WEBP</div>
+          </div>
+        </div>
+        <input type="hidden" id="flag-data">
+        <input type="hidden" id="flag-filename">
+      </div>
+
+      <!-- Section: Génération -->
+      <div class="form-section">
+        <div class="form-sec-title">Génération de l'Équipe</div>
+        <div class="form-grid">
+          <div class="fg">
+            <label class="fl">Nombre de joueurs (23–1000)</label>
+            <input type="number" class="fi" id="f-nb-joueurs" min="23" max="1000" value="23">
+          </div>
+          <div class="fg">
+            <label class="fl">Note globale de l'équipe (50–99)</label>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <input type="range" class="fi" id="f-note" min="50" max="99" value="70" oninput="document.getElementById('f-note-val').textContent=this.value" style="flex:1;padding:6px 0;">
+              <div class="range-val" id="f-note-val">70</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:10px;font-size:9px;color:var(--text3);background:rgba(34,184,154,.05);border:1px solid rgba(34,184,154,.15);padding:10px 12px;border-radius:2px;line-height:1.8;">
+          La note globale détermine la distribution des notes des joueurs. Une note de 70 génère des joueurs avec des notes moyennes autour de 70±8, avec des variations selon le poste.
+        </div>
+      </div>
+
+      <!-- Note globale par catégorie (prédéfinies) -->
+      <div class="form-section">
+        <div class="form-sec-title">Force par catégorie (ajustements)</div>
+        <div class="form-grid">
+          <div class="fg"><label class="fl">Attaque</label>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <input type="range" class="fi" id="f-att" min="-15" max="15" value="0" oninput="updateAdjLabel('att',this.value)" style="flex:1;padding:4px 0;accent-color:#E84848;">
+              <span id="lbl-att" style="font-size:11px;color:#E84848;min-width:28px;text-align:right;">±0</span>
+            </div>
+          </div>
+          <div class="fg"><label class="fl">Défense</label>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <input type="range" class="fi" id="f-def" min="-15" max="15" value="0" oninput="updateAdjLabel('def',this.value)" style="flex:1;padding:4px 0;accent-color:var(--teal-bright);">
+              <span id="lbl-def" style="font-size:11px;color:var(--teal-bright);min-width:28px;text-align:right;">±0</span>
+            </div>
+          </div>
+          <div class="fg"><label class="fl">Milieu / Technique</label>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <input type="range" class="fi" id="f-mil" min="-15" max="15" value="0" oninput="updateAdjLabel('mil',this.value)" style="flex:1;padding:4px 0;accent-color:var(--gold);">
+              <span id="lbl-mil" style="font-size:11px;color:var(--gold);min-width:28px;text-align:right;">±0</span>
+            </div>
+          </div>
+          <div class="fg"><label class="fl">Gardien</label>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <input type="range" class="fi" id="f-gk" min="-15" max="15" value="0" oninput="updateAdjLabel('gk',this.value)" style="flex:1;padding:4px 0;accent-color:var(--spice);">
+              <span id="lbl-gk" style="font-size:11px;color:var(--spice);min-width:28px;text-align:right;">±0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-ftr">
+      <button class="btn-sm" onclick="closeCreateModal()">Annuler</button>
+      <button class="btn-sm btn-teal" id="btn-gen" onclick="generateTeam()"><span id="btn-gen-lbl">⚡ Générer l'équipe</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- PLAYER EDIT MODAL -->
+<div class="modal-ov" id="player-modal">
+  <div class="modal-box" style="max-width:520px;">
+    <div class="modal-hdr">
+      <div class="modal-ttl">Modifier le joueur</div>
+      <button class="modal-cls" onclick="closePlayerModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid" style="margin-bottom:16px;">
+        <div class="fg full"><label class="fl">Nom</label><input type="text" class="fi" id="pe-nom"></div>
+        <div class="fg"><label class="fl">Poste</label>
+          <select class="fs" id="pe-poste">
+            <option value="GK">Gardien (GK)</option>
+            <option value="DC">Défenseur central (DC)</option>
+            <option value="DD">Défenseur droit (DD)</option>
+            <option value="DG">Défenseur gauche (DG)</option>
+            <option value="MDC">Milieu défensif (MDC)</option>
+            <option value="MC">Milieu central (MC)</option>
+            <option value="MO">Milieu offensif (MO)</option>
+            <option value="MOD">Milieu offensif droit (MOD)</option>
+            <option value="MOG">Milieu offensif gauche (MOG)</option>
+            <option value="AC">Attaquant central (AC)</option>
+            <option value="AD">Ailier droit (AD)</option>
+            <option value="AG">Ailier gauche (AG)</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Âge</label><input type="number" class="fi" id="pe-age" min="16" max="40"></div>
+      </div>
+      <div class="form-sec-title" style="font-size:7px;letter-spacing:.2em;color:var(--spice);text-transform:uppercase;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid rgba(232,92,13,.2);">Notes FIFA (0–99)</div>
+      <div class="rating-grid">
+        <div class="rating-item"><div class="rating-lbl">⚡ Vitesse (PAC)</div><div class="rating-row"><input type="range" id="pe-pac" min="1" max="99" oninput="document.getElementById('pev-pac').textContent=this.value"><span class="rating-num" id="pev-pac">—</span></div></div>
+        <div class="rating-item"><div class="rating-lbl">🎯 Tir (SHO)</div><div class="rating-row"><input type="range" id="pe-sho" min="1" max="99" oninput="document.getElementById('pev-sho').textContent=this.value"><span class="rating-num" id="pev-sho">—</span></div></div>
+        <div class="rating-item"><div class="rating-lbl">🔀 Passe (PAS)</div><div class="rating-row"><input type="range" id="pe-pas" min="1" max="99" oninput="document.getElementById('pev-pas').textContent=this.value"><span class="rating-num" id="pev-pas">—</span></div></div>
+        <div class="rating-item"><div class="rating-lbl">🕺 Dribble (DRI)</div><div class="rating-row"><input type="range" id="pe-dri" min="1" max="99" oninput="document.getElementById('pev-dri').textContent=this.value"><span class="rating-num" id="pev-dri">—</span></div></div>
+        <div class="rating-item"><div class="rating-lbl">🛡️ Défense (DEF)</div><div class="rating-row"><input type="range" id="pe-def" min="1" max="99" oninput="document.getElementById('pev-def').textContent=this.value"><span class="rating-num" id="pev-def">—</span></div></div>
+        <div class="rating-item"><div class="rating-lbl">💪 Physique (PHY)</div><div class="rating-row"><input type="range" id="pe-phy" min="1" max="99" oninput="document.getElementById('pev-phy').textContent=this.value"><span class="rating-num" id="pev-phy">—</span></div></div>
+        <div class="rating-item"><div class="rating-lbl">🧤 Gardien (GKS)</div><div class="rating-row"><input type="range" id="pe-gks" min="1" max="99" oninput="document.getElementById('pev-gks').textContent=this.value"><span class="rating-num" id="pev-gks">—</span></div></div>
+      </div>
+    </div>
+    <div class="modal-ftr">
+      <button class="btn-sm" onclick="closePlayerModal()">Annuler</button>
+      <button class="btn-sm btn-teal" onclick="savePlayerEdit()">✓ Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ════════════════════════════════════════════════
+//  DATA
+// ════════════════════════════════════════════════
+const REPO='BJBellum/UKN';
+const FB_FILE='data/football.json';
+const IMAGES_PATH='assets/images/football/flags/';
+
+var fbData={pays:[],competitions:[],matchs:[]};
+var currentTeamId=null;
+var editPlayerIdx=null;
+var editTeamIdx=null;
+
+// ════════════════════════════════════════════════
+//  NAME DATABASES (extended)
+// ════════════════════════════════════════════════
+var NAMES={
+  arabe:{prenoms:['Ahmed','Mohamed','Youssef','Omar','Ali','Hassan','Hussein','Ibrahim','Khaled','Tarek','Bilal','Kareem','Nasser','Sami','Rami','Adel','Jamal','Walid','Faris','Ziad','Amir','Samir','Ismail','Marwan','Badr','Younes','Amine','Hicham','Rachid','Mehdi','Sofiane','Karim','Nabil','Hatem','Wael','Bassem','Tamer','Sherif','Ayman','Hazem'],noms:['Al-Rashid','Ben Omar','Al-Hassan','El-Amin','Ben Ali','Al-Sayed','El-Sharif','Ben Youssef','Al-Khatib','El-Masry','Ben Hassan','Al-Zahrani','El-Tayeb','Ben Salah','Al-Mansouri','El-Khoury','Ben Musa','Al-Farsi','El-Qadi','Ben Ahmed','Al-Nouri','El-Banna','Ben Tarek','Al-Saad','El-Shazly']},
+  francais:{prenoms:['Lucas','Thomas','Hugo','Théo','Antoine','Maxime','Romain','Julien','Nicolas','Alexandre','Pierre','Paul','Baptiste','Guillaume','François','Mathieu','Sébastien','Clément','Adrien','Raphaël','Léo','Enzo','Dylan','Kevin','Alexis','Tristan','Morgan','Florian','Ethan','Matteo','Corentin','Valentin','Axel','Noé','Thibault','Gauthier','Arnaud','Xavier','Yann','Olivier'],noms:['Martin','Bernard','Dubois','Thomas','Robert','Richard','Petit','Durand','Leroy','Moreau','Simon','Laurent','Lefebvre','Michel','Garcia','David','Bertrand','Roux','Vincent','Fournier','Morel','Girard','André','Mercier','Dupont','Lambert','Bonnet','Legrand','Garnier','Robin','Rousseau','Blanc','Guerin','Muller']},
+  anglais:{prenoms:['James','William','George','Harry','Oliver','Jack','Charlie','Alfie','Thomas','Ethan','Archie','Joshua','Noah','Henry','Freddie','Oscar','Edward','Dylan','Leo','Liam','Benjamin','Daniel','Samuel','Ryan','Luke','Callum','Adam','Jamie','Aaron','Connor','Kieran','Ross','Luca','Cameron','Nathan','Ben'],noms:['Smith','Jones','Williams','Taylor','Brown','Davies','Evans','Wilson','Thomas','Roberts','Johnson','Walker','Wright','Robinson','Thompson','White','Hughes','Edwards','Green','Hall','Lewis','Harris','Clarke','Jackson','Wood','Turner','Martin','Cooper','Hill','Ward','Morris','Moore','Clark','Lee','King']},
+  americain:{prenoms:['Tyler','Brandon','Marcus','Darius','DeShawn','Malik','Jaylen','Jordan','Kyler','Zach','Cole','Tanner','Blake','Chase','Cody','Derek','Dustin','Garrett','Hunter','Jason','Justin','Kyle','Landon','Logan','Mason','Parker','Preston','Tate','Zane','Caleb','Elijah','Isaiah','Jamal','Jalen','Kendrick','Lamar','Rashad','Terrell','Xavier','Devon'],noms:['Johnson','Williams','Brown','Jones','Miller','Davis','Garcia','Rodriguez','Wilson','Martinez','Anderson','Taylor','Thomas','Hernandez','Moore','Jackson','Martin','Lee','Thompson','White','Harris','Sanchez','Clark','Ramirez','Lewis','Robinson','Walker','Young','Allen','King','Wright','Scott','Torres','Nguyen']},
+  allemand:{prenoms:['Lukas','Jonas','Leon','Niklas','Tim','Jan','Maximilian','Felix','Florian','Julian','Tobias','Sebastian','Philipp','Kevin','Luca','Marco','Paul','Moritz','Simon','Lars','Christian','Patrick','Thomas','Michael','Stefan','Andreas','Dominik','Alexander','Dennis','Sven','Kai','Fabian','Markus','David','Matthias','Bastian','Christoph','Daniel','Nico','Ole'],noms:['Müller','Schmidt','Schneider','Fischer','Weber','Meyer','Wagner','Becker','Schulz','Hoffmann','Schäfer','Koch','Bauer','Richter','Klein','Wolf','Schröder','Neumann','Schwarz','Zimmermann','Braun','Krüger','Hofmann','Hartmann','Lange','Schmitt','Werner','Schmitz','Krause','Meier']},
+  espagnol:{prenoms:['Carlos','David','Pablo','Alejandro','Diego','Marco','Sergio','Andrés','Javier','Miguel','Raúl','Fernando','Roberto','Rodrigo','Adrián','Álvaro','Iker','Marcos','Nacho','Borja','Aitor','Unai','Mikel','Xavi','Cesc','Dani','Toni','Jordi','Gerard','Thiago','Luis','Pedro','Felipe','Bruno','João','Renato','Vitinho','Gabriel','Wendell'],noms:['García','Martínez','López','Sánchez','González','Pérez','Rodríguez','Fernández','Jiménez','Álvarez','Romero','Díaz','Moreno','Alonso','Gutiérrez','Navarro','Torres','Domínguez','Vázquez','Ramos','Gil','Serrano','Blanco','Molina','Morales','Suárez','Ortega','Delgado','Castro','Ortiz']},
+  russe:{prenoms:['Alexei','Dmitri','Ivan','Pavel','Andrei','Nikolai','Sergei','Vladimir','Mikhail','Artem','Evgeni','Maxim','Roman','Anton','Kirill','Ilya','Georgi','Viktor','Oleg','Boris','Denis','Ruslan','Timur','Danil','Artur','Vitaly','Stanislav','Yaroslav','Vadim','Gleb'],noms:['Ivanov','Smirnov','Kuznetsov','Popov','Vasiliev','Petrov','Sokolov','Mikhailov','Novikov','Fedorov','Morozov','Volkov','Alekseev','Lebedev','Semyonov','Egorov','Pavlov','Kozlov','Stepanov','Nikolaev','Orlov','Andreev','Makarov','Nikitin','Zakharov','Solovyov','Borisov','Yakovlev','Grigoriev']},
+  ukrainien:{prenoms:['Andriy','Dmytro','Oleksiy','Vasyl','Mykola','Bohdan','Taras','Oleh','Yuriy','Pavlo','Serhiy','Vitaliy','Maksym','Mykhailo','Ruslan','Denys','Yaroslav','Volodymyr','Roman','Oles'],noms:['Kovalenko','Bondarenko','Tkachenko','Kravchenko','Melnyk','Semenko','Petrenko','Savchenko','Ponomarenko','Lysenko','Marchenko','Gryshchenko','Koval','Shevchenko','Morozenko','Popov','Moroz','Kryvoruchko','Boyko','Fedorenko']},
+  serbe:{prenoms:['Aleksandar','Nikola','Stefan','Luka','Nemanja','Miloš','Milan','Marko','Danilo','Dejan','Bojan','Vuk','Dragan','Đorđe','Branko','Filip','Ognjen','Ivan','Miroslav','Srđan'],noms:['Jović','Milić','Petković','Nikolić','Stojanović','Đorđević','Marković','Stanković','Janković','Savić','Lazić','Ilić','Antić','Knežević','Todorović','Filipović','Radović','Vuković','Đukić','Lukić']},
+  bulgare:{prenoms:['Georgi','Ivan','Nikolay','Dimitar','Alexander','Hristo','Petar','Todor','Rumen','Boyan','Stanimir','Valentin','Blagovest','Plamen','Miroslav','Kaloyan','Desislav','Dobromir','Slavcho','Milen'],noms:['Ivanov','Georgiev','Nikolov','Todorov','Dimitrov','Petrov','Angelov','Stoyanov','Manchev','Kovachev','Penev','Kolev','Minchev','Slavov','Rashev','Tsenov','Popov','Tsvetkov','Neykov','Mitov']},
+  japonais:{prenoms:['Hiroshi','Takeshi','Kenji','Yuki','Ryota','Shoichi','Naoki','Tatsuya','Koji','Daisuke','Yuji','Masaki','Kenta','Shota','Ren','Haruki','Sota','Daiki','Ryo','Kaito','Tsubasa','Yuto','Hayato','Itsuki','Sora','Taichi','Koki','Yusei','Tomoya','Shun'],noms:['Sato','Suzuki','Tanaka','Watanabe','Ito','Yamamoto','Nakamura','Kobayashi','Kato','Yoshida','Yamada','Sasaki','Yamaguchi','Saito','Matsumoto','Inoue','Kimura','Hayashi','Shimizu','Yamazaki']},
+  chinois:{prenoms:['Wei','Fang','Xiao','Jian','Ming','Hao','Peng','Lei','Tao','Yang','Bo','Kai','Jun','Chen','Zhi','Long','Bin','Feng','Qiang','Hui','Yong','Gang','Chao','Jie','Rui','Liang','Xin','Zhong','Dong','Zhen'],noms:['Wang','Li','Zhang','Liu','Chen','Yang','Huang','Zhao','Wu','Zhou','Xu','Sun','Ma','Zhu','Hu','Guo','He','Lin','Gao','Luo','Zheng','Liang','Xie','Tang','Han','Cao','Xu','Deng','Feng']},
+  indien:{prenoms:['Aarav','Arjun','Vihaan','Sai','Advik','Vivaan','Rohan','Aditya','Dhruv','Kabir','Ritvik','Darsh','Arnav','Ishaan','Laksh','Mayank','Nikhil','Pranav','Shivam','Yash','Karan','Dev','Rajan','Sunil','Ajay','Rajesh','Vijay','Amit','Rahul','Gaurav'],noms:['Sharma','Patel','Singh','Gupta','Kumar','Mehta','Shah','Jain','Agarwal','Verma','Yadav','Sinha','Mishra','Tiwari','Pandey','Chauhan','Chaudhary','Dubey','Nair','Pillai','Reddy','Rao','Iyer','Menon','Krishnamurthy','Subramanian','Murthy','Bose','Chatterjee']},
+  africain:{prenoms:['Kofi','Kwame','Yaw','Yusuf','Amara','Oumar','Mamadou','Ibrahima','Seydou','Moussa','Abdoulaye','Cheikh','Lamine','Babacar','Idrissa','Aliou','Modou','Omar','Serigne','Mbaye','Diallo','Traore','Coulibaly','Diarra','Camara','Keita','Bah','Barry','Doumbouya'],noms:['Diallo','Traore','Coulibaly','Diarra','Camara','Keita','Sy','Balde','Sow','Barry','Cissé','Touré','Koné','Konaté','Sanogo','Dembélé','Sissoko','Maïga','Dao','Samaké','Bamba','Fofana','Guilavogui','Soumah','Cherif','Fofana','Condé']},
+  turc:{prenoms:['Burak','Cengiz','Hakan','Emre','Arda','Mehmet','Serdar','Cenk','Kerem','Yunus','Ferdi','Zeki','Ozan','Umut','Dorukhan','Halil','Yusuf','Baris','Okay','Mert','Enes','Alpay','Oguzhan','Gokhan','Tolgay'],noms:['Yilmaz','Kaya','Demir','Sahin','Celik','Yildiz','Ozdemir','Arslan','Dogan','Aydin','Ozturk','Kilic','Kurt','Çetin','Polat','Aslan','Karadag','Tekin','Erdem','Akin']},
+  georgien:{prenoms:['Giorgi','Lasha','Levan','Davit','Nika','Tornike','Sandro','Irakli','Mikheil','Vakhtang','Goga','Nugzar','Revaz','Tamaz','Zurab','Kakha','Beka','Kote','Lado','Otar'],noms:['Kvaratskhelia','Chikviladze','Beridze','Jikia','Lomaia','Mchedlishvili','Khomasuridze','Tsurtsumia','Tkeshelashvili','Gvalia','Chitaia','Jorjikia','Tsintsadze','Grigalava','Kobakhidze','Mamardashvili','Sanaia','Lochoshvili','Kashia','Kiteishvili']},
+  armenien:{prenoms:['Aram','Tigran','Vardan','Armen','Hayk','Davit','Artur','Narek','Edvin','Sargis','Artak','Vahan','Gevorg','Samvel','Gor','Rafik','Levon','Karen','Ashot','Khachik'],noms:['Petrosyan','Grigoryan','Sargsyan','Hovhannisyan','Harutyunyan','Mkrtchyan','Karapetyan','Ghazaryan','Simonyan','Danielyan','Abrahamyan','Avagyan','Hakobyan','Mikaelyan','Muradyan','Nalbandyan','Stepanyan','Tonoyan','Vardanyan','Zakharyan']},
+  scandinave:{prenoms:['Erik','Lars','Bjorn','Sven','Magnus','Henrik','Johan','Andreas','Mikael','Joakim','Nicklas','Viktor','Patrik','Jonas','Daniel','Marcus','Christoffer','Sebastian','Alexander','Emil','Oscar','Felix','Elias','Hugo','Axel','Ludvig','Alfred','Isak','Oliver','William'],noms:['Johansson','Andersson','Karlsson','Nilsson','Eriksson','Larsson','Olsson','Persson','Svensson','Gustafsson','Pettersson','Jonsson','Jansson','Hansson','Bengtsson','Lindqvist','Lindberg','Lindström','Bergström','Bergman','Hansen','Christensen','Jensen','Nielsen','Pedersen']},
+  neerlandais:{prenoms:['Daan','Sem','Finn','Luuk','Lars','Sander','Joris','Niels','Bram','Pieter','Ruud','Mark','Frank','Robin','Tom','Kevin','Davy','Barry','Jordy','Tim','Patrick','Dennis','Arjen','Wesley','Virgil','Frenkie','Memphis','Cody','Nathan','Ryan'],noms:['de Jong','van Dijk','Berghuis','Depay','Dumfries','Gakpo','Klaassen','Blind','Timber','Malacia','Wijnaldum','Sneijder','Robben','Kuyt','van Persie','Huntelaar','de Bruyne','Koeman','Bergkamp','Zenden','van der Sar','Stam','Bouma','Heitinga','van Bommel']},
+  islandais:{prenoms:['Sigurdur','Gudmundur','Gunnar','Magnus','Kristján','Björn','Einar','Aron','Birkir','Eidur','Gylfi','Jóhann','Kari','Olafur','Ragnar','Runar','Siggi','Stefan','Thor','Vidar'],noms:['Sigurdsson','Gudmundsson','Bjarnason','Finnbogason','Gunnarsson','Halldorsson','Ingason','Jonsson','Kristinsson','Magnusson','Ólafsson','Palsson','Ragnarsson','Sigurjonsson','Skulason','Smarason','Stefansson','Thordarson','Valgardsson']},
+  italien:{prenoms:['Alessandro','Lorenzo','Marco','Davide','Giacomo','Riccardo','Federico','Simone','Andrea','Matteo','Luca','Francesco','Gabriele','Leonardo','Tommaso','Giorgio','Emanuele','Stefano','Roberto','Daniele','Ciro','Gennaro','Salvatore','Domenico','Antonio','Giuseppe','Vincenzo','Luigi','Mario'],noms:['Rossi','Ferrari','Esposito','Bianchi','Romano','Colombo','Ricci','Marino','Greco','Bruno','Gallo','Conti','De Luca','Mancini','Costa','Giordano','Rizzo','Lombardi','Moretti','Barbieri','Fontana','Santoro','Marini','Caputo','Ferrara']},
+  grec:{prenoms:['Alexandros','Nikos','Giorgos','Kostas','Panagiotis','Dimitris','Vasilis','Christos','Yannis','Stavros','Petros','Apostolos','Theo','Manolis','Leonidas','Kyriakos','Spyros','Fotis','Evangelos','Dimos'],noms:['Papadopoulos','Nikolaou','Georgiou','Konstantinou','Alexiou','Andreou','Papas','Dimas','Karas','Liakopoulos','Samaras','Gekas','Zorbas','Karagounis','Charisteas','Dellas','Kapetanos','Torosidis','Amanatidis','Fetfatzidis']},
+  hebreu:{prenoms:['Yoav','Noa','Omer','Itay','Roi','Tomer','Tal','Dan','Eran','Eyal','Lior','Nir','Gal','Bar','Gavi','Arnon','Kfir','Paz','Shay','Matan'],noms:['Cohen','Levi','Mizrahi','Peretz','Katz','Friedman','Shapiro','Goldberg','Levy','Rosenberg','Greenberg','Blum','Weiss','Schwartz','Berger','Stern','Horowitz','Biton','Abitbol','Ohayon']},
+  perse:{prenoms:['Ali','Reza','Mohammad','Hossein','Amir','Mehdi','Milad','Farzad','Arash','Kamran','Kaveh','Dariush','Cyrus','Siavash','Babak','Shahram','Behrouz','Maziar','Navid','Saeed'],noms:['Hosseini','Ahmadi','Karimi','Mohammadi','Asghari','Rezaei','Moradi','Rahimi','Jafari','Ghasemi','Abbasi','Sadeghi','Bagheri','Nouri','Shirazi','Tehrani','Isfahani','Shafiei','Zamani','Tavakoli']},
+  thai:{prenoms:['Somchai','Chaiwat','Nathapong','Teerasak','Kroekrit','Supachok','Chanathip','Thitipan','Sanrawat','Sarach','Tristan','Sumanya','Jakkit','Teeradet','Mongkol'],noms:['Rattanakorn','Singthong','Chanathip','Dolah','Elamue','Khemarin','Raksakaew','Srisakda','Srithong','Buspakom','Chitawong','Panwong','Thianthong','Kaewwong']},
+  vietnamien:{prenoms:['Minh','Quang','Tuan','Long','Duc','Hoang','Thanh','Hung','Van','Duy','Dinh','Tran','Ngo','Bui','Huu','Cong','Xuan','Diep','Vu','Nguyen'],noms:['Nguyen','Tran','Le','Pham','Hoang','Vu','Dang','Bui','Do','Ho','Ngo','Duong','Ly','Truong','Dinh','Phan','Trinh','Dao','Luong','Cao']},
+  cambodgien:{prenoms:['Sokha','Dara','Chenda','Panha','Virak','Piseth','Rathana','Mony','Vanna','Sothea','Chan','Bora','Kosal','Samnang','Bunna'],noms:['Chea','Ek','Hay','Keo','Kim','Kong','Lay','Mao','Neak','Nou','Pen','Prak','Sam','Sok','Sor']},
+  laotien:{prenoms:['Somporn','Khamphanh','Vilaysack','Bounthong','Daovone','Soukanh','Phommasith','Phouthone','Bounlap','Chansavath'],noms:['Phommasith','Chanthavong','Vongphachan','Sengmany','Bouphavanh','Khamphanh','Phetsouvanh','Vongsamphanh','Chanthalath','Douangmala']},
+  malaisien:{prenoms:['Ahmad','Mohd','Muhammad','Khairul','Farizal','Safuwan','Shahrul','Zaquan','Akram','Irfan','Razip','Fitri','Farhan','Dion','Syafiq'],noms:['Bin Ahmad','Bin Abdullah','Bin Mohamed','Bin Hassan','Bin Ibrahim','Bin Ismail','Bin Yusof','Bin Razali','Bin Kamaruddin','Bin Hamid','Bin Zainal','Bin Wahid','Bin Othman','Bin Talib']},
+  finlandais:{prenoms:['Mikko','Jari','Teemu','Pekka','Ville','Antti','Matti','Juha','Sami','Toni','Ari','Kari','Petri','Jukka','Heikki','Risto','Timo','Juuso','Lauri','Eetu'],noms:['Mäkinen','Korhonen','Virtanen','Mäkinen','Leinonen','Heikkinen','Räty','Litmanen','Paatelainen','Forssell','Kolkka','Hyypiä','Tihinen','Kuqi','Johansson','Sparv','Pukki','Pohjanpalo','Lod','Tuominen']},
+  kazakh:{prenoms:['Nurlan','Bauyrzhan','Zhassulan','Bakyt','Serikzhan','Adil','Talgat','Daniyar','Abat','Yerzhan','Bekzat','Kairat','Aibek','Ruslan','Timur'],noms:['Akhmetov','Beysenov','Zhukov','Khizhnichenko','Logvinenko','Nurgaliev','Shomko','Tazhimbetov','Vorogovskiy','Bakaev','Moldakaraev','Nurmagambetov','Suyumbayev']},
+  croate:{prenoms:['Luka','Ivan','Mateo','Mario','Ante','Domagoj','Marcelo','Ivan','Tin','Joško','Borna','Josip','Lovro','Nikola','Bruno','Andrej','Filip','Luka','Dario','Vedran'],noms:['Modrić','Perišić','Mandžukić','Kovačić','Gvardiol','Vida','Subašić','Vrsaljko','Caleta-Car','Sosa','Pjaca','Brekalo','Livaja','Budimir','Benković','Erlić','Barisic','Oršić','Vlašić','Rebić']}
+};
+
+// ── MULTI-CULTURE SYSTEM ──
+var selectedCultures=[]; // [{key,weight}]
+
+var ALL_CULTURES=[
+  {key:'arabe',label:'Arabe / Moyen-Orient'},
+  {key:'francais',label:'Français'},
+  {key:'anglais',label:'Anglais'},
+  {key:'americain',label:'Américain'},
+  {key:'allemand',label:'Allemand'},
+  {key:'espagnol',label:'Espagnol / Portugais'},
+  {key:'russe',label:'Russe'},
+  {key:'ukrainien',label:'Ukrainien'},
+  {key:'serbe',label:'Serbe'},
+  {key:'bulgare',label:'Bulgare'},
+  {key:'japonais',label:'Japonais'},
+  {key:'chinois',label:'Chinois'},
+  {key:'indien',label:'Indien'},
+  {key:'africain',label:'Africain subsaharien'},
+  {key:'turc',label:'Turc'},
+  {key:'georgien',label:'Géorgien'},
+  {key:'armenien',label:'Arménien'},
+  {key:'scandinave',label:'Scandinave'},
+  {key:'neerlandais',label:'Néerlandais'},
+  {key:'islandais',label:'Islandais'},
+  {key:'italien',label:'Italien'},
+  {key:'grec',label:'Grec'},
+  {key:'hebreu',label:'Hébreu'},
+  {key:'perse',label:'Perse / Iranien'},
+  {key:'thai',label:'Thaï'},
+  {key:'vietnamien',label:'Vietnamien'},
+  {key:'cambodgien',label:'Cambodgien'},
+  {key:'laotien',label:'Laotien'},
+  {key:'malaisien',label:'Malaisien'},
+  {key:'finlandais',label:'Finlandais'},
+  {key:'kazakh',label:'Kazakh'},
+  {key:'croate',label:'Croate'}
+];
+
+function initCultureUI(){
+  var sel=document.getElementById('f-culture-add');
+  if(!sel)return;
+  sel.innerHTML='<option value="">+ Ajouter une culture…</option>';
+  ALL_CULTURES.forEach(function(c){
+    sel.innerHTML+='<option value="'+c.key+'">'+c.label+'</option>';
+  });
+}
+
+function addCulture(key){
+  if(!key)return;
+  if(selectedCultures.find(function(c){return c.key===key;}))return;
+  var label=ALL_CULTURES.find(function(c){return c.key===key;});
+  selectedCultures.push({key:key,weight:50});
+  renderCulturePicks();
+}
+
+function removeCulture(key){
+  selectedCultures=selectedCultures.filter(function(c){return c.key!==key;});
+  renderCulturePicks();
+}
+
+function renderCulturePicks(){
+  var picks=document.getElementById('culture-picks');
+  var sliders=document.getElementById('culture-sliders');
+  if(!picks||!sliders)return;
+  picks.innerHTML=selectedCultures.map(function(c){
+    var label=ALL_CULTURES.find(function(x){return x.key===c.key;});
+    return '<div style="display:flex;align-items:center;gap:4px;background:rgba(34,184,154,.1);border:1px solid rgba(34,184,154,.25);border-radius:3px;padding:3px 8px;font-size:9px;color:var(--teal-bright);">'
+      +(label?label.label:c.key)
+      +'<button onclick="removeCulture(\''+c.key+'\')" style="background:none;border:none;color:var(--spice);cursor:pointer;font-size:11px;padding:0 2px;line-height:1;">✕</button>'
+      +'</div>';
+  }).join('');
+  if(selectedCultures.length>1){
+    sliders.innerHTML=selectedCultures.map(function(c,i){
+      var label=ALL_CULTURES.find(function(x){return x.key===c.key;});
+      return '<div style="display:flex;align-items:center;gap:8px;">'
+        +'<span style="font-size:8px;color:var(--text3);width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">'+(label?label.label:c.key)+'</span>'
+        +'<input type="range" min="0" max="100" value="'+c.weight+'" style="flex:1;accent-color:var(--teal-bright);" oninput="selectedCultures['+i+'].weight=parseInt(this.value);document.getElementById(\'w-'+c.key+'\').textContent=this.value+\'%\'">'
+        +'<span id="w-'+c.key+'" style="font-size:9px;color:var(--teal-bright);min-width:30px;text-align:right;">'+c.weight+'%</span>'
+        +'</div>';
+    }).join('');
+  } else {
+    sliders.innerHTML='';
+  }
+}
+
+function genNameFromCultures(){
+  var cultures=selectedCultures.length>0?selectedCultures:[{key:'anglais',weight:100}];
+  if(cultures.length===1)return genName(cultures[0].key);
+  var totalW=cultures.reduce(function(s,c){return s+c.weight;},0);
+  if(totalW===0)return genName(cultures[0].key);
+  var r=Math.random()*totalW,acc=0;
+  for(var i=0;i<cultures.length;i++){
+    acc+=cultures[i].weight;
+    if(r<=acc)return genName(cultures[i].key);
+  }
+  return genName(cultures[cultures.length-1].key);
+}
+
+
+var POSTES=['GK','DC','DC','DD','DG','MDC','MC','MC','MO','MOD','MOG','AC','AD','AG'];
+var POSTES_LABELS={GK:'Gardien',DC:'Défenseur central',DD:'Défenseur droit',DG:'Défenseur gauche',MDC:'Milieu défensif',MC:'Milieu central',MO:'Milieu offensif',MOD:'Milieu offensif droit',MOG:'Milieu offensif gauche',AC:'Attaquant central',AD:'Ailier droit',AG:'Ailier gauche'};
+var POSTES_CAT={GK:'GK',DC:'DEF',DD:'DEF',DG:'DEF',MDC:'MIL',MC:'MIL',MO:'MIL',MOD:'MIL',MOG:'MIL',AC:'ATT',AD:'ATT',AG:'ATT'};
+
+// ════════════════════════════════════════════════
+//  UTILS
+// ════════════════════════════════════════════════
+function rand(min,max){return Math.floor(Math.random()*(max-min+1))+min;}
+function clamp(v,min,max){return Math.max(min,Math.min(max,v));}
+function rng(center,spread){return clamp(center+rand(-spread,spread),1,99);}
+
+function toast(msg,type){
+  var t=document.getElementById('toast');
+  t.textContent=msg;t.className=type==='err'?'err':'ok';t.style.opacity='1';
+  setTimeout(function(){t.style.opacity='0';},2600);
+}
+
+function getPat(){return document.getElementById('pat-in').value||localStorage.getItem('pharos_gh_pat')||'';}
+
+function genName(culture){
+  var c=NAMES[culture]||NAMES['anglais'];
+  var p=c.prenoms[rand(0,c.prenoms.length-1)];
+  var n=c.noms[rand(0,c.noms.length-1)];
+  return p+' '+n;
+}
+
+function genId(){return 'p_'+Date.now()+'_'+rand(1000,9999);}
+
+function calcGlobalNote(player){
+  // FIFA-style: PAC SHO PAS DRI DEF PHY (+ GKS for GK)
+  var n=player.notes||player; // support both formats
+  var pac=n.pac||50,sho=n.sho||50,pas=n.pas||50,dri=n.dri||50,def=n.def||50,phy=n.phy||50,gks=n.gks||30;
+  if(player.poste==='GK'){
+    // GK: GKS heavily weighted + phy, def
+    return Math.round((gks*2.5+phy*0.8+def*0.7+pac*0.5+pas*0.4+dri*0.1)/5.0);
+  }
+  var POSTES_CAT_L=POSTES_CAT||{};
+  var cat=POSTES_CAT_L[player.poste]||'MIL';
+  if(cat==='ATT') return Math.round((pac*1.0+sho*1.8+pas*0.8+dri*1.4+def*0.3+phy*0.7)/6.0);
+  if(cat==='DEF') return Math.round((pac*0.7+sho*0.3+pas*0.8+dri*0.6+def*1.8+phy*1.3)/5.5);
+  // MIL
+  return Math.round((pac*0.8+sho*0.9+pas*1.5+dri*1.2+def*0.9+phy*0.7)/6.0);
+}
+
+// ════════════════════════════════════════════════
+//  PLAYER GENERATION (FIFA-style notes)
+// ════════════════════════════════════════════════
+function generatePlayers(nb, baseNote, cultures, adjAtt, adjDef, adjMil, adjGk){
+  // cultures: can be array [{key,weight}] or legacy string
+  var genNameFn;
+  if(typeof cultures==='string'){
+    genNameFn=function(){return genName(cultures);};
+  } else if(Array.isArray(cultures)&&cultures.length>0){
+    var totalW=cultures.reduce(function(s,c){return s+c.weight;},0)||1;
+    genNameFn=function(){
+      var r=Math.random()*totalW,acc=0;
+      for(var i=0;i<cultures.length;i++){
+        acc+=cultures[i].weight;
+        if(r<=acc)return genName(cultures[i].key);
+      }
+      return genName(cultures[cultures.length-1].key);
+    };
+  } else {
+    genNameFn=function(){return genName('anglais');};
+  }
+
+  var players=[];
+
+  // Position distribution
+  var positions=[];
+  positions.push('GK','GK');
+  var nbDef=Math.round(nb*0.28);
+  var nbMil=Math.round(nb*0.35);
+  var nbAtt=Math.round(nb*0.30);
+  var defPosts=['DC','DC','DD','DG'];
+  var milPosts=['MDC','MC','MC','MO','MOD','MOG'];
+  var attPosts=['AC','AC','AD','AG'];
+  for(var i=0;i<nbDef;i++)positions.push(defPosts[i%defPosts.length]);
+  for(var i=0;i<nbMil;i++)positions.push(milPosts[i%milPosts.length]);
+  for(var i=0;i<nbAtt;i++)positions.push(attPosts[i%attPosts.length]);
+  while(positions.length<nb)positions.push(milPosts[rand(0,milPosts.length-1)]);
+  for(var i=positions.length-1;i>0;i--){var j=rand(0,i);var t=positions[i];positions[i]=positions[j];positions[j]=t;}
+
+  for(var i=0;i<nb;i++){
+    var poste=positions[i]||'MC';
+    var cat=POSTES_CAT[poste]||'MIL';
+    var adj=(cat==='ATT'?adjAtt:cat==='DEF'?adjDef:cat==='GK'?adjGk:adjMil);
+    var center=clamp(baseNote+adj+rand(-3,3),50,98);
+    var notes;
+
+    if(poste==='GK'){
+      notes={
+        pac:rng(clamp(center-10,40,80),8),
+        sho:rng(clamp(center-30,10,45),8),
+        pas:rng(clamp(center-10,40,80),7),
+        dri:rng(clamp(center-15,30,70),7),
+        def:rng(clamp(center-5,45,85),7),
+        phy:rng(clamp(center-5,50,90),7),
+        gks:rng(clamp(center+12,55,99),5)
+      };
+    } else if(cat==='DEF'){
+      notes={
+        pac:rng(center,9),
+        sho:rng(clamp(center-20,25,65),10),
+        pas:rng(clamp(center-5,45,85),8),
+        dri:rng(clamp(center-10,40,75),9),
+        def:rng(clamp(center+10,60,99),5),
+        phy:rng(clamp(center+8,55,99),6),
+        gks:rng(20,8)
+      };
+    } else if(cat==='MIL'){
+      notes={
+        pac:rng(center,8),
+        sho:rng(clamp(center-5,45,88),8),
+        pas:rng(clamp(center+8,55,99),5),
+        dri:rng(clamp(center+5,50,95),6),
+        def:rng(clamp(center-5,45,85),8),
+        phy:rng(center,8),
+        gks:rng(18,7)
+      };
+    } else { // ATT
+      notes={
+        pac:rng(clamp(center+8,55,99),7),
+        sho:rng(clamp(center+12,60,99),5),
+        pas:rng(clamp(center-5,45,88),8),
+        dri:rng(clamp(center+8,55,99),6),
+        def:rng(clamp(center-20,25,65),10),
+        phy:rng(center,9),
+        gks:rng(15,6)
+      };
+    }
+
+    var age=poste==='GK'?rand(22,38):rand(17,36);
+    var player={id:genId(),nom:genNameFn(),poste:poste,age:age,notes:notes,global:0};
+    player.global=calcGlobalNote(player);
+    players.push(player);
+  }
+  var order={GK:0,DEF:1,MIL:2,ATT:3};
+  players.sort(function(a,b){return (order[POSTES_CAT[a.poste]]||2)-(order[POSTES_CAT[b.poste]]||2);});
+  return players;
+}
+
+function generateCoach(baseNote, cultures){
+  var genNameFn;
+  if(typeof cultures==='string'){genNameFn=function(){return genName(cultures);};}
+  else if(Array.isArray(cultures)&&cultures.length){
+    var totalW=cultures.reduce(function(s,c){return s+c.weight;},0)||1;
+    genNameFn=function(){var r=Math.random()*totalW,acc=0;for(var i=0;i<cultures.length;i++){acc+=cultures[i].weight;if(r<=acc)return genName(cultures[i].key);}return genName(cultures[0].key);};
+  } else {genNameFn=function(){return genName('anglais');};}
+  var spread=8;
+  var notes={
+    tactique:rng(baseNote,spread),
+    attaque:rng(baseNote,spread),
+    defence:rng(baseNote,spread),
+    preparation:rng(baseNote,spread),
+    gestion:rng(baseNote,spread)
+  };
+  var global=Math.round((notes.tactique*1.5+notes.attaque*1.1+notes.defence*1.1+notes.preparation*1.0+notes.gestion*0.9)/5.6);
+  return{nom:genNameFn(),notes:notes,global:global};
+}
+
+
+// ════════════════════════════════════════════════
+//  STATE
+// ════════════════════════════════════════════════
+function loadFbData(){
+  try{
+    var s=localStorage.getItem('fb_data');
+    if(s)fbData=JSON.parse(s);
+  }catch(e){fbData={pays:[],competitions:[],matchs:[]};}
+  if(!fbData.pays)fbData.pays=[];
+}
+function saveFbLocal(){localStorage.setItem('fb_data',JSON.stringify(fbData));}
+
+// ════════════════════════════════════════════════
+//  UI
+// ════════════════════════════════════════════════
+function renderSidebar(){
+  var el=document.getElementById('sb-list');
+  var cnt=document.getElementById('sb-count');
+  var pays=fbData.pays||[];
+  cnt.textContent=pays.length;
+  if(!pays.length){el.innerHTML='<div style="padding:20px 14px;font-size:9px;color:var(--text3);text-align:center;letter-spacing:.08em;">Aucune équipe</div>';return;}
+  el.innerHTML=pays.map(function(p,i){
+    var flagHtml=p.flag_data?
+      '<img src="'+p.flag_data+'" style="width:32px;height:22px;object-fit:cover;border-radius:2px;border:1px solid var(--border);">':
+      '<div style="width:32px;height:22px;background:var(--bg2);border:1px solid var(--border);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--text3);">?</div>';
+    var active=p.id===currentTeamId?' active':'';
+    return '<div class="sb-item'+active+'" onclick="selectTeam(\''+p.id+'\')">'
+      +'<div>'+flagHtml+'</div>'
+      +'<div class="sb-item-info"><div class="sb-item-name">'+p.nom+'</div><div class="sb-item-meta">'+p.continent+' · '+(p.joueurs?p.joueurs.length:0)+' joueurs</div></div>'
+      +'<div class="sb-item-rating">'+p.note_globale+'</div>'
+      +'</div>';
+  }).join('');
+}
+
+function selectTeam(id){
+  currentTeamId=id;
+  renderSidebar();
+  var p=fbData.pays.find(function(x){return x.id===id;});
+  if(!p)return;
+  document.getElementById('empty-state').style.display='none';
+  document.getElementById('team-detail').style.display='block';
+  renderTeamDetail(p);
+}
+
+function renderTeamDetail(p){
+  var el=document.getElementById('team-detail');
+  var flagSrc=p.flag_data||'';
+  var flagImg=flagSrc?'<img src="'+flagSrc+'" class="detail-flag">':'<div class="detail-flag" style="background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--text3);">?</div>';
+
+  var html='<div class="detail-hero">';
+  html+=flagImg;
+  html+='<div><div class="detail-name">'+p.nom+'</div><div class="detail-meta">'+p.continent+' · '+p.culture+' · '+(p.joueurs?p.joueurs.length:0)+' joueurs</div></div>';
+  html+='<div class="detail-rating">'+p.note_globale+'</div>';
+  html+='</div>';
+
+  // Actions
+  html+='<div class="detail-actions">';
+  html+='<button class="btn-sm btn-teal" onclick="openEditModal(\''+p.id+'\')">✎ Modifier</button>';
+  html+='<button class="btn-sm" onclick="regenPlayers(\''+p.id+'\')">⚡ Régénérer joueurs</button>';
+  html+='<button class="btn-sm btn-danger" onclick="deleteTeam(\''+p.id+'\')">✕ Supprimer</button>';
+  html+='</div>';
+
+  // Coach
+  if(p.coach){
+    html+='<div style="font-size:7px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:10px;border-bottom:1px solid rgba(212,168,67,.2);padding-bottom:6px;display:flex;align-items:center;justify-content:space-between;">Entraîneur<button onclick="openCoachEdit(\''+p.id+'\')" style="background:rgba(200,150,12,.08);border:1px solid rgba(200,150,12,.25);color:var(--gold);font-family:\'IBM Plex Mono\',monospace;font-size:7px;padding:2px 8px;cursor:pointer;border-radius:2px;">✎ Modifier</button></div>';
+    html+='<div class="coach-card">';
+    html+='<div><div class="coach-name">'+p.coach.nom+'</div><div style="font-size:8px;color:var(--text3);margin-top:2px;">Note globale · <span style="color:var(--gold);font-family:\'Dune Rise\',serif;">'+p.coach.global+'</span></div></div>';
+    html+='<div class="coach-notes">';
+    var cn=p.coach.notes;
+    var cnLabels={tactique:'Tactique',motivation:'Motivation',defence:'Défense',attaque:'Attaque',gestion:'Gestion'};
+    Object.keys(cn).forEach(function(k){
+      html+='<div class="coach-note-item"><div class="cn-lbl">'+cnLabels[k]+'</div><div class="cn-val">'+cn[k]+'</div></div>';
+    });
+    html+='</div></div>';
+  }
+
+  // Tabs
+  html+='<div class="tab-btns">';
+  html+='<button class="tab-btn active" id="tab-btn-joueurs" onclick="showTab(\'joueurs\',this)">Joueurs ('+((p.joueurs||[]).length)+')</button>';
+  html+='<button class="tab-btn" id="tab-btn-tactique" onclick="showTab(\'tactique\',this)">Tactique & Formation</button>';
+  html+='</div>';
+
+  // Players
+  html+='<div id="tab-joueurs-content">';
+  html+=renderPlayersTable(p);
+  html+='</div>';
+  html+='<div id="tab-tactique-content" style="display:none;">';
+  html+=renderTacticTab(p);
+  html+='</div>';
+
+  el.innerHTML=html;
+  // Init drag after render
+  setTimeout(function(){initPitchDrag(p.id);},60);
+}
+
+function renderPlayersTable(p){
+  var joueurs=p.joueurs||[];
+  if(!joueurs.length)return '<div style="padding:32px;text-align:center;font-size:10px;color:var(--text3);">Aucun joueur.</div>';
+  var html='<div class="player-list-hdr"><div>#</div><div>Nom</div><div>Poste</div><div>PAC</div><div>SHO</div><div>PAS</div><div>DRI</div><div>DEF</div><div>PHY</div><div>GLOBAL</div><div></div></div>';
+  joueurs.forEach(function(j,i){
+    var cat=POSTES_CAT[j.poste]||'MIL';
+    var g=j.global;
+    var gcls=g>=80?'high':g>=65?'mid':'low';
+    html+='<div class="player-row">';
+    html+='<div class="p-num">'+(i+1)+'</div>';
+    html+='<div class="p-name">'+j.nom+'</div>';
+    html+='<div><span class="p-pos pos-'+cat+'">'+j.poste+'</span></div>';
+    var n=j.notes||{};
+    ['pac','sho','pas','dri','def','phy'].forEach(function(k){html+='<div class="p-note">'+( n[k]||'—')+'</div>';});
+    html+='<div class="p-note '+gcls+'">'+g+'</div>';
+    html+='<div><button class="p-edit" onclick="openPlayerEdit(\''+p.id+'\','+i+')">✎</button></div>';
+    html+='</div>';
+  });
+  return html;
+}
+
+function showTab(tab,btn){
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  var tabs=['joueurs','tactique'];
+  tabs.forEach(function(t){
+    var el=document.getElementById('tab-'+t+'-content');
+    if(el)el.style.display=(t===tab?'block':'none');
+  });
+}
+
+// ════════════════════════════════════════════════
+//  MODAL: CREATE / EDIT
+// ════════════════════════════════════════════════
+function updateAdjLabel(key,v){
+  var sign=v>0?'+':v<0?'':' ';
+  document.getElementById('lbl-'+key).textContent=sign+v;
+}
+
+function openCreateModal(){
+  editTeamIdx=null;
+  document.getElementById('create-modal-ttl').textContent='Nouvelle Équipe Nationale';
+  document.getElementById('f-nom').value='';
+  document.getElementById('f-nb-joueurs').value='23';
+  document.getElementById('f-note').value='70';
+  document.getElementById('f-note-val').textContent='70';
+  document.getElementById('flag-data').value='';
+  document.getElementById('flag-filename').value='';
+  document.getElementById('flag-preview-wrap').innerHTML='<svg viewBox="0 0 40 40" fill="none" width="36" height="36" style="opacity:.2;"><rect x="4" y="8" width="24" height="16" rx="1" stroke="currentColor" stroke-width="1.2" fill="none"/><line x1="4" y1="8" x2="4" y2="32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><div class="flag-ph">Cliquer pour uploader un drapeau</div>';
+  document.getElementById('create-modal').classList.add('open');
+}
+
+function openEditModal(teamId){
+  var p=fbData.pays.find(function(x){return x.id===teamId;});
+  if(!p)return;
+  editTeamIdx=fbData.pays.indexOf(p);
+  document.getElementById('create-modal-ttl').textContent='Modifier · '+p.nom;
+  document.getElementById('f-nom').value=p.nom;
+  document.getElementById('f-continent').value=p.continent;
+  document.getElementById('f-culture').value=p.culture;
+  document.getElementById('f-nb-joueurs').value=(p.joueurs||[]).length||23;
+  document.getElementById('f-note').value=p.note_globale||70;
+  document.getElementById('f-note-val').textContent=p.note_globale||70;
+  document.getElementById('flag-data').value=p.flag_data||'';
+  document.getElementById('flag-filename').value=p.flag_filename||'';
+  if(p.flag_data){
+    document.getElementById('flag-preview-wrap').innerHTML='<img src="'+p.flag_data+'" class="flag-preview"><div class="flag-ph" style="margin-top:8px;">Cliquer pour changer</div>';
+  }
+  document.getElementById('create-modal').classList.add('open');
+}
+
+function closeCreateModal(){document.getElementById('create-modal').classList.remove('open');}
+
+function handleFlag(input){
+  var file=input.files[0];if(!file)return;
+  var reader=new FileReader();
+  reader.onload=function(e){
+    document.getElementById('flag-data').value=e.target.result;
+    document.getElementById('flag-filename').value=file.name.replace(/[^a-zA-Z0-9._-]/g,'_').toLowerCase();
+    document.getElementById('flag-preview-wrap').innerHTML='<img src="'+e.target.result+'" class="flag-preview"><div class="flag-ph" style="margin-top:8px;">Cliquer pour changer</div>';
+  };
+  reader.readAsDataURL(file);
+}
+
+function generateTeam(){
+  var nom=document.getElementById('f-nom').value.trim();
+  if(!nom){toast('Entrez le nom du pays.','err');return;}
+  var nb=parseInt(document.getElementById('f-nb-joueurs').value)||23;
+  nb=Math.max(23,Math.min(1000,nb));
+  var note=parseInt(document.getElementById('f-note').value)||70;
+  var culture=document.getElementById('f-culture').value;
+  var continent=document.getElementById('f-continent').value;
+  var adjAtt=parseInt(document.getElementById('f-att').value)||0;
+  var adjDef=parseInt(document.getElementById('f-def').value)||0;
+  var adjMil=parseInt(document.getElementById('f-mil').value)||0;
+  var adjGk=parseInt(document.getElementById('f-gk').value)||0;
+  var flagData=document.getElementById('flag-data').value;
+  var flagFn=document.getElementById('flag-filename').value;
+
+  // Loading state
+  document.getElementById('btn-gen-lbl').innerHTML='<span class="spinner"></span> Génération…';
+  document.getElementById('btn-gen').disabled=true;
+
+  setTimeout(function(){
+    var joueurs=generatePlayers(nb,note,culture,adjAtt,adjDef,adjMil,adjGk);
+    var coach=generateCoach(note,culture);
+    var teamNote=Math.round(joueurs.reduce(function(s,j){return s+j.global;},0)/joueurs.length);
+
+    var team={
+      id:'team_'+Date.now(),
+      nom:nom,continent:continent,culture:culture,
+      note_globale:teamNote,
+      flag_data:flagData,
+      flag_filename:flagFn?IMAGES_PATH+flagFn:'',
+      coach:coach,
+      joueurs:joueurs,
+      created:new Date().toISOString()
+    };
+
+    if(editTeamIdx!==null&&editTeamIdx>=0){
+      var old=fbData.pays[editTeamIdx];
+      team.id=old.id;
+      fbData.pays[editTeamIdx]=team;
+      toast('Équipe mise à jour · '+nb+' joueurs générés.','ok');
+    } else {
+      fbData.pays.push(team);
+      toast('Équipe créée · '+nb+' joueurs générés.','ok');
+    }
+    saveFbLocal();
+    renderSidebar();
+    closeCreateModal();
+    selectTeam(team.id);
+    document.getElementById('btn-gen-lbl').textContent='⚡ Générer l\'équipe';
+    document.getElementById('btn-gen').disabled=false;
+  },50);
+}
+
+function regenPlayers(teamId){
+  var p=fbData.pays.find(function(x){return x.id===teamId;});
+  if(!p)return;
+  if(!confirm('Régénérer tous les joueurs de '+p.nom+' ? Les noms et notes actuels seront remplacés.'))return;
+  var joueurs=generatePlayers(p.joueurs.length,p.note_globale,p.culture,0,0,0,0);
+  p.joueurs=joueurs;
+  saveFbLocal();
+  renderTeamDetail(p);
+  toast('Joueurs régénérés.','ok');
+}
+
+function deleteTeam(teamId){
+  var p=fbData.pays.find(function(x){return x.id===teamId;});
+  if(!p||!confirm('Supprimer "'+p.nom+'" définitivement ?'))return;
+  fbData.pays=fbData.pays.filter(function(x){return x.id!==teamId;});
+  currentTeamId=null;
+  saveFbLocal();
+  renderSidebar();
+  document.getElementById('empty-state').style.display='block';
+  document.getElementById('team-detail').style.display='none';
+  toast('Équipe supprimée.','ok');
+}
+
+// ════════════════════════════════════════════════
+//  PLAYER EDIT
+// ════════════════════════════════════════════════
+function openPlayerEdit(teamId,idx){
+  var p=fbData.pays.find(function(x){return x.id===teamId;});
+  if(!p)return;
+  var j=p.joueurs[idx];if(!j)return;
+  editPlayerIdx={teamId:teamId,idx:idx};
+  document.getElementById('pe-nom').value=j.nom;
+  document.getElementById('pe-poste').value=j.poste;
+  document.getElementById('pe-age').value=j.age||22;
+  var notes=j.notes||{};
+  ['pac','sho','pas','dri','def','phy','gks'].forEach(function(k){
+    var el=document.getElementById('pe-'+k);
+    if(!el)return;
+    var val=notes[k]||50;
+    el.value=val;
+    document.getElementById('pev-'+k).textContent=val;
+  });
+  document.getElementById('player-modal').classList.add('open');
+}
+
+function closePlayerModal(){document.getElementById('player-modal').classList.remove('open');editPlayerIdx=null;}
+
+function savePlayerEdit(){
+  if(!editPlayerIdx)return;
+  var p=fbData.pays.find(function(x){return x.id===editPlayerIdx.teamId;});
+  if(!p)return;
+  var j=p.joueurs[editPlayerIdx.idx];if(!j)return;
+  j.nom=document.getElementById('pe-nom').value.trim()||j.nom;
+  j.poste=document.getElementById('pe-poste').value;
+  j.age=parseInt(document.getElementById('pe-age').value)||j.age;
+  j.notes={};
+  ['pac','sho','pas','dri','def','phy','gks'].forEach(function(k){j.notes[k]=parseInt(document.getElementById('pe-'+k).value)||50;});
+  j.global=calcGlobalNote(j.notes);
+  saveFbLocal();
+  closePlayerModal();
+  renderTeamDetail(p);
+  toast('Joueur mis à jour.','ok');
+}
+
+// ════════════════════════════════════════════════
+//  TACTICS
+// ════════════════════════════════════════════════
+var FORMATIONS={
+  '4-3-3':{gk:[[50,88]],def:[[20,65],[38,65],[62,65],[80,65]],mil:[[28,42],[50,38],[72,42]],att:[[22,16],[50,12],[78,16]]},
+  '4-4-2':{gk:[[50,88]],def:[[18,65],[38,65],[62,65],[82,65]],mil:[[18,42],[40,42],[60,42],[82,42]],att:[[34,16],[66,16]]},
+  '4-2-3-1':{gk:[[50,88]],def:[[18,65],[38,65],[62,65],[82,65]],mil:[[34,55],[66,55],[20,35],[50,30],[80,35]],att:[[50,14]]},
+  '3-5-2':{gk:[[50,88]],def:[[28,65],[50,62],[72,65]],mil:[[14,48],[33,42],[50,38],[67,42],[86,48]],att:[[34,16],[66,16]]},
+  '3-4-3':{gk:[[50,88]],def:[[28,65],[50,62],[72,65]],mil:[[20,45],[40,42],[60,42],[80,45]],att:[[22,16],[50,12],[78,16]]},
+  '5-3-2':{gk:[[50,88]],def:[[10,72],[28,66],[50,63],[72,66],[90,72]],mil:[[28,42],[50,38],[72,42]],att:[[34,16],[66,16]]},
+  '4-1-4-1':{gk:[[50,88]],def:[[18,65],[38,65],[62,65],[82,65]],mil:[[50,55],[15,38],[36,35],[64,35],[85,38]],att:[[50,14]]},
+  '4-5-1':{gk:[[50,88]],def:[[18,65],[38,65],[62,65],[82,65]],mil:[[14,45],[33,40],[50,38],[67,40],[86,45]],att:[[50,14]]}
+};
+
+var tacticState={}; // keyed by teamId
+
+function getTactic(teamId){
+  if(!tacticState[teamId]){
+    var stored=localStorage.getItem('tactic_'+teamId);
+    if(stored){try{tacticState[teamId]=JSON.parse(stored);}catch(e){}}
+    if(!tacticState[teamId])tacticState[teamId]={formation:'4-3-3',lineup:[],subs:[]};
+  }
+  return tacticState[teamId];
+}
+
+function saveTacticLocal(teamId){
+  localStorage.setItem('tactic_'+teamId,JSON.stringify(tacticState[teamId]));
+}
+
+function buildDefaultLineup(p,formation){
+  var fml=FORMATIONS[formation]||FORMATIONS['4-3-3'];
+  var joueurs=p.joueurs||[];
+  var gks=joueurs.filter(function(j){return j.poste==='GK';});
+  var defs=joueurs.filter(function(j){return POSTES_CAT[j.poste]==='DEF';});
+  var mils=joueurs.filter(function(j){return POSTES_CAT[j.poste]==='MIL';});
+  var atts=joueurs.filter(function(j){return POSTES_CAT[j.poste]==='ATT';});
+
+  // Sort by global desc within each group
+  function sortDesc(arr){return arr.slice().sort(function(a,b){return b.global-a.global;});}
+  gks=sortDesc(gks);defs=sortDesc(defs);mils=sortDesc(mils);atts=sortDesc(atts);
+
+  var lineup=[];
+  var allPositions=[].concat(
+    fml.gk.map(function(xy,i){return{role:'GK',pool:gks,poolIdx:i,x:xy[0],y:xy[1]};}),
+    fml.def.map(function(xy,i){return{role:'DEF',pool:defs,poolIdx:i,x:xy[0],y:xy[1]};}),
+    fml.mil.map(function(xy,i){return{role:'MIL',pool:mils,poolIdx:i,x:xy[0],y:xy[1]};}),
+    fml.att.map(function(xy,i){return{role:'ATT',pool:atts,poolIdx:i,x:xy[0],y:xy[1]};})
+  );
+
+  // Fill lineup
+  var usedIds={};
+  allPositions.forEach(function(pos){
+    var player=pos.pool[pos.poolIdx];
+    if(!player){
+      // Fallback: pick unused from any group
+      player=joueurs.find(function(j){return !usedIds[j.id];});
+    }
+    if(player)usedIds[player.id]=true;
+    lineup.push({role:pos.role,x:pos.x,y:pos.y,playerId:player?player.id:null});
+  });
+
+  // Subs: remaining players sorted by global desc
+  var subs=sortDesc(joueurs.filter(function(j){return !usedIds[j.id];}));
+  return{formation:formation,lineup:lineup,subs:subs.map(function(j){return j.id;})};
+}
+
+function renderTacticTab(p){
+  var tac=getTactic(p.id);
+  var formation=tac.formation||'4-3-3';
+  if(!tac.lineup||!tac.lineup.length){
+    var built=buildDefaultLineup(p,formation);
+    tac.lineup=built.lineup;tac.subs=built.subs;
+    saveTacticLocal(p.id);
+  }
+
+  var pid=p.id;
+  var html='<div class="tactic-shell">';
+  html+='<div class="tactic-pitch-wrap">';
+
+  // Formation selector
+  html+='<div class="formation-btns">';
+  Object.keys(FORMATIONS).forEach(function(fKey){
+    var active=fKey===formation?' active':'';
+    html+='<button class="formation-btn'+active+'" data-team="'+pid+'" data-form="'+fKey+'" onclick="changeFormationClick(this)">'+fKey+'</button>';
+  });
+  html+='</div>';
+
+  // Pitch SVG
+  html+='<svg class="pitch-svg" id="pitch-'+pid+'" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="border:1px solid var(--border);border-radius:3px;">';
+  html+='<rect class="pitch-zone" width="100" height="100" rx="2"/>';
+  html+='<line class="pitch-line" x1="0" y1="50" x2="100" y2="50"/>';
+  html+='<circle class="pitch-line" cx="50" cy="50" r="10"/>';
+  html+='<circle cx="50" cy="50" r="0.8" fill="rgba(255,255,255,.25)"/>';
+  html+='<rect class="pitch-line" x="30" y="0" width="40" height="15"/>';
+  html+='<rect class="pitch-line" x="38" y="0" width="24" height="7"/>';
+  html+='<rect class="pitch-line" x="30" y="85" width="40" height="15"/>';
+  html+='<rect class="pitch-line" x="38" y="93" width="24" height="7"/>';
+  html+='<path class="pitch-line" d="M0,2 Q0,0 2,0"/>';
+  html+='<path class="pitch-line" d="M98,0 Q100,0 100,2"/>';
+  html+='<path class="pitch-line" d="M0,98 Q0,100 2,100"/>';
+  html+='<path class="pitch-line" d="M98,100 Q100,100 100,98"/>';
+
+  tac.lineup.forEach(function(slot,i){
+    var player=slot.playerId?(p.joueurs||[]).find(function(j){return j.id===slot.playerId;}):null;
+    var col=slot.role==='GK'?'#E85C0D':slot.role==='DEF'?'#22B89A':slot.role==='ATT'?'#E84848':'#D4A843';
+    var name=player?player.nom.split(' ')[0]:'?';
+    var note=player?player.global:'?';
+    html+='<g class="player-token" id="pt-'+pid+'-'+i+'" data-team="'+pid+'" data-idx="'+i+'" transform="translate('+slot.x+','+slot.y+')">';
+    html+='<circle class="bg" r="4.5" fill="'+col+'" fill-opacity=".85" stroke="rgba(0,0,0,.4)" stroke-width=".5"/>';
+    html+='<text text-anchor="middle" dominant-baseline="middle" y="0" font-size="2.2" font-family="IBM Plex Mono,monospace" fill="#fff" font-weight="bold">'+note+'</text>';
+    html+='<text text-anchor="middle" y="7" font-size="1.8" font-family="IBM Plex Mono,monospace" fill="rgba(255,255,255,.85)">'+name+'</text>';
+    html+='</g>';
+  });
+  html+='</svg>';
+
+  html+='<div class="tactic-save-bar">';
+  html+='<button class="btn-sm btn-teal" data-team="'+pid+'" onclick="saveTacticToGitHub(this.dataset.team)">&#8679; Sauvegarder tactic</button>';
+  html+='<span class="tactic-info">Glissez les joueurs · Clic sur remplaçant pour permuter</span>';
+  html+='</div></div>';
+
+  // Substitutes list
+  html+='<div class="tactic-side">';
+  html+='<div style="font-size:7px;letter-spacing:.18em;color:var(--text3);text-transform:uppercase;margin-bottom:8px;">Remplaçants</div>';
+  html+='<div class="subs-list" id="subs-'+pid+'">';
+  var subs=tac.subs||[];
+  subs.forEach(function(jid,si){
+    var j=(p.joueurs||[]).find(function(x){return x.id===jid;});
+    if(!j)return;
+    var cat=POSTES_CAT[j.poste]||'MIL';
+    var col={'GK':'pos-GK','DEF':'pos-DEF','MIL':'pos-MIL','ATT':'pos-ATT'}[cat]||'pos-MIL';
+    html+='<div class="sub-item" data-team="'+pid+'" data-jid="'+j.id+'" data-si="'+si+'">';
+    html+='<span class="sub-pos '+col+'">'+j.poste+'</span>';
+    html+='<span class="sub-name" title="'+j.nom+'">'+j.nom+'</span>';
+    html+='<span class="sub-note">'+j.global+'</span>';
+    html+='</div>';
+  });
+  if(!subs.length)html+='<div style="font-size:9px;color:var(--text3);padding:12px;text-align:center;">Tous alignés.</div>';
+  html+='</div></div>';
+  html+='</div>';
+  return html;
+}
+
+function changeFormationClick(btn){
+  var teamId=btn.dataset.team;
+  var formation=btn.dataset.form;
+  changeFormation(teamId,formation);
+}
+
+
+function changeFormation(teamId,formation){
+  var p=fbData.pays.find(function(x){return x.id===teamId;});if(!p)return;
+  if(!confirm('Changer la formation en '+formation+' ? La disposition sera recalculée.'))return;
+  var built=buildDefaultLineup(p,formation);
+  tacticState[teamId]={formation:formation,lineup:built.lineup,subs:built.subs};
+  saveTacticLocal(teamId);
+  // Re-render tactic tab
+  document.getElementById('tab-tactique-content').innerHTML=renderTacticTab(p);
+  setTimeout(function(){initPitchDrag(teamId);},60);
+}
+
+// ── DRAG on SVG pitch ──
+var dragState={active:false,ptIdx:-1,teamId:null,startX:0,startY:0,svg:null,g:null};
+
+function initPitchDrag(teamId){
+  var svg=document.getElementById('pitch-'+teamId);if(!svg)return;
+  var tokens=svg.querySelectorAll('.player-token');
+  tokens.forEach(function(g){
+    g.addEventListener('mousedown',onPTokenDown);
+    g.addEventListener('touchstart',onPTokenTouchStart,{passive:false});
+  });
+}
+
+function getSVGPoint(svg,clientX,clientY){
+  var rect=svg.getBoundingClientRect();
+  var scaleX=100/rect.width;
+  var scaleY=100/rect.height;
+  return{x:(clientX-rect.left)*scaleX,y:(clientY-rect.top)*scaleY};
+}
+
+function onPTokenDown(e){
+  e.preventDefault();
+  var g=e.currentTarget;
+  var teamId=g.dataset.team;
+  var idx=parseInt(g.dataset.idx);
+  var svg=document.getElementById('pitch-'+teamId);
+  dragState={active:true,ptIdx:idx,teamId:teamId,svg:svg,g:g};
+  g.classList.add('dragging');
+  document.addEventListener('mousemove',onPTokenMove);
+  document.addEventListener('mouseup',onPTokenUp);
+}
+function onPTokenTouchStart(e){
+  e.preventDefault();
+  var touch=e.touches[0];
+  var g=e.currentTarget;
+  var teamId=g.dataset.team;
+  var idx=parseInt(g.dataset.idx);
+  var svg=document.getElementById('pitch-'+teamId);
+  dragState={active:true,ptIdx:idx,teamId:teamId,svg:svg,g:g};
+  g.classList.add('dragging');
+  document.addEventListener('touchmove',onPTokenTouchMove,{passive:false});
+  document.addEventListener('touchend',onPTokenTouchEnd);
+}
+function onPTokenMove(e){
+  if(!dragState.active)return;
+  var pt=getSVGPoint(dragState.svg,e.clientX,e.clientY);
+  var x=Math.max(5,Math.min(95,pt.x));
+  var y=Math.max(5,Math.min(95,pt.y));
+  dragState.g.setAttribute('transform','translate('+x+','+y+')');
+  dragState.newX=x;dragState.newY=y;
+}
+function onPTokenTouchMove(e){
+  if(!dragState.active)return;
+  e.preventDefault();
+  var touch=e.touches[0];
+  var pt=getSVGPoint(dragState.svg,touch.clientX,touch.clientY);
+  var x=Math.max(5,Math.min(95,pt.x));
+  var y=Math.max(5,Math.min(95,pt.y));
+  dragState.g.setAttribute('transform','translate('+x+','+y+')');
+  dragState.newX=x;dragState.newY=y;
+}
+function onPTokenUp(e){
+  if(!dragState.active)return;
+  dragState.g.classList.remove('dragging');
+  if(dragState.newX!==undefined){
+    var tac=getTactic(dragState.teamId);
+    tac.lineup[dragState.ptIdx].x=Math.round(dragState.newX*10)/10;
+    tac.lineup[dragState.ptIdx].y=Math.round(dragState.newY*10)/10;
+    saveTacticLocal(dragState.teamId);
+  }
+  document.removeEventListener('mousemove',onPTokenMove);
+  document.removeEventListener('mouseup',onPTokenUp);
+  dragState={active:false};
+}
+function onPTokenTouchEnd(){
+  if(!dragState.active)return;
+  dragState.g.classList.remove('dragging');
+  if(dragState.newX!==undefined){
+    var tac=getTactic(dragState.teamId);
+    tac.lineup[dragState.ptIdx].x=Math.round(dragState.newX*10)/10;
+    tac.lineup[dragState.ptIdx].y=Math.round(dragState.newY*10)/10;
+    saveTacticLocal(dragState.teamId);
+  }
+  document.removeEventListener('touchmove',onPTokenTouchMove);
+  document.removeEventListener('touchend',onPTokenTouchEnd);
+  dragState={active:false};
+}
+
+async function saveTacticToGitHub(teamId){
+  var pat=getPat();
+  if(!pat||pat.length<10){toast('Configurez votre PAT GitHub.','err');return;}
+  var tac=getTactic(teamId);
+  var p=fbData.pays.find(function(x){return x.id===teamId;});
+  var filename='data/football_tactics_'+teamId+'.json';
+  var toSave={teamId:teamId,nom:p?p.nom:'',formation:tac.formation,lineup:tac.lineup,subs:tac.subs,updated:new Date().toISOString()};
+  try{
+    var sha=null;
+    var gr=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+filename,{headers:{'Authorization':'token '+pat,'Accept':'application/vnd.github.v3+json'},cache:'no-store'});
+    if(gr.ok){var gd=await gr.json();sha=gd.sha||null;}
+    var encoded=btoa(unescape(encodeURIComponent(JSON.stringify(toSave,null,2))));
+    var body={message:'update tactics '+teamId,content:encoded};if(sha)body.sha=sha;
+    var pr=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+filename,{method:'PUT',headers:{'Authorization':'token '+pat,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)});
+    if(pr.ok)toast('Tactique sauvegardée sur GitHub.','ok');
+    else{var ed=await pr.json();toast('Erreur: '+(ed.message||pr.status),'err');}
+  }catch(e){toast('Erreur: '+e.message,'err');}
+}
+
+// ════════════════════════════════════════════════
+//  COACH EDIT
+// ════════════════════════════════════════════════
+var editCoachTeamId=null;
+
+function openCoachEdit(teamId){
+  var p=fbData.pays.find(function(x){return x.id===teamId;});
+  if(!p||!p.coach)return;
+  editCoachTeamId=teamId;
+  var coach=p.coach;
+  document.getElementById('ce-nom').value=coach.nom||'';
+  var notes=coach.notes||{};
+  ['tactique','attaque','defence','preparation','gestion'].forEach(function(k){
+    var el=document.getElementById('ce-'+k);
+    var val=notes[k]||60;
+    if(el){el.value=val;document.getElementById('cev-'+k).textContent=val;}
+  });
+  calcCoachGlobal();
+  document.getElementById('coach-modal').classList.add('open');
+}
+
+function closeCoachEdit(){document.getElementById('coach-modal').classList.remove('open');editCoachTeamId=null;}
+
+function calcCoachGlobal(){
+  var t=parseInt(document.getElementById('ce-tactique').value)||60;
+  var a=parseInt(document.getElementById('ce-attaque').value)||60;
+  var d=parseInt(document.getElementById('ce-defence').value)||60;
+  var pr=parseInt(document.getElementById('ce-preparation').value)||60;
+  var g=parseInt(document.getElementById('ce-gestion').value)||60;
+  var global=Math.round((t*1.5+a*1.1+d*1.1+pr*1.0+g*0.9)/5.6);
+  document.getElementById('cev-global').textContent=global;
+}
+
+function saveCoachEdit(){
+  if(!editCoachTeamId)return;
+  var p=fbData.pays.find(function(x){return x.id===editCoachTeamId;});
+  if(!p||!p.coach)return;
+  p.coach.nom=document.getElementById('ce-nom').value.trim()||p.coach.nom;
+  p.coach.notes={};
+  ['tactique','attaque','defence','preparation','gestion'].forEach(function(k){
+    p.coach.notes[k]=parseInt(document.getElementById('ce-'+k).value)||60;
+  });
+  p.coach.global=parseInt(document.getElementById('cev-global').textContent)||60;
+  saveFbLocal();
+  closeCoachEdit();
+  var current=fbData.pays.find(function(x){return x.id===currentTeamId;});
+  if(current)renderTeamDetail(current);
+  toast('Entraîneur mis à jour.','ok');
+}
+
+// ════════════════════════════════════════════════
+//  GITHUB SAVE
+// ════════════════════════════════════════════════
+async function saveToGitHub(){
+  var pat=getPat();
+  if(!pat||pat.length<10){toast('Configurez votre PAT GitHub.','err');return;}
+  var btn=document.getElementById('btn-gh-save');
+  btn.textContent='⏳ Sauvegarde…';btn.disabled=true;
+
+  // Prepare data — strip flag_data (stored separately), keep flag_filename
+  var toSave=JSON.parse(JSON.stringify(fbData));
+  toSave.pays.forEach(function(p){
+    // Push flag image separately
+    // For now, strip it from main JSON
+    delete p.flag_data;
+  });
+
+  try{
+    // Get existing SHA
+    var sha=null;
+    var gr=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+FB_FILE,{headers:{'Authorization':'token '+pat,'Accept':'application/vnd.github.v3+json'},cache:'no-store'});
+    if(gr.ok){var gd=await gr.json();sha=gd.sha||null;}
+    var encoded=btoa(unescape(encodeURIComponent(JSON.stringify(toSave,null,2))));
+    var body={message:'update football.json — '+fbData.pays.length+' équipes',content:encoded};if(sha)body.sha=sha;
+    var pr=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+FB_FILE,{method:'PUT',headers:{'Authorization':'token '+pat,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)});
+    if(pr.ok){
+      toast('Sauvegardé sur GitHub · '+fbData.pays.length+' équipes.','ok');
+      // Push flag images
+      for(var i=0;i<fbData.pays.length;i++){
+        var p=fbData.pays[i];
+        if(p.flag_data&&p.flag_filename){
+          await pushFlagImage(pat,p);
+        }
+      }
+    } else {
+      var ed=await pr.json();
+      toast('Erreur GitHub: '+(ed.message||pr.status),'err');
+    }
+  }catch(e){toast('Erreur: '+e.message,'err');}
+  btn.textContent='⬆ GitHub';btn.disabled=false;
+}
+
+async function pushFlagImage(pat,p){
+  var path=p.flag_filename;
+  if(!path||!p.flag_data)return;
+  try{
+    var sha=null;
+    var gr=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+path,{headers:{'Authorization':'token '+pat,'Accept':'application/vnd.github.v3+json'},cache:'no-store'});
+    if(gr.ok){var gd=await gr.json();sha=gd.sha||null;}
+    var b64=p.flag_data.split(',')[1];
+    var body={message:'add flag '+path,content:b64};if(sha)body.sha=sha;
+    await fetch('https://api.github.com/repos/'+REPO+'/contents/'+path,{method:'PUT',headers:{'Authorization':'token '+pat,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)});
+  }catch(e){}
+}
+
+// ════════════════════════════════════════════════
+//  INIT
+// ════════════════════════════════════════════════
+function showApp(){
+  document.getElementById('eq-wall').style.display='none';
+  var pat=localStorage.getItem('pharos_gh_pat')||'';
+  if(pat)document.getElementById('pat-in').value=pat;
+  loadFbData();
+
+  // Sync from GitHub
+  fetch('https://api.github.com/repos/'+REPO+'/contents/'+FB_FILE,{headers:{'Accept':'application/vnd.github.v3.raw'},cache:'no-store'})
+    .then(function(r){return r.ok?r.json():null;})
+    .then(function(d){
+      if(d&&(d.pays||d.competitions)){
+        // Merge: keep local flag_data, use remote names/notes
+        var remotePays=d.pays||[];
+        remotePays.forEach(function(rp){
+          var loc=fbData.pays.find(function(lp){return lp.id===rp.id;});
+          if(loc&&loc.flag_data)rp.flag_data=loc.flag_data;
+        });
+        fbData=d;
+        if(!fbData.pays)fbData.pays=[];
+        fbData.pays=remotePays.map(function(rp){
+          var loc=(fbData.pays||[]).find(function(lp){return lp.id===rp.id;});
+          if(loc&&loc.flag_data)rp.flag_data=loc.flag_data;
+          return rp;
+        });
+        saveFbLocal();
+        renderSidebar();
+        toast(fbData.pays.length+' équipes chargées.','ok');
+      } else {
+        renderSidebar();
+      }
+    }).catch(function(){renderSidebar();});
+}
+
+document.getElementById('eq-login-btn').onclick=function(){var pa=window.PharosAuth;if(pa&&pa.login)pa.login();};
+function tryAuth(){var pa=window.PharosAuth;if(pa){var user=pa.getUser();if(user&&pa.isAdmin()){showApp();return true;}}return false;}
+document.addEventListener('DOMContentLoaded',function(){if(!tryAuth()){window.addEventListener('load',function(){setTimeout(tryAuth,200);});}});
+window.addEventListener('pharos_auth_ready',tryAuth);
+</script>
+<script src="../../pharos-auth.js"></script>
+
+<!-- COACH EDIT MODAL -->
+<div class="modal-ov" id="coach-modal">
+  <div class="modal-box" style="max-width:480px;">
+    <div class="modal-hdr">
+      <div class="modal-ttl" style="color:var(--gold);">Modifier l'entraîneur</div>
+      <button class="modal-cls" onclick="closeCoachEdit()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid" style="margin-bottom:16px;">
+        <div class="fg full"><label class="fl">Nom</label><input type="text" class="fi" id="ce-nom"></div>
+      </div>
+      <div class="form-sec-title" style="font-size:7px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid rgba(212,168,67,.2);">Notes (0–99)</div>
+      <div class="rating-grid">
+        <div class="rating-item"><div class="rating-lbl">Tactique</div><div class="rating-row"><input type="range" id="ce-tactique" min="1" max="99" oninput="document.getElementById('cev-tactique').textContent=this.value;calcCoachGlobal()"><span class="rating-num" id="cev-tactique" style="color:var(--gold);">—</span></div></div>
+        <div class="rating-item"><div class="rating-lbl">Attaque</div><div class="rating-row"><input type="range" id="ce-attaque" min="1" max="99" oninput="document.getElementById('cev-attaque').textContent=this.value;calcCoachGlobal()"><span class="rating-num" id="cev-attaque" style="color:var(--gold);">—</span></div></div>
+        <div class="rating-item"><div class="rating-lbl">Défense</div><div class="rating-row"><input type="range" id="ce-defence" min="1" max="99" oninput="document.getElementById('cev-defence').textContent=this.value;calcCoachGlobal()"><span class="rating-num" id="cev-defence" style="color:var(--gold);">—</span></div></div>
+        <div class="rating-item"><div class="rating-lbl">Préparation</div><div class="rating-row"><input type="range" id="ce-preparation" min="1" max="99" oninput="document.getElementById('cev-preparation').textContent=this.value;calcCoachGlobal()"><span class="rating-num" id="cev-preparation" style="color:var(--gold);">—</span></div></div>
+        <div class="rating-item"><div class="rating-lbl">Gestion</div><div class="rating-row"><input type="range" id="ce-gestion" min="1" max="99" oninput="document.getElementById('cev-gestion').textContent=this.value;calcCoachGlobal()"><span class="rating-num" id="cev-gestion" style="color:var(--gold);">—</span></div></div>
+        <div class="rating-item" style="background:rgba(212,168,67,.05);border-color:rgba(212,168,67,.2);"><div class="rating-lbl">Note globale (calculée)</div><div class="rating-row"><span class="rating-num" id="cev-global" style="color:var(--gold);font-size:20px;">—</span></div></div>
+      </div>
+    </div>
+    <div class="modal-ftr">
+      <button class="btn-sm" onclick="closeCoachEdit()">Annuler</button>
+      <button class="btn-sm btn-gold" onclick="saveCoachEdit()">✓ Enregistrer</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
