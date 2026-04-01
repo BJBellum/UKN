@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Football Simulation · Royaume-Uni du Nil</title>
+<meta name="theme-color" content="#22B89A">
+<link rel="icon" type="image/png" href="../assets/images/UKNSite.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&family=Noto+Kufi+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/dune.css">
+<style>
+.hero-foot{min-height:68vh;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(34,184,154,.13) 0%,transparent 58%);}
+.hero-title-foot{font-family:'Dune Rise',serif;font-size:clamp(28px,4vw,52px);color:var(--gold-pale);letter-spacing:.08em;line-height:1.05;}
+.foot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;max-width:960px;margin:0 auto 40px;}
+.foot-card{background:var(--card-bg);border:1px solid var(--border2);border-top:2px solid;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:all .25s;position:relative;overflow:hidden;}
+.foot-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(34,184,154,.03) 0%,transparent 50%);pointer-events:none;}
+.foot-card:hover:not(.locked){border-color:var(--teal-bright);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.3);}
+.foot-card.locked{opacity:.6;cursor:default;}
+.foot-card-body{padding:28px 24px 16px;flex:1;}
+.foot-card-icon{width:54px;height:54px;border:1px solid;border-radius:2px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+.foot-card-ref{font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px;}
+.foot-card-name{font-family:'Dune Rise',serif;font-size:16px;color:var(--gold-pale);letter-spacing:.06em;margin-bottom:4px;}
+.foot-card-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:.06em;margin-bottom:12px;}
+.foot-card-desc{font-size:12px;color:var(--text2);line-height:1.8;}
+.foot-card-footer{padding:10px 24px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:9px;transition:background .2s;}
+.foot-card:hover:not(.locked) .foot-card-footer{background:rgba(34,184,154,.05);}
+.foot-lock-badge{display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.12em;color:var(--text3);border:1px solid var(--border2);padding:3px 8px;border-radius:2px;background:var(--card-bg);margin-top:8px;}
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <div class="nav-left">
+    <div class="nav-logo" style="border-color:rgba(34,184,154,.5);background:rgba(34,184,154,.06);">
+      <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#22B89A" stroke-width="1.2" fill="none"/><path d="M7 7l6 3-6 3V7z" fill="#22B89A" opacity=".8"/></svg>
+    </div>
+    <span class="nav-brand" style="color:var(--teal-bright);">Football Simulation</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.1em;border:1px solid rgba(34,184,154,.2);padding:2px 7px;border-radius:2px;">FOOT-SIM-001</span>
+  </div>
+  <div class="nav-right">
+    <a href="../" class="nav-back">← Portail National</a>
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <svg id="toggle-icon" width="12" height="12" viewBox="0 0 24 24" fill="none"><path id="icon-path" d="M21 12.79A9 9 0 0 1 12 21a9 9 0 0 1 0-18 7 7 0 0 0 9 9.79z" fill="currentColor"/></svg>
+      <span id="toggle-lbl">NUIT</span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero hero-foot">
+  <div class="hero-desert"></div>
+  <div class="hero-content" style="padding-top:52px;padding-bottom:60px;">
+    <div class="hero-eyebrow" style="color:var(--teal-bright);">FOOT-SIM-001 · Simulation Footballistique</div>
+    <h1 class="hero-title-foot">Football Simulation</h1>
+    <div class="hero-arabic">محاكاة كرة القدم · النيل</div>
+    <div class="hero-ornament" style="margin:14px 0 18px;">
+      <div class="hero-ornament-line" style="background:linear-gradient(90deg,transparent,var(--teal))"></div>
+      <div class="hero-ornament-diamond" style="background:var(--teal-bright);"></div>
+      <div class="hero-ornament-line" style="background:linear-gradient(90deg,var(--teal),transparent)"></div>
+    </div>
+    <p class="hero-desc" style="max-width:540px;margin:0 auto 32px;">Simulateur de football complet — gestion des pays, équipes nationales, joueurs et tournois. Construisez votre équipe nationale et participez à des compétitions internationales.</p>
+
+    <div class="foot-grid" id="foot-grid">
+
+      <!-- CREATION DE PAYS -->
+      <a href="./pays/" class="foot-card" id="card-pays" style="border-top-color:var(--spice);opacity:.6;pointer-events:none;cursor:default;">
+        <div class="foot-card-body">
+          <div class="foot-card-icon" style="border-color:rgba(232,92,13,.4);background:rgba(232,92,13,.06);">
+            <svg viewBox="0 0 28 28" fill="none" width="26" height="26">
+              <circle cx="14" cy="14" r="10" stroke="#E85C0D" stroke-width="1.2" fill="none"/>
+              <path d="M14 4C14 4 10 9 10 14C10 19 14 24 14 24" stroke="#E85C0D" stroke-width=".9" fill="none"/>
+              <path d="M14 4C14 4 18 9 18 14C18 19 14 24 14 24" stroke="#E85C0D" stroke-width=".9" fill="none"/>
+              <line x1="4" y1="14" x2="24" y2="14" stroke="#E85C0D" stroke-width=".9"/>
+              <line x1="5.5" y1="9" x2="22.5" y2="9" stroke="#E85C0D" stroke-width=".7" opacity=".5"/>
+              <line x1="5.5" y1="19" x2="22.5" y2="19" stroke="#E85C0D" stroke-width=".7" opacity=".5"/>
+            </svg>
+          </div>
+          <div class="foot-card-ref" id="pays-ref">FOOT-PAYS-001 · Admin</div>
+          <div class="foot-card-name" id="pays-name">Creation de Pays</div>
+          <div class="foot-card-sub" style="color:rgba(232,92,13,.7);">Nations · Equipes · Joueurs</div>
+          <p class="foot-card-desc">Créez un pays avec son drapeau, sa culture et générez automatiquement une équipe nationale complète. Paramétrez les noms et notes des joueurs.</p>
+          <div class="foot-lock-badge" id="pays-lock">
+            <svg viewBox="0 0 12 12" fill="none" width="10" height="10"><rect x="2" y="5" width="8" height="6" rx=".5" stroke="#888" stroke-width=".9" fill="none"/><path d="M3.5 5V3.5a2.5 2.5 0 0 1 5 0V5" stroke="#888" stroke-width=".9" fill="none"/></svg>
+            Réservé aux administrateurs
+          </div>
+        </div>
+        <div class="foot-card-footer" id="pays-footer" style="color:rgba(232,92,13,.6);border-top-color:rgba(232,92,13,.15);">
+          <span>Drapeaux · Cultures · Effectifs</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <!-- TRANSFERTS (à venir) -->
+      <div class="foot-card locked" style="border-top-color:var(--border2);">
+        <div class="foot-card-body">
+          <div class="foot-card-icon" style="border-color:var(--border2);background:var(--card-bg);">
+            <svg viewBox="0 0 28 28" fill="none" width="26" height="26">
+              <path d="M8 10l4-4 4 4M12 6v10M20 18l-4 4-4-4M16 22V12" stroke="#4A3C28" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="foot-card-ref" style="color:var(--text3);">FOOT-TRF-001</div>
+          <div class="foot-card-name" style="color:var(--text3);">Transferts</div>
+          <div class="foot-card-sub">Mercato · Contrats</div>
+          <p class="foot-card-desc" style="color:var(--text3);">Gérez les transferts de joueurs entre équipes, les contrats et les valeurs marchandes.</p>
+          <div class="foot-lock-badge">
+            <svg viewBox="0 0 12 12" fill="none" width="10" height="10"><rect x="2" y="5" width="8" height="6" rx=".5" stroke="#888" stroke-width=".9" fill="none"/><path d="M3.5 5V3.5a2.5 2.5 0 0 1 5 0V5" stroke="#888" stroke-width=".9" fill="none"/></svg>
+            À venir · Exercice 2307
+          </div>
+        </div>
+        <div class="foot-card-footer" style="color:var(--text3);">
+          <span>Bientôt disponible</span><span style="opacity:.3">→</span>
+        </div>
+      </div>
+
+      <!-- TOURNOIS (à venir) -->
+      <div class="foot-card locked" style="border-top-color:var(--border2);">
+        <div class="foot-card-body">
+          <div class="foot-card-icon" style="border-color:var(--border2);background:var(--card-bg);">
+            <svg viewBox="0 0 28 28" fill="none" width="26" height="26">
+              <path d="M8 6h12v8c0 4-3 7-6 8-3-1-6-4-6-8V6z" stroke="#4A3C28" stroke-width="1.2" fill="none"/>
+              <path d="M6 8H4v4c0 2 1 3 2 4M22 8h2v4c0 2-1 3-2 4" stroke="#4A3C28" stroke-width="1" stroke-linecap="round"/>
+              <line x1="14" y1="22" x2="14" y2="25" stroke="#4A3C28" stroke-width="1.2" stroke-linecap="round"/>
+              <line x1="10" y1="25" x2="18" y2="25" stroke="#4A3C28" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="foot-card-ref" style="color:var(--text3);">FOOT-TRN-001</div>
+          <div class="foot-card-name" style="color:var(--text3);">Tournois</div>
+          <div class="foot-card-sub">Compétitions · Coupes</div>
+          <p class="foot-card-desc" style="color:var(--text3);">Organisez et participez à des tournois internationaux, coupes du monde et championnats.</p>
+          <div class="foot-lock-badge">
+            <svg viewBox="0 0 12 12" fill="none" width="10" height="10"><rect x="2" y="5" width="8" height="6" rx=".5" stroke="#888" stroke-width=".9" fill="none"/><path d="M3.5 5V3.5a2.5 2.5 0 0 1 5 0V5" stroke="#888" stroke-width=".9" fill="none"/></svg>
+            À venir · Exercice 2307
+          </div>
+        </div>
+        <div class="foot-card-footer" style="color:var(--text3);">
+          <span>Bientôt disponible</span><span style="opacity:.3">→</span>
+        </div>
+      </div>
+
+      <!-- CLASSEMENT (à venir) -->
+      <div class="foot-card locked" style="border-top-color:var(--border2);">
+        <div class="foot-card-body">
+          <div class="foot-card-icon" style="border-color:var(--border2);background:var(--card-bg);">
+            <svg viewBox="0 0 28 28" fill="none" width="26" height="26">
+              <rect x="4" y="18" width="5" height="7" stroke="#4A3C28" stroke-width="1.2" fill="none"/>
+              <rect x="11.5" y="13" width="5" height="12" stroke="#4A3C28" stroke-width="1.2" fill="none"/>
+              <rect x="19" y="8" width="5" height="17" stroke="#4A3C28" stroke-width="1.2" fill="none"/>
+              <line x1="2" y1="25" x2="26" y2="25" stroke="#4A3C28" stroke-width=".8"/>
+            </svg>
+          </div>
+          <div class="foot-card-ref" style="color:var(--text3);">FOOT-CLS-001</div>
+          <div class="foot-card-name" style="color:var(--text3);">Classement</div>
+          <div class="foot-card-sub">FIFA Rankings · Stats</div>
+          <p class="foot-card-desc" style="color:var(--text3);">Consultez le classement mondial des équipes nationales et les statistiques de compétition.</p>
+          <div class="foot-lock-badge">
+            <svg viewBox="0 0 12 12" fill="none" width="10" height="10"><rect x="2" y="5" width="8" height="6" rx=".5" stroke="#888" stroke-width=".9" fill="none"/><path d="M3.5 5V3.5a2.5 2.5 0 0 1 5 0V5" stroke="#888" stroke-width=".9" fill="none"/></svg>
+            À venir · Exercice 2307
+          </div>
+        </div>
+        <div class="foot-card-footer" style="color:var(--text3);">
+          <span>Bientôt disponible</span><span style="opacity:.3">→</span>
+        </div>
+      </div>
+
+      <!-- MATCHS (à venir) -->
+      <div class="foot-card locked" style="border-top-color:var(--border2);">
+        <div class="foot-card-body">
+          <div class="foot-card-icon" style="border-color:var(--border2);background:var(--card-bg);">
+            <svg viewBox="0 0 28 28" fill="none" width="26" height="26">
+              <ellipse cx="14" cy="14" rx="9" ry="9" stroke="#4A3C28" stroke-width="1.2" fill="none"/>
+              <line x1="14" y1="5" x2="14" y2="23" stroke="#4A3C28" stroke-width=".9"/>
+              <line x1="5" y1="14" x2="23" y2="14" stroke="#4A3C28" stroke-width=".9"/>
+              <path d="M7 8.5Q14 11 21 8.5" stroke="#4A3C28" stroke-width=".7" fill="none"/>
+              <path d="M7 19.5Q14 17 21 19.5" stroke="#4A3C28" stroke-width=".7" fill="none"/>
+            </svg>
+          </div>
+          <div class="foot-card-ref" style="color:var(--text3);">FOOT-MAT-001</div>
+          <div class="foot-card-name" style="color:var(--text3);">Matchs</div>
+          <div class="foot-card-sub">Simulation · Résultats</div>
+          <p class="foot-card-desc" style="color:var(--text3);">Simulez des rencontres entre équipes nationales et consultez les résultats en direct.</p>
+          <div class="foot-lock-badge">
+            <svg viewBox="0 0 12 12" fill="none" width="10" height="10"><rect x="2" y="5" width="8" height="6" rx=".5" stroke="#888" stroke-width=".9" fill="none"/><path d="M3.5 5V3.5a2.5 2.5 0 0 1 5 0V5" stroke="#888" stroke-width=".9" fill="none"/></svg>
+            À venir · Exercice 2307
+          </div>
+        </div>
+        <div class="foot-card-footer" style="color:var(--text3);">
+          <span>Bientôt disponible</span><span style="opacity:.3">→</span>
+        </div>
+      </div>
+
+      <!-- EQUIPES (à venir) -->
+      <div class="foot-card locked" style="border-top-color:var(--border2);">
+        <div class="foot-card-body">
+          <div class="foot-card-icon" style="border-color:var(--border2);background:var(--card-bg);">
+            <svg viewBox="0 0 28 28" fill="none" width="26" height="26">
+              <circle cx="14" cy="8" r="3" stroke="#4A3C28" stroke-width="1.1" fill="none"/>
+              <circle cx="7" cy="20" r="2.5" stroke="#4A3C28" stroke-width="1" fill="none"/>
+              <circle cx="14" cy="20" r="2.5" stroke="#4A3C28" stroke-width="1" fill="none"/>
+              <circle cx="21" cy="20" r="2.5" stroke="#4A3C28" stroke-width="1" fill="none"/>
+              <path d="M14 11v3M10 16l-3 1.5M18 16l3 1.5" stroke="#4A3C28" stroke-width=".9" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="foot-card-ref" style="color:var(--text3);">FOOT-EQP-001</div>
+          <div class="foot-card-name" style="color:var(--text3);">Equipes</div>
+          <div class="foot-card-sub">Effectifs · Tactiques</div>
+          <p class="foot-card-desc" style="color:var(--text3);">Gérez les effectifs de vos équipes nationales, sélectionnez les titulaires et définissez la tactique.</p>
+          <div class="foot-lock-badge">
+            <svg viewBox="0 0 12 12" fill="none" width="10" height="10"><rect x="2" y="5" width="8" height="6" rx=".5" stroke="#888" stroke-width=".9" fill="none"/><path d="M3.5 5V3.5a2.5 2.5 0 0 1 5 0V5" stroke="#888" stroke-width=".9" fill="none"/></svg>
+            À venir · Exercice 2307
+          </div>
+        </div>
+        <div class="foot-card-footer" style="color:var(--text3);">
+          <span>Bientôt disponible</span><span style="opacity:.3">→</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="page">
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-left">FOOTBALL SIMULATION · FOOT-SIM-001 · ROYAUME-UNI DU NIL<br>SIMULATION FOOTBALLISTIQUE NATIONALE · EXERCICE 2305</div>
+        <div class="footer-credit">Projet Résurgence © 2026 · Police: Dune Rise — Fontswan (SIL OFL 1.1)</div>
+      </div>
+      <div class="footer-right">محاكاة كرة القدم · مملكة النيل</div>
+    </div>
+  </footer>
+</div>
+
+<script>
+const ADMIN_IDS=['772821169664426025'];
+function applyTheme(t){document.documentElement.setAttribute('data-theme',t);const lbl=document.getElementById('toggle-lbl'),path=document.getElementById('icon-path');if(lbl)lbl.textContent=t==='dark'?'NUIT':'JOUR';if(path)path.setAttribute('d',t==='dark'?'M21 12.79A9 9 0 0 1 12 21a9 9 0 0 1 0-18 7 7 0 0 0 9 9.79z':'M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 2a8 8 0 1 1 0 16A8 8 0 0 1 12 4z');localStorage.setItem('run-theme',t);}
+function toggleTheme(){applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');}
+(function(){const s=localStorage.getItem('run-theme'),mq=window.matchMedia('(prefers-color-scheme: dark)');applyTheme(s||(mq.matches?'dark':'light'));})();
+
+window.addEventListener('DOMContentLoaded',()=>{
+  const pa=window.PharosAuth,user=pa?.getUser();
+  const card=document.getElementById('card-pays');
+  const lockBadge=document.getElementById('pays-lock');
+  if(user&&ADMIN_IDS.includes(user.id)){
+    if(card){card.style.opacity='1';card.style.pointerEvents='auto';card.style.cursor='pointer';}
+    if(lockBadge)lockBadge.style.display='none';
+  }
+});
+</script>
+<script src="../pharos-auth.js"></script>
+</body>
+</html>
