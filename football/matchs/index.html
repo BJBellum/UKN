@@ -4,14 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Simulation de Matchs · Football · UKN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&family=Noto+Kufi+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../assets/dune.css">
   <style>
     *{box-sizing:border-box;margin:0;padding:0;}
     body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospace;min-height:100vh;}
+    /* Background canvas */
+    #bg-canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.55;}
+    .m-nav,.m-main,#m-wall{position:relative;z-index:1;}
 
     /* NAV */
     .m-nav{position:sticky;top:0;z-index:100;height:54px;background:rgba(12,8,4,.97);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 20px;gap:12px;backdrop-filter:blur(8px);}
     .m-nav-brand{font-family:'Dune Rise',serif;font-size:10px;letter-spacing:.16em;color:var(--gold);}
+
+    /* PAGE HEADER GLOW */
+    .page-header-band{position:relative;padding:24px 0 16px;margin-bottom:4px;overflow:hidden;}
+    .page-header-band::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+    .page-header-band-inner{max-width:1100px;margin:0 auto;padding:0 24px;}
+    .page-header-eyebrow{font-size:7px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;}
+    .page-header-title{font-family:'Dune Rise',serif;font-size:clamp(16px,2.5vw,26px);letter-spacing:.12em;color:var(--text);}
+    /* Tactic badge shown next to team name */
+    .tactic-badge{display:inline-block;font-size:7px;padding:1px 6px;border-radius:2px;background:rgba(34,184,154,.12);color:var(--teal-bright);border:1px solid rgba(34,184,154,.3);letter-spacing:.08em;margin-left:6px;vertical-align:middle;}
+    /* Shimmer on scoreboard */
+    .scoreboard{position:relative;overflow:hidden;}
+    .scoreboard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:sbglow 3s ease-in-out infinite;}
+    @keyframes sbglow{0%,100%{opacity:.3;}50%{opacity:1;}}
+    /* Goal flash */
+    @keyframes goalFlash{0%{box-shadow:0 0 0 0 rgba(212,168,67,.5);}70%{box-shadow:0 0 0 18px rgba(212,168,67,0);}100%{box-shadow:0 0 0 0 rgba(212,168,67,0);}}
+    .goal-flash{animation:goalFlash .6s ease-out;}
+    /* Match over banner shimmer */
+    .match-over-banner{position:relative;overflow:hidden;}
+    .match-over-banner::after{content:'';position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:linear-gradient(105deg,transparent,rgba(212,168,67,.06),transparent);animation:bannerShimmer 4s ease-in-out infinite;}
+    @keyframes bannerShimmer{0%{left:-60%;}100%{left:120%;}}
     .btn-sm{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;padding:5px 12px;border-radius:2px;border:1px solid var(--border2);background:transparent;color:var(--text2);cursor:pointer;transition:all .15s;white-space:nowrap;}
     .btn-sm:hover{border-color:var(--border3);color:var(--text);}
     .btn-gold{background:rgba(200,150,12,.1);border-color:rgba(200,150,12,.3);color:var(--gold);}
@@ -113,6 +139,8 @@
 </head>
 <body>
 
+<canvas id="bg-canvas"></canvas>
+
 <!-- ACCESS WALL -->
 <div id="m-wall">
   <div class="m-wall-box">
@@ -121,7 +149,7 @@
       <polygon points="24,8 26.5,14 33,14 27.8,17.5 29.5,24 24,20.5 18.5,24 20.2,17.5 15,14 21.5,14" stroke="#D4A843" stroke-width="1" fill="none"/>
     </svg>
     <div class="m-wall-title">ACCES RESTREINT</div>
-    <div class="m-wall-sub">Module réservé aux administrateurs.<br>Connexion Discord requise.</div>
+    <div class="m-wall-sub">Module reserve aux administrateurs.<br>Connexion Discord requise.</div>
     <button class="m-wall-btn" id="m-login-btn">Connexion Discord</button>
   </div>
 </div>
@@ -137,6 +165,14 @@
   </div>
 </nav>
 
+<!-- PAGE HEADER -->
+<div class="page-header-band" id="m-content-header" style="display:none;">
+  <div class="page-header-band-inner">
+    <div class="page-header-eyebrow">Moteur de jeu · Module Football</div>
+    <div class="page-header-title">Simulation de Matchs</div>
+  </div>
+</div>
+
 <div class="m-main" id="m-content" style="display:none;">
 
   <!-- SETUP -->
@@ -147,7 +183,7 @@
     <div class="match-setup">
       <div>
         <select class="team-select-dropdown" id="sel-team-a" onchange="pickTeam('a',this.value)">
-          <option value="">— Équipe A —</option>
+          <option value="">— Equipe A —</option>
         </select>
         <div class="team-pick" id="pick-a" style="margin-top:8px;">
           <div style="font-size:9px;color:var(--text3);padding:16px;">Sélectionnez une équipe</div>
@@ -156,7 +192,7 @@
       <div class="vs-label">VS</div>
       <div>
         <select class="team-select-dropdown" id="sel-team-b" onchange="pickTeam('b',this.value)">
-          <option value="">— Équipe B —</option>
+          <option value="">— Equipe B —</option>
         </select>
         <div class="team-pick" id="pick-b" style="margin-top:8px;">
           <div style="font-size:9px;color:var(--text3);padding:16px;">Sélectionnez une équipe</div>
@@ -175,11 +211,11 @@
         </select>
       </div>
       <div class="mo-group">
-        <div class="mo-lbl">Fréquence évènements</div>
+        <div class="mo-lbl">Frequence evenements</div>
         <select class="mo-select" id="opt-events">
           <option value="low">Faible (matchs défensifs)</option>
           <option value="normal" selected>Normale</option>
-          <option value="high">Élevée (matchs offensifs)</option>
+          <option value="high">Elevee (matchs offensifs)</option>
           <option value="chaos">Chaos total</option>
         </select>
       </div>
@@ -231,7 +267,7 @@
     <div class="events-wrap">
       <div class="events-hdr">
         <span class="events-hdr-title">Journal du match</span>
-        <span id="events-count" style="font-size:8px;color:var(--text3);">0 évènements</span>
+        <span id="events-count" style="font-size:8px;color:var(--text3);">0 evenements</span>
       </div>
       <div class="events-list" id="events-list"></div>
     </div>
@@ -332,7 +368,9 @@ function pickTeam(side,id){
   if(p){
     var flagSrc=p.flag_data||'';
     var flagHtml=flagSrc?'<img src="'+flagSrc+'" class="team-pick-flag">':'<div class="team-pick-flag" style="background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:20px;">?</div>';
-    el.innerHTML=flagHtml+'<div class="team-pick-name">'+p.nom+'</div><div class="team-pick-meta">'+p.continent+' · '+(p.joueurs||[]).length+' joueurs</div><div class="team-pick-rating">'+p.note_globale+'</div>';
+    var tac=null;try{var ts=localStorage.getItem('tactic_'+p.id);if(ts)tac=JSON.parse(ts);}catch(e){}
+    var formBadge=tac&&tac.formation?'<span class="tactic-badge">'+tac.formation+'</span>':'';
+    el.innerHTML=flagHtml+'<div class="team-pick-name">'+p.nom+formBadge+'</div><div class="team-pick-meta">'+p.continent+' · '+(p.joueurs||[]).length+' joueurs</div><div class="team-pick-rating">'+p.note_globale+'</div>';
     el.classList.add('selected');
   } else {
     el.innerHTML='<div style="font-size:9px;color:var(--text3);padding:16px;">Sélectionnez une équipe</div>';
@@ -346,12 +384,56 @@ function pickTeam(side,id){
 // ════════════════════════════════════════════════
 function calcTeamStrength(team){
   var joueurs=team.joueurs||[];
-  if(!joueurs.length)return{att:60,def:60,gk:60,tech:60,ment:60};
-  // Pick best 11 by global
-  var sorted=joueurs.slice().sort(function(a,b){return b.global-a.global;});
-  var xi=sorted.slice(0,11);
-  var avgNotes=function(key){return Math.round(xi.reduce(function(s,j){return s+(j.notes[key]||50);},0)/xi.length);};
-  return{att:avgNotes('off'),def:avgNotes('def'),gk:avgNotes('gk'),tech:avgNotes('tec'),ment:avgNotes('ment'),mouv:avgNotes('mouv')};
+  if(!joueurs.length)return{att:50,def:50,gk:50,tech:50,ment:50,mouv:50,formation:'4-3-3',globalRating:50};
+
+  // ── Load saved tactic from localStorage ──
+  var tac=null;
+  try{
+    var stored=localStorage.getItem('tactic_'+team.id);
+    if(stored)tac=JSON.parse(stored);
+  }catch(e){}
+
+  var xi; // best 11
+  if(tac&&tac.lineup&&tac.lineup.length>=11){
+    // Use the preregistered lineup
+    var lineupIds=tac.lineup.map(function(l){return l.playerId;}).filter(Boolean);
+    var lineupPlayers=lineupIds.map(function(id){return joueurs.find(function(j){return j.id===id;});}).filter(Boolean);
+    // Pad with best available if needed
+    if(lineupPlayers.length<11){
+      var usedIds={};lineupPlayers.forEach(function(j){if(j)usedIds[j.id]=true;});
+      var bench=joueurs.filter(function(j){return !usedIds[j.id];}).sort(function(a,b){return b.global-a.global;});
+      while(lineupPlayers.length<11&&bench.length){lineupPlayers.push(bench.shift());}
+    }
+    xi=lineupPlayers.slice(0,11);
+  } else {
+    // Fallback: sort by global
+    xi=joueurs.slice().sort(function(a,b){return b.global-a.global;}).slice(0,11);
+  }
+
+  var avgNotes=function(key){return Math.round(xi.reduce(function(s,j){return s+(j.notes&&j.notes[key]!=null?j.notes[key]:50);},0)/xi.length);};
+
+  // Formation bonuses
+  var formBonus={att:0,def:0,tech:0};
+  if(tac&&tac.formation){
+    var f=tac.formation;
+    if(f==='4-3-3'||f==='4-2-4'||f==='3-4-3'){formBonus.att=3;}
+    else if(f==='5-3-2'||f==='5-4-1'||f==='4-5-1'){formBonus.def=3;}
+    else if(f==='4-1-4-1'||f==='4-4-2'){formBonus.tech=2;}
+  }
+
+  // Global rating as average of all 11 players' global
+  var globalRating=Math.round(xi.reduce(function(s,j){return s+(j.global||50);},0)/xi.length);
+
+  return{
+    att:Math.min(99,avgNotes('off')+formBonus.att),
+    def:Math.min(99,avgNotes('def')+formBonus.def),
+    gk:avgNotes('gk'),
+    tech:Math.min(99,avgNotes('tec')+formBonus.tech),
+    ment:avgNotes('ment'),
+    mouv:avgNotes('mouv'),
+    formation:tac?tac.formation:'4-3-3',
+    globalRating:globalRating
+  };
 }
 
 function getPlayerName(team){
@@ -382,6 +464,7 @@ function showHalfTimeBanner(){
     banner.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:600;display:flex;align-items:center;justify-content:center;';
     banner.innerHTML='<div style="background:var(--card-bg);border:1px solid var(--border2);border-top:3px solid var(--spice);padding:32px 40px;text-align:center;max-width:400px;">'
       +'<div style="font-family:\'Dune Rise\',serif;font-size:14px;letter-spacing:.14em;color:var(--spice);margin-bottom:8px;">MI-TEMPS</div>'
+
       +'<div style="font-family:\'Dune Rise\',serif;font-size:40px;color:var(--gold);margin-bottom:6px;" id="ht-score">'+Math.floor(MS.scoreA)+' — '+Math.floor(MS.scoreB)+'</div>'
       +'<div style="font-size:9px;color:var(--text3);letter-spacing:.1em;margin-bottom:20px;">'+document.getElementById('sb-team-a-name').textContent+' · '+document.getElementById('sb-team-b-name').textContent+'</div>'
       +'<button onclick="resumeMatch()" style="background:var(--spice);color:#fff;font-family:\'IBM Plex Mono\',monospace;font-size:10px;letter-spacing:.12em;padding:10px 24px;border:none;cursor:pointer;border-radius:2px;">▶ REPRENDRE LE JEU</button>'
@@ -513,7 +596,7 @@ function tickMinute(){
     } else if(MS.optType==='prolongation'||MS.optType==='golden'){
       if(MS.scoreA===MS.scoreB){
         MS.extraTime=true;
-        addEvent(90,'⏱️','PROLONGATIONS','Égalité après 90 minutes — départ des prolongations.','ko');
+        addEvent(90,'⏱️','PROLONGATIONS','Egalite apres 90 minutes — depart des prolongations.','ko');
         scheduleNext();return;
       } else {endMatch();return;}
     } else {
@@ -546,13 +629,13 @@ function simulateMinute(min){
   var eventFreq={low:0.15,normal:0.25,high:0.38,chaos:0.55}[MS.optEvents]||0.25;
   var strA=MS.strA,strB=MS.strB;
 
-  // Possession factor
+  // Possession factor based on technique
   var possA=strA.tech/(strA.tech+strB.tech);
   var attacking=prob(possA)?'a':'b';
   var attTeam=attacking==='a'?teamA:teamB;
   var defTeam=attacking==='a'?teamB:teamA;
   var attStr=attacking==='a'?strA:strB;
-  var defStr=attacking==='b'?strA:strB;
+  var defStr=attacking==='a'?strB:strA;
   var stats=attacking==='a'?MS.statsA:MS.statsB;
   var defStats=attacking==='a'?MS.statsB:MS.statsA;
 
@@ -567,20 +650,29 @@ function simulateMinute(min){
   cumul+=0.30;
   if(r<cumul){
     stats.tirs++;
+    // Attacker reaches shot: based on att vs def mobility
     var shotPow=(attStr.att*0.6+attStr.tech*0.4)/100;
-    var gkPow=(defStr.gk*0.5+defStr.def*0.3)/100;
-    if(prob(shotPow*0.8)){
+    var gkPow=(defStr.gk*0.55+defStr.def*0.35)/100;
+    if(prob(shotPow*0.85)){
       stats.tirsC++;
-      // Goal?
-      var goalProb=Math.max(0.05,shotPow-gkPow*0.7);
+      // GOAL PROBABILITY — strongly influenced by rating gap
+      // globalRating difference can be up to ~40 pts (e.g. 70 vs 30)
+      var ratingDiff=(attStr.globalRating-defStr.globalRating)/100; // -0.4 to +0.4
+      // Base goal prob: att quality minus gk quality, no floor
+      var goalProb=(attStr.att/100*0.42)-(gkPow*0.55)+(ratingDiff*0.28);
+      // Clamp: min 2% (very weak att vs very strong gk), max 55%
+      goalProb=Math.max(0.02,Math.min(0.55,goalProb));
       if(prob(goalProb)){
         var scorer=getPlayerName(attTeam);
         if(attacking==='a')MS.scoreA++;else MS.scoreB++;
         updateScore();
+        // Goal flash effect
+        var sb=document.getElementById('scoreboard');
+        if(sb){sb.classList.remove('goal-flash');void sb.offsetWidth;sb.classList.add('goal-flash');}
         addEvent(min,'⚽','BUT !','<span class="name">'+scorer+'</span> marque pour <span class="name">'+attTeam.nom+'</span> !','goal');
         return;
       } else {
-        addEvent(min,'🧤','Arrêt','Tir de <span class="name">'+getPlayerName(attTeam)+'</span> — arrêt du gardien.','');
+        addEvent(min,'🧤','Arret','Tir de <span class="name">'+getPlayerName(attTeam)+'</span> — arret du gardien.','');
       }
     } else {
       if(prob(0.5)){
@@ -599,10 +691,9 @@ function simulateMinute(min){
     var fouler=getPlayerName(defTeam);
     var cardProb=MS.optEvents==='chaos'?0.3:0.1;
     if(prob(cardProb)){
-      // Yellow or red
       if(prob(0.15)&&defStats.cartsJ>0){
         defStats.cartsR++;
-        addEvent(min,'🟥','CARTON ROUGE','<span class="name">'+fouler+'</span> ('+defTeam.nom+') reçoit un carton rouge après une faute sur <span class="name">'+fouled+'</span>.','card-r');
+        addEvent(min,'🟥','CARTON ROUGE','<span class="name">'+fouler+'</span> ('+defTeam.nom+') recoit un carton rouge apres une faute sur <span class="name">'+fouled+'</span>.','card-r');
       } else {
         defStats.cartsJ++;
         addEvent(min,'🟨','Carton jaune','<span class="name">'+fouler+'</span> ('+defTeam.nom+') averti pour faute sur <span class="name">'+fouled+'</span>.','card-y');
@@ -612,20 +703,21 @@ function simulateMinute(min){
     }
     // Coup franc
     if(prob(0.4)){
-      var cfProb=(attStr.att*0.5+attStr.tech*0.4)/100*0.6;
+      var ratingDiffCF=(attStr.globalRating-defStr.globalRating)/100;
+      var cfProb=Math.max(0.02,Math.min(0.45,(attStr.att*0.5+attStr.tech*0.4)/100*0.55+ratingDiffCF*0.2));
       if(prob(cfProb)){
         stats.tirs++;stats.tirsC++;
-        if(prob(cfProb*0.6)){
+        if(prob(cfProb*0.65)){
           var scorer2=getPlayerName(attTeam);
           if(attacking==='a')MS.scoreA++;else MS.scoreB++;
           updateScore();
           addEvent(min,'⚽','BUT SUR COUP FRANC !','<span class="name">'+scorer2+'</span> convertit le coup franc pour <span class="name">'+attTeam.nom+'</span> !','goal');
           return;
         } else {
-          addEvent(min,'🧤','Coup franc repoussé','Le gardien repousse le coup franc.','');
+          addEvent(min,'🧤','Coup franc repousse','Le gardien repousse le coup franc.','');
         }
       } else {
-        addEvent(min,'↗️','Coup franc','Coup franc tiré hors cadre.','');
+        addEvent(min,'↗️','Coup franc','Coup franc tire hors cadre.','');
       }
     }
     return;
@@ -635,7 +727,7 @@ function simulateMinute(min){
   cumul+=0.10;
   if(r<cumul&&MS.optHorsJeu){
     var offside=getPlayerName(attTeam);
-    addEvent(min,'🚩','Hors-jeu','<span class="name">'+offside+'</span> signalé hors-jeu — but annulé.','');
+    addEvent(min,'🚩','Hors-jeu','<span class="name">'+offside+'</span> signale hors-jeu — but annule.','');
     return;
   }
 
@@ -645,14 +737,16 @@ function simulateMinute(min){
     var penPlayer=getPlayerName(attTeam);
     stats.tirs++;stats.tirsC++;
     defStats.fautes++;
-    var penProb=0.78;
-    addEvent(min,'❗','PENALTY','Penalty sifflé pour <span class="name">'+attTeam.nom+'</span>.','penalty');
+    // Penalty conversion: also influenced by team rating
+    var ratingDiffPen=(attStr.globalRating-defStr.globalRating)/100;
+    var penProb=Math.max(0.55,Math.min(0.92,0.76+ratingDiffPen*0.2));
+    addEvent(min,'❗','PENALTY','Penalty siffle pour <span class="name">'+attTeam.nom+'</span>.','penalty');
     if(prob(penProb)){
       if(attacking==='a')MS.scoreA++;else MS.scoreB++;
       updateScore();
-      addEvent(min,'⚽','PENALTY TRANSFORMÉ !','<span class="name">'+penPlayer+'</span> ouvre le score sur penalty !','goal');
+      addEvent(min,'⚽','PENALTY TRANSFORME !','<span class="name">'+penPlayer+'</span> transforme le penalty !','goal');
     } else {
-      addEvent(min,'🧤','Penalty repoussé','Le gardien arrête le penalty !','');
+      addEvent(min,'🧤','Penalty repousse','Le gardien arrete le penalty !','');
     }
     return;
   }
@@ -662,9 +756,9 @@ function simulateMinute(min){
   if(r<cumul&&MS.optSurprise){
     var surprises=[
       {ico:'🩹',type:'Blessure',text:'<span class="name">'+getPlayerName(attTeam)+'</span> se blesse et doit quitter le terrain.'},
-      {ico:'💨',type:'Dégagement',text:'Long dégagement intercepté par <span class="name">'+getPlayerName(defTeam)+'</span>.'},
+      {ico:'💨',type:'Degagement',text:'Long degagement intercepte par <span class="name">'+getPlayerName(defTeam)+'</span>.'},
       {ico:'🎭',type:'Simulation',text:'<span class="name">'+getPlayerName(attTeam)+'</span> simule — avertissement pour simulation !'},
-      {ico:'⛈️',type:'Évènement','text':'Interruption brève du match.'},
+      {ico:'⛈️',type:'Evenement',text:'Interruption breve du match.'},
       {ico:'🔄',type:'Remplacement',text:'Remplacement tactique — <span class="name">'+getPlayerName(attTeam)+'</span> entre en jeu.'}
     ];
     var ev=pick(surprises);
@@ -693,7 +787,7 @@ function endMatch(){
 
 function runPenaltyShootout(){
   MS.penaltyShootout=true;
-  addEvent(120,'❗','SÉANCE DE TIRS AU BUT','Les deux équipes restent à égalité — séance de penalties !','penalty');
+  addEvent(120,'❗','SEANCE DE TIRS AU BUT','Les deux equipes restent a egalite — seance de penalties !','penalty');
 
   var penA=0,penB=0,kicksA=0,kicksB=0;
   var results=[];
@@ -783,7 +877,7 @@ function updateScore(){
   var min=Math.min(MS.minute,MS.extraTime?120:90);
   document.getElementById('sb-score').textContent=sA+' — '+sB;
   document.getElementById('sb-time').textContent=min+"'";
-  document.getElementById('sb-status').textContent=MS.finished?'TERMINÉ':MS.extraTime?'PROLONGATIONS':'EN COURS';
+  document.getElementById('sb-status').textContent=MS.finished?'TERMINE':MS.extraTime?'PROLONGATIONS':'EN COURS';
 }
 
 function addEvent(min,ico,type,text,cls){
@@ -793,7 +887,7 @@ function addEvent(min,ico,type,text,cls){
   row.className='event-row'+(cls?' event-'+cls:'');
   row.innerHTML='<div class="event-min">'+min+"'</div><div class='event-ico'>"+ico+"</div><div class='event-text'><strong>"+type+"</strong> · "+text+"</div>";
   el.insertBefore(row,el.firstChild);
-  document.getElementById('events-count').textContent=MS.events.length+' évènements';
+  document.getElementById('events-count').textContent=MS.events.length+' evenements';
 }
 
 function exportResult(){
@@ -817,6 +911,8 @@ function toast(msg,type){
 function showApp(){
   document.getElementById('m-wall').style.display='none';
   document.getElementById('m-content').style.display='block';
+  var hdr=document.getElementById('m-content-header');
+  if(hdr)hdr.style.display='block';
   loadData();
 }
 
@@ -826,5 +922,80 @@ document.addEventListener('DOMContentLoaded',function(){if(!tryAuth()){window.ad
 window.addEventListener('pharos_auth_ready',tryAuth);
 </script>
 <script src="../../pharos-auth.js"></script>
+<script>
+(function(){
+  var canvas=document.getElementById('bg-canvas');
+  if(!canvas)return;
+  var ctx=canvas.getContext('2d');
+  var W,H;
+  var GOLD=[212,168,67],TEAL=[34,184,154],SAND=[107,90,58],SPICE=[232,92,13];
+  function rgba(c,a){return'rgba('+c[0]+','+c[1]+','+c[2]+','+a+')';}
+  function resize(){W=canvas.offsetWidth||window.innerWidth;H=canvas.offsetHeight||window.innerHeight;canvas.width=W;canvas.height=H;}
+  resize();
+  var parts=[];
+  function initParts(){parts=[];for(var i=0;i<18;i++){parts.push({x:Math.random()*W,y:H*.3+Math.random()*H*.7,r:.4+Math.random()*1.4,vx:(Math.random()-.5)*.2,vy:-(0.08+Math.random()*.28),life:Math.random(),col:Math.random()<.55?TEAL:GOLD});}}
+  function stepParts(){parts.forEach(function(p){p.life+=.002;if(p.life>1){p.life=0;p.x=Math.random()*W;p.y=H+4;}p.x+=p.vx;p.y+=p.vy;if(p.y<-6){p.y=H+4;p.x=Math.random()*W;}var a=Math.sin(p.life*Math.PI)*0.45;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=rgba(p.col,a);ctx.fill();});}
+  var shimmer=[];
+  function initShimmer(){shimmer=[];for(var i=0;i<3;i++)shimmer.push({y:.4+Math.random()*.45,h:.008+Math.random()*.01,a:.008+Math.random()*.012,sp:.0002+Math.random()*.0003,ph:Math.random()*Math.PI*2});}
+  function drawShimmer(t){shimmer.forEach(function(b){var a=b.a*(0.3+0.7*Math.abs(Math.sin(t*b.sp+b.ph)));var y=b.y*H;var g=ctx.createLinearGradient(0,y,0,y+b.h*H);g.addColorStop(0,rgba(SAND,0));g.addColorStop(.5,rgba(SAND,a));g.addColorStop(1,rgba(SAND,0));ctx.fillStyle=g;ctx.fillRect(0,y,W,b.h*H);});}
+  function drawDunes(t){
+    var bY=H*.82,amp=H*.045;
+    ctx.beginPath();ctx.moveTo(0,H);
+    for(var x=0;x<=W+2;x+=2){var y=bY+Math.sin(x*.005+t*.00022)*amp*.6+Math.sin(x*.0028+t*.00016+1.1)*amp*.4;ctx.lineTo(x,y);}
+    ctx.lineTo(W,H);ctx.closePath();ctx.fillStyle=rgba(SAND,.05);ctx.fill();
+    ctx.beginPath();
+    for(var x2=0;x2<=W;x2+=3){var y2=bY+Math.sin(x2*.005+t*.00022)*amp*.6+Math.sin(x2*.0028+t*.00016+1.1)*amp*.4;x2===0?ctx.moveTo(x2,y2):ctx.lineTo(x2,y2);}
+    ctx.strokeStyle=rgba(GOLD,.06);ctx.lineWidth=1;ctx.shadowColor=rgba(GOLD,.15);ctx.shadowBlur=3;ctx.stroke();ctx.shadowBlur=0;
+  }
+  function drawWatermark(t){
+    var cx=W*.5,cy=H*.45,r=Math.min(W,H)*.15;
+    ctx.save();ctx.translate(cx,cy);ctx.rotate(t*.000018);ctx.globalAlpha=.022;
+    ctx.strokeStyle=rgba(GOLD,1);ctx.lineWidth=.5;
+    ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.stroke();
+    ctx.beginPath();ctx.arc(0,0,r*.58,0,Math.PI*2);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(-r,0);ctx.lineTo(r,0);ctx.moveTo(0,-r);ctx.lineTo(0,r);ctx.stroke();
+    for(var i=0;i<6;i++){var ai=(i/6)*Math.PI*2;ctx.beginPath();ctx.moveTo(Math.cos(ai)*r*.58,Math.sin(ai)*r*.58);ctx.lineTo(Math.cos(ai)*r,Math.sin(ai)*r);ctx.stroke();}
+    ctx.restore();
+  }
+  var bloom={active:false,x:0,y:0,r:0,maxR:0,t0:0};
+  function maybeBloom(t){
+    if(!bloom.active&&Math.random()<.0015){bloom={active:true,x:W*.15+Math.random()*W*.7,y:H*.4+Math.random()*H*.4,r:0,maxR:50+Math.random()*90,t0:t};}
+    if(!bloom.active)return;
+    var el=t-bloom.t0,dur=2000;if(el>dur){bloom.active=false;return;}
+    var prog=el/dur;var r2=bloom.maxR*Math.pow(prog,.4);var al=(1-prog)*.12;
+    var grd=ctx.createRadialGradient(bloom.x,bloom.y,0,bloom.x,bloom.y,r2);
+    grd.addColorStop(0,rgba(SPICE,al*1.4));grd.addColorStop(.5,rgba(GOLD,al*.5));grd.addColorStop(1,rgba(GOLD,0));
+    ctx.beginPath();ctx.arc(bloom.x,bloom.y,r2,0,Math.PI*2);ctx.fillStyle=grd;ctx.fill();
+  }
+  var start=null,raf;
+  initParts();initShimmer();
+  function draw(ts){
+    if(!start)start=ts;var t=ts-start;
+    ctx.clearRect(0,0,W,H);
+    var vig=ctx.createRadialGradient(W*.5,H*.5,H*.05,W*.5,H*.5,H*.9);
+    vig.addColorStop(0,'rgba(0,0,0,0)');vig.addColorStop(1,'rgba(0,0,0,0.4)');
+    ctx.fillStyle=vig;ctx.fillRect(0,0,W,H);
+    drawShimmer(t);drawWatermark(t);drawDunes(t);stepParts();maybeBloom(t);
+    raf=requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',function(){cancelAnimationFrame(raf);resize();start=null;initParts();initShimmer();raf=requestAnimationFrame(draw);});
+  document.addEventListener('visibilitychange',function(){if(document.hidden)cancelAnimationFrame(raf);else{start=null;raf=requestAnimationFrame(draw);}});
+  raf=requestAnimationFrame(draw);
+})();
+
+// ── CHARGE TACTIQUES DEPUIS GITHUB au choix d'equipe ──
+(function(){
+  var REPO='BJBellum/UKN';
+  function loadTacticGH(teamId){
+    fetch('https://api.github.com/repos/'+REPO+'/contents/data/football_tactics_'+teamId+'.json',
+      {headers:{'Accept':'application/vnd.github.v3.raw'},cache:'no-store'})
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(d){if(d&&d.formation&&d.lineup){try{localStorage.setItem('tactic_'+teamId,JSON.stringify(d));}catch(e){}}})
+      .catch(function(){});
+  }
+  var _orig=window.pickTeam;
+  window.pickTeam=function(side,id){_orig(side,id);if(id)loadTacticGH(id);};
+})();
+</script>
 </body>
 </html>

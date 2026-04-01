@@ -17,9 +17,14 @@
     .f-nav-back:hover{color:var(--text);border-color:var(--border2);}
 
     /* HERO */
-    .f-hero{text-align:center;padding:72px 24px 48px;}
+    .f-hero{text-align:center;padding:72px 24px 48px;position:relative;overflow:hidden;min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+    #f-hero-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+    .f-hero-content{position:relative;z-index:2;}
     .f-hero-eyebrow{font-size:8px;letter-spacing:.22em;color:var(--teal-bright);text-transform:uppercase;margin-bottom:14px;}
     .f-hero-title{font-family:'Dune Rise',serif;font-size:clamp(22px,4vw,38px);letter-spacing:.1em;color:var(--text);margin-bottom:10px;}
+    .f-hero-ornament{display:flex;align-items:center;gap:10px;margin:14px auto;width:160px;}
+    .f-hero-ornament-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--teal-bright),transparent);opacity:.5;}
+    .f-hero-ornament-diamond{width:6px;height:6px;background:var(--teal-bright);transform:rotate(45deg);flex-shrink:0;opacity:.7;}
     .f-hero-sub{font-size:10px;color:var(--text3);letter-spacing:.08em;margin-bottom:8px;}
     .f-hero-lock{display:inline-flex;align-items:center;gap:6px;font-size:9px;color:var(--spice);letter-spacing:.1em;border:1px solid rgba(232,92,13,.3);padding:4px 12px;border-radius:2px;margin-top:8px;}
 
@@ -75,7 +80,7 @@
       </svg>
     </div>
     <div class="f-wall-title">ACCES RESTREINT</div>
-    <div class="f-wall-sub">Le module Football Simulation est réservé aux administrateurs du Royaume-Uni du Nil.<br>Connectez-vous avec votre compte Discord autorisé.</div>
+    <div class="f-wall-sub">Le module Football Simulation est reserve aux administrateurs du Royaume-Uni du Nil.<br>Connectez-vous avec votre compte Discord autorise.</div>
     <button class="f-wall-btn" id="f-login-btn">Connexion Discord</button>
   </div>
 </div>
@@ -85,29 +90,37 @@
   <div class="f-nav-brand">Football Simulation</div>
   <div class="f-nav-right">
     <div class="nav-right" id="nav-right-user"></div>
-    <a href="../" class="f-nav-back">← Portail</a>
+    <a href="../" class="f-nav-back">&#8592; Portail</a>
   </div>
 </nav>
 
 <!-- MAIN CONTENT (revealed after auth) -->
 <div id="f-content">
   <div class="f-hero">
-    <div class="f-hero-eyebrow">Simulation Sportive Nationale</div>
-    <div class="f-hero-title">Football Simulation</div>
-    <div class="f-hero-sub">Royaume-Uni du Nil · كرة القدم الوطنية</div>
-    <div class="f-hero-lock">
-      <svg viewBox="0 0 12 12" fill="none" width="10" height="10"><rect x="2" y="5" width="8" height="6" rx="1" stroke="currentColor" stroke-width="1" fill="none"/><path d="M4 5V3.5A2 2 0 0 1 8 3.5V5" stroke="currentColor" stroke-width="1" fill="none"/></svg>
-      MODULE ADMIN · ACCÈS RESTREINT
+    <canvas id="f-hero-canvas"></canvas>
+    <div class="f-hero-content">
+      <div class="f-hero-eyebrow">Simulation Sportive Nationale</div>
+      <div class="f-hero-title">Football Simulation</div>
+      <div class="f-hero-ornament">
+        <div class="f-hero-ornament-line"></div>
+        <div class="f-hero-ornament-diamond"></div>
+        <div class="f-hero-ornament-line"></div>
+      </div>
+      <div class="f-hero-sub">Royaume-Uni du Nil · &#1603;&#1585;&#1577; &#1575;&#1604;&#1602;&#1583;&#1605; &#1575;&#1604;&#1608;&#1591;&#1606;&#1610;&#1577;</div>
+      <div class="f-hero-lock">
+        <svg viewBox="0 0 12 12" fill="none" width="10" height="10"><rect x="2" y="5" width="8" height="6" rx="1" stroke="currentColor" stroke-width="1" fill="none"/><path d="M4 5V3.5A2 2 0 0 1 8 3.5V5" stroke="currentColor" stroke-width="1" fill="none"/></svg>
+        MODULE ADMIN &middot; ACCES RESTREINT
+      </div>
     </div>
   </div>
 
   <div class="f-main">
     <!-- Stats -->
     <div class="f-stats">
-      <div class="f-stat"><div class="f-stat-v" id="fs-pays">—</div><div class="f-stat-l">Pays enregistrés</div></div>
-      <div class="f-stat"><div class="f-stat-v" id="fs-joueurs">—</div><div class="f-stat-l">Joueurs générés</div></div>
-      <div class="f-stat"><div class="f-stat-v" id="fs-comps">—</div><div class="f-stat-l">Compétitions</div></div>
-      <div class="f-stat"><div class="f-stat-v" id="fs-matchs">—</div><div class="f-stat-l">Matchs simulés</div></div>
+      <div class="f-stat"><div class="f-stat-v" id="fs-pays">&#8212;</div><div class="f-stat-l">Pays enregistres</div></div>
+      <div class="f-stat"><div class="f-stat-v" id="fs-joueurs">&#8212;</div><div class="f-stat-l">Joueurs generes</div></div>
+      <div class="f-stat"><div class="f-stat-v" id="fs-comps">&#8212;</div><div class="f-stat-l">Competitions</div></div>
+      <div class="f-stat"><div class="f-stat-v" id="fs-matchs">&#8212;</div><div class="f-stat-l">Matchs simules</div></div>
     </div>
 
     <!-- Module: Teams -->
@@ -123,10 +136,10 @@
           </svg>
         </div>
         <div>
-          <div class="f-mod-label">Nations · Joueurs</div>
-          <div class="f-mod-title">Équipes Nationales</div>
+          <div class="f-mod-label">Nations &middot; Joueurs</div>
+          <div class="f-mod-title">Equipes Nationales</div>
         </div>
-        <div class="f-mod-desc">Créer et gérer les équipes nationales — génération de joueurs par culture, notes, postes, drapeaux et continents.</div>
+        <div class="f-mod-desc">Creer et gerer les equipes nationales — generation de joueurs par culture, notes, postes, drapeaux et continents.</div>
         <span class="f-mod-badge badge-new">ACTIF</span>
       </a>
 
@@ -140,10 +153,10 @@
           </svg>
         </div>
         <div>
-          <div class="f-mod-label">Tournois · Poules</div>
-          <div class="f-mod-title">Compétitions</div>
+          <div class="f-mod-label">Tournois &middot; Poules</div>
+          <div class="f-mod-title">Competitions</div>
         </div>
-        <div class="f-mod-desc">Créer des tournois avec règles personnalisées, poules, tirage au sort par continent et phase finale.</div>
+        <div class="f-mod-desc">Creer des tournois avec regles personnalisees, poules, tirage au sort par continent et phase finale.</div>
         <span class="f-mod-badge badge-new">ACTIF</span>
       </a>
 
@@ -158,13 +171,13 @@
           <div class="f-mod-label">Moteur de jeu</div>
           <div class="f-mod-title">Simulation de Matchs</div>
         </div>
-        <div class="f-mod-desc">Simuler des matchs en temps réel — buts, cartons, fautes, pénaltys, hors-jeux et évènements surprise.</div>
+        <div class="f-mod-desc">Simuler des matchs en temps reel — buts, cartons, fautes, penaltys, hors-jeux et evenements surprise.</div>
         <span class="f-mod-badge badge-new">ACTIF</span>
       </a>
     </div>
 
     <!-- Module: Data -->
-    <div class="f-sec-title">Données</div>
+    <div class="f-sec-title">Donnees</div>
     <div class="f-modules">
       <div class="f-module disabled">
         <div class="f-mod-ico" style="background:rgba(200,150,12,.08);border:1px solid rgba(200,150,12,.2);">
@@ -178,11 +191,11 @@
           </svg>
         </div>
         <div>
-          <div class="f-mod-label">Classements · Stats</div>
+          <div class="f-mod-label">Classements &middot; Stats</div>
           <div class="f-mod-title">Statistiques</div>
         </div>
-        <div class="f-mod-desc">Classements mondiaux, statistiques de joueurs, historique des compétitions et palmarès.</div>
-        <span class="f-mod-badge badge-soon">BIENTÔT</span>
+        <div class="f-mod-desc">Classements mondiaux, statistiques de joueurs, historique des competitions et palmares.</div>
+        <span class="f-mod-badge badge-soon">BIENTOT</span>
       </div>
     </div>
   </div>
@@ -196,7 +209,7 @@ var fbData={pays:[],competitions:[],matchs:[]};
 function showContent(user){
   document.getElementById('f-wall').style.display='none';
   document.getElementById('f-content').style.display='block';
-  // Load stats
+  initHeroCanvas();
   fetch('https://api.github.com/repos/BJBellum/UKN/contents/'+FB_FILE,{headers:{'Accept':'application/vnd.github.v3.raw'},cache:'no-store'})
     .then(function(r){return r.ok?r.json():null;})
     .then(function(d){
@@ -211,19 +224,79 @@ function showContent(user){
     }).catch(function(){});
 }
 
-document.getElementById('f-login-btn').onclick=function(){
-  var pa=window.PharosAuth;
-  if(pa&&pa.login)pa.login();
-};
+// ── HERO CANVAS ANIMATION ──
+function initHeroCanvas(){
+  var canvas=document.getElementById('f-hero-canvas');
+  if(!canvas)return;
+  var ctx=canvas.getContext('2d');
+  var W,H;
+  var TEAL=[34,184,154],GOLD=[212,168,67],SAND=[107,90,58];
+  function rgba(c,a){return'rgba('+c[0]+','+c[1]+','+c[2]+','+a+')';}
+  function resize(){W=canvas.offsetWidth;H=canvas.offsetHeight;canvas.width=W;canvas.height=H;}
 
-document.addEventListener('DOMContentLoaded',function(){
-  var pa=window.PharosAuth;
-  if(pa){
-    var user=pa.getUser();
-    if(user&&pa.isAdmin())showContent(user);
+  // Floating particles
+  var parts=[];
+  function initParts(){
+    parts=[];
+    for(var i=0;i<20;i++){
+      parts.push({x:Math.random()*W,y:H*.2+Math.random()*H*.8,
+        r:.5+Math.random()*1.8,vx:(Math.random()-.5)*.25,vy:-(0.12+Math.random()*.35),
+        life:Math.random(),col:Math.random()<.6?TEAL:GOLD});
+    }
   }
-});
-</script>
-<script src="../pharos-auth.js"></script>
-</body>
-</html>
+  function stepParts(){
+    parts.forEach(function(p){
+      p.life+=.0025;if(p.life>1){p.life=0;p.x=Math.random()*W;p.y=H+4;}
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.y<-6){p.y=H+4;p.x=Math.random()*W;}
+      var a=Math.sin(p.life*Math.PI)*0.5;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=rgba(p.col,a);ctx.fill();
+    });
+  }
+
+  // Dune wave
+  function drawDunes(t){
+    var bY=H*.78,amp=H*.055;
+    ctx.beginPath();ctx.moveTo(0,H);
+    for(var x=0;x<=W+2;x+=2){
+      var y=bY+Math.sin(x*.006+t*.00025)*amp*.6+Math.sin(x*.003+t*.00018+1.2)*amp*.4;
+      ctx.lineTo(x,y);
+    }
+    ctx.lineTo(W,H);ctx.closePath();
+    ctx.fillStyle=rgba(SAND,.065);ctx.fill();
+    // crest glow
+    ctx.beginPath();
+    for(var x2=0;x2<=W;x2+=4){
+      var y2=bY+Math.sin(x2*.006+t*.00025)*amp*.6+Math.sin(x2*.003+t*.00018+1.2)*amp*.4;
+      x2===0?ctx.moveTo(x2,y2):ctx.lineTo(x2,y2);
+    }
+    ctx.strokeStyle=rgba(GOLD,.07);ctx.lineWidth=1.2;
+    ctx.shadowColor=rgba(GOLD,.18);ctx.shadowBlur=4;ctx.stroke();ctx.shadowBlur=0;
+  }
+
+  // Rotating sport watermark
+  function drawWatermark(t){
+    var cx=W*.5,cy=H*.44,r=Math.min(W,H)*.17;
+    ctx.save();ctx.translate(cx,cy);ctx.rotate(t*.00002);ctx.globalAlpha=.028;
+    ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.strokeStyle=rgba(TEAL,1);ctx.lineWidth=.5;ctx.stroke();
+    ctx.beginPath();ctx.arc(0,0,r*.55,0,Math.PI*2);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(-r,0);ctx.lineTo(r,0);ctx.moveTo(0,-r);ctx.lineTo(0,r);ctx.stroke();
+    for(var i=0;i<6;i++){
+      var a=(i/6)*Math.PI*2;
+      ctx.beginPath();ctx.moveTo(Math.cos(a)*r*.55,Math.sin(a)*r*.55);
+      ctx.lineTo(Math.cos(a)*r,Math.sin(a)*r);ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  // Shimmer
+  var shimmer=[];
+  function initShimmer(){
+    for(var i=0;i<3;i++)shimmer.push({y:.35+Math.random()*.5,h:.01+Math.random()*.012,a:.01+Math.random()*.016,sp:.0002+Math.random()*.0003,ph:Math.random()*Math.PI*2});
+  }
+  function drawShimmer(t){
+    shimmer.forEach(function(b){
+      var a=b.a*(0.3+0.7*Math.abs(Math.sin(t*b.sp+b.ph)));
+      var y=b.y*H;
+      var g=ctx.createLin
