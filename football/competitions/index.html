@@ -107,16 +107,17 @@
     .gt-flag{width:22px;height:15px;object-fit:cover;border-radius:1px;}
     .gt-pts{font-family:'Dune Rise',serif;font-size:12px;color:var(--gold);}
     .group-matches{padding:10px 14px;border-top:1px solid var(--border);}
-    .gm-match{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);}
+    .gm-match{display:grid;grid-template-columns:1fr 60px 1fr 70px;align-items:center;gap:6px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);}
     .gm-match:last-child{border-bottom:none;}
-    .gm-team{flex:1;font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+    .gm-team{font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
     .gm-team.right{text-align:right;}
-    .gm-score{font-family:'Dune Rise',serif;font-size:12px;color:var(--text);min-width:40px;text-align:center;}
+    .gm-score{font-family:'Dune Rise',serif;font-size:12px;color:var(--text);text-align:center;}
     .gm-score.played{color:var(--gold);}
+    .gm-actions{display:flex;align-items:center;gap:4px;justify-content:flex-end;}
     .gm-btn{font-size:7px;padding:2px 6px;border:1px solid var(--border2);background:var(--bg);color:var(--text3);cursor:pointer;border-radius:2px;flex-shrink:0;}
     .gm-btn:hover{border-color:var(--spice);color:var(--spice);}
     .gm-btn.simall{border-color:rgba(34,184,154,.3);color:var(--teal-bright);}
-    .gm-weather{font-size:11px;flex-shrink:0;}
+    .gm-weather{font-size:10px;flex-shrink:0;}
 
     /* KNOCKOUT BRACKET */
     .ko-section{margin-bottom:28px;}
@@ -886,13 +887,22 @@ function startDraw(){
 }
 
 function getDrawOrder(comp){
+  // Tirage vraiment aleatoire : melange chaque chapeau puis entrelace round-robin avec ordre de chapeaux aleatoire
   var hats=comp.hats&&comp.hats.length?comp.hats:[comp.teamIds];
-  var order=[];
-  hats.forEach(function(hat){
+  var shuffled=hats.map(function(hat){
     var h=hat.slice();
-    for(var i=h.length-1;i>0;i--){var j=rand(0,i);var t=h[i];h[i]=h[j];h[j]=t;}
-    h.forEach(function(id){order.push({id:id,hat:hats.indexOf(hat)});});
+    for(var i=h.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=h[i];h[i]=h[j];h[j]=t;}
+    return h;
   });
+  var order=[];
+  var maxLen=Math.max.apply(null,shuffled.map(function(h){return h.length;}));
+  for(var round=0;round<maxLen;round++){
+    var hatOrder=shuffled.map(function(_,idx){return idx;});
+    for(var i=hatOrder.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=hatOrder[i];hatOrder[i]=hatOrder[j];hatOrder[j]=t;}
+    hatOrder.forEach(function(hi){
+      if(round<shuffled[hi].length)order.push({id:shuffled[hi][round],hat:hi});
+    });
+  }
   return order;
 }
 
@@ -1022,12 +1032,14 @@ function renderSingleGroup(poule,comp){
     var ph=(fbData.pays||[]).find(function(x){return x.id===m.homeId;});
     var pa=(fbData.pays||[]).find(function(x){return x.id===m.awayId;});
     html+='<div class="gm-match">';
-    if(m.weather)html+='<div class="gm-weather" title="'+m.weather.label+' · '+m.weather.desc+'">'+m.weather.icon+'</div>';
     html+='<div class="gm-team">'+(ph?ph.nom:'?')+'</div>';
     html+='<div class="gm-score'+(m.played?' played':'')+'">'+( m.played?m.scoreH+' — '+m.scoreA:'vs')+'</div>';
     html+='<div class="gm-team right">'+(pa?pa.nom:'?')+'</div>';
+    html+='<div class="gm-actions">';
+    if(m.weather)html+='<span class="gm-weather" title="'+m.weather.label+' · '+m.weather.desc+'">'+m.weather.icon+'</span>';
     if(!m.played)html+='<button class="gm-btn" onclick="openMatchModal(\''+poule.id+'\',\''+m.id+'\')">Simuler</button>';
     else html+=renderMatchGoalsTooltip(m);
+    html+='</div>';
     html+='</div>';
   });
   html+='</div></div>';
@@ -1035,18 +1047,11 @@ function renderSingleGroup(poule,comp){
 }
 
 function renderMatchGoalsTooltip(m){
-  if(!m.events||!m.events.length)return'';
+  if(!m.events||!m.events.length)return'<button class="gm-btn" onclick="openMatchModal(\''+m.pouleId+'\',\''+m.id+'\')" style="opacity:.5;">Detail</button>';
   var goals=m.events.filter(function(ev){return ev.type==='goal';});
   if(!goals.length)return'';
-  // Small summary of scorers
-  var html='<div style="font-size:7px;color:var(--text3);flex:0 0 auto;max-width:180px;text-align:right;line-height:1.6;">';
-  goals.forEach(function(g){
-    html+='⚽ <span style="color:var(--gold)">'+g.playerName+'</span> <span>('+g.min+"')</span>";
-    if(g.assistName)html+=' <span style="color:var(--teal-bright)">🎯'+g.assistName+'</span>';
-    html+='<br>';
-  });
-  html+='</div>';
-  return html;
+  var scorers=goals.map(function(g){return g.playerName+' '+g.min+"'";}).join(', ');
+  return'<span title="'+scorers+'" style="font-size:7px;color:var(--gold);cursor:help;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:65px;display:inline-block;">&#9917; '+scorers+'</span>';
 }
 
 function calcStandings(poule,comp){
@@ -1334,7 +1339,9 @@ function runMatchEngine(homeId,awayId,opts,comp,weather){
   var strH=calcStr(homeId,comp),strA=calcStr(awayId,comp);
   var scoreH=0,scoreA=0;
   var events=[],cardEvents=[];
-  var freq={low:0.12,normal:0.22,high:0.34,chaos:0.5}[opts.events]||0.22;
+  var freq={low:0.12,normal:0.22,high:0.36,chaos:0.55}[opts.events]||0.22;
+  // Multiplicateur de but selon le mode (s'applique sur shotProb ET goalP)
+  var goalMult={low:0.7,normal:1.0,high:1.55,chaos:2.2}[opts.events]||1.0;
 
   function simMin(min){
     if(!prob(freq))return;
@@ -1344,17 +1351,17 @@ function runMatchEngine(homeId,awayId,opts,comp,weather){
     var defStr=att==='H'?strA:strH;
     var attTeam=att==='H'?homeId:awayId;
     var r=Math.random();
-    var goalBase=(attStr.att-defStr.gk*0.8)/100*0.5;
+    var ratingDiff=(attStr.globalRating-defStr.globalRating)/100;
     var cardBase=0.06*w.cardMod;
 
     if(r<0.28){
-      // Shot probability — stronger team reaches goal more easily
-      var ratingDiff=(attStr.globalRating-defStr.globalRating)/100;
-      var shotProb=(attStr.att*0.6+attStr.dri*0.4)/100*0.4*(1+ratingDiff*0.5);
+      // Shot probability amplifiee par le mode offensif
+      var shotProb=(attStr.att*0.6+attStr.dri*0.4)/100*0.4*(1+ratingDiff*0.5)*goalMult;
+      shotProb=Math.min(shotProb,0.92);
       if(prob(shotProb)){
-        // Rating-aware goal probability — no floor that kills the difference
-        var goalP=(attStr.att/100*0.40)-(defStr.gk/100*0.30)+(ratingDiff*0.30);
-        goalP=Math.max(0.015,Math.min(0.60,goalP))*w.goalMod;
+        // Probabilite de but : rating diff + mode offensif
+        var goalBase=(attStr.att/100*0.40)-(defStr.gk/100*0.30)+(ratingDiff*0.30);
+        var goalP=Math.max(0.02,Math.min(0.75,goalBase*goalMult))*w.goalMod;
         if(prob(goalP)){
           if(att==='H')scoreH++;else scoreA++;
           var scorer=pickPlayer(attTeam,'goal',[]);
