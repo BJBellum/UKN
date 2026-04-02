@@ -1097,36 +1097,11 @@ function buildKO(){
   var comp=competitions.find(function(c){return c.id===currentCompId;});
   if(!comp||!allGroupsDone(comp))return;
   var nbQ=Math.floor(comp.eqParPoule/2)||1;
-
-  // Collecter les premiers et les deuxièmes de chaque poule séparément
-  var firsts=[];  // 1ers de chaque poule dans l'ordre
-  var seconds=[]; // 2èmes de chaque poule dans l'ordre
+  var qualifiers=[];
   comp.poules.forEach(function(poule){
     var standings=calcStandings(poule,comp);
-    if(standings.length>0)firsts.push(standings[0].id);
-    if(nbQ>=2&&standings.length>1)seconds.push(standings[1].id);
-    // Si nbQ > 2, ajouter les autres qualifiés dans seconds
-    for(var qi=2;qi<nbQ;qi++){if(standings[qi])seconds.push(standings[qi].id);}
+    standings.slice(0,nbQ).forEach(function(row){qualifiers.push(row.id);});
   });
-
-  // Construire le bracket croisé : 1er poule i affronte 2ème poule (i+1) % nbPoules
-  var qualifiers=[];
-  var nbPoules=comp.poules.length;
-  if(seconds.length>0){
-    // Croisement classique : 1erA vs 2eB, 1erB vs 2eA, 1erC vs 2eD, 1erD vs 2eC...
-    for(var i=0;i<nbPoules;i++){
-      if(firsts[i])qualifiers.push(firsts[i]);
-      // Le 2ème opposé est celui de la poule "miroir"
-      var oppositeIdx=(i%2===0)?i+1:i-1;
-      if(oppositeIdx<nbPoules&&seconds[oppositeIdx])qualifiers.push(seconds[oppositeIdx]);
-    }
-    // Ajouter les qualifiés restants non encore inclus
-    firsts.concat(seconds).forEach(function(id){if(!qualifiers.includes(id))qualifiers.push(id);});
-  } else {
-    // Seulement des premiers (pas de deuxièmes) : ordre simple
-    qualifiers=firsts;
-  }
-
   comp.koRounds=buildKORounds(qualifiers,comp);
   comp.phase='poules_done';
   saveLocal();renderCompDetail(comp);
@@ -1320,7 +1295,7 @@ function calcStr(teamId,comp){
 
 function simMatchInstant(m,comp){
   if(!m.weather)m.weather=genWeather();
-  // En phase de poules, pas de prolongations ni de golden goal — le nul est un nul
+  // Phase de poules : pas de prolongations, le nul reste un nul
   var opts={events:comp.events||'normal',offsides:comp.offsides,penalty:false,golden:false};
   var res=runMatchEngine(m.homeId,m.awayId,opts,comp,m.weather);
   m.scoreH=res.scoreH;m.scoreA=res.scoreA;m.played=true;
@@ -1365,9 +1340,10 @@ function runMatchEngine(homeId,awayId,opts,comp,weather){
   var strH=calcStr(homeId,comp),strA=calcStr(awayId,comp);
   var scoreH=0,scoreA=0;
   var events=[],cardEvents=[];
-  var freq={low:0.12,normal:0.22,high:0.36,chaos:0.55}[opts.events]||0.22;
-  // Multiplicateur de but selon le mode (s'applique sur shotProb ET goalP)
-  var goalMult={low:0.7,normal:1.0,high:1.55,chaos:2.2}[opts.events]||1.0;
+  // Fréquence d'événements par minute — mode "élevé" nettement boosté
+  var freq={low:0.14,normal:0.28,high:0.52,chaos:0.72}[opts.events]||0.28;
+  // Multiplicateur de buts
+  var goalMult={low:0.65,normal:1.0,high:2.2,chaos:3.5}[opts.events]||1.0;
 
   function simMin(min){
     if(!prob(freq))return;
@@ -1376,39 +1352,77 @@ function runMatchEngine(homeId,awayId,opts,comp,weather){
     var attStr=att==='H'?strH:strA;
     var defStr=att==='H'?strA:strH;
     var attTeam=att==='H'?homeId:awayId;
+    var defTeam=att==='H'?awayId:homeId;
     var r=Math.random();
     var ratingDiff=(attStr.globalRating-defStr.globalRating)/100;
     var cardBase=0.06*w.cardMod;
 
-    if(r<0.28){
-      // Shot probability amplifiee par le mode offensif
-      var shotProb=(attStr.att*0.6+attStr.dri*0.4)/100*0.4*(1+ratingDiff*0.5)*goalMult;
-      shotProb=Math.min(shotProb,0.92);
+    if(r<0.26){
+      // Tentative de tir / occasion
+      var shotProb=(attStr.att*0.6+attStr.dri*0.4)/100*0.42*(1+ratingDiff*0.5)*goalMult;
+      shotProb=Math.min(shotProb,0.95);
       if(prob(shotProb)){
-        // Probabilite de but : rating diff + mode offensif
-        var goalBase=(attStr.att/100*0.40)-(defStr.gk/100*0.30)+(ratingDiff*0.30);
-        var goalP=Math.max(0.02,Math.min(0.75,goalBase*goalMult))*w.goalMod;
+        var goalBase=(attStr.att/100*0.42)-(defStr.gk/100*0.32)+(ratingDiff*0.28);
+        var goalP=Math.max(0.04,Math.min(0.82,goalBase*goalMult))*w.goalMod;
         if(prob(goalP)){
           if(att==='H')scoreH++;else scoreA++;
           var scorer=pickPlayer(attTeam,'goal',[]);
-          var hasAssist=prob(0.62);
+          var hasAssist=prob(0.65);
           var assister=hasAssist?pickPlayer(attTeam,'assist',scorer?[scorer.id]:[]):null;
-          events.push({min:min,type:'goal',teamId:attTeam,playerId:scorer?scorer.id:null,playerName:scorer?scorer.nom:'?',assistId:assister?assister.id:null,assistName:assister?assister.nom:null});
+          // Type de but : tête, frappe, penalty
+          var goalTypes=['⚽','🦵 Frappe','🤕 Tête','↩️ Reprise'];
+          var gtype=goalTypes[Math.floor(Math.random()*goalTypes.length)];
+          events.push({min:min,type:'goal',teamId:attTeam,playerId:scorer?scorer.id:null,playerName:scorer?scorer.nom:'?',assistId:assister?assister.id:null,assistName:assister?assister.nom:null,label:gtype});
+        } else {
+          // Arrêt du gardien
+          var gkSave=prob(0.55);
+          var shooter=pickPlayer(attTeam,'goal',[]);
+          var gk=pickPlayer(defTeam,'card',[]);
+          if(gkSave){
+            events.push({min:min,type:'save',teamId:defTeam,playerId:gk?gk.id:null,playerName:gk?gk.nom:'?',shooterName:shooter?shooter.nom:'?'});
+          } else {
+            // Corner ou tir hors cadre
+            var isCorner=prob(0.5);
+            events.push({min:min,type:isCorner?'corner':'missed',teamId:attTeam,playerId:shooter?shooter.id:null,playerName:shooter?shooter.nom:'?'});
+          }
         }
       }
-    } else if(r<0.38&&opts.offsides){
+    } else if(r<0.30&&opts.offsides){
+      // Hors-jeu
       var p2=pickPlayer(attTeam,'card',[]);
       events.push({min:min,type:'offside',teamId:attTeam,playerId:p2?p2.id:null,playerName:p2?p2.nom:'?'});
-    } else if(r<0.55){
+    } else if(r<0.44){
+      // Faute
       var p3=pickPlayer(attTeam,'card',[]);
       events.push({min:min,type:'foul',teamId:attTeam,playerId:p3?p3.id:null,playerName:p3?p3.nom:'?'});
-    } else if(r<0.55+cardBase){
-      var defTeam=att==='H'?awayId:homeId;
+    } else if(r<0.44+cardBase){
+      // Carton
       var p4=pickPlayer(defTeam,'card',[]);
-      var isRed=prob(0.12*w.cardMod);
+      var isRed=prob(0.10*w.cardMod);
       var ctype=isRed?'red':'yellow';
       events.push({min:min,type:ctype,teamId:defTeam,playerId:p4?p4.id:null,playerName:p4?p4.nom:'?'});
       if(p4)cardEvents.push({min:min,type:ctype,teamId:defTeam,playerId:p4.id,playerName:p4.nom});
+    } else if(r<0.60){
+      // Penalty sifflé (peut mener à un but)
+      if(prob(0.15*goalMult)){
+        var penShooter=pickPlayer(attTeam,'goal',[]);
+        var penScored=prob(0.75);
+        if(penScored){
+          if(att==='H')scoreH++;else scoreA++;
+          events.push({min:min,type:'goal',teamId:attTeam,playerId:penShooter?penShooter.id:null,playerName:penShooter?penShooter.nom:'?',assistId:null,assistName:null,label:'🥅 Penalty'});
+        } else {
+          events.push({min:min,type:'penalty_missed',teamId:attTeam,playerId:penShooter?penShooter.id:null,playerName:penShooter?penShooter.nom:'?'});
+        }
+      }
+    } else if(r<0.72){
+      // Remplaçant (2ème mi-temps surtout)
+      if(min>55&&prob(0.3)){
+        var outPlayer=pickPlayer(attTeam,'card',[]);
+        var inPlayer=pickPlayer(attTeam,'goal',outPlayer?[outPlayer.id]:[]);
+        if(outPlayer&&inPlayer){
+          events.push({min:min,type:'sub',teamId:attTeam,playerName:inPlayer.nom,outName:outPlayer.nom,playerId:inPlayer.id});
+        }
+      }
     }
   }
 
@@ -1439,7 +1453,7 @@ function openMatchModal(pouleId,matchId){
   if(!comp)return;
   var poule=comp.poules.find(function(p){return p.id===pouleId;});
   var m=poule.matches.find(function(x){return x.id===matchId;});
-  // isGroupMatch=true : pas de prolongations ni de vainqueur forcé en poule
+  m._isGroupMatch=true; // flag pour endMMMatch
   openMatchModalData(m,comp,function(){poule.matches[poule.matches.indexOf(m)]=m;saveLocal();renderCompDetail(comp);},true);
 }
 
@@ -1481,7 +1495,7 @@ function openMatchModalData(m,comp,callback,isGroupMatch){
   document.getElementById('match-modal').classList.add('open');
 
   // Pre-compute all events for this match
-  // En phase de poules : pas de prolongations ni de golden goal (le nul reste un nul)
+  // En phase de poules : pas de golden goal ni de penalty — le nul reste un nul
   var w=m.weather;
   var opts=isGroupMatch
     ?{events:comp.events||'normal',offsides:comp.offsides,penalty:false,golden:false}
@@ -1527,9 +1541,20 @@ function mmTick(){
     } else if(ev.type==='goal'){
       if(ev.teamId===mmMatch.homeId)mmScoreH++;else mmScoreA++;
       document.getElementById('mm-score').textContent=mmScoreH+' — '+mmScoreA;
-      var txt='⚽ <strong>'+ev.playerName+'</strong>';
+      var goalLabel=ev.label||'⚽';
+      var txt=goalLabel+' <strong>'+ev.playerName+'</strong>';
       var sub=ev.assistName?'🎯 Passe déc. : '+ev.assistName:null;
       addMMEvent(ev.min,txt,'',sub?'goal':'goal',sub);
+    } else if(ev.type==='save'){
+      addMMEvent(ev.min,'🧤','Arrêt ! <strong>'+ev.playerName+'</strong> repousse la frappe de '+ev.shooterName,'');
+    } else if(ev.type==='corner'){
+      addMMEvent(ev.min,'🚩','Corner pour '+(ev.teamId===mmMatch.homeId?'domicile':'extérieur')+' · '+ev.playerName,'');
+    } else if(ev.type==='missed'){
+      addMMEvent(ev.min,'💨','Tir hors cadre · <strong>'+ev.playerName+'</strong>','');
+    } else if(ev.type==='penalty_missed'){
+      addMMEvent(ev.min,'❌','Penalty manqué ! <strong>'+ev.playerName+'</strong>','card-r');
+    } else if(ev.type==='sub'){
+      addMMEvent(ev.min,'🔄','Remplacement · ↑ <strong>'+ev.playerName+'</strong> · ↓ '+ev.outName,'sub');
     } else if(ev.type==='yellow'){
       addMMEvent(ev.min,'🟨','Avertissement · <strong>'+ev.playerName+'</strong>','card-y');
     } else if(ev.type==='red'){
@@ -1568,8 +1593,9 @@ function endMMMatch(){
   document.getElementById('mm-score-period').textContent='MATCH TERMINÉ';
   document.getElementById('mm-next-btn').style.display='inline-block';
 
-  // KO: must have winner
-  if(mmMatch.scoreH===mmMatch.scoreA&&mmComp&&mmComp.phase!=='poules'){
+  // KO uniquement : en phase de poules (poules ou poules_done côté match), le nul reste un nul
+  var isGroupMatch=(mmMatch._isGroupMatch===true);
+  if(!isGroupMatch&&mmMatch.scoreH===mmMatch.scoreA&&mmComp&&mmComp.phase!=='poules'&&mmComp.phase!=='poules_done'){
     if(prob(0.5))mmMatch.scoreH++;else mmMatch.scoreA++;
     document.getElementById('mm-score').textContent=mmMatch.scoreH+' — '+mmMatch.scoreA;
     mmMatch.winner=mmMatch.scoreH>mmMatch.scoreA?mmMatch.homeId:mmMatch.awayId;
