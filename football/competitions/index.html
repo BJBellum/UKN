@@ -163,7 +163,7 @@
     .mm-weather-badge{font-size:9px;padding:2px 8px;border-radius:2px;border:1px solid var(--border2);color:var(--text2);display:flex;align-items:center;gap:4px;}
     .mm-teams-block{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:14px 16px 8px;gap:8px;}
     .mm-team-side{display:flex;flex-direction:column;align-items:center;gap:4px;}
-    .mm-team-side.right{align-items:flex-end;}
+    .mm-team-side.right{align-items:center;}
     .mm-team-flag{width:40px;height:27px;object-fit:cover;border-radius:2px;}
     .mm-team-name{font-size:10px;color:var(--text);text-align:center;}
     .mm-center{display:flex;flex-direction:column;align-items:center;gap:2px;}
@@ -568,15 +568,14 @@ function renderTopStats(comp){
   html+='<div id="stat-tab-scorers">';
   if(scorers.length){
     html+='<div style="background:var(--card-bg);border:1px solid var(--border);">';
-    html+='<table class="scorer-table"><thead><tr><th>#</th><th>Joueur</th><th>Équipe</th><th>⚽</th><th>🎯</th></tr></thead><tbody>';
+    html+='<table class="scorer-table"><thead><tr><th style="width:32px;">#</th><th>Joueur</th><th>Équipe</th><th style="text-align:center;">⚽</th></tr></thead><tbody>';
     scorers.slice(0,15).forEach(function(s,i){
       var pays=(fbData.pays||[]).find(function(x){return x.id===s.teamId;});
       html+='<tr>';
       html+='<td><span class="scorer-rank">'+(i+1)+'</span></td>';
       html+='<td>'+s.nom+'</td>';
-      html+='<td style="display:flex;align-items:center;gap:5px;">'+(pays&&pays.flag_data?'<img style="width:20px;height:13px;object-fit:cover;border-radius:1px;" src="'+pays.flag_data+'">':'')+(pays?pays.nom:'?')+'</td>';
-      html+='<td><span class="scorer-count">'+s.goals+'</span></td>';
-      html+='<td><span class="scorer-count assist">'+s.assists+'</span></td>';
+      html+='<td><div style="display:flex;align-items:center;gap:6px;">'+(pays&&pays.flag_data?'<img style="width:20px;height:13px;object-fit:cover;border-radius:1px;flex-shrink:0;" src="'+pays.flag_data+'">':'')+'<span>'+(pays?pays.nom:'?')+'</span></div></td>';
+      html+='<td style="text-align:center;"><span class="scorer-count">'+s.goals+'</span></td>';
       html+='</tr>';
     });
     html+='</tbody></table></div>';
@@ -587,15 +586,14 @@ function renderTopStats(comp){
   html+='<div id="stat-tab-assisters" style="display:none;">';
   if(assisters.length){
     html+='<div style="background:var(--card-bg);border:1px solid var(--border);">';
-    html+='<table class="scorer-table"><thead><tr><th>#</th><th>Joueur</th><th>Équipe</th><th>🎯</th><th>⚽</th></tr></thead><tbody>';
+    html+='<table class="scorer-table"><thead><tr><th style="width:32px;">#</th><th>Joueur</th><th>Équipe</th><th style="text-align:center;">🎯</th></tr></thead><tbody>';
     assisters.slice(0,15).forEach(function(s,i){
       var pays=(fbData.pays||[]).find(function(x){return x.id===s.teamId;});
       html+='<tr>';
       html+='<td><span class="scorer-rank">'+(i+1)+'</span></td>';
       html+='<td>'+s.nom+'</td>';
-      html+='<td style="display:flex;align-items:center;gap:5px;">'+(pays&&pays.flag_data?'<img style="width:20px;height:13px;object-fit:cover;border-radius:1px;" src="'+pays.flag_data+'">':'')+(pays?pays.nom:'?')+'</td>';
-      html+='<td><span class="scorer-count assist">'+s.assists+'</span></td>';
-      html+='<td><span class="scorer-count">'+s.goals+'</span></td>';
+      html+='<td><div style="display:flex;align-items:center;gap:6px;">'+(pays&&pays.flag_data?'<img style="width:20px;height:13px;object-fit:cover;border-radius:1px;flex-shrink:0;" src="'+pays.flag_data+'">':'')+'<span>'+(pays?pays.nom:'?')+'</span></div></td>';
+      html+='<td style="text-align:center;"><span class="scorer-count assist">'+s.assists+'</span></td>';
       html+='</tr>';
     });
     html+='</tbody></table></div>';
@@ -606,15 +604,15 @@ function renderTopStats(comp){
   html+='<div id="stat-tab-cards" style="display:none;">';
   if(cards.length){
     html+='<div style="background:var(--card-bg);border:1px solid var(--border);">';
-    html+='<table class="scorer-table"><thead><tr><th>#</th><th>Joueur</th><th>Équipe</th><th>🟨</th><th>🟥</th><th>Statut</th></tr></thead><tbody>';
+    html+='<table class="scorer-table"><thead><tr><th style="width:32px;">#</th><th>Joueur</th><th>Équipe</th><th style="text-align:center;">🟨</th><th style="text-align:center;">🟥</th><th>Statut</th></tr></thead><tbody>';
     cards.slice(0,15).forEach(function(s,i){
       var pays=(fbData.pays||[]).find(function(x){return x.id===s.teamId;});
       html+='<tr>';
       html+='<td><span class="scorer-rank">'+(i+1)+'</span></td>';
       html+='<td>'+s.nom+'</td>';
-      html+='<td style="display:flex;align-items:center;gap:5px;">'+(pays&&pays.flag_data?'<img style="width:20px;height:13px;object-fit:cover;border-radius:1px;" src="'+pays.flag_data+'">':'')+(pays?pays.nom:'?')+'</td>';
-      html+='<td>'+s.yellows+'</td>';
-      html+='<td>'+s.reds+'</td>';
+      html+='<td><div style="display:flex;align-items:center;gap:6px;">'+(pays&&pays.flag_data?'<img style="width:20px;height:13px;object-fit:cover;border-radius:1px;flex-shrink:0;" src="'+pays.flag_data+'">':'')+'<span>'+(pays?pays.nom:'?')+'</span></div></td>';
+      html+='<td style="text-align:center;">'+s.yellows+'</td>';
+      html+='<td style="text-align:center;">'+s.reds+'</td>';
       html+='<td>'+(s.suspended?'<span class="suspended-icon">SUSPENDU</span>':'<span style="font-size:8px;color:var(--text3);">OK</span>')+'</td>';
       html+='</tr>';
     });
@@ -1319,9 +1317,15 @@ function simKOMatchInstant(m,comp){
   var res=runMatchEngine(m.homeId,m.awayId,opts,comp,m.weather);
   m.scoreH=res.scoreH;m.scoreA=res.scoreA;m.played=true;m.events=res.events;
   if(res.scoreH===res.scoreA){
-    if(prob(0.5))m.scoreH++;else m.scoreA++;
-    var penWinner=m.scoreH>m.scoreA?m.homeId:m.awayId;
-    m.events.push({min:120,type:'pen',teamId:penWinner,playerName:'Tirs au but',assistName:null,playerId:null});
+    // Tirs au but seulement si pas de golden goal (golden géré dans le moteur)
+    if(comp.penalty){
+      if(prob(0.5))m.scoreH++;else m.scoreA++;
+      var penWinner=m.scoreH>m.scoreA?m.homeId:m.awayId;
+      m.events.push({min:120,type:'pen',teamId:penWinner,playerName:'Tirs au but',assistName:null,playerId:null});
+    } else {
+      // Pas de tirs au but : match nul — ne devrait pas arriver mais on départage quand même
+      if(prob(0.5))m.scoreH++;else m.scoreA++;
+    }
   }
   m.winner=m.scoreH>m.scoreA?m.homeId:m.awayId;
   var newSusp=applyMatchCardSanctions(comp,res.cardEvents);
@@ -1342,8 +1346,16 @@ function runMatchEngine(homeId,awayId,opts,comp,weather){
   var events=[],cardEvents=[];
   // Fréquence d'événements par minute — mode "élevé" nettement boosté
   var freq={low:0.14,normal:0.28,high:0.52,chaos:0.72}[opts.events]||0.28;
-  // Multiplicateur de buts
-  var goalMult={low:0.65,normal:1.0,high:2.2,chaos:3.5}[opts.events]||1.0;
+  // Multiplicateur de buts — "high" légèrement réduit
+  var goalMult={low:0.65,normal:1.0,high:1.7,chaos:3.5}[opts.events]||1.0;
+
+  // Variable selon l'écart de notes entre les équipes
+  // Plus l'écart est grand, plus le résultat sera distancé
+  var ratingH=strH.globalRating||50;
+  var ratingA=strA.globalRating||50;
+  var ratingGap=Math.abs(ratingH-ratingA); // 0–50 typiquement
+  // Facteur d'écart : amplifie l'avantage de la meilleure équipe (0.0 à 0.45)
+  var gapFactor=Math.min(0.45,ratingGap/100*1.2);
 
   function simMin(min){
     if(!prob(freq))return;
@@ -1359,10 +1371,13 @@ function runMatchEngine(homeId,awayId,opts,comp,weather){
 
     if(r<0.26){
       // Tentative de tir / occasion
-      var shotProb=(attStr.att*0.6+attStr.dri*0.4)/100*0.42*(1+ratingDiff*0.5)*goalMult;
+      // gapFactor amplifie l'avantage si l'équipe attaquante est la meilleure
+      var isStronger=(attStr.globalRating>=defStr.globalRating);
+      var gapBonus=isStronger?gapFactor:-gapFactor*0.5;
+      var shotProb=(attStr.att*0.6+attStr.dri*0.4)/100*0.42*(1+ratingDiff*0.5+gapBonus)*goalMult;
       shotProb=Math.min(shotProb,0.95);
       if(prob(shotProb)){
-        var goalBase=(attStr.att/100*0.42)-(defStr.gk/100*0.32)+(ratingDiff*0.28);
+        var goalBase=(attStr.att/100*0.42)-(defStr.gk/100*0.32)+(ratingDiff*0.28)+(gapBonus*0.3);
         var goalP=Math.max(0.04,Math.min(0.82,goalBase*goalMult))*w.goalMod;
         if(prob(goalP)){
           if(att==='H')scoreH++;else scoreA++;
@@ -1504,8 +1519,8 @@ function openMatchModalData(m,comp,callback,isGroupMatch){
   mmEvents=res.events;mmEventIdx=0;mmCardEvents=res.cardEvents;
   mmScoreH=0;mmScoreA=0;mmMinute=0;mmHalfShown=false;mmExtraShown=false;mmRunning=true;
 
-  // Store final result on match
-  m.scoreH=res.scoreH;m.scoreA=res.scoreA;m.events=res.events;
+  // Store events on match (score will be set by endMMMatch after animation)
+  m.events=res.events;
 
   mmInterval=setInterval(mmTick,1000/mmSpeedFactor);
 }
@@ -1520,8 +1535,9 @@ function setMSpeed(s,btn){
 function mmTick(){
   if(!mmRunning)return;
   mmMinute++;
-  var maxMin=120;
-  var progress=Math.min(100,mmMinute/90*100);
+  var isGroupMatch=(mmMatch._isGroupMatch===true);
+  var maxMin=(isGroupMatch)?90:120;
+  var progress=Math.min(100,mmMinute/(isGroupMatch?90:120)*100);
   document.getElementById('mm-fill').style.width=progress+'%';
   document.getElementById('mm-status').textContent=mmMinute+"'";
 
@@ -1545,6 +1561,11 @@ function mmTick(){
       var txt=goalLabel+' <strong>'+ev.playerName+'</strong>';
       var sub=ev.assistName?'🎯 Passe déc. : '+ev.assistName:null;
       addMMEvent(ev.min,txt,'',sub?'goal':'goal',sub);
+      // But en or : arrêt immédiat si KO et golden activé et prolongations en cours
+      if(!isGroupMatch&&mmComp&&mmComp.golden&&mmExtraShown&&mmScoreH!==mmScoreA){
+        addMMEvent(ev.min,'🌟','BUT EN OR !','goal');
+        endMMMatch();return;
+      }
     } else if(ev.type==='save'){
       addMMEvent(ev.min,'🧤','Arrêt ! <strong>'+ev.playerName+'</strong> repousse la frappe de '+ev.shooterName,'');
     } else if(ev.type==='corner'){
@@ -1574,16 +1595,17 @@ function mmTick(){
       var ev2=mmEvents[mmEventIdx];mmEventIdx++;
       if(ev2.type==='goal'){
         if(ev2.teamId===mmMatch.homeId)mmScoreH++;else mmScoreA++;
+        // But en or : stoppe le fast-forward aussi
+        if(!isGroupMatch&&mmComp&&mmComp.golden&&mmExtraShown&&mmScoreH!==mmScoreA)break;
       }
     }
-    mmMinute=90;
     document.getElementById('mm-score').textContent=mmScoreH+' — '+mmScoreA;
     document.getElementById('mm-fill').style.width='100%';
     endMMMatch();
     return;
   }
 
-  if(mmMinute>=90)endMMMatch();
+  if(mmMinute>=maxMin)endMMMatch();
 }
 
 function endMMMatch(){
@@ -1593,13 +1615,28 @@ function endMMMatch(){
   document.getElementById('mm-score-period').textContent='MATCH TERMINÉ';
   document.getElementById('mm-next-btn').style.display='inline-block';
 
-  // KO uniquement : en phase de poules (poules ou poules_done côté match), le nul reste un nul
+  // Set the match score from the animated counters (source of truth)
+  mmMatch.scoreH=mmScoreH;
+  mmMatch.scoreA=mmScoreA;
+
+  // KO uniquement : en phase de poules, le nul reste un nul
   var isGroupMatch=(mmMatch._isGroupMatch===true);
   if(!isGroupMatch&&mmMatch.scoreH===mmMatch.scoreA&&mmComp&&mmComp.phase!=='poules'&&mmComp.phase!=='poules_done'){
-    if(prob(0.5))mmMatch.scoreH++;else mmMatch.scoreA++;
-    document.getElementById('mm-score').textContent=mmMatch.scoreH+' — '+mmMatch.scoreA;
-    mmMatch.winner=mmMatch.scoreH>mmMatch.scoreA?mmMatch.homeId:mmMatch.awayId;
-    addMMEvent(120,'🥅','Tirs au but — '+(mmMatch.winner===mmMatch.homeId?mmMatch.homeId:''),'goal');
+    if(mmComp.penalty){
+      // Tirs au but
+      if(prob(0.5))mmMatch.scoreH++;else mmMatch.scoreA++;
+      document.getElementById('mm-score').textContent=mmMatch.scoreH+' — '+mmMatch.scoreA;
+      mmMatch.winner=mmMatch.scoreH>mmMatch.scoreA?mmMatch.homeId:mmMatch.awayId;
+      var penTeamName=mmMatch.winner===mmMatch.homeId
+        ?((fbData.pays||[]).find(function(x){return x.id===mmMatch.homeId;})||{nom:''}).nom
+        :((fbData.pays||[]).find(function(x){return x.id===mmMatch.awayId;})||{nom:''}).nom;
+      addMMEvent(120,'🥅','Tirs au but — '+penTeamName+' se qualifie','goal');
+    } else {
+      // Pas de tirs au but configuré : départage direct
+      if(prob(0.5))mmMatch.scoreH++;else mmMatch.scoreA++;
+      document.getElementById('mm-score').textContent=mmMatch.scoreH+' — '+mmMatch.scoreA;
+      mmMatch.winner=mmMatch.scoreH>mmMatch.scoreA?mmMatch.homeId:mmMatch.awayId;
+    }
   } else if(mmScoreH>mmScoreA){mmMatch.winner=mmMatch.homeId;}
   else if(mmScoreA>mmScoreH){mmMatch.winner=mmMatch.awayId;}
 
