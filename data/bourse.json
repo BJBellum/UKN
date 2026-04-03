@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "updated": "2026-03-21",
-  "description": "Bourse du Caire ÃÂ· SystÃÂ¨me ESS ÃÂ· Royaume-Uni du Nil",
+  "updated": "2026-04-03",
+  "description": "Bourse du Caire ÃÂÃÂ· SystÃÂÃÂ¨me ESS ÃÂÃÂ· Royaume-Uni du Nil",
   "formula": "((eq*5)+(sa*4)+(tr*7)+(inn*8)+(ec*6)+(fi*8))/38",
   "weights": {
     "eq": 5,
