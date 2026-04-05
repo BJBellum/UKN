@@ -166,7 +166,7 @@
     "nom": "MQ-06 \"Khaled\"",
     "categorie": "aeronefs",
     "niveau": 5,
-    "fabricant": "Royal Crown Aviation & Defense",
+    "fabricant": "Imperial Aviation & Defense",
     "cout_unite": "629999",
     "inspiration": "Super Mystère B2",
     "disponibilite": "Septembre 2306",
@@ -194,7 +194,7 @@
     "nom": "MW-06 \"Al-Khamsin\"",
     "categorie": "aeronefs",
     "niveau": 5,
-    "fabricant": "Royal Crown Aviation & Defense",
+    "fabricant": "Imperial Aviation & Defense",
     "cout_unite": "349999",
     "inspiration": "UH-1 \"Huey\"",
     "disponibilite": "Août 2306",
@@ -324,5 +324,33 @@
       "Munitions": "Obus de 120 × 775 mm R"
     },
     "image_path": "assets/images/catalogue/image_arme__12_.png"
+  },
+  {
+    "id": "cat_1775349244435",
+    "nom": "RS-500",
+    "categorie": "aeronefs",
+    "niveau": 5,
+    "fabricant": "Hulud Air & Defense Systems",
+    "cout_unite": "750000",
+    "inspiration": "EC-121 Warning Star",
+    "disponibilite": "Septembre 2306",
+    "specs": {
+      "Moteur": "4 moteurs à pistons en étoile",
+      "Carburant": "Essence",
+      "Cargaison et équipage": "18 : 6 officiers (2 pilotes, 2 navigateurs, 2 contrôleurs des armes) et 12 militaires du rang (2 ingénieurs de vol, 1 opérateur radio, 2 chefs d'équipe, 5 opérateurs radar, 2",
+      "Vitesse maximale": "481 km/h",
+      "Vitesse ascensionnelle": "4.1 m/s",
+      "Plafond": "7 620 m",
+      "Rayon d'action": "6 800 km",
+      "Poids à vide": "31 600 kg",
+      "Poids chargé maximal": "65 000 kg",
+      "Envergure": "38.45 m",
+      "Longueur": "35.40 m",
+      "Hauteur": "7.54 m",
+      "Surface alaire": "153,29 m²",
+      "Armement": "Aucun",
+      "Équipement": "Radar de recherche longue portée AN/APS-20 (dans le radôme ventral). Radar, AN/APS-45 (dans le radôme dorsal caractéristique). Systèmes de communication HF, VHF et UHF"
+    },
+    "image_path": "assets/images/catalogue/image_arme__7_.png"
   }
 ]
