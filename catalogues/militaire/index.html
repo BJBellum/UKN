@@ -709,12 +709,22 @@ function calcAddItem(nom,prixUnit,qty,categorie){
   calcRender();
 }
 
-function calcSetQty(idx,v){
+function calcSetQty(idx,v,el){
   var n=parseInt(v);
   if(isNaN(n)||v===''||v===null)return; // champ vide → on ne touche pas
   if(n<0)return; // valeur négative ignorée
   calcCart[idx].qty=n; // on garde l'item même si qty=0
-  calcRender();
+  // Mise à jour partielle : seulement le sous-total de la ligne + totaux globaux
+  // (pas de re-render complet → la sélection dans le champ est préservée)
+  var total=calcCart[idx].prixUnit*n;
+  if(el){
+    var row=el.closest('.calc-cart-item');
+    if(row){var tEl=row.querySelector('.cci-total');if(tEl)tEl.textContent=calcCart[idx].prixUnit?total.toLocaleString('fr')+' N\u00a3':'—';}
+  }
+  var grandTotal=calcCart.reduce(function(s,x){return s+x.prixUnit*x.qty;},0);
+  var totalQty=calcCart.reduce(function(s,x){return s+x.qty;},0);
+  var gtEl=document.getElementById('calc-grand-total');if(gtEl)gtEl.textContent=grandTotal.toLocaleString('fr')+' N\u00a3';
+  var cntEl=document.getElementById('calc-item-count');if(cntEl)cntEl.textContent=calcCart.length+' type(s) \u00b7 '+totalQty+' unit\u00e9(s)';
 }
 
 function calcRemove(idx){
@@ -753,7 +763,7 @@ function calcRender(){
     html+='<div class="cci-name">'+escCalc(item.nom)+'</div>';
     html+='<div class="cci-prix-unit">'+(item.prixUnit?item.prixUnit.toLocaleString('fr')+' N\u00a3 / unité':'Prix non renseigné')+'</div>';
     html+='<div class="cci-row">';
-    html+='<input type="number" class="cci-qty" value="'+item.qty+'" min="0" oninput="calcSetQty('+i+',this.value)" title="Quantité">';
+    html+='<input type="number" class="cci-qty" value="'+item.qty+'" min="0" oninput="calcSetQty('+i+',this.value,this)" title="Quantité">';
     html+='<span class="cci-total">'+(item.prixUnit?total.toLocaleString('fr')+' N\u00a3':'—')+'</span>';
     html+='<button class="cci-del" onclick="calcRemove('+i+')" title="Retirer">✕</button>';
     html+='</div></div>';
@@ -764,6 +774,24 @@ function calcRender(){
 }
 
 function escCalc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+// ── Conversion texte → police bold unicode (Mathematical Bold Capital A-Z) ──
+function toBoldUnicode(str){
+  // Décompose les accents (NFD) puis supprime les marques diacritiques
+  var base=str.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase();
+  return base.split('').map(function(c){
+    var code=c.charCodeAt(0);
+    // A-Z → U+1D400–U+1D419 (Mathematical Bold Capital)
+    if(code>=65&&code<=90)return String.fromCodePoint(0x1D400+(code-65));
+    return c;
+  }).join('');
+}
+function calcUpdatePays(v){
+  var prev=document.getElementById('calc-pays-preview');
+  if(!prev)return;
+  var t=v.trim();
+  prev.textContent=t?'\u25ce \u2800'+toBoldUnicode(t)+'\u2800':'';
+}
 
 // Libellés lisibles par catégorie
 var CAT_LABELS={
@@ -823,17 +851,18 @@ function calcValidateOrder(){
   });
   // Formater le total avec espaces comme séparateurs de milliers (1 000, 10 000…)
   var totalFmt=Math.round(grandTotal).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+
+  // Si une seule catégorie : ajouter un '> ' de clôture pour symétriser avec le séparateur
+  if(catsInOrder.length===1)lines+='\n> \n';
+
   lines+='\n> \n> '+solari+trait+'**Coût total** : '+totalFmt+' N\u00a3';
 
   // ── Construire l'embed classique Discord ──
   var bannerUrl=discordBannerUrl||localStorage.getItem('ukn_discord_banner')||'';
 
-  // Récupérer le nom de l'utilisateur connecté via PharosAuth (si disponible)
-  var paysLabel='\u2014';
-  try{
-    var _pu=window.PharosAuth&&typeof window.PharosAuth.getUser==='function'?window.PharosAuth.getUser():null;
-    if(_pu)paysLabel=_pu.global_name||_pu.username||_pu.display_name||_pu.name||'\u2014';
-  }catch(_e){}
+  // Récupérer le nom saisi dans le champ "Pays commandant" et le convertir en bold unicode
+  var rawPays=(document.getElementById('calc-pays-input')?.value||'').trim();
+  var paysLabel=rawPays?toBoldUnicode(rawPays):'\u2014';
 
   var invis='\u2800'; // U+2800 · caractère Braille vide → ligne vide dans Discord
   var descHeader=invis+'\n> \u25ce \`\u2800'+paysLabel+'\u2800\`\n> ';
@@ -938,6 +967,11 @@ var _origRenderAll=typeof renderContent!=='undefined'?renderContent:null;
     <div class="calc-total-count" id="calc-item-count">0 type(s) &middot; 0 unit&eacute;(s)</div>
     <button class="calc-reset-btn" onclick="calcReset()">&#8635; Vider le panier</button>
     <div id="calc-webhook-err" style="display:none;margin-top:8px;padding:7px 10px;background:rgba(232,92,13,.08);border:1px solid rgba(232,92,13,.35);border-left:3px solid #E84848;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#E84848;letter-spacing:.06em;line-height:1.6;word-break:break-word;"></div>
+    <div style="margin-top:9px;background:rgba(200,150,12,.05);border:1px solid rgba(200,150,12,.18);border-left:2px solid rgba(200,150,12,.45);padding:8px 10px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:7px;color:rgba(200,150,12,.7);letter-spacing:.16em;text-transform:uppercase;margin-bottom:5px;">◎ Pays commandant</div>
+      <input type="text" id="calc-pays-input" class="calc-field" placeholder="Nom du pays…" oninput="calcUpdatePays(this.value)" style="font-size:10px;border-color:rgba(200,150,12,.25);">
+      <div id="calc-pays-preview" style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(200,150,12,.75);letter-spacing:.05em;margin-top:4px;min-height:15px;padding-left:2px;"></div>
+    </div>
     <button class="calc-validate-btn" id="calc-validate-btn" onclick="calcValidateOrder()">&#10003; Valider la commande · Discord</button>
   </div>
 
