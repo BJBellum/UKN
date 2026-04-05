@@ -465,5 +465,28 @@
       "Munitions": "16 roquettes de 140 mm (à fragmentation ou fumigène)"
     },
     "image_path": "assets/images/catalogue/image_arme__9_.png"
+  },
+  {
+    "id": "cat_1775350952202",
+    "nom": "HW-120",
+    "categorie": "artillerie",
+    "niveau": 4,
+    "fabricant": "Yassin Heavy Industries",
+    "cout_unite": "1999",
+    "inspiration": "Brandt AM-50",
+    "disponibilite": "Avril 2306",
+    "specs": {
+      "Calibre": "120 mm",
+      "Équipage": "6 personnes",
+      "Masse (non chargé)": "530 kg",
+      "Longueur": "1,70 m",
+      "Longueur du canon": "1,70 m",
+      "Cadence de tir": "8 coups/min (normale), 12 coups/min (maximale)",
+      "Vitesse initiale": "200-350 m/s",
+      "Système de visée": "Visée optique standard",
+      "Portée maximale": "6,7 km avec obus explosif standard, 13 km avec obus à propulsion additionnelle",
+      "Munitions": "530 kg"
+    },
+    "image_path": "assets/images/catalogue/image_arme__14_.png"
   }
 ]
