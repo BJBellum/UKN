@@ -391,6 +391,7 @@ var openG={terrestre:true,aerien:true,naval:true,balistique:true};
 var activeCat='';
 var searchQ='';
 var discordWebhookUrl=''; // chargé depuis GitHub data/config.json
+var discordBannerUrl='';  // URL permanente de la bannière Discord
 
 function loadLocal(){
   try{
@@ -402,19 +403,20 @@ function loadLocal(){
 }
 
 function loadConfig(){
-  // Charger d'abord le cache local (instantané)
+  // Cache local immédiat
   var cached=localStorage.getItem('ukn_discord_webhook')||'';
   if(cached)discordWebhookUrl=cached;
-  // Puis sync depuis GitHub (source de vérité)
+  var cachedBanner=localStorage.getItem('ukn_discord_banner')||'';
+  if(cachedBanner)discordBannerUrl=cachedBanner;
+  // Sync GitHub (source de vérité)
   fetch('https://api.github.com/repos/BJBellum/UKN/contents/data/config.json',{
     headers:{'Accept':'application/vnd.github.v3.raw'},cache:'no-store'
   }).then(function(r){return r.ok?r.json():null;})
   .then(function(cfg){
-    if(cfg&&cfg.webhook_url){
-      discordWebhookUrl=cfg.webhook_url;
-      localStorage.setItem('ukn_discord_webhook',cfg.webhook_url);
-    }
-  }).catch(function(){/* utilise le cache local si GitHub indisponible */});
+    if(!cfg)return;
+    if(cfg.webhook_url){discordWebhookUrl=cfg.webhook_url;localStorage.setItem('ukn_discord_webhook',cfg.webhook_url);}
+    if(cfg.banner_url){discordBannerUrl=cfg.banner_url;localStorage.setItem('ukn_discord_banner',cfg.banner_url);}
+  }).catch(function(){/* cache local utilisé */});
 }
 function syncGH(){
   fetch('https://api.github.com/repos/BJBellum/UKN/contents/data/catalogue-militaire.json',{
@@ -781,16 +783,17 @@ function calcValidateOrder(){
   var items=calcCart.filter(function(x){return x.qty>0;});
   if(!items.length){
     var btn=document.getElementById('calc-validate-btn');
-    if(btn){var o=btn.textContent;btn.textContent='⚠ Panier vide ou quantités à 0';btn.style.color='#E84848';setTimeout(function(){btn.textContent=o;btn.style.color='';},2000);}
-    return;
-  }
-  var webhookUrl=discordWebhookUrl||localStorage.getItem('ukn_discord_webhook')||'';
-  if(!webhookUrl){
-    alert('Aucun webhook Discord configuré.\nContactez un administrateur pour configurer le webhook.');
+    if(btn){var o=btn.textContent;btn.textContent='⚠ Panier vide ou quantités à 0';btn.style.color='#E84848';setTimeout(function(){btn.textContent=o;btn.style.color='';},2500);}
     return;
   }
 
-  // Grouper par catégorie (dans l'ordre des groupes définis)
+  var webhookUrl=discordWebhookUrl||localStorage.getItem('ukn_discord_webhook')||'';
+  if(!webhookUrl){
+    _showWebhookError('Webhook non configuré — contactez un administrateur.');
+    return;
+  }
+
+  // Grouper par catégorie (dans l'ordre du catalogue)
   var orderedCats=['armes-feu','explosifs','vehicules-terrestres','artillerie','aeronefs','navires','sous-marins','missiles','missiles-strategiques'];
   var byCategory={};
   items.forEach(function(item){
@@ -799,16 +802,15 @@ function calcValidateOrder(){
     byCategory[cat].push(item);
   });
 
-  // Construire le contenu en respectant le template Discord
   var yellowSquare='<:small_yellow_square:1469439628107976939>';
   var solari='<:solari:1489835320508809338>';
   var trait='<:Trait_1:1486199789598146611>';
   var grandTotal=items.reduce(function(s,x){return s+(x.prixUnit||0)*x.qty;},0);
 
+  // Construire le texte du message
   var lines='';
   var catsInOrder=[];
   orderedCats.forEach(function(c){if(byCategory[c])catsInOrder.push(c);});
-  // Catégories non reconnues à la fin
   Object.keys(byCategory).forEach(function(c){if(orderedCats.indexOf(c)<0)catsInOrder.push(c);});
 
   catsInOrder.forEach(function(cat,idx){
@@ -819,39 +821,66 @@ function calcValidateOrder(){
       lines+='> '+yellowSquare+'**'+item.nom+'** : '+item.qty+'\n';
     });
   });
-  lines+='\n> \n> '+solari+trait+'**Coût total** : '+grandTotal.toLocaleString('fr')+' N£';
+  lines+='\n> \n> '+solari+trait+'**Coût total** : '+grandTotal.toLocaleString('fr')+' N\u00a3';
+
+  // Construire les composants — bannière optionnelle depuis config
+  var innerComponents=[];
+  var bannerUrl=discordBannerUrl||localStorage.getItem('ukn_discord_banner')||'';
+  if(bannerUrl){
+    innerComponents.push({type:12,items:[{media:{url:bannerUrl}}]});
+    innerComponents.push({type:14,spacing:2});
+  }
+  innerComponents.push({type:10,content:lines});
 
   var payload={
     flags:32768,
-    components:[{
-      type:17,
-      components:[
-        {type:12,items:[{media:{url:'https://cdn.discordapp.com/attachments/1463904141297324228/1490334185213399070/TITRE_-_2026-04-05T145542.118.png?ex=69d3ad5e&is=69d25bde&hm=45272910beccc20f396c47899de94db6dd4cb723f617b2f1ed5f85cc5a6d0e13&'}}]},
-        {type:14,spacing:2},
-        {type:10,content:lines}
-      ]
-    }]
+    components:[{type:17,components:innerComponents}]
   };
 
   var btn=document.getElementById('calc-validate-btn');
   if(btn){btn.disabled=true;btn.textContent='⏳ Envoi en cours…';}
+  _hideWebhookError();
 
-  fetch(webhookUrl,{
+  // ?wait=true pour récupérer le corps de réponse Discord (succès ou erreur)
+  var url=webhookUrl+(webhookUrl.indexOf('?')>=0?'&':'?')+'wait=true';
+
+  fetch(url,{
     method:'POST',
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify(payload)
   }).then(function(r){
-    if(r.ok||r.status===204||r.status===200){
+    return r.text().then(function(body){return {status:r.status,ok:r.ok,body:body};});
+  }).then(function(res){
+    if(res.ok){
       if(btn){btn.textContent='✓ Commande envoyée !';}
       setTimeout(function(){if(btn){btn.disabled=false;btn.textContent='✓ Valider la commande · Discord';}},3000);
     } else {
-      throw new Error('HTTP '+r.status);
+      // Afficher le message d'erreur réel de Discord
+      var msg='';
+      try{var d=JSON.parse(res.body);msg=d.message||(d.errors?JSON.stringify(d.errors):'');}catch(e){msg=res.body;}
+      _showWebhookError('Discord '+res.status+(msg?' — '+msg:''));
+      if(btn){btn.disabled=false;btn.textContent='✗ Réessayer';}
+      console.error('[Webhook] Payload envoyé :',payload);
+      console.error('[Webhook] Réponse Discord :',res.body);
     }
   }).catch(function(err){
-    if(btn){btn.disabled=false;btn.textContent='✗ Erreur — Réessayer';}
-    console.error('Webhook error:',err);
-    setTimeout(function(){if(btn)btn.textContent='✓ Valider la commande · Discord';},3000);
+    // Erreur réseau (CORS, DNS, etc.)
+    _showWebhookError('Erreur réseau — '+err.message+'. Vérifiez la console (F12).');
+    if(btn){btn.disabled=false;btn.textContent='✗ Réessayer';}
+    console.error('[Webhook] Erreur réseau :',err);
+    console.error('[Webhook] URL utilisée :',webhookUrl);
   });
+}
+
+function _showWebhookError(msg){
+  var el=document.getElementById('calc-webhook-err');
+  if(!el)return;
+  el.textContent='⚠ '+msg;
+  el.style.display='block';
+}
+function _hideWebhookError(){
+  var el=document.getElementById('calc-webhook-err');
+  if(el)el.style.display='none';
 }
 
 // Refresh quick list whenever catalogue updates
@@ -901,6 +930,7 @@ var _origRenderAll=typeof renderContent!=='undefined'?renderContent:null;
     </div>
     <div class="calc-total-count" id="calc-item-count">0 type(s) &middot; 0 unit&eacute;(s)</div>
     <button class="calc-reset-btn" onclick="calcReset()">&#8635; Vider le panier</button>
+    <div id="calc-webhook-err" style="display:none;margin-top:8px;padding:7px 10px;background:rgba(232,92,13,.08);border:1px solid rgba(232,92,13,.35);border-left:3px solid #E84848;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#E84848;letter-spacing:.06em;line-height:1.6;word-break:break-word;"></div>
     <button class="calc-validate-btn" id="calc-validate-btn" onclick="calcValidateOrder()">&#10003; Valider la commande · Discord</button>
   </div>
 
