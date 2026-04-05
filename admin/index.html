@@ -578,6 +578,15 @@
       <div class="dash-sub">Gérer les équipements du catalogue militaire des Forces Armées du Nil.</div>
     </div>
 
+    <!-- WEBHOOK DISCORD -->
+    <div class="pat-bar" style="border-left-color:rgba(34,184,154,.5);margin-bottom:14px;">
+      <span class="pat-lbl" style="color:#22B89A;">Discord Webhook</span>
+      <input type="password" class="pat-in" id="webhook-in" placeholder="https://discord.com/api/webhooks/…" oninput="saveWebhook()" style="font-size:10px;">
+      <button class="btn btn-ghost btn-sm" onclick="saveWebhook()">Enregistrer</button>
+      <button class="btn btn-ghost btn-sm" onclick="toggleWebhookVisible()">👁</button>
+      <div style="display:flex;align-items:center;gap:6px;"><div class="pat-dot no" id="webhook-dot"></div><span id="webhook-txt" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);">Non configuré</span></div>
+    </div>
+
     <!-- ADD/EDIT FORM -->
     <div class="cat-form-sec" id="cat-form-container">
       <div class="cat-form-sec-title" id="cat-form-title">+ Ajouter un équipement</div>
@@ -2577,13 +2586,48 @@ function showAdmin(user){
   if(nm)nm.textContent=user.global_name||user.username||'—';
   const sp=localStorage.getItem('pharos_gh_pat');
   if(sp){const pi=document.getElementById('pat-in');if(pi)pi.value=sp;const pf=document.getElementById('pat-fan');if(pf)pf.value=sp;}
-  updatePat();updateFanPat();
+  updatePat();updateFanPat();updateWebhook();
   loadFanState();
   loadCatState();
   loadFromGH();
 }
 function logout(){if(window.PharosAuth?.logout)window.PharosAuth.logout();else{['ukn_token','ukn_user','pharos_session'].forEach(k=>localStorage.removeItem(k));}location.href='../';}
-(function(){const STATE=btoa(encodeURIComponent(window.location.href));const url=`https://discord.com/oauth2/authorize?client_id=1483200078092042300&redirect_uri=${encodeURIComponent('https://bjbellum.github.io/UKN/auth/callback/')}&response_type=token&scope=identify&state=${STATE}`;const btn=document.getElementById('discord-btn');if(btn)btn.href=url;})();
+
+// ════════════════════════════════════════════════
+//  WEBHOOK DISCORD
+// ════════════════════════════════════════════════
+function saveWebhook(){
+  var inp=document.getElementById('webhook-in');
+  var dot=document.getElementById('webhook-dot');
+  var txt=document.getElementById('webhook-txt');
+  if(!inp)return;
+  var val=inp.value.trim();
+  if(val){
+    localStorage.setItem('ukn_discord_webhook',val);
+    if(dot){dot.className='pat-dot ok';}
+    if(txt){txt.textContent='Webhook enregistré';txt.style.color='var(--teal-bright)';}
+  } else {
+    localStorage.removeItem('ukn_discord_webhook');
+    if(dot){dot.className='pat-dot no';}
+    if(txt){txt.textContent='Non configuré';txt.style.color='';}
+  }
+}
+function toggleWebhookVisible(){
+  var inp=document.getElementById('webhook-in');
+  if(!inp)return;
+  inp.type=inp.type==='password'?'text':'password';
+}
+function updateWebhook(){
+  var inp=document.getElementById('webhook-in');
+  var dot=document.getElementById('webhook-dot');
+  var txt=document.getElementById('webhook-txt');
+  var saved=localStorage.getItem('ukn_discord_webhook')||'';
+  if(inp&&saved){inp.value=saved;}
+  if(saved){
+    if(dot){dot.className='pat-dot ok';}
+    if(txt){txt.textContent='Webhook enregistré';txt.style.color='var(--teal-bright)';}
+  }
+}(function(){const STATE=btoa(encodeURIComponent(window.location.href));const url=`https://discord.com/oauth2/authorize?client_id=1483200078092042300&redirect_uri=${encodeURIComponent('https://bjbellum.github.io/UKN/auth/callback/')}&response_type=token&scope=identify&state=${STATE}`;const btn=document.getElementById('discord-btn');if(btn)btn.href=url;})();
 window.addEventListener('DOMContentLoaded',()=>{const pa=window.PharosAuth;if(pa){const user=pa.getUser();if(user&&pa.isAdmin())showAdmin(user);}});
 </script>
 <script src="../pharos-auth.js"></script>
