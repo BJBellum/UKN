@@ -390,6 +390,7 @@ var catalogue=[];
 var openG={terrestre:true,aerien:true,naval:true,balistique:true};
 var activeCat='';
 var searchQ='';
+var discordWebhookUrl=''; // chargé depuis GitHub data/config.json
 
 function loadLocal(){
   try{
@@ -398,6 +399,22 @@ function loadLocal(){
     // Strip any cached image_data (use image_path + remote URL instead)
     catalogue.forEach(function(item){delete item.image_data;});
   }catch(e){catalogue=[];}
+}
+
+function loadConfig(){
+  // Charger d'abord le cache local (instantané)
+  var cached=localStorage.getItem('ukn_discord_webhook')||'';
+  if(cached)discordWebhookUrl=cached;
+  // Puis sync depuis GitHub (source de vérité)
+  fetch('https://api.github.com/repos/BJBellum/UKN/contents/data/config.json',{
+    headers:{'Accept':'application/vnd.github.v3.raw'},cache:'no-store'
+  }).then(function(r){return r.ok?r.json():null;})
+  .then(function(cfg){
+    if(cfg&&cfg.webhook_url){
+      discordWebhookUrl=cfg.webhook_url;
+      localStorage.setItem('ukn_discord_webhook',cfg.webhook_url);
+    }
+  }).catch(function(){/* utilise le cache local si GitHub indisponible */});
 }
 function syncGH(){
   fetch('https://api.github.com/repos/BJBellum/UKN/contents/data/catalogue-militaire.json',{
@@ -607,7 +624,7 @@ function toggleTheme(){applyTheme(document.documentElement.getAttribute('data-th
 
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded',function(){
-  loadLocal();renderSidebar();renderContent();syncGH();calcRefreshQuick();
+  loadLocal();renderSidebar();renderContent();syncGH();calcRefreshQuick();loadConfig();
 });
 
 // ════════════════════════════════════════════════
@@ -767,7 +784,7 @@ function calcValidateOrder(){
     if(btn){var o=btn.textContent;btn.textContent='⚠ Panier vide ou quantités à 0';btn.style.color='#E84848';setTimeout(function(){btn.textContent=o;btn.style.color='';},2000);}
     return;
   }
-  var webhookUrl=localStorage.getItem('ukn_discord_webhook')||'';
+  var webhookUrl=discordWebhookUrl||localStorage.getItem('ukn_discord_webhook')||'';
   if(!webhookUrl){
     alert('Aucun webhook Discord configuré.\nContactez un administrateur pour configurer le webhook.');
     return;
