@@ -852,9 +852,6 @@ function calcValidateOrder(){
   // Formater le total avec espaces comme séparateurs de milliers (1 000, 10 000…)
   var totalFmt=Math.round(grandTotal).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ');
 
-  // Si une seule catégorie : '> ' de clôture collé pour symétriser
-  if(catsInOrder.length===1)lines+='> \n';
-
   lines+='> \n> '+solari+trait+'**Coût total** : '+totalFmt+' $';
 
   // ── Construire l'embed classique Discord ──
