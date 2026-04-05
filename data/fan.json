@@ -510,11 +510,20 @@
       {
         "nom": "NQ-300 \"Al-Sadd\"",
         "categorie": "Terrestre",
-        "niveau_requis": 1,
+        "niveau_requis": 5,
         "cout_slots": 1200,
         "cout_prod": 128,
         "cout_vente": 249999,
         "id": "eq_1775392217901"
+      },
+      {
+        "nom": "MK-200 \"Al-Haris\"",
+        "categorie": "Terrestre",
+        "niveau_requis": 5,
+        "cout_slots": 1600,
+        "cout_prod": 170133,
+        "cout_vente": 299999,
+        "id": "eq_1775392358243"
       }
     ]
   },
