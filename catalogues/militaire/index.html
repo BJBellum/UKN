@@ -690,7 +690,7 @@ function calcAddFromSelect(){
   if(!catalogue.length){alert('Le catalogue est encore en cours de chargement. Attendez quelques secondes.');return;}
   var item=catalogue.find(function(x){return x.id===id;});
   if(!item){calcRefreshQuick();return;}
-  var qty=parseInt(document.getElementById('calc-add-qty')?.value)||1;
+  var qty=parseInt((document.getElementById('calc-add-qty')||{}).value)||1;
   var prix=item.cout_unite?Number(item.cout_unite):0;
   calcAddItem(item.nom||'—',prix,qty,item.categorie||'');
   var qtyEl=document.getElementById('calc-add-qty');
@@ -865,7 +865,7 @@ function calcValidateOrder(){
   var bannerUrl=discordBannerUrl||localStorage.getItem('ukn_discord_banner')||'';
 
   // Récupérer le nom saisi dans le champ "Pays commandant" et le convertir en bold unicode
-  var rawPays=(document.getElementById('calc-pays-input')?.value||'').trim();
+  var rawPays=((document.getElementById('calc-pays-input')||{}).value||'').trim();
   var paysLabel=rawPays?toBoldUnicode(rawPays):'\u2014';
 
   var invis='\u2800'; // U+2800 · caractère Braille vide → ligne vide dans Discord
@@ -937,6 +937,7 @@ function _startCooldown(){
 }
 
 
+function _showWebhookError(msg){
   var el=document.getElementById('calc-webhook-err');
   if(!el)return;
   el.textContent='⚠ '+msg;
