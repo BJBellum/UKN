@@ -506,7 +506,7 @@ function buildItemHTML(item){
   var imgSrc=item.image_data||(item.image_path?'https://bjbellum.github.io/UKN/'+item.image_path:'');
   var specs=item.specs||{};
   var specKeys=Object.keys(specs).filter(function(k){return specs[k];});
-  var coutFmt=item.cout_unite?Number(item.cout_unite).toLocaleString('fr')+' N\u00a3':'\u2014';
+  var coutFmt=item.cout_unite?Number(item.cout_unite).toLocaleString('fr')+' $':'\u2014';
   var periode=TECH[niv]||'—';
 
   var html='<div class="cat-item" id="item-'+item.id+'">';
@@ -658,7 +658,7 @@ function calcRefreshQuick(){
     html+='<optgroup label="'+cat+'">';
     groups[cat].forEach(function(item){
       var prix=item.cout_unite?Number(item.cout_unite):0;
-      html+='<option value="'+item.id+'">'+(item.nom||'—')+' · '+(prix?prix.toLocaleString('fr')+' N£':'N/A')+'</option>';
+      html+='<option value="'+item.id+'">'+(item.nom||'—')+' · '+(prix?prix.toLocaleString('fr')+' $':'N/A')+'</option>';
     });
     html+='</optgroup>';
   });
@@ -673,7 +673,7 @@ function calcOnSelectItem(id){
   if(!item){if(prev)prev.style.display='none';return;}
   var prix=item.cout_unite?Number(item.cout_unite):0;
   document.getElementById('calc-preview-nom').textContent=item.nom||'—';
-  document.getElementById('calc-preview-prix').textContent=prix?prix.toLocaleString('fr')+' N£ / unité':'Prix non renseigné';
+  document.getElementById('calc-preview-prix').textContent=prix?prix.toLocaleString('fr')+' $ / unité':'Prix non renseigné';
   if(prev)prev.style.display='block';
 }
 
@@ -719,11 +719,11 @@ function calcSetQty(idx,v,el){
   var total=calcCart[idx].prixUnit*n;
   if(el){
     var row=el.closest('.calc-cart-item');
-    if(row){var tEl=row.querySelector('.cci-total');if(tEl)tEl.textContent=calcCart[idx].prixUnit?total.toLocaleString('fr')+' N\u00a3':'—';}
+    if(row){var tEl=row.querySelector('.cci-total');if(tEl)tEl.textContent=calcCart[idx].prixUnit?total.toLocaleString('fr')+' $':'—';}
   }
   var grandTotal=calcCart.reduce(function(s,x){return s+x.prixUnit*x.qty;},0);
   var totalQty=calcCart.reduce(function(s,x){return s+x.qty;},0);
-  var gtEl=document.getElementById('calc-grand-total');if(gtEl)gtEl.textContent=grandTotal.toLocaleString('fr')+' N\u00a3';
+  var gtEl=document.getElementById('calc-grand-total');if(gtEl)gtEl.textContent=grandTotal.toLocaleString('fr')+' $';
   var cntEl=document.getElementById('calc-item-count');if(cntEl)cntEl.textContent=calcCart.length+' type(s) \u00b7 '+totalQty+' unit\u00e9(s)';
 }
 
@@ -750,7 +750,7 @@ function calcRender(){
   if(!el)return;
   if(!calcCart.length){
     el.innerHTML='<div class="calc-cart-empty">Panier vide.<br>Ajoutez des équipements ci-dessus.</div>';
-    document.getElementById('calc-grand-total').textContent='0 N\u00a3';
+    document.getElementById('calc-grand-total').textContent='0 $';
     document.getElementById('calc-item-count').textContent='0 type(s) · 0 unité(s)';
     return;
   }
@@ -761,15 +761,15 @@ function calcRender(){
     grandTotal+=total;totalQty+=item.qty;
     html+='<div class="calc-cart-item">';
     html+='<div class="cci-name">'+escCalc(item.nom)+'</div>';
-    html+='<div class="cci-prix-unit">'+(item.prixUnit?item.prixUnit.toLocaleString('fr')+' N\u00a3 / unité':'Prix non renseigné')+'</div>';
+    html+='<div class="cci-prix-unit">'+(item.prixUnit?item.prixUnit.toLocaleString('fr')+' $ / unité':'Prix non renseigné')+'</div>';
     html+='<div class="cci-row">';
     html+='<input type="number" class="cci-qty" value="'+item.qty+'" min="0" oninput="calcSetQty('+i+',this.value,this)" title="Quantité">';
-    html+='<span class="cci-total">'+(item.prixUnit?total.toLocaleString('fr')+' N\u00a3':'—')+'</span>';
+    html+='<span class="cci-total">'+(item.prixUnit?total.toLocaleString('fr')+' $':'—')+'</span>';
     html+='<button class="cci-del" onclick="calcRemove('+i+')" title="Retirer">✕</button>';
     html+='</div></div>';
   });
   el.innerHTML=html;
-  document.getElementById('calc-grand-total').textContent=grandTotal.toLocaleString('fr')+' N\u00a3';
+  document.getElementById('calc-grand-total').textContent=grandTotal.toLocaleString('fr')+' $';
   document.getElementById('calc-item-count').textContent=calcCart.length+' type(s) · '+totalQty+' unité(s)';
 }
 
@@ -842,7 +842,7 @@ function calcValidateOrder(){
   Object.keys(byCategory).forEach(function(c){if(orderedCats.indexOf(c)<0)catsInOrder.push(c);});
 
   catsInOrder.forEach(function(cat,idx){
-    if(idx>0)lines+='\n> \n';
+    if(idx>0)lines+='> \n';          // séparateur collé entre catégories
     var label=CAT_LABELS[cat]||cat;
     lines+='> **'+label+' :**\n';
     byCategory[cat].forEach(function(item){
@@ -852,10 +852,10 @@ function calcValidateOrder(){
   // Formater le total avec espaces comme séparateurs de milliers (1 000, 10 000…)
   var totalFmt=Math.round(grandTotal).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ');
 
-  // Si une seule catégorie : ajouter un '> ' de clôture pour symétriser avec le séparateur
-  if(catsInOrder.length===1)lines+='\n> \n';
+  // Si une seule catégorie : '> ' de clôture collé pour symétriser
+  if(catsInOrder.length===1)lines+='> \n';
 
-  lines+='\n> \n> '+solari+trait+'**Coût total** : '+totalFmt+' N\u00a3';
+  lines+='> \n> '+solari+trait+'**Coût total** : '+totalFmt+' $';
 
   // ── Construire l'embed classique Discord ──
   var bannerUrl=discordBannerUrl||localStorage.getItem('ukn_discord_banner')||'';
