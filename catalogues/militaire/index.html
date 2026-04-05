@@ -821,23 +821,28 @@ function calcValidateOrder(){
       lines+='> '+yellowSquare+'**'+item.nom+'** : '+item.qty+'\n';
     });
   });
-  lines+='\n> \n> '+solari+trait+'**Coût total** : '+grandTotal.toLocaleString('fr')+' N\u00a3';
+  // Formater le total avec espaces comme séparateurs de milliers (1 000, 10 000…)
+  var totalFmt=Math.round(grandTotal).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+  lines+='\n> \n> '+solari+trait+'**Coût total** : '+totalFmt+' N\u00a3';
 
-  // Construire les composants — bannière optionnelle depuis config
-  // Les composants V2 Discord requièrent un champ "id" unique sur chaque composant
-  var innerComponents=[];
+  // ── Construire l'embed classique Discord ──
   var bannerUrl=discordBannerUrl||localStorage.getItem('ukn_discord_banner')||'';
-  var cid=1;
-  if(bannerUrl){
-    innerComponents.push({type:12,id:cid++,items:[{media:{url:bannerUrl}}]});
-    innerComponents.push({type:14,id:cid++,spacing:2});
-  }
-  innerComponents.push({type:10,id:cid++,content:lines});
 
-  var payload={
-    flags:32768,
-    components:[{type:17,id:0,components:innerComponents}]
-  };
+  // Récupérer le nom de l'utilisateur connecté via PharosAuth (si disponible)
+  var paysLabel='\u2014';
+  try{
+    var _pu=window.PharosAuth&&typeof window.PharosAuth.getUser==='function'?window.PharosAuth.getUser():null;
+    if(_pu)paysLabel=_pu.global_name||_pu.username||_pu.display_name||_pu.name||'\u2014';
+  }catch(_e){}
+
+  var invis='\u2800'; // U+2800 · caractère Braille vide → ligne vide dans Discord
+  var descHeader=invis+'\n> \u25ce \`\u2800'+paysLabel+'\u2800\`\n> ';
+  var description=descHeader+'\n'+lines+'\n'+invis;
+
+  var embed={color:16768774,description:description};
+  if(bannerUrl)embed.image={url:bannerUrl};
+
+  var payload={embeds:[embed]};
 
   var btn=document.getElementById('calc-validate-btn');
   if(btn){btn.disabled=true;btn.textContent='⏳ Envoi en cours…';}
