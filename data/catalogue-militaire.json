@@ -555,8 +555,8 @@
     "id": "cat_1775390116438",
     "nom": "LD-1",
     "categorie": "explosifs",
-    "soustype": "Mines (AP/AT/Autre)",
-    "niveau": 1,
+    "soustype": "N/A",
+    "niveau": 5,
     "fabricant": "Yassin Heavy Industries",
     "cout_unite": "99",
     "inspiration": "TM-57",
@@ -571,5 +571,26 @@
       "Type d'explosif": "6,34 kg de TNT, TGA ou MS"
     },
     "image_path": "assets/images/catalogue/image_-_2026-04-05t053529.626.png"
+  },
+  {
+    "id": "cat_1775390343794",
+    "nom": "LA-1",
+    "categorie": "explosifs",
+    "soustype": "Mines (AP/AT/Autre)",
+    "niveau": 5,
+    "fabricant": "Yassin Heavy Industries",
+    "cout_unite": "69",
+    "inspiration": "M14 mine",
+    "disponibilite": "Mai 2306",
+    "specs": {
+      "Délai": "Déclenchement par pression",
+      "Portée de lancer": "N/A",
+      "Poids": "99 g",
+      "Longueur": "40 mm",
+      "Largeur/Diamètre": "56 mm",
+      "Portée létale": "Contact direct (conçue principalement pour mutiler ou neutraliser plutôt que pour tuer à distance)",
+      "Type d'explosif": "Tétryl (charge de 29 g)"
+    },
+    "image_path": "assets/images/catalogue/image_-_2026-04-05t053108.198.png"
   }
 ]
