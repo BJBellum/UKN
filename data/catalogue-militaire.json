@@ -488,5 +488,28 @@
       "Munitions": "530 kg"
     },
     "image_path": "assets/images/catalogue/image_arme__14_.png"
+  },
+  {
+    "id": "cat_1775351166337",
+    "nom": "HW-60",
+    "categorie": "artillerie",
+    "niveau": 4,
+    "fabricant": "Yassin Heavy Industries",
+    "cout_unite": "999",
+    "inspiration": "M19 mortar",
+    "disponibilite": "Avril 2306",
+    "specs": {
+      "Calibre": "60 mm",
+      "Équipage": "3 personnes",
+      "Masse (non chargé)": "9,3 kg",
+      "Longueur": "81,9 cm",
+      "Longueur du canon": "72,6 cm",
+      "Cadence de tir": "8 à 18 coups/minute (soutenu), 30 coups/minute (maximum)",
+      "Vitesse initiale": "89 m/s",
+      "Système de visée": "Viseur optique",
+      "Portée maximale": "1 500 à 2 100m",
+      "Munitions": "Obus de 60 mm : HE, Fumigène, Éclairant"
+    },
+    "image_path": "assets/images/catalogue/image_arme__18_.png"
   }
 ]
