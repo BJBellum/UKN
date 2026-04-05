@@ -529,5 +529,26 @@
       "Munitions": "Obus de 60 mm : HE, Fumigène, Éclairant"
     },
     "image_path": "assets/images/catalogue/image_arme__18_.png"
+  },
+  {
+    "id": "cat_1775389894094",
+    "nom": "GR-2",
+    "categorie": "explosifs",
+    "soustype": "Grenade",
+    "niveau": 5,
+    "fabricant": "Yassin Heavy Industries",
+    "cout_unite": "15",
+    "inspiration": "M26 grenade",
+    "disponibilite": "Juin 2306",
+    "specs": {
+      "Délai": "4 à 5 secondes",
+      "Portée de lancer": "40 m",
+      "Poids": "454 g",
+      "Longueur": "99 mm",
+      "Largeur/Diamètre": "57 mm",
+      "Portée létale": "Rayon létal de 5 mètres (rayon de blessure jusqu'à 15 mètres).",
+      "Type d'explosif": "164 g de Composition B, Tétryl"
+    },
+    "image_path": "assets/images/catalogue/image_-_2026-04-05t054054.390.png"
   }
 ]
