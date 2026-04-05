@@ -592,5 +592,29 @@
       "Type d'explosif": "Tétryl (charge de 29 g)"
     },
     "image_path": "assets/images/catalogue/image_-_2026-04-05t053108.198.png"
+  },
+  {
+    "id": "cat_1775410761453",
+    "nom": "HW-81",
+    "categorie": "artillerie",
+    "soustype": "Mortier de Campagne (7-12 cm)",
+    "niveau": 2,
+    "fabricant": "Yassin Heavy Industries",
+    "cout_unite": "1199",
+    "inspiration": "Brandt Mle 27",
+    "disponibilite": "Octobre 2304",
+    "specs": {
+      "Calibre": "81,4 mm",
+      "Équipage": "5 personnes",
+      "Masse (non chargé)": "58,5 kg",
+      "Longueur": "1,27 m",
+      "Longueur du canon": "1,26 m",
+      "Cadence de tir": "18 à 20 coups par minute en régime normal (jusqu'à 30 coups/min en tir rapide de saturation)",
+      "Vitesse initiale": "174 m/s (avec obus lourd) à 250 m/s (avec obus léger)",
+      "Système de visée": "Appareil de pointage optique, collimateur de précision monté sur le bipied",
+      "Portée maximale": "3 200 m",
+      "Munitions": "Obus explosifs, légers, fumigènes et éclairants"
+    },
+    "image_path": "assets/images/catalogue/image_-_2026-04-05t193453.969.png"
   }
 ]
