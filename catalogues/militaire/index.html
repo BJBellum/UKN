@@ -515,6 +515,7 @@ function buildItemHTML(item){
   // NV + TECH row
   html+='<div class="item-nv-tech">';
   html+='<span class="int-niv niv-'+niv+'">'+nivLbl+'</span>';
+  if(item.soustype&&item.soustype!=='N/A'){html+='<span style="font-family:\'IBM Plex Mono\',monospace;font-size:8px;letter-spacing:.07em;color:rgba(200,150,12,.85);background:rgba(200,150,12,.07);border:1px solid rgba(200,150,12,.25);padding:2px 7px;border-radius:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px;" title="'+item.soustype+'">'+item.soustype+'</span>';}
   if(item.fabricant)html+='<span class="int-fab">'+item.fabricant+'</span>';
   if(item.disponibilite)html+='<span class="int-tech">'+item.disponibilite+'</span>';
   html+='</div>';
