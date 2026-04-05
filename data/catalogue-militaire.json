@@ -550,5 +550,26 @@
       "Type d'explosif": "164 g de Composition B, Tétryl"
     },
     "image_path": "assets/images/catalogue/image_-_2026-04-05t054054.390.png"
+  },
+  {
+    "id": "cat_1775390116438",
+    "nom": "LD-1",
+    "categorie": "explosifs",
+    "soustype": "Mines (AP/AT/Autre)",
+    "niveau": 1,
+    "fabricant": "Yassin Heavy Industries",
+    "cout_unite": "99",
+    "inspiration": "TM-57",
+    "disponibilite": "Juin 2306",
+    "specs": {
+      "Délai": "Déclenchement par pression",
+      "Portée de lancer": "N/A",
+      "Poids": "9 kg",
+      "Longueur": "102 mm",
+      "Largeur/Diamètre": "316 mm",
+      "Portée létale": "Effet de souffle concentré (conçue pour détruire les chenilles ou le châssis de véhicules lourds)",
+      "Type d'explosif": "6,34 kg de TNT, TGA ou MS"
+    },
+    "image_path": "assets/images/catalogue/image_-_2026-04-05t053529.626.png"
   }
 ]
