@@ -582,8 +582,8 @@
     <div class="pat-bar" style="border-left-color:rgba(34,184,154,.5);margin-bottom:14px;">
       <span class="pat-lbl" style="color:#22B89A;">Discord Webhook</span>
       <input type="password" class="pat-in" id="webhook-in" placeholder="https://discord.com/api/webhooks/…" oninput="saveWebhook()" style="font-size:10px;">
-      <button class="btn btn-ghost btn-sm" onclick="saveWebhook()">Enregistrer</button>
       <button class="btn btn-ghost btn-sm" onclick="toggleWebhookVisible()">👁</button>
+      <button class="btn btn-sm" id="webhook-gh-btn" onclick="saveWebhookToGH()" style="background:rgba(34,184,154,.1);border-color:rgba(34,184,154,.4);color:#22B89A;white-space:nowrap;">⬆ Pousser sur GitHub</button>
       <div style="display:flex;align-items:center;gap:6px;"><div class="pat-dot no" id="webhook-dot"></div><span id="webhook-txt" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);">Non configuré</span></div>
     </div>
 
@@ -1838,6 +1838,7 @@ const CAT_PRESETS={
 };
 
 const CAT_FILE='data/catalogue-militaire.json';
+const CONFIG_FILE='data/config.json';
 const CAT_IMAGES_PATH='assets/images/catalogue/';
 let catItems=[], catEditId=null, catImgFile=null;
 const TECH_MAP_ADM={1:'1910-1919',2:'1920-1929',3:'1930-1939',4:'1940-1949',5:'1950-1959',6:'1960-1969',7:'1970-1979',8:'1980-1989',9:'1990-1999',10:'2000-2009',11:'2010-2019',12:'2020-∞'};
@@ -2594,39 +2595,111 @@ function showAdmin(user){
 function logout(){if(window.PharosAuth?.logout)window.PharosAuth.logout();else{['ukn_token','ukn_user','pharos_session'].forEach(k=>localStorage.removeItem(k));}location.href='../';}
 
 // ════════════════════════════════════════════════
-//  WEBHOOK DISCORD
+//  WEBHOOK DISCORD — stocké dans data/config.json
 // ════════════════════════════════════════════════
 function saveWebhook(){
+  // Sauvegarde locale immédiate (cache) + mise à jour du statut
   var inp=document.getElementById('webhook-in');
-  var dot=document.getElementById('webhook-dot');
-  var txt=document.getElementById('webhook-txt');
   if(!inp)return;
   var val=inp.value.trim();
-  if(val){
-    localStorage.setItem('ukn_discord_webhook',val);
-    if(dot){dot.className='pat-dot ok';}
-    if(txt){txt.textContent='Webhook enregistré';txt.style.color='var(--teal-bright)';}
-  } else {
-    localStorage.removeItem('ukn_discord_webhook');
-    if(dot){dot.className='pat-dot no';}
-    if(txt){txt.textContent='Non configuré';txt.style.color='';}
-  }
+  _updateWebhookStatus(val);
+  // Stocker en cache local pour usage immédiat
+  if(val) localStorage.setItem('ukn_discord_webhook',val);
+  else localStorage.removeItem('ukn_discord_webhook');
 }
+
 function toggleWebhookVisible(){
   var inp=document.getElementById('webhook-in');
   if(!inp)return;
   inp.type=inp.type==='password'?'text':'password';
 }
-function updateWebhook(){
-  var inp=document.getElementById('webhook-in');
+
+function _updateWebhookStatus(val){
   var dot=document.getElementById('webhook-dot');
   var txt=document.getElementById('webhook-txt');
-  var saved=localStorage.getItem('ukn_discord_webhook')||'';
-  if(inp&&saved){inp.value=saved;}
-  if(saved){
+  if(val){
     if(dot){dot.className='pat-dot ok';}
-    if(txt){txt.textContent='Webhook enregistré';txt.style.color='var(--teal-bright)';}
+    if(txt){txt.textContent='Webhook configuré';txt.style.color='var(--teal-bright)';}
+  } else {
+    if(dot){dot.className='pat-dot no';}
+    if(txt){txt.textContent='Non configuré';txt.style.color='';}
   }
+}
+
+async function saveWebhookToGH(){
+  var inp=document.getElementById('webhook-in');
+  var val=inp?inp.value.trim():'';
+  if(!val){toast('Entrez d\'abord l\'URL du webhook.','err');return;}
+  const pat=getPat();
+  if(!pat||pat.length<10){toast('Configurez votre PAT GitHub.','err');return;}
+  var btn=document.getElementById('webhook-gh-btn');
+  if(btn){btn.disabled=true;btn.textContent='⏳ Sauvegarde…';}
+  try{
+    // Charger config existante pour ne pas écraser d'autres clés
+    let existing={};
+    const sr=await fetch(`https://api.github.com/repos/${REPO}/contents/${CONFIG_FILE}`,{
+      headers:{'Authorization':`token ${pat}`,'Accept':'application/vnd.github.v3+json'},cache:'no-store'
+    });
+    let sha=null;
+    if(sr.ok){
+      const sd=await sr.json();
+      sha=sd.sha||null;
+      try{existing=JSON.parse(atob(sd.content.replace(/\n/g,'')));}catch(e){}
+    }
+    existing.webhook_url=val;
+    const encoded=btoa(unescape(encodeURIComponent(JSON.stringify(existing,null,2))));
+    const body={message:'update config.json — webhook Discord',content:encoded};
+    if(sha)body.sha=sha;
+    const pr=await fetch(`https://api.github.com/repos/${REPO}/contents/${CONFIG_FILE}`,{
+      method:'PUT',
+      headers:{'Authorization':`token ${pat}`,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    });
+    if(pr.ok){
+      localStorage.setItem('ukn_discord_webhook',val);
+      _updateWebhookStatus(val);
+      toast('Webhook sauvegardé sur GitHub !','ok');
+    } else {
+      const ed=await pr.json();
+      toast(`Erreur GitHub: ${pr.status} — ${ed.message||''}`, 'err');
+    }
+  }catch(e){toast('Erreur: '+e.message,'err');}
+  finally{if(btn){btn.disabled=false;btn.textContent='⬆ Pousser sur GitHub';}}
+}
+
+async function loadConfigFromGH(){
+  try{
+    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${CONFIG_FILE}`,{
+      headers:{'Accept':'application/vnd.github.v3.raw'},cache:'no-store'
+    });
+    if(!r.ok)return;
+    const cfg=await r.json();
+    if(cfg.webhook_url){
+      var inp=document.getElementById('webhook-in');
+      if(inp)inp.value=cfg.webhook_url;
+      localStorage.setItem('ukn_discord_webhook',cfg.webhook_url);
+      _updateWebhookStatus(cfg.webhook_url);
+    }
+  }catch(e){
+    // Fallback sur localStorage si GitHub indisponible
+    var cached=localStorage.getItem('ukn_discord_webhook')||'';
+    if(cached){
+      var inp=document.getElementById('webhook-in');
+      if(inp)inp.value=cached;
+      _updateWebhookStatus(cached);
+    }
+  }
+}
+
+function updateWebhook(){
+  // Charge d'abord le cache local immédiatement, puis sync GitHub
+  var cached=localStorage.getItem('ukn_discord_webhook')||'';
+  if(cached){
+    var inp=document.getElementById('webhook-in');
+    if(inp)inp.value=cached;
+    _updateWebhookStatus(cached);
+  }
+  loadConfigFromGH(); // sync asynchrone depuis GitHub
 }(function(){const STATE=btoa(encodeURIComponent(window.location.href));const url=`https://discord.com/oauth2/authorize?client_id=1483200078092042300&redirect_uri=${encodeURIComponent('https://bjbellum.github.io/UKN/auth/callback/')}&response_type=token&scope=identify&state=${STATE}`;const btn=document.getElementById('discord-btn');if(btn)btn.href=url;})();
 window.addEventListener('DOMContentLoaded',()=>{const pa=window.PharosAuth;if(pa){const user=pa.getUser();if(user&&pa.isAdmin())showAdmin(user);}});
 </script>
