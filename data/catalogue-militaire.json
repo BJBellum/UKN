@@ -352,5 +352,29 @@
       "Équipement": "Radar de recherche longue portée AN/APS-20 (dans le radôme ventral). Radar, AN/APS-45 (dans le radôme dorsal caractéristique). Systèmes de communication HF, VHF et UHF"
     },
     "image_path": "assets/images/catalogue/image_arme__7_.png"
+  },
+  {
+    "id": "cat_1775349448931",
+    "nom": "RH-06",
+    "categorie": "armes-feu",
+    "niveau": 5,
+    "fabricant": "Yassin Heavy Industries",
+    "cout_unite": "999",
+    "inspiration": "MAT-49",
+    "disponibilite": "Mai 2306",
+    "specs": {
+      "Calibre": "9 mm",
+      "Masse (non chargé)": "3.5 kg",
+      "Longueur": "460 mm (crosse rétractée) / 720 mm (crosse déployée)",
+      "Longueur du canon": "23 cm",
+      "Cadence de tir": "600 coups/min",
+      "Vitesse initiale": "390 m/s",
+      "Portée pratique": "100 m",
+      "Portée maximale": "200 m",
+      "Capacité": "Chargeur de 20 ou 32 cartouches",
+      "Type de munitions": "9 × 19 mm Parabellum",
+      "Équipements possibles": "Crosse rétractable en fil d'acier, puits de chargeur repliable, silencieux, crosse fixe en bois."
+    },
+    "image_path": "assets/images/catalogue/image_arme__11_.png"
   }
 ]
