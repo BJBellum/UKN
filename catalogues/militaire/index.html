@@ -807,6 +807,13 @@ var CAT_LABELS={
 };
 
 function calcValidateOrder(){
+  // Bloquer si cooldown encore actif
+  if(_cooldownEnd>Date.now()){
+    var remaining=Math.ceil((_cooldownEnd-Date.now())/1000);
+    var m=Math.floor(remaining/60),s=remaining%60;
+    _showWebhookError('Cooldown actif — veuillez attendre encore '+(m>0?m+'m '+s+'s':s+'s')+'.');
+    return;
+  }
   // Filtrer les items avec qty > 0
   var items=calcCart.filter(function(x){return x.qty>0;});
   if(!items.length){
@@ -886,7 +893,7 @@ function calcValidateOrder(){
   }).then(function(res){
     if(res.ok){
       if(btn){btn.textContent='✓ Commande envoyée !';}
-      setTimeout(function(){if(btn){btn.disabled=false;btn.textContent='✓ Valider la commande · Discord';}},3000);
+      setTimeout(function(){_startCooldown();},1200); // laisse le message "envoyée" visible 1.2s
     } else {
       // Afficher le message d'erreur réel de Discord
       var msg='';
@@ -905,7 +912,31 @@ function calcValidateOrder(){
   });
 }
 
-function _showWebhookError(msg){
+// ── Cooldown après envoi ──
+var _cooldownEnd=0;
+var _cooldownTimer=null;
+
+function _startCooldown(){
+  var DURATION=120; // secondes
+  _cooldownEnd=Date.now()+DURATION*1000;
+  var btn=document.getElementById('calc-validate-btn');
+  if(_cooldownTimer)clearInterval(_cooldownTimer);
+  _cooldownTimer=setInterval(function(){
+    var remaining=Math.ceil((_cooldownEnd-Date.now())/1000);
+    if(remaining<=0){
+      clearInterval(_cooldownTimer);_cooldownTimer=null;
+      if(btn){btn.disabled=false;btn.textContent='✓ Valider la commande · Discord';btn.style.opacity='';}
+    } else {
+      var m=Math.floor(remaining/60), s=remaining%60;
+      var label=m>0?m+'m '+s+'s':s+'s';
+      if(btn){btn.textContent='⏳ Cooldown — '+label;btn.style.opacity='.55';}
+    }
+  },500);
+  // Première mise à jour immédiate
+  if(btn){btn.disabled=true;btn.textContent='⏳ Cooldown — '+DURATION+'s';btn.style.opacity='.55';}
+}
+
+
   var el=document.getElementById('calc-webhook-err');
   if(!el)return;
   el.textContent='⚠ '+msg;
