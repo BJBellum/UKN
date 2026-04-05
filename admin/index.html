@@ -579,12 +579,17 @@
     </div>
 
     <!-- WEBHOOK DISCORD -->
-    <div class="pat-bar" style="border-left-color:rgba(34,184,154,.5);margin-bottom:14px;">
+    <div class="pat-bar" style="border-left-color:rgba(34,184,154,.5);margin-bottom:4px;">
       <span class="pat-lbl" style="color:#22B89A;">Discord Webhook</span>
       <input type="password" class="pat-in" id="webhook-in" placeholder="https://discord.com/api/webhooks/…" oninput="saveWebhook()" style="font-size:10px;">
       <button class="btn btn-ghost btn-sm" onclick="toggleWebhookVisible()">👁</button>
       <button class="btn btn-sm" id="webhook-gh-btn" onclick="saveWebhookToGH()" style="background:rgba(34,184,154,.1);border-color:rgba(34,184,154,.4);color:#22B89A;white-space:nowrap;">⬆ Pousser sur GitHub</button>
       <div style="display:flex;align-items:center;gap:6px;"><div class="pat-dot no" id="webhook-dot"></div><span id="webhook-txt" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);">Non configuré</span></div>
+    </div>
+    <div class="pat-bar" style="border-left-color:rgba(34,184,154,.25);margin-bottom:14px;">
+      <span class="pat-lbl" style="color:var(--text3);white-space:nowrap;">URL Bannière</span>
+      <input type="text" class="pat-in" id="banner-in" placeholder="https://… (image hébergée, URL permanente)" oninput="saveWebhook()" style="font-size:10px;">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);white-space:nowrap;">Héberger sur GitHub&nbsp;Pages ou Imgur</span>
     </div>
 
     <!-- ADD/EDIT FORM -->
@@ -2598,14 +2603,17 @@ function logout(){if(window.PharosAuth?.logout)window.PharosAuth.logout();else{[
 //  WEBHOOK DISCORD — stocké dans data/config.json
 // ════════════════════════════════════════════════
 function saveWebhook(){
-  // Sauvegarde locale immédiate (cache) + mise à jour du statut
+  // Sauvegarde locale immédiate (cache)
   var inp=document.getElementById('webhook-in');
+  var bannerInp=document.getElementById('banner-in');
   if(!inp)return;
   var val=inp.value.trim();
+  var bannerVal=bannerInp?bannerInp.value.trim():'';
   _updateWebhookStatus(val);
-  // Stocker en cache local pour usage immédiat
   if(val) localStorage.setItem('ukn_discord_webhook',val);
   else localStorage.removeItem('ukn_discord_webhook');
+  if(bannerVal) localStorage.setItem('ukn_discord_banner',bannerVal);
+  else localStorage.removeItem('ukn_discord_banner');
 }
 
 function toggleWebhookVisible(){
@@ -2628,7 +2636,9 @@ function _updateWebhookStatus(val){
 
 async function saveWebhookToGH(){
   var inp=document.getElementById('webhook-in');
+  var bannerInp=document.getElementById('banner-in');
   var val=inp?inp.value.trim():'';
+  var bannerVal=bannerInp?bannerInp.value.trim():'';
   if(!val){toast('Entrez d\'abord l\'URL du webhook.','err');return;}
   const pat=getPat();
   if(!pat||pat.length<10){toast('Configurez votre PAT GitHub.','err');return;}
@@ -2647,6 +2657,8 @@ async function saveWebhookToGH(){
       try{existing=JSON.parse(atob(sd.content.replace(/\n/g,'')));}catch(e){}
     }
     existing.webhook_url=val;
+    if(bannerVal) existing.banner_url=bannerVal;
+    else delete existing.banner_url;
     const encoded=btoa(unescape(encodeURIComponent(JSON.stringify(existing,null,2))));
     const body={message:'update config.json — webhook Discord',content:encoded};
     if(sha)body.sha=sha;
@@ -2657,8 +2669,9 @@ async function saveWebhookToGH(){
     });
     if(pr.ok){
       localStorage.setItem('ukn_discord_webhook',val);
+      if(bannerVal)localStorage.setItem('ukn_discord_banner',bannerVal);
       _updateWebhookStatus(val);
-      toast('Webhook sauvegardé sur GitHub !','ok');
+      toast('Config. webhook sauvegardée sur GitHub !','ok');
     } else {
       const ed=await pr.json();
       toast(`Erreur GitHub: ${pr.status} — ${ed.message||''}`, 'err');
@@ -2680,26 +2693,25 @@ async function loadConfigFromGH(){
       localStorage.setItem('ukn_discord_webhook',cfg.webhook_url);
       _updateWebhookStatus(cfg.webhook_url);
     }
-  }catch(e){
-    // Fallback sur localStorage si GitHub indisponible
-    var cached=localStorage.getItem('ukn_discord_webhook')||'';
-    if(cached){
-      var inp=document.getElementById('webhook-in');
-      if(inp)inp.value=cached;
-      _updateWebhookStatus(cached);
+    if(cfg.banner_url){
+      var bi=document.getElementById('banner-in');
+      if(bi)bi.value=cfg.banner_url;
+      localStorage.setItem('ukn_discord_banner',cfg.banner_url);
     }
+  }catch(e){
+    var cached=localStorage.getItem('ukn_discord_webhook')||'';
+    if(cached){var inp=document.getElementById('webhook-in');if(inp)inp.value=cached;_updateWebhookStatus(cached);}
+    var cachedBanner=localStorage.getItem('ukn_discord_banner')||'';
+    if(cachedBanner){var bi=document.getElementById('banner-in');if(bi)bi.value=cachedBanner;}
   }
 }
 
 function updateWebhook(){
-  // Charge d'abord le cache local immédiatement, puis sync GitHub
   var cached=localStorage.getItem('ukn_discord_webhook')||'';
-  if(cached){
-    var inp=document.getElementById('webhook-in');
-    if(inp)inp.value=cached;
-    _updateWebhookStatus(cached);
-  }
-  loadConfigFromGH(); // sync asynchrone depuis GitHub
+  if(cached){var inp=document.getElementById('webhook-in');if(inp)inp.value=cached;_updateWebhookStatus(cached);}
+  var cachedBanner=localStorage.getItem('ukn_discord_banner')||'';
+  if(cachedBanner){var bi=document.getElementById('banner-in');if(bi)bi.value=cachedBanner;}
+  loadConfigFromGH();
 }(function(){const STATE=btoa(encodeURIComponent(window.location.href));const url=`https://discord.com/oauth2/authorize?client_id=1483200078092042300&redirect_uri=${encodeURIComponent('https://bjbellum.github.io/UKN/auth/callback/')}&response_type=token&scope=identify&state=${STATE}`;const btn=document.getElementById('discord-btn');if(btn)btn.href=url;})();
 window.addEventListener('DOMContentLoaded',()=>{const pa=window.PharosAuth;if(pa){const user=pa.getUser();if(user&&pa.isAdmin())showAdmin(user);}});
 </script>
