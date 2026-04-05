@@ -170,10 +170,10 @@
     "id": "cat_1774890515127",
     "nom": "MQ-06 \"Khaled\"",
     "categorie": "aeronefs",
-    "soustype": "Avion à Réaction (AR) - Chasse",
+    "soustype": "N/A",
     "niveau": 5,
     "fabricant": "Imperial Aviation & Defense",
-    "cout_unite": "629999",
+    "cout_unite": "799999",
     "inspiration": "Super Mystère B2",
     "disponibilite": "Septembre 2306",
     "specs": {
