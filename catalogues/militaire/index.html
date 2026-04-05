@@ -824,17 +824,19 @@ function calcValidateOrder(){
   lines+='\n> \n> '+solari+trait+'**Coût total** : '+grandTotal.toLocaleString('fr')+' N\u00a3';
 
   // Construire les composants — bannière optionnelle depuis config
+  // Les composants V2 Discord requièrent un champ "id" unique sur chaque composant
   var innerComponents=[];
   var bannerUrl=discordBannerUrl||localStorage.getItem('ukn_discord_banner')||'';
+  var cid=1;
   if(bannerUrl){
-    innerComponents.push({type:12,items:[{media:{url:bannerUrl}}]});
-    innerComponents.push({type:14,spacing:2});
+    innerComponents.push({type:12,id:cid++,items:[{media:{url:bannerUrl}}]});
+    innerComponents.push({type:14,id:cid++,spacing:2});
   }
-  innerComponents.push({type:10,content:lines});
+  innerComponents.push({type:10,id:cid++,content:lines});
 
   var payload={
     flags:32768,
-    components:[{type:17,components:innerComponents}]
+    components:[{type:17,id:0,components:innerComponents}]
   };
 
   var btn=document.getElementById('calc-validate-btn');
