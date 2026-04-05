@@ -399,5 +399,33 @@
       "Munitions": "Obus explosif, obus à culot creux"
     },
     "image_path": "assets/images/catalogue/image_-_2026-04-05t023927.332.png"
+  },
+  {
+    "id": "cat_1775350343458",
+    "nom": "QD-300 \"Shai-Hulud\"",
+    "categorie": "aeronefs",
+    "niveau": 5,
+    "fabricant": "Imperial Aviation & Defense",
+    "cout_unite": "1299999",
+    "inspiration": "B-52 Stratofortress",
+    "disponibilite": "Novembre 2306",
+    "specs": {
+      "Moteur": "8 turboréacteurs",
+      "Carburant": "JP-4",
+      "Cargaison et équipage": "6 membres d'équipage (pilote, copilote, navigateur, navigateur radar, officier de guerre électronique et mitrailleur de queue)",
+      "Vitesse maximale": "1 014 km/h (Mach 0,86) en haute altitude",
+      "Vitesse ascensionnelle": "31,8 m/s",
+      "Plafond": "14 000 à 15 000 m",
+      "Rayon d'action": "14 000 km",
+      "Poids à vide": "80 000 kg à 83 000 kg",
+      "Poids chargé maximal": "221 350 kg",
+      "Envergure": "56.4 m",
+      "Longueur": "48.5 m",
+      "Hauteur": "14.7 m",
+      "Surface alaire": "371,6 m²",
+      "Armement": "Jusqu'à 27 000 kg de bombes. 4 mitrailleuses de calibre .50 (12,7 mm) montées dans une tourelle de queue télécommandée.",
+      "Équipement": "Système de navigation et de bombardement radar AN/ASB-4, Systèmes de contre-mesures électroniques, Capacité de ravitaillement en vol (système de perche rigide), Radar de queue pour le contrôle de tir des mitrailleuses."
+    },
+    "image_path": "assets/images/catalogue/image_arme__3_.png"
   }
 ]
