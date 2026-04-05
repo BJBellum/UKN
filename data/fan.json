@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated": "2026-04-03",
+  "updated": "2026-04-05",
   "bataillons": [
     {
       "id": "bat_01",
@@ -506,6 +506,15 @@
         "cout_prod": 502666,
         "cout_vente": 899999,
         "id": "eq_1775233138231"
+      },
+      {
+        "nom": "NQ-300 \"Al-Sadd\"",
+        "categorie": "Terrestre",
+        "niveau_requis": 1,
+        "cout_slots": 1200,
+        "cout_prod": 128,
+        "cout_vente": 249999,
+        "id": "eq_1775392217901"
       }
     ]
   },
