@@ -285,6 +285,9 @@ html,body{height:100%;overflow:hidden;}
 .calc-total-count{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);}
 .calc-reset-btn{width:100%;margin-top:8px;background:transparent;border:1px solid rgba(232,92,13,.25);color:var(--text3);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;padding:5px;cursor:pointer;border-radius:2px;transition:all .15s;}
 .calc-reset-btn:hover{border-color:var(--spice);color:var(--spice);}
+.calc-validate-btn{width:100%;margin-top:10px;background:rgba(34,184,154,.12);border:1px solid rgba(34,184,154,.45);color:#22B89A;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;padding:8px;cursor:pointer;border-radius:2px;transition:all .18s;font-weight:500;}
+.calc-validate-btn:hover{background:rgba(34,184,154,.22);border-color:#22B89A;}
+.calc-validate-btn:disabled{opacity:.5;cursor:not-allowed;}
 
 .cat-empty{text-align:center;padding:72px 24px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text3);letter-spacing:.1em;line-height:2;}
 .cat-empty-ico{margin-bottom:16px;opacity:.18;display:flex;justify-content:center;}
@@ -670,7 +673,7 @@ function calcAddFromSelect(){
   if(!item){calcRefreshQuick();return;}
   var qty=parseInt(document.getElementById('calc-add-qty')?.value)||1;
   var prix=item.cout_unite?Number(item.cout_unite):0;
-  calcAddItem(item.nom||'—',prix,qty);
+  calcAddItem(item.nom||'—',prix,qty,item.categorie||'');
   var qtyEl=document.getElementById('calc-add-qty');
   if(qtyEl)qtyEl.value='1';
   // Reset preview
@@ -679,18 +682,19 @@ function calcAddFromSelect(){
 }
 
 
-function calcAddItem(nom,prixUnit,qty){
+function calcAddItem(nom,prixUnit,qty,categorie){
   qty=qty||1;
   var existing=calcCart.find(function(x){return x.nom===nom;});
-  if(existing){existing.qty+=qty;existing.prixUnit=prixUnit||existing.prixUnit;}
-  else{calcCart.push({nom:nom,prixUnit:prixUnit||0,qty:qty});}
+  if(existing){existing.qty+=qty;existing.prixUnit=prixUnit||existing.prixUnit;if(categorie)existing.categorie=categorie;}
+  else{calcCart.push({nom:nom,prixUnit:prixUnit||0,qty:qty,categorie:categorie||''});}
   calcRender();
 }
 
 function calcSetQty(idx,v){
-  var n=parseInt(v)||0;
-  if(n<=0)calcCart.splice(idx,1);
-  else calcCart[idx].qty=n;
+  var n=parseInt(v);
+  if(isNaN(n)||v===''||v===null)return; // champ vide → on ne touche pas
+  if(n<0)return; // valeur négative ignorée
+  calcCart[idx].qty=n; // on garde l'item même si qty=0
   calcRender();
 }
 
@@ -709,7 +713,7 @@ function calcQuickAdd(id){
   var item=catalogue.find(function(x){return x.id===id;});
   if(!item)return;
   var prix=item.cout_unite?Number(item.cout_unite):0;
-  calcAddItem(item.nom||'—',prix,1);
+  calcAddItem(item.nom||'—',prix,1,item.categorie||'');
   calcOpenIfClosed();
 }
 function calcRender(){
@@ -741,6 +745,97 @@ function calcRender(){
 }
 
 function escCalc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+// Libellés lisibles par catégorie
+var CAT_LABELS={
+  'armes-feu':'Armes à Feu',
+  'explosifs':'Explosifs & Grenades',
+  'vehicules-terrestres':'Véhicules Terrestres',
+  'artillerie':'Artillerie Placée',
+  'aeronefs':'Véhicules Aériens Militaires',
+  'navires':'Navires de Surface',
+  'sous-marins':'Sous-marins',
+  'missiles':'Missiles & Roquettes',
+  'missiles-strategiques':'Missiles Stratégiques'
+};
+
+function calcValidateOrder(){
+  // Filtrer les items avec qty > 0
+  var items=calcCart.filter(function(x){return x.qty>0;});
+  if(!items.length){
+    var btn=document.getElementById('calc-validate-btn');
+    if(btn){var o=btn.textContent;btn.textContent='⚠ Panier vide ou quantités à 0';btn.style.color='#E84848';setTimeout(function(){btn.textContent=o;btn.style.color='';},2000);}
+    return;
+  }
+  var webhookUrl=localStorage.getItem('ukn_discord_webhook')||'';
+  if(!webhookUrl){
+    alert('Aucun webhook Discord configuré.\nContactez un administrateur pour configurer le webhook.');
+    return;
+  }
+
+  // Grouper par catégorie (dans l'ordre des groupes définis)
+  var orderedCats=['armes-feu','explosifs','vehicules-terrestres','artillerie','aeronefs','navires','sous-marins','missiles','missiles-strategiques'];
+  var byCategory={};
+  items.forEach(function(item){
+    var cat=item.categorie||'Divers';
+    if(!byCategory[cat])byCategory[cat]=[];
+    byCategory[cat].push(item);
+  });
+
+  // Construire le contenu en respectant le template Discord
+  var yellowSquare='<:small_yellow_square:1469439628107976939>';
+  var solari='<:solari:1489835320508809338>';
+  var trait='<:Trait_1:1486199789598146611>';
+  var grandTotal=items.reduce(function(s,x){return s+(x.prixUnit||0)*x.qty;},0);
+
+  var lines='';
+  var catsInOrder=[];
+  orderedCats.forEach(function(c){if(byCategory[c])catsInOrder.push(c);});
+  // Catégories non reconnues à la fin
+  Object.keys(byCategory).forEach(function(c){if(orderedCats.indexOf(c)<0)catsInOrder.push(c);});
+
+  catsInOrder.forEach(function(cat,idx){
+    if(idx>0)lines+='\n> \n';
+    var label=CAT_LABELS[cat]||cat;
+    lines+='> **'+label+' :**\n';
+    byCategory[cat].forEach(function(item){
+      lines+='> '+yellowSquare+'**'+item.nom+'** : '+item.qty+'\n';
+    });
+  });
+  lines+='\n> \n> '+solari+trait+'**Coût total** : '+grandTotal.toLocaleString('fr')+' N£';
+
+  var payload={
+    flags:32768,
+    components:[{
+      type:17,
+      components:[
+        {type:12,items:[{media:{url:'https://cdn.discordapp.com/attachments/1463904141297324228/1490334185213399070/TITRE_-_2026-04-05T145542.118.png?ex=69d3ad5e&is=69d25bde&hm=45272910beccc20f396c47899de94db6dd4cb723f617b2f1ed5f85cc5a6d0e13&'}}]},
+        {type:14,spacing:2},
+        {type:10,content:lines}
+      ]
+    }]
+  };
+
+  var btn=document.getElementById('calc-validate-btn');
+  if(btn){btn.disabled=true;btn.textContent='⏳ Envoi en cours…';}
+
+  fetch(webhookUrl,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(payload)
+  }).then(function(r){
+    if(r.ok||r.status===204||r.status===200){
+      if(btn){btn.textContent='✓ Commande envoyée !';}
+      setTimeout(function(){if(btn){btn.disabled=false;btn.textContent='✓ Valider la commande · Discord';}},3000);
+    } else {
+      throw new Error('HTTP '+r.status);
+    }
+  }).catch(function(err){
+    if(btn){btn.disabled=false;btn.textContent='✗ Erreur — Réessayer';}
+    console.error('Webhook error:',err);
+    setTimeout(function(){if(btn)btn.textContent='✓ Valider la commande · Discord';},3000);
+  });
+}
 
 // Refresh quick list whenever catalogue updates
 var _origRenderAll=typeof renderContent!=='undefined'?renderContent:null;
@@ -789,6 +884,7 @@ var _origRenderAll=typeof renderContent!=='undefined'?renderContent:null;
     </div>
     <div class="calc-total-count" id="calc-item-count">0 type(s) &middot; 0 unit&eacute;(s)</div>
     <button class="calc-reset-btn" onclick="calcReset()">&#8635; Vider le panier</button>
+    <button class="calc-validate-btn" id="calc-validate-btn" onclick="calcValidateOrder()">&#10003; Valider la commande · Discord</button>
   </div>
 
 </div>
