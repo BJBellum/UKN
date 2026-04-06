@@ -156603,6 +156603,8033 @@
         }
       ],
       "created": "2026-04-02T18:04:31.079Z"
+    },
+    {
+      "id": "team_1775488007170",
+      "nom": "UGP",
+      "continent": "Europe",
+      "culture": [
+        {
+          "key": "italien",
+          "weight": 50
+        }
+      ],
+      "note_globale": 78,
+      "flag_filename": "assets/images/football/flags/flag_ugp.png",
+      "coach": {
+        "nom": "Alessandro Lombardi",
+        "notes": {
+          "tactique": 68,
+          "attaque": 74,
+          "defence": 82,
+          "preparation": 79,
+          "gestion": 73
+        },
+        "global": 75
+      },
+      "joueurs": [
+        {
+          "id": "p_1775488007169_5101",
+          "nom": "Marco Marino",
+          "poste": "DC",
+          "age": 27,
+          "notes": {
+            "pac": 68,
+            "sho": 42,
+            "pas": 66,
+            "dri": 70,
+            "def": 81,
+            "phy": 78,
+            "gks": 15
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_1863",
+          "nom": "Domenico Ricci",
+          "poste": "DD",
+          "age": 27,
+          "notes": {
+            "pac": 86,
+            "sho": 48,
+            "pas": 74,
+            "dri": 58,
+            "def": 91,
+            "phy": 91,
+            "gks": 12
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_6079",
+          "nom": "Giacomo Marino",
+          "poste": "DC",
+          "age": 32,
+          "notes": {
+            "pac": 84,
+            "sho": 59,
+            "pas": 68,
+            "dri": 63,
+            "def": 86,
+            "phy": 85,
+            "gks": 17
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_4634",
+          "nom": "Luigi Moretti",
+          "poste": "DD",
+          "age": 27,
+          "notes": {
+            "pac": 77,
+            "sho": 60,
+            "pas": 75,
+            "dri": 77,
+            "def": 91,
+            "phy": 83,
+            "gks": 26
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_4392",
+          "nom": "Antonio De Luca",
+          "poste": "DC",
+          "age": 28,
+          "notes": {
+            "pac": 77,
+            "sho": 48,
+            "pas": 70,
+            "dri": 64,
+            "def": 79,
+            "phy": 82,
+            "gks": 14
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_9183",
+          "nom": "Giuseppe Moretti",
+          "poste": "DG",
+          "age": 33,
+          "notes": {
+            "pac": 75,
+            "sho": 53,
+            "pas": 70,
+            "dri": 60,
+            "def": 80,
+            "phy": 78,
+            "gks": 24
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_6400",
+          "nom": "Roberto Bianchi",
+          "poste": "DG",
+          "age": 25,
+          "notes": {
+            "pac": 72,
+            "sho": 64,
+            "pas": 63,
+            "dri": 55,
+            "def": 81,
+            "phy": 80,
+            "gks": 21
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_4647",
+          "nom": "Lorenzo Colombo",
+          "poste": "DC",
+          "age": 20,
+          "notes": {
+            "pac": 82,
+            "sho": 48,
+            "pas": 62,
+            "dri": 67,
+            "def": 83,
+            "phy": 78,
+            "gks": 24
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_3484",
+          "nom": "Leonardo Conti",
+          "poste": "DC",
+          "age": 36,
+          "notes": {
+            "pac": 68,
+            "sho": 65,
+            "pas": 73,
+            "dri": 67,
+            "def": 83,
+            "phy": 78,
+            "gks": 24
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_3830",
+          "nom": "Luigi Rossi",
+          "poste": "DC",
+          "age": 17,
+          "notes": {
+            "pac": 80,
+            "sho": 59,
+            "pas": 71,
+            "dri": 59,
+            "def": 78,
+            "phy": 87,
+            "gks": 24
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_5280",
+          "nom": "Giorgio Bruno",
+          "poste": "DG",
+          "age": 23,
+          "notes": {
+            "pac": 83,
+            "sho": 49,
+            "pas": 73,
+            "dri": 57,
+            "def": 87,
+            "phy": 79,
+            "gks": 28
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_7316",
+          "nom": "Daniele Caputo",
+          "poste": "DC",
+          "age": 22,
+          "notes": {
+            "pac": 70,
+            "sho": 56,
+            "pas": 71,
+            "dri": 74,
+            "def": 85,
+            "phy": 85,
+            "gks": 26
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_2829",
+          "nom": "Giorgio Ferrari",
+          "poste": "DG",
+          "age": 19,
+          "notes": {
+            "pac": 65,
+            "sho": 61,
+            "pas": 63,
+            "dri": 67,
+            "def": 79,
+            "phy": 81,
+            "gks": 20
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_6411",
+          "nom": "Gabriele Ferrara",
+          "poste": "DD",
+          "age": 26,
+          "notes": {
+            "pac": 75,
+            "sho": 59,
+            "pas": 74,
+            "dri": 75,
+            "def": 92,
+            "phy": 89,
+            "gks": 18
+          },
+          "global": 83
+        },
+        {
+          "id": "p_1775488007169_5573",
+          "nom": "Domenico Marini",
+          "poste": "DC",
+          "age": 25,
+          "notes": {
+            "pac": 76,
+            "sho": 59,
+            "pas": 69,
+            "dri": 69,
+            "def": 88,
+            "phy": 78,
+            "gks": 19
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_8904",
+          "nom": "Vincenzo Giordano",
+          "poste": "DG",
+          "age": 33,
+          "notes": {
+            "pac": 70,
+            "sho": 60,
+            "pas": 77,
+            "dri": 64,
+            "def": 90,
+            "phy": 77,
+            "gks": 22
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_6727",
+          "nom": "Luca Gallo",
+          "poste": "DC",
+          "age": 21,
+          "notes": {
+            "pac": 71,
+            "sho": 63,
+            "pas": 71,
+            "dri": 64,
+            "def": 84,
+            "phy": 82,
+            "gks": 18
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_2402",
+          "nom": "Roberto Ferrari",
+          "poste": "DC",
+          "age": 21,
+          "notes": {
+            "pac": 77,
+            "sho": 54,
+            "pas": 68,
+            "dri": 77,
+            "def": 84,
+            "phy": 85,
+            "gks": 12
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_5448",
+          "nom": "Gabriele Rossi",
+          "poste": "DG",
+          "age": 29,
+          "notes": {
+            "pac": 81,
+            "sho": 54,
+            "pas": 68,
+            "dri": 68,
+            "def": 89,
+            "phy": 83,
+            "gks": 16
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_9156",
+          "nom": "Lorenzo De Luca",
+          "poste": "DG",
+          "age": 22,
+          "notes": {
+            "pac": 82,
+            "sho": 57,
+            "pas": 65,
+            "dri": 59,
+            "def": 85,
+            "phy": 85,
+            "gks": 27
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_8180",
+          "nom": "Marco Ferrara",
+          "poste": "DC",
+          "age": 21,
+          "notes": {
+            "pac": 81,
+            "sho": 54,
+            "pas": 74,
+            "dri": 60,
+            "def": 87,
+            "phy": 87,
+            "gks": 28
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_2633",
+          "nom": "Francesco Marini",
+          "poste": "DD",
+          "age": 27,
+          "notes": {
+            "pac": 73,
+            "sho": 52,
+            "pas": 74,
+            "dri": 62,
+            "def": 84,
+            "phy": 83,
+            "gks": 18
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_3537",
+          "nom": "Emanuele Greco",
+          "poste": "DG",
+          "age": 33,
+          "notes": {
+            "pac": 69,
+            "sho": 49,
+            "pas": 68,
+            "dri": 68,
+            "def": 81,
+            "phy": 81,
+            "gks": 22
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_5848",
+          "nom": "Gabriele Costa",
+          "poste": "DC",
+          "age": 20,
+          "notes": {
+            "pac": 79,
+            "sho": 59,
+            "pas": 70,
+            "dri": 61,
+            "def": 86,
+            "phy": 85,
+            "gks": 19
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_6154",
+          "nom": "Giacomo Barbieri",
+          "poste": "DC",
+          "age": 25,
+          "notes": {
+            "pac": 79,
+            "sho": 53,
+            "pas": 71,
+            "dri": 65,
+            "def": 81,
+            "phy": 86,
+            "gks": 17
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_7479",
+          "nom": "Riccardo Moretti",
+          "poste": "DC",
+          "age": 24,
+          "notes": {
+            "pac": 69,
+            "sho": 61,
+            "pas": 77,
+            "dri": 73,
+            "def": 81,
+            "phy": 78,
+            "gks": 15
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_5254",
+          "nom": "Alessandro Rossi",
+          "poste": "DC",
+          "age": 35,
+          "notes": {
+            "pac": 81,
+            "sho": 43,
+            "pas": 64,
+            "dri": 71,
+            "def": 82,
+            "phy": 85,
+            "gks": 22
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_7121",
+          "nom": "Alessandro Barbieri",
+          "poste": "DG",
+          "age": 17,
+          "notes": {
+            "pac": 78,
+            "sho": 54,
+            "pas": 78,
+            "dri": 71,
+            "def": 86,
+            "phy": 84,
+            "gks": 19
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_8901",
+          "nom": "Roberto Santoro",
+          "poste": "DD",
+          "age": 28,
+          "notes": {
+            "pac": 63,
+            "sho": 52,
+            "pas": 62,
+            "dri": 53,
+            "def": 79,
+            "phy": 74,
+            "gks": 15
+          },
+          "global": 69
+        },
+        {
+          "id": "p_1775488007169_2053",
+          "nom": "Francesco Marini",
+          "poste": "DC",
+          "age": 34,
+          "notes": {
+            "pac": 86,
+            "sho": 56,
+            "pas": 65,
+            "dri": 62,
+            "def": 88,
+            "phy": 91,
+            "gks": 14
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_2921",
+          "nom": "Gabriele De Luca",
+          "poste": "DC",
+          "age": 28,
+          "notes": {
+            "pac": 77,
+            "sho": 46,
+            "pas": 62,
+            "dri": 54,
+            "def": 85,
+            "phy": 80,
+            "gks": 22
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_6648",
+          "nom": "Giacomo Mancini",
+          "poste": "DC",
+          "age": 17,
+          "notes": {
+            "pac": 79,
+            "sho": 61,
+            "pas": 69,
+            "dri": 71,
+            "def": 86,
+            "phy": 79,
+            "gks": 20
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_2152",
+          "nom": "Luca Fontana",
+          "poste": "DG",
+          "age": 32,
+          "notes": {
+            "pac": 74,
+            "sho": 51,
+            "pas": 71,
+            "dri": 55,
+            "def": 87,
+            "phy": 85,
+            "gks": 16
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_4331",
+          "nom": "Mario Moretti",
+          "poste": "DD",
+          "age": 28,
+          "notes": {
+            "pac": 63,
+            "sho": 59,
+            "pas": 59,
+            "dri": 61,
+            "def": 83,
+            "phy": 79,
+            "gks": 22
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775488007169_2397",
+          "nom": "Emanuele Mancini",
+          "poste": "DG",
+          "age": 17,
+          "notes": {
+            "pac": 81,
+            "sho": 54,
+            "pas": 79,
+            "dri": 70,
+            "def": 87,
+            "phy": 81,
+            "gks": 23
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_5830",
+          "nom": "Domenico Rossi",
+          "poste": "DD",
+          "age": 21,
+          "notes": {
+            "pac": 68,
+            "sho": 53,
+            "pas": 68,
+            "dri": 61,
+            "def": 85,
+            "phy": 82,
+            "gks": 21
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_9582",
+          "nom": "Marco Mancini",
+          "poste": "DC",
+          "age": 18,
+          "notes": {
+            "pac": 80,
+            "sho": 46,
+            "pas": 64,
+            "dri": 66,
+            "def": 83,
+            "phy": 83,
+            "gks": 12
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_3567",
+          "nom": "Alessandro Ferrari",
+          "poste": "DG",
+          "age": 36,
+          "notes": {
+            "pac": 78,
+            "sho": 46,
+            "pas": 62,
+            "dri": 67,
+            "def": 86,
+            "phy": 86,
+            "gks": 28
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_4385",
+          "nom": "Ciro Bruno",
+          "poste": "DD",
+          "age": 24,
+          "notes": {
+            "pac": 81,
+            "sho": 49,
+            "pas": 66,
+            "dri": 69,
+            "def": 83,
+            "phy": 88,
+            "gks": 17
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_7324",
+          "nom": "Andrea Moretti",
+          "poste": "DD",
+          "age": 26,
+          "notes": {
+            "pac": 68,
+            "sho": 47,
+            "pas": 62,
+            "dri": 59,
+            "def": 81,
+            "phy": 83,
+            "gks": 19
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_5132",
+          "nom": "Salvatore Costa",
+          "poste": "DD",
+          "age": 24,
+          "notes": {
+            "pac": 73,
+            "sho": 49,
+            "pas": 68,
+            "dri": 75,
+            "def": 83,
+            "phy": 87,
+            "gks": 21
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_1440",
+          "nom": "Francesco Ferrara",
+          "poste": "DC",
+          "age": 35,
+          "notes": {
+            "pac": 73,
+            "sho": 60,
+            "pas": 76,
+            "dri": 71,
+            "def": 85,
+            "phy": 77,
+            "gks": 20
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_9874",
+          "nom": "Giacomo Romano",
+          "poste": "DG",
+          "age": 36,
+          "notes": {
+            "pac": 72,
+            "sho": 55,
+            "pas": 69,
+            "dri": 67,
+            "def": 80,
+            "phy": 79,
+            "gks": 27
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_6435",
+          "nom": "Federico Bruno",
+          "poste": "DG",
+          "age": 19,
+          "notes": {
+            "pac": 84,
+            "sho": 47,
+            "pas": 67,
+            "dri": 60,
+            "def": 88,
+            "phy": 84,
+            "gks": 26
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_9964",
+          "nom": "Luigi Ferrari",
+          "poste": "DD",
+          "age": 22,
+          "notes": {
+            "pac": 74,
+            "sho": 62,
+            "pas": 78,
+            "dri": 58,
+            "def": 82,
+            "phy": 89,
+            "gks": 24
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_1158",
+          "nom": "Giacomo Mancini",
+          "poste": "DC",
+          "age": 27,
+          "notes": {
+            "pac": 69,
+            "sho": 45,
+            "pas": 74,
+            "dri": 71,
+            "def": 88,
+            "phy": 80,
+            "gks": 23
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_4074",
+          "nom": "Marco Mancini",
+          "poste": "DD",
+          "age": 22,
+          "notes": {
+            "pac": 70,
+            "sho": 49,
+            "pas": 68,
+            "dri": 60,
+            "def": 78,
+            "phy": 81,
+            "gks": 28
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_5360",
+          "nom": "Mario Barbieri",
+          "poste": "DC",
+          "age": 17,
+          "notes": {
+            "pac": 82,
+            "sho": 49,
+            "pas": 78,
+            "dri": 72,
+            "def": 89,
+            "phy": 81,
+            "gks": 14
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_1467",
+          "nom": "Marco Mancini",
+          "poste": "DG",
+          "age": 18,
+          "notes": {
+            "pac": 86,
+            "sho": 49,
+            "pas": 67,
+            "dri": 67,
+            "def": 86,
+            "phy": 84,
+            "gks": 26
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_9916",
+          "nom": "Antonio Mancini",
+          "poste": "DC",
+          "age": 32,
+          "notes": {
+            "pac": 77,
+            "sho": 60,
+            "pas": 74,
+            "dri": 57,
+            "def": 88,
+            "phy": 89,
+            "gks": 15
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_1384",
+          "nom": "Giacomo Gallo",
+          "poste": "DD",
+          "age": 35,
+          "notes": {
+            "pac": 70,
+            "sho": 52,
+            "pas": 74,
+            "dri": 55,
+            "def": 87,
+            "phy": 79,
+            "gks": 18
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_2888",
+          "nom": "Domenico Rizzo",
+          "poste": "DD",
+          "age": 18,
+          "notes": {
+            "pac": 79,
+            "sho": 48,
+            "pas": 75,
+            "dri": 62,
+            "def": 86,
+            "phy": 91,
+            "gks": 21
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_2570",
+          "nom": "Gennaro Santoro",
+          "poste": "DC",
+          "age": 33,
+          "notes": {
+            "pac": 75,
+            "sho": 56,
+            "pas": 68,
+            "dri": 67,
+            "def": 85,
+            "phy": 80,
+            "gks": 23
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_5144",
+          "nom": "Marco Bianchi",
+          "poste": "DG",
+          "age": 19,
+          "notes": {
+            "pac": 73,
+            "sho": 48,
+            "pas": 60,
+            "dri": 70,
+            "def": 77,
+            "phy": 84,
+            "gks": 15
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_2052",
+          "nom": "Domenico Colombo",
+          "poste": "DC",
+          "age": 24,
+          "notes": {
+            "pac": 78,
+            "sho": 60,
+            "pas": 66,
+            "dri": 55,
+            "def": 86,
+            "phy": 86,
+            "gks": 21
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_4287",
+          "nom": "Emanuele Giordano",
+          "poste": "DC",
+          "age": 28,
+          "notes": {
+            "pac": 85,
+            "sho": 66,
+            "pas": 70,
+            "dri": 75,
+            "def": 82,
+            "phy": 90,
+            "gks": 16
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_3661",
+          "nom": "Giacomo Ferrari",
+          "poste": "DD",
+          "age": 26,
+          "notes": {
+            "pac": 73,
+            "sho": 62,
+            "pas": 68,
+            "dri": 70,
+            "def": 91,
+            "phy": 90,
+            "gks": 19
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_5871",
+          "nom": "Gabriele Barbieri",
+          "poste": "DG",
+          "age": 31,
+          "notes": {
+            "pac": 78,
+            "sho": 48,
+            "pas": 68,
+            "dri": 65,
+            "def": 84,
+            "phy": 79,
+            "gks": 17
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_6153",
+          "nom": "Andrea Colombo",
+          "poste": "DC",
+          "age": 19,
+          "notes": {
+            "pac": 81,
+            "sho": 52,
+            "pas": 74,
+            "dri": 57,
+            "def": 88,
+            "phy": 90,
+            "gks": 13
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_5913",
+          "nom": "Salvatore Mancini",
+          "poste": "DG",
+          "age": 26,
+          "notes": {
+            "pac": 67,
+            "sho": 64,
+            "pas": 77,
+            "dri": 61,
+            "def": 88,
+            "phy": 82,
+            "gks": 24
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_7592",
+          "nom": "Simone De Luca",
+          "poste": "DC",
+          "age": 30,
+          "notes": {
+            "pac": 77,
+            "sho": 59,
+            "pas": 70,
+            "dri": 57,
+            "def": 85,
+            "phy": 84,
+            "gks": 26
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_5866",
+          "nom": "Marco Bianchi",
+          "poste": "DD",
+          "age": 32,
+          "notes": {
+            "pac": 75,
+            "sho": 60,
+            "pas": 75,
+            "dri": 53,
+            "def": 81,
+            "phy": 84,
+            "gks": 20
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_2607",
+          "nom": "Salvatore Conti",
+          "poste": "DC",
+          "age": 34,
+          "notes": {
+            "pac": 70,
+            "sho": 49,
+            "pas": 72,
+            "dri": 68,
+            "def": 89,
+            "phy": 91,
+            "gks": 19
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_7372",
+          "nom": "Luca Conti",
+          "poste": "DC",
+          "age": 21,
+          "notes": {
+            "pac": 80,
+            "sho": 58,
+            "pas": 68,
+            "dri": 55,
+            "def": 88,
+            "phy": 83,
+            "gks": 26
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_8585",
+          "nom": "Davide Giordano",
+          "poste": "DC",
+          "age": 21,
+          "notes": {
+            "pac": 82,
+            "sho": 49,
+            "pas": 74,
+            "dri": 70,
+            "def": 85,
+            "phy": 89,
+            "gks": 18
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_1028",
+          "nom": "Leonardo Esposito",
+          "poste": "DG",
+          "age": 36,
+          "notes": {
+            "pac": 81,
+            "sho": 48,
+            "pas": 65,
+            "dri": 72,
+            "def": 87,
+            "phy": 84,
+            "gks": 23
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_8295",
+          "nom": "Stefano Ferrara",
+          "poste": "DC",
+          "age": 34,
+          "notes": {
+            "pac": 69,
+            "sho": 50,
+            "pas": 74,
+            "dri": 65,
+            "def": 87,
+            "phy": 84,
+            "gks": 16
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_4370",
+          "nom": "Francesco Bianchi",
+          "poste": "DD",
+          "age": 34,
+          "notes": {
+            "pac": 74,
+            "sho": 65,
+            "pas": 65,
+            "dri": 62,
+            "def": 82,
+            "phy": 83,
+            "gks": 15
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_2735",
+          "nom": "Tommaso Gallo",
+          "poste": "DC",
+          "age": 18,
+          "notes": {
+            "pac": 72,
+            "sho": 52,
+            "pas": 64,
+            "dri": 63,
+            "def": 86,
+            "phy": 81,
+            "gks": 14
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_4410",
+          "nom": "Gabriele Caputo",
+          "poste": "DD",
+          "age": 27,
+          "notes": {
+            "pac": 74,
+            "sho": 60,
+            "pas": 76,
+            "dri": 76,
+            "def": 85,
+            "phy": 85,
+            "gks": 13
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_1961",
+          "nom": "Emanuele Colombo",
+          "poste": "DC",
+          "age": 21,
+          "notes": {
+            "pac": 78,
+            "sho": 63,
+            "pas": 77,
+            "dri": 58,
+            "def": 86,
+            "phy": 83,
+            "gks": 21
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_5222",
+          "nom": "Giuseppe Ferrara",
+          "poste": "DD",
+          "age": 17,
+          "notes": {
+            "pac": 76,
+            "sho": 64,
+            "pas": 62,
+            "dri": 61,
+            "def": 87,
+            "phy": 84,
+            "gks": 27
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_7690",
+          "nom": "Federico Conti",
+          "poste": "DC",
+          "age": 33,
+          "notes": {
+            "pac": 69,
+            "sho": 67,
+            "pas": 64,
+            "dri": 76,
+            "def": 84,
+            "phy": 84,
+            "gks": 23
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_5910",
+          "nom": "Mario Caputo",
+          "poste": "DG",
+          "age": 19,
+          "notes": {
+            "pac": 72,
+            "sho": 59,
+            "pas": 74,
+            "dri": 58,
+            "def": 82,
+            "phy": 80,
+            "gks": 13
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_4962",
+          "nom": "Gennaro De Luca",
+          "poste": "DC",
+          "age": 26,
+          "notes": {
+            "pac": 67,
+            "sho": 51,
+            "pas": 69,
+            "dri": 62,
+            "def": 84,
+            "phy": 80,
+            "gks": 27
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_9147",
+          "nom": "Simone Bruno",
+          "poste": "DC",
+          "age": 26,
+          "notes": {
+            "pac": 81,
+            "sho": 61,
+            "pas": 67,
+            "dri": 73,
+            "def": 83,
+            "phy": 81,
+            "gks": 18
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_1552",
+          "nom": "Marco Ferrari",
+          "poste": "DD",
+          "age": 30,
+          "notes": {
+            "pac": 76,
+            "sho": 53,
+            "pas": 64,
+            "dri": 73,
+            "def": 84,
+            "phy": 82,
+            "gks": 13
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_7135",
+          "nom": "Riccardo Santoro",
+          "poste": "DD",
+          "age": 25,
+          "notes": {
+            "pac": 83,
+            "sho": 61,
+            "pas": 81,
+            "dri": 71,
+            "def": 87,
+            "phy": 89,
+            "gks": 26
+          },
+          "global": 83
+        },
+        {
+          "id": "p_1775488007169_5334",
+          "nom": "Francesco Lombardi",
+          "poste": "DC",
+          "age": 25,
+          "notes": {
+            "pac": 71,
+            "sho": 59,
+            "pas": 73,
+            "dri": 67,
+            "def": 90,
+            "phy": 78,
+            "gks": 25
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_1890",
+          "nom": "Roberto Costa",
+          "poste": "DG",
+          "age": 18,
+          "notes": {
+            "pac": 72,
+            "sho": 56,
+            "pas": 66,
+            "dri": 72,
+            "def": 88,
+            "phy": 87,
+            "gks": 17
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_2491",
+          "nom": "Lorenzo Giordano",
+          "poste": "DD",
+          "age": 25,
+          "notes": {
+            "pac": 70,
+            "sho": 68,
+            "pas": 74,
+            "dri": 61,
+            "def": 84,
+            "phy": 83,
+            "gks": 25
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_1623",
+          "nom": "Gennaro Lombardi",
+          "poste": "DC",
+          "age": 32,
+          "notes": {
+            "pac": 72,
+            "sho": 51,
+            "pas": 72,
+            "dri": 60,
+            "def": 91,
+            "phy": 81,
+            "gks": 24
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_5127",
+          "nom": "Matteo Rossi",
+          "poste": "DC",
+          "age": 20,
+          "notes": {
+            "pac": 82,
+            "sho": 63,
+            "pas": 66,
+            "dri": 72,
+            "def": 86,
+            "phy": 89,
+            "gks": 16
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_5220",
+          "nom": "Antonio Rizzo",
+          "poste": "DC",
+          "age": 30,
+          "notes": {
+            "pac": 80,
+            "sho": 50,
+            "pas": 75,
+            "dri": 72,
+            "def": 89,
+            "phy": 80,
+            "gks": 12
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_4545",
+          "nom": "Lorenzo Marini",
+          "poste": "DC",
+          "age": 22,
+          "notes": {
+            "pac": 85,
+            "sho": 53,
+            "pas": 80,
+            "dri": 59,
+            "def": 88,
+            "phy": 80,
+            "gks": 21
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_3817",
+          "nom": "Simone Romano",
+          "poste": "DC",
+          "age": 30,
+          "notes": {
+            "pac": 74,
+            "sho": 62,
+            "pas": 71,
+            "dri": 61,
+            "def": 85,
+            "phy": 84,
+            "gks": 26
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_6277",
+          "nom": "Leonardo Caputo",
+          "poste": "DC",
+          "age": 32,
+          "notes": {
+            "pac": 70,
+            "sho": 45,
+            "pas": 66,
+            "dri": 68,
+            "def": 84,
+            "phy": 89,
+            "gks": 14
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_6085",
+          "nom": "Alessandro Caputo",
+          "poste": "DC",
+          "age": 33,
+          "notes": {
+            "pac": 81,
+            "sho": 55,
+            "pas": 76,
+            "dri": 63,
+            "def": 81,
+            "phy": 83,
+            "gks": 23
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_1025",
+          "nom": "Emanuele Ferrari",
+          "poste": "DC",
+          "age": 25,
+          "notes": {
+            "pac": 77,
+            "sho": 62,
+            "pas": 72,
+            "dri": 65,
+            "def": 90,
+            "phy": 85,
+            "gks": 27
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_7920",
+          "nom": "Alessandro Marini",
+          "poste": "DC",
+          "age": 30,
+          "notes": {
+            "pac": 78,
+            "sho": 44,
+            "pas": 71,
+            "dri": 53,
+            "def": 83,
+            "phy": 81,
+            "gks": 28
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_3933",
+          "nom": "Vincenzo Gallo",
+          "poste": "DC",
+          "age": 29,
+          "notes": {
+            "pac": 80,
+            "sho": 58,
+            "pas": 65,
+            "dri": 61,
+            "def": 89,
+            "phy": 87,
+            "gks": 21
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_1303",
+          "nom": "Vincenzo Romano",
+          "poste": "DD",
+          "age": 35,
+          "notes": {
+            "pac": 66,
+            "sho": 53,
+            "pas": 69,
+            "dri": 64,
+            "def": 82,
+            "phy": 80,
+            "gks": 26
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_6402",
+          "nom": "Alessandro De Luca",
+          "poste": "DG",
+          "age": 21,
+          "notes": {
+            "pac": 69,
+            "sho": 54,
+            "pas": 77,
+            "dri": 62,
+            "def": 84,
+            "phy": 84,
+            "gks": 24
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_6378",
+          "nom": "Roberto Moretti",
+          "poste": "DD",
+          "age": 21,
+          "notes": {
+            "pac": 63,
+            "sho": 54,
+            "pas": 63,
+            "dri": 68,
+            "def": 80,
+            "phy": 82,
+            "gks": 24
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_3352",
+          "nom": "Federico Lombardi",
+          "poste": "DC",
+          "age": 25,
+          "notes": {
+            "pac": 72,
+            "sho": 51,
+            "pas": 62,
+            "dri": 57,
+            "def": 84,
+            "phy": 77,
+            "gks": 20
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_4287",
+          "nom": "Roberto Marino",
+          "poste": "DG",
+          "age": 36,
+          "notes": {
+            "pac": 78,
+            "sho": 63,
+            "pas": 79,
+            "dri": 61,
+            "def": 85,
+            "phy": 87,
+            "gks": 27
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_5315",
+          "nom": "Giorgio Moretti",
+          "poste": "DG",
+          "age": 22,
+          "notes": {
+            "pac": 71,
+            "sho": 64,
+            "pas": 79,
+            "dri": 57,
+            "def": 91,
+            "phy": 78,
+            "gks": 24
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_6389",
+          "nom": "Daniele Conti",
+          "poste": "DC",
+          "age": 18,
+          "notes": {
+            "pac": 70,
+            "sho": 45,
+            "pas": 66,
+            "dri": 71,
+            "def": 80,
+            "phy": 78,
+            "gks": 27
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_2591",
+          "nom": "Andrea Gallo",
+          "poste": "DG",
+          "age": 19,
+          "notes": {
+            "pac": 80,
+            "sho": 50,
+            "pas": 66,
+            "dri": 56,
+            "def": 80,
+            "phy": 79,
+            "gks": 12
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_4049",
+          "nom": "Roberto Santoro",
+          "poste": "DC",
+          "age": 25,
+          "notes": {
+            "pac": 83,
+            "sho": 49,
+            "pas": 75,
+            "dri": 59,
+            "def": 92,
+            "phy": 87,
+            "gks": 13
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_2941",
+          "nom": "Matteo Lombardi",
+          "poste": "DG",
+          "age": 25,
+          "notes": {
+            "pac": 83,
+            "sho": 50,
+            "pas": 69,
+            "dri": 68,
+            "def": 87,
+            "phy": 83,
+            "gks": 17
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_6746",
+          "nom": "Federico Greco",
+          "poste": "DC",
+          "age": 18,
+          "notes": {
+            "pac": 79,
+            "sho": 43,
+            "pas": 69,
+            "dri": 60,
+            "def": 86,
+            "phy": 75,
+            "gks": 18
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_9271",
+          "nom": "Riccardo Moretti",
+          "poste": "DC",
+          "age": 32,
+          "notes": {
+            "pac": 76,
+            "sho": 55,
+            "pas": 70,
+            "dri": 62,
+            "def": 91,
+            "phy": 83,
+            "gks": 23
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_5131",
+          "nom": "Riccardo Costa",
+          "poste": "DD",
+          "age": 26,
+          "notes": {
+            "pac": 80,
+            "sho": 60,
+            "pas": 64,
+            "dri": 65,
+            "def": 83,
+            "phy": 79,
+            "gks": 15
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_3480",
+          "nom": "Luigi Moretti",
+          "poste": "DG",
+          "age": 33,
+          "notes": {
+            "pac": 82,
+            "sho": 55,
+            "pas": 69,
+            "dri": 58,
+            "def": 78,
+            "phy": 81,
+            "gks": 22
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_1264",
+          "nom": "Giuseppe Romano",
+          "poste": "DC",
+          "age": 36,
+          "notes": {
+            "pac": 70,
+            "sho": 47,
+            "pas": 69,
+            "dri": 71,
+            "def": 80,
+            "phy": 77,
+            "gks": 19
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_8478",
+          "nom": "Emanuele Greco",
+          "poste": "DC",
+          "age": 24,
+          "notes": {
+            "pac": 67,
+            "sho": 55,
+            "pas": 75,
+            "dri": 70,
+            "def": 86,
+            "phy": 82,
+            "gks": 26
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_7927",
+          "nom": "Roberto Ferrari",
+          "poste": "DC",
+          "age": 34,
+          "notes": {
+            "pac": 68,
+            "sho": 53,
+            "pas": 69,
+            "dri": 69,
+            "def": 85,
+            "phy": 79,
+            "gks": 15
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_5393",
+          "nom": "Luca Marino",
+          "poste": "DC",
+          "age": 19,
+          "notes": {
+            "pac": 74,
+            "sho": 55,
+            "pas": 79,
+            "dri": 77,
+            "def": 93,
+            "phy": 81,
+            "gks": 18
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_9216",
+          "nom": "Salvatore Mancini",
+          "poste": "DC",
+          "age": 25,
+          "notes": {
+            "pac": 82,
+            "sho": 52,
+            "pas": 75,
+            "dri": 64,
+            "def": 89,
+            "phy": 83,
+            "gks": 20
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_1058",
+          "nom": "Riccardo De Luca",
+          "poste": "DC",
+          "age": 20,
+          "notes": {
+            "pac": 71,
+            "sho": 46,
+            "pas": 72,
+            "dri": 66,
+            "def": 81,
+            "phy": 89,
+            "gks": 23
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_9760",
+          "nom": "Stefano Bianchi",
+          "poste": "DC",
+          "age": 21,
+          "notes": {
+            "pac": 69,
+            "sho": 53,
+            "pas": 61,
+            "dri": 56,
+            "def": 87,
+            "phy": 86,
+            "gks": 19
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_8034",
+          "nom": "Luigi Ferrara",
+          "poste": "DD",
+          "age": 32,
+          "notes": {
+            "pac": 66,
+            "sho": 45,
+            "pas": 63,
+            "dri": 69,
+            "def": 79,
+            "phy": 86,
+            "gks": 14
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_3113",
+          "nom": "Mario Ferrari",
+          "poste": "DG",
+          "age": 33,
+          "notes": {
+            "pac": 66,
+            "sho": 59,
+            "pas": 73,
+            "dri": 57,
+            "def": 80,
+            "phy": 81,
+            "gks": 20
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_6195",
+          "nom": "Daniele Romano",
+          "poste": "DC",
+          "age": 20,
+          "notes": {
+            "pac": 71,
+            "sho": 51,
+            "pas": 60,
+            "dri": 58,
+            "def": 86,
+            "phy": 79,
+            "gks": 25
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_3453",
+          "nom": "Alessandro Ferrari",
+          "poste": "DC",
+          "age": 17,
+          "notes": {
+            "pac": 71,
+            "sho": 48,
+            "pas": 79,
+            "dri": 71,
+            "def": 82,
+            "phy": 80,
+            "gks": 21
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_7621",
+          "nom": "Stefano Rossi",
+          "poste": "DD",
+          "age": 27,
+          "notes": {
+            "pac": 87,
+            "sho": 53,
+            "pas": 80,
+            "dri": 68,
+            "def": 88,
+            "phy": 80,
+            "gks": 17
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_2513",
+          "nom": "Alessandro Barbieri",
+          "poste": "DC",
+          "age": 20,
+          "notes": {
+            "pac": 80,
+            "sho": 65,
+            "pas": 79,
+            "dri": 62,
+            "def": 83,
+            "phy": 81,
+            "gks": 25
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_2193",
+          "nom": "Francesco Caputo",
+          "poste": "DD",
+          "age": 22,
+          "notes": {
+            "pac": 68,
+            "sho": 65,
+            "pas": 79,
+            "dri": 63,
+            "def": 85,
+            "phy": 88,
+            "gks": 15
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_9271",
+          "nom": "Leonardo Marini",
+          "poste": "DD",
+          "age": 20,
+          "notes": {
+            "pac": 65,
+            "sho": 44,
+            "pas": 70,
+            "dri": 71,
+            "def": 79,
+            "phy": 86,
+            "gks": 23
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_9184",
+          "nom": "Matteo Giordano",
+          "poste": "DG",
+          "age": 29,
+          "notes": {
+            "pac": 74,
+            "sho": 64,
+            "pas": 77,
+            "dri": 58,
+            "def": 91,
+            "phy": 82,
+            "gks": 15
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_5913",
+          "nom": "Davide Santoro",
+          "poste": "DD",
+          "age": 34,
+          "notes": {
+            "pac": 80,
+            "sho": 60,
+            "pas": 74,
+            "dri": 67,
+            "def": 83,
+            "phy": 77,
+            "gks": 16
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_8472",
+          "nom": "Roberto Gallo",
+          "poste": "DC",
+          "age": 26,
+          "notes": {
+            "pac": 66,
+            "sho": 47,
+            "pas": 60,
+            "dri": 53,
+            "def": 77,
+            "phy": 82,
+            "gks": 20
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775488007169_1795",
+          "nom": "Mario Santoro",
+          "poste": "DD",
+          "age": 30,
+          "notes": {
+            "pac": 66,
+            "sho": 45,
+            "pas": 70,
+            "dri": 56,
+            "def": 84,
+            "phy": 81,
+            "gks": 24
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_7570",
+          "nom": "Simone Costa",
+          "poste": "DC",
+          "age": 27,
+          "notes": {
+            "pac": 74,
+            "sho": 64,
+            "pas": 65,
+            "dri": 68,
+            "def": 86,
+            "phy": 84,
+            "gks": 15
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_5961",
+          "nom": "Roberto Giordano",
+          "poste": "DG",
+          "age": 36,
+          "notes": {
+            "pac": 74,
+            "sho": 60,
+            "pas": 62,
+            "dri": 74,
+            "def": 89,
+            "phy": 81,
+            "gks": 26
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_7856",
+          "nom": "Francesco Moretti",
+          "poste": "DG",
+          "age": 34,
+          "notes": {
+            "pac": 74,
+            "sho": 62,
+            "pas": 79,
+            "dri": 58,
+            "def": 92,
+            "phy": 79,
+            "gks": 13
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_8663",
+          "nom": "Davide Gallo",
+          "poste": "DC",
+          "age": 17,
+          "notes": {
+            "pac": 75,
+            "sho": 48,
+            "pas": 69,
+            "dri": 64,
+            "def": 84,
+            "phy": 87,
+            "gks": 26
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_8025",
+          "nom": "Gabriele Esposito",
+          "poste": "DD",
+          "age": 26,
+          "notes": {
+            "pac": 69,
+            "sho": 57,
+            "pas": 63,
+            "dri": 66,
+            "def": 80,
+            "phy": 78,
+            "gks": 21
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_5475",
+          "nom": "Tommaso Santoro",
+          "poste": "DC",
+          "age": 25,
+          "notes": {
+            "pac": 68,
+            "sho": 57,
+            "pas": 65,
+            "dri": 60,
+            "def": 87,
+            "phy": 89,
+            "gks": 13
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_5909",
+          "nom": "Gabriele Costa",
+          "poste": "DC",
+          "age": 36,
+          "notes": {
+            "pac": 85,
+            "sho": 50,
+            "pas": 67,
+            "dri": 58,
+            "def": 89,
+            "phy": 87,
+            "gks": 18
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_3508",
+          "nom": "Davide Lombardi",
+          "poste": "DD",
+          "age": 36,
+          "notes": {
+            "pac": 70,
+            "sho": 55,
+            "pas": 62,
+            "dri": 58,
+            "def": 88,
+            "phy": 83,
+            "gks": 28
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_9655",
+          "nom": "Antonio Marini",
+          "poste": "DC",
+          "age": 22,
+          "notes": {
+            "pac": 65,
+            "sho": 60,
+            "pas": 70,
+            "dri": 63,
+            "def": 82,
+            "phy": 80,
+            "gks": 26
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_1816",
+          "nom": "Luca Costa",
+          "poste": "DG",
+          "age": 22,
+          "notes": {
+            "pac": 78,
+            "sho": 61,
+            "pas": 63,
+            "dri": 65,
+            "def": 83,
+            "phy": 82,
+            "gks": 14
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_4859",
+          "nom": "Simone Barbieri",
+          "poste": "DD",
+          "age": 35,
+          "notes": {
+            "pac": 82,
+            "sho": 49,
+            "pas": 63,
+            "dri": 64,
+            "def": 86,
+            "phy": 80,
+            "gks": 20
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_7438",
+          "nom": "Davide Moretti",
+          "poste": "DG",
+          "age": 28,
+          "notes": {
+            "pac": 77,
+            "sho": 55,
+            "pas": 69,
+            "dri": 59,
+            "def": 84,
+            "phy": 82,
+            "gks": 18
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_6233",
+          "nom": "Gennaro Romano",
+          "poste": "DG",
+          "age": 26,
+          "notes": {
+            "pac": 77,
+            "sho": 50,
+            "pas": 74,
+            "dri": 59,
+            "def": 80,
+            "phy": 82,
+            "gks": 23
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_4011",
+          "nom": "Giorgio Barbieri",
+          "poste": "DG",
+          "age": 30,
+          "notes": {
+            "pac": 70,
+            "sho": 62,
+            "pas": 79,
+            "dri": 73,
+            "def": 81,
+            "phy": 78,
+            "gks": 15
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_8377",
+          "nom": "Ciro De Luca",
+          "poste": "DD",
+          "age": 27,
+          "notes": {
+            "pac": 73,
+            "sho": 47,
+            "pas": 72,
+            "dri": 63,
+            "def": 84,
+            "phy": 87,
+            "gks": 14
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_1266",
+          "nom": "Tommaso Barbieri",
+          "poste": "DC",
+          "age": 18,
+          "notes": {
+            "pac": 81,
+            "sho": 59,
+            "pas": 77,
+            "dri": 68,
+            "def": 84,
+            "phy": 89,
+            "gks": 22
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_6957",
+          "nom": "Mario Esposito",
+          "poste": "MOD",
+          "age": 28,
+          "notes": {
+            "pac": 84,
+            "sho": 79,
+            "pas": 81,
+            "dri": 78,
+            "def": 66,
+            "phy": 73,
+            "gks": 17
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_7365",
+          "nom": "Roberto Caputo",
+          "poste": "MOD",
+          "age": 31,
+          "notes": {
+            "pac": 71,
+            "sho": 62,
+            "pas": 85,
+            "dri": 80,
+            "def": 68,
+            "phy": 75,
+            "gks": 23
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_4327",
+          "nom": "Roberto Ricci",
+          "poste": "MC",
+          "age": 20,
+          "notes": {
+            "pac": 75,
+            "sho": 65,
+            "pas": 86,
+            "dri": 84,
+            "def": 66,
+            "phy": 70,
+            "gks": 14
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_8179",
+          "nom": "Antonio Costa",
+          "poste": "MOD",
+          "age": 30,
+          "notes": {
+            "pac": 83,
+            "sho": 77,
+            "pas": 86,
+            "dri": 79,
+            "def": 65,
+            "phy": 72,
+            "gks": 19
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_9936",
+          "nom": "Mario Ferrari",
+          "poste": "MO",
+          "age": 29,
+          "notes": {
+            "pac": 72,
+            "sho": 61,
+            "pas": 81,
+            "dri": 76,
+            "def": 75,
+            "phy": 71,
+            "gks": 22
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_9244",
+          "nom": "Giuseppe Santoro",
+          "poste": "MC",
+          "age": 34,
+          "notes": {
+            "pac": 73,
+            "sho": 75,
+            "pas": 88,
+            "dri": 80,
+            "def": 67,
+            "phy": 82,
+            "gks": 14
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_3202",
+          "nom": "Federico Ricci",
+          "poste": "MC",
+          "age": 34,
+          "notes": {
+            "pac": 72,
+            "sho": 74,
+            "pas": 90,
+            "dri": 84,
+            "def": 68,
+            "phy": 83,
+            "gks": 17
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_1766",
+          "nom": "Domenico Bruno",
+          "poste": "MDC",
+          "age": 20,
+          "notes": {
+            "pac": 75,
+            "sho": 64,
+            "pas": 85,
+            "dri": 72,
+            "def": 75,
+            "phy": 70,
+            "gks": 17
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_7949",
+          "nom": "Federico Mancini",
+          "poste": "MOG",
+          "age": 34,
+          "notes": {
+            "pac": 77,
+            "sho": 76,
+            "pas": 78,
+            "dri": 77,
+            "def": 64,
+            "phy": 78,
+            "gks": 12
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_8737",
+          "nom": "Vincenzo Ferrari",
+          "poste": "MC",
+          "age": 17,
+          "notes": {
+            "pac": 78,
+            "sho": 65,
+            "pas": 86,
+            "dri": 83,
+            "def": 73,
+            "phy": 72,
+            "gks": 18
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_4614",
+          "nom": "Matteo Bianchi",
+          "poste": "MOG",
+          "age": 27,
+          "notes": {
+            "pac": 73,
+            "sho": 66,
+            "pas": 82,
+            "dri": 71,
+            "def": 70,
+            "phy": 64,
+            "gks": 17
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775488007169_1383",
+          "nom": "Stefano Marino",
+          "poste": "MC",
+          "age": 21,
+          "notes": {
+            "pac": 78,
+            "sho": 75,
+            "pas": 89,
+            "dri": 76,
+            "def": 75,
+            "phy": 73,
+            "gks": 22
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_3685",
+          "nom": "Tommaso Moretti",
+          "poste": "MC",
+          "age": 24,
+          "notes": {
+            "pac": 73,
+            "sho": 64,
+            "pas": 79,
+            "dri": 76,
+            "def": 68,
+            "phy": 67,
+            "gks": 17
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775488007169_4446",
+          "nom": "Giorgio Colombo",
+          "poste": "MC",
+          "age": 31,
+          "notes": {
+            "pac": 81,
+            "sho": 72,
+            "pas": 81,
+            "dri": 85,
+            "def": 68,
+            "phy": 78,
+            "gks": 12
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_6847",
+          "nom": "Simone Santoro",
+          "poste": "MC",
+          "age": 30,
+          "notes": {
+            "pac": 83,
+            "sho": 78,
+            "pas": 81,
+            "dri": 78,
+            "def": 74,
+            "phy": 77,
+            "gks": 22
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_3915",
+          "nom": "Federico Costa",
+          "poste": "MO",
+          "age": 20,
+          "notes": {
+            "pac": 81,
+            "sho": 67,
+            "pas": 86,
+            "dri": 85,
+            "def": 71,
+            "phy": 73,
+            "gks": 19
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_1266",
+          "nom": "Domenico Fontana",
+          "poste": "MC",
+          "age": 20,
+          "notes": {
+            "pac": 76,
+            "sho": 64,
+            "pas": 78,
+            "dri": 74,
+            "def": 76,
+            "phy": 75,
+            "gks": 18
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_8700",
+          "nom": "Luigi Ricci",
+          "poste": "MC",
+          "age": 29,
+          "notes": {
+            "pac": 70,
+            "sho": 72,
+            "pas": 82,
+            "dri": 74,
+            "def": 66,
+            "phy": 73,
+            "gks": 24
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_5064",
+          "nom": "Luca Gallo",
+          "poste": "MDC",
+          "age": 36,
+          "notes": {
+            "pac": 80,
+            "sho": 66,
+            "pas": 80,
+            "dri": 79,
+            "def": 66,
+            "phy": 71,
+            "gks": 11
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_2974",
+          "nom": "Lorenzo Gallo",
+          "poste": "MOD",
+          "age": 25,
+          "notes": {
+            "pac": 79,
+            "sho": 78,
+            "pas": 88,
+            "dri": 79,
+            "def": 66,
+            "phy": 80,
+            "gks": 25
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_7777",
+          "nom": "Alessandro Fontana",
+          "poste": "MC",
+          "age": 30,
+          "notes": {
+            "pac": 81,
+            "sho": 67,
+            "pas": 83,
+            "dri": 87,
+            "def": 75,
+            "phy": 73,
+            "gks": 16
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_9535",
+          "nom": "Alessandro Greco",
+          "poste": "MOD",
+          "age": 18,
+          "notes": {
+            "pac": 72,
+            "sho": 65,
+            "pas": 91,
+            "dri": 89,
+            "def": 73,
+            "phy": 70,
+            "gks": 18
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_7912",
+          "nom": "Matteo Bruno",
+          "poste": "MDC",
+          "age": 30,
+          "notes": {
+            "pac": 69,
+            "sho": 75,
+            "pas": 87,
+            "dri": 83,
+            "def": 75,
+            "phy": 76,
+            "gks": 13
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_9461",
+          "nom": "Mario Giordano",
+          "poste": "MOG",
+          "age": 35,
+          "notes": {
+            "pac": 75,
+            "sho": 70,
+            "pas": 90,
+            "dri": 76,
+            "def": 76,
+            "phy": 71,
+            "gks": 12
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_4801",
+          "nom": "Stefano Moretti",
+          "poste": "MC",
+          "age": 21,
+          "notes": {
+            "pac": 72,
+            "sho": 64,
+            "pas": 87,
+            "dri": 87,
+            "def": 74,
+            "phy": 77,
+            "gks": 25
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_5184",
+          "nom": "Giacomo Bianchi",
+          "poste": "MDC",
+          "age": 33,
+          "notes": {
+            "pac": 71,
+            "sho": 65,
+            "pas": 82,
+            "dri": 74,
+            "def": 62,
+            "phy": 69,
+            "gks": 24
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775488007169_8956",
+          "nom": "Giacomo Gallo",
+          "poste": "MDC",
+          "age": 21,
+          "notes": {
+            "pac": 66,
+            "sho": 74,
+            "pas": 83,
+            "dri": 80,
+            "def": 68,
+            "phy": 64,
+            "gks": 15
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_4666",
+          "nom": "Roberto Ferrari",
+          "poste": "MC",
+          "age": 32,
+          "notes": {
+            "pac": 84,
+            "sho": 79,
+            "pas": 82,
+            "dri": 83,
+            "def": 68,
+            "phy": 81,
+            "gks": 12
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_4160",
+          "nom": "Alessandro Conti",
+          "poste": "MDC",
+          "age": 28,
+          "notes": {
+            "pac": 77,
+            "sho": 77,
+            "pas": 88,
+            "dri": 76,
+            "def": 65,
+            "phy": 69,
+            "gks": 19
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_8133",
+          "nom": "Emanuele Costa",
+          "poste": "MO",
+          "age": 23,
+          "notes": {
+            "pac": 70,
+            "sho": 63,
+            "pas": 77,
+            "dri": 81,
+            "def": 75,
+            "phy": 66,
+            "gks": 20
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_8020",
+          "nom": "Vincenzo Moretti",
+          "poste": "MOD",
+          "age": 34,
+          "notes": {
+            "pac": 85,
+            "sho": 73,
+            "pas": 90,
+            "dri": 78,
+            "def": 64,
+            "phy": 83,
+            "gks": 15
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_8327",
+          "nom": "Riccardo Rizzo",
+          "poste": "MO",
+          "age": 33,
+          "notes": {
+            "pac": 66,
+            "sho": 71,
+            "pas": 86,
+            "dri": 75,
+            "def": 70,
+            "phy": 73,
+            "gks": 18
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_5199",
+          "nom": "Emanuele Fontana",
+          "poste": "MOD",
+          "age": 18,
+          "notes": {
+            "pac": 81,
+            "sho": 63,
+            "pas": 83,
+            "dri": 79,
+            "def": 64,
+            "phy": 79,
+            "gks": 20
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_3097",
+          "nom": "Salvatore Esposito",
+          "poste": "MO",
+          "age": 26,
+          "notes": {
+            "pac": 70,
+            "sho": 62,
+            "pas": 82,
+            "dri": 80,
+            "def": 65,
+            "phy": 80,
+            "gks": 20
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_9081",
+          "nom": "Marco Ferrari",
+          "poste": "MDC",
+          "age": 29,
+          "notes": {
+            "pac": 84,
+            "sho": 67,
+            "pas": 88,
+            "dri": 83,
+            "def": 72,
+            "phy": 74,
+            "gks": 25
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_9461",
+          "nom": "Tommaso De Luca",
+          "poste": "MC",
+          "age": 25,
+          "notes": {
+            "pac": 70,
+            "sho": 69,
+            "pas": 88,
+            "dri": 78,
+            "def": 76,
+            "phy": 76,
+            "gks": 19
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_9591",
+          "nom": "Giuseppe Rizzo",
+          "poste": "MOD",
+          "age": 33,
+          "notes": {
+            "pac": 68,
+            "sho": 73,
+            "pas": 87,
+            "dri": 83,
+            "def": 77,
+            "phy": 68,
+            "gks": 23
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_9316",
+          "nom": "Francesco Bianchi",
+          "poste": "MC",
+          "age": 32,
+          "notes": {
+            "pac": 80,
+            "sho": 76,
+            "pas": 90,
+            "dri": 85,
+            "def": 74,
+            "phy": 85,
+            "gks": 17
+          },
+          "global": 83
+        },
+        {
+          "id": "p_1775488007169_1403",
+          "nom": "Luca Rizzo",
+          "poste": "GK",
+          "age": 22,
+          "notes": {
+            "pac": 59,
+            "sho": 41,
+            "pas": 61,
+            "dri": 58,
+            "def": 65,
+            "phy": 67,
+            "gks": 85
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_9563",
+          "nom": "Gennaro Greco",
+          "poste": "MOG",
+          "age": 30,
+          "notes": {
+            "pac": 78,
+            "sho": 74,
+            "pas": 82,
+            "dri": 81,
+            "def": 74,
+            "phy": 81,
+            "gks": 25
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_3981",
+          "nom": "Salvatore Ferrari",
+          "poste": "MOD",
+          "age": 27,
+          "notes": {
+            "pac": 70,
+            "sho": 74,
+            "pas": 78,
+            "dri": 83,
+            "def": 63,
+            "phy": 70,
+            "gks": 13
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_6866",
+          "nom": "Francesco Marino",
+          "poste": "MOD",
+          "age": 32,
+          "notes": {
+            "pac": 71,
+            "sho": 65,
+            "pas": 87,
+            "dri": 76,
+            "def": 71,
+            "phy": 82,
+            "gks": 13
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_4102",
+          "nom": "Marco Marino",
+          "poste": "MC",
+          "age": 29,
+          "notes": {
+            "pac": 77,
+            "sho": 63,
+            "pas": 78,
+            "dri": 75,
+            "def": 72,
+            "phy": 71,
+            "gks": 24
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_1867",
+          "nom": "Daniele Lombardi",
+          "poste": "MOG",
+          "age": 20,
+          "notes": {
+            "pac": 83,
+            "sho": 72,
+            "pas": 90,
+            "dri": 80,
+            "def": 76,
+            "phy": 76,
+            "gks": 22
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_6671",
+          "nom": "Federico Fontana",
+          "poste": "MDC",
+          "age": 33,
+          "notes": {
+            "pac": 75,
+            "sho": 77,
+            "pas": 86,
+            "dri": 77,
+            "def": 74,
+            "phy": 77,
+            "gks": 20
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_5656",
+          "nom": "Simone Esposito",
+          "poste": "MDC",
+          "age": 24,
+          "notes": {
+            "pac": 85,
+            "sho": 80,
+            "pas": 81,
+            "dri": 78,
+            "def": 64,
+            "phy": 84,
+            "gks": 18
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_8319",
+          "nom": "Ciro Esposito",
+          "poste": "MC",
+          "age": 25,
+          "notes": {
+            "pac": 67,
+            "sho": 70,
+            "pas": 78,
+            "dri": 82,
+            "def": 64,
+            "phy": 70,
+            "gks": 23
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_1246",
+          "nom": "Ciro Mancini",
+          "poste": "MOD",
+          "age": 17,
+          "notes": {
+            "pac": 74,
+            "sho": 77,
+            "pas": 88,
+            "dri": 76,
+            "def": 75,
+            "phy": 75,
+            "gks": 18
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_3187",
+          "nom": "Antonio Marino",
+          "poste": "MO",
+          "age": 35,
+          "notes": {
+            "pac": 74,
+            "sho": 75,
+            "pas": 86,
+            "dri": 81,
+            "def": 66,
+            "phy": 82,
+            "gks": 11
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_3753",
+          "nom": "Roberto Barbieri",
+          "poste": "MC",
+          "age": 26,
+          "notes": {
+            "pac": 79,
+            "sho": 66,
+            "pas": 89,
+            "dri": 79,
+            "def": 76,
+            "phy": 69,
+            "gks": 20
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_3861",
+          "nom": "Federico Conti",
+          "poste": "MC",
+          "age": 32,
+          "notes": {
+            "pac": 70,
+            "sho": 75,
+            "pas": 86,
+            "dri": 72,
+            "def": 62,
+            "phy": 70,
+            "gks": 15
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_4201",
+          "nom": "Luca Conti",
+          "poste": "MOG",
+          "age": 35,
+          "notes": {
+            "pac": 67,
+            "sho": 62,
+            "pas": 85,
+            "dri": 79,
+            "def": 70,
+            "phy": 76,
+            "gks": 20
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_9132",
+          "nom": "Leonardo Moretti",
+          "poste": "MOG",
+          "age": 20,
+          "notes": {
+            "pac": 73,
+            "sho": 76,
+            "pas": 83,
+            "dri": 77,
+            "def": 64,
+            "phy": 70,
+            "gks": 22
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_2620",
+          "nom": "Lorenzo Ricci",
+          "poste": "MC",
+          "age": 32,
+          "notes": {
+            "pac": 81,
+            "sho": 68,
+            "pas": 85,
+            "dri": 77,
+            "def": 78,
+            "phy": 73,
+            "gks": 16
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_1176",
+          "nom": "Giuseppe Caputo",
+          "poste": "MDC",
+          "age": 30,
+          "notes": {
+            "pac": 72,
+            "sho": 73,
+            "pas": 79,
+            "dri": 80,
+            "def": 66,
+            "phy": 80,
+            "gks": 25
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_6913",
+          "nom": "Francesco Marino",
+          "poste": "MDC",
+          "age": 21,
+          "notes": {
+            "pac": 66,
+            "sho": 63,
+            "pas": 79,
+            "dri": 82,
+            "def": 62,
+            "phy": 76,
+            "gks": 18
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_1375",
+          "nom": "Riccardo Bianchi",
+          "poste": "MDC",
+          "age": 21,
+          "notes": {
+            "pac": 82,
+            "sho": 71,
+            "pas": 87,
+            "dri": 81,
+            "def": 75,
+            "phy": 67,
+            "gks": 22
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_7766",
+          "nom": "Domenico Greco",
+          "poste": "MOG",
+          "age": 28,
+          "notes": {
+            "pac": 73,
+            "sho": 76,
+            "pas": 81,
+            "dri": 77,
+            "def": 69,
+            "phy": 83,
+            "gks": 13
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_8414",
+          "nom": "Lorenzo Marini",
+          "poste": "MC",
+          "age": 20,
+          "notes": {
+            "pac": 82,
+            "sho": 62,
+            "pas": 81,
+            "dri": 79,
+            "def": 66,
+            "phy": 77,
+            "gks": 17
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_5772",
+          "nom": "Davide Marini",
+          "poste": "MOG",
+          "age": 23,
+          "notes": {
+            "pac": 81,
+            "sho": 81,
+            "pas": 88,
+            "dri": 86,
+            "def": 70,
+            "phy": 79,
+            "gks": 23
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_9356",
+          "nom": "Federico Lombardi",
+          "poste": "MC",
+          "age": 30,
+          "notes": {
+            "pac": 80,
+            "sho": 71,
+            "pas": 84,
+            "dri": 83,
+            "def": 74,
+            "phy": 67,
+            "gks": 18
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_5772",
+          "nom": "Daniele De Luca",
+          "poste": "MO",
+          "age": 20,
+          "notes": {
+            "pac": 81,
+            "sho": 75,
+            "pas": 87,
+            "dri": 79,
+            "def": 69,
+            "phy": 69,
+            "gks": 21
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_1222",
+          "nom": "Lorenzo Colombo",
+          "poste": "MO",
+          "age": 18,
+          "notes": {
+            "pac": 84,
+            "sho": 73,
+            "pas": 82,
+            "dri": 77,
+            "def": 66,
+            "phy": 78,
+            "gks": 21
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_1740",
+          "nom": "Domenico Conti",
+          "poste": "MC",
+          "age": 27,
+          "notes": {
+            "pac": 83,
+            "sho": 68,
+            "pas": 91,
+            "dri": 83,
+            "def": 80,
+            "phy": 76,
+            "gks": 18
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_4001",
+          "nom": "Luigi Esposito",
+          "poste": "MOD",
+          "age": 18,
+          "notes": {
+            "pac": 68,
+            "sho": 62,
+            "pas": 77,
+            "dri": 72,
+            "def": 64,
+            "phy": 71,
+            "gks": 11
+          },
+          "global": 70
+        },
+        {
+          "id": "p_1775488007169_4471",
+          "nom": "Stefano Conti",
+          "poste": "MOG",
+          "age": 24,
+          "notes": {
+            "pac": 75,
+            "sho": 63,
+            "pas": 79,
+            "dri": 86,
+            "def": 77,
+            "phy": 77,
+            "gks": 19
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_4039",
+          "nom": "Salvatore Santoro",
+          "poste": "MOD",
+          "age": 35,
+          "notes": {
+            "pac": 76,
+            "sho": 72,
+            "pas": 79,
+            "dri": 78,
+            "def": 61,
+            "phy": 80,
+            "gks": 16
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_6049",
+          "nom": "Gabriele Gallo",
+          "poste": "MO",
+          "age": 25,
+          "notes": {
+            "pac": 82,
+            "sho": 77,
+            "pas": 77,
+            "dri": 77,
+            "def": 74,
+            "phy": 77,
+            "gks": 14
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_9998",
+          "nom": "Federico Ricci",
+          "poste": "MC",
+          "age": 17,
+          "notes": {
+            "pac": 77,
+            "sho": 69,
+            "pas": 79,
+            "dri": 73,
+            "def": 68,
+            "phy": 65,
+            "gks": 17
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_6532",
+          "nom": "Federico Ferrara",
+          "poste": "MC",
+          "age": 25,
+          "notes": {
+            "pac": 77,
+            "sho": 78,
+            "pas": 79,
+            "dri": 81,
+            "def": 63,
+            "phy": 79,
+            "gks": 13
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_2718",
+          "nom": "Alessandro Barbieri",
+          "poste": "MC",
+          "age": 19,
+          "notes": {
+            "pac": 80,
+            "sho": 71,
+            "pas": 89,
+            "dri": 82,
+            "def": 77,
+            "phy": 69,
+            "gks": 11
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_1136",
+          "nom": "Lorenzo Rossi",
+          "poste": "MOG",
+          "age": 20,
+          "notes": {
+            "pac": 70,
+            "sho": 61,
+            "pas": 83,
+            "dri": 73,
+            "def": 71,
+            "phy": 75,
+            "gks": 25
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_2795",
+          "nom": "Domenico De Luca",
+          "poste": "MDC",
+          "age": 30,
+          "notes": {
+            "pac": 82,
+            "sho": 65,
+            "pas": 88,
+            "dri": 84,
+            "def": 80,
+            "phy": 77,
+            "gks": 24
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_4770",
+          "nom": "Mario Rossi",
+          "poste": "MC",
+          "age": 35,
+          "notes": {
+            "pac": 75,
+            "sho": 74,
+            "pas": 77,
+            "dri": 82,
+            "def": 59,
+            "phy": 74,
+            "gks": 11
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_8288",
+          "nom": "Matteo Marini",
+          "poste": "MC",
+          "age": 35,
+          "notes": {
+            "pac": 75,
+            "sho": 68,
+            "pas": 83,
+            "dri": 73,
+            "def": 62,
+            "phy": 66,
+            "gks": 13
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_4497",
+          "nom": "Davide Marino",
+          "poste": "MOG",
+          "age": 29,
+          "notes": {
+            "pac": 84,
+            "sho": 69,
+            "pas": 83,
+            "dri": 76,
+            "def": 75,
+            "phy": 75,
+            "gks": 20
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_7975",
+          "nom": "Federico Ferrari",
+          "poste": "MDC",
+          "age": 32,
+          "notes": {
+            "pac": 69,
+            "sho": 65,
+            "pas": 79,
+            "dri": 84,
+            "def": 71,
+            "phy": 68,
+            "gks": 21
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_1026",
+          "nom": "Giuseppe Fontana",
+          "poste": "MOG",
+          "age": 31,
+          "notes": {
+            "pac": 81,
+            "sho": 65,
+            "pas": 82,
+            "dri": 83,
+            "def": 77,
+            "phy": 74,
+            "gks": 13
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_8527",
+          "nom": "Daniele Marino",
+          "poste": "MOG",
+          "age": 35,
+          "notes": {
+            "pac": 73,
+            "sho": 72,
+            "pas": 83,
+            "dri": 74,
+            "def": 74,
+            "phy": 66,
+            "gks": 15
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_5783",
+          "nom": "Matteo Costa",
+          "poste": "MC",
+          "age": 33,
+          "notes": {
+            "pac": 84,
+            "sho": 67,
+            "pas": 86,
+            "dri": 85,
+            "def": 65,
+            "phy": 80,
+            "gks": 19
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_8673",
+          "nom": "Tommaso Rizzo",
+          "poste": "GK",
+          "age": 22,
+          "notes": {
+            "pac": 72,
+            "sho": 40,
+            "pas": 62,
+            "dri": 66,
+            "def": 70,
+            "phy": 72,
+            "gks": 93
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_9753",
+          "nom": "Emanuele Bianchi",
+          "poste": "MOG",
+          "age": 28,
+          "notes": {
+            "pac": 68,
+            "sho": 78,
+            "pas": 84,
+            "dri": 76,
+            "def": 74,
+            "phy": 73,
+            "gks": 11
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_6776",
+          "nom": "Federico Marino",
+          "poste": "MC",
+          "age": 21,
+          "notes": {
+            "pac": 73,
+            "sho": 77,
+            "pas": 85,
+            "dri": 88,
+            "def": 80,
+            "phy": 76,
+            "gks": 18
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_8407",
+          "nom": "Stefano Santoro",
+          "poste": "MC",
+          "age": 26,
+          "notes": {
+            "pac": 72,
+            "sho": 61,
+            "pas": 87,
+            "dri": 81,
+            "def": 67,
+            "phy": 67,
+            "gks": 11
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_9769",
+          "nom": "Riccardo Bianchi",
+          "poste": "MO",
+          "age": 26,
+          "notes": {
+            "pac": 68,
+            "sho": 69,
+            "pas": 82,
+            "dri": 78,
+            "def": 75,
+            "phy": 73,
+            "gks": 16
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_6344",
+          "nom": "Antonio Moretti",
+          "poste": "MDC",
+          "age": 22,
+          "notes": {
+            "pac": 71,
+            "sho": 74,
+            "pas": 84,
+            "dri": 76,
+            "def": 61,
+            "phy": 80,
+            "gks": 18
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_4461",
+          "nom": "Simone Romano",
+          "poste": "MOG",
+          "age": 33,
+          "notes": {
+            "pac": 80,
+            "sho": 66,
+            "pas": 84,
+            "dri": 87,
+            "def": 79,
+            "phy": 82,
+            "gks": 22
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_4809",
+          "nom": "Federico Bruno",
+          "poste": "MO",
+          "age": 29,
+          "notes": {
+            "pac": 83,
+            "sho": 72,
+            "pas": 78,
+            "dri": 74,
+            "def": 68,
+            "phy": 67,
+            "gks": 16
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_1022",
+          "nom": "Francesco Conti",
+          "poste": "MOG",
+          "age": 27,
+          "notes": {
+            "pac": 81,
+            "sho": 65,
+            "pas": 83,
+            "dri": 79,
+            "def": 69,
+            "phy": 78,
+            "gks": 21
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_2748",
+          "nom": "Alessandro Costa",
+          "poste": "MOD",
+          "age": 17,
+          "notes": {
+            "pac": 73,
+            "sho": 64,
+            "pas": 82,
+            "dri": 84,
+            "def": 79,
+            "phy": 82,
+            "gks": 24
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_9489",
+          "nom": "Gennaro Caputo",
+          "poste": "MDC",
+          "age": 24,
+          "notes": {
+            "pac": 72,
+            "sho": 69,
+            "pas": 86,
+            "dri": 86,
+            "def": 79,
+            "phy": 85,
+            "gks": 17
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_3089",
+          "nom": "Gennaro Gallo",
+          "poste": "MDC",
+          "age": 33,
+          "notes": {
+            "pac": 78,
+            "sho": 61,
+            "pas": 77,
+            "dri": 84,
+            "def": 69,
+            "phy": 76,
+            "gks": 11
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_7852",
+          "nom": "Simone Rizzo",
+          "poste": "MO",
+          "age": 35,
+          "notes": {
+            "pac": 67,
+            "sho": 69,
+            "pas": 77,
+            "dri": 75,
+            "def": 66,
+            "phy": 69,
+            "gks": 17
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775488007169_1520",
+          "nom": "Ciro Santoro",
+          "poste": "MOG",
+          "age": 30,
+          "notes": {
+            "pac": 68,
+            "sho": 73,
+            "pas": 78,
+            "dri": 81,
+            "def": 72,
+            "phy": 76,
+            "gks": 24
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_1892",
+          "nom": "Roberto Costa",
+          "poste": "MO",
+          "age": 34,
+          "notes": {
+            "pac": 78,
+            "sho": 75,
+            "pas": 83,
+            "dri": 79,
+            "def": 74,
+            "phy": 71,
+            "gks": 23
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_3315",
+          "nom": "Federico Caputo",
+          "poste": "MDC",
+          "age": 24,
+          "notes": {
+            "pac": 77,
+            "sho": 59,
+            "pas": 77,
+            "dri": 71,
+            "def": 66,
+            "phy": 73,
+            "gks": 25
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775488007169_5481",
+          "nom": "Emanuele Bruno",
+          "poste": "MC",
+          "age": 18,
+          "notes": {
+            "pac": 85,
+            "sho": 66,
+            "pas": 82,
+            "dri": 78,
+            "def": 67,
+            "phy": 73,
+            "gks": 25
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_2790",
+          "nom": "Giuseppe Rizzo",
+          "poste": "MOD",
+          "age": 34,
+          "notes": {
+            "pac": 83,
+            "sho": 81,
+            "pas": 85,
+            "dri": 77,
+            "def": 72,
+            "phy": 70,
+            "gks": 16
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_8340",
+          "nom": "Ciro Bianchi",
+          "poste": "MO",
+          "age": 18,
+          "notes": {
+            "pac": 82,
+            "sho": 79,
+            "pas": 82,
+            "dri": 85,
+            "def": 77,
+            "phy": 74,
+            "gks": 12
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_9996",
+          "nom": "Lorenzo Marino",
+          "poste": "MOD",
+          "age": 17,
+          "notes": {
+            "pac": 77,
+            "sho": 68,
+            "pas": 87,
+            "dri": 87,
+            "def": 66,
+            "phy": 85,
+            "gks": 14
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_1821",
+          "nom": "Gennaro Ricci",
+          "poste": "MDC",
+          "age": 27,
+          "notes": {
+            "pac": 70,
+            "sho": 68,
+            "pas": 83,
+            "dri": 81,
+            "def": 72,
+            "phy": 70,
+            "gks": 23
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_7632",
+          "nom": "Matteo Costa",
+          "poste": "MOD",
+          "age": 31,
+          "notes": {
+            "pac": 76,
+            "sho": 76,
+            "pas": 80,
+            "dri": 81,
+            "def": 71,
+            "phy": 68,
+            "gks": 20
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_1877",
+          "nom": "Tommaso Ferrara",
+          "poste": "MO",
+          "age": 22,
+          "notes": {
+            "pac": 71,
+            "sho": 64,
+            "pas": 82,
+            "dri": 80,
+            "def": 76,
+            "phy": 82,
+            "gks": 24
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_8004",
+          "nom": "Roberto Barbieri",
+          "poste": "MC",
+          "age": 24,
+          "notes": {
+            "pac": 72,
+            "sho": 69,
+            "pas": 82,
+            "dri": 84,
+            "def": 68,
+            "phy": 85,
+            "gks": 19
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_7539",
+          "nom": "Gabriele Colombo",
+          "poste": "MO",
+          "age": 21,
+          "notes": {
+            "pac": 78,
+            "sho": 65,
+            "pas": 85,
+            "dri": 83,
+            "def": 70,
+            "phy": 73,
+            "gks": 16
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_9705",
+          "nom": "Riccardo Greco",
+          "poste": "MOG",
+          "age": 21,
+          "notes": {
+            "pac": 82,
+            "sho": 67,
+            "pas": 77,
+            "dri": 82,
+            "def": 72,
+            "phy": 80,
+            "gks": 16
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_4797",
+          "nom": "Marco Ferrara",
+          "poste": "MDC",
+          "age": 27,
+          "notes": {
+            "pac": 71,
+            "sho": 70,
+            "pas": 78,
+            "dri": 81,
+            "def": 66,
+            "phy": 75,
+            "gks": 16
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_7845",
+          "nom": "Salvatore Colombo",
+          "poste": "MC",
+          "age": 17,
+          "notes": {
+            "pac": 68,
+            "sho": 73,
+            "pas": 84,
+            "dri": 85,
+            "def": 68,
+            "phy": 77,
+            "gks": 13
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_1324",
+          "nom": "Francesco De Luca",
+          "poste": "MO",
+          "age": 23,
+          "notes": {
+            "pac": 71,
+            "sho": 65,
+            "pas": 79,
+            "dri": 76,
+            "def": 69,
+            "phy": 69,
+            "gks": 13
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_3378",
+          "nom": "Lorenzo Bruno",
+          "poste": "MDC",
+          "age": 21,
+          "notes": {
+            "pac": 70,
+            "sho": 64,
+            "pas": 83,
+            "dri": 79,
+            "def": 77,
+            "phy": 82,
+            "gks": 15
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_5419",
+          "nom": "Alessandro Esposito",
+          "poste": "MC",
+          "age": 35,
+          "notes": {
+            "pac": 79,
+            "sho": 79,
+            "pas": 86,
+            "dri": 77,
+            "def": 71,
+            "phy": 83,
+            "gks": 20
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_7828",
+          "nom": "Domenico Gallo",
+          "poste": "MC",
+          "age": 30,
+          "notes": {
+            "pac": 67,
+            "sho": 76,
+            "pas": 84,
+            "dri": 82,
+            "def": 71,
+            "phy": 66,
+            "gks": 13
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_6546",
+          "nom": "Salvatore Marino",
+          "poste": "MOD",
+          "age": 21,
+          "notes": {
+            "pac": 68,
+            "sho": 63,
+            "pas": 83,
+            "dri": 81,
+            "def": 75,
+            "phy": 68,
+            "gks": 22
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_2606",
+          "nom": "Salvatore Giordano",
+          "poste": "MC",
+          "age": 33,
+          "notes": {
+            "pac": 72,
+            "sho": 72,
+            "pas": 83,
+            "dri": 81,
+            "def": 67,
+            "phy": 82,
+            "gks": 22
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_4201",
+          "nom": "Giacomo Conti",
+          "poste": "MOG",
+          "age": 30,
+          "notes": {
+            "pac": 64,
+            "sho": 68,
+            "pas": 77,
+            "dri": 73,
+            "def": 67,
+            "phy": 76,
+            "gks": 21
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775488007169_6422",
+          "nom": "Simone Romano",
+          "poste": "MC",
+          "age": 31,
+          "notes": {
+            "pac": 79,
+            "sho": 60,
+            "pas": 78,
+            "dri": 79,
+            "def": 60,
+            "phy": 74,
+            "gks": 24
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775488007169_4406",
+          "nom": "Giacomo Mancini",
+          "poste": "MO",
+          "age": 21,
+          "notes": {
+            "pac": 80,
+            "sho": 69,
+            "pas": 88,
+            "dri": 82,
+            "def": 75,
+            "phy": 73,
+            "gks": 14
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_5382",
+          "nom": "Leonardo Marino",
+          "poste": "MC",
+          "age": 20,
+          "notes": {
+            "pac": 72,
+            "sho": 62,
+            "pas": 84,
+            "dri": 83,
+            "def": 62,
+            "phy": 67,
+            "gks": 25
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_2625",
+          "nom": "Roberto Moretti",
+          "poste": "MDC",
+          "age": 29,
+          "notes": {
+            "pac": 73,
+            "sho": 74,
+            "pas": 82,
+            "dri": 88,
+            "def": 67,
+            "phy": 79,
+            "gks": 21
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_8422",
+          "nom": "Mario Moretti",
+          "poste": "MO",
+          "age": 17,
+          "notes": {
+            "pac": 84,
+            "sho": 79,
+            "pas": 89,
+            "dri": 89,
+            "def": 65,
+            "phy": 71,
+            "gks": 21
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_6032",
+          "nom": "Federico Mancini",
+          "poste": "MOG",
+          "age": 34,
+          "notes": {
+            "pac": 70,
+            "sho": 71,
+            "pas": 85,
+            "dri": 79,
+            "def": 65,
+            "phy": 80,
+            "gks": 15
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_2352",
+          "nom": "Gennaro Ricci",
+          "poste": "MC",
+          "age": 27,
+          "notes": {
+            "pac": 70,
+            "sho": 68,
+            "pas": 85,
+            "dri": 79,
+            "def": 63,
+            "phy": 79,
+            "gks": 24
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_8256",
+          "nom": "Luca Rizzo",
+          "poste": "MOD",
+          "age": 28,
+          "notes": {
+            "pac": 73,
+            "sho": 75,
+            "pas": 86,
+            "dri": 76,
+            "def": 60,
+            "phy": 68,
+            "gks": 11
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_3032",
+          "nom": "Mario Bruno",
+          "poste": "MO",
+          "age": 30,
+          "notes": {
+            "pac": 79,
+            "sho": 75,
+            "pas": 84,
+            "dri": 89,
+            "def": 75,
+            "phy": 70,
+            "gks": 23
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_1930",
+          "nom": "Alessandro Greco",
+          "poste": "MOD",
+          "age": 33,
+          "notes": {
+            "pac": 76,
+            "sho": 78,
+            "pas": 88,
+            "dri": 83,
+            "def": 76,
+            "phy": 81,
+            "gks": 18
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_3412",
+          "nom": "Daniele Barbieri",
+          "poste": "MO",
+          "age": 30,
+          "notes": {
+            "pac": 77,
+            "sho": 64,
+            "pas": 85,
+            "dri": 80,
+            "def": 68,
+            "phy": 82,
+            "gks": 14
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_7961",
+          "nom": "Roberto Bruno",
+          "poste": "MC",
+          "age": 28,
+          "notes": {
+            "pac": 70,
+            "sho": 70,
+            "pas": 83,
+            "dri": 84,
+            "def": 70,
+            "phy": 84,
+            "gks": 19
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_5103",
+          "nom": "Antonio Costa",
+          "poste": "MC",
+          "age": 26,
+          "notes": {
+            "pac": 71,
+            "sho": 71,
+            "pas": 81,
+            "dri": 75,
+            "def": 71,
+            "phy": 76,
+            "gks": 19
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_7176",
+          "nom": "Matteo Conti",
+          "poste": "MC",
+          "age": 35,
+          "notes": {
+            "pac": 74,
+            "sho": 68,
+            "pas": 75,
+            "dri": 81,
+            "def": 65,
+            "phy": 77,
+            "gks": 20
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_1138",
+          "nom": "Emanuele Bruno",
+          "poste": "MO",
+          "age": 20,
+          "notes": {
+            "pac": 79,
+            "sho": 72,
+            "pas": 78,
+            "dri": 74,
+            "def": 76,
+            "phy": 73,
+            "gks": 22
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_9661",
+          "nom": "Alessandro Esposito",
+          "poste": "MDC",
+          "age": 34,
+          "notes": {
+            "pac": 78,
+            "sho": 70,
+            "pas": 84,
+            "dri": 82,
+            "def": 73,
+            "phy": 74,
+            "gks": 18
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_6978",
+          "nom": "Ciro Barbieri",
+          "poste": "MO",
+          "age": 32,
+          "notes": {
+            "pac": 69,
+            "sho": 61,
+            "pas": 81,
+            "dri": 75,
+            "def": 72,
+            "phy": 74,
+            "gks": 22
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_3663",
+          "nom": "Gabriele Rossi",
+          "poste": "MC",
+          "age": 28,
+          "notes": {
+            "pac": 78,
+            "sho": 72,
+            "pas": 88,
+            "dri": 75,
+            "def": 74,
+            "phy": 83,
+            "gks": 23
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_6708",
+          "nom": "Riccardo Marino",
+          "poste": "MC",
+          "age": 28,
+          "notes": {
+            "pac": 76,
+            "sho": 70,
+            "pas": 85,
+            "dri": 86,
+            "def": 65,
+            "phy": 83,
+            "gks": 15
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_8443",
+          "nom": "Tommaso Caputo",
+          "poste": "MDC",
+          "age": 27,
+          "notes": {
+            "pac": 84,
+            "sho": 68,
+            "pas": 82,
+            "dri": 89,
+            "def": 81,
+            "phy": 78,
+            "gks": 19
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_8264",
+          "nom": "Domenico Ferrari",
+          "poste": "MDC",
+          "age": 18,
+          "notes": {
+            "pac": 69,
+            "sho": 64,
+            "pas": 78,
+            "dri": 81,
+            "def": 75,
+            "phy": 79,
+            "gks": 19
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_1365",
+          "nom": "Giacomo Fontana",
+          "poste": "MDC",
+          "age": 22,
+          "notes": {
+            "pac": 78,
+            "sho": 66,
+            "pas": 85,
+            "dri": 87,
+            "def": 69,
+            "phy": 77,
+            "gks": 17
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_3552",
+          "nom": "Federico Barbieri",
+          "poste": "MOD",
+          "age": 33,
+          "notes": {
+            "pac": 75,
+            "sho": 70,
+            "pas": 79,
+            "dri": 84,
+            "def": 75,
+            "phy": 70,
+            "gks": 20
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_4683",
+          "nom": "Lorenzo Fontana",
+          "poste": "MOG",
+          "age": 27,
+          "notes": {
+            "pac": 77,
+            "sho": 70,
+            "pas": 84,
+            "dri": 85,
+            "def": 76,
+            "phy": 82,
+            "gks": 22
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_5089",
+          "nom": "Matteo Marini",
+          "poste": "MO",
+          "age": 17,
+          "notes": {
+            "pac": 73,
+            "sho": 66,
+            "pas": 88,
+            "dri": 79,
+            "def": 77,
+            "phy": 84,
+            "gks": 23
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_3215",
+          "nom": "Vincenzo Lombardi",
+          "poste": "MC",
+          "age": 36,
+          "notes": {
+            "pac": 73,
+            "sho": 70,
+            "pas": 80,
+            "dri": 85,
+            "def": 65,
+            "phy": 76,
+            "gks": 13
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_6877",
+          "nom": "Leonardo Rizzo",
+          "poste": "MO",
+          "age": 29,
+          "notes": {
+            "pac": 73,
+            "sho": 74,
+            "pas": 79,
+            "dri": 79,
+            "def": 63,
+            "phy": 83,
+            "gks": 18
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_2700",
+          "nom": "Francesco Ferrara",
+          "poste": "MOD",
+          "age": 35,
+          "notes": {
+            "pac": 84,
+            "sho": 63,
+            "pas": 87,
+            "dri": 84,
+            "def": 79,
+            "phy": 78,
+            "gks": 17
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_5015",
+          "nom": "Ciro Mancini",
+          "poste": "MO",
+          "age": 21,
+          "notes": {
+            "pac": 69,
+            "sho": 61,
+            "pas": 80,
+            "dri": 73,
+            "def": 74,
+            "phy": 81,
+            "gks": 23
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_4507",
+          "nom": "Luca Gallo",
+          "poste": "MOD",
+          "age": 25,
+          "notes": {
+            "pac": 77,
+            "sho": 69,
+            "pas": 84,
+            "dri": 73,
+            "def": 66,
+            "phy": 77,
+            "gks": 21
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_5884",
+          "nom": "Federico Barbieri",
+          "poste": "MC",
+          "age": 20,
+          "notes": {
+            "pac": 78,
+            "sho": 77,
+            "pas": 86,
+            "dri": 84,
+            "def": 77,
+            "phy": 83,
+            "gks": 13
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_4635",
+          "nom": "Mario Fontana",
+          "poste": "MDC",
+          "age": 30,
+          "notes": {
+            "pac": 71,
+            "sho": 71,
+            "pas": 77,
+            "dri": 78,
+            "def": 74,
+            "phy": 77,
+            "gks": 14
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_5921",
+          "nom": "Riccardo Lombardi",
+          "poste": "MOD",
+          "age": 27,
+          "notes": {
+            "pac": 66,
+            "sho": 71,
+            "pas": 78,
+            "dri": 78,
+            "def": 67,
+            "phy": 68,
+            "gks": 18
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_1797",
+          "nom": "Daniele Colombo",
+          "poste": "MC",
+          "age": 25,
+          "notes": {
+            "pac": 74,
+            "sho": 66,
+            "pas": 81,
+            "dri": 88,
+            "def": 76,
+            "phy": 83,
+            "gks": 19
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_8699",
+          "nom": "Salvatore Rizzo",
+          "poste": "MC",
+          "age": 36,
+          "notes": {
+            "pac": 68,
+            "sho": 75,
+            "pas": 84,
+            "dri": 76,
+            "def": 64,
+            "phy": 67,
+            "gks": 13
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_1034",
+          "nom": "Mario Gallo",
+          "poste": "MOG",
+          "age": 32,
+          "notes": {
+            "pac": 74,
+            "sho": 66,
+            "pas": 89,
+            "dri": 79,
+            "def": 69,
+            "phy": 86,
+            "gks": 24
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_3414",
+          "nom": "Giuseppe Lombardi",
+          "poste": "MOD",
+          "age": 22,
+          "notes": {
+            "pac": 78,
+            "sho": 59,
+            "pas": 75,
+            "dri": 73,
+            "def": 74,
+            "phy": 76,
+            "gks": 16
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_6336",
+          "nom": "Leonardo Giordano",
+          "poste": "MOG",
+          "age": 26,
+          "notes": {
+            "pac": 69,
+            "sho": 67,
+            "pas": 88,
+            "dri": 81,
+            "def": 78,
+            "phy": 84,
+            "gks": 24
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_9409",
+          "nom": "Ciro Lombardi",
+          "poste": "MOD",
+          "age": 30,
+          "notes": {
+            "pac": 78,
+            "sho": 65,
+            "pas": 79,
+            "dri": 80,
+            "def": 63,
+            "phy": 70,
+            "gks": 17
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_7783",
+          "nom": "Francesco Barbieri",
+          "poste": "MOG",
+          "age": 30,
+          "notes": {
+            "pac": 77,
+            "sho": 63,
+            "pas": 85,
+            "dri": 85,
+            "def": 78,
+            "phy": 70,
+            "gks": 14
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_8766",
+          "nom": "Francesco Ferrari",
+          "poste": "MO",
+          "age": 29,
+          "notes": {
+            "pac": 82,
+            "sho": 69,
+            "pas": 81,
+            "dri": 80,
+            "def": 61,
+            "phy": 68,
+            "gks": 12
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_2235",
+          "nom": "Roberto Santoro",
+          "poste": "MOD",
+          "age": 20,
+          "notes": {
+            "pac": 82,
+            "sho": 75,
+            "pas": 87,
+            "dri": 80,
+            "def": 65,
+            "phy": 70,
+            "gks": 11
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_3141",
+          "nom": "Leonardo Bruno",
+          "poste": "MO",
+          "age": 33,
+          "notes": {
+            "pac": 79,
+            "sho": 64,
+            "pas": 84,
+            "dri": 75,
+            "def": 64,
+            "phy": 78,
+            "gks": 23
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_9853",
+          "nom": "Tommaso Conti",
+          "poste": "MOD",
+          "age": 18,
+          "notes": {
+            "pac": 70,
+            "sho": 78,
+            "pas": 85,
+            "dri": 79,
+            "def": 65,
+            "phy": 74,
+            "gks": 23
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_4689",
+          "nom": "Andrea Costa",
+          "poste": "MOD",
+          "age": 29,
+          "notes": {
+            "pac": 69,
+            "sho": 64,
+            "pas": 79,
+            "dri": 86,
+            "def": 64,
+            "phy": 72,
+            "gks": 20
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_6635",
+          "nom": "Simone Gallo",
+          "poste": "MOD",
+          "age": 35,
+          "notes": {
+            "pac": 72,
+            "sho": 74,
+            "pas": 78,
+            "dri": 77,
+            "def": 63,
+            "phy": 80,
+            "gks": 17
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_6022",
+          "nom": "Tommaso Bruno",
+          "poste": "MOG",
+          "age": 25,
+          "notes": {
+            "pac": 71,
+            "sho": 67,
+            "pas": 89,
+            "dri": 79,
+            "def": 75,
+            "phy": 70,
+            "gks": 13
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_1075",
+          "nom": "Matteo Barbieri",
+          "poste": "MDC",
+          "age": 32,
+          "notes": {
+            "pac": 81,
+            "sho": 71,
+            "pas": 84,
+            "dri": 75,
+            "def": 71,
+            "phy": 81,
+            "gks": 22
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_9772",
+          "nom": "Emanuele Esposito",
+          "poste": "MOG",
+          "age": 22,
+          "notes": {
+            "pac": 80,
+            "sho": 74,
+            "pas": 81,
+            "dri": 83,
+            "def": 70,
+            "phy": 74,
+            "gks": 15
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_7444",
+          "nom": "Federico Bruno",
+          "poste": "MO",
+          "age": 20,
+          "notes": {
+            "pac": 70,
+            "sho": 61,
+            "pas": 81,
+            "dri": 82,
+            "def": 69,
+            "phy": 69,
+            "gks": 22
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_5440",
+          "nom": "Giorgio Ferrara",
+          "poste": "MO",
+          "age": 31,
+          "notes": {
+            "pac": 79,
+            "sho": 70,
+            "pas": 84,
+            "dri": 73,
+            "def": 74,
+            "phy": 69,
+            "gks": 24
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_1698",
+          "nom": "Leonardo Conti",
+          "poste": "MDC",
+          "age": 33,
+          "notes": {
+            "pac": 71,
+            "sho": 59,
+            "pas": 82,
+            "dri": 79,
+            "def": 72,
+            "phy": 73,
+            "gks": 25
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_2309",
+          "nom": "Gennaro Rizzo",
+          "poste": "MC",
+          "age": 29,
+          "notes": {
+            "pac": 83,
+            "sho": 68,
+            "pas": 87,
+            "dri": 83,
+            "def": 69,
+            "phy": 79,
+            "gks": 22
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_4330",
+          "nom": "Ciro Esposito",
+          "poste": "MC",
+          "age": 33,
+          "notes": {
+            "pac": 67,
+            "sho": 73,
+            "pas": 81,
+            "dri": 76,
+            "def": 63,
+            "phy": 70,
+            "gks": 17
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_2966",
+          "nom": "Marco Bruno",
+          "poste": "MO",
+          "age": 18,
+          "notes": {
+            "pac": 75,
+            "sho": 66,
+            "pas": 77,
+            "dri": 83,
+            "def": 63,
+            "phy": 75,
+            "gks": 21
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_4084",
+          "nom": "Salvatore Fontana",
+          "poste": "MOG",
+          "age": 29,
+          "notes": {
+            "pac": 79,
+            "sho": 74,
+            "pas": 80,
+            "dri": 72,
+            "def": 62,
+            "phy": 67,
+            "gks": 24
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_4643",
+          "nom": "Riccardo Esposito",
+          "poste": "MDC",
+          "age": 18,
+          "notes": {
+            "pac": 70,
+            "sho": 67,
+            "pas": 88,
+            "dri": 84,
+            "def": 70,
+            "phy": 75,
+            "gks": 24
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_7415",
+          "nom": "Ciro Marini",
+          "poste": "MC",
+          "age": 18,
+          "notes": {
+            "pac": 66,
+            "sho": 72,
+            "pas": 85,
+            "dri": 79,
+            "def": 66,
+            "phy": 77,
+            "gks": 19
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_6692",
+          "nom": "Mario Santoro",
+          "poste": "MOG",
+          "age": 22,
+          "notes": {
+            "pac": 75,
+            "sho": 65,
+            "pas": 85,
+            "dri": 71,
+            "def": 69,
+            "phy": 72,
+            "gks": 12
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_5886",
+          "nom": "Lorenzo Giordano",
+          "poste": "MC",
+          "age": 34,
+          "notes": {
+            "pac": 72,
+            "sho": 67,
+            "pas": 84,
+            "dri": 79,
+            "def": 77,
+            "phy": 70,
+            "gks": 22
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_7453",
+          "nom": "Antonio Santoro",
+          "poste": "MC",
+          "age": 22,
+          "notes": {
+            "pac": 68,
+            "sho": 69,
+            "pas": 81,
+            "dri": 82,
+            "def": 75,
+            "phy": 76,
+            "gks": 25
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_2059",
+          "nom": "Federico Rizzo",
+          "poste": "MC",
+          "age": 25,
+          "notes": {
+            "pac": 80,
+            "sho": 71,
+            "pas": 87,
+            "dri": 76,
+            "def": 67,
+            "phy": 79,
+            "gks": 25
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_7951",
+          "nom": "Gennaro Conti",
+          "poste": "MC",
+          "age": 33,
+          "notes": {
+            "pac": 77,
+            "sho": 75,
+            "pas": 76,
+            "dri": 79,
+            "def": 75,
+            "phy": 71,
+            "gks": 15
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_2085",
+          "nom": "Simone Rossi",
+          "poste": "MC",
+          "age": 19,
+          "notes": {
+            "pac": 79,
+            "sho": 65,
+            "pas": 81,
+            "dri": 72,
+            "def": 69,
+            "phy": 75,
+            "gks": 22
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_2557",
+          "nom": "Gabriele Lombardi",
+          "poste": "MOD",
+          "age": 32,
+          "notes": {
+            "pac": 72,
+            "sho": 79,
+            "pas": 90,
+            "dri": 80,
+            "def": 79,
+            "phy": 79,
+            "gks": 17
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_2892",
+          "nom": "Tommaso Conti",
+          "poste": "MOG",
+          "age": 30,
+          "notes": {
+            "pac": 86,
+            "sho": 75,
+            "pas": 87,
+            "dri": 89,
+            "def": 66,
+            "phy": 84,
+            "gks": 17
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_8264",
+          "nom": "Luca Barbieri",
+          "poste": "MC",
+          "age": 21,
+          "notes": {
+            "pac": 83,
+            "sho": 62,
+            "pas": 81,
+            "dri": 81,
+            "def": 67,
+            "phy": 72,
+            "gks": 21
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_9310",
+          "nom": "Alessandro Barbieri",
+          "poste": "MO",
+          "age": 29,
+          "notes": {
+            "pac": 77,
+            "sho": 61,
+            "pas": 84,
+            "dri": 74,
+            "def": 71,
+            "phy": 76,
+            "gks": 16
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_9138",
+          "nom": "Leonardo Ferrara",
+          "poste": "MOG",
+          "age": 25,
+          "notes": {
+            "pac": 66,
+            "sho": 63,
+            "pas": 81,
+            "dri": 76,
+            "def": 61,
+            "phy": 69,
+            "gks": 20
+          },
+          "global": 71
+        },
+        {
+          "id": "p_1775488007169_1686",
+          "nom": "Alessandro Greco",
+          "poste": "MOD",
+          "age": 23,
+          "notes": {
+            "pac": 80,
+            "sho": 78,
+            "pas": 80,
+            "dri": 87,
+            "def": 77,
+            "phy": 85,
+            "gks": 25
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_6795",
+          "nom": "Stefano Marino",
+          "poste": "MOG",
+          "age": 35,
+          "notes": {
+            "pac": 78,
+            "sho": 78,
+            "pas": 87,
+            "dri": 85,
+            "def": 77,
+            "phy": 83,
+            "gks": 16
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_1901",
+          "nom": "Gennaro Mancini",
+          "poste": "MDC",
+          "age": 32,
+          "notes": {
+            "pac": 70,
+            "sho": 76,
+            "pas": 81,
+            "dri": 78,
+            "def": 72,
+            "phy": 74,
+            "gks": 16
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_4500",
+          "nom": "Emanuele De Luca",
+          "poste": "MDC",
+          "age": 23,
+          "notes": {
+            "pac": 71,
+            "sho": 64,
+            "pas": 82,
+            "dri": 74,
+            "def": 62,
+            "phy": 70,
+            "gks": 24
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775488007169_8324",
+          "nom": "Alessandro Marini",
+          "poste": "MC",
+          "age": 20,
+          "notes": {
+            "pac": 74,
+            "sho": 62,
+            "pas": 82,
+            "dri": 84,
+            "def": 70,
+            "phy": 67,
+            "gks": 22
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_9483",
+          "nom": "Matteo Bianchi",
+          "poste": "MOG",
+          "age": 17,
+          "notes": {
+            "pac": 76,
+            "sho": 65,
+            "pas": 84,
+            "dri": 89,
+            "def": 80,
+            "phy": 81,
+            "gks": 25
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_5401",
+          "nom": "Davide Greco",
+          "poste": "MC",
+          "age": 18,
+          "notes": {
+            "pac": 86,
+            "sho": 68,
+            "pas": 82,
+            "dri": 77,
+            "def": 76,
+            "phy": 80,
+            "gks": 21
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_4629",
+          "nom": "Davide Marino",
+          "poste": "MO",
+          "age": 17,
+          "notes": {
+            "pac": 76,
+            "sho": 65,
+            "pas": 83,
+            "dri": 77,
+            "def": 63,
+            "phy": 68,
+            "gks": 24
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_7587",
+          "nom": "Lorenzo Marino",
+          "poste": "MC",
+          "age": 21,
+          "notes": {
+            "pac": 83,
+            "sho": 68,
+            "pas": 84,
+            "dri": 83,
+            "def": 73,
+            "phy": 84,
+            "gks": 18
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_3104",
+          "nom": "Gennaro Conti",
+          "poste": "MC",
+          "age": 32,
+          "notes": {
+            "pac": 65,
+            "sho": 61,
+            "pas": 81,
+            "dri": 80,
+            "def": 67,
+            "phy": 68,
+            "gks": 16
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775488007169_1199",
+          "nom": "Francesco De Luca",
+          "poste": "MDC",
+          "age": 23,
+          "notes": {
+            "pac": 82,
+            "sho": 80,
+            "pas": 91,
+            "dri": 87,
+            "def": 65,
+            "phy": 71,
+            "gks": 19
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_5275",
+          "nom": "Gennaro Romano",
+          "poste": "MO",
+          "age": 17,
+          "notes": {
+            "pac": 78,
+            "sho": 69,
+            "pas": 84,
+            "dri": 87,
+            "def": 71,
+            "phy": 78,
+            "gks": 17
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_2559",
+          "nom": "Ciro Ferrara",
+          "poste": "MO",
+          "age": 34,
+          "notes": {
+            "pac": 74,
+            "sho": 72,
+            "pas": 76,
+            "dri": 78,
+            "def": 73,
+            "phy": 70,
+            "gks": 22
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_7000",
+          "nom": "Stefano Rizzo",
+          "poste": "MC",
+          "age": 31,
+          "notes": {
+            "pac": 76,
+            "sho": 78,
+            "pas": 88,
+            "dri": 81,
+            "def": 76,
+            "phy": 68,
+            "gks": 16
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_6710",
+          "nom": "Ciro Greco",
+          "poste": "MOG",
+          "age": 32,
+          "notes": {
+            "pac": 78,
+            "sho": 76,
+            "pas": 80,
+            "dri": 75,
+            "def": 76,
+            "phy": 81,
+            "gks": 16
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_9790",
+          "nom": "Lorenzo Costa",
+          "poste": "MC",
+          "age": 21,
+          "notes": {
+            "pac": 72,
+            "sho": 71,
+            "pas": 83,
+            "dri": 86,
+            "def": 68,
+            "phy": 77,
+            "gks": 11
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_3809",
+          "nom": "Antonio Lombardi",
+          "poste": "MC",
+          "age": 19,
+          "notes": {
+            "pac": 84,
+            "sho": 71,
+            "pas": 86,
+            "dri": 82,
+            "def": 79,
+            "phy": 82,
+            "gks": 14
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_7700",
+          "nom": "Luca Costa",
+          "poste": "MC",
+          "age": 33,
+          "notes": {
+            "pac": 66,
+            "sho": 66,
+            "pas": 77,
+            "dri": 82,
+            "def": 60,
+            "phy": 71,
+            "gks": 11
+          },
+          "global": 72
+        },
+        {
+          "id": "p_1775488007169_4509",
+          "nom": "Riccardo Greco",
+          "poste": "MDC",
+          "age": 26,
+          "notes": {
+            "pac": 73,
+            "sho": 71,
+            "pas": 77,
+            "dri": 77,
+            "def": 65,
+            "phy": 70,
+            "gks": 19
+          },
+          "global": 73
+        },
+        {
+          "id": "p_1775488007169_5985",
+          "nom": "Riccardo Costa",
+          "poste": "MC",
+          "age": 24,
+          "notes": {
+            "pac": 77,
+            "sho": 71,
+            "pas": 87,
+            "dri": 76,
+            "def": 72,
+            "phy": 75,
+            "gks": 16
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_1191",
+          "nom": "Andrea Costa",
+          "poste": "MDC",
+          "age": 27,
+          "notes": {
+            "pac": 79,
+            "sho": 76,
+            "pas": 83,
+            "dri": 80,
+            "def": 70,
+            "phy": 75,
+            "gks": 13
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_9303",
+          "nom": "Riccardo Bruno",
+          "poste": "MOD",
+          "age": 36,
+          "notes": {
+            "pac": 68,
+            "sho": 66,
+            "pas": 81,
+            "dri": 83,
+            "def": 68,
+            "phy": 79,
+            "gks": 15
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_9681",
+          "nom": "Federico Caputo",
+          "poste": "MDC",
+          "age": 18,
+          "notes": {
+            "pac": 84,
+            "sho": 71,
+            "pas": 84,
+            "dri": 87,
+            "def": 65,
+            "phy": 75,
+            "gks": 15
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_9730",
+          "nom": "Alessandro Moretti",
+          "poste": "MC",
+          "age": 36,
+          "notes": {
+            "pac": 67,
+            "sho": 71,
+            "pas": 87,
+            "dri": 77,
+            "def": 74,
+            "phy": 67,
+            "gks": 15
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_7862",
+          "nom": "Luca Marini",
+          "poste": "MC",
+          "age": 33,
+          "notes": {
+            "pac": 66,
+            "sho": 66,
+            "pas": 82,
+            "dri": 79,
+            "def": 73,
+            "phy": 67,
+            "gks": 23
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_9287",
+          "nom": "Gabriele Barbieri",
+          "poste": "MOD",
+          "age": 30,
+          "notes": {
+            "pac": 73,
+            "sho": 67,
+            "pas": 88,
+            "dri": 89,
+            "def": 70,
+            "phy": 83,
+            "gks": 21
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_4679",
+          "nom": "Vincenzo Barbieri",
+          "poste": "AC",
+          "age": 29,
+          "notes": {
+            "pac": 87,
+            "sho": 87,
+            "pas": 74,
+            "dri": 86,
+            "def": 57,
+            "phy": 78,
+            "gks": 16
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_4967",
+          "nom": "Lorenzo Romano",
+          "poste": "AD",
+          "age": 26,
+          "notes": {
+            "pac": 78,
+            "sho": 85,
+            "pas": 73,
+            "dri": 81,
+            "def": 46,
+            "phy": 76,
+            "gks": 10
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_6561",
+          "nom": "Tommaso Colombo",
+          "poste": "AC",
+          "age": 20,
+          "notes": {
+            "pac": 79,
+            "sho": 84,
+            "pas": 63,
+            "dri": 80,
+            "def": 56,
+            "phy": 74,
+            "gks": 13
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_5547",
+          "nom": "Alessandro Esposito",
+          "poste": "AD",
+          "age": 30,
+          "notes": {
+            "pac": 89,
+            "sho": 87,
+            "pas": 76,
+            "dri": 90,
+            "def": 61,
+            "phy": 85,
+            "gks": 16
+          },
+          "global": 85
+        },
+        {
+          "id": "p_1775488007169_2963",
+          "nom": "Simone Ricci",
+          "poste": "AD",
+          "age": 17,
+          "notes": {
+            "pac": 82,
+            "sho": 90,
+            "pas": 65,
+            "dri": 79,
+            "def": 56,
+            "phy": 81,
+            "gks": 17
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_5502",
+          "nom": "Vincenzo Santoro",
+          "poste": "AC",
+          "age": 24,
+          "notes": {
+            "pac": 74,
+            "sho": 83,
+            "pas": 75,
+            "dri": 75,
+            "def": 47,
+            "phy": 72,
+            "gks": 18
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_8582",
+          "nom": "Federico Rossi",
+          "poste": "AD",
+          "age": 28,
+          "notes": {
+            "pac": 91,
+            "sho": 85,
+            "pas": 76,
+            "dri": 79,
+            "def": 60,
+            "phy": 84,
+            "gks": 17
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_5479",
+          "nom": "Marco De Luca",
+          "poste": "AD",
+          "age": 31,
+          "notes": {
+            "pac": 83,
+            "sho": 85,
+            "pas": 70,
+            "dri": 76,
+            "def": 52,
+            "phy": 83,
+            "gks": 16
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_4316",
+          "nom": "Vincenzo Greco",
+          "poste": "AD",
+          "age": 25,
+          "notes": {
+            "pac": 77,
+            "sho": 82,
+            "pas": 64,
+            "dri": 78,
+            "def": 63,
+            "phy": 69,
+            "gks": 19
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_5995",
+          "nom": "Gabriele Esposito",
+          "poste": "AG",
+          "age": 18,
+          "notes": {
+            "pac": 74,
+            "sho": 87,
+            "pas": 75,
+            "dri": 78,
+            "def": 63,
+            "phy": 81,
+            "gks": 16
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_5362",
+          "nom": "Mario Marino",
+          "poste": "AD",
+          "age": 21,
+          "notes": {
+            "pac": 82,
+            "sho": 92,
+            "pas": 76,
+            "dri": 85,
+            "def": 57,
+            "phy": 75,
+            "gks": 19
+          },
+          "global": 83
+        },
+        {
+          "id": "p_1775488007169_4534",
+          "nom": "Riccardo Gallo",
+          "poste": "AD",
+          "age": 31,
+          "notes": {
+            "pac": 80,
+            "sho": 91,
+            "pas": 73,
+            "dri": 81,
+            "def": 56,
+            "phy": 71,
+            "gks": 15
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_1180",
+          "nom": "Luca Esposito",
+          "poste": "AG",
+          "age": 23,
+          "notes": {
+            "pac": 89,
+            "sho": 86,
+            "pas": 65,
+            "dri": 81,
+            "def": 52,
+            "phy": 78,
+            "gks": 21
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_3086",
+          "nom": "Leonardo Ferrari",
+          "poste": "AC",
+          "age": 35,
+          "notes": {
+            "pac": 84,
+            "sho": 86,
+            "pas": 68,
+            "dri": 79,
+            "def": 62,
+            "phy": 78,
+            "gks": 12
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_2024",
+          "nom": "Gabriele Ricci",
+          "poste": "AD",
+          "age": 27,
+          "notes": {
+            "pac": 83,
+            "sho": 87,
+            "pas": 70,
+            "dri": 84,
+            "def": 66,
+            "phy": 86,
+            "gks": 17
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_1482",
+          "nom": "Gennaro Romano",
+          "poste": "AC",
+          "age": 33,
+          "notes": {
+            "pac": 86,
+            "sho": 88,
+            "pas": 71,
+            "dri": 78,
+            "def": 45,
+            "phy": 72,
+            "gks": 18
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_7460",
+          "nom": "Matteo Bruno",
+          "poste": "AG",
+          "age": 31,
+          "notes": {
+            "pac": 85,
+            "sho": 88,
+            "pas": 72,
+            "dri": 74,
+            "def": 61,
+            "phy": 72,
+            "gks": 14
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_5088",
+          "nom": "Salvatore Rossi",
+          "poste": "AC",
+          "age": 30,
+          "notes": {
+            "pac": 79,
+            "sho": 84,
+            "pas": 78,
+            "dri": 83,
+            "def": 59,
+            "phy": 72,
+            "gks": 15
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_2555",
+          "nom": "Simone Bianchi",
+          "poste": "AC",
+          "age": 22,
+          "notes": {
+            "pac": 79,
+            "sho": 83,
+            "pas": 69,
+            "dri": 84,
+            "def": 46,
+            "phy": 78,
+            "gks": 10
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_4985",
+          "nom": "Alessandro Romano",
+          "poste": "AD",
+          "age": 29,
+          "notes": {
+            "pac": 81,
+            "sho": 89,
+            "pas": 77,
+            "dri": 81,
+            "def": 57,
+            "phy": 73,
+            "gks": 9
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_9993",
+          "nom": "Andrea Bruno",
+          "poste": "AC",
+          "age": 36,
+          "notes": {
+            "pac": 79,
+            "sho": 89,
+            "pas": 66,
+            "dri": 85,
+            "def": 63,
+            "phy": 78,
+            "gks": 12
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_7797",
+          "nom": "Gabriele Ferrari",
+          "poste": "AD",
+          "age": 32,
+          "notes": {
+            "pac": 88,
+            "sho": 83,
+            "pas": 66,
+            "dri": 82,
+            "def": 58,
+            "phy": 76,
+            "gks": 13
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_7971",
+          "nom": "Luigi Caputo",
+          "poste": "AC",
+          "age": 21,
+          "notes": {
+            "pac": 86,
+            "sho": 87,
+            "pas": 70,
+            "dri": 84,
+            "def": 44,
+            "phy": 77,
+            "gks": 15
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_2791",
+          "nom": "Antonio Marini",
+          "poste": "AC",
+          "age": 27,
+          "notes": {
+            "pac": 77,
+            "sho": 92,
+            "pas": 70,
+            "dri": 85,
+            "def": 55,
+            "phy": 75,
+            "gks": 9
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_1279",
+          "nom": "Andrea Conti",
+          "poste": "AC",
+          "age": 21,
+          "notes": {
+            "pac": 84,
+            "sho": 91,
+            "pas": 63,
+            "dri": 82,
+            "def": 65,
+            "phy": 80,
+            "gks": 21
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_7681",
+          "nom": "Salvatore Rossi",
+          "poste": "AG",
+          "age": 29,
+          "notes": {
+            "pac": 90,
+            "sho": 93,
+            "pas": 76,
+            "dri": 81,
+            "def": 49,
+            "phy": 81,
+            "gks": 20
+          },
+          "global": 84
+        },
+        {
+          "id": "p_1775488007169_2415",
+          "nom": "Vincenzo Giordano",
+          "poste": "AG",
+          "age": 22,
+          "notes": {
+            "pac": 89,
+            "sho": 90,
+            "pas": 74,
+            "dri": 89,
+            "def": 62,
+            "phy": 69,
+            "gks": 18
+          },
+          "global": 84
+        },
+        {
+          "id": "p_1775488007169_5159",
+          "nom": "Roberto Ferrara",
+          "poste": "AC",
+          "age": 20,
+          "notes": {
+            "pac": 90,
+            "sho": 90,
+            "pas": 65,
+            "dri": 85,
+            "def": 66,
+            "phy": 74,
+            "gks": 9
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_5264",
+          "nom": "Daniele Marini",
+          "poste": "AC",
+          "age": 19,
+          "notes": {
+            "pac": 76,
+            "sho": 87,
+            "pas": 73,
+            "dri": 84,
+            "def": 61,
+            "phy": 65,
+            "gks": 21
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_4012",
+          "nom": "Antonio Rizzo",
+          "poste": "AD",
+          "age": 35,
+          "notes": {
+            "pac": 78,
+            "sho": 83,
+            "pas": 69,
+            "dri": 76,
+            "def": 54,
+            "phy": 71,
+            "gks": 21
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_3454",
+          "nom": "Riccardo Rizzo",
+          "poste": "AC",
+          "age": 28,
+          "notes": {
+            "pac": 81,
+            "sho": 86,
+            "pas": 70,
+            "dri": 83,
+            "def": 50,
+            "phy": 66,
+            "gks": 14
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_8381",
+          "nom": "Leonardo Bruno",
+          "poste": "AC",
+          "age": 19,
+          "notes": {
+            "pac": 82,
+            "sho": 83,
+            "pas": 62,
+            "dri": 85,
+            "def": 59,
+            "phy": 82,
+            "gks": 9
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_9322",
+          "nom": "Francesco Giordano",
+          "poste": "AC",
+          "age": 36,
+          "notes": {
+            "pac": 80,
+            "sho": 91,
+            "pas": 62,
+            "dri": 89,
+            "def": 47,
+            "phy": 67,
+            "gks": 13
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_9169",
+          "nom": "Emanuele Lombardi",
+          "poste": "AG",
+          "age": 18,
+          "notes": {
+            "pac": 93,
+            "sho": 95,
+            "pas": 78,
+            "dri": 89,
+            "def": 65,
+            "phy": 84,
+            "gks": 12
+          },
+          "global": 88
+        },
+        {
+          "id": "p_1775488007169_4805",
+          "nom": "Domenico Greco",
+          "poste": "AC",
+          "age": 30,
+          "notes": {
+            "pac": 81,
+            "sho": 87,
+            "pas": 67,
+            "dri": 86,
+            "def": 60,
+            "phy": 79,
+            "gks": 18
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_6815",
+          "nom": "Mario Conti",
+          "poste": "AD",
+          "age": 31,
+          "notes": {
+            "pac": 90,
+            "sho": 84,
+            "pas": 68,
+            "dri": 81,
+            "def": 55,
+            "phy": 85,
+            "gks": 10
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_5811",
+          "nom": "Gennaro Greco",
+          "poste": "AC",
+          "age": 30,
+          "notes": {
+            "pac": 88,
+            "sho": 90,
+            "pas": 69,
+            "dri": 87,
+            "def": 60,
+            "phy": 86,
+            "gks": 14
+          },
+          "global": 84
+        },
+        {
+          "id": "p_1775488007169_1295",
+          "nom": "Francesco Mancini",
+          "poste": "AG",
+          "age": 20,
+          "notes": {
+            "pac": 83,
+            "sho": 87,
+            "pas": 65,
+            "dri": 78,
+            "def": 64,
+            "phy": 83,
+            "gks": 16
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_6184",
+          "nom": "Andrea Rizzo",
+          "poste": "AC",
+          "age": 21,
+          "notes": {
+            "pac": 85,
+            "sho": 82,
+            "pas": 65,
+            "dri": 89,
+            "def": 58,
+            "phy": 75,
+            "gks": 13
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_9236",
+          "nom": "Emanuele Ferrara",
+          "poste": "AD",
+          "age": 26,
+          "notes": {
+            "pac": 88,
+            "sho": 88,
+            "pas": 63,
+            "dri": 78,
+            "def": 63,
+            "phy": 76,
+            "gks": 21
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_7007",
+          "nom": "Giorgio De Luca",
+          "poste": "AG",
+          "age": 17,
+          "notes": {
+            "pac": 80,
+            "sho": 86,
+            "pas": 64,
+            "dri": 76,
+            "def": 44,
+            "phy": 78,
+            "gks": 10
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_2192",
+          "nom": "Domenico Conti",
+          "poste": "AC",
+          "age": 32,
+          "notes": {
+            "pac": 80,
+            "sho": 85,
+            "pas": 67,
+            "dri": 84,
+            "def": 45,
+            "phy": 75,
+            "gks": 13
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_7793",
+          "nom": "Ciro Mancini",
+          "poste": "AD",
+          "age": 19,
+          "notes": {
+            "pac": 87,
+            "sho": 89,
+            "pas": 62,
+            "dri": 79,
+            "def": 43,
+            "phy": 70,
+            "gks": 12
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_8651",
+          "nom": "Simone Marini",
+          "poste": "AD",
+          "age": 20,
+          "notes": {
+            "pac": 86,
+            "sho": 93,
+            "pas": 66,
+            "dri": 88,
+            "def": 50,
+            "phy": 70,
+            "gks": 9
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_8355",
+          "nom": "Giorgio Marini",
+          "poste": "AC",
+          "age": 23,
+          "notes": {
+            "pac": 87,
+            "sho": 86,
+            "pas": 65,
+            "dri": 85,
+            "def": 63,
+            "phy": 83,
+            "gks": 9
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_6300",
+          "nom": "Emanuele Fontana",
+          "poste": "AC",
+          "age": 30,
+          "notes": {
+            "pac": 85,
+            "sho": 94,
+            "pas": 72,
+            "dri": 81,
+            "def": 64,
+            "phy": 70,
+            "gks": 12
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_3339",
+          "nom": "Luigi Ricci",
+          "poste": "AC",
+          "age": 22,
+          "notes": {
+            "pac": 84,
+            "sho": 90,
+            "pas": 64,
+            "dri": 87,
+            "def": 64,
+            "phy": 75,
+            "gks": 11
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_3652",
+          "nom": "Mario Marino",
+          "poste": "AD",
+          "age": 35,
+          "notes": {
+            "pac": 74,
+            "sho": 85,
+            "pas": 74,
+            "dri": 83,
+            "def": 59,
+            "phy": 73,
+            "gks": 21
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_1327",
+          "nom": "Andrea Greco",
+          "poste": "AC",
+          "age": 27,
+          "notes": {
+            "pac": 77,
+            "sho": 87,
+            "pas": 63,
+            "dri": 87,
+            "def": 65,
+            "phy": 66,
+            "gks": 19
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_5693",
+          "nom": "Davide Esposito",
+          "poste": "AG",
+          "age": 28,
+          "notes": {
+            "pac": 87,
+            "sho": 79,
+            "pas": 66,
+            "dri": 84,
+            "def": 55,
+            "phy": 72,
+            "gks": 20
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_1359",
+          "nom": "Tommaso Caputo",
+          "poste": "AD",
+          "age": 34,
+          "notes": {
+            "pac": 87,
+            "sho": 90,
+            "pas": 66,
+            "dri": 78,
+            "def": 63,
+            "phy": 77,
+            "gks": 12
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_5771",
+          "nom": "Ciro Gallo",
+          "poste": "AC",
+          "age": 18,
+          "notes": {
+            "pac": 83,
+            "sho": 87,
+            "pas": 67,
+            "dri": 84,
+            "def": 65,
+            "phy": 84,
+            "gks": 20
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_4180",
+          "nom": "Tommaso Santoro",
+          "poste": "AG",
+          "age": 30,
+          "notes": {
+            "pac": 83,
+            "sho": 85,
+            "pas": 73,
+            "dri": 76,
+            "def": 60,
+            "phy": 67,
+            "gks": 15
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_4933",
+          "nom": "Mario Bianchi",
+          "poste": "AD",
+          "age": 31,
+          "notes": {
+            "pac": 75,
+            "sho": 87,
+            "pas": 76,
+            "dri": 81,
+            "def": 62,
+            "phy": 74,
+            "gks": 10
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_5295",
+          "nom": "Leonardo Caputo",
+          "poste": "AG",
+          "age": 23,
+          "notes": {
+            "pac": 77,
+            "sho": 86,
+            "pas": 71,
+            "dri": 90,
+            "def": 62,
+            "phy": 85,
+            "gks": 21
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_7984",
+          "nom": "Gennaro Rossi",
+          "poste": "AC",
+          "age": 27,
+          "notes": {
+            "pac": 88,
+            "sho": 88,
+            "pas": 73,
+            "dri": 76,
+            "def": 46,
+            "phy": 79,
+            "gks": 15
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_7000",
+          "nom": "Vincenzo Marino",
+          "poste": "AD",
+          "age": 26,
+          "notes": {
+            "pac": 91,
+            "sho": 89,
+            "pas": 66,
+            "dri": 84,
+            "def": 50,
+            "phy": 85,
+            "gks": 13
+          },
+          "global": 83
+        },
+        {
+          "id": "p_1775488007169_8107",
+          "nom": "Giuseppe Conti",
+          "poste": "AG",
+          "age": 31,
+          "notes": {
+            "pac": 77,
+            "sho": 92,
+            "pas": 76,
+            "dri": 89,
+            "def": 51,
+            "phy": 68,
+            "gks": 13
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_8806",
+          "nom": "Mario Caputo",
+          "poste": "AC",
+          "age": 33,
+          "notes": {
+            "pac": 86,
+            "sho": 89,
+            "pas": 63,
+            "dri": 81,
+            "def": 45,
+            "phy": 66,
+            "gks": 12
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_5991",
+          "nom": "Gabriele Bruno",
+          "poste": "AD",
+          "age": 31,
+          "notes": {
+            "pac": 88,
+            "sho": 91,
+            "pas": 77,
+            "dri": 88,
+            "def": 51,
+            "phy": 77,
+            "gks": 10
+          },
+          "global": 84
+        },
+        {
+          "id": "p_1775488007169_3942",
+          "nom": "Lorenzo Lombardi",
+          "poste": "AG",
+          "age": 18,
+          "notes": {
+            "pac": 85,
+            "sho": 87,
+            "pas": 68,
+            "dri": 81,
+            "def": 55,
+            "phy": 79,
+            "gks": 21
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_9155",
+          "nom": "Simone Rizzo",
+          "poste": "AD",
+          "age": 34,
+          "notes": {
+            "pac": 81,
+            "sho": 90,
+            "pas": 65,
+            "dri": 84,
+            "def": 56,
+            "phy": 80,
+            "gks": 21
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_9286",
+          "nom": "Antonio Conti",
+          "poste": "AC",
+          "age": 27,
+          "notes": {
+            "pac": 79,
+            "sho": 79,
+            "pas": 72,
+            "dri": 82,
+            "def": 45,
+            "phy": 76,
+            "gks": 16
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_9978",
+          "nom": "Salvatore Fontana",
+          "poste": "AC",
+          "age": 22,
+          "notes": {
+            "pac": 80,
+            "sho": 86,
+            "pas": 79,
+            "dri": 88,
+            "def": 62,
+            "phy": 75,
+            "gks": 17
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_3573",
+          "nom": "Riccardo Fontana",
+          "poste": "AG",
+          "age": 26,
+          "notes": {
+            "pac": 85,
+            "sho": 82,
+            "pas": 70,
+            "dri": 84,
+            "def": 59,
+            "phy": 75,
+            "gks": 15
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_7542",
+          "nom": "Emanuele Bruno",
+          "poste": "AC",
+          "age": 36,
+          "notes": {
+            "pac": 79,
+            "sho": 90,
+            "pas": 70,
+            "dri": 84,
+            "def": 47,
+            "phy": 85,
+            "gks": 21
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_2584",
+          "nom": "Alessandro Lombardi",
+          "poste": "AC",
+          "age": 31,
+          "notes": {
+            "pac": 74,
+            "sho": 88,
+            "pas": 69,
+            "dri": 85,
+            "def": 44,
+            "phy": 79,
+            "gks": 13
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_2115",
+          "nom": "Tommaso De Luca",
+          "poste": "AD",
+          "age": 28,
+          "notes": {
+            "pac": 87,
+            "sho": 87,
+            "pas": 65,
+            "dri": 76,
+            "def": 62,
+            "phy": 65,
+            "gks": 21
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_6692",
+          "nom": "Giuseppe Marini",
+          "poste": "AC",
+          "age": 28,
+          "notes": {
+            "pac": 84,
+            "sho": 85,
+            "pas": 65,
+            "dri": 87,
+            "def": 55,
+            "phy": 70,
+            "gks": 10
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_3535",
+          "nom": "Roberto Marino",
+          "poste": "AC",
+          "age": 36,
+          "notes": {
+            "pac": 81,
+            "sho": 90,
+            "pas": 65,
+            "dri": 81,
+            "def": 54,
+            "phy": 66,
+            "gks": 11
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_1750",
+          "nom": "Matteo Fontana",
+          "poste": "AG",
+          "age": 17,
+          "notes": {
+            "pac": 79,
+            "sho": 81,
+            "pas": 72,
+            "dri": 79,
+            "def": 59,
+            "phy": 77,
+            "gks": 20
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_7679",
+          "nom": "Daniele De Luca",
+          "poste": "AC",
+          "age": 29,
+          "notes": {
+            "pac": 85,
+            "sho": 85,
+            "pas": 68,
+            "dri": 82,
+            "def": 65,
+            "phy": 68,
+            "gks": 19
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_2476",
+          "nom": "Salvatore Bianchi",
+          "poste": "AC",
+          "age": 27,
+          "notes": {
+            "pac": 91,
+            "sho": 87,
+            "pas": 72,
+            "dri": 79,
+            "def": 52,
+            "phy": 68,
+            "gks": 11
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_4157",
+          "nom": "Andrea Colombo",
+          "poste": "AC",
+          "age": 32,
+          "notes": {
+            "pac": 82,
+            "sho": 88,
+            "pas": 74,
+            "dri": 90,
+            "def": 56,
+            "phy": 71,
+            "gks": 21
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_7217",
+          "nom": "Federico Caputo",
+          "poste": "AC",
+          "age": 23,
+          "notes": {
+            "pac": 77,
+            "sho": 81,
+            "pas": 59,
+            "dri": 78,
+            "def": 58,
+            "phy": 68,
+            "gks": 18
+          },
+          "global": 74
+        },
+        {
+          "id": "p_1775488007169_9734",
+          "nom": "Tommaso Greco",
+          "poste": "AC",
+          "age": 23,
+          "notes": {
+            "pac": 76,
+            "sho": 82,
+            "pas": 61,
+            "dri": 84,
+            "def": 44,
+            "phy": 68,
+            "gks": 11
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_4356",
+          "nom": "Andrea Barbieri",
+          "poste": "AC",
+          "age": 21,
+          "notes": {
+            "pac": 91,
+            "sho": 86,
+            "pas": 67,
+            "dri": 91,
+            "def": 65,
+            "phy": 76,
+            "gks": 16
+          },
+          "global": 83
+        },
+        {
+          "id": "p_1775488007169_6035",
+          "nom": "Ciro Gallo",
+          "poste": "AC",
+          "age": 34,
+          "notes": {
+            "pac": 75,
+            "sho": 91,
+            "pas": 76,
+            "dri": 82,
+            "def": 52,
+            "phy": 79,
+            "gks": 15
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_4343",
+          "nom": "Marco Bianchi",
+          "poste": "AC",
+          "age": 31,
+          "notes": {
+            "pac": 81,
+            "sho": 87,
+            "pas": 79,
+            "dri": 91,
+            "def": 63,
+            "phy": 86,
+            "gks": 11
+          },
+          "global": 85
+        },
+        {
+          "id": "p_1775488007169_7371",
+          "nom": "Stefano Lombardi",
+          "poste": "AG",
+          "age": 30,
+          "notes": {
+            "pac": 82,
+            "sho": 82,
+            "pas": 73,
+            "dri": 83,
+            "def": 54,
+            "phy": 76,
+            "gks": 15
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_3433",
+          "nom": "Vincenzo Romano",
+          "poste": "AC",
+          "age": 32,
+          "notes": {
+            "pac": 87,
+            "sho": 90,
+            "pas": 72,
+            "dri": 81,
+            "def": 56,
+            "phy": 78,
+            "gks": 17
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_8970",
+          "nom": "Vincenzo Marini",
+          "poste": "AC",
+          "age": 30,
+          "notes": {
+            "pac": 82,
+            "sho": 82,
+            "pas": 68,
+            "dri": 79,
+            "def": 59,
+            "phy": 76,
+            "gks": 15
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_8308",
+          "nom": "Giuseppe Greco",
+          "poste": "AG",
+          "age": 30,
+          "notes": {
+            "pac": 74,
+            "sho": 80,
+            "pas": 70,
+            "dri": 85,
+            "def": 44,
+            "phy": 75,
+            "gks": 16
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_4202",
+          "nom": "Luigi Fontana",
+          "poste": "AG",
+          "age": 26,
+          "notes": {
+            "pac": 82,
+            "sho": 83,
+            "pas": 74,
+            "dri": 84,
+            "def": 64,
+            "phy": 80,
+            "gks": 16
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_9754",
+          "nom": "Lorenzo Ricci",
+          "poste": "AD",
+          "age": 31,
+          "notes": {
+            "pac": 83,
+            "sho": 84,
+            "pas": 70,
+            "dri": 85,
+            "def": 48,
+            "phy": 76,
+            "gks": 18
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_9989",
+          "nom": "Luigi Marini",
+          "poste": "AD",
+          "age": 17,
+          "notes": {
+            "pac": 85,
+            "sho": 84,
+            "pas": 77,
+            "dri": 80,
+            "def": 65,
+            "phy": 78,
+            "gks": 10
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_7686",
+          "nom": "Giorgio Greco",
+          "poste": "AC",
+          "age": 25,
+          "notes": {
+            "pac": 81,
+            "sho": 81,
+            "pas": 67,
+            "dri": 78,
+            "def": 45,
+            "phy": 78,
+            "gks": 15
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_3418",
+          "nom": "Leonardo Barbieri",
+          "poste": "AC",
+          "age": 17,
+          "notes": {
+            "pac": 80,
+            "sho": 82,
+            "pas": 76,
+            "dri": 83,
+            "def": 59,
+            "phy": 64,
+            "gks": 18
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_9485",
+          "nom": "Emanuele Bruno",
+          "poste": "AD",
+          "age": 18,
+          "notes": {
+            "pac": 77,
+            "sho": 87,
+            "pas": 76,
+            "dri": 76,
+            "def": 62,
+            "phy": 66,
+            "gks": 18
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_9780",
+          "nom": "Salvatore Colombo",
+          "poste": "AD",
+          "age": 18,
+          "notes": {
+            "pac": 83,
+            "sho": 90,
+            "pas": 74,
+            "dri": 87,
+            "def": 55,
+            "phy": 66,
+            "gks": 13
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_8119",
+          "nom": "Mario Ferrara",
+          "poste": "AG",
+          "age": 22,
+          "notes": {
+            "pac": 87,
+            "sho": 87,
+            "pas": 79,
+            "dri": 79,
+            "def": 63,
+            "phy": 80,
+            "gks": 9
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_1061",
+          "nom": "Giacomo Marino",
+          "poste": "AC",
+          "age": 27,
+          "notes": {
+            "pac": 75,
+            "sho": 89,
+            "pas": 75,
+            "dri": 76,
+            "def": 57,
+            "phy": 76,
+            "gks": 21
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_7539",
+          "nom": "Roberto Ferrari",
+          "poste": "AG",
+          "age": 36,
+          "notes": {
+            "pac": 80,
+            "sho": 81,
+            "pas": 67,
+            "dri": 86,
+            "def": 56,
+            "phy": 71,
+            "gks": 11
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_3124",
+          "nom": "Roberto Greco",
+          "poste": "AC",
+          "age": 27,
+          "notes": {
+            "pac": 85,
+            "sho": 92,
+            "pas": 77,
+            "dri": 80,
+            "def": 62,
+            "phy": 83,
+            "gks": 16
+          },
+          "global": 83
+        },
+        {
+          "id": "p_1775488007169_6338",
+          "nom": "Giacomo Conti",
+          "poste": "AG",
+          "age": 22,
+          "notes": {
+            "pac": 81,
+            "sho": 91,
+            "pas": 68,
+            "dri": 86,
+            "def": 47,
+            "phy": 81,
+            "gks": 21
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_7441",
+          "nom": "Alessandro Marini",
+          "poste": "AD",
+          "age": 23,
+          "notes": {
+            "pac": 80,
+            "sho": 85,
+            "pas": 78,
+            "dri": 80,
+            "def": 64,
+            "phy": 83,
+            "gks": 9
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_8835",
+          "nom": "Emanuele Romano",
+          "poste": "AC",
+          "age": 29,
+          "notes": {
+            "pac": 78,
+            "sho": 89,
+            "pas": 62,
+            "dri": 85,
+            "def": 55,
+            "phy": 68,
+            "gks": 11
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_7139",
+          "nom": "Daniele Ferrara",
+          "poste": "AC",
+          "age": 17,
+          "notes": {
+            "pac": 86,
+            "sho": 89,
+            "pas": 75,
+            "dri": 79,
+            "def": 65,
+            "phy": 75,
+            "gks": 16
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_4712",
+          "nom": "Luca Conti",
+          "poste": "AG",
+          "age": 32,
+          "notes": {
+            "pac": 75,
+            "sho": 85,
+            "pas": 64,
+            "dri": 79,
+            "def": 61,
+            "phy": 75,
+            "gks": 12
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_5308",
+          "nom": "Daniele Romano",
+          "poste": "AC",
+          "age": 35,
+          "notes": {
+            "pac": 86,
+            "sho": 89,
+            "pas": 75,
+            "dri": 88,
+            "def": 58,
+            "phy": 70,
+            "gks": 14
+          },
+          "global": 83
+        },
+        {
+          "id": "p_1775488007169_3997",
+          "nom": "Vincenzo Marini",
+          "poste": "AC",
+          "age": 28,
+          "notes": {
+            "pac": 73,
+            "sho": 85,
+            "pas": 66,
+            "dri": 77,
+            "def": 43,
+            "phy": 71,
+            "gks": 10
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_2303",
+          "nom": "Luca Barbieri",
+          "poste": "AC",
+          "age": 23,
+          "notes": {
+            "pac": 77,
+            "sho": 80,
+            "pas": 70,
+            "dri": 79,
+            "def": 51,
+            "phy": 77,
+            "gks": 13
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_5571",
+          "nom": "Tommaso Marini",
+          "poste": "AG",
+          "age": 21,
+          "notes": {
+            "pac": 79,
+            "sho": 92,
+            "pas": 75,
+            "dri": 88,
+            "def": 52,
+            "phy": 77,
+            "gks": 13
+          },
+          "global": 83
+        },
+        {
+          "id": "p_1775488007169_2265",
+          "nom": "Giacomo Marini",
+          "poste": "AC",
+          "age": 18,
+          "notes": {
+            "pac": 80,
+            "sho": 82,
+            "pas": 74,
+            "dri": 85,
+            "def": 56,
+            "phy": 83,
+            "gks": 18
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_3906",
+          "nom": "Stefano Mancini",
+          "poste": "AC",
+          "age": 26,
+          "notes": {
+            "pac": 90,
+            "sho": 86,
+            "pas": 68,
+            "dri": 92,
+            "def": 55,
+            "phy": 71,
+            "gks": 19
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_3659",
+          "nom": "Federico Caputo",
+          "poste": "AC",
+          "age": 31,
+          "notes": {
+            "pac": 81,
+            "sho": 91,
+            "pas": 73,
+            "dri": 78,
+            "def": 46,
+            "phy": 73,
+            "gks": 17
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_4031",
+          "nom": "Matteo Bruno",
+          "poste": "AC",
+          "age": 21,
+          "notes": {
+            "pac": 86,
+            "sho": 92,
+            "pas": 73,
+            "dri": 92,
+            "def": 66,
+            "phy": 81,
+            "gks": 12
+          },
+          "global": 86
+        },
+        {
+          "id": "p_1775488007169_9704",
+          "nom": "Giorgio Ferrara",
+          "poste": "AG",
+          "age": 32,
+          "notes": {
+            "pac": 76,
+            "sho": 88,
+            "pas": 70,
+            "dri": 76,
+            "def": 46,
+            "phy": 75,
+            "gks": 17
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_8901",
+          "nom": "Mario Rossi",
+          "poste": "AC",
+          "age": 24,
+          "notes": {
+            "pac": 81,
+            "sho": 92,
+            "pas": 64,
+            "dri": 80,
+            "def": 54,
+            "phy": 73,
+            "gks": 12
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_8180",
+          "nom": "Antonio Costa",
+          "poste": "AC",
+          "age": 36,
+          "notes": {
+            "pac": 82,
+            "sho": 86,
+            "pas": 64,
+            "dri": 76,
+            "def": 51,
+            "phy": 73,
+            "gks": 17
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_3282",
+          "nom": "Salvatore De Luca",
+          "poste": "AC",
+          "age": 26,
+          "notes": {
+            "pac": 88,
+            "sho": 89,
+            "pas": 77,
+            "dri": 87,
+            "def": 67,
+            "phy": 70,
+            "gks": 20
+          },
+          "global": 83
+        },
+        {
+          "id": "p_1775488007169_4464",
+          "nom": "Tommaso Marini",
+          "poste": "AG",
+          "age": 24,
+          "notes": {
+            "pac": 88,
+            "sho": 91,
+            "pas": 66,
+            "dri": 89,
+            "def": 58,
+            "phy": 77,
+            "gks": 20
+          },
+          "global": 83
+        },
+        {
+          "id": "p_1775488007169_7193",
+          "nom": "Lorenzo Santoro",
+          "poste": "AG",
+          "age": 17,
+          "notes": {
+            "pac": 86,
+            "sho": 91,
+            "pas": 64,
+            "dri": 87,
+            "def": 47,
+            "phy": 68,
+            "gks": 11
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_7043",
+          "nom": "Luigi Santoro",
+          "poste": "AC",
+          "age": 24,
+          "notes": {
+            "pac": 79,
+            "sho": 86,
+            "pas": 62,
+            "dri": 88,
+            "def": 52,
+            "phy": 80,
+            "gks": 19
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_6946",
+          "nom": "Federico Rossi",
+          "poste": "AC",
+          "age": 20,
+          "notes": {
+            "pac": 76,
+            "sho": 91,
+            "pas": 76,
+            "dri": 86,
+            "def": 49,
+            "phy": 71,
+            "gks": 19
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_8420",
+          "nom": "Leonardo Santoro",
+          "poste": "AG",
+          "age": 28,
+          "notes": {
+            "pac": 81,
+            "sho": 87,
+            "pas": 72,
+            "dri": 81,
+            "def": 57,
+            "phy": 72,
+            "gks": 17
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_5755",
+          "nom": "Mario Caputo",
+          "poste": "AC",
+          "age": 18,
+          "notes": {
+            "pac": 81,
+            "sho": 86,
+            "pas": 76,
+            "dri": 80,
+            "def": 68,
+            "phy": 73,
+            "gks": 14
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_4971",
+          "nom": "Francesco Caputo",
+          "poste": "AG",
+          "age": 21,
+          "notes": {
+            "pac": 85,
+            "sho": 89,
+            "pas": 63,
+            "dri": 85,
+            "def": 54,
+            "phy": 67,
+            "gks": 12
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_2764",
+          "nom": "Luigi Romano",
+          "poste": "AC",
+          "age": 18,
+          "notes": {
+            "pac": 85,
+            "sho": 81,
+            "pas": 61,
+            "dri": 86,
+            "def": 52,
+            "phy": 68,
+            "gks": 21
+          },
+          "global": 77
+        },
+        {
+          "id": "p_1775488007169_9276",
+          "nom": "Simone Mancini",
+          "poste": "AD",
+          "age": 31,
+          "notes": {
+            "pac": 78,
+            "sho": 92,
+            "pas": 77,
+            "dri": 79,
+            "def": 58,
+            "phy": 77,
+            "gks": 15
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_7547",
+          "nom": "Giorgio Rizzo",
+          "poste": "AD",
+          "age": 35,
+          "notes": {
+            "pac": 78,
+            "sho": 89,
+            "pas": 69,
+            "dri": 86,
+            "def": 54,
+            "phy": 78,
+            "gks": 12
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_3087",
+          "nom": "Andrea Rizzo",
+          "poste": "AG",
+          "age": 25,
+          "notes": {
+            "pac": 89,
+            "sho": 90,
+            "pas": 69,
+            "dri": 87,
+            "def": 44,
+            "phy": 75,
+            "gks": 19
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_2111",
+          "nom": "Emanuele Marino",
+          "poste": "AD",
+          "age": 20,
+          "notes": {
+            "pac": 85,
+            "sho": 89,
+            "pas": 71,
+            "dri": 78,
+            "def": 52,
+            "phy": 84,
+            "gks": 21
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_2391",
+          "nom": "Domenico Lombardi",
+          "poste": "AC",
+          "age": 35,
+          "notes": {
+            "pac": 78,
+            "sho": 92,
+            "pas": 77,
+            "dri": 83,
+            "def": 49,
+            "phy": 83,
+            "gks": 11
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_2962",
+          "nom": "Antonio Ferrari",
+          "poste": "AG",
+          "age": 28,
+          "notes": {
+            "pac": 85,
+            "sho": 85,
+            "pas": 65,
+            "dri": 81,
+            "def": 62,
+            "phy": 68,
+            "gks": 12
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_8938",
+          "nom": "Andrea Romano",
+          "poste": "AD",
+          "age": 26,
+          "notes": {
+            "pac": 82,
+            "sho": 82,
+            "pas": 66,
+            "dri": 89,
+            "def": 56,
+            "phy": 73,
+            "gks": 18
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_9143",
+          "nom": "Emanuele Giordano",
+          "poste": "AC",
+          "age": 30,
+          "notes": {
+            "pac": 83,
+            "sho": 86,
+            "pas": 64,
+            "dri": 89,
+            "def": 62,
+            "phy": 72,
+            "gks": 18
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_5648",
+          "nom": "Salvatore Gallo",
+          "poste": "AC",
+          "age": 23,
+          "notes": {
+            "pac": 88,
+            "sho": 94,
+            "pas": 80,
+            "dri": 90,
+            "def": 55,
+            "phy": 78,
+            "gks": 14
+          },
+          "global": 86
+        },
+        {
+          "id": "p_1775488007169_5982",
+          "nom": "Lorenzo Costa",
+          "poste": "AC",
+          "age": 17,
+          "notes": {
+            "pac": 88,
+            "sho": 83,
+            "pas": 74,
+            "dri": 89,
+            "def": 57,
+            "phy": 67,
+            "gks": 17
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_1939",
+          "nom": "Daniele Fontana",
+          "poste": "AC",
+          "age": 22,
+          "notes": {
+            "pac": 83,
+            "sho": 89,
+            "pas": 72,
+            "dri": 85,
+            "def": 52,
+            "phy": 73,
+            "gks": 21
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_3763",
+          "nom": "Domenico Ferrara",
+          "poste": "AG",
+          "age": 30,
+          "notes": {
+            "pac": 89,
+            "sho": 87,
+            "pas": 75,
+            "dri": 86,
+            "def": 51,
+            "phy": 87,
+            "gks": 19
+          },
+          "global": 84
+        },
+        {
+          "id": "p_1775488007169_3531",
+          "nom": "Federico Rossi",
+          "poste": "AC",
+          "age": 25,
+          "notes": {
+            "pac": 90,
+            "sho": 86,
+            "pas": 66,
+            "dri": 77,
+            "def": 46,
+            "phy": 72,
+            "gks": 20
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_5697",
+          "nom": "Antonio Moretti",
+          "poste": "AG",
+          "age": 22,
+          "notes": {
+            "pac": 88,
+            "sho": 89,
+            "pas": 74,
+            "dri": 78,
+            "def": 48,
+            "phy": 82,
+            "gks": 9
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_4717",
+          "nom": "Alessandro Costa",
+          "poste": "AD",
+          "age": 17,
+          "notes": {
+            "pac": 81,
+            "sho": 84,
+            "pas": 71,
+            "dri": 88,
+            "def": 48,
+            "phy": 73,
+            "gks": 14
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_8907",
+          "nom": "Giorgio Marino",
+          "poste": "AC",
+          "age": 21,
+          "notes": {
+            "pac": 79,
+            "sho": 95,
+            "pas": 81,
+            "dri": 81,
+            "def": 64,
+            "phy": 76,
+            "gks": 11
+          },
+          "global": 83
+        },
+        {
+          "id": "p_1775488007169_6412",
+          "nom": "Daniele Santoro",
+          "poste": "AD",
+          "age": 17,
+          "notes": {
+            "pac": 86,
+            "sho": 86,
+            "pas": 75,
+            "dri": 89,
+            "def": 59,
+            "phy": 83,
+            "gks": 10
+          },
+          "global": 84
+        },
+        {
+          "id": "p_1775488007169_4482",
+          "nom": "Salvatore Greco",
+          "poste": "AC",
+          "age": 28,
+          "notes": {
+            "pac": 74,
+            "sho": 86,
+            "pas": 73,
+            "dri": 74,
+            "def": 51,
+            "phy": 67,
+            "gks": 20
+          },
+          "global": 76
+        },
+        {
+          "id": "p_1775488007169_3521",
+          "nom": "Giacomo De Luca",
+          "poste": "AC",
+          "age": 26,
+          "notes": {
+            "pac": 83,
+            "sho": 85,
+            "pas": 75,
+            "dri": 83,
+            "def": 47,
+            "phy": 77,
+            "gks": 17
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_8684",
+          "nom": "Roberto Greco",
+          "poste": "AG",
+          "age": 26,
+          "notes": {
+            "pac": 84,
+            "sho": 86,
+            "pas": 63,
+            "dri": 81,
+            "def": 65,
+            "phy": 80,
+            "gks": 13
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_2043",
+          "nom": "Alessandro Barbieri",
+          "poste": "AD",
+          "age": 24,
+          "notes": {
+            "pac": 87,
+            "sho": 92,
+            "pas": 70,
+            "dri": 82,
+            "def": 55,
+            "phy": 80,
+            "gks": 21
+          },
+          "global": 83
+        },
+        {
+          "id": "p_1775488007169_2666",
+          "nom": "Giuseppe Greco",
+          "poste": "AC",
+          "age": 24,
+          "notes": {
+            "pac": 78,
+            "sho": 89,
+            "pas": 64,
+            "dri": 79,
+            "def": 59,
+            "phy": 80,
+            "gks": 17
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_3565",
+          "nom": "Matteo Mancini",
+          "poste": "AC",
+          "age": 31,
+          "notes": {
+            "pac": 88,
+            "sho": 94,
+            "pas": 79,
+            "dri": 88,
+            "def": 67,
+            "phy": 71,
+            "gks": 15
+          },
+          "global": 86
+        },
+        {
+          "id": "p_1775488007169_1714",
+          "nom": "Tommaso Costa",
+          "poste": "AC",
+          "age": 25,
+          "notes": {
+            "pac": 76,
+            "sho": 83,
+            "pas": 73,
+            "dri": 77,
+            "def": 48,
+            "phy": 67,
+            "gks": 11
+          },
+          "global": 75
+        },
+        {
+          "id": "p_1775488007169_4064",
+          "nom": "Leonardo Ferrara",
+          "poste": "AG",
+          "age": 22,
+          "notes": {
+            "pac": 76,
+            "sho": 91,
+            "pas": 74,
+            "dri": 79,
+            "def": 49,
+            "phy": 72,
+            "gks": 16
+          },
+          "global": 79
+        },
+        {
+          "id": "p_1775488007169_1899",
+          "nom": "Daniele Conti",
+          "poste": "AG",
+          "age": 28,
+          "notes": {
+            "pac": 79,
+            "sho": 82,
+            "pas": 72,
+            "dri": 88,
+            "def": 60,
+            "phy": 75,
+            "gks": 10
+          },
+          "global": 80
+        },
+        {
+          "id": "p_1775488007169_3053",
+          "nom": "Daniele Esposito",
+          "poste": "AC",
+          "age": 24,
+          "notes": {
+            "pac": 79,
+            "sho": 93,
+            "pas": 74,
+            "dri": 90,
+            "def": 59,
+            "phy": 83,
+            "gks": 10
+          },
+          "global": 85
+        },
+        {
+          "id": "p_1775488007169_6393",
+          "nom": "Simone Costa",
+          "poste": "AD",
+          "age": 23,
+          "notes": {
+            "pac": 88,
+            "sho": 82,
+            "pas": 64,
+            "dri": 79,
+            "def": 50,
+            "phy": 81,
+            "gks": 11
+          },
+          "global": 78
+        },
+        {
+          "id": "p_1775488007169_6834",
+          "nom": "Giuseppe Barbieri",
+          "poste": "AG",
+          "age": 19,
+          "notes": {
+            "pac": 79,
+            "sho": 90,
+            "pas": 66,
+            "dri": 88,
+            "def": 52,
+            "phy": 73,
+            "gks": 19
+          },
+          "global": 81
+        },
+        {
+          "id": "p_1775488007169_6031",
+          "nom": "Ciro Bruno",
+          "poste": "AG",
+          "age": 17,
+          "notes": {
+            "pac": 91,
+            "sho": 87,
+            "pas": 76,
+            "dri": 78,
+            "def": 62,
+            "phy": 82,
+            "gks": 20
+          },
+          "global": 82
+        },
+        {
+          "id": "p_1775488007169_9739",
+          "nom": "Roberto Barbieri",
+          "poste": "AD",
+          "age": 19,
+          "notes": {
+            "pac": 87,
+            "sho": 86,
+            "pas": 66,
+            "dri": 79,
+            "def": 51,
+            "phy": 71,
+            "gks": 10
+          },
+          "global": 78
+        }
+      ],
+      "created": "2026-04-06T15:06:47.170Z"
     }
   ],
   "competitions": [],
