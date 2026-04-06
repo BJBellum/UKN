@@ -1,1 +1,668 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MapArmy · Carte Tactique · FAN-SYS-001</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#E85C0D">
+<link rel="icon" type="image/png" href="../../assets/images/UKNSite.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/dune.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+/* ── LAYOUT ── */
+html,body{height:100%;overflow:hidden}
+body{display:flex;flex-direction:column}
+.app-bar{display:flex;align-items:center;gap:12px;padding:6px 14px;border-bottom:1px solid rgba(232,92,13,.25);background:var(--sand-dark);z-index:1000;flex-shrink:0}
+.app-bar .logo{width:28px;height:28px;border:1px solid rgba(232,92,13,.5);border-radius:2px;display:flex;align-items:center;justify-content:center;background:rgba(232,92,13,.06)}
+.app-bar .brand{font-family:'Dune Rise',serif;font-size:12px;color:var(--gold-pale);letter-spacing:.08em}
+.app-bar .ref{font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.12em;border:1px solid rgba(232,92,13,.2);padding:1px 6px;border-radius:2px}
+.app-bar .spacer{flex:1}
+.app-bar a,.app-bar button{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);text-decoration:none;letter-spacing:.08em;background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:2px;transition:all .2s}
+.app-bar a:hover,.app-bar button:hover{color:var(--spice);background:rgba(232,92,13,.08)}
+.workspace{display:flex;flex:1;overflow:hidden}
 
+/* ── SIDEBAR ── */
+.sidebar{width:280px;background:var(--sand-dark);border-right:1px solid var(--border2);display:flex;flex-direction:column;overflow:hidden;flex-shrink:0;z-index:900}
+.sidebar-header{padding:10px 12px;border-bottom:1px solid var(--border);font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--spice);letter-spacing:.12em;display:flex;align-items:center;justify-content:space-between}
+.sidebar-search{padding:6px 10px;border-bottom:1px solid var(--border)}
+.sidebar-search input{width:100%;background:var(--sand-mid);border:1px solid var(--border2);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:11px;padding:6px 8px;border-radius:2px;outline:none}
+.sidebar-search input:focus{border-color:var(--spice)}
+.sidebar-search input::placeholder{color:var(--text3)}
+.sidebar-body{flex:1;overflow-y:auto;padding:6px}
+
+/* Category */
+.cat-header{display:flex;align-items:center;gap:6px;padding:5px 6px;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text2);letter-spacing:.1em;border-radius:2px;user-select:none}
+.cat-header:hover{background:rgba(232,92,13,.06);color:var(--gold-pale)}
+.cat-header .arrow{transition:transform .2s;font-size:7px;color:var(--text3)}
+.cat-header.open .arrow{transform:rotate(90deg)}
+.cat-items{display:none;padding:0 0 4px 8px}
+.cat-header.open+.cat-items{display:block}
+
+/* Symbol item */
+.sym-item{display:flex;align-items:center;gap:8px;padding:5px 8px;cursor:grab;border-radius:2px;transition:background .15s;border:1px solid transparent}
+.sym-item:hover{background:rgba(232,92,13,.08);border-color:rgba(232,92,13,.2)}
+.sym-item:active{cursor:grabbing}
+.sym-item .sym-icon{width:36px;height:36px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.sym-item .sym-icon svg{width:34px;height:34px}
+.sym-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text);line-height:1.3}
+.sym-label small{display:block;font-size:8px;color:var(--text3);margin-top:1px}
+
+/* ── MAP ── */
+.map-wrap{flex:1;position:relative}
+#map{width:100%;height:100%}
+.leaflet-container{background:var(--sand-deep)!important;font-family:'IBM Plex Sans',sans-serif}
+
+/* ── RIGHT PANEL (unit details) ── */
+.detail-panel{width:260px;background:var(--sand-dark);border-left:1px solid var(--border2);display:none;flex-direction:column;overflow-y:auto;z-index:900}
+.detail-panel.open{display:flex}
+.detail-header{padding:10px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.detail-header span{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--spice);letter-spacing:.12em}
+.detail-close{background:none;border:none;color:var(--text3);cursor:pointer;font-size:14px;padding:2px 6px}
+.detail-close:hover{color:var(--spice)}
+.detail-body{padding:12px}
+.detail-body label{display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:.1em;margin-bottom:3px;margin-top:10px}
+.detail-body label:first-child{margin-top:0}
+.detail-body input,.detail-body select{width:100%;background:var(--sand-mid);border:1px solid var(--border2);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:11px;padding:5px 7px;border-radius:2px;outline:none}
+.detail-body input:focus,.detail-body select:focus{border-color:var(--spice)}
+.detail-preview{display:flex;justify-content:center;padding:14px 0 6px}
+.detail-preview svg{width:72px;height:72px}
+.detail-actions{padding:12px;border-top:1px solid var(--border);display:flex;gap:6px}
+.detail-actions button{flex:1;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;padding:6px 0;border-radius:2px;cursor:pointer;border:1px solid var(--border2);background:rgba(232,92,13,.06);color:var(--spice);transition:all .2s}
+.detail-actions button:hover{background:rgba(232,92,13,.14)}
+.detail-actions button.del{color:#c44;border-color:rgba(200,60,60,.3)}
+.detail-actions button.del:hover{background:rgba(200,60,60,.12)}
+
+/* ── TOOLBAR ── */
+.map-toolbar{position:absolute;top:10px;right:10px;z-index:800;display:flex;flex-direction:column;gap:4px}
+.map-toolbar button{width:32px;height:32px;background:var(--sand-dark);border:1px solid var(--border2);color:var(--text2);cursor:pointer;border-radius:2px;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.map-toolbar button:hover{border-color:var(--spice);color:var(--spice);background:rgba(232,92,13,.1)}
+.map-toolbar button.active{border-color:var(--spice);color:var(--spice);background:rgba(232,92,13,.15)}
+
+/* ── AFFILIATION TABS ── */
+.aff-tabs{display:flex;gap:0;padding:6px 10px;border-bottom:1px solid var(--border)}
+.aff-tab{flex:1;text-align:center;padding:4px 0;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;cursor:pointer;border:1px solid var(--border2);background:transparent;color:var(--text3);transition:all .2s}
+.aff-tab:first-child{border-radius:2px 0 0 2px}
+.aff-tab:last-child{border-radius:0 2px 2px 0}
+.aff-tab+.aff-tab{border-left:none}
+.aff-tab.active[data-aff="friend"]{background:rgba(0,120,255,.15);color:#6af;border-color:rgba(0,120,255,.4)}
+.aff-tab.active[data-aff="hostile"]{background:rgba(255,60,60,.15);color:#f66;border-color:rgba(255,60,60,.4)}
+.aff-tab.active[data-aff="neutral"]{background:rgba(0,200,80,.15);color:#6d6;border-color:rgba(0,200,80,.4)}
+.aff-tab.active[data-aff="unknown"]{background:rgba(255,220,0,.15);color:#dd0;border-color:rgba(255,220,0,.4)}
+
+/* ── STATUS BAR ── */
+.status-bar{padding:3px 14px;background:var(--sand-dark);border-top:1px solid var(--border);font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.08em;display:flex;gap:20px;flex-shrink:0}
+
+/* ── ECHELON BADGES ── */
+.ech-row{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
+.ech-badge{font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border2);border-radius:2px;cursor:pointer;color:var(--text3);background:transparent;transition:all .15s}
+.ech-badge:hover{border-color:var(--spice);color:var(--text)}
+.ech-badge.active{border-color:var(--spice);color:var(--spice);background:rgba(232,92,13,.1)}
+
+/* ── LEAFLET OVERRIDES ── */
+.leaflet-control-zoom a{background:var(--sand-dark)!important;color:var(--text2)!important;border-color:var(--border2)!important}
+.leaflet-control-zoom a:hover{color:var(--spice)!important;border-color:var(--spice)!important}
+.leaflet-control-attribution{background:rgba(12,8,4,.8)!important;color:var(--text3)!important;font-size:8px!important}
+.leaflet-control-attribution a{color:var(--text2)!important}
+
+@media(max-width:800px){
+  .sidebar{width:220px}
+  .detail-panel{width:220px}
+}
+@media(max-width:600px){
+  .sidebar{position:absolute;left:0;top:0;bottom:0;z-index:1100;transform:translateX(-100%);transition:transform .25s}
+  .sidebar.mobile-open{transform:translateX(0)}
+  .detail-panel{position:absolute;right:0;top:0;bottom:0;z-index:1100}
+}
+</style>
+</head>
+<body>
+
+<!-- APP BAR -->
+<div class="app-bar">
+  <div class="logo">
+    <svg viewBox="0 0 20 20" fill="none" width="16" height="16"><path d="M10 2L3 5.5V10C3 14 6.5 17.5 10 18.5C13.5 17.5 17 14 17 10V5.5L10 2Z" stroke="#E85C0D" stroke-width="1.2" fill="none"/><circle cx="10" cy="10" r="2" fill="#E85C0D" opacity=".6"/></svg>
+  </div>
+  <span class="brand">MapArmy</span>
+  <span class="ref">MAP-OPS-001</span>
+  <div class="spacer"></div>
+  <button onclick="exportJSON()" title="Exporter JSON">⬇ EXPORT</button>
+  <button onclick="importJSON()" title="Importer JSON">⬆ IMPORT</button>
+  <button onclick="clearAll()" title="Tout effacer">✕ RESET</button>
+  <a href="../">← Retour</a>
+</div>
+
+<div class="workspace">
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span>SYMBOLES OTAN · APP-6</span>
+      <button class="detail-close" onclick="document.getElementById('sidebar').classList.toggle('mobile-open')" style="display:none" id="sidebar-close">✕</button>
+    </div>
+
+    <!-- Affiliation tabs -->
+    <div class="aff-tabs">
+      <div class="aff-tab active" data-aff="friend" onclick="setAffiliation('friend')">AMI</div>
+      <div class="aff-tab" data-aff="hostile" onclick="setAffiliation('hostile')">ENI</div>
+      <div class="aff-tab" data-aff="neutral" onclick="setAffiliation('neutral')">NEU</div>
+      <div class="aff-tab" data-aff="unknown" onclick="setAffiliation('unknown')">INC</div>
+    </div>
+
+    <div class="sidebar-search">
+      <input type="text" id="sym-search" placeholder="Rechercher un symbole…" oninput="filterSymbols(this.value)">
+    </div>
+
+    <div class="sidebar-body" id="sym-list"></div>
+  </div>
+
+  <!-- MAP -->
+  <div class="map-wrap">
+    <div id="map"></div>
+    <div class="map-toolbar">
+      <button onclick="toggleMeasure()" id="btn-measure" title="Mesurer une distance">📏</button>
+      <button onclick="toggleGrid()" id="btn-grid" title="Afficher grille MGRS">▦</button>
+      <button onclick="cycleBasemap()" id="btn-basemap" title="Changer le fond de carte">🗺</button>
+    </div>
+  </div>
+
+  <!-- DETAIL PANEL -->
+  <div class="detail-panel" id="detail-panel">
+    <div class="detail-header">
+      <span>DÉTAILS UNITÉ</span>
+      <button class="detail-close" onclick="closeDetail()">✕</button>
+    </div>
+    <div class="detail-preview" id="detail-preview"></div>
+    <div class="detail-body">
+      <label>DÉSIGNATION</label>
+      <input id="d-name" placeholder="Nom de l'unité" oninput="updateUnit()">
+      <label>IDENTIFIANT UNIQUE</label>
+      <input id="d-uid" placeholder="Ex: 1/42 INF" oninput="updateUnit()">
+      <label>ÉCHELON</label>
+      <div class="ech-row" id="d-echelon"></div>
+      <label>AFFILIATION</label>
+      <select id="d-aff" onchange="updateUnit()">
+        <option value="friend">Ami (Bleu)</option>
+        <option value="hostile">Ennemi (Rouge)</option>
+        <option value="neutral">Neutre (Vert)</option>
+        <option value="unknown">Inconnu (Jaune)</option>
+      </select>
+      <label>RENFORCEMENT</label>
+      <select id="d-reinf" onchange="updateUnit()">
+        <option value="">—</option>
+        <option value="+">(+) Renforcé</option>
+        <option value="-">(-) Diminué</option>
+        <option value="+-">(±) Renforcé & Diminué</option>
+      </select>
+    </div>
+    <div class="detail-actions">
+      <button onclick="duplicateUnit()">⧉ DUPLIQUER</button>
+      <button class="del" onclick="deleteUnit()">✕ SUPPRIMER</button>
+    </div>
+  </div>
+</div>
+
+<div class="status-bar">
+  <span id="sb-coords">—</span>
+  <span id="sb-units">UNITÉS: 0</span>
+  <span id="sb-zoom">ZOOM: —</span>
+</div>
+
+<input type="file" id="import-input" accept=".json" style="display:none" onchange="handleImport(event)">
+
+<script>
+// ═══════════════════════════════════════════
+// NATO SYMBOL DEFINITIONS (APP-6 inspired)
+// ═══════════════════════════════════════════
+const SYMBOLS = [
+  // UNITS
+  {cat:'Infanterie', id:'infantry', label:'Infanterie', icon:'cross'},
+  {cat:'Infanterie', id:'mech_inf', label:'Infanterie Mécanisée', icon:'cross_mech'},
+  {cat:'Infanterie', id:'mot_inf', label:'Infanterie Motorisée', icon:'cross_mot'},
+  {cat:'Infanterie', id:'airborne', label:'Parachutistes', icon:'cross_air'},
+  {cat:'Infanterie', id:'mountain', label:'Infanterie de Montagne', icon:'cross_mtn'},
+  {cat:'Infanterie', id:'marines', label:'Marines', icon:'cross_mar'},
+  {cat:'Blindés', id:'armor', label:'Blindés / Chars', icon:'diag'},
+  {cat:'Blindés', id:'recon', label:'Reconnaissance Blindée', icon:'diag_recon'},
+  {cat:'Blindés', id:'cavalry', label:'Cavalerie', icon:'cav'},
+  {cat:'Artillerie', id:'artillery', label:'Artillerie', icon:'dot'},
+  {cat:'Artillerie', id:'sp_arty', label:'Artillerie Automotrice', icon:'dot_sp'},
+  {cat:'Artillerie', id:'rocket_arty', label:'Artillerie Roquettes', icon:'dot_rocket'},
+  {cat:'Artillerie', id:'mlrs', label:'Lance-Roquettes Multiple', icon:'mlrs'},
+  {cat:'Artillerie', id:'mortar', label:'Mortier', icon:'mortar'},
+  {cat:'Défense Anti-Aérienne', id:'air_def', label:'Défense Antiaérienne', icon:'adaa'},
+  {cat:'Défense Anti-Aérienne', id:'sam', label:'Missile Sol-Air', icon:'sam'},
+  {cat:'Génie', id:'engineer', label:'Génie', icon:'eng'},
+  {cat:'Génie', id:'bridge', label:'Génie Pontage', icon:'bridge'},
+  {cat:'Transmissions', id:'signals', label:'Transmissions', icon:'sig'},
+  {cat:'Transmissions', id:'elecwar', label:'Guerre Électronique', icon:'ew'},
+  {cat:'Logistique', id:'supply', label:'Ravitaillement', icon:'supply'},
+  {cat:'Logistique', id:'maintenance', label:'Maintenance', icon:'maint'},
+  {cat:'Logistique', id:'medical', label:'Médical', icon:'med'},
+  {cat:'Logistique', id:'transport', label:'Transport', icon:'trans'},
+  {cat:'Aviation', id:'aviation', label:'Aviation Armée', icon:'avn'},
+  {cat:'Aviation', id:'attack_helo', label:'Hélicoptère d\'Attaque', icon:'avn_atk'},
+  {cat:'Quartier Général', id:'hq', label:'Quartier Général', icon:'hq'},
+  {cat:'Quartier Général', id:'cmd', label:'Poste de Commandement', icon:'cmd'},
+  {cat:'Renseignement', id:'intel', label:'Renseignement', icon:'intel'},
+  {cat:'Renseignement', id:'mp', label:'Police Militaire', icon:'mp'},
+  {cat:'NBC', id:'nbc', label:'NBC / NRBC', icon:'nbc'},
+  {cat:'Antichar', id:'at', label:'Antichar', icon:'at'},
+  {cat:'Antichar', id:'at_missile', label:'Missile Antichar', icon:'at_msl'},
+  {cat:'Marine', id:'naval', label:'Unité Navale', icon:'naval'},
+];
+
+const ECHELONS = [
+  {id:'team', label:'Éq', marks:'⦁'},
+  {id:'squad', label:'Esc', marks:'•'},
+  {id:'section', label:'Sec', marks:'••'},
+  {id:'platoon', label:'Sec+', marks:'•••'},
+  {id:'company', label:'Cie', marks:'I'},
+  {id:'battalion', label:'Btn', marks:'II'},
+  {id:'regiment', label:'Rgt', marks:'III'},
+  {id:'brigade', label:'Bde', marks:'X'},
+  {id:'division', label:'Div', marks:'XX'},
+  {id:'corps', label:'CA', marks:'XXX'},
+  {id:'army', label:'Armée', marks:'XXXX'},
+  {id:'army_group', label:'GA', marks:'XXXXX'},
+];
+
+const AFF_COLORS = {
+  friend:'#4A90D9', hostile:'#D94A4A', neutral:'#4AD94A', unknown:'#D9D94A'
+};
+const AFF_FRAMES = {
+  friend:'rect', hostile:'diamond', neutral:'rect', unknown:'clover'
+};
+
+// ═══════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════
+let currentAff = 'friend';
+let placedUnits = [];
+let selectedUnit = null;
+let unitIdCounter = 0;
+let basemapIndex = 0;
+
+// ═══════════════════════════════════════════
+// SVG SYMBOL RENDERER
+// ═══════════════════════════════════════════
+function renderSymbolSVG(symId, aff, echelon, size=64) {
+  const sym = SYMBOLS.find(s=>s.id===symId);
+  if(!sym) return '';
+  const c = AFF_COLORS[aff]||AFF_COLORS.friend;
+  const fill = c+'33';
+  const w=size, h=size;
+  const cx=w/2, cy=h/2;
+  const fw=w*0.7, fh=h*0.45;
+  const fx=cx-fw/2, fy=cy-fh/2+2;
+
+  let frame='';
+  if(aff==='hostile'){
+    // Diamond frame for hostile
+    frame=`<polygon points="${cx},${fy-fh*0.15} ${cx+fw/2+4},${cy+2} ${cx},${fy+fh+fh*0.15} ${cx-fw/2-4},${cy+2}" fill="${fill}" stroke="${c}" stroke-width="1.5"/>`;
+  } else if(aff==='unknown'){
+    // Clover/quatrefoil approximation
+    const r=fw*0.38;
+    frame=`<rect x="${fx-2}" y="${fy-2}" width="${fw+4}" height="${fh+4}" rx="${r}" fill="${fill}" stroke="${c}" stroke-width="1.5"/>`;
+  } else {
+    // Rectangle for friend/neutral
+    frame=`<rect x="${fx}" y="${fy}" width="${fw}" height="${fh}" fill="${fill}" stroke="${c}" stroke-width="1.5"/>`;
+  }
+
+  // Icon inside frame
+  let icon = renderIcon(sym.icon, cx, cy+2, fw*0.35, c);
+
+  // Echelon marks on top
+  let echMark='';
+  if(echelon){
+    const ech = ECHELONS.find(e=>e.id===echelon);
+    if(ech){
+      echMark=`<text x="${cx}" y="${fy-3}" text-anchor="middle" fill="${c}" font-family="IBM Plex Mono,monospace" font-size="${size*0.16}" font-weight="500">${ech.marks}</text>`;
+    }
+  }
+
+  return `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">${frame}${icon}${echMark}</svg>`;
+}
+
+function renderIcon(icon, cx, cy, r, c) {
+  const sw=1.3;
+  switch(icon){
+    // Infantry: X (saltire/cross)
+    case 'cross': return `<line x1="${cx-r}" y1="${cy-r}" x2="${cx+r}" y2="${cy+r}" stroke="${c}" stroke-width="${sw}"/><line x1="${cx+r}" y1="${cy-r}" x2="${cx-r}" y2="${cy+r}" stroke="${c}" stroke-width="${sw}"/>`;
+    case 'cross_mech': return `<line x1="${cx-r}" y1="${cy-r}" x2="${cx+r}" y2="${cy+r}" stroke="${c}" stroke-width="${sw}"/><line x1="${cx+r}" y1="${cy-r}" x2="${cx-r}" y2="${cy+r}" stroke="${c}" stroke-width="${sw}"/><ellipse cx="${cx}" cy="${cy+r+3}" rx="${r*0.7}" ry="2.5" fill="none" stroke="${c}" stroke-width="1"/>`;
+    case 'cross_mot': return `<line x1="${cx-r}" y1="${cy-r}" x2="${cx+r}" y2="${cy+r}" stroke="${c}" stroke-width="${sw}"/><line x1="${cx+r}" y1="${cy-r}" x2="${cx-r}" y2="${cy+r}" stroke="${c}" stroke-width="${sw}"/><circle cx="${cx}" cy="${cy+r+3}" r="2.5" fill="none" stroke="${c}" stroke-width="1"/>`;
+    case 'cross_air': return `<line x1="${cx-r}" y1="${cy-r}" x2="${cx+r}" y2="${cy+r}" stroke="${c}" stroke-width="${sw}"/><line x1="${cx+r}" y1="${cy-r}" x2="${cx-r}" y2="${cy+r}" stroke="${c}" stroke-width="${sw}"/><path d="M${cx-r*0.6},${cy-r-5} Q${cx},${cy-r-10} ${cx+r*0.6},${cy-r-5}" fill="none" stroke="${c}" stroke-width="1"/>`;
+    case 'cross_mtn': return `<line x1="${cx-r}" y1="${cy-r}" x2="${cx+r}" y2="${cy+r}" stroke="${c}" stroke-width="${sw}"/><line x1="${cx+r}" y1="${cy-r}" x2="${cx-r}" y2="${cy+r}" stroke="${c}" stroke-width="${sw}"/><path d="M${cx-r*0.5},${cy+r*0.4} L${cx},${cy-r*0.5} L${cx+r*0.5},${cy+r*0.4}" fill="none" stroke="${c}" stroke-width="1"/>`;
+    case 'cross_mar': return `<line x1="${cx-r}" y1="${cy-r}" x2="${cx+r}" y2="${cy+r}" stroke="${c}" stroke-width="${sw}"/><line x1="${cx+r}" y1="${cy-r}" x2="${cx-r}" y2="${cy+r}" stroke="${c}" stroke-width="${sw}"/><path d="M${cx-r},${cy+r*0.3} Q${cx-r*0.5},${cy} ${cx},${cy+r*0.3} Q${cx+r*0.5},${cy+r*0.6} ${cx+r},${cy+r*0.3}" fill="none" stroke="${c}" stroke-width="0.8"/>`;
+    // Armor: diagonal
+    case 'diag': return `<line x1="${cx-r}" y1="${cy-r}" x2="${cx+r}" y2="${cy+r}" stroke="${c}" stroke-width="${sw}"/>`;
+    case 'diag_recon': return `<line x1="${cx-r}" y1="${cy-r}" x2="${cx+r}" y2="${cy+r}" stroke="${c}" stroke-width="${sw}"/><line x1="${cx-r}" y1="${cy}" x2="${cx+r}" y2="${cy}" stroke="${c}" stroke-width="0.8" stroke-dasharray="3 2"/>`;
+    case 'cav': return `<line x1="${cx-r}" y1="${cy+r}" x2="${cx+r}" y2="${cy-r}" stroke="${c}" stroke-width="${sw}"/>`;
+    // Artillery: dot
+    case 'dot': return `<circle cx="${cx}" cy="${cy}" r="${r*0.35}" fill="${c}"/>`;
+    case 'dot_sp': return `<circle cx="${cx}" cy="${cy}" r="${r*0.35}" fill="${c}"/><ellipse cx="${cx}" cy="${cy+r+3}" rx="${r*0.7}" ry="2.5" fill="none" stroke="${c}" stroke-width="1"/>`;
+    case 'dot_rocket': return `<circle cx="${cx}" cy="${cy}" r="${r*0.35}" fill="${c}"/><line x1="${cx}" y1="${cy-r}" x2="${cx}" y2="${cy-r*0.5}" stroke="${c}" stroke-width="1.5"/>`;
+    case 'mlrs': return `<circle cx="${cx-r*0.3}" cy="${cy}" r="${r*0.25}" fill="${c}"/><circle cx="${cx+r*0.3}" cy="${cy}" r="${r*0.25}" fill="${c}"/>`;
+    case 'mortar': return `<circle cx="${cx}" cy="${cy-r*0.2}" r="${r*0.3}" fill="none" stroke="${c}" stroke-width="1.2"/><line x1="${cx}" y1="${cy+r*0.1}" x2="${cx}" y2="${cy+r*0.7}" stroke="${c}" stroke-width="1.2"/>`;
+    // AD
+    case 'adaa': return `<path d="M${cx-r},${cy+r*0.3} L${cx},${cy-r*0.5} L${cx+r},${cy+r*0.3}" fill="none" stroke="${c}" stroke-width="${sw}"/>`;
+    case 'sam': return `<path d="M${cx-r},${cy+r*0.3} L${cx},${cy-r*0.5} L${cx+r},${cy+r*0.3}" fill="none" stroke="${c}" stroke-width="${sw}"/><circle cx="${cx}" cy="${cy-r*0.5}" r="2" fill="${c}"/>`;
+    // Engineer
+    case 'eng': return `<text x="${cx}" y="${cy+r*0.35}" text-anchor="middle" fill="${c}" font-family="IBM Plex Mono" font-size="${r*1.2}" font-weight="500">E</text>`;
+    case 'bridge': return `<path d="M${cx-r},${cy+r*0.3} Q${cx},${cy-r*0.6} ${cx+r},${cy+r*0.3}" fill="none" stroke="${c}" stroke-width="${sw}"/>`;
+    // Signals
+    case 'sig': return `<path d="M${cx-r*0.8},${cy} Q${cx-r*0.4},${cy-r*0.8} ${cx},${cy} Q${cx+r*0.4},${cy+r*0.8} ${cx+r*0.8},${cy}" fill="none" stroke="${c}" stroke-width="${sw}"/>`;
+    case 'ew': return `<path d="M${cx-r*0.8},${cy} Q${cx-r*0.4},${cy-r*0.8} ${cx},${cy} Q${cx+r*0.4},${cy+r*0.8} ${cx+r*0.8},${cy}" fill="none" stroke="${c}" stroke-width="${sw}"/><line x1="${cx}" y1="${cy-r*0.6}" x2="${cx}" y2="${cy+r*0.6}" stroke="${c}" stroke-width="0.8"/>`;
+    // Logistics
+    case 'supply': return `<text x="${cx}" y="${cy+r*0.35}" text-anchor="middle" fill="${c}" font-family="IBM Plex Mono" font-size="${r}" font-weight="500">S</text>`;
+    case 'maint': return `<text x="${cx}" y="${cy+r*0.35}" text-anchor="middle" fill="${c}" font-family="IBM Plex Mono" font-size="${r}" font-weight="500">⚙</text>`;
+    case 'med': return `<line x1="${cx}" y1="${cy-r*0.6}" x2="${cx}" y2="${cy+r*0.6}" stroke="${c}" stroke-width="${sw}"/><line x1="${cx-r*0.6}" y1="${cy}" x2="${cx+r*0.6}" y2="${cy}" stroke="${c}" stroke-width="${sw}"/>`;
+    case 'trans': return `<circle cx="${cx-r*0.3}" cy="${cy+r*0.3}" r="${r*0.2}" fill="none" stroke="${c}" stroke-width="1"/><circle cx="${cx+r*0.3}" cy="${cy+r*0.3}" r="${r*0.2}" fill="none" stroke="${c}" stroke-width="1"/><line x1="${cx-r*0.5}" y1="${cy-r*0.2}" x2="${cx+r*0.5}" y2="${cy-r*0.2}" stroke="${c}" stroke-width="1"/>`;
+    // Aviation
+    case 'avn': return `<path d="M${cx},${cy-r*0.5} L${cx+r*0.8},${cy+r*0.4} L${cx-r*0.8},${cy+r*0.4} Z" fill="none" stroke="${c}" stroke-width="${sw}"/>`;
+    case 'avn_atk': return `<path d="M${cx},${cy-r*0.5} L${cx+r*0.8},${cy+r*0.4} L${cx-r*0.8},${cy+r*0.4} Z" fill="none" stroke="${c}" stroke-width="${sw}"/><line x1="${cx-r*0.4}" y1="${cy-r*0.1}" x2="${cx+r*0.4}" y2="${cy+r*0.3}" stroke="${c}" stroke-width="0.8"/>`;
+    // HQ
+    case 'hq': return `<text x="${cx}" y="${cy+r*0.35}" text-anchor="middle" fill="${c}" font-family="IBM Plex Mono" font-size="${r*1.1}" font-weight="700">HQ</text>`;
+    case 'cmd': return `<text x="${cx}" y="${cy+r*0.35}" text-anchor="middle" fill="${c}" font-family="IBM Plex Mono" font-size="${r*0.9}" font-weight="500">CP</text>`;
+    // Intel
+    case 'intel': return `<text x="${cx}" y="${cy+r*0.35}" text-anchor="middle" fill="${c}" font-family="IBM Plex Mono" font-size="${r}" font-weight="500">i</text>`;
+    case 'mp': return `<text x="${cx}" y="${cy+r*0.35}" text-anchor="middle" fill="${c}" font-family="IBM Plex Mono" font-size="${r}" font-weight="500">MP</text>`;
+    // NBC
+    case 'nbc': return `<circle cx="${cx}" cy="${cy}" r="${r*0.4}" fill="none" stroke="${c}" stroke-width="${sw}"/><line x1="${cx}" y1="${cy-r*0.4}" x2="${cx}" y2="${cy-r*0.8}" stroke="${c}" stroke-width="1"/><line x1="${cx-r*0.35}" y1="${cy+r*0.2}" x2="${cx-r*0.7}" y2="${cy+r*0.5}" stroke="${c}" stroke-width="1"/><line x1="${cx+r*0.35}" y1="${cy+r*0.2}" x2="${cx+r*0.7}" y2="${cy+r*0.5}" stroke="${c}" stroke-width="1"/>`;
+    // AT
+    case 'at': return `<line x1="${cx-r}" y1="${cy+r*0.3}" x2="${cx}" y2="${cy-r*0.5}" stroke="${c}" stroke-width="${sw}"/><line x1="${cx}" y1="${cy-r*0.5}" x2="${cx+r}" y2="${cy+r*0.3}" stroke="${c}" stroke-width="${sw}"/><line x1="${cx-r*0.6}" y1="${cy}" x2="${cx+r*0.6}" y2="${cy}" stroke="${c}" stroke-width="0.8"/>`;
+    case 'at_msl': return `<line x1="${cx-r}" y1="${cy+r*0.3}" x2="${cx}" y2="${cy-r*0.5}" stroke="${c}" stroke-width="${sw}"/><line x1="${cx}" y1="${cy-r*0.5}" x2="${cx+r}" y2="${cy+r*0.3}" stroke="${c}" stroke-width="${sw}"/><circle cx="${cx}" cy="${cy-r*0.5}" r="2" fill="${c}"/>`;
+    // Naval
+    case 'naval': return `<path d="M${cx-r*0.8},${cy} Q${cx-r*0.4},${cy-r*0.6} ${cx},${cy} Q${cx+r*0.4},${cy+r*0.6} ${cx+r*0.8},${cy}" fill="none" stroke="${c}" stroke-width="1.3"/><line x1="${cx}" y1="${cy-r*0.5}" x2="${cx}" y2="${cy+r*0.5}" stroke="${c}" stroke-width="0.8"/>`;
+    default: return `<circle cx="${cx}" cy="${cy}" r="${r*0.3}" fill="${c}"/>`;
+  }
+}
+
+// ═══════════════════════════════════════════
+// BUILD SIDEBAR
+// ═══════════════════════════════════════════
+function buildSidebar(){
+  const list = document.getElementById('sym-list');
+  const cats = {};
+  SYMBOLS.forEach(s=>{
+    if(!cats[s.cat]) cats[s.cat]=[];
+    cats[s.cat].push(s);
+  });
+  let html='';
+  for(const [cat, syms] of Object.entries(cats)){
+    html+=`<div class="cat-header" onclick="this.classList.toggle('open')"><span class="arrow">▶</span> ${cat}</div><div class="cat-items">`;
+    syms.forEach(s=>{
+      const svg = renderSymbolSVG(s.id, currentAff, 'battalion', 36);
+      html+=`<div class="sym-item" data-id="${s.id}" onclick="startPlacing('${s.id}')"><div class="sym-icon">${svg}</div><div class="sym-label">${s.label}<small>${s.id.toUpperCase()}</small></div></div>`;
+    });
+    html+=`</div>`;
+  }
+  list.innerHTML=html;
+  // Open first category
+  const first = list.querySelector('.cat-header');
+  if(first) first.classList.add('open');
+}
+
+function filterSymbols(q){
+  q = q.toLowerCase();
+  document.querySelectorAll('.sym-item').forEach(el=>{
+    const txt = el.querySelector('.sym-label').textContent.toLowerCase();
+    el.style.display = txt.includes(q)?'':'none';
+  });
+  // Show all categories when filtering
+  if(q) document.querySelectorAll('.cat-header').forEach(h=>h.classList.add('open'));
+}
+
+function setAffiliation(aff){
+  currentAff=aff;
+  document.querySelectorAll('.aff-tab').forEach(t=>t.classList.toggle('active',t.dataset.aff===aff));
+  buildSidebar();
+}
+
+// ═══════════════════════════════════════════
+// MAP
+// ═══════════════════════════════════════════
+const basemaps = [
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap', maxZoom:19}),
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{attribution:'© Esri',maxZoom:18}),
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',{attribution:'© Esri',maxZoom:18}),
+];
+
+const map = L.map('map',{zoomControl:true}).setView([30.05,31.25],6);
+basemaps[0].addTo(map);
+
+map.on('mousemove',e=>{
+  document.getElementById('sb-coords').textContent=`LAT ${e.latlng.lat.toFixed(5)} · LON ${e.latlng.lng.toFixed(5)}`;
+});
+map.on('zoomend',()=>{
+  document.getElementById('sb-zoom').textContent=`ZOOM: ${map.getZoom()}`;
+});
+map.fireEvent('zoomend');
+
+function cycleBasemap(){
+  basemaps[basemapIndex].remove();
+  basemapIndex=(basemapIndex+1)%basemaps.length;
+  basemaps[basemapIndex].addTo(map);
+  basemaps[basemapIndex].bringToBack();
+}
+
+// ═══════════════════════════════════════════
+// PLACING UNITS
+// ═══════════════════════════════════════════
+let placingSymId = null;
+
+function startPlacing(symId){
+  placingSymId=symId;
+  map.getContainer().style.cursor='crosshair';
+  map.once('click', onMapPlace);
+}
+
+function onMapPlace(e){
+  if(!placingSymId) return;
+  const unit = {
+    id: ++unitIdCounter,
+    symId: placingSymId,
+    aff: currentAff,
+    echelon: 'battalion',
+    name: '',
+    uid: '',
+    reinf: '',
+    lat: e.latlng.lat,
+    lng: e.latlng.lng,
+    marker: null
+  };
+  addUnitToMap(unit);
+  placedUnits.push(unit);
+  placingSymId=null;
+  map.getContainer().style.cursor='';
+  updateUnitCount();
+  selectUnit(unit);
+}
+
+function addUnitToMap(unit){
+  const size=48;
+  const svg = renderSymbolSVG(unit.symId, unit.aff, unit.echelon, size);
+  const icon = L.divIcon({
+    html:`<div style="position:relative">${svg}${unit.name?`<div style="position:absolute;top:${size}px;left:50%;transform:translateX(-50%);white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:9px;color:${AFF_COLORS[unit.aff]};text-shadow:0 0 3px rgba(0,0,0,.8);letter-spacing:.06em">${unit.uid||unit.name}</div>`:''}</div>`,
+    iconSize:[size,size],
+    iconAnchor:[size/2,size/2],
+    className:''
+  });
+  if(unit.marker) map.removeLayer(unit.marker);
+  unit.marker = L.marker([unit.lat,unit.lng],{icon,draggable:true}).addTo(map);
+  unit.marker.on('click',()=>selectUnit(unit));
+  unit.marker.on('dragend',e=>{
+    unit.lat=e.target.getLatLng().lat;
+    unit.lng=e.target.getLatLng().lng;
+  });
+}
+
+function selectUnit(unit){
+  selectedUnit=unit;
+  const panel=document.getElementById('detail-panel');
+  panel.classList.add('open');
+  document.getElementById('d-name').value=unit.name;
+  document.getElementById('d-uid').value=unit.uid;
+  document.getElementById('d-aff').value=unit.aff;
+  document.getElementById('d-reinf').value=unit.reinf||'';
+
+  // Echelon row
+  const echRow=document.getElementById('d-echelon');
+  echRow.innerHTML=ECHELONS.map(e=>`<span class="ech-badge${unit.echelon===e.id?' active':''}" onclick="setEchelon('${e.id}')">${e.label}</span>`).join('');
+
+  // Preview
+  document.getElementById('detail-preview').innerHTML=renderSymbolSVG(unit.symId,unit.aff,unit.echelon,72);
+}
+
+function setEchelon(eid){
+  if(!selectedUnit) return;
+  selectedUnit.echelon=eid;
+  addUnitToMap(selectedUnit);
+  selectUnit(selectedUnit);
+}
+
+function updateUnit(){
+  if(!selectedUnit) return;
+  selectedUnit.name=document.getElementById('d-name').value;
+  selectedUnit.uid=document.getElementById('d-uid').value;
+  selectedUnit.aff=document.getElementById('d-aff').value;
+  selectedUnit.reinf=document.getElementById('d-reinf').value;
+  addUnitToMap(selectedUnit);
+  document.getElementById('detail-preview').innerHTML=renderSymbolSVG(selectedUnit.symId,selectedUnit.aff,selectedUnit.echelon,72);
+}
+
+function closeDetail(){
+  document.getElementById('detail-panel').classList.remove('open');
+  selectedUnit=null;
+}
+
+function deleteUnit(){
+  if(!selectedUnit) return;
+  map.removeLayer(selectedUnit.marker);
+  placedUnits=placedUnits.filter(u=>u.id!==selectedUnit.id);
+  closeDetail();
+  updateUnitCount();
+}
+
+function duplicateUnit(){
+  if(!selectedUnit) return;
+  const u={...selectedUnit, id:++unitIdCounter, lat:selectedUnit.lat+0.05, lng:selectedUnit.lng+0.05, marker:null};
+  addUnitToMap(u);
+  placedUnits.push(u);
+  updateUnitCount();
+  selectUnit(u);
+}
+
+function updateUnitCount(){
+  document.getElementById('sb-units').textContent=`UNITÉS: ${placedUnits.length}`;
+}
+
+// ═══════════════════════════════════════════
+// EXPORT / IMPORT
+// ═══════════════════════════════════════════
+function exportJSON(){
+  const data=placedUnits.map(u=>({symId:u.symId,aff:u.aff,echelon:u.echelon,name:u.name,uid:u.uid,reinf:u.reinf,lat:u.lat,lng:u.lng}));
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='maparmy_export.json';
+  a.click();
+}
+
+function importJSON(){
+  document.getElementById('import-input').click();
+}
+
+function handleImport(e){
+  const file=e.target.files[0];
+  if(!file) return;
+  const reader=new FileReader();
+  reader.onload=ev=>{
+    try{
+      const data=JSON.parse(ev.target.result);
+      clearAll();
+      data.forEach(d=>{
+        const unit={id:++unitIdCounter,...d,marker:null};
+        addUnitToMap(unit);
+        placedUnits.push(unit);
+      });
+      updateUnitCount();
+      if(placedUnits.length){
+        const bounds=L.latLngBounds(placedUnits.map(u=>[u.lat,u.lng]));
+        map.fitBounds(bounds,{padding:[40,40]});
+      }
+    }catch(err){alert('Erreur de lecture du fichier JSON');}
+  };
+  reader.readAsText(file);
+  e.target.value='';
+}
+
+function clearAll(){
+  placedUnits.forEach(u=>map.removeLayer(u.marker));
+  placedUnits=[];
+  selectedUnit=null;
+  closeDetail();
+  updateUnitCount();
+}
+
+// ═══════════════════════════════════════════
+// GRID & MEASURE (stubs)
+// ═══════════════════════════════════════════
+let gridLayer=null;
+function toggleGrid(){
+  const btn=document.getElementById('btn-grid');
+  if(gridLayer){map.removeLayer(gridLayer);gridLayer=null;btn.classList.remove('active');return;}
+  btn.classList.add('active');
+  gridLayer=L.layerGroup();
+  // Simple lat/lon grid
+  const b=map.getBounds();
+  const step=Math.max(1,Math.round((b.getNorth()-b.getSouth())/8));
+  for(let lat=Math.floor(b.getSouth()/step)*step;lat<=b.getNorth();lat+=step){
+    gridLayer.addLayer(L.polyline([[lat,b.getWest()],[lat,b.getEast()]],{color:'rgba(232,92,13,0.2)',weight:1,dashArray:'4 4'}));
+  }
+  for(let lng=Math.floor(b.getWest()/step)*step;lng<=b.getEast();lng+=step){
+    gridLayer.addLayer(L.polyline([[b.getSouth(),lng],[b.getNorth(),lng]],{color:'rgba(232,92,13,0.2)',weight:1,dashArray:'4 4'}));
+  }
+  gridLayer.addTo(map);
+}
+
+let measuring=false,measurePts=[],measureLine=null,measureMarkers=[];
+function toggleMeasure(){
+  const btn=document.getElementById('btn-measure');
+  if(measuring){
+    measuring=false;btn.classList.remove('active');
+    if(measureLine)map.removeLayer(measureLine);
+    measureMarkers.forEach(m=>map.removeLayer(m));
+    measurePts=[];measureMarkers=[];measureLine=null;
+    map.getContainer().style.cursor='';
+    map.off('click',onMeasureClick);
+    return;
+  }
+  measuring=true;btn.classList.add('active');
+  map.getContainer().style.cursor='crosshair';
+  map.on('click',onMeasureClick);
+}
+function onMeasureClick(e){
+  measurePts.push(e.latlng);
+  const m=L.circleMarker(e.latlng,{radius:4,color:'#E85C0D',fillColor:'#E85C0D',fillOpacity:1}).addTo(map);
+  measureMarkers.push(m);
+  if(measurePts.length>1){
+    if(measureLine)map.removeLayer(measureLine);
+    measureLine=L.polyline(measurePts,{color:'#E85C0D',weight:2,dashArray:'6 4'}).addTo(map);
+    let total=0;
+    for(let i=1;i<measurePts.length;i++) total+=measurePts[i-1].distanceTo(measurePts[i]);
+    const label=total>1000?(total/1000).toFixed(2)+' km':Math.round(total)+' m';
+    m.bindTooltip(label,{permanent:true,className:'',direction:'top'}).openTooltip();
+  }
+}
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+buildSidebar();
+</script>
+</body>
+</html>
