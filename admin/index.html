@@ -1003,9 +1003,23 @@
       <div id="emb-preview" class="emb-preview-box" style="min-height:60px;"></div>
     </div>
 
-    <!-- WEBHOOK SEND BAR -->
-    <div class="emb-send-bar">
-      <div class="emb-wh-row">
+    <!-- SEND BAR -->
+    <div style="margin-top:14px;background:var(--card-bg);border:1px solid var(--border);border-top:2px solid rgba(34,184,154,.35);">
+
+      <!-- Send mode selector -->
+      <div style="display:flex;gap:0;border-bottom:1px solid var(--border);">
+        <button id="emb-smode-wh" onclick="embSetSendMode('webhook')"
+          style="flex:1;background:rgba(34,184,154,.1);border:none;border-right:1px solid var(--border);color:#22B89A;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;padding:8px 12px;cursor:pointer;transition:all .2s;text-transform:uppercase;">
+          &#128268; Webhook (Embeds classiques)
+        </button>
+        <button id="emb-smode-bot" onclick="embSetSendMode('bot')"
+          style="flex:1;background:transparent;border:none;color:var(--text3);font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;padding:8px 12px;cursor:pointer;transition:all .2s;text-transform:uppercase;">
+          &#129302; Bot Token (Components V2)
+        </button>
+      </div>
+
+      <!-- WEBHOOK MODE -->
+      <div id="emb-sbar-webhook" style="padding:12px 14px;display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;">
         <div class="fg" style="flex:2;min-width:220px;">
           <label class="fl">Webhook URL</label>
           <div style="display:flex;gap:6px;margin-top:3px;">
@@ -1013,22 +1027,59 @@
             <button class="btn btn-ghost btn-sm" onclick="var el=document.getElementById('emb-webhook');el.type=el.type==='password'?'text':'password';">&#128065;</button>
           </div>
         </div>
-        <div class="fg" style="flex:1;min-width:120px;">
+        <div class="fg" style="flex:1;min-width:110px;">
           <label class="fl">Thread ID (optionnel)</label>
           <input type="text" class="fi" id="emb-thread-id" oninput="embSaveWebhook()" placeholder="12345678…" style="margin-top:3px;font-size:11px;">
         </div>
-        <div class="fg" style="flex:1;min-width:120px;">
-          <label class="fl">Username bot (optionnel)</label>
+        <div class="fg" style="flex:1;min-width:110px;">
+          <label class="fl">Username (optionnel)</label>
           <input type="text" class="fi" id="emb-wh-username" placeholder="BOT NAME…" style="margin-top:3px;font-size:11px;">
         </div>
-        <div class="fg" style="flex:0;min-width:80px;align-self:flex-end;">
-          <div style="display:flex;align-items:center;gap:5px;margin-bottom:4px;"><div class="pat-dot no" id="emb-wh-dot"></div><span id="emb-wh-txt" style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);">Non configuré</span></div>
+        <div style="display:flex;align-items:center;gap:5px;margin-bottom:2px;flex-shrink:0;">
+          <div class="pat-dot no" id="emb-wh-dot"></div>
+          <span id="emb-wh-txt" style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);">Non configuré</span>
+        </div>
+        <div style="display:flex;gap:8px;align-self:flex-end;flex-wrap:wrap;margin-left:auto;">
+          <button class="btn btn-ghost btn-sm" onclick="embTestWebhook()">&#128268; Test</button>
+          <button class="btn btn-sm" id="emb-send-btn-wh" onclick="embSend('webhook')" style="background:rgba(34,184,154,.12);border-color:rgba(34,184,154,.5);color:#22B89A;white-space:nowrap;">&#128640; Envoyer</button>
         </div>
       </div>
-      <div style="display:flex;gap:8px;align-self:flex-end;flex-wrap:wrap;">
-        <button class="btn btn-ghost btn-sm" onclick="embTestWebhook()">&#128268; Test</button>
-        <button class="btn btn-sm" id="emb-send-btn" onclick="embSend()" style="background:rgba(88,101,242,.15);border-color:rgba(88,101,242,.6);color:#8b9bff;white-space:nowrap;">&#128640; Envoyer</button>
+
+      <!-- BOT TOKEN MODE -->
+      <div id="emb-sbar-bot" style="display:none;padding:12px 14px;">
+        <!-- Warning banner -->
+        <div style="background:rgba(88,101,242,.08);border:1px solid rgba(88,101,242,.25);border-left:3px solid #8b9bff;padding:8px 12px;margin-bottom:12px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(139,155,255,.9);line-height:1.7;letter-spacing:.03em;">
+          <strong style="display:block;margin-bottom:3px;letter-spacing:.08em;">COMPONENTS V2 — MODE BOT API</strong>
+          Les Components V2 (<code>flags: 32</code>) ne fonctionnent pas avec les webhooks classiques.<br>
+          Utilisez un <strong>Bot Token</strong> + <strong>Channel ID</strong> → <code>POST /channels/{id}/messages</code>.
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap;">
+          <div class="fg" style="flex:2;min-width:220px;">
+            <label class="fl">Bot Token</label>
+            <div style="display:flex;gap:6px;margin-top:3px;">
+              <input type="password" class="pat-in" id="emb-bot-token" placeholder="Bot MTA…" oninput="embSaveBotCreds()" style="font-size:10px;flex:1;">
+              <button class="btn btn-ghost btn-sm" onclick="var el=document.getElementById('emb-bot-token');el.type=el.type==='password'?'text':'password';">&#128065;</button>
+            </div>
+          </div>
+          <div class="fg" style="flex:1;min-width:140px;">
+            <label class="fl">Channel ID</label>
+            <input type="text" class="fi" id="emb-channel-id" oninput="embSaveBotCreds()" placeholder="1234567890…" style="margin-top:3px;font-size:11px;">
+          </div>
+          <div class="fg" style="flex:1;min-width:110px;">
+            <label class="fl">Message Reference (Reply, optionnel)</label>
+            <input type="text" class="fi" id="emb-reply-id" placeholder="ID message…" style="margin-top:3px;font-size:11px;">
+          </div>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:2px;flex-shrink:0;">
+            <div class="pat-dot no" id="emb-bot-dot"></div>
+            <span id="emb-bot-txt" style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);">Non configuré</span>
+          </div>
+          <div style="display:flex;gap:8px;align-self:flex-end;flex-wrap:wrap;margin-left:auto;">
+            <button class="btn btn-ghost btn-sm" onclick="embTestBot()">&#129302; Test</button>
+            <button class="btn btn-sm" id="emb-send-btn-bot" onclick="embSend('bot')" style="background:rgba(88,101,242,.15);border-color:rgba(88,101,242,.6);color:#8b9bff;white-space:nowrap;">&#128640; Envoyer (Bot)</button>
+          </div>
+        </div>
       </div>
+
     </div>
 
   </div><!-- /sec-embed -->
@@ -2787,7 +2838,8 @@ function embUid(){return 'e'+Math.random().toString(36).slice(2,8)+Date.now().to
 
 // ── INIT ──
 function initEmbed(){
-  embLoadAll();embLastTA=null;embRefreshSelect();embLoadWebhook();
+  embLoadAll();embLastTA=null;embRefreshSelect();embLoadWebhook();embLoadBotCreds();
+  embSetSendMode('webhook');
   var ids=Object.keys(embDocs).filter(function(k){var d=embDocs[k];return d&&d._type!=='folder';});
   if(ids.length&&!embCurrentId){ids.sort(function(a,b){return (embDocs[b].updated||0)-(embDocs[a].updated||0);});embOpenDoc(ids[0]);}
   else if(embCurrentId&&embDocs[embCurrentId]){embOpenDoc(embCurrentId);}
@@ -2847,6 +2899,9 @@ function embSetMode(mode){
     var b=document.getElementById('emb-mode-'+m),p=document.getElementById('emb-panel-'+m);
     if(b)b.classList.toggle('active',m===mode);if(p)p.classList.toggle('active',m===mode);
   });
+  // Auto-suggest send mode
+  if(mode==='cv2')embSetSendMode('bot');
+  else embSetSendMode('webhook');
   embUpdateJSON();embUpdatePreview();
 }
 
@@ -3218,6 +3273,18 @@ function embInsert(chars){
   ta.focus();ta.dispatchEvent(new Event('input',{bubbles:true}));
 }
 
+// ── SEND MODE ──
+var embSendMode='webhook';
+function embSetSendMode(mode){
+  embSendMode=mode;
+  var wb=document.getElementById('emb-smode-wh'),bb=document.getElementById('emb-smode-bot');
+  var ws=document.getElementById('emb-sbar-webhook'),bs=document.getElementById('emb-sbar-bot');
+  if(wb){wb.style.background=mode==='webhook'?'rgba(34,184,154,.1)':'transparent';wb.style.color=mode==='webhook'?'#22B89A':'var(--text3)';}
+  if(bb){bb.style.background=mode==='bot'?'rgba(88,101,242,.12)':'transparent';bb.style.color=mode==='bot'?'#8b9bff':'var(--text3)';}
+  if(ws)ws.style.display=mode==='webhook'?'flex':'none';
+  if(bs)bs.style.display=mode==='bot'?'block':'none';
+}
+
 // ── WEBHOOK ──
 function embSaveWebhook(){
   var wh=document.getElementById('emb-webhook'),tid=document.getElementById('emb-thread-id');
@@ -3234,61 +3301,114 @@ function embLoadWebhook(){
   var te=document.getElementById('emb-thread-id');if(te&&tid)te.value=tid;
   embSaveWebhook();
 }
+
+// ── BOT CREDS ──
+function embSaveBotCreds(){
+  var tok=document.getElementById('emb-bot-token'),ch=document.getElementById('emb-channel-id');
+  var tv=tok?tok.value.trim():'',cv=ch?ch.value.trim():'';
+  if(tv)localStorage.setItem('ukn_emb_bot_token',tv);else localStorage.removeItem('ukn_emb_bot_token');
+  if(cv)localStorage.setItem('ukn_emb_channel_id',cv);else localStorage.removeItem('ukn_emb_channel_id');
+  var dot=document.getElementById('emb-bot-dot'),txt=document.getElementById('emb-bot-txt');
+  var ok=tv&&cv;
+  if(dot)dot.className='pat-dot '+(ok?'ok':'no');
+  if(txt){txt.textContent=ok?'Token + Channel OK':'Incomplet';txt.style.color=ok?'var(--teal-bright)':'';}
+}
+function embLoadBotCreds(){
+  var tv=localStorage.getItem('ukn_emb_bot_token')||'',cv=localStorage.getItem('ukn_emb_channel_id')||'';
+  var te=document.getElementById('emb-bot-token');if(te&&tv)te.value=tv;
+  var ce=document.getElementById('emb-channel-id');if(ce&&cv)ce.value=cv;
+  embSaveBotCreds();
+}
+
+// ── TEST ──
 async function embTestWebhook(){
   var wh=document.getElementById('emb-webhook'),val=wh?wh.value.trim():'';
   if(!val){toast('Configurez l\'URL du webhook.','err');return;}
   var tid=document.getElementById('emb-thread-id'),tidVal=tid?tid.value.trim():'';
   var url=val+'?wait=true'+(tidVal?'&thread_id='+encodeURIComponent(tidVal):'');
-  try{var r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content:'✅ Test webhook — Espace Embed UKN opérationnel.'})});
-    if(r.ok||r.status===200||r.status===204){toast('Webhook OK !','ok');}else{var d=await r.json().catch(function(){return{};});toast('Erreur '+r.status+': '+(d.message||''),'err');}
+  try{
+    var r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content:'✅ Test Webhook — Espace Embed UKN.'})});
+    if(r.ok||r.status===200||r.status===204)toast('Webhook OK !','ok');
+    else{var d=await r.json().catch(function(){return{};});toast('Erreur '+r.status+': '+(d.message||'?'),'err');}
   }catch(e){toast('Erreur: '+e.message,'err');}
 }
-async function embSend(){
-  var wh=document.getElementById('emb-webhook'),val=wh?wh.value.trim():'';
-  if(!val){toast('Configurez l\'URL du webhook.','err');return;}
-  var tid=document.getElementById('emb-thread-id'),tidVal=tid?tid.value.trim():'';
-  var btn=document.getElementById('emb-send-btn');if(btn){btn.disabled=true;btn.textContent='⏳ Envoi…';}
-  var url=val+'?wait=true'+(tidVal?'&thread_id='+encodeURIComponent(tidVal):'');
+async function embTestBot(){
+  var tok=document.getElementById('emb-bot-token'),ch=document.getElementById('emb-channel-id');
+  var tv=tok?tok.value.trim():'',cv=ch?ch.value.trim():'';
+  if(!tv||!cv){toast('Token Bot et Channel ID requis.','err');return;}
   try{
-    var payload=embBuildJSON();
-    // Pre-flight validation
-    var errs=embValidatePayload(payload);
-    if(errs.length&&embMode==='cv2'&&(!payload.components||!payload.components.length)){
-      toast('Rien à envoyer : '+errs[0],'err');
-      return;
-    }
-    if(payload.embeds)payload.embeds.forEach(function(e){if(e.timestamp)e.timestamp=new Date().toISOString();});
+    var r=await fetch('https://discord.com/api/v10/channels/'+cv+'/messages',{
+      method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bot '+tv},
+      body:JSON.stringify({content:'✅ Test Bot API — Espace Embed UKN. (Components V2 prêt)'})
+    });
+    if(r.ok||r.status===200)toast('Bot API OK !','ok');
+    else{var d=await r.json().catch(function(){return{};});toast('Erreur '+r.status+': '+(d.message||'?'),'err');}
+  }catch(e){toast('Erreur: '+e.message,'err');}
+}
 
-    var r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+// ── SEND ──
+async function embSend(forceMode){
+  var mode=forceMode||embSendMode;
+  var payload=embBuildJSON();
+
+  // Pre-flight validation
+  var errs=embValidatePayload(payload);
+  if(embMode==='cv2'&&(!payload.components||!payload.components.length)){
+    toast('Aucun composant valide à envoyer. Vérifiez les badges ⚠.','err');return;
+  }
+  if(payload.embeds)payload.embeds.forEach(function(e){if(e.timestamp)e.timestamp=new Date().toISOString();});
+
+  var btnId=mode==='bot'?'emb-send-btn-bot':'emb-send-btn-wh';
+  var btn=document.getElementById(btnId);
+  if(btn){btn.disabled=true;btn.textContent='⏳ Envoi…';}
+
+  try{
+    var r,url;
+    if(mode==='webhook'){
+      var wh=document.getElementById('emb-webhook'),val=wh?wh.value.trim():'';
+      if(!val){toast('Configurez l\'URL du webhook.','err');return;}
+      var tid=document.getElementById('emb-thread-id'),tidVal=tid?tid.value.trim():'';
+      url=val+'?wait=true'+(tidVal?'&thread_id='+encodeURIComponent(tidVal):'');
+      r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    } else {
+      // Bot API
+      var tok=document.getElementById('emb-bot-token'),ch=document.getElementById('emb-channel-id');
+      var tv=tok?tok.value.trim():'',cv=ch?ch.value.trim():'';
+      if(!tv||!cv){toast('Token Bot et Channel ID requis.','err');return;}
+      // Add message reference if reply
+      var replyEl=document.getElementById('emb-reply-id');
+      var replyId=replyEl?replyEl.value.trim():'';
+      if(replyId)payload.message_reference={message_id:replyId};
+      url='https://discord.com/api/v10/channels/'+cv+'/messages';
+      r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bot '+tv},body:JSON.stringify(payload)});
+    }
+
     if(r.status===200||r.status===201||r.status===204||r.ok){
       toast('✅ Message envoyé !','ok');
     } else {
       var txt=await r.text();
       var d={};try{d=JSON.parse(txt);}catch(e2){}
-      // Build detailed error message
       var msg='Erreur '+r.status;
       if(d.message)msg+=' — '+d.message;
       if(d.errors){
-        // Flatten Discord's nested error object
         var flat=[];
         (function flatten(obj,path){
           if(!obj)return;
           if(typeof obj==='object'&&obj._errors){obj._errors.forEach(function(e3){flat.push((path?path+': ':'')+e3.code+' — '+e3.message);});return;}
-          Object.keys(obj).forEach(function(k){flatten(obj[k],path?path+'.'+k:k);});
+          if(typeof obj==='object')Object.keys(obj).forEach(function(k){flatten(obj[k],path?path+'.'+k:k);});
         })(d.errors,'');
-        if(flat.length)msg+='\n\n'+flat.slice(0,6).join('\n');
+        if(flat.length)msg+='\n\n'+flat.slice(0,8).join('\n');
       }
-      // Show in a more visible way
       var jout=document.getElementById('emb-json-out');
       if(jout){
         jout.textContent='── ERREUR DISCORD ──\n'+msg+'\n\n── PAYLOAD ENVOYÉ ──\n'+JSON.stringify(payload,null,2);
         jout.style.color='var(--spice)';
-        setTimeout(function(){jout.style.color='';embUpdateJSON();},8000);
+        setTimeout(function(){jout.style.color='';embUpdateJSON();},10000);
       }
       toast(msg.split('\n')[0],'err');
     }
   }catch(e){toast('Erreur réseau: '+e.message,'err');}
-  finally{if(btn){btn.disabled=false;btn.innerHTML='&#128640; Envoyer';}}
+  finally{if(btn){btn.disabled=false;btn.innerHTML='&#128640; Envoyer'+(mode==='bot'?' (Bot)':'');}}
 }
 
 // ── IMPORT / EXPORT ──
