@@ -3027,9 +3027,13 @@ function embRenderCompCard(c,idx,total,isChild){
 
   var ms=isChild?'margin-bottom:4px;':'margin-bottom:6px;';
   var bs=isChild?'border:1px solid var(--border);border-left:2px solid '+bc+';background:var(--card-bg);':'border:1px solid var(--border2);border-left:3px solid '+bc+';background:var(--card-bg);';
+  // Validity check for visual badge
+  var valid=embBuildCompJSON(c)!==null;
+  var validBadge=valid?'':'<span style="background:rgba(232,92,13,.15);border:1px solid rgba(232,92,13,.4);color:var(--spice);font-family:\'IBM Plex Mono\',monospace;font-size:7px;padding:1px 6px;border-radius:2px;letter-spacing:.08em;">⚠ ignoré à l\'envoi</span>';
   return '<div style="'+bs+ms+'">'
     +'<div style="display:flex;align-items:center;gap:8px;padding:6px 10px;background:rgba(0,0,0,.1);">'
     +'<span style="font-family:\'IBM Plex Mono\',monospace;font-size:8px;padding:2px 7px;border:1px solid '+bc+';border-radius:2px;color:var(--text2);background:rgba(0,0,0,.2);letter-spacing:.06em;flex-shrink:0;">TYPE '+c.type+' · '+label+'</span>'
+    +validBadge
     +(isChild?'<span style="font-family:\'IBM Plex Mono\',monospace;font-size:8px;color:var(--text3);opacity:.5;">↳ '+(idx+1)+'</span>':'<span style="font-family:\'IBM Plex Mono\',monospace;font-size:8px;color:var(--text3);">'+(idx+1)+' / '+total+'</span>')
     +'<div style="flex:1;"></div>'
     +'<div style="display:flex;gap:3px;">'
@@ -3044,9 +3048,13 @@ function embRenderCompCard(c,idx,total,isChild){
 // ── JSON ──
 function embBuildJSON(){
   var payload={};
-  var un=document.getElementById('emb-wh-username');if(un&&un.value.trim())payload.username=un.value.trim();
+  var un=document.getElementById('emb-wh-username');
+  var unVal=un?un.value.trim():'';
+  if(unVal)payload.username=unVal;
+
   if(embMode==='embeds'){
-    var gc=document.getElementById('emb-global-content');if(gc&&gc.value.trim())payload.content=gc.value.trim();
+    var gc=document.getElementById('emb-global-content');
+    if(gc&&gc.value.trim())payload.content=gc.value.trim();
     if(embEmbeds.length)payload.embeds=embEmbeds.map(function(e){
       var em={};
       if(e.color)em.color=parseInt(e.color.replace('#',''),16);
@@ -3054,27 +3062,87 @@ function embBuildJSON(){
       if(e.title){em.title=e.title;if(e.title_url)em.url=e.title_url;}
       if(e.description)em.description=e.description;
       if(e.fields&&e.fields.length)em.fields=e.fields.filter(function(f){return f.name||f.value;}).map(function(f){return {name:f.name||'\u200b',value:f.value||'\u200b',inline:f.inline};});
-      if(e.image)em.image={url:e.image};if(e.thumbnail)em.thumbnail={url:e.thumbnail};
+      if(e.image)em.image={url:e.image};
+      if(e.thumbnail)em.thumbnail={url:e.thumbnail};
       if(e.footer){em.footer={text:e.footer};if(e.footer_icon)em.footer.icon_url=e.footer_icon;}
       if(e.timestamp)em.timestamp=new Date().toISOString();
       return em;
     });
   } else {
-    payload.flags=32;payload.components=embComps.map(embBuildCompJSON).filter(Boolean);
+    // Components V2 — flags:32, NO content/embeds at root
+    payload.flags=32;
+    payload.components=embComps.map(embBuildCompJSON).filter(Boolean);
   }
   return payload;
 }
+
 function embBuildCompJSON(c){
-  if(c.type===10)return {type:10,content:c.content||''};
-  if(c.type===12){var items=(c.items||[]).filter(function(i){return i.url;}).map(function(i){var o={media:{url:i.url}};if(i.desc)o.description=i.desc;return o;});return {type:12,items:items};}
-  if(c.type===14){var s={type:14};if(c.divider)s.divider=true;if(c.spacing)s.spacing=c.spacing;return s;}
-  if(c.type===17){var cc={type:17};if(c.accent_color)cc.accent_color=parseInt(c.accent_color.replace('#',''),16);if(c.spoiler)cc.spoiler=true;cc.components=(c.components||[]).map(embBuildCompJSON).filter(Boolean);return cc;}
+  // Type 10 — Text Display : content must be non-empty
+  if(c.type===10){
+    if(!c.content||!c.content.trim())return null; // skip empty text nodes
+    return {type:10,content:c.content};
+  }
+  // Type 12 — Media Gallery : items must have ≥1 valid URL
+  if(c.type===12){
+    var items=(c.items||[]).filter(function(i){return i.url&&i.url.trim();})
+      .map(function(i){
+        var o={media:{url:i.url.trim()}};
+        if(i.desc&&i.desc.trim())o.description=i.desc.trim();
+        return o;
+      });
+    if(!items.length)return null; // skip gallery with no media
+    return {type:12,items:items};
+  }
+  // Type 14 — Separator : always valid, both fields optional
+  if(c.type===14){
+    var s={type:14};
+    if(c.divider===true)s.divider=true;
+    if(c.spacing===2)s.spacing=2; // only send if explicitly "large"
+    return s;
+  }
+  // Type 17 — Container : components must be non-empty after filtering
+  if(c.type===17){
+    var cc={type:17};
+    // accent_color : only send if non-empty and valid hex
+    if(c.accent_color&&/^#[0-9a-fA-F]{6}$/.test(c.accent_color)){
+      var colorInt=parseInt(c.accent_color.replace('#',''),16);
+      if(colorInt>0)cc.accent_color=colorInt; // skip pure black 0 edge case
+    }
+    if(c.spoiler===true)cc.spoiler=true;
+    var children=(c.components||[]).map(embBuildCompJSON).filter(Boolean);
+    if(!children.length)return null; // Container needs ≥1 child
+    cc.components=children;
+    return cc;
+  }
   return null;
 }
+
+// Validate payload and return array of human-readable errors
+function embValidatePayload(payload){
+  var errs=[];
+  if(embMode==='cv2'){
+    if(!payload.components||!payload.components.length)
+      errs.push('Aucun composant valide — les Text Display vides, Gallery sans média et Container sans enfants sont ignorés.');
+    // Check for common silent drops
+    embComps.forEach(function(c,i){
+      if(c.type===10&&(!c.content||!c.content.trim()))errs.push('Composant '+(i+1)+' (Text Display) : contenu vide — il sera ignoré.');
+      if(c.type===12){var valid=(c.items||[]).filter(function(i){return i.url&&i.url.trim();});if(!valid.length)errs.push('Composant '+(i+1)+' (Media Gallery) : aucun lien média — il sera ignoré.');}
+      if(c.type===17){var ch=(c.components||[]).map(embBuildCompJSON).filter(Boolean);if(!ch.length)errs.push('Composant '+(i+1)+' (Container) : aucun enfant valide — il sera ignoré.');}
+    });
+  }
+  if(embMode==='embeds'&&!payload.embeds&&!payload.content)
+    errs.push('Aucun embed ni contenu à envoyer.');
+  return errs;
+}
+
 function embUpdateJSON(){
   var json=embBuildJSON(),str=JSON.stringify(json,null,2);
   var jout=document.getElementById('emb-json-out');if(jout)jout.textContent=str;
-  var jsz=document.getElementById('emb-json-size');if(jsz)jsz.textContent=str.length+' octets';
+  var jsz=document.getElementById('emb-json-size');
+  if(jsz){
+    var warns=embMode==='cv2'?embValidatePayload(json):[];
+    jsz.innerHTML=str.length+' oct.'+(warns.length?' <span style="color:var(--amber);">⚠ '+warns.length+' avertissement'+(warns.length>1?'s':'')+'</span>':'');
+  }
 }
 function embCopyJSON(){navigator.clipboard.writeText(JSON.stringify(embBuildJSON(),null,2)).then(function(){toast('JSON copié !','ok');}).catch(function(){toast('Erreur copie.','err');});}
 
@@ -3183,11 +3251,43 @@ async function embSend(){
   var url=val+'?wait=true'+(tidVal?'&thread_id='+encodeURIComponent(tidVal):'');
   try{
     var payload=embBuildJSON();
+    // Pre-flight validation
+    var errs=embValidatePayload(payload);
+    if(errs.length&&embMode==='cv2'&&(!payload.components||!payload.components.length)){
+      toast('Rien à envoyer : '+errs[0],'err');
+      return;
+    }
     if(payload.embeds)payload.embeds.forEach(function(e){if(e.timestamp)e.timestamp=new Date().toISOString();});
+
     var r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-    if(r.ok||r.status===200||r.status===204){toast('✅ Message envoyé !','ok');}
-    else{var d=await r.json().catch(function(){return{};});toast('Erreur '+r.status+': '+(d.message||'Erreur inconnue'),'err');}
-  }catch(e){toast('Erreur: '+e.message,'err');}
+    if(r.status===200||r.status===201||r.status===204||r.ok){
+      toast('✅ Message envoyé !','ok');
+    } else {
+      var txt=await r.text();
+      var d={};try{d=JSON.parse(txt);}catch(e2){}
+      // Build detailed error message
+      var msg='Erreur '+r.status;
+      if(d.message)msg+=' — '+d.message;
+      if(d.errors){
+        // Flatten Discord's nested error object
+        var flat=[];
+        (function flatten(obj,path){
+          if(!obj)return;
+          if(typeof obj==='object'&&obj._errors){obj._errors.forEach(function(e3){flat.push((path?path+': ':'')+e3.code+' — '+e3.message);});return;}
+          Object.keys(obj).forEach(function(k){flatten(obj[k],path?path+'.'+k:k);});
+        })(d.errors,'');
+        if(flat.length)msg+='\n\n'+flat.slice(0,6).join('\n');
+      }
+      // Show in a more visible way
+      var jout=document.getElementById('emb-json-out');
+      if(jout){
+        jout.textContent='── ERREUR DISCORD ──\n'+msg+'\n\n── PAYLOAD ENVOYÉ ──\n'+JSON.stringify(payload,null,2);
+        jout.style.color='var(--spice)';
+        setTimeout(function(){jout.style.color='';embUpdateJSON();},8000);
+      }
+      toast(msg.split('\n')[0],'err');
+    }
+  }catch(e){toast('Erreur réseau: '+e.message,'err');}
   finally{if(btn){btn.disabled=false;btn.innerHTML='&#128640; Envoyer';}}
 }
 
