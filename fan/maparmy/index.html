@@ -11,8 +11,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/dune.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-geo-projection/4.0.0/d3-geo-projection.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-array@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-geo@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-geo-projection@4"></script>
 <style>
 html,body{height:100%;overflow:hidden}
 body{display:flex;flex-direction:column}
@@ -272,7 +274,8 @@ function setAff(a){cAff=a;document.querySelectorAll('.aff-tab').forEach(t=>t.cla
 // D3 MAP
 const svgEl=document.getElementById('map-svg'),svg=d3.select(svgEl),mw=document.getElementById('mw');
 let W,H;function gS(){W=mw.clientWidth;H=mw.clientHeight;}gS();
-const proj=d3.geoRobinson().rotate([-10,0]).translate([W/2,H/2]).scale(W/5.5);
+const proj=(d3.geoRobinson||d3.geoNaturalEarth1)().rotate([-10,0]).translate([W/2,H/2]).scale(W/5.5);
+console.log('Projection:',d3.geoRobinson?'Robinson':'NaturalEarth1 (fallback)');
 const pth=d3.geoPath().projection(proj);
 const gB=svg.append('g'),gG=svg.append('g').style('display','none'),gD=svg.append('g'),gU=svg.append('g'),gM=svg.append('g');
 const zm=d3.zoom().scaleExtent([.5,20]).on('zoom',e=>{[gB,gG,gD,gU,gM].forEach(g=>g.attr('transform',e.transform));document.getElementById('sbz').textContent=`ZOOM: ${e.transform.k.toFixed(1)}×`;});
@@ -284,11 +287,16 @@ gG.append('path').datum(grat()).attr('d',pth).attr('fill','none').attr('stroke',
 for(let lo=-180;lo<=180;lo+=30){const p=proj([lo,0]);if(p)gG.append('text').attr('x',p[0]).attr('y',p[1]).text(lo+'°').attr('fill','rgba(232,92,13,0.25)').attr('font-size',8).attr('font-family','IBM Plex Mono').attr('text-anchor','middle');}
 for(let la=-60;la<=80;la+=30){const p=proj([10,la]);if(p)gG.append('text').attr('x',p[0]+5).attr('y',p[1]).text(la+'°').attr('fill','rgba(232,92,13,0.25)').attr('font-size',8).attr('font-family','IBM Plex Mono');}
 
-fetch('https://map.projet-resurgence.fr/data/regions_mercator.geojson').then(r=>r.json()).then(geo=>{
-  gB.selectAll('path.rg').data(geo.features||[geo]).enter().append('path').attr('class','rg').attr('d',pth).attr('fill','#1a1810').attr('stroke','rgba(232,92,13,0.3)').attr('stroke-width',.5)
+fetch('https://map.projet-resurgence.fr/data/regions_mercator.geojson').then(r=>{if(!r.ok)throw new Error(r.status+' '+r.statusText);return r.json();}).then(geo=>{
+  console.log('GeoJSON loaded, features:',geo.features?geo.features.length:'raw');
+  const feats=geo.features||geo.geometries||[geo];
+  gB.selectAll('path.rg').data(feats).enter().append('path').attr('class','rg').attr('d',pth).attr('fill','#1a1810').attr('stroke','rgba(232,92,13,0.3)').attr('stroke-width',.5)
     .on('mouseover',function(){d3.select(this).attr('fill','#231e14')}).on('mouseout',function(){d3.select(this).attr('fill','#1a1810')});
   document.getElementById('mload').style.display='none';
-}).catch(e=>{document.getElementById('mload').querySelector('span').textContent='ERREUR: '+e.message;});
+}).catch(e=>{
+  console.error('GeoJSON error:',e);
+  document.getElementById('mload').innerHTML='<span style="color:var(--spice);font-family:IBM Plex Mono;font-size:11px;text-align:center;max-width:400px;line-height:1.8">ERREUR CHARGEMENT GEOJSON<br><span style="color:var(--text3);font-size:9px">'+e.message+'</span><br><br><button onclick="document.getElementById(\'mload\').style.display=\'none\'" class="abtn" style="font-size:10px">Continuer sans fond de carte</button></span>';
+});
 
 svg.on('mousemove',function(e){const[x,y]=d3.pointer(e),t=d3.zoomTransform(svgEl),c=proj.invert([(x-t.x)/t.k,(y-t.y)/t.k]);if(c&&isFinite(c[0]))document.getElementById('sbc').textContent=`LAT ${c[1].toFixed(3)}° · LON ${c[0].toFixed(3)}°`;});
 function zoomSVG(f){svg.transition().duration(300).call(zm.scaleBy,f);}
