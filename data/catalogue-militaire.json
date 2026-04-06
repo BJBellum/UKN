@@ -6,7 +6,7 @@
     "soustype": "Mitrailleuse",
     "niveau": 2,
     "fabricant": "Yassin Heavy Industries",
-    "cout_unite": "1799",
+    "cout_unite": "1299",
     "inspiration": "Browning M2",
     "disponibilite": "Mai 2304",
     "specs": {
@@ -31,7 +31,7 @@
     "soustype": "Fusil d'assaut",
     "niveau": 5,
     "fabricant": "Yassin Heavy Industries",
-    "cout_unite": "1499",
+    "cout_unite": "1199",
     "inspiration": "FN FAL",
     "disponibilite": "Mai 2306",
     "specs": {
@@ -270,7 +270,7 @@
     "soustype": "Lance-roquette",
     "niveau": 4,
     "fabricant": "Yassin Heavy Industries",
-    "cout_unite": "1999",
+    "cout_unite": "1399",
     "inspiration": "Carl Gustaf",
     "disponibilite": "Mai 2306",
     "specs": {
@@ -418,7 +418,7 @@
     "id": "cat_1775350343458",
     "nom": "QD-300 \"Shai-Hulud\"",
     "categorie": "aeronefs",
-    "soustype": "N/A",
+    "soustype": "AR - Bombardier Lourd",
     "niveau": 5,
     "fabricant": "Imperial Aviation & Defense",
     "cout_unite": "699999",
