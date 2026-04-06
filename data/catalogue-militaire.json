@@ -134,7 +134,7 @@
     "soustype": "Char léger (LT)",
     "niveau": 5,
     "fabricant": "Yassin Heavy Industries",
-    "cout_unite": "649999",
+    "cout_unite": "349999",
     "inspiration": "E.B.R (1954)",
     "disponibilite": "Août 2306",
     "specs": {
@@ -173,7 +173,7 @@
     "soustype": "Avion à Réaction (AR) - Chasse",
     "niveau": 5,
     "fabricant": "Imperial Aviation & Defense",
-    "cout_unite": "799999",
+    "cout_unite": "599999",
     "inspiration": "Super Mystère B2",
     "disponibilite": "Septembre 2306",
     "specs": {
@@ -231,7 +231,7 @@
     "soustype": "Char de Combat Principal (MBT)",
     "niveau": 5,
     "fabricant": "Yassin Heavy Industries",
-    "cout_unite": "999999",
+    "cout_unite": "699999",
     "inspiration": "M60",
     "disponibilite": "Novembre 2306",
     "specs": {
@@ -418,10 +418,10 @@
     "id": "cat_1775350343458",
     "nom": "QD-300 \"Shai-Hulud\"",
     "categorie": "aeronefs",
-    "soustype": "AR - Bombardier Lourd",
+    "soustype": "N/A",
     "niveau": 5,
     "fabricant": "Imperial Aviation & Defense",
-    "cout_unite": "1299999",
+    "cout_unite": "699999",
     "inspiration": "B-52 Stratofortress",
     "disponibilite": "Novembre 2306",
     "specs": {
@@ -450,7 +450,7 @@
     "soustype": "Lance roquette multiple (LRM)",
     "niveau": 5,
     "fabricant": "Yassin Heavy Industries",
-    "cout_unite": "399999",
+    "cout_unite": "299999",
     "inspiration": "BM-14, sur un châssis de REO M45.",
     "disponibilite": "Septembre 2306",
     "specs": {
@@ -489,7 +489,7 @@
     "soustype": "Mortier Lourd (+12 cm)",
     "niveau": 4,
     "fabricant": "Yassin Heavy Industries",
-    "cout_unite": "1999",
+    "cout_unite": "1499",
     "inspiration": "Brandt AM-50",
     "disponibilite": "Avril 2306",
     "specs": {
@@ -513,7 +513,7 @@
     "soustype": "Mortier d'infanterie (-7 cm)",
     "niveau": 4,
     "fabricant": "Yassin Heavy Industries",
-    "cout_unite": "999",
+    "cout_unite": "799",
     "inspiration": "M19 mortar",
     "disponibilite": "Avril 2306",
     "specs": {
@@ -600,7 +600,7 @@
     "soustype": "Mortier de Campagne (7-12 cm)",
     "niveau": 2,
     "fabricant": "Yassin Heavy Industries",
-    "cout_unite": "1199",
+    "cout_unite": "999",
     "inspiration": "Brandt Mle 27",
     "disponibilite": "Octobre 2304",
     "specs": {
