@@ -899,24 +899,20 @@
   <div class="sec-pane" id="sec-embed">
     <div class="dash-hdr">
       <div class="dash-title" style="color:var(--gold-mid);">&#128240; Espace Embed · Discord</div>
-      <div class="dash-sub">Créez des messages Discord enrichis — embeds ou containers, split automatique, envoi via webhook.</div>
+      <div class="dash-sub">Embeds classiques (jusqu'à 10) ou Components V2 — Container, Text Display, Media Gallery, Separator.</div>
     </div>
 
-    <!-- ── MODE SELECTOR ── -->
+    <!-- MODE -->
     <div class="emb-mode-bar">
-      <button class="emb-mode-btn active" id="emb-mode-container" onclick="embSetMode('container')">
-        &#128292; Container (Message texte)
-      </button>
-      <button class="emb-mode-btn" id="emb-mode-embed" onclick="embSetMode('embed')">
-        &#128203; Embed Classique
-      </button>
+      <button class="emb-mode-btn active" id="emb-mode-embeds" onclick="embSetMode('embeds')">&#128203; Embeds classiques</button>
+      <button class="emb-mode-btn" id="emb-mode-cv2" onclick="embSetMode('cv2')">&#129520; Components V2</button>
     </div>
 
-    <!-- ── TOOLBAR (même que espace écriture) ── -->
-    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:0;padding:8px 10px;background:var(--card-bg);border:1px solid var(--border);border-bottom:none;">
+    <!-- TOOLBAR -->
+    <div style="display:flex;flex-wrap:wrap;gap:4px;padding:8px 10px;background:var(--card-bg);border:1px solid var(--border);border-bottom:none;">
       <button class="ec-btn" onmousedown="event.preventDefault()" onclick="embFmt('bold')" title="Gras (Ctrl+B)"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><text x="2" y="11" font-family="monospace" font-size="11" font-weight="900" fill="currentColor">B</text></svg></button>
-      <button class="ec-btn" onmousedown="event.preventDefault()" onclick="embFmt('italic')" title="Italique (Ctrl+I)"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><text x="3" y="11" font-family="monospace" font-size="11" font-style="italic" fill="currentColor">I</text></svg></button>
-      <button class="ec-btn" onmousedown="event.preventDefault()" onclick="embFmt('underline')" title="Souligné (Ctrl+U)"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><text x="2" y="10" font-family="monospace" font-size="11" fill="currentColor">U</text><line x1="2" y1="12" x2="12" y2="12" stroke="currentColor" stroke-width="1.2"/></svg></button>
+      <button class="ec-btn" onmousedown="event.preventDefault()" onclick="embFmt('italic')" title="Italique"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><text x="3" y="11" font-family="monospace" font-size="11" font-style="italic" fill="currentColor">I</text></svg></button>
+      <button class="ec-btn" onmousedown="event.preventDefault()" onclick="embFmt('underline')" title="Souligné"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><text x="2" y="10" font-family="monospace" font-size="11" fill="currentColor">U</text><line x1="2" y1="12" x2="12" y2="12" stroke="currentColor" stroke-width="1.2"/></svg></button>
       <button class="ec-btn" onmousedown="event.preventDefault()" onclick="embFmt('strikethrough')" title="Barré"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><text x="2" y="10" font-family="monospace" font-size="11" fill="currentColor">S</text><line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.2"/></svg></button>
       <div style="width:1px;background:var(--border);margin:0 4px;align-self:stretch;"></div>
       <button class="ec-btn" onmousedown="event.preventDefault()" onclick="embFmt('h1')" style="font-size:10px;font-weight:700;padding:0 7px;">H1</button>
@@ -924,226 +920,97 @@
       <button class="ec-btn" onmousedown="event.preventDefault()" onclick="embFmt('h3')" style="font-size:10px;font-weight:700;padding:0 7px;">H3</button>
       <div style="width:1px;background:var(--border);margin:0 4px;align-self:stretch;"></div>
       <button class="ec-btn" onmousedown="event.preventDefault()" onclick="embFmt('code')" title="Code inline"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><polyline points="4,4 1,7 4,10" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/><polyline points="10,4 13,7 10,10" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg></button>
-      <button class="ec-btn" onmousedown="event.preventDefault()" onclick="embFmt('codeblock')" title="Bloc de code"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><rect x="1" y="2" width="12" height="10" rx="1" stroke="currentColor" stroke-width=".9" fill="none"/><line x1="1" y1="5.5" x2="13" y2="5.5" stroke="currentColor" stroke-width=".7" opacity=".5"/><line x1="3" y1="7.5" x2="7" y2="7.5" stroke="currentColor" stroke-width=".8"/><line x1="3" y1="9.5" x2="5.5" y2="9.5" stroke="currentColor" stroke-width=".8"/></svg></button>
+      <button class="ec-btn" onmousedown="event.preventDefault()" onclick="embFmt('codeblock')" title="Bloc de code"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><rect x="1" y="2" width="12" height="10" rx="1" stroke="currentColor" stroke-width=".9" fill="none"/><line x1="1" y1="5.5" x2="13" y2="5.5" stroke="currentColor" stroke-width=".7" opacity=".5"/><line x1="3" y1="7.5" x2="7" y2="7.5" stroke="currentColor" stroke-width=".8"/></svg></button>
       <button class="ec-btn" onmousedown="event.preventDefault()" onclick="embFmt('quote')" title="Citation"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><line x1="2" y1="4" x2="12" y2="4" stroke="currentColor" stroke-width=".9"/><line x1="2" y1="7" x2="12" y2="7" stroke="currentColor" stroke-width=".9"/><line x1="2" y1="10" x2="9" y2="10" stroke="currentColor" stroke-width=".9"/><line x1="0" y1="3" x2="0" y2="11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
       <button class="ec-btn" onmousedown="event.preventDefault()" onclick="embFmt('spoiler')" style="font-size:10px;padding:0 7px;font-weight:600;">||</button>
       <div style="width:1px;background:var(--border);margin:0 4px;align-self:stretch;"></div>
       <button class="ec-btn" onmousedown="event.preventDefault()" onclick="embFmt('bullet')" title="Liste"><svg viewBox="0 0 14 14" fill="none" width="13" height="13"><circle cx="2.5" cy="4.5" r="1" fill="currentColor"/><circle cx="2.5" cy="7.5" r="1" fill="currentColor"/><circle cx="2.5" cy="10.5" r="1" fill="currentColor"/><line x1="5" y1="4.5" x2="12" y2="4.5" stroke="currentColor" stroke-width=".9"/><line x1="5" y1="7.5" x2="12" y2="7.5" stroke="currentColor" stroke-width=".9"/><line x1="5" y1="10.5" x2="10" y2="10.5" stroke="currentColor" stroke-width=".9"/></svg></button>
       <button class="ec-btn" onmousedown="event.preventDefault()" onclick="embFmt('numbered')" style="font-size:10px;padding:0 7px;">1.</button>
       <button class="ec-btn" onmousedown="event.preventDefault()" onclick="embFmt('rule')" style="font-size:10px;padding:0 7px;">—</button>
-      <button class="ec-btn" onmousedown="event.preventDefault()" onclick="embFmt('mdlink')" title="Lien [texte](url)" style="width:auto;padding:0 9px;font-size:10px;letter-spacing:.02em;color:var(--teal-bright);">[]()</button>
+      <button class="ec-btn" onmousedown="event.preventDefault()" onclick="embFmt('mdlink')" style="width:auto;padding:0 9px;font-size:10px;color:var(--teal-bright);">[]()</button>
       <div style="flex:1;"></div>
       <button class="ec-btn ec-btn-gold" onmousedown="event.preventDefault()" onclick="embExportJSON()" style="padding:0 10px;font-size:9px;">&#8595; Export</button>
       <button class="ec-btn ec-btn-gold" onmousedown="event.preventDefault()" onclick="document.getElementById('emb-import-file').click()" style="padding:0 10px;font-size:9px;">&#8593; Import</button>
       <input type="file" id="emb-import-file" accept=".json" style="display:none;" onchange="embImportJSON(this)">
       <button class="ec-btn ec-btn-gold" onmousedown="event.preventDefault()" onclick="embNewDoc()" style="padding:0 10px;font-size:9px;">+ Nouveau</button>
     </div>
-
-    <!-- Special characters (same as écriture) -->
+    <!-- CHARS -->
     <div style="display:flex;flex-wrap:wrap;gap:3px;padding:5px 10px;background:var(--card-bg);border:1px solid var(--border);border-top:none;border-bottom:none;">
       <span style="font-family:'IBM Plex Mono',monospace;font-size:7px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;align-self:center;margin-right:4px;">Chars</span>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('◎')">◎</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('◉')">◉</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('▪︎')">▪︎</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('[]')" style="width:auto;padding:0 6px;">[ ]</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('()')" style="width:auto;padding:0 6px;">( )</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('〘〙')" style="width:auto;padding:0 5px;">〘〙</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('«»')" style="width:auto;padding:0 5px;">«»</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('❝❞')" style="width:auto;padding:0 5px;">❝❞</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('|')">|</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('≠')">≠</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('×')">×</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('∞')">∞</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('→')">→</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('←')">←</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('↑')">↑</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('↓')">↓</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('—')">—</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('━')">━</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('█')">█</button>
-      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('⠀')" title="Invisible Discord" style="position:relative;"><svg viewBox="0 0 14 14" fill="none" width="10" height="10"><rect x="2" y="2" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1" fill="none" opacity=".4"/><line x1="5" y1="7" x2="9" y2="7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity=".3"/></svg></button>
+      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('◎')">◎</button><button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('◉')">◉</button><button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('▪︎')">▪︎</button>
+      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('[]')" style="width:auto;padding:0 6px;">[ ]</button><button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('()')" style="width:auto;padding:0 6px;">( )</button>
+      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('〘〙')" style="width:auto;padding:0 5px;">〘〙</button><button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('«»')" style="width:auto;padding:0 5px;">«»</button><button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('❝❞')" style="width:auto;padding:0 5px;">❝❞</button>
+      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('|')">|</button><button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('≠')">≠</button><button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('×')">×</button><button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('∞')">∞</button>
+      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('→')">→</button><button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('←')">←</button><button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('↑')">↑</button><button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('↓')">↓</button>
+      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('—')">—</button><button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('━')">━</button><button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('█')">█</button>
+      <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('⠀')" title="Invisible Discord"><svg viewBox="0 0 14 14" fill="none" width="10" height="10"><rect x="2" y="2" width="10" height="10" rx="1" stroke="currentColor" stroke-width="1" fill="none" opacity=".4"/></svg></button>
       <button class="ec-btn ec-char" onmousedown="event.preventDefault()" onclick="embInsert('$')" style="width:auto;padding:0 7px;color:var(--gold);font-weight:600;">$</button>
     </div>
-
-    <!-- Doc selector row -->
+    <!-- DOC SELECTOR -->
     <div style="display:flex;gap:8px;padding:6px 10px;background:var(--card-bg);border:1px solid var(--border);border-top:1px solid rgba(200,150,12,.1);border-bottom:none;align-items:center;flex-wrap:wrap;">
       <input type="text" id="emb-doc-title" class="fi" placeholder="Titre du backup…" oninput="embSave()" style="flex:1;min-width:140px;font-size:12px;padding:5px 10px;">
-      <select id="emb-doc-select" class="fs" onchange="embLoadDoc(this.value)" style="min-width:170px;font-size:10px;padding:5px 8px;">
-        <option value="">— Backups sauvegardés —</option>
-      </select>
+      <select id="emb-doc-select" class="fs" onchange="embLoadDoc(this.value)" style="min-width:170px;font-size:10px;padding:5px 8px;"><option value="">— Backups sauvegardés —</option></select>
       <button class="btn btn-danger btn-xs" onclick="embDeleteDoc()">✕ Supprimer</button>
     </div>
 
-    <!-- ═══ CONTAINER MODE PANEL ═══ -->
-    <div class="emb-panel active" id="emb-panel-container">
-      <div style="position:relative;">
-        <textarea id="emb-editor"
-          onfocus="embLastTA=this"
-          oninput="embSave();embCount();embSplitPreview()"
-          onkeydown="embKeyDown(event)"
-          placeholder="Écrivez votre message Discord… (limite 2000 caractères — split automatique en plusieurs messages)"
-          style="width:100%;min-height:340px;resize:both;background:var(--card-bg);border:1px solid var(--border);border-top:none;color:rgba(255,255,255,.90);font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.7;padding:18px 20px 40px;outline:none;letter-spacing:.02em;tab-size:2;"></textarea>
-        <div id="emb-count" style="position:absolute;bottom:10px;right:14px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.28);letter-spacing:.08em;pointer-events:none;">0 / 2000</div>
+    <!-- ══ PANEL: EMBEDS CLASSIQUES ══ -->
+    <div class="emb-panel active" id="emb-panel-embeds">
+      <div style="padding:8px 12px;background:var(--card-bg);border:1px solid var(--border);border-top:none;border-bottom:none;">
+        <div class="fg"><label class="fl">Contenu global — texte au-dessus de tous les embeds (optionnel, max 2000)</label><input type="text" class="fi" id="emb-global-content" oninput="embSave();embUpdatePreview()" placeholder="@everyone, mentions, lien…" style="margin-top:3px;font-size:11px;"></div>
       </div>
-      <!-- Split preview -->
-      <div id="emb-split-header" style="display:none;padding:6px 12px;background:var(--card-bg);border:1px solid var(--border);border-top:none;display:none;align-items:center;gap:10px;">
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.14em;color:var(--spice);text-transform:uppercase;">Split — plusieurs messages</span>
-        <button class="btn btn-ghost btn-xs" onclick="embCopyAll()">Copier tout</button>
+      <div style="display:flex;align-items:center;gap:8px;padding:7px 12px;background:var(--card-bg);border:1px solid var(--border);border-top:none;border-bottom:none;flex-wrap:wrap;">
+        <button class="btn btn-sm" onmousedown="event.preventDefault()" onclick="embAddEmbed()" style="background:rgba(88,101,242,.12);border-color:rgba(88,101,242,.5);color:#8b9bff;">+ Ajouter un Embed</button>
+        <span id="emb-embed-count-lbl" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);">0 / 10 embeds</span>
+        <div style="flex:1;"></div>
+        <button class="btn btn-ghost btn-xs" onmousedown="event.preventDefault()" onclick="embCollapseAll()">Tout replier</button>
+        <button class="btn btn-ghost btn-xs" onmousedown="event.preventDefault()" onclick="embExpandAll()">Tout déplier</button>
       </div>
-      <div id="emb-split-out" class="emb-messages-out" style="display:none;"></div>
+      <div id="emb-embeds-list"></div>
+      <div id="emb-embeds-empty" style="padding:24px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);border:1px dashed var(--border);border-top:none;">Cliquez "+ Ajouter un Embed" pour commencer.</div>
     </div>
 
-    <!-- ═══ EMBED MODE PANEL ═══ -->
-    <div class="emb-panel" id="emb-panel-embed">
-      <div style="background:var(--card-bg);border:1px solid var(--border);border-top:none;padding:16px;">
-
-        <!-- Content (optionnel — texte au-dessus de l'embed) -->
-        <div class="fg" style="margin-bottom:14px;position:relative;">
-          <label class="fl" style="display:flex;align-items:center;gap:6px;">Contenu (texte au-dessus de l'embed — optionnel) <span style="color:var(--text3);font-size:7px;">max 2000</span></label>
-          <textarea id="emb-content"
-            onfocus="embLastTA=this"
-            oninput="embSave();embUpdatePreview()"
-            placeholder="Texte affiché au-dessus de l'embed, mentions @role, lien, etc."
-            maxlength="2000"
-            style="width:100%;min-height:52px;resize:vertical;background:var(--bg);border:1px solid var(--border2);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.65;padding:8px 12px;outline:none;border-radius:2px;margin-top:3px;transition:border-color .2s;" onfocus="this.style.borderColor='var(--gold-mid)';embLastTA=this;" onblur="this.style.borderColor=''"></textarea>
-        </div>
-
-        <!-- Color + author -->
-        <div class="emb-row tri" style="margin-bottom:14px;">
-          <div class="fg">
-            <label class="fl">Couleur de la barre</label>
-            <div style="display:flex;align-items:center;gap:8px;margin-top:3px;">
-              <input type="color" id="emb-color" value="#5865f2" oninput="embUpdatePreview()" style="width:36px;height:28px;border:1px solid var(--border2);border-radius:2px;background:transparent;cursor:pointer;padding:1px;">
-              <input type="text" class="fi" id="emb-color-hex" value="#5865f2" oninput="embSyncColor(this.value)" placeholder="#5865f2" style="font-size:11px;padding:5px 8px;flex:1;">
-            </div>
-          </div>
-          <div class="fg">
-            <label class="fl">Auteur — Nom</label>
-            <input type="text" class="fi" id="emb-author-name" oninput="embSave();embUpdatePreview()" placeholder="Nom de l'auteur…">
-          </div>
-          <div class="fg">
-            <label class="fl">Auteur — Icône (URL)</label>
-            <input type="text" class="fi" id="emb-author-icon" oninput="embSave();embUpdatePreview()" placeholder="https://…">
-          </div>
-        </div>
-
-        <!-- Title + URL -->
-        <div class="emb-row" style="margin-bottom:14px;">
-          <div class="fg">
-            <label class="fl">Titre de l'embed</label>
-            <input type="text" class="fi" id="emb-title" oninput="embSave();embUpdatePreview();embCount()" placeholder="Titre…" maxlength="256">
-          </div>
-          <div class="fg">
-            <label class="fl">URL du titre (lien cliquable)</label>
-            <input type="text" class="fi" id="emb-title-url" oninput="embSave();embUpdatePreview()" placeholder="https://…">
-          </div>
-        </div>
-
-        <!-- Description -->
-        <div class="fg" style="margin-bottom:14px;position:relative;">
-          <label class="fl">Description</label>
-          <textarea id="emb-desc"
-            onfocus="embLastTA=this"
-            oninput="embSave();embUpdatePreview();embCount()"
-            placeholder="Corps du message de l'embed… (max 4096 car.)"
-            maxlength="4096"
-            style="width:100%;min-height:160px;resize:both;background:var(--bg);border:1px solid var(--border2);color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.65;padding:10px 14px 32px;outline:none;border-radius:2px;margin-top:3px;transition:border-color .2s;" onfocus="this.style.borderColor='var(--gold-mid)';embLastTA=this" onblur="this.style.borderColor=''"></textarea>
-          <div id="emb-desc-count" style="position:absolute;bottom:8px;right:12px;font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(255,255,255,.3);pointer-events:none;">0 / 4096</div>
-        </div>
-
-        <!-- Fields -->
-        <div class="emb-field-group" style="border-left-color:var(--spice);">
-          <div class="emb-field-group-title" style="color:var(--spice);">
-            <svg viewBox="0 0 12 12" fill="none" width="10" height="10"><rect x="0" y="1" width="5" height="4" rx=".5" stroke="currentColor" stroke-width=".9" fill="none"/><rect x="7" y="1" width="5" height="4" rx=".5" stroke="currentColor" stroke-width=".9" fill="none"/><rect x="0" y="7" width="5" height="4" rx=".5" stroke="currentColor" stroke-width=".9" fill="none"/><rect x="7" y="7" width="5" height="4" rx=".5" stroke="currentColor" stroke-width=".9" fill="none"/></svg>
-            Champs (Fields) — max 25
-            <button class="btn btn-danger btn-xs" style="margin-left:auto;" onclick="embAddField()">+ Ajouter un champ</button>
-          </div>
-          <div id="emb-fields-list" class="emb-fields-wrap"></div>
-        </div>
-
-        <!-- Images -->
-        <div class="emb-row" style="margin-bottom:14px;">
-          <!-- Image principale -->
-          <div class="emb-field-group" style="margin-bottom:0;">
-            <div class="emb-field-group-title">&#128247; Image principale</div>
-            <div class="emb-row full" style="margin-bottom:8px;">
-              <div class="fg">
-                <label class="fl">URL de l'image</label>
-                <input type="text" class="fi" id="emb-img-url" oninput="embSave();embUpdatePreview()" placeholder="https://…">
-              </div>
-            </div>
-            <div class="emb-img-drop" id="emb-img-drop" onclick="document.getElementById('emb-img-file').click()" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="embDropImage(event,'main')">
-              Glisser une image ou cliquer pour importer
-            </div>
-            <input type="file" id="emb-img-file" accept="image/*" style="display:none;" onchange="embHandleImageFile(this,'emb-img-url','emb-img-preview-box')">
-            <div id="emb-img-preview-box" style="margin-top:6px;display:none;"><img id="emb-img-preview" style="max-width:100%;max-height:120px;border-radius:3px;border:1px solid var(--border2);" alt=""></div>
-          </div>
-          <!-- Thumbnail -->
-          <div class="emb-field-group" style="margin-bottom:0;">
-            <div class="emb-field-group-title">&#128247; Thumbnail (coin supérieur droit)</div>
-            <div class="fg" style="margin-bottom:8px;">
-              <label class="fl">URL du thumbnail</label>
-              <input type="text" class="fi" id="emb-thumb-url" oninput="embSave();embUpdatePreview()" placeholder="https://…">
-            </div>
-            <div class="emb-img-drop" onclick="document.getElementById('emb-thumb-file').click()" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="embDropImage(event,'thumb')">
-              Glisser ou cliquer pour importer
-            </div>
-            <input type="file" id="emb-thumb-file" accept="image/*" style="display:none;" onchange="embHandleImageFile(this,'emb-thumb-url','emb-thumb-preview-box')">
-            <div id="emb-thumb-preview-box" style="margin-top:6px;display:none;"><img id="emb-thumb-preview" style="max-height:80px;max-width:80px;border-radius:3px;border:1px solid var(--border2);object-fit:cover;" alt=""></div>
-          </div>
-        </div>
-
-        <!-- Footer + Timestamp -->
-        <div class="emb-row" style="margin-bottom:0;">
-          <div class="fg">
-            <label class="fl">Pied de page (Footer)</label>
-            <input type="text" class="fi" id="emb-footer" oninput="embSave();embUpdatePreview()" placeholder="Texte du footer…" maxlength="2048">
-          </div>
-          <div class="fg">
-            <label class="fl">Icône footer (URL)</label>
-            <input type="text" class="fi" id="emb-footer-icon" oninput="embSave();embUpdatePreview()" placeholder="https://…">
-          </div>
-        </div>
-        <div class="emb-row" style="margin-top:10px;">
-          <div class="emb-inline-row">
-            <input type="checkbox" class="emb-check" id="emb-timestamp" onchange="embSave();embUpdatePreview()">
-            <label for="emb-timestamp" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);cursor:pointer;letter-spacing:.06em;">Ajouter l'horodatage automatique</label>
-          </div>
-        </div>
+    <!-- ══ PANEL: COMPONENTS V2 ══ -->
+    <div class="emb-panel" id="emb-panel-cv2">
+      <div style="padding:7px 14px;background:rgba(88,101,242,.06);border:1px solid rgba(88,101,242,.2);border-top:none;border-bottom:none;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(139,155,255,.8);letter-spacing:.06em;">flags: 32 · </span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(139,155,255,.6);">type <b style="color:#8b9bff;">10</b> Text · <b style="color:#4acba3;">12</b> Gallery · <b style="color:var(--text2);">14</b> Separator · <b style="color:var(--gold-mid);">17</b> Container</span>
       </div>
-
-      <!-- Embed counter -->
-      <div id="emb-embed-count-bar" style="display:flex;gap:16px;padding:6px 12px;background:var(--card-bg);border:1px solid var(--border);border-top:none;font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.08em;flex-wrap:wrap;">
-        <span>Titre : <span id="emb-cnt-title" style="color:var(--gold-mid);">0</span>/256</span>
-        <span>Description : <span id="emb-cnt-desc" style="color:var(--gold-mid);">0</span>/4096</span>
-        <span>Champs : <span id="emb-cnt-fields" style="color:var(--gold-mid);">0</span>/25</span>
-        <span>Total embed : <span id="emb-cnt-total" style="color:var(--gold-mid);">0</span>/6000</span>
+      <div style="display:flex;align-items:center;gap:6px;padding:7px 12px;background:var(--card-bg);border:1px solid var(--border);border-top:none;border-bottom:none;flex-wrap:wrap;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;">+ Ajouter :</span>
+        <button class="btn btn-ghost btn-xs" onmousedown="event.preventDefault()" onclick="embAddComp(null,'text')" style="color:#8b9bff;border-color:rgba(88,101,242,.4);">&#128196; Text Display</button>
+        <button class="btn btn-ghost btn-xs" onmousedown="event.preventDefault()" onclick="embAddComp(null,'gallery')" style="color:#4acba3;border-color:rgba(74,203,163,.4);">&#128247; Media Gallery</button>
+        <button class="btn btn-ghost btn-xs" onmousedown="event.preventDefault()" onclick="embAddComp(null,'separator')">&#9135; Separator</button>
+        <button class="btn btn-ghost btn-xs" onmousedown="event.preventDefault()" onclick="embAddComp(null,'container')" style="color:var(--gold-mid);border-color:var(--gold-dim);">&#128230; Container</button>
       </div>
-
-      <!-- Embed JSON preview -->
-      <div style="margin-top:10px;">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.14em;color:var(--text3);text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:8px;">
-          JSON Payload
-          <button class="btn btn-ghost btn-xs" onclick="embCopyJSON()">Copier</button>
-        </div>
-        <div id="emb-json-out" style="background:var(--bg);border:1px solid var(--border2);padding:10px 14px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);white-space:pre-wrap;max-height:200px;overflow-y:auto;line-height:1.6;border-radius:2px;"></div>
-      </div>
+      <div id="emb-comps-list"></div>
+      <div id="emb-comps-empty" style="padding:24px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);border:1px dashed var(--border);border-top:none;">Ajoutez des composants ci-dessus.</div>
     </div>
 
-    <!-- ═══ APERÇU DISCORD ═══ -->
-    <div style="margin-top:14px;">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.14em;color:var(--text3);text-transform:uppercase;margin-bottom:8px;">Aperçu Discord</div>
+    <!-- JSON -->
+    <div style="margin-top:12px;background:var(--card-bg);border:1px solid var(--border);">
+      <div style="display:flex;align-items:center;gap:8px;padding:7px 12px;border-bottom:1px solid var(--border);">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.14em;color:var(--text3);text-transform:uppercase;">JSON Payload</span>
+        <button class="btn btn-ghost btn-xs" onmousedown="event.preventDefault()" onclick="embCopyJSON()">Copier</button>
+        <div style="flex:1;"></div>
+        <span id="emb-json-size" style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);"></span>
+      </div>
+      <div id="emb-json-out" style="padding:10px 14px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text3);white-space:pre-wrap;max-height:220px;overflow-y:auto;line-height:1.6;"></div>
+    </div>
+
+    <!-- PREVIEW -->
+    <div style="margin-top:12px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.14em;color:var(--text3);text-transform:uppercase;margin-bottom:6px;">Aperçu Discord</div>
       <div id="emb-preview" class="emb-preview-box" style="min-height:60px;"></div>
     </div>
 
-    <!-- ═══ ENVOI WEBHOOK ═══ -->
+    <!-- WEBHOOK SEND BAR -->
     <div class="emb-send-bar">
       <div class="emb-wh-row">
         <div class="fg" style="flex:2;min-width:220px;">
           <label class="fl">Webhook URL</label>
           <div style="display:flex;gap:6px;margin-top:3px;">
             <input type="password" class="pat-in" id="emb-webhook" placeholder="https://discord.com/api/webhooks/…" oninput="embSaveWebhook()" style="font-size:10px;flex:1;">
-            <button class="btn btn-ghost btn-sm" onclick="document.getElementById('emb-webhook').type=document.getElementById('emb-webhook').type==='password'?'text':'password'">👁</button>
+            <button class="btn btn-ghost btn-sm" onclick="var el=document.getElementById('emb-webhook');el.type=el.type==='password'?'text':'password';">&#128065;</button>
           </div>
         </div>
         <div class="fg" style="flex:1;min-width:120px;">
@@ -1160,13 +1027,13 @@
       </div>
       <div style="display:flex;gap:8px;align-self:flex-end;flex-wrap:wrap;">
         <button class="btn btn-ghost btn-sm" onclick="embTestWebhook()">&#128268; Test</button>
-        <button class="btn btn-sm" id="emb-send-btn" onclick="embSend()" style="background:rgba(88,101,242,.15);border-color:rgba(88,101,242,.6);color:#8b9bff;white-space:nowrap;">
-          &#128640; Envoyer
-        </button>
+        <button class="btn btn-sm" id="emb-send-btn" onclick="embSend()" style="background:rgba(88,101,242,.15);border-color:rgba(88,101,242,.6);color:#8b9bff;white-space:nowrap;">&#128640; Envoyer</button>
       </div>
     </div>
 
   </div><!-- /sec-embed -->
+
+
 
   <!-- ══════════════════════════════════
        SECTION: MES DOCUMENTS
@@ -2911,579 +2778,415 @@ function ecImportJSON(input){
 var EMB_LS_KEY='embed_docs';
 var embDocs={};
 var embCurrentId=null;
-var embMode='container'; // 'container' | 'embed'
-var embFieldsData=[]; // [{name,value,inline}]
-const EMB_CHAR_LIMIT=2000;
+var embMode='embeds'; // 'embeds' | 'cv2'
+var embLastTA=null;
+var embEmbeds=[]; // [{_id,_collapsed,color,...}]
+var embComps=[];  // [{_id,type,...,components:[]}]
+
+function embUid(){return 'e'+Math.random().toString(36).slice(2,8)+Date.now().toString(36).slice(-4);}
 
 // ── INIT ──
 function initEmbed(){
-  embLoadAll();
-  embFieldsData=[];
-  embLastTA=document.getElementById('emb-editor');
-  embRenderFields();
-  embRefreshSelect();
-  embLoadWebhook();
-  // Load last edited doc
-  var ids=Object.keys(embDocs).filter(function(k){return embDocs[k]&&embDocs[k]._type!=='folder';});
-  if(ids.length&&!embCurrentId){
-    ids.sort(function(a,b){return (embDocs[b].updated||0)-(embDocs[a].updated||0);});
-    embOpenDoc(ids[0]);
-  } else if(embCurrentId&&embDocs[embCurrentId]){
-    embOpenDoc(embCurrentId);
-  } else {
-    embNewDoc();
-  }
+  embLoadAll();embLastTA=null;embRefreshSelect();embLoadWebhook();
+  var ids=Object.keys(embDocs).filter(function(k){var d=embDocs[k];return d&&d._type!=='folder';});
+  if(ids.length&&!embCurrentId){ids.sort(function(a,b){return (embDocs[b].updated||0)-(embDocs[a].updated||0);});embOpenDoc(ids[0]);}
+  else if(embCurrentId&&embDocs[embCurrentId]){embOpenDoc(embCurrentId);}
+  else{embNewDoc();}
 }
 
 // ── STORAGE ──
 function embLoadAll(){try{var s=localStorage.getItem(EMB_LS_KEY);embDocs=s?JSON.parse(s):{};}catch(e){embDocs={};}}
 function embSaveAll(){try{localStorage.setItem(EMB_LS_KEY,JSON.stringify(embDocs));}catch(e){toast('Erreur stockage.','err');}}
-
 function embRefreshSelect(){
   var sel=document.getElementById('emb-doc-select');if(!sel)return;
-  var ids=Object.keys(embDocs).filter(function(k){var d=embDocs[k];return d&&d._type!=='folder';});
+  var ids=Object.keys(embDocs).filter(function(k){return embDocs[k]&&embDocs[k]._type!=='folder';});
   ids.sort(function(a,b){return (embDocs[b].updated||0)-(embDocs[a].updated||0);});
-  sel.innerHTML='<option value="">— Backups sauvegardés —</option>'+
-    ids.map(function(id){var d=embDocs[id]||{};return '<option value="'+id+'"'+(id===embCurrentId?' selected':'')+'>'+escHtml(d.title||'Sans titre')+'</option>';}).join('');
+  sel.innerHTML='<option value="">— Backups sauvegardés —</option>'+ids.map(function(id){var d=embDocs[id]||{};return '<option value="'+id+'"'+(id===embCurrentId?' selected':'')+'>'+escHtml(d.title||'Sans titre')+'</option>';}).join('');
 }
-
 function embSave(){
-  if(!embCurrentId)embNewDoc();
-  var ti=document.getElementById('emb-doc-title');
+  if(!embCurrentId)return;
+  var ti=document.getElementById('emb-doc-title'),gc=document.getElementById('emb-global-content');
   if(!embDocs[embCurrentId])embDocs[embCurrentId]={};
   embDocs[embCurrentId].title=ti?ti.value.trim()||'Sans titre':'Sans titre';
-  embDocs[embCurrentId].mode=embMode;
-  embDocs[embCurrentId].updated=Date.now();
-  if(embMode==='container'){
-    var ta=document.getElementById('emb-editor');
-    embDocs[embCurrentId].content=ta?ta.value:'';
-  } else {
-    embDocs[embCurrentId].embedData=embGetEmbedData();
-  }
-  embSaveAll();
-  embRefreshSelect();
+  embDocs[embCurrentId].mode=embMode;embDocs[embCurrentId].updated=Date.now();
+  embDocs[embCurrentId].embeds=JSON.parse(JSON.stringify(embEmbeds));
+  embDocs[embCurrentId].comps=JSON.parse(JSON.stringify(embComps));
+  embDocs[embCurrentId].globalContent=gc?gc.value:'';
+  var un=document.getElementById('emb-wh-username');embDocs[embCurrentId].username=un?un.value:'';
+  embSaveAll();embRefreshSelect();
 }
-
-function embGetEmbedData(){
-  function v(id){var el=document.getElementById(id);return el?el.value.trim():'';}
-  function cb(id){var el=document.getElementById(id);return el?el.checked:false;}
-  return {
-    content:v('emb-content'),
-    color:v('emb-color'),
-    author_name:v('emb-author-name'),
-    author_icon:v('emb-author-icon'),
-    title:v('emb-title'),
-    title_url:v('emb-title-url'),
-    description:v('emb-desc'),
-    fields:embFieldsData.map(function(f){return {name:f.name,value:f.value,inline:f.inline};}),
-    image:v('emb-img-url'),
-    thumbnail:v('emb-thumb-url'),
-    footer:v('emb-footer'),
-    footer_icon:v('emb-footer-icon'),
-    timestamp:cb('emb-timestamp'),
-    username:v('emb-wh-username')
-  };
-}
-
 function embNewDoc(){
-  var id='emb_'+Date.now();
-  embCurrentId=id;
-  embDocs[id]={title:'Nouveau message',mode:'container',content:'',updated:Date.now()};
+  var id='emb_'+Date.now();embCurrentId=id;embEmbeds=[];embComps=[];
+  embDocs[id]={title:'Nouveau message',mode:'embeds',embeds:[],comps:[],globalContent:'',updated:Date.now()};
   embSaveAll();
-  // Reset UI
   var ti=document.getElementById('emb-doc-title');if(ti)ti.value='Nouveau message';
-  var ta=document.getElementById('emb-editor');if(ta)ta.value='';
-  embResetEmbedFields();
-  embSetMode('container');
-  embCount();embSplitPreview();
-  embRefreshSelect();
+  var gc=document.getElementById('emb-global-content');if(gc)gc.value='';
+  embSetMode('embeds');embRenderEmbeds();embUpdateJSON();embUpdatePreview();embRefreshSelect();
 }
-
 function embOpenDoc(id){
-  embLoadAll();
-  var d=embDocs[id];if(!d)return;
-  embCurrentId=id;
+  embLoadAll();var d=embDocs[id];if(!d)return;embCurrentId=id;
   var ti=document.getElementById('emb-doc-title');if(ti)ti.value=d.title||'';
-  var mode=d.mode||'container';
-  embSetMode(mode);
-  if(mode==='container'){
-    var ta=document.getElementById('emb-editor');if(ta)ta.value=d.content||'';
-    embCount();embSplitPreview();
-  } else {
-    embRestoreEmbedData(d.embedData||{});
-    embUpdatePreview();
-  }
-  embRefreshSelect();
+  var gc=document.getElementById('emb-global-content');if(gc)gc.value=d.globalContent||'';
+  var un=document.getElementById('emb-wh-username');if(un&&d.username)un.value=d.username;
+  embEmbeds=JSON.parse(JSON.stringify(d.embeds||[]));
+  embComps=JSON.parse(JSON.stringify(d.comps||[]));
+  embSetMode(d.mode||'embeds');embRenderEmbeds();embRenderComps();embUpdateJSON();embUpdatePreview();embRefreshSelect();
 }
-
 function embLoadDoc(id){if(id)embOpenDoc(id);}
-
 function embDeleteDoc(){
   if(!embCurrentId)return;
   var d=embDocs[embCurrentId];
   if(!confirm('Supprimer "'+(d&&d.title?d.title:'ce backup')+'" ?'))return;
-  delete embDocs[embCurrentId];
-  embCurrentId=null;
-  embSaveAll();
-  embNewDoc();
-  toast('Backup supprimé.');
+  delete embDocs[embCurrentId];embCurrentId=null;embSaveAll();embNewDoc();toast('Backup supprimé.');
 }
 
-// ── MODE SWITCH ──
+// ── MODE ──
 function embSetMode(mode){
   embMode=mode;
-  document.getElementById('emb-mode-container').classList.toggle('active',mode==='container');
-  document.getElementById('emb-mode-embed').classList.toggle('active',mode==='embed');
-  document.getElementById('emb-panel-container').classList.toggle('active',mode==='container');
-  document.getElementById('emb-panel-embed').classList.toggle('active',mode==='embed');
-  if(embCurrentId&&embDocs[embCurrentId])embDocs[embCurrentId].mode=mode;
-  if(mode==='embed'){embUpdatePreview();embCount();}
-  else{embSplitPreview();embCount();}
+  ['embeds','cv2'].forEach(function(m){
+    var b=document.getElementById('emb-mode-'+m),p=document.getElementById('emb-panel-'+m);
+    if(b)b.classList.toggle('active',m===mode);if(p)p.classList.toggle('active',m===mode);
+  });
+  embUpdateJSON();embUpdatePreview();
 }
 
-// ── FORMAT / INSERT (mirrors espace écriture) ──
-// ── FOCUS TRACKING ──
-var embLastTA = null; // tracks last focused textarea in embed section
+// ══════════════════════════════
+//  EMBEDS CLASSIQUES
+// ══════════════════════════════
+function embDefaultEmbed(){return {_id:embUid(),_collapsed:false,color:'#5865f2',author_name:'',author_icon:'',title:'',title_url:'',description:'',fields:[],image:'',thumbnail:'',footer:'',footer_icon:'',timestamp:false};}
+function embAddEmbed(){if(embEmbeds.length>=10){toast('Maximum 10 embeds.','err');return;}embEmbeds.push(embDefaultEmbed());embRenderEmbeds();embSave();embUpdateJSON();embUpdatePreview();}
+function embRemoveEmbed(idx){embEmbeds.splice(idx,1);embRenderEmbeds();embSave();embUpdateJSON();embUpdatePreview();}
+function embMoveEmbed(idx,dir){var ni=idx+dir;if(ni<0||ni>=embEmbeds.length)return;var t=embEmbeds[idx];embEmbeds[idx]=embEmbeds[ni];embEmbeds[ni]=t;embRenderEmbeds();embSave();embUpdateJSON();embUpdatePreview();}
+function embToggleEmbed(idx){embEmbeds[idx]._collapsed=!embEmbeds[idx]._collapsed;embRenderEmbeds();}
+function embCollapseAll(){embEmbeds.forEach(function(e){e._collapsed=true;});embRenderEmbeds();}
+function embExpandAll(){embEmbeds.forEach(function(e){e._collapsed=false;});embRenderEmbeds();}
+function embUpdateEmbed(idx,field,val){if(!embEmbeds[idx])return;embEmbeds[idx][field]=val;embSave();embUpdateJSON();embUpdatePreview();}
+function embEmbedAddField(idx){if(!embEmbeds[idx])return;if(embEmbeds[idx].fields.length>=25){toast('Max 25 champs.','err');return;}embEmbeds[idx].fields.push({name:'',value:'',inline:false});embRenderEmbeds();embSave();embUpdateJSON();}
+function embEmbedRemoveField(ei,fi){if(!embEmbeds[ei])return;embEmbeds[ei].fields.splice(fi,1);embRenderEmbeds();embSave();embUpdateJSON();embUpdatePreview();}
+function embEmbedUpdateField(ei,fi,key,val){if(!embEmbeds[ei]||!embEmbeds[ei].fields[fi])return;embEmbeds[ei].fields[fi][key]=val;embSave();embUpdateJSON();embUpdatePreview();}
 
-function embGetActiveTA(){
-  if(embMode==='container') return document.getElementById('emb-editor');
-  // Use tracked last-focused textarea; fallback to description
-  if(embLastTA && document.contains(embLastTA)) return embLastTA;
-  return document.getElementById('emb-desc');
-}
-
-function embFmt(type){
-  var ta=embGetActiveTA();if(!ta)return;
-  var s=ta.selectionStart,en=ta.selectionEnd;
-  var sel=ta.value.substring(s,en);
-  var before=ta.value.substring(0,s);
-  var after=ta.value.substring(en);
-  var result=ta.value,cursor=s;
-  function wrap(o,c){result=before+o+(sel||'')+c+after;cursor=s+o.length+(sel?sel.length:0);}
-  function prefix(p){var ls=ta.value.lastIndexOf('\n',s-1)+1;var le=ta.value.indexOf('\n',en);if(le===-1)le=ta.value.length;var pre=ta.value.substring(0,ls);var post=ta.value.substring(le);var mid=ta.value.substring(ls,le).split('\n').map(function(l){return p+l;});result=pre+mid.join('\n')+post;cursor=s+p.length;}
-  switch(type){
-    case 'bold':wrap('**','**');break;
-    case 'italic':wrap('*','*');break;
-    case 'underline':wrap('__','__');break;
-    case 'strikethrough':wrap('~~','~~');break;
-    case 'code':wrap('`','`');break;
-    case 'codeblock':result=before+'```\n'+(sel||'')+'\n```'+after;cursor=s+4;break;
-    case 'spoiler':wrap('||','||');break;
-    case 'quote':prefix('> ');break;
-    case 'h1':prefix('# ');break;
-    case 'h2':prefix('## ');break;
-    case 'h3':prefix('### ');break;
-    case 'bullet':prefix('- ');break;
-    case 'numbered':{
-      var n=1,ls2=ta.value.lastIndexOf('\n',s-1)+1;
-      var le2=ta.value.indexOf('\n',en);if(le2===-1)le2=ta.value.length;
-      var pre2=ta.value.substring(0,ls2),post2=ta.value.substring(le2);
-      var mid2=ta.value.substring(ls2,le2).split('\n').map(function(l){return (n++)+'. '+l;});
-      result=pre2+mid2.join('\n')+post2;cursor=s+3;break;
-    }
-    case 'mdlink':
-      if(sel){result=before+'['+sel+'](url)'+after;cursor=s+1;}
-      else{result=before+'[](url)'+after;cursor=s+1;}
-      break;
-    case 'rule':result=before+(before.endsWith('\n')?'':'\n')+'---\n'+after;cursor=s+4;break;
-  }
-  ta.value=result;ta.selectionStart=ta.selectionEnd=cursor||s;ta.focus();
-  embSave();embCount();if(embMode==='container')embSplitPreview();else embUpdatePreview();
-}
-
-function embInsert(chars){
-  var ta=embGetActiveTA();if(!ta)return;
-  var s=ta.selectionStart,en=ta.selectionEnd;
-  var open=chars[0],close=chars.length>1?chars[chars.length-1]:'';
-  var isPaired=chars.length===2&&open!==close;
-  if(isPaired){var sel=ta.value.substring(s,en);ta.value=ta.value.substring(0,s)+open+(sel||'')+close+ta.value.substring(en);ta.selectionStart=ta.selectionEnd=s+1+(sel?sel.length:0);}
-  else{ta.value=ta.value.substring(0,s)+chars+ta.value.substring(en);ta.selectionStart=ta.selectionEnd=s+chars.length;}
-  ta.focus();embSave();embCount();if(embMode==='container')embSplitPreview();else embUpdatePreview();
-}
-
-function embKeyDown(e){
-  var sc={b:'bold',i:'italic',u:'underline'};
-  if((e.ctrlKey||e.metaKey)&&sc[e.key]){e.preventDefault();embFmt(sc[e.key]);return;}
-  if(e.key==='Tab'){e.preventDefault();var ta=e.target,s=ta.selectionStart,en=ta.selectionEnd;ta.value=ta.value.substring(0,s)+'  '+ta.value.substring(en);ta.selectionStart=ta.selectionEnd=s+2;embSave();embCount();}
-}
-
-// ── CHARACTER COUNT ──
-function embCount(){
-  if(embMode==='container'){
-    var ta=document.getElementById('emb-editor');
-    var cnt=document.getElementById('emb-count');
-    if(!ta||!cnt)return;
-    var len=ta.value.length;
-    var msgs=Math.max(1,Math.ceil(len/EMB_CHAR_LIMIT));
-    cnt.textContent=len+' car. · '+msgs+' message'+(msgs!==1?'s':'');
-    cnt.style.color=len>EMB_CHAR_LIMIT?'var(--spice)':'rgba(255,255,255,.28)';
-  } else {
-    var title=document.getElementById('emb-title');
-    var desc=document.getElementById('emb-desc');
-    var tLen=title?title.value.length:0;
-    var dLen=desc?desc.value.length:0;
-    var fTotal=embFieldsData.reduce(function(a,f){return a+f.name.length+f.value.length;},0);
-    var total=tLen+dLen+fTotal;
-    var tc=document.getElementById('emb-cnt-title');if(tc)tc.textContent=tLen;
-    var dc2=document.getElementById('emb-cnt-desc');if(dc2)dc2.style.color=dLen>4096?'var(--spice)':'var(--gold-mid)';
-    if(dc2)dc2.textContent=dLen;
-    var dc3=document.getElementById('emb-desc-count');if(dc3){dc3.textContent=dLen+' / 4096';dc3.style.color=dLen>4096?'var(--spice)':'rgba(255,255,255,.3)';}
-    var fc=document.getElementById('emb-cnt-fields');if(fc)fc.textContent=embFieldsData.length;
-    var tot=document.getElementById('emb-cnt-total');if(tot){tot.textContent=total;tot.style.color=total>6000?'var(--spice)':'var(--gold-mid)';}
-  }
-}
-
-// ── SPLIT PREVIEW (container mode) ──
-function embSplitPreview(){
-  var ta=document.getElementById('emb-editor');
-  var out=document.getElementById('emb-split-out');
-  var hdr=document.getElementById('emb-split-header');
-  var preview=document.getElementById('emb-preview');
-  if(!ta||!out)return;
-  var text=ta.value;
-  if(!text.trim()){
-    if(out)out.style.display='none';
-    if(hdr)hdr.style.display='none';
-    if(preview)preview.innerHTML='<div style="font-family:\'IBM Plex Mono\',monospace;font-size:10px;color:rgba(255,255,255,.18);padding:14px;text-align:center;letter-spacing:.06em;">Aperçu vide — commencez à écrire…</div>';
-    return;
-  }
-  var messages=embSmartSplit(text,EMB_CHAR_LIMIT);
-  window._embMessages=messages;
-
-  if(messages.length<=1){
-    if(out)out.style.display='none';
-    if(hdr)hdr.style.display='none';
-  } else {
-    if(hdr){hdr.style.display='flex';}
-    if(out){
-      out.style.display='flex';
-      out.innerHTML=messages.map(function(msg,i){
-        var len=msg.length;
-        var over=len>EMB_CHAR_LIMIT;
-        return '<div class="emb-msg-container">'
-          +'<div class="emb-msg-hdr">'
-          +'<span class="emb-msg-lbl">Message '+(i+1)+' / '+messages.length+'</span>'
-          +'<div style="display:flex;align-items:center;gap:6px;">'
-          +'<span class="emb-msg-count" style="color:'+(over?'var(--spice)':len>1800?'var(--amber)':'var(--text3)')+';">'+len+' / 2000</span>'
-          +'<button class="btn btn-ghost btn-xs" onmousedown="event.preventDefault()" onclick="embCopyMsg('+i+')">Copier</button>'
-          +'</div></div>'
-          +'<div class="emb-msg-body">'+escHtml(msg)+'</div>'
+function embRenderEmbeds(){
+  var el=document.getElementById('emb-embeds-list');
+  var empty=document.getElementById('emb-embeds-empty');
+  var lbl=document.getElementById('emb-embed-count-lbl');
+  if(lbl)lbl.textContent=embEmbeds.length+' / 10 embed'+(embEmbeds.length!==1?'s':'');
+  if(!el)return;
+  if(!embEmbeds.length){el.innerHTML='';if(empty)empty.style.display='block';return;}
+  if(empty)empty.style.display='none';
+  el.innerHTML=embEmbeds.map(function(e,idx){
+    var bc=e.color||'#5865f2';
+    var coll=e._collapsed;
+    var fields='';
+    if(!coll){
+      var fl=e.fields.map(function(f,fi){
+        return '<div style="display:flex;gap:6px;background:var(--bg);border:1px solid var(--border2);padding:6px 8px;margin-bottom:4px;align-items:flex-start;">'
+          +'<div style="font-family:\'IBM Plex Mono\',monospace;font-size:8px;color:var(--text3);width:16px;flex-shrink:0;padding-top:4px;">#'+(fi+1)+'</div>'
+          +'<div style="flex:1;display:flex;flex-direction:column;gap:4px;">'
+          +'<input type="text" class="fi" placeholder="Nom du champ…" value="'+escHtml(f.name||'')+'" maxlength="256" oninput="embEmbedUpdateField('+idx+','+fi+',\'name\',this.value)" style="font-size:10px;padding:3px 7px;">'
+          +'<textarea class="fi" placeholder="Valeur…" maxlength="1024" oninput="embEmbedUpdateField('+idx+','+fi+',\'value\',this.value)" onfocus="embLastTA=this" style="font-size:10px;padding:3px 7px;resize:vertical;min-height:34px;border-radius:2px;outline:none;background:var(--bg);border:1px solid var(--border2);color:var(--text);">'+escHtml(f.value||'')+'</textarea>'
+          +'<label style="display:flex;align-items:center;gap:5px;font-family:\'IBM Plex Mono\',monospace;font-size:8px;color:var(--text3);cursor:pointer;"><input type="checkbox" '+(f.inline?'checked':'')+' onchange="embEmbedUpdateField('+idx+','+fi+',\'inline\',this.checked)"> Inline</label>'
+          +'</div>'
+          +'<button style="background:transparent;border:none;color:rgba(232,92,13,.5);cursor:pointer;font-size:14px;padding:0 4px;line-height:1;flex-shrink:0;" onmousedown="event.preventDefault()" onclick="embEmbedRemoveField('+idx+','+fi+')">✕</button>'
           +'</div>';
       }).join('');
+      fields='<div style="background:var(--card-bg);border:1px solid rgba(232,92,13,.25);border-left:2px solid var(--spice);padding:10px 12px;margin-top:8px;">'
+        +'<div style="font-family:\'IBM Plex Mono\',monospace;font-size:7px;letter-spacing:.18em;color:var(--spice);text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:8px;">Champs (Fields) <span style="color:var(--text3);">'+e.fields.length+'/25</span>'
+        +'<button class="btn btn-danger btn-xs" style="margin-left:auto;" onmousedown="event.preventDefault()" onclick="embEmbedAddField('+idx+')">+ Champ</button></div>'
+        +fl+'</div>';
     }
-  }
-  // Update discord preview
-  if(preview){
-    preview.innerHTML='<div style="font-family:\'Whitney\',\'Helvetica Neue\',sans-serif;color:#dcddde;font-size:14px;white-space:pre-wrap;line-height:1.65;word-break:break-word;">'+escHtml(messages[0]||'')+'</div>'
-      +(messages.length>1?'<div style="font-family:\'IBM Plex Mono\',monospace;font-size:9px;color:rgba(255,255,255,.3);margin-top:8px;letter-spacing:.04em;">⋯ '+( messages.length-1)+' message'+(messages.length>2?'s':'')+' supplémentaire'+(messages.length>2?'s':'')+' seront envoyés séparément</div>':'');
-  }
-}
-
-function embCopyAll(){
-  var messages=window._embMessages||[];
-  if(!messages.length)return;
-  var full=messages.map(function(m,i){return '=== Message '+(i+1)+' ===\n'+m;}).join('\n\n');
-  navigator.clipboard.writeText(full).then(function(){toast('Tous les messages copiés ('+messages.length+') !','ok');}).catch(function(){toast('Impossible de copier.','err');});
-}
-
-function embSmartSplit(text,limit){
-  if(text.length<=limit)return [text];
-  var messages=[];
-  var remaining=text;
-  while(remaining.length>0){
-    if(remaining.length<=limit){messages.push(remaining);break;}
-    // Try to find a nice split point (newline) within limit
-    var chunk=remaining.substring(0,limit);
-    var lastNl=chunk.lastIndexOf('\n');
-    var splitAt=lastNl>limit*0.5?lastNl+1:limit;
-    messages.push(remaining.substring(0,splitAt));
-    remaining=remaining.substring(splitAt);
-  }
-  return messages;
-}
-
-// ── EMBED FIELDS ──
-function embAddField(){
-  if(embFieldsData.length>=25){toast('Maximum 25 champs par embed.','err');return;}
-  embFieldsData.push({name:'',value:'',inline:false});
-  embRenderFields();
-}
-
-function embRenderFields(){
-  var el=document.getElementById('emb-fields-list');if(!el)return;
-  if(!embFieldsData.length){el.innerHTML='<div style="font-family:\'IBM Plex Mono\',monospace;font-size:9px;color:var(--text3);padding:8px;">Aucun champ — cliquez "+ Ajouter un champ".</div>';return;}
-  el.innerHTML=embFieldsData.map(function(f,i){
-    return '<div class="emb-field-item">'
-      +'<div class="emb-field-idx">#'+(i+1)+'</div>'
-      +'<div class="emb-field-inputs">'
-      +'<input type="text" class="fi" placeholder="Nom du champ…" value="'+escHtml(f.name||'')+'" maxlength="256" oninput="embFieldChange('+i+',\'name\',this.value)" style="font-size:10px;padding:4px 8px;">'
-      +'<textarea class="fi" placeholder="Valeur…" maxlength="1024" oninput="embFieldChange('+i+',\'value\',this.value)" style="font-size:10px;padding:4px 8px;resize:vertical;min-height:40px;border-radius:2px;outline:none;">'+escHtml(f.value||'')+'</textarea>'
-      +'<div class="emb-inline-row"><input type="checkbox" class="emb-check" '+(f.inline?'checked':'')+' onchange="embFieldChange('+i+',\'inline\',this.checked)"><label style="font-family:\'IBM Plex Mono\',monospace;font-size:8px;color:var(--text3);cursor:pointer;">Inline</label></div>'
-      +'</div>'
-      +'<button class="emb-field-del" onclick="embDeleteField('+i+')" title="Supprimer">✕</button>'
+    return '<div style="background:var(--card-bg);border:1px solid var(--border);border-left:3px solid '+bc+';margin-bottom:6px;">'
+      // Header
+      +'<div style="display:flex;align-items:center;gap:8px;padding:8px 12px;cursor:pointer;background:rgba(0,0,0,.1);user-select:none;" onclick="embToggleEmbed('+idx+')">'
+      +'<span style="font-family:\'IBM Plex Mono\',monospace;font-size:9px;color:var(--text3);width:12px;">'+(coll?'▶':'▼')+'</span>'
+      +'<div style="width:14px;height:14px;border-radius:2px;background:'+bc+';flex-shrink:0;border:1px solid rgba(255,255,255,.1);"></div>'
+      +'<span style="font-family:\'IBM Plex Mono\',monospace;font-size:10px;color:var(--text2);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Embed '+(idx+1)+' / '+embEmbeds.length+(e.title?' — '+escHtml(e.title.substring(0,28)):'')+' <span style="font-size:8px;color:var(--text3);">('+e.description.length+' car.)</span></span>'
+      +'<div style="display:flex;gap:4px;flex-shrink:0;" onclick="event.stopPropagation()">'
+      +'<button class="btn btn-ghost btn-xs" onmousedown="event.preventDefault()" onclick="embMoveEmbed('+idx+',-1)" '+(idx===0?'disabled':'')+'>↑</button>'
+      +'<button class="btn btn-ghost btn-xs" onmousedown="event.preventDefault()" onclick="embMoveEmbed('+idx+',1)" '+(idx===embEmbeds.length-1?'disabled':'')+'>↓</button>'
+      +'<button class="btn btn-danger btn-xs" onmousedown="event.preventDefault()" onclick="embRemoveEmbed('+idx+')">✕</button>'
+      +'</div></div>'
+      // Body
+      +(coll?'':'<div style="padding:12px;">'
+        +'<div style="display:grid;grid-template-columns:auto 1fr 1fr;gap:8px;margin-bottom:8px;align-items:end;">'
+        +'<div class="fg"><label class="fl">Couleur</label><div style="display:flex;align-items:center;gap:6px;margin-top:3px;"><input type="color" value="'+bc+'" oninput="embUpdateEmbed('+idx+',\'color\',this.value);this.nextElementSibling.value=this.value;" style="width:32px;height:26px;border:1px solid var(--border2);border-radius:2px;cursor:pointer;background:transparent;padding:1px;"><input type="text" class="fi" value="'+bc+'" placeholder="#5865f2" oninput="if(/^#[0-9a-fA-F]{6}$/.test(this.value)){embUpdateEmbed('+idx+',\'color\',this.value);this.previousElementSibling.value=this.value;}" style="width:80px;font-size:10px;padding:3px 7px;"></div></div>'
+        +'<div class="fg"><label class="fl">Auteur — Nom</label><input type="text" class="fi" value="'+escHtml(e.author_name||'')+'" oninput="embUpdateEmbed('+idx+',\'author_name\',this.value)" placeholder="Nom de l\'auteur…" style="margin-top:3px;font-size:11px;"></div>'
+        +'<div class="fg"><label class="fl">Auteur — Icône URL</label><input type="text" class="fi" value="'+escHtml(e.author_icon||'')+'" oninput="embUpdateEmbed('+idx+',\'author_icon\',this.value)" placeholder="https://…" style="margin-top:3px;font-size:11px;"></div>'
+        +'</div>'
+        +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">'
+        +'<div class="fg"><label class="fl">Titre <span style="color:var(--text3);">'+e.title.length+'/256</span></label><input type="text" class="fi" value="'+escHtml(e.title||'')+'" maxlength="256" oninput="embUpdateEmbed('+idx+',\'title\',this.value)" placeholder="Titre…" style="margin-top:3px;font-size:11px;"></div>'
+        +'<div class="fg"><label class="fl">URL du titre</label><input type="text" class="fi" value="'+escHtml(e.title_url||'')+'" oninput="embUpdateEmbed('+idx+',\'title_url\',this.value)" placeholder="https://…" style="margin-top:3px;font-size:11px;"></div>'
+        +'</div>'
+        +'<div class="fg" style="margin-bottom:8px;">'
+        +'<label class="fl">Description <span style="color:'+(e.description.length>4096?'var(--spice)':'var(--text3)')+';">'+e.description.length+'/4096</span></label>'
+        +'<textarea onfocus="embLastTA=this;" oninput="embUpdateEmbed('+idx+',\'description\',this.value)" maxlength="4096" placeholder="Corps de l\'embed…" style="width:100%;min-height:90px;resize:vertical;background:var(--bg);border:1px solid var(--border2);color:var(--text);font-family:\'IBM Plex Mono\',monospace;font-size:12px;line-height:1.65;padding:8px 12px;outline:none;border-radius:2px;margin-top:3px;" onfocus="this.style.borderColor=\'var(--gold-mid)\';embLastTA=this;" onblur="this.style.borderColor=\'\'">'+escHtml(e.description||'')+'</textarea>'
+        +'</div>'
+        +fields
+        +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;">'
+        +'<div class="fg"><label class="fl">Image principale (URL)</label><input type="text" class="fi" value="'+escHtml(e.image||'')+'" oninput="embUpdateEmbed('+idx+',\'image\',this.value)" placeholder="https://…" style="margin-top:3px;font-size:11px;"></div>'
+        +'<div class="fg"><label class="fl">Thumbnail (URL)</label><input type="text" class="fi" value="'+escHtml(e.thumbnail||'')+'" oninput="embUpdateEmbed('+idx+',\'thumbnail\',this.value)" placeholder="https://…" style="margin-top:3px;font-size:11px;"></div>'
+        +'</div>'
+        +'<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;">'
+        +'<div class="fg"><label class="fl">Footer — Texte</label><input type="text" class="fi" value="'+escHtml(e.footer||'')+'" maxlength="2048" oninput="embUpdateEmbed('+idx+',\'footer\',this.value)" placeholder="Pied de page…" style="margin-top:3px;font-size:11px;"></div>'
+        +'<div class="fg"><label class="fl">Footer — Icône URL</label><input type="text" class="fi" value="'+escHtml(e.footer_icon||'')+'" oninput="embUpdateEmbed('+idx+',\'footer_icon\',this.value)" placeholder="https://…" style="margin-top:3px;font-size:11px;"></div>'
+        +'</div>'
+        +'<div style="margin-top:8px;"><label style="display:flex;align-items:center;gap:6px;font-family:\'IBM Plex Mono\',monospace;font-size:9px;color:var(--text3);cursor:pointer;"><input type="checkbox" '+(e.timestamp?'checked':'')+' onchange="embUpdateEmbed('+idx+',\'timestamp\',this.checked)"> Horodatage automatique (timestamp)</label></div>'
+        +'</div>')
       +'</div>';
   }).join('');
 }
 
-function embFieldChange(idx,key,val){
-  if(!embFieldsData[idx])return;
-  embFieldsData[idx][key]=val;
-  embSave();embCount();embUpdatePreview();
+// ══════════════════════════════
+//  COMPONENTS V2
+// ══════════════════════════════
+function embDefaultComp(type){
+  var c={_id:embUid()};
+  if(type==='text'){c.type=10;c.content='';}
+  else if(type==='gallery'){c.type=12;c.items=[{url:'',desc:''}];}
+  else if(type==='separator'){c.type=14;c.divider=true;c.spacing=1;}
+  else if(type==='container'){c.type=17;c.accent_color='';c.spoiler=false;c.components=[];}
+  return c;
+}
+function embFindComp(list,id){for(var i=0;i<list.length;i++){if(list[i]._id===id)return list[i];if(list[i].components){var f=embFindComp(list[i].components,id);if(f)return f;}}return null;}
+function embFindCompList(list,id){for(var i=0;i<list.length;i++){if(list[i]._id===id)return {list:list,idx:i};if(list[i].components){var r=embFindCompList(list[i].components,id);if(r)return r;}}return null;}
+function embAddComp(parentId,type){
+  var c=embDefaultComp(type);
+  if(!parentId){embComps.push(c);}
+  else{var p=embFindComp(embComps,parentId);if(p&&p.components)p.components.push(c);}
+  embRenderComps();embSave();embUpdateJSON();embUpdatePreview();
+}
+function embRemoveComp(id){var r=embFindCompList(embComps,id);if(r)r.list.splice(r.idx,1);embRenderComps();embSave();embUpdateJSON();embUpdatePreview();}
+function embMoveComp(id,dir){var r=embFindCompList(embComps,id);if(!r)return;var ni=r.idx+dir;if(ni<0||ni>=r.list.length)return;var t=r.list[r.idx];r.list[r.idx]=r.list[ni];r.list[ni]=t;embRenderComps();embSave();embUpdateJSON();embUpdatePreview();}
+function embUpdateComp(id,field,val){var c=embFindComp(embComps,id);if(!c)return;c[field]=val;embSave();embUpdateJSON();embUpdatePreview();}
+function embCompAddItem(id){var c=embFindComp(embComps,id);if(!c||!c.items)return;if(c.items.length>=10){toast('Max 10 médias.','err');return;}c.items.push({url:'',desc:''});embRenderComps();embSave();}
+function embCompRemoveItem(id,idx){var c=embFindComp(embComps,id);if(!c||!c.items)return;c.items.splice(idx,1);embRenderComps();embSave();embUpdateJSON();embUpdatePreview();}
+function embCompUpdateItem(id,idx,field,val){var c=embFindComp(embComps,id);if(!c||!c.items||!c.items[idx])return;c.items[idx][field]=val;embSave();embUpdateJSON();embUpdatePreview();}
+
+function embRenderComps(){
+  var el=document.getElementById('emb-comps-list');
+  var empty=document.getElementById('emb-comps-empty');
+  if(!el)return;
+  if(!embComps.length){el.innerHTML='';if(empty)empty.style.display='block';return;}
+  if(empty)empty.style.display='none';
+  el.innerHTML=embComps.map(function(c,i){return embRenderCompCard(c,i,embComps.length,false);}).join('');
 }
 
-function embDeleteField(idx){
-  embFieldsData.splice(idx,1);
-  embRenderFields();
-  embSave();embCount();embUpdatePreview();
-}
+function embRenderCompCard(c,idx,total,isChild){
+  var TLABELS={10:'Text Display',12:'Media Gallery',14:'Separator',17:'Container'};
+  var TCOLORS={10:'rgba(88,101,242,.7)',12:'rgba(74,203,163,.7)',14:'rgba(180,180,180,.5)',17:'rgba(200,150,12,.6)'};
+  var label=TLABELS[c.type]||'Composant';
+  var bc=TCOLORS[c.type]||'var(--border2)';
+  var body='';
 
-function embResetEmbedFields(){
-  embFieldsData=[];
-  embRenderFields();
-  ['emb-content','emb-author-name','emb-author-icon','emb-title','emb-title-url','emb-desc','emb-img-url','emb-thumb-url','emb-footer','emb-footer-icon'].forEach(function(id){
-    var el=document.getElementById(id);if(el)el.value='';
-  });
-  var colorEl=document.getElementById('emb-color');if(colorEl)colorEl.value='#5865f2';
-  var hexEl=document.getElementById('emb-color-hex');if(hexEl)hexEl.value='#5865f2';
-  var ts=document.getElementById('emb-timestamp');if(ts)ts.checked=false;
-  ['emb-img-preview-box','emb-thumb-preview-box'].forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='none';});
-  embUpdatePreview();
-}
-
-function embRestoreEmbedData(d){
-  function s(id,val){var el=document.getElementById(id);if(el)el.value=val||'';}
-  s('emb-content',d.content||'');
-  s('emb-color',d.color||'#5865f2');
-  s('emb-color-hex',d.color||'#5865f2');
-  s('emb-author-name',d.author_name||'');
-  s('emb-author-icon',d.author_icon||'');
-  s('emb-title',d.title||'');
-  s('emb-title-url',d.title_url||'');
-  s('emb-desc',d.description||'');
-  s('emb-img-url',d.image||'');
-  s('emb-thumb-url',d.thumbnail||'');
-  s('emb-footer',d.footer||'');
-  s('emb-footer-icon',d.footer_icon||'');
-  var ts=document.getElementById('emb-timestamp');if(ts)ts.checked=!!d.timestamp;
-  embFieldsData=(d.fields||[]).map(function(f){return {name:f.name||'',value:f.value||'',inline:!!f.inline};});
-  embRenderFields();
-  if(d.image){var pb=document.getElementById('emb-img-preview-box'),pi=document.getElementById('emb-img-preview');if(pb)pb.style.display='block';if(pi)pi.src=d.image;}
-  if(d.thumbnail){var tb=document.getElementById('emb-thumb-preview-box'),ti2=document.getElementById('emb-thumb-preview');if(tb)tb.style.display='block';if(ti2)ti2.src=d.thumbnail;}
-}
-
-// ── COLOR SYNC ──
-function embSyncColor(hex){
-  var el=document.getElementById('emb-color');
-  if(el&&/^#[0-9a-fA-F]{6}$/.test(hex))el.value=hex;
-  embSave();embUpdatePreview();
-}
-
-// ── IMAGE HANDLING ──
-function embHandleImageFile(input,urlId,previewBoxId){
-  var file=input.files[0];if(!file)return;
-  var reader=new FileReader();
-  reader.onload=function(e){
-    var urlEl=document.getElementById(urlId);
-    if(urlEl)urlEl.value=e.target.result;
-    var boxEl=document.getElementById(previewBoxId);
-    var previewId=previewBoxId.replace('-box','');
-    var imgEl=document.getElementById(previewId);
-    if(boxEl)boxEl.style.display='block';
-    if(imgEl)imgEl.src=e.target.result;
-    embSave();embUpdatePreview();
-  };
-  reader.readAsDataURL(file);
-}
-
-function embDropImage(event,type){
-  event.preventDefault();
-  var file=event.dataTransfer.files[0];if(!file||!file.type.startsWith('image/'))return;
-  var urlId=type==='main'?'emb-img-url':'emb-thumb-url';
-  var previewBoxId=type==='main'?'emb-img-preview-box':'emb-thumb-preview-box';
-  var fakeInput={files:[file]};
-  embHandleImageFile(fakeInput,urlId,previewBoxId);
-  var drop=document.getElementById('emb-img-drop');if(drop)drop.classList.remove('drag-over');
-}
-
-// ── DISCORD PREVIEW ──
-function embUpdatePreview(){
-  var preview=document.getElementById('emb-preview');if(!preview)return;
-  var json=embBuildJSON();
-  // Update JSON display
-  var jout=document.getElementById('emb-json-out');
-  if(jout)jout.textContent=JSON.stringify(json,null,2);
-
-  if(embMode!=='embed'){return;}
-
-  var embed=json.embeds&&json.embeds[0]?json.embeds[0]:{};
-  var color=embed.color?'#'+('000000'+embed.color.toString(16)).slice(-6):'#5865f2';
-  var html='';
-
-  // Content above embed
-  if(json.content)html+='<div style="font-family:\'Whitney\',sans-serif;color:#dcddde;font-size:14px;white-space:pre-wrap;line-height:1.65;margin-bottom:8px;word-break:break-word;">'+escHtml(json.content)+'</div>';
-
-  var hasContent=embed.title||embed.description||(embed.fields&&embed.fields.length)||embed.author;
-  if(!hasContent&&!embed.image&&!embed.thumbnail&&!embed.footer){
-    html+='<div style="font-family:\'IBM Plex Mono\',monospace;font-size:10px;color:rgba(255,255,255,.18);padding:14px;text-align:center;border:1px dashed rgba(255,255,255,.08);border-radius:4px;letter-spacing:.06em;">Remplissez les champs pour voir l\'aperçu de l\'embed…</div>';
-    preview.innerHTML=html;return;
-  }
-
-  html+='<div class="emb-preview-embed" style="border-left-color:'+color+';">';
-  if(embed.thumbnail&&embed.thumbnail.url){html+='<img class="emb-preview-thumb" src="'+escHtml(embed.thumbnail.url)+'" onerror="this.style.display=\'none\'">';}
-  if(embed.author&&embed.author.name){
-    html+='<div class="emb-preview-author">';
-    if(embed.author.icon_url)html+='<img src="'+escHtml(embed.author.icon_url)+'" style="width:20px;height:20px;border-radius:50%;object-fit:cover;" onerror="this.style.display=\'none\'">';
-    html+=escHtml(embed.author.name)+'</div>';
-  }
-  if(embed.title){
-    if(embed.url)html+='<div class="emb-preview-title"><a href="'+escHtml(embed.url)+'" target="_blank" style="color:#00b0f4;text-decoration:none;">'+escHtml(embed.title)+'</a></div>';
-    else html+='<div class="emb-preview-title">'+escHtml(embed.title)+'</div>';
-  }
-  if(embed.description)html+='<div class="emb-preview-desc">'+escHtml(embed.description)+'</div>';
-  if(embed.fields&&embed.fields.length){
-    var hasInline=embed.fields.some(function(f){return f.inline;});
-    html+='<div class="emb-preview-fields" style="grid-template-columns:'+(hasInline?'repeat(auto-fill,minmax(120px,1fr))':'1fr')+'">';
-    embed.fields.forEach(function(f){
-      html+='<div style="'+(f.inline?'':'grid-column:1/-1')+'">'
-        +(f.name&&f.name!=='\u200b'?'<div class="emb-preview-field-name">'+escHtml(f.name)+'</div>':'')
-        +(f.value&&f.value!=='\u200b'?'<div class="emb-preview-field-val">'+escHtml(f.value)+'</div>':'')
+  if(c.type===10){
+    body='<div style="padding:10px 12px;">'
+      +'<div class="fg"><label class="fl">Contenu Markdown <span style="color:var(--text3);">'+(c.content||'').length+'/4000</span></label>'
+      +'<textarea onfocus="embLastTA=this;" oninput="embUpdateComp(\''+c._id+'\',\'content\',this.value)" maxlength="4000" placeholder="Texte Markdown Discord…" style="width:100%;min-height:80px;resize:vertical;background:var(--bg);border:1px solid var(--border2);color:var(--text);font-family:\'IBM Plex Mono\',monospace;font-size:12px;line-height:1.65;padding:8px 12px;outline:none;border-radius:2px;margin-top:3px;" onfocus="this.style.borderColor=\'var(--gold-mid)\';embLastTA=this;" onblur="this.style.borderColor=\'\'">'+escHtml(c.content||'')+'</textarea>'
+      +'</div></div>';
+  } else if(c.type===12){
+    var items=(c.items||[]).map(function(item,ii){
+      return '<div style="display:grid;grid-template-columns:1fr 1fr auto;gap:6px;align-items:end;margin-bottom:5px;padding:7px 8px;background:var(--bg);border:1px solid var(--border2);">'
+        +'<div class="fg"><label class="fl">URL média</label><input type="text" class="fi" value="'+escHtml(item.url||'')+'" oninput="embCompUpdateItem(\''+c._id+'\','+ii+',\'url\',this.value)" placeholder="https://… image ou vidéo" style="margin-top:2px;font-size:10px;"></div>'
+        +'<div class="fg"><label class="fl">Description (alt)</label><input type="text" class="fi" value="'+escHtml(item.desc||'')+'" oninput="embCompUpdateItem(\''+c._id+'\','+ii+',\'desc\',this.value)" placeholder="Description optionnelle…" style="margin-top:2px;font-size:10px;"></div>'
+        +'<button style="background:transparent;border:none;color:rgba(232,92,13,.5);cursor:pointer;font-size:14px;padding:0 4px;margin-bottom:2px;" onmousedown="event.preventDefault()" onclick="embCompRemoveItem(\''+c._id+'\','+ii+')">✕</button>'
         +'</div>';
-    });
-    html+='</div>';
+    }).join('');
+    body='<div style="padding:10px 12px;">'+items
+      +'<button class="btn btn-ghost btn-xs" onmousedown="event.preventDefault()" onclick="embCompAddItem(\''+c._id+'\')">+ Ajouter un média ('+(c.items||[]).length+'/10)</button>'
+      +'</div>';
+  } else if(c.type===14){
+    body='<div style="padding:10px 14px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;">'
+      +'<label style="display:flex;align-items:center;gap:6px;font-family:\'IBM Plex Mono\',monospace;font-size:9px;color:var(--text3);cursor:pointer;"><input type="checkbox" '+(c.divider?'checked':'')+' onchange="embUpdateComp(\''+c._id+'\',\'divider\',this.checked)"> Afficher le trait (divider)</label>'
+      +'<div style="display:flex;align-items:center;gap:8px;"><span style="font-family:\'IBM Plex Mono\',monospace;font-size:8px;color:var(--text3);text-transform:uppercase;">Espacement :</span>'
+      +'<select class="fs" style="font-size:10px;padding:3px 8px;" onchange="embUpdateComp(\''+c._id+'\',\'spacing\',parseInt(this.value))">'
+      +'<option value="1"'+(c.spacing===1?' selected':'')+'>Petit (1)</option>'
+      +'<option value="2"'+(c.spacing===2?' selected':'')+'>Grand (2)</option>'
+      +'</select></div>'
+      +'<div style="flex:1;min-width:80px;border-top:'+(c.divider?'1px solid rgba(255,255,255,.12)':'1px dashed rgba(255,255,255,.04)')+';"></div>'
+      +'</div>';
+  } else if(c.type===17){
+    var chx=(c.components||[]).map(function(ch,ci){return embRenderCompCard(ch,ci,(c.components||[]).length,true);}).join('');
+    var ch=c.accent_color||'';
+    body='<div style="padding:10px 12px 8px;">'
+      +'<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px;">'
+      +'<div class="fg"><label class="fl">Couleur accent (optionnel)</label><div style="display:flex;align-items:center;gap:6px;margin-top:3px;">'
+      +'<input type="color" value="'+(ch||'#5865f2')+'" oninput="embUpdateComp(\''+c._id+'\',\'accent_color\',this.value);this.nextElementSibling.value=this.value;" style="width:32px;height:26px;border:1px solid var(--border2);border-radius:2px;cursor:pointer;background:transparent;padding:1px;">'
+      +'<input type="text" class="fi" value="'+escHtml(ch)+'" placeholder="#rrggbb ou vide" oninput="if(/^#[0-9a-fA-F]{6}$/.test(this.value)||this.value===\'\'){embUpdateComp(\''+c._id+'\',\'accent_color\',this.value);if(this.value)this.previousElementSibling.value=this.value;}" style="width:90px;font-size:10px;padding:3px 7px;">'
+      +'</div></div>'
+      +'<label style="display:flex;align-items:center;gap:6px;font-family:\'IBM Plex Mono\',monospace;font-size:9px;color:var(--text3);cursor:pointer;align-self:flex-end;padding-bottom:2px;"><input type="checkbox" '+(c.spoiler?'checked':'')+' onchange="embUpdateComp(\''+c._id+'\',\'spoiler\',this.checked)"> Spoiler</label>'
+      +'</div>'
+      +'<div style="border-left:2px solid rgba(200,150,12,.2);padding-left:10px;margin-bottom:8px;display:flex;flex-direction:column;gap:4px;">'
+      +(chx||'<div style="font-family:\'IBM Plex Mono\',monospace;font-size:9px;color:var(--text3);padding:8px 0;">Aucun composant enfant — ajoutez-en ci-dessous.</div>')
+      +'</div>'
+      +'<div style="display:flex;gap:5px;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:8px;">'
+      +'<span style="font-family:\'IBM Plex Mono\',monospace;font-size:8px;color:var(--text3);align-self:center;text-transform:uppercase;letter-spacing:.08em;">+ Enfant :</span>'
+      +'<button class="btn btn-ghost btn-xs" onmousedown="event.preventDefault()" onclick="embAddComp(\''+c._id+'\',\'text\')" style="color:#8b9bff;border-color:rgba(88,101,242,.4);">Text</button>'
+      +'<button class="btn btn-ghost btn-xs" onmousedown="event.preventDefault()" onclick="embAddComp(\''+c._id+'\',\'gallery\')" style="color:#4acba3;border-color:rgba(74,203,163,.4);">Gallery</button>'
+      +'<button class="btn btn-ghost btn-xs" onmousedown="event.preventDefault()" onclick="embAddComp(\''+c._id+'\',\'separator\')">Separator</button>'
+      +'</div></div>';
   }
-  if(embed.image&&embed.image.url)html+='<img class="emb-preview-img" src="'+escHtml(embed.image.url)+'" onerror="this.style.display=\'none\'">';
-  if(embed.footer||embed.timestamp){
-    html+='<div class="emb-preview-footer">';
-    if(embed.footer&&embed.footer.icon_url)html+='<img src="'+escHtml(embed.footer.icon_url)+'" style="width:16px;height:16px;border-radius:50%;vertical-align:middle;margin-right:5px;object-fit:cover;" onerror="this.style.display=\'none\'">';
-    if(embed.footer&&embed.footer.text)html+=escHtml(embed.footer.text);
-    if(embed.footer&&embed.timestamp)html+=' · ';
-    if(embed.timestamp)html+=new Date(embed.timestamp).toLocaleString('fr');
-    html+='</div>';
-  }
-  html+='<div style="clear:both;"></div></div>';
-  preview.innerHTML=html;
+
+  var ms=isChild?'margin-bottom:4px;':'margin-bottom:6px;';
+  var bs=isChild?'border:1px solid var(--border);border-left:2px solid '+bc+';background:var(--card-bg);':'border:1px solid var(--border2);border-left:3px solid '+bc+';background:var(--card-bg);';
+  return '<div style="'+bs+ms+'">'
+    +'<div style="display:flex;align-items:center;gap:8px;padding:6px 10px;background:rgba(0,0,0,.1);">'
+    +'<span style="font-family:\'IBM Plex Mono\',monospace;font-size:8px;padding:2px 7px;border:1px solid '+bc+';border-radius:2px;color:var(--text2);background:rgba(0,0,0,.2);letter-spacing:.06em;flex-shrink:0;">TYPE '+c.type+' · '+label+'</span>'
+    +(isChild?'<span style="font-family:\'IBM Plex Mono\',monospace;font-size:8px;color:var(--text3);opacity:.5;">↳ '+(idx+1)+'</span>':'<span style="font-family:\'IBM Plex Mono\',monospace;font-size:8px;color:var(--text3);">'+(idx+1)+' / '+total+'</span>')
+    +'<div style="flex:1;"></div>'
+    +'<div style="display:flex;gap:3px;">'
+    +'<button class="btn btn-ghost btn-xs" onmousedown="event.preventDefault()" onclick="embMoveComp(\''+c._id+'\',-1)" '+(idx===0?'disabled':'')+'>↑</button>'
+    +'<button class="btn btn-ghost btn-xs" onmousedown="event.preventDefault()" onclick="embMoveComp(\''+c._id+'\',1)" '+(idx===total-1?'disabled':'')+'>↓</button>'
+    +'<button class="btn btn-danger btn-xs" onmousedown="event.preventDefault()" onclick="embRemoveComp(\''+c._id+'\')">✕</button>'
+    +'</div></div>'
+    +body
+    +'</div>';
 }
 
-// ── BUILD JSON PAYLOAD ──
+// ── JSON ──
 function embBuildJSON(){
-  var wh_username=document.getElementById('emb-wh-username');
   var payload={};
-  if(wh_username&&wh_username.value.trim())payload.username=wh_username.value.trim();
-  if(embMode==='container'){
-    var ta=document.getElementById('emb-editor');
-    payload.content=ta?ta.value:'';
+  var un=document.getElementById('emb-wh-username');if(un&&un.value.trim())payload.username=un.value.trim();
+  if(embMode==='embeds'){
+    var gc=document.getElementById('emb-global-content');if(gc&&gc.value.trim())payload.content=gc.value.trim();
+    if(embEmbeds.length)payload.embeds=embEmbeds.map(function(e){
+      var em={};
+      if(e.color)em.color=parseInt(e.color.replace('#',''),16);
+      if(e.author_name){em.author={name:e.author_name};if(e.author_icon)em.author.icon_url=e.author_icon;}
+      if(e.title){em.title=e.title;if(e.title_url)em.url=e.title_url;}
+      if(e.description)em.description=e.description;
+      if(e.fields&&e.fields.length)em.fields=e.fields.filter(function(f){return f.name||f.value;}).map(function(f){return {name:f.name||'\u200b',value:f.value||'\u200b',inline:f.inline};});
+      if(e.image)em.image={url:e.image};if(e.thumbnail)em.thumbnail={url:e.thumbnail};
+      if(e.footer){em.footer={text:e.footer};if(e.footer_icon)em.footer.icon_url=e.footer_icon;}
+      if(e.timestamp)em.timestamp=new Date().toISOString();
+      return em;
+    });
   } else {
-    // Optional content above embed
-    var contentEl=document.getElementById('emb-content');
-    var contentVal=contentEl?contentEl.value.trim():'';
-    if(contentVal)payload.content=contentVal;
-
-    var embed={};
-    function v(id){var el=document.getElementById(id);return el?el.value.trim():'';}
-    function cb(id){var el=document.getElementById(id);return el?el.checked:false;}
-    var colorHex=v('emb-color');
-    if(colorHex)embed.color=parseInt(colorHex.replace('#',''),16);
-    var aname=v('emb-author-name');
-    if(aname){embed.author={name:aname};var aicon=v('emb-author-icon');if(aicon)embed.author.icon_url=aicon;}
-    var title=v('emb-title');if(title){embed.title=title;var turl=v('emb-title-url');if(turl)embed.url=turl;}
-    var desc=v('emb-desc');if(desc)embed.description=desc;
-    if(embFieldsData.length)embed.fields=embFieldsData.filter(function(f){return f.name||f.value;}).map(function(f){return {name:f.name||'\u200b',value:f.value||'\u200b',inline:f.inline};});
-    var img=v('emb-img-url');if(img)embed.image={url:img};
-    var thumb=v('emb-thumb-url');if(thumb)embed.thumbnail={url:thumb};
-    var footer=v('emb-footer');
-    if(footer){embed.footer={text:footer};var ficon=v('emb-footer-icon');if(ficon)embed.footer.icon_url=ficon;}
-    if(cb('emb-timestamp'))embed.timestamp=new Date().toISOString();
-    payload.embeds=[embed];
+    payload.flags=32;payload.components=embComps.map(embBuildCompJSON).filter(Boolean);
   }
   return payload;
 }
+function embBuildCompJSON(c){
+  if(c.type===10)return {type:10,content:c.content||''};
+  if(c.type===12){var items=(c.items||[]).filter(function(i){return i.url;}).map(function(i){var o={media:{url:i.url}};if(i.desc)o.description=i.desc;return o;});return {type:12,items:items};}
+  if(c.type===14){var s={type:14};if(c.divider)s.divider=true;if(c.spacing)s.spacing=c.spacing;return s;}
+  if(c.type===17){var cc={type:17};if(c.accent_color)cc.accent_color=parseInt(c.accent_color.replace('#',''),16);if(c.spoiler)cc.spoiler=true;cc.components=(c.components||[]).map(embBuildCompJSON).filter(Boolean);return cc;}
+  return null;
+}
+function embUpdateJSON(){
+  var json=embBuildJSON(),str=JSON.stringify(json,null,2);
+  var jout=document.getElementById('emb-json-out');if(jout)jout.textContent=str;
+  var jsz=document.getElementById('emb-json-size');if(jsz)jsz.textContent=str.length+' octets';
+}
+function embCopyJSON(){navigator.clipboard.writeText(JSON.stringify(embBuildJSON(),null,2)).then(function(){toast('JSON copié !','ok');}).catch(function(){toast('Erreur copie.','err');});}
 
-function embCopyJSON(){
-  var json=embBuildJSON();
-  navigator.clipboard.writeText(JSON.stringify(json,null,2)).then(function(){toast('JSON copié !','ok');}).catch(function(){toast('Impossible de copier.','err');});
+// ── PREVIEW ──
+function embUpdatePreview(){
+  var preview=document.getElementById('emb-preview');if(!preview)return;
+  embUpdateJSON();var html='';
+  if(embMode==='embeds'){
+    var gc=document.getElementById('emb-global-content');
+    if(gc&&gc.value.trim())html+='<div style="font-family:Whitney,sans-serif;color:#dcddde;font-size:14px;white-space:pre-wrap;line-height:1.65;margin-bottom:8px;word-break:break-word;">'+escHtml(gc.value)+'</div>';
+    if(!embEmbeds.length){html+='<div style="font-family:\'IBM Plex Mono\',monospace;font-size:10px;color:rgba(255,255,255,.18);padding:14px;text-align:center;border:1px dashed rgba(255,255,255,.08);border-radius:4px;">Ajoutez un embed pour voir l\'aperçu…</div>';}
+    else html+=embEmbeds.map(function(e){
+      var color=e.color||'#5865f2';var h='<div class="emb-preview-embed" style="border-left-color:'+color+';margin-bottom:6px;">';
+      if(e.thumbnail)h+='<img class="emb-preview-thumb" src="'+escHtml(e.thumbnail)+'" onerror="this.style.display=\'none\'">';
+      if(e.author_name){h+='<div class="emb-preview-author">';if(e.author_icon)h+='<img src="'+escHtml(e.author_icon)+'" style="width:20px;height:20px;border-radius:50%;object-fit:cover;" onerror="this.style.display=\'none\'">';h+=escHtml(e.author_name)+'</div>';}
+      if(e.title){if(e.title_url)h+='<div class="emb-preview-title"><a href="'+escHtml(e.title_url)+'" target="_blank" style="color:#00b0f4;text-decoration:none;">'+escHtml(e.title)+'</a></div>';else h+='<div class="emb-preview-title">'+escHtml(e.title)+'</div>';}
+      if(e.description)h+='<div class="emb-preview-desc">'+escHtml(e.description)+'</div>';
+      if(e.fields&&e.fields.length){var hi=e.fields.some(function(f){return f.inline;});h+='<div class="emb-preview-fields" style="grid-template-columns:'+(hi?'repeat(auto-fill,minmax(120px,1fr))':'1fr')+'">';e.fields.forEach(function(f){h+='<div style="'+(f.inline?'':'grid-column:1/-1')+'">'+(f.name?'<div class="emb-preview-field-name">'+escHtml(f.name)+'</div>':'')+(f.value?'<div class="emb-preview-field-val">'+escHtml(f.value)+'</div>':'')+'</div>';});h+='</div>';}
+      if(e.image)h+='<img class="emb-preview-img" src="'+escHtml(e.image)+'" onerror="this.style.display=\'none\'">';
+      if(e.footer||e.timestamp){h+='<div class="emb-preview-footer">';if(e.footer_icon)h+='<img src="'+escHtml(e.footer_icon)+'" style="width:16px;height:16px;border-radius:50%;vertical-align:middle;margin-right:5px;object-fit:cover;" onerror="this.style.display=\'none\'">';if(e.footer)h+=escHtml(e.footer);if(e.footer&&e.timestamp)h+=' · ';if(e.timestamp)h+=new Date().toLocaleString('fr');h+='</div>';}
+      h+='<div style="clear:both;"></div></div>';return h;
+    }).join('');
+  } else {
+    if(!embComps.length){html='<div style="font-family:\'IBM Plex Mono\',monospace;font-size:10px;color:rgba(255,255,255,.18);padding:14px;text-align:center;border:1px dashed rgba(255,255,255,.08);border-radius:4px;">Ajoutez des composants pour voir l\'aperçu…</div>';}
+    else html=embComps.map(embRenderCompPreview).join('');
+  }
+  preview.innerHTML=html;
+}
+function embRenderCompPreview(c){
+  if(c.type===10)return '<div style="font-family:Whitney,sans-serif;color:#dcddde;font-size:14px;white-space:pre-wrap;line-height:1.65;margin-bottom:6px;word-break:break-word;">'+escHtml(c.content||'')+'</div>';
+  if(c.type===12){
+    var its=(c.items||[]).filter(function(i){return i.url;});
+    if(!its.length)return '<div style="font-family:\'IBM Plex Mono\',monospace;font-size:9px;color:rgba(255,255,255,.3);padding:6px;border:1px dashed rgba(255,255,255,.1);border-radius:4px;margin-bottom:6px;">Media Gallery — aucun média</div>';
+    var cols=its.length===1?1:its.length===2?2:3;
+    return '<div style="display:grid;grid-template-columns:repeat('+cols+',1fr);gap:3px;margin-bottom:6px;border-radius:4px;overflow:hidden;">'
+      +its.map(function(i){return '<div style="position:relative;"><img src="'+escHtml(i.url)+'" style="width:100%;height:100px;object-fit:cover;display:block;" onerror="this.style.display=\'none\'">'+( i.desc?'<div style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.5);font-size:10px;color:#fff;padding:2px 5px;">'+escHtml(i.desc)+'</div>':'')+'</div>';}).join('')
+      +'</div>';
+  }
+  if(c.type===14)return '<div style="margin:'+(c.spacing===2?'12':'6')+'px 0;'+(c.divider?'border-top:1px solid rgba(255,255,255,.12);':'')+' "></div>';
+  if(c.type===17){
+    var inner=(c.components||[]).map(embRenderCompPreview).join('');
+    return '<div style="background:#2f3136;border-radius:8px;border-left:4px solid '+(c.accent_color||'transparent')+';padding:10px 14px;margin-bottom:6px;'+(c.spoiler?'filter:blur(6px);cursor:pointer;':'')+'">'+(inner||'<div style="font-family:\'IBM Plex Mono\',monospace;font-size:9px;color:rgba(255,255,255,.3);">Container vide</div>')+'</div>';
+  }
+  return '';
 }
 
-function embCopyMsg(idx){
-  var messages=window._embMessages||[];
-  if(!messages[idx])return;
-  navigator.clipboard.writeText(messages[idx]).then(function(){toast('Message '+( idx+1)+' copié !','ok');}).catch(function(){toast('Impossible de copier.','err');});
+// ── TOOLBAR ──
+function embGetActiveTA(){if(embLastTA&&document.contains(embLastTA))return embLastTA;return null;}
+function embFmt(type){
+  var ta=embGetActiveTA();if(!ta){toast('Cliquez d\'abord dans un champ texte.','err');return;}
+  var s=ta.selectionStart,en=ta.selectionEnd,sel=ta.value.substring(s,en),before=ta.value.substring(0,s),after=ta.value.substring(en),result=ta.value,cursor=s;
+  function wrap(o,c){result=before+o+(sel||'')+c+after;cursor=s+o.length+(sel?sel.length:0);}
+  function prefix(p){var ls=ta.value.lastIndexOf('\n',s-1)+1,le=ta.value.indexOf('\n',en);if(le===-1)le=ta.value.length;var pre=ta.value.substring(0,ls),post=ta.value.substring(le),mid=ta.value.substring(ls,le).split('\n').map(function(l){return p+l;});result=pre+mid.join('\n')+post;cursor=s+p.length;}
+  switch(type){
+    case 'bold':wrap('**','**');break;case 'italic':wrap('*','*');break;case 'underline':wrap('__','__');break;case 'strikethrough':wrap('~~','~~');break;
+    case 'code':wrap('`','`');break;case 'codeblock':result=before+'```\n'+(sel||'')+'\n```'+after;cursor=s+4;break;
+    case 'spoiler':wrap('||','||');break;case 'quote':prefix('> ');break;
+    case 'h1':prefix('# ');break;case 'h2':prefix('## ');break;case 'h3':prefix('### ');break;
+    case 'bullet':prefix('- ');break;
+    case 'numbered':{var n=1,ls2=ta.value.lastIndexOf('\n',s-1)+1,le2=ta.value.indexOf('\n',en);if(le2===-1)le2=ta.value.length;var pre2=ta.value.substring(0,ls2),post2=ta.value.substring(le2),mid2=ta.value.substring(ls2,le2).split('\n').map(function(l){return (n++)+'. '+l;});result=pre2+mid2.join('\n')+post2;cursor=s+3;break;}
+    case 'mdlink':if(sel){result=before+'['+sel+'](url)'+after;cursor=s+1;}else{result=before+'[](url)'+after;cursor=s+1;}break;
+    case 'rule':result=before+(before.endsWith('\n')?'':'\n')+'---\n'+after;cursor=s+4;break;
+  }
+  ta.value=result;ta.selectionStart=ta.selectionEnd=cursor||s;ta.focus();
+  ta.dispatchEvent(new Event('input',{bubbles:true}));
+}
+function embInsert(chars){
+  var ta=embGetActiveTA();if(!ta){toast('Cliquez d\'abord dans un champ texte.','err');return;}
+  var s=ta.selectionStart,en=ta.selectionEnd,open=chars[0],close=chars.length>1?chars[chars.length-1]:'';
+  var isPaired=chars.length===2&&open!==close;
+  if(isPaired){var sel=ta.value.substring(s,en);ta.value=ta.value.substring(0,s)+open+(sel||'')+close+ta.value.substring(en);ta.selectionStart=ta.selectionEnd=s+1+(sel?sel.length:0);}
+  else{ta.value=ta.value.substring(0,s)+chars+ta.value.substring(en);ta.selectionStart=ta.selectionEnd=s+chars.length;}
+  ta.focus();ta.dispatchEvent(new Event('input',{bubbles:true}));
 }
 
 // ── WEBHOOK ──
 function embSaveWebhook(){
-  var wh=document.getElementById('emb-webhook');
-  var tid=document.getElementById('emb-thread-id');
-  var val=wh?wh.value.trim():'';
-  var tidVal=tid?tid.value.trim():'';
+  var wh=document.getElementById('emb-webhook'),tid=document.getElementById('emb-thread-id');
+  var val=wh?wh.value.trim():'',tidVal=tid?tid.value.trim():'';
   if(val)localStorage.setItem('ukn_emb_webhook',val);else localStorage.removeItem('ukn_emb_webhook');
   if(tidVal)localStorage.setItem('ukn_emb_thread',tidVal);else localStorage.removeItem('ukn_emb_thread');
-  var dot=document.getElementById('emb-wh-dot');
-  var txt=document.getElementById('emb-wh-txt');
+  var dot=document.getElementById('emb-wh-dot'),txt=document.getElementById('emb-wh-txt');
   if(val){if(dot)dot.className='pat-dot ok';if(txt){txt.textContent='Configuré';txt.style.color='var(--teal-bright)';}}
   else{if(dot)dot.className='pat-dot no';if(txt){txt.textContent='Non configuré';txt.style.color='';}}
 }
-
 function embLoadWebhook(){
-  var wh=localStorage.getItem('ukn_emb_webhook')||'';
-  var tid=localStorage.getItem('ukn_emb_thread')||'';
-  var whEl=document.getElementById('emb-webhook');if(whEl&&wh)whEl.value=wh;
-  var tidEl=document.getElementById('emb-thread-id');if(tidEl&&tid)tidEl.value=tid;
+  var wh=localStorage.getItem('ukn_emb_webhook')||'',tid=localStorage.getItem('ukn_emb_thread')||'';
+  var we=document.getElementById('emb-webhook');if(we&&wh)we.value=wh;
+  var te=document.getElementById('emb-thread-id');if(te&&tid)te.value=tid;
   embSaveWebhook();
 }
-
 async function embTestWebhook(){
-  var wh=document.getElementById('emb-webhook');
-  var val=wh?wh.value.trim():'';
+  var wh=document.getElementById('emb-webhook'),val=wh?wh.value.trim():'';
   if(!val){toast('Configurez l\'URL du webhook.','err');return;}
-  var tid=document.getElementById('emb-thread-id');
-  var tidVal=tid?tid.value.trim():'';
-  var url=val+(tidVal?'?thread_id='+encodeURIComponent(tidVal):'')+'?wait=true';
-  try{
-    var r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content:'✅ Test webhook UKN — Espace Embed opérationnel.'})});
-    if(r.ok||r.status===204){toast('Webhook OK !','ok');}
-    else{var d=await r.json().catch(function(){return{};});toast('Erreur '+r.status+': '+(d.message||''),'err');}
+  var tid=document.getElementById('emb-thread-id'),tidVal=tid?tid.value.trim():'';
+  var url=val+'?wait=true'+(tidVal?'&thread_id='+encodeURIComponent(tidVal):'');
+  try{var r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({content:'✅ Test webhook — Espace Embed UKN opérationnel.'})});
+    if(r.ok||r.status===200||r.status===204){toast('Webhook OK !','ok');}else{var d=await r.json().catch(function(){return{};});toast('Erreur '+r.status+': '+(d.message||''),'err');}
   }catch(e){toast('Erreur: '+e.message,'err');}
 }
-
 async function embSend(){
-  var wh=document.getElementById('emb-webhook');
-  var val=wh?wh.value.trim():'';
+  var wh=document.getElementById('emb-webhook'),val=wh?wh.value.trim():'';
   if(!val){toast('Configurez l\'URL du webhook.','err');return;}
-  var tid=document.getElementById('emb-thread-id');
-  var tidVal=tid?tid.value.trim():'';
-  var btn=document.getElementById('emb-send-btn');
-  if(btn){btn.disabled=true;btn.textContent='⏳ Envoi…';}
-
-  var baseUrl=val+(tidVal?'?thread_id='+encodeURIComponent(tidVal):'');
-
+  var tid=document.getElementById('emb-thread-id'),tidVal=tid?tid.value.trim():'';
+  var btn=document.getElementById('emb-send-btn');if(btn){btn.disabled=true;btn.textContent='⏳ Envoi…';}
+  var url=val+'?wait=true'+(tidVal?'&thread_id='+encodeURIComponent(tidVal):'');
   try{
-    if(embMode==='container'){
-      var ta=document.getElementById('emb-editor');
-      var text=ta?ta.value:'';
-      var messages=embSmartSplit(text,EMB_CHAR_LIMIT);
-      window._embMessages=messages;
-      var username=document.getElementById('emb-wh-username');
-      var uname=username?username.value.trim():'';
-      for(var i=0;i<messages.length;i++){
-        var payload={content:messages[i]};
-        if(uname)payload.username=uname;
-        var url=baseUrl+(baseUrl.includes('?')?'&':'?')+'wait=true';
-        var r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-        if(!r.ok&&r.status!==204){var d=await r.json().catch(function(){return{};});throw new Error('Message '+(i+1)+': '+r.status+' — '+(d.message||''));}
-        if(i<messages.length-1)await new Promise(function(res){setTimeout(res,600);});
-      }
-      toast('✅ '+messages.length+' message'+(messages.length!==1?'s':'')+' envoyé'+(messages.length!==1?'s':'')+' !','ok');
-    } else {
-      var payload2=embBuildJSON();
-      // Update timestamp to now before sending
-      if(payload2.embeds&&payload2.embeds[0]&&payload2.embeds[0].timestamp){
-        payload2.embeds[0].timestamp=new Date().toISOString();
-      }
-      var url2=baseUrl+(baseUrl.includes('?')?'&':'?')+'wait=true';
-      var r2=await fetch(url2,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload2)});
-      if(r2.ok||r2.status===204||r2.status===200){toast('✅ Embed envoyé !','ok');}
-      else{var d2=await r2.json().catch(function(){return{};});toast('Erreur '+r2.status+': '+(d2.message||'Erreur inconnue'),'err');}
-    }
+    var payload=embBuildJSON();
+    if(payload.embeds)payload.embeds.forEach(function(e){if(e.timestamp)e.timestamp=new Date().toISOString();});
+    var r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    if(r.ok||r.status===200||r.status===204){toast('✅ Message envoyé !','ok');}
+    else{var d=await r.json().catch(function(){return{};});toast('Erreur '+r.status+': '+(d.message||'Erreur inconnue'),'err');}
   }catch(e){toast('Erreur: '+e.message,'err');}
   finally{if(btn){btn.disabled=false;btn.innerHTML='&#128640; Envoyer';}}
 }
@@ -3493,26 +3196,19 @@ function embExportJSON(){
   embSave();
   var data={exported:new Date().toISOString(),embed_docs:embDocs};
   var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
-  var url=URL.createObjectURL(blob);
-  var a=document.createElement('a');a.href=url;a.download='embed-backup-'+Date.now()+'.json';
-  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
-  toast('Export JSON téléchargé.','ok');
+  var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='embed-backup-'+Date.now()+'.json';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);toast('Export téléchargé.','ok');
 }
-
 function embImportJSON(input){
   var file=input.files[0];if(!file)return;
   var reader=new FileReader();
   reader.onload=function(ev){
-    try{
-      var data=JSON.parse(ev.target.result);
-      var docs=data.embed_docs||data;
-      if(typeof docs!=='object')throw new Error('Format invalide');
+    try{var data=JSON.parse(ev.target.result);var docs=data.embed_docs||data;if(typeof docs!=='object')throw new Error('Format invalide');
       Object.assign(embDocs,docs);embSaveAll();embRefreshSelect();
-      var ids=Object.keys(docs);if(ids.length)embOpenDoc(ids[0]);
-      toast('Import réussi — '+ids.length+' backup(s).','ok');
+      var ids=Object.keys(docs).filter(function(k){return docs[k]&&docs[k]._type!=='folder';});
+      if(ids.length)embOpenDoc(ids[0]);toast('Import réussi — '+ids.length+' backup(s).','ok');
     }catch(err){toast('Erreur import: '+err.message,'err');}
-  };
-  reader.readAsText(file);input.value='';
+  };reader.readAsText(file);input.value='';
 }
 
 
