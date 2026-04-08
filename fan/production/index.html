@@ -351,16 +351,28 @@ function renderEquipList(){
   const flt=document.getElementById('cat-filter')?.value||'';
   if(!el)return;
   const filtered=flt?equipements.filter(e=>e.categorie===flt):equipements;
-  el.innerHTML=filtered.map(e=>{
+  let html='';
+  let lastNiv=null;
+  filtered.forEach(e=>{
     const qty=orders[e.id]||0;
     const col=CAT_COLOR[e.categorie]||'#E85C0D';
     const fac=factories.find(f=>f.categorie===e.categorie);
     const locked=fac&&e.niveau_requis>fac.niveau;
-    return`<div class="equip-item${locked?' opacity:0.4':''}">
+    const niv=e.niveau_requis||1;
+    if(niv!==lastNiv){
+      lastNiv=niv;
+      const TECH_PERIODS={1:'1910–1919',2:'1920–1929',3:'1930–1939',4:'1940–1949',5:'1950–1959',6:'1960–1969',7:'1970–1979',8:'1980–1989',9:'1990–1999',10:'2000–2009',11:'2010–2019',12:'2020–∞'};
+      const period=TECH_PERIODS[niv]||'';
+      html+=`<div style="display:flex;align-items:center;gap:8px;padding:6px 16px 5px;background:rgba(232,92,13,0.06);border-top:1px solid rgba(232,92,13,.18);border-bottom:1px solid rgba(232,92,13,.12);position:sticky;top:0;z-index:5;">
+        <span style="font-family:'Dune Rise',serif;font-size:9px;letter-spacing:.18em;color:var(--spice);">NIV ${niv}</span>
+        ${period?`<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.08em;">· ${period}</span>`:''}
+      </div>`;
+    }
+    html+=`<div class="equip-item" style="${locked?'opacity:.4;pointer-events:none;':''}" >
       <div class="equip-cat-dot" style="background:${col};"></div>
       <div>
         <div class="equip-item-name">${e.nom}</div>
-        <div class="equip-cost">${e.cout_slots.toLocaleString('fr')} slots · ${nivLabel(e.niveau_requis)}</div>
+        <div class="equip-cost">${e.cout_slots.toLocaleString('fr')} slots</div>
       </div>
       <div class="equip-qty-ctrl">
         <button class="qty-btn" onclick="changeOrder('${e.id}',-1)">−</button>
@@ -369,7 +381,8 @@ function renderEquipList(){
         <button class="qty-btn" onclick="changeOrder('${e.id}',+1)">+</button>
       </div>
     </div>`;
-  }).join('');
+  });
+  el.innerHTML=html;
 }
 
 function setFactoryLevel(id,lvl){
