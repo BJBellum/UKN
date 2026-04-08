@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated": "2026-04-05",
+  "updated": "2026-04-08",
   "bataillons": [
     {
       "id": "bat_01",
@@ -21,7 +21,8 @@
         "Véh. Blindés": 25,
         "Camions (Transport)": 50,
         "Char moyen": 0,
-        "Missile surface-air": 0
+        "Missile surface-air": 0,
+        "Lance-roquette": 100
       }
     },
     {
@@ -292,13 +293,13 @@
     ],
     "equipements": [
       {
-        "id": "eq_01",
-        "nom": "BN-05",
+        "nom": "BN-06",
         "categorie": "Terrestre",
-        "niveau_requis": 3,
-        "cout_slots": 3,
-        "cout_prod": 460,
-        "cout_vente": 999
+        "niveau_requis": 5,
+        "cout_slots": 4,
+        "cout_prod": 734,
+        "cout_vente": 1499,
+        "id": "eq_1775232678651"
       },
       {
         "id": "eq_02",
@@ -310,15 +311,6 @@
         "cout_vente": 249
       },
       {
-        "id": "eq_03",
-        "nom": "RK-01",
-        "categorie": "Terrestre",
-        "niveau_requis": 3,
-        "cout_slots": 6,
-        "cout_prod": 764,
-        "cout_vente": 1549
-      },
-      {
         "id": "eq_04",
         "nom": "RD-04",
         "categorie": "Terrestre",
@@ -328,67 +320,58 @@
         "cout_vente": 1799
       },
       {
-        "id": "eq_05",
-        "nom": "GR-1",
+        "nom": "DB-06 \"Muhafiz\"",
         "categorie": "Terrestre",
-        "niveau_requis": 1,
-        "cout_slots": 1,
-        "cout_prod": 1,
-        "cout_vente": 10
-      },
-      {
-        "id": "eq_06",
-        "nom": "MD-114",
-        "categorie": "Terrestre",
-        "niveau_requis": 3,
-        "cout_slots": 200,
-        "cout_prod": 13088,
-        "cout_vente": 26999
-      },
-      {
-        "id": "eq_07",
-        "nom": "MD-D-47",
-        "categorie": "Terrestre",
-        "niveau_requis": 3,
-        "cout_slots": 120,
-        "cout_prod": 9288,
-        "cout_vente": 20000
-      },
-      {
-        "id": "eq_08",
-        "nom": "MD-O-122",
-        "categorie": "Terrestre",
-        "niveau_requis": 3,
-        "cout_slots": 200,
-        "cout_prod": 12666,
-        "cout_vente": 24999
-      },
-      {
-        "id": "eq_09",
-        "nom": "MD-T-88",
-        "categorie": "Terrestre",
-        "niveau_requis": 3,
-        "cout_slots": 320,
-        "cout_prod": 12244,
-        "cout_vente": 24999
-      },
-      {
-        "id": "eq_10",
-        "nom": "NM-20 \"Sobek\"",
-        "categorie": "Terrestre",
-        "niveau_requis": 3,
-        "cout_slots": 1200,
-        "cout_prod": 90355,
-        "cout_vente": 199999
-      },
-      {
-        "id": "eq_11",
-        "nom": "DB-01 \"Saqr\"",
-        "categorie": "Terrestre",
-        "niveau_requis": 3,
+        "niveau_requis": 5,
         "cout_slots": 2140,
-        "cout_prod": 116533,
-        "cout_vente": 229999
+        "cout_prod": 177866,
+        "cout_vente": 449999,
+        "id": "eq_1775233063493"
+      },
+      {
+        "nom": "DB-110 \"Al-Mansour\"",
+        "categorie": "Terrestre",
+        "niveau_requis": 5,
+        "cout_slots": 7200,
+        "cout_prod": 502666,
+        "cout_vente": 899999,
+        "id": "eq_1775233138231"
+      },
+      {
+        "nom": "NQ-300 \"Al-Sadd\"",
+        "categorie": "Terrestre",
+        "niveau_requis": 5,
+        "cout_slots": 1200,
+        "cout_prod": 128,
+        "cout_vente": 249999,
+        "id": "eq_1775392217901"
+      },
+      {
+        "nom": "MD-T-120",
+        "categorie": "Terrestre",
+        "niveau_requis": 5,
+        "cout_slots": 320,
+        "cout_prod": 16188,
+        "cout_vente": 24999,
+        "id": "eq_1775232828847"
+      },
+      {
+        "nom": "MD-130",
+        "categorie": "Terrestre",
+        "niveau_requis": 5,
+        "cout_slots": 200,
+        "cout_prod": 19977,
+        "cout_vente": 31999,
+        "id": "eq_1775232918814"
+      },
+      {
+        "nom": "MK-200 \"Al-Haris\"",
+        "categorie": "Terrestre",
+        "niveau_requis": 5,
+        "cout_slots": 1600,
+        "cout_prod": 170133,
+        "cout_vente": 299999,
+        "id": "eq_1775392358243"
       },
       {
         "id": "eq_12",
@@ -427,24 +410,6 @@
         "cout_vente": 2099999
       },
       {
-        "id": "eq_16",
-        "nom": "MQ-05",
-        "categorie": "Aerospatiale",
-        "niveau_requis": 4,
-        "cout_slots": 4400,
-        "cout_prod": 329000,
-        "cout_vente": 999999
-      },
-      {
-        "id": "eq_17",
-        "nom": "MQ-33 \"Cobra\"",
-        "categorie": "Aerospatiale",
-        "niveau_requis": 4,
-        "cout_slots": 4400,
-        "cout_prod": 329000,
-        "cout_vente": 1499999
-      },
-      {
         "nom": "Aichi D1A \"Ryusei\"",
         "categorie": "Aerospatiale",
         "niveau_requis": 4,
@@ -454,15 +419,6 @@
         "id": "eq_1775140176828"
       },
       {
-        "nom": "BN-06",
-        "categorie": "Terrestre",
-        "niveau_requis": 5,
-        "cout_slots": 4,
-        "cout_prod": 734,
-        "cout_vente": 1499,
-        "id": "eq_1775232678651"
-      },
-      {
         "nom": "RS-500",
         "categorie": "Aerospatiale",
         "niveau_requis": 5,
@@ -470,60 +426,6 @@
         "cout_prod": 309332,
         "cout_vente": 500000,
         "id": "eq_1775232755647"
-      },
-      {
-        "nom": "MD-T-120",
-        "categorie": "Terrestre",
-        "niveau_requis": 5,
-        "cout_slots": 320,
-        "cout_prod": 16188,
-        "cout_vente": 24999,
-        "id": "eq_1775232828847"
-      },
-      {
-        "nom": "MD-130",
-        "categorie": "Terrestre",
-        "niveau_requis": 5,
-        "cout_slots": 200,
-        "cout_prod": 19977,
-        "cout_vente": 31999,
-        "id": "eq_1775232918814"
-      },
-      {
-        "nom": "DB-06 \"Muhafiz\"",
-        "categorie": "Terrestre",
-        "niveau_requis": 5,
-        "cout_slots": 2140,
-        "cout_prod": 177866,
-        "cout_vente": 449999,
-        "id": "eq_1775233063493"
-      },
-      {
-        "nom": "DB-110 \"Al-Mansour\"",
-        "categorie": "Terrestre",
-        "niveau_requis": 5,
-        "cout_slots": 7200,
-        "cout_prod": 502666,
-        "cout_vente": 899999,
-        "id": "eq_1775233138231"
-      },
-      {
-        "nom": "NQ-300 \"Al-Sadd\"",
-        "categorie": "Terrestre",
-        "niveau_requis": 5,
-        "cout_slots": 1200,
-        "cout_prod": 128,
-        "cout_vente": 249999,
-        "id": "eq_1775392217901"
-      },
-      {
-        "nom": "MK-200 \"Al-Haris\"",
-        "categorie": "Terrestre",
-        "niveau_requis": 5,
-        "cout_slots": 1600,
-        "cout_prod": 170133,
-        "cout_vente": 299999,
-        "id": "eq_1775392358243"
       }
     ]
   },
