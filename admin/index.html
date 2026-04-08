@@ -1521,7 +1521,7 @@ function submitEquipForm(){
   const nom=document.getElementById('eq-nom').value.trim();if(!nom){toast('Nom obligatoire.','err');return;}
   const obj={nom,categorie:document.getElementById('eq-cat').value,niveau_requis:parseInt(document.getElementById('eq-niv').value)||1,cout_slots:parseInt(document.getElementById('eq-slots').value)||0,cout_prod:parseInt(document.getElementById('eq-prod').value)||0,cout_vente:parseInt(document.getElementById('eq-vente').value)||0};
   if(editEquipIdx!==null)fanEquip[editEquipIdx]={...fanEquip[editEquipIdx],...obj};
-  else{obj.id='eq_'+Date.now();fanEquip.push(obj);}
+  else{obj.id='eq_'+Date.now();let lastIdx=-1;fanEquip.forEach((e,i)=>{if(e.categorie===obj.categorie)lastIdx=i;});if(lastIdx>=0)fanEquip.splice(lastIdx+1,0,obj);else fanEquip.push(obj);}
   saveFanState();renderProdAdmin();closeEquipModal();toast(editEquipIdx!==null?'Équipement modifié.':'Équipement ajouté.');
 }
 function deleteEquip(i){if(!confirm('Supprimer cet équipement ?'))return;fanEquip.splice(i,1);saveFanState();renderProdAdmin();toast('Équipement supprimé.');}
