@@ -490,10 +490,21 @@ async function syncFromGH(){
       });
     }
     if(d.production?.equipements?.length){
+      // Merge data then reorder to match GitHub order
       d.production.equipements.forEach(ge=>{
         const local=equipements.find(x=>x.id===ge.id);
         if(local){Object.assign(local,ge);}
         else equipements.push(ge);
+      });
+      // Reorder equipements array to match GitHub order
+      const ghOrder=d.production.equipements.map(e=>e.id);
+      equipements.sort((a,b)=>{
+        const ia=ghOrder.indexOf(a.id);
+        const ib=ghOrder.indexOf(b.id);
+        if(ia===-1&&ib===-1)return 0;
+        if(ia===-1)return 1;
+        if(ib===-1)return -1;
+        return ia-ib;
       });
     }
     if(d.production?.commandes){
