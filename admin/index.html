@@ -1482,7 +1482,11 @@ function renderProdAdmin(){
     <td style="text-align:right;">${fmt(e.cout_prod)}</td>
     <td style="text-align:right;color:var(--teal-bright);">${fmt(e.cout_vente)}</td>
     <td style="text-align:right;color:var(--gold);">${fmt(e.cout_vente-e.cout_prod)}</td>
-    <td style="display:flex;gap:5px;padding:6px 10px;">
+    <td style="display:flex;gap:5px;padding:6px 10px;align-items:center;">
+      <div style="display:flex;flex-direction:column;gap:2px;flex-shrink:0;">
+        <button class="btn btn-ghost btn-xs" style="padding:1px 5px;font-size:10px;line-height:1;" onclick="moveEquip(${i},-1)" ${i===0?'disabled style="opacity:.3;cursor:default;"':''} title="Monter">▲</button>
+        <button class="btn btn-ghost btn-xs" style="padding:1px 5px;font-size:10px;line-height:1;" onclick="moveEquip(${i},+1)" ${i===fanEquip.length-1?'disabled style="opacity:.3;cursor:default;"':''} title="Descendre">▼</button>
+      </div>
       <button class="btn btn-ghost btn-sm" onclick="openEquipModal(${i})">Modifier</button>
       <button class="btn btn-danger btn-xs" onclick="deleteEquip(${i})">✕</button>
     </td>
@@ -1521,6 +1525,12 @@ function submitEquipForm(){
   saveFanState();renderProdAdmin();closeEquipModal();toast(editEquipIdx!==null?'Équipement modifié.':'Équipement ajouté.');
 }
 function deleteEquip(i){if(!confirm('Supprimer cet équipement ?'))return;fanEquip.splice(i,1);saveFanState();renderProdAdmin();toast('Équipement supprimé.');}
+function moveEquip(i,dir){
+  const j=i+dir;
+  if(j<0||j>=fanEquip.length)return;
+  const tmp=fanEquip[i];fanEquip[i]=fanEquip[j];fanEquip[j]=tmp;
+  saveFanState();renderProdAdmin();
+}
 
 // ════════════════════════════════════════════════
 //  FAN: NOUVEAU BATAILLON
