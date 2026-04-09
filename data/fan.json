@@ -464,6 +464,33 @@
         "id": "eq_1775745658932"
       },
       {
+        "nom": "RM-50",
+        "categorie": "Terrestre",
+        "niveau_requis": 5,
+        "cout_slots": 6,
+        "cout_prod": 1,
+        "cout_vente": 1699,
+        "id": "eq_1775778458126"
+      },
+      {
+        "nom": "BR-67",
+        "categorie": "Terrestre",
+        "niveau_requis": 5,
+        "cout_slots": 6,
+        "cout_prod": 1165,
+        "cout_vente": 1499,
+        "id": "eq_1775778699805"
+      },
+      {
+        "nom": "MD-105",
+        "categorie": "Terrestre",
+        "niveau_requis": 5,
+        "cout_slots": 200,
+        "cout_prod": 19333,
+        "cout_vente": 22999,
+        "id": "eq_1775778833510"
+      },
+      {
         "id": "eq_12",
         "nom": "Classe \"Barq\"",
         "categorie": "Maritime",
