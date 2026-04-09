@@ -374,6 +374,15 @@
         "id": "eq_1775232918814"
       },
       {
+        "nom": "MD-155",
+        "categorie": "Terrestre",
+        "niveau_requis": 5,
+        "cout_slots": 200,
+        "cout_prod": 19,
+        "cout_vente": 34999,
+        "id": "eq_1775745759066"
+      },
+      {
         "nom": "GR-2",
         "categorie": "Terrestre",
         "niveau_requis": 5,
@@ -446,6 +455,15 @@
         "id": "eq_1775745510128"
       },
       {
+        "nom": "RJ-6 \"Al-Zilzal\"",
+        "categorie": "Terrestre",
+        "niveau_requis": 4,
+        "cout_slots": 12,
+        "cout_prod": 846,
+        "cout_vente": 1399,
+        "id": "eq_1775745658932"
+      },
+      {
         "id": "eq_12",
         "nom": "Classe \"Barq\"",
         "categorie": "Maritime",
@@ -482,13 +500,13 @@
         "cout_vente": 2099999
       },
       {
-        "nom": "QD-300 \"Shai-Hulud\"",
+        "nom": "MW-06 \"Al-Khamsin\"",
         "categorie": "Aerospatiale",
         "niveau_requis": 5,
-        "cout_slots": 18750,
-        "cout_prod": 522000,
-        "cout_vente": 699999,
-        "id": "eq_1775745579516"
+        "cout_slots": 2140,
+        "cout_prod": 241666,
+        "cout_vente": 349999,
+        "id": "eq_1775745989815"
       },
       {
         "nom": "Aichi D1A \"Ryusei\"",
@@ -500,6 +518,15 @@
         "id": "eq_1775140176828"
       },
       {
+        "nom": "QD-300 \"Shai-Hulud\"",
+        "categorie": "Aerospatiale",
+        "niveau_requis": 5,
+        "cout_slots": 18750,
+        "cout_prod": 522000,
+        "cout_vente": 699999,
+        "id": "eq_1775745579516"
+      },
+      {
         "nom": "RS-500",
         "categorie": "Aerospatiale",
         "niveau_requis": 5,
@@ -507,6 +534,15 @@
         "cout_prod": 309332,
         "cout_vente": 449999,
         "id": "eq_1775232755647"
+      },
+      {
+        "nom": "MQ-06 \"Khaled\"",
+        "categorie": "Aerospatiale",
+        "niveau_requis": 5,
+        "cout_slots": 4400,
+        "cout_prod": 367332,
+        "cout_vente": 599999,
+        "id": "eq_1775746097886"
       }
     ]
   },
