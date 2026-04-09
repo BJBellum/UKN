@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated": "2026-04-08",
+  "updated": "2026-04-09",
   "bataillons": [
     {
       "id": "bat_01",
@@ -298,7 +298,7 @@
         "niveau_requis": 5,
         "cout_slots": 4,
         "cout_prod": 734,
-        "cout_vente": 1499,
+        "cout_vente": 1199,
         "id": "eq_1775232678651"
       },
       {
@@ -317,16 +317,7 @@
         "niveau_requis": 2,
         "cout_slots": 6,
         "cout_prod": 647,
-        "cout_vente": 1799
-      },
-      {
-        "nom": "DB-06 \"Muhafiz\"",
-        "categorie": "Terrestre",
-        "niveau_requis": 5,
-        "cout_slots": 2140,
-        "cout_prod": 177866,
-        "cout_vente": 449999,
-        "id": "eq_1775233063493"
+        "cout_vente": 1399
       },
       {
         "nom": "DB-110 \"Al-Mansour\"",
@@ -334,17 +325,35 @@
         "niveau_requis": 5,
         "cout_slots": 7200,
         "cout_prod": 502666,
-        "cout_vente": 899999,
+        "cout_vente": 699999,
         "id": "eq_1775233138231"
+      },
+      {
+        "nom": "DB-06 \"Muhafiz\"",
+        "categorie": "Terrestre",
+        "niveau_requis": 5,
+        "cout_slots": 2140,
+        "cout_prod": 177866,
+        "cout_vente": 349999,
+        "id": "eq_1775233063493"
       },
       {
         "nom": "NQ-300 \"Al-Sadd\"",
         "categorie": "Terrestre",
         "niveau_requis": 5,
         "cout_slots": 1200,
-        "cout_prod": 128,
+        "cout_prod": 128888,
         "cout_vente": 249999,
         "id": "eq_1775392217901"
+      },
+      {
+        "nom": "MK-200 \"Al-Haris\"",
+        "categorie": "Terrestre",
+        "niveau_requis": 5,
+        "cout_slots": 1600,
+        "cout_prod": 170133,
+        "cout_vente": 299999,
+        "id": "eq_1775392358243"
       },
       {
         "nom": "MD-T-120",
@@ -365,13 +374,76 @@
         "id": "eq_1775232918814"
       },
       {
-        "nom": "MK-200 \"Al-Haris\"",
+        "nom": "GR-2",
         "categorie": "Terrestre",
         "niveau_requis": 5,
-        "cout_slots": 1600,
-        "cout_prod": 170133,
+        "cout_slots": 2,
+        "cout_prod": 7,
+        "cout_vente": 15,
+        "id": "eq_1775744388051"
+      },
+      {
+        "nom": "LA-1",
+        "categorie": "Terrestre",
+        "niveau_requis": 5,
+        "cout_slots": 2,
+        "cout_prod": 44,
+        "cout_vente": 67,
+        "id": "eq_1775744426022"
+      },
+      {
+        "nom": "LD-1",
+        "categorie": "Terrestre",
+        "niveau_requis": 5,
+        "cout_slots": 2,
+        "cout_prod": 61,
+        "cout_vente": 99,
+        "id": "eq_1775744456155"
+      },
+      {
+        "nom": "HW-60",
+        "categorie": "Terrestre",
+        "niveau_requis": 4,
+        "cout_slots": 20,
+        "cout_prod": 532,
+        "cout_vente": 799,
+        "id": "eq_1775744619955"
+      },
+      {
+        "nom": "HW-120",
+        "categorie": "Terrestre",
+        "niveau_requis": 4,
+        "cout_slots": 80,
+        "cout_prod": 1044,
+        "cout_vente": 1499,
+        "id": "eq_1775744873534"
+      },
+      {
+        "nom": "HW-81",
+        "categorie": "Terrestre",
+        "niveau_requis": 2,
+        "cout_slots": 40,
+        "cout_prod": 516,
+        "cout_vente": 999,
+        "id": "eq_1775745080038"
+      },
+      {
+        "nom": "RH-06",
+        "categorie": "Terrestre",
+        "niveau_requis": 4,
+        "cout_slots": 3,
+        "cout_prod": 517,
+        "cout_vente": 999,
+        "id": "eq_1775745146776"
+      },
+      {
+        "nom": "RAS-40",
+        "categorie": "Terrestre",
+        "niveau_requis": 5,
+        "cout_slots": 2000,
+        "cout_prod": 222977,
         "cout_vente": 299999,
-        "id": "eq_1775392358243"
+        "id": "eq_1775745510128"
       },
       {
         "id": "eq_12",
@@ -410,6 +482,15 @@
         "cout_vente": 2099999
       },
       {
+        "nom": "QD-300 \"Shai-Hulud\"",
+        "categorie": "Aerospatiale",
+        "niveau_requis": 5,
+        "cout_slots": 18750,
+        "cout_prod": 522000,
+        "cout_vente": 699999,
+        "id": "eq_1775745579516"
+      },
+      {
         "nom": "Aichi D1A \"Ryusei\"",
         "categorie": "Aerospatiale",
         "niveau_requis": 4,
@@ -424,7 +505,7 @@
         "niveau_requis": 5,
         "cout_slots": 6240,
         "cout_prod": 309332,
-        "cout_vente": 500000,
+        "cout_vente": 449999,
         "id": "eq_1775232755647"
       }
     ]
