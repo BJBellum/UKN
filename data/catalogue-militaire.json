@@ -616,5 +616,29 @@
       "Munitions": "Obus explosifs, légers, fumigènes et éclairants"
     },
     "image_path": "assets/images/catalogue/image_-_2026-04-05t193453.969.png"
+  },
+  {
+    "id": "cat_1775779140036",
+    "nom": "MD-105",
+    "categorie": "artillerie",
+    "soustype": "Artillerie de Campagne (7-16 cm)",
+    "niveau": 5,
+    "fabricant": "Yassin Heavy Industries",
+    "cout_unite": "22999",
+    "inspiration": "OTO Melara Modèle 56",
+    "disponibilite": "Octobre 2306",
+    "specs": {
+      "Calibre": "105mm",
+      "Équipage": "7 hommes",
+      "Masse (non chargé)": "1 273 kg",
+      "Longueur": "3,65 m",
+      "Longueur du canon": "1,47 m",
+      "Cadence de tir": "10 coups par minute",
+      "Vitesse initiale": "416 m/s",
+      "Système de visée": "Lunette panoramique (tir indirect) et lunette antichar (tir direct)",
+      "Portée maximale": "10,57 km",
+      "Munitions": "HE, HEAT, Fumigènes, Éclairant"
+    },
+    "image_path": "assets/images/catalogue/image_-_2026-04-09t210058.918.png"
   }
 ]
