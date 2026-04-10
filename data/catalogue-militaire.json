@@ -640,5 +640,30 @@
       "Munitions": "HE, HEAT, Fumigènes, Éclairant"
     },
     "image_path": "assets/images/catalogue/image_-_2026-04-09t210058.918.png"
+  },
+  {
+    "id": "cat_1775779388619",
+    "nom": "RM-50",
+    "categorie": "armes-feu",
+    "soustype": "Mitrailleuse",
+    "niveau": 5,
+    "fabricant": "Yassin Heavy Industries",
+    "cout_unite": "1699",
+    "inspiration": "FN MAG",
+    "disponibilite": "Novembre 2305",
+    "specs": {
+      "Calibre": "7,62",
+      "Masse (non chargé)": "11,8 kg",
+      "Longueur": "1 263 mm",
+      "Longueur du canon": "630 mm",
+      "Cadence de tir": "650 à 1 000 coups/min",
+      "Vitesse initiale": "840 m/s",
+      "Portée pratique": "800 m (sur bipied), 1 800 m (sur trépied),",
+      "Portée maximale": "3 500 m",
+      "Capacité": "50 à 250 cartouches selon son utilisation",
+      "Type de munitions": "7,62 × 51 mm OTAN",
+      "Équipements possibles": "Trépied (pour le rôle de mitrailleuse moyenne). Rails Picatinny (pour le montage d'optiques de jour/nuit). Différents types de crosses (fixe en bois ou polymère, crosse repliable)."
+    },
+    "image_path": "assets/images/catalogue/image_-_2026-04-09t234911.607.png"
   }
 ]
