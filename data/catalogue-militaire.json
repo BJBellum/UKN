@@ -665,5 +665,30 @@
       "Équipements possibles": "Trépied (pour le rôle de mitrailleuse moyenne). Rails Picatinny (pour le montage d'optiques de jour/nuit). Différents types de crosses (fixe en bois ou polymère, crosse repliable)."
     },
     "image_path": "assets/images/catalogue/image_-_2026-04-09t234911.607.png"
+  },
+  {
+    "id": "cat_1775779641936",
+    "nom": "BR-67",
+    "categorie": "armes-feu",
+    "soustype": "Mitrailleuse",
+    "niveau": 5,
+    "fabricant": "Yassin Heavy Industries",
+    "cout_unite": "1499",
+    "inspiration": "FN FALO",
+    "disponibilite": "Novembre 2306",
+    "specs": {
+      "Calibre": "7,62 mm",
+      "Masse (non chargé)": "6,0 kg",
+      "Longueur": "1 150 mm",
+      "Longueur du canon": "533 mm",
+      "Cadence de tir": "650 à 700 coups par minute",
+      "Vitesse initiale": "840 m/s",
+      "Portée pratique": "600 mètres",
+      "Portée maximale": "3 000 mètres (portée théorique)",
+      "Capacité": "Chargeur amovible de 20 ou 30 cartouches",
+      "Type de munitions": "7,62 x 51 mm OTAN",
+      "Équipements possibles": "Bipied repliable intégré, poignée de transport, lunettes de visée optique (via un montage spécifique), baïonnette."
+    },
+    "image_path": "assets/images/catalogue/image_-_2026-04-10t004646.582.png"
   }
 ]
