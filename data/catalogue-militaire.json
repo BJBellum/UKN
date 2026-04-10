@@ -3,10 +3,10 @@
     "id": "cat_1774289801529",
     "nom": "RD-04",
     "categorie": "armes-feu",
-    "soustype": "Mitrailleuse",
+    "soustype": "N/A",
     "niveau": 2,
     "fabricant": "Yassin Heavy Industries",
-    "cout_unite": "1299",
+    "cout_unite": "1999",
     "inspiration": "Browning M2",
     "disponibilite": "Mai 2304",
     "specs": {
