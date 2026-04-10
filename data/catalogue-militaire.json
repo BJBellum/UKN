@@ -690,5 +690,30 @@
       "Équipements possibles": "Bipied repliable intégré, poignée de transport, lunettes de visée optique (via un montage spécifique), baïonnette."
     },
     "image_path": "assets/images/catalogue/image_-_2026-04-10t004646.582.png"
+  },
+  {
+    "id": "cat_1775852017592",
+    "nom": "BQ-10",
+    "categorie": "armes-feu",
+    "soustype": "Fusil de précision",
+    "niveau": 5,
+    "fabricant": "Yassin Heavy Industries",
+    "cout_unite": "1399",
+    "inspiration": "M14 (avec lunette de précision)",
+    "disponibilite": "Novembre 2306",
+    "specs": {
+      "Calibre": "7,62",
+      "Masse (non chargé)": "5,27 kg (avec lunette et montage)",
+      "Longueur": "1 118 mm",
+      "Longueur du canon": "559 mm",
+      "Cadence de tir": "40 coups/min en tir de précision",
+      "Vitesse initiale": "853 m/s",
+      "Portée pratique": "800 m",
+      "Portée maximale": "3 700 m",
+      "Capacité": "20 cartouches (magasin amovible standard)",
+      "Type de munitions": "7,62 × 51 mm",
+      "Équipements possibles": "Lunette de visée optique, Bipied, Silencieux"
+    },
+    "image_path": "assets/images/catalogue/image_-_2026-04-10t215859.187.png"
   }
 ]
