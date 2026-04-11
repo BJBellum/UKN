@@ -40,34 +40,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.hero-globe-wrap::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 50% 50%, rgba(12,8,4,0) 0%, rgba(12,8,4,0) 42%, rgba(12,8,4,0.45) 72%, rgba(12,8,4,0.88) 100%),
-    radial-gradient(circle at 50% 95%, rgba(232,92,13,0.12), rgba(0,0,0,0) 55%);
-  pointer-events: none;
+  /* NO background, NO overlay — the wrap is just a positioner.
+     Any vignette/fade is handled on the canvas itself via mask-image. */
 }
 #globe-canvas {
   width: 100%;
   aspect-ratio: 1 / 1;
   opacity: 0;
   transition: opacity 1.4s ease-out;
+  /* Soft circular fade so the globe blends into the dune background
+     without creating a square dark frame at the corners. */
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 46%, rgba(0,0,0,0.85) 58%, rgba(0,0,0,0) 74%);
+          mask-image: radial-gradient(circle at 50% 50%, #000 46%, rgba(0,0,0,0.85) 58%, rgba(0,0,0,0) 74%);
   filter:
-    drop-shadow(0 0 60px rgba(200,150,12,0.30))
-    drop-shadow(0 0 120px rgba(232,92,13,0.18));
-}
-[data-theme="light"] .hero-globe-wrap::after {
-  background:
-    radial-gradient(circle at 50% 50%, rgba(242,232,208,0) 0%, rgba(242,232,208,0) 42%, rgba(242,232,208,0.50) 76%, rgba(242,232,208,0.92) 100%),
-    radial-gradient(circle at 50% 95%, rgba(184,56,0,0.10), rgba(0,0,0,0) 55%);
+    drop-shadow(0 0 40px rgba(200,150,12,0.35))
+    drop-shadow(0 0 100px rgba(232,92,13,0.22));
 }
 [data-theme="light"] #globe-canvas {
   filter:
-    drop-shadow(0 0 60px rgba(155,110,8,0.30))
-    drop-shadow(0 0 120px rgba(184,56,0,0.18));
+    drop-shadow(0 0 40px rgba(155,110,8,0.35))
+    drop-shadow(0 0 100px rgba(184,56,0,0.22));
   mix-blend-mode: multiply;
 }
 
@@ -1100,8 +1092,8 @@ window.addEventListener('DOMContentLoaded', () => {
       dark: isLight ? 0 : 1,
       diffuse: 1.35,
       mapSamples: 16000,
-      mapBrightness: isLight ? 3.8 : 5.6,
-      baseColor:   isLight ? [0.62, 0.50, 0.22] : [0.38, 0.29, 0.10],
+      mapBrightness: isLight ? 4.2 : 7.2,
+      baseColor:   isLight ? [0.62, 0.50, 0.22] : [0.46, 0.36, 0.14],
       markerColor: [232/255, 92/255, 13/255],
       glowColor:   isLight ? [0.85, 0.68, 0.20] : [0.78, 0.59, 0.05],
       scale: 1,
@@ -1121,7 +1113,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Fade in
     requestAnimationFrame(function() {
-      canvas.style.opacity = '0.78';
+      canvas.style.opacity = '0.95';
     });
 
     // React to theme toggle → rebuild with new palette
