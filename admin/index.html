@@ -299,6 +299,10 @@
     <svg viewBox="0 0 14 14" fill="none" width="13" height="13"><rect x="2" y="1" width="8" height="11" rx="1" stroke="currentColor" stroke-width="1" fill="none"/><rect x="3.5" y="1" width="9" height="11" rx="1" stroke="currentColor" stroke-width=".7" fill="none" opacity=".5"/><line x1="4" y1="4.5" x2="8.5" y2="4.5" stroke="currentColor" stroke-width=".8"/><line x1="4" y1="6.5" x2="8.5" y2="6.5" stroke="currentColor" stroke-width=".8"/><line x1="4" y1="8.5" x2="6.5" y2="8.5" stroke="currentColor" stroke-width=".8"/></svg>
     Catalogue Militaire
   </a>
+  <a class="sb-item" id="nav-suez" onclick="showSection('suez')">
+    <svg viewBox="0 0 14 14" fill="none" width="13" height="13"><path d="M2 7C2 7 4 4 7 7s5 0 5 0" stroke="currentColor" stroke-width="1.1" fill="none" stroke-linecap="round"/><line x1="7" y1="2" x2="7" y2="12" stroke="currentColor" stroke-width=".8" stroke-dasharray="1.5 1" opacity=".6"/><rect x="1" y="9" width="12" height="3" rx=".5" stroke="currentColor" stroke-width=".7" fill="none" opacity=".4"/></svg>
+    Canal de Suez
+  </a>
 
   <div class="sb-sep"></div>
   <div class="sb-sec"><svg viewBox="0 0 12 12" fill="none" width="10" height="10" style="opacity:.6;margin-right:4px;vertical-align:middle;"><path d="M2 9.5L3.5 8l5.5-5.5 1.5 1.5L5 9.5l-1.5.5-.5-1.5z" stroke="currentColor" stroke-width=".9" fill="none" stroke-linejoin="round"/><line x1="8" y1="3.5" x2="9.5" y2="5" stroke="currentColor" stroke-width=".9"/></svg>Ecriture</div>
@@ -877,6 +881,78 @@
     <div id="docs-list"></div>
   </div>
 
+  <!-- ══════════════════════════════════
+       SECTION: CANAL DE SUEZ
+  ══════════════════════════════════ -->
+  <div class="sec-pane" id="sec-suez">
+    <div class="dash-hdr">
+      <div class="dash-title" style="color:var(--teal-bright);">⚓ Canal de Suez</div>
+      <div class="dash-sub">Gérer les pays autorisés à traverser le Canal de Suez et les taxes associées par marchandise (en %).</div>
+    </div>
+
+    <!-- FORM: ADD / EDIT -->
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-top:2px solid var(--teal-bright);padding:16px;margin-bottom:16px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.14em;color:var(--teal-bright);text-transform:uppercase;margin-bottom:12px;" id="suez-form-title">+ Ajouter un pays</div>
+      <div class="form-grid" style="margin-bottom:12px;">
+        <div class="fg"><label class="fl">Nom du pays</label><input type="text" class="fi" id="suez-f-nom" placeholder="Ex : Royaume-Uni du Nil…" style="border-color:var(--border2);"></div>
+        <div class="fg"><label class="fl">Statut</label>
+          <select class="fs" id="suez-f-statut">
+            <option value="autorise">✅ Autorisé</option>
+            <option value="partiel">⚠️ Autorisé (conditionnel)</option>
+            <option value="interdit">🚫 Interdit</option>
+          </select>
+        </div>
+        <div class="fg"><label class="fl">Taxe — Marchandises générales (%)</label><input type="number" class="fi" id="suez-f-tax-gen" min="0" max="100" placeholder="0"></div>
+        <div class="fg"><label class="fl">Taxe — Matières premières (%)</label><input type="number" class="fi" id="suez-f-tax-mat" min="0" max="100" placeholder="0"></div>
+        <div class="fg"><label class="fl">Taxe — Produits militaires (%)</label><input type="number" class="fi" id="suez-f-tax-mil" min="0" max="100" placeholder="0"></div>
+        <div class="fg"><label class="fl">Taxe — Énergie &amp; Hydrocarbures (%)</label><input type="number" class="fi" id="suez-f-tax-ener" min="0" max="100" placeholder="0"></div>
+        <div class="fg fg-full"><label class="fl">Note / Conditions</label><input type="text" class="fi" id="suez-f-note" placeholder="Conditions particulières ou remarques…"></div>
+      </div>
+
+      <!-- FLAG UPLOAD -->
+      <div style="margin-bottom:12px;">
+        <label class="fl" style="margin-bottom:6px;display:block;">Drapeau (150×150 px — JPG/PNG)</label>
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+          <div id="suez-flag-preview" onclick="document.getElementById('suez-flag-input').click()" style="width:60px;height:60px;border:1px solid var(--border2);background:var(--bg2);display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:2px;flex-shrink:0;transition:border-color .2s;overflow:hidden;" title="Cliquer pour sélectionner">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);">🏳</span>
+          </div>
+          <input type="file" id="suez-flag-input" accept="image/jpeg,image/png" style="display:none;" onchange="suezHandleFlag(this)">
+          <input type="hidden" id="suez-f-flag-data">
+          <input type="hidden" id="suez-f-flag-path">
+          <div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);margin-bottom:4px;" id="suez-flag-filename">Aucun drapeau sélectionné</div>
+            <div style="display:flex;gap:6px;">
+              <button class="btn btn-sm" id="suez-flag-push-btn" onclick="suezPushFlagToGH()" style="display:none;background:rgba(34,184,154,.1);border-color:rgba(34,184,154,.4);color:var(--teal-bright);">⬆ Pousser le drapeau</button>
+              <button class="btn btn-ghost btn-xs" onclick="suezClearFlag()">✕ Effacer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <input type="hidden" id="suez-edit-id">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn btn-sm" onclick="suezSaveEntry()" style="background:rgba(34,184,154,.15);border-color:rgba(34,184,154,.5);color:var(--teal-bright);">✓ Enregistrer</button>
+        <button class="btn btn-ghost btn-sm" onclick="suezCancelEdit()">✕ Annuler</button>
+        <button class="btn btn-sm btn-gh" onclick="suezPushToGH()" style="margin-left:auto;">⬆ Sauvegarder sur GitHub</button>
+      </div>
+    </div>
+
+    <!-- LIST -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--teal-bright);letter-spacing:.1em;text-transform:uppercase;" id="suez-list-count">— pays</div>
+      <div style="display:flex;gap:6px;">
+        <select id="suez-filter-statut" class="fs" style="font-size:10px;padding:4px 8px;" onchange="suezRenderList()">
+          <option value="">Tous statuts</option>
+          <option value="autorise">✅ Autorisés</option>
+          <option value="partiel">⚠️ Conditionnels</option>
+          <option value="interdit">🚫 Interdits</option>
+        </select>
+        <button class="btn btn-ghost btn-sm" onclick="suezLoadFromGH()">↺ Sync GitHub</button>
+      </div>
+    </div>
+    <div id="suez-admin-list"></div>
+  </div>
+
 </div><!-- /admin-main -->
 
 <!-- ═══════════ MODALS ═══════════ -->
@@ -992,6 +1068,7 @@ const SECTION_TITLES={
   'fan-new':'⚔ NOUVEAU BATAILLON',
   'fan-sync':'⚔ SYNC · GITHUB',
   'catalogue':'📖 CATALOGUE MILITAIRE',
+  'suez':'⚓ CANAL DE SUEZ',
   'ecriture':'✍ ESPACE D\'ECRITURE',
   'docs':'📄 MES DOCUMENTS'
 };
@@ -1010,6 +1087,7 @@ function showSection(key){
   // Lazy renders
   if(key==='fan-bat')renderBatAdmin();
   if(key==='catalogue')renderCatalogueAdmin();
+  if(key==='suez')renderSuezAdmin();
   if(key==='ecriture')initEcriture();
   if(key==='docs')renderDocsList();
   if(key==='fan-prod')renderProdAdmin();
@@ -1927,6 +2005,10 @@ function renderCatalogueList(){
         <div style="font-family:monospace;font-size:8px;color:var(--spice);margin-top:3px;">NIV ${niv} · ${TECH_MAP_ADM[niv]||''}</div>
       </div>
       <div style="font-family:monospace;font-size:10px;color:var(--gold);white-space:nowrap;padding:0 10px;">${item.cout_unite?Number(item.cout_unite).toLocaleString('fr')+' Cr.':''}</div>
+      <div style="display:flex;flex-direction:column;gap:3px;flex-shrink:0;margin-right:4px;">
+        <button class="btn btn-ghost btn-xs" title="Monter" onclick="moveCatItem('${item.id}',-1)" style="padding:2px 6px;font-size:12px;line-height:1;">↑</button>
+        <button class="btn btn-ghost btn-xs" title="Descendre" onclick="moveCatItem('${item.id}',1)" style="padding:2px 6px;font-size:12px;line-height:1;">↓</button>
+      </div>
       <div style="display:flex;gap:5px;flex-shrink:0;">
         <button class="btn btn-ghost btn-sm" onclick="editCatalogueItem('${item.id}')">Modifier</button>
         <button class="btn btn-danger btn-xs" onclick="deleteCatalogueItem('${item.id}')">✕</button>
@@ -2018,6 +2100,28 @@ function deleteCatalogueItem(id){
   if(!confirm(`Supprimer « ${item?.nom||id} » du catalogue ?`))return;
   catItems=catItems.filter(x=>x.id!==id);
   saveCatState();renderCatalogueList();toast('Équipement supprimé.');
+}
+
+function moveCatItem(id,dir){
+  // If a filter is active, work on the full array order
+  const idx=catItems.findIndex(x=>x.id===id);
+  if(idx<0)return;
+  const filterCat=document.getElementById('cat-filter-cat')?.value||'';
+  if(filterCat){
+    // Build filtered indices
+    const filtered=catItems.map((it,i)=>({it,i})).filter(({it})=>it.categorie===filterCat);
+    const pos=filtered.findIndex(({it})=>it.id===id);
+    const targetPos=pos+dir;
+    if(targetPos<0||targetPos>=filtered.length)return;
+    const aIdx=filtered[pos].i;
+    const bIdx=filtered[targetPos].i;
+    [catItems[aIdx],catItems[bIdx]]=[catItems[bIdx],catItems[aIdx]];
+  } else {
+    const swapIdx=idx+dir;
+    if(swapIdx<0||swapIdx>=catItems.length)return;
+    [catItems[idx],catItems[swapIdx]]=[catItems[swapIdx],catItems[idx]];
+  }
+  saveCatState();renderCatalogueList();toast('Ordre mis à jour.');
 }
 
 // ── IMAGE HANDLING ──
@@ -2610,6 +2714,215 @@ function showAdmin(user){
   loadFromGH();
 }
 function logout(){if(window.PharosAuth?.logout)window.PharosAuth.logout();else{['ukn_token','ukn_user','pharos_session'].forEach(k=>localStorage.removeItem(k));}location.href='../';}
+
+// ════════════════════════════════════════════════
+//  CANAL DE SUEZ
+// ════════════════════════════════════════════════
+const SUEZ_FILE='data/canal-suez.json';
+const SUEZ_FLAG_PATH='economie/canal-de-suez/assets/images/';
+var suezEntries=[];
+var suezEditId=null;
+var suezFlagFile=null;
+
+function suezLoadState(){
+  try{var s=localStorage.getItem('suez_data');suezEntries=s?JSON.parse(s):[];}catch(_){suezEntries=[];}
+}
+function suezSaveState(){localStorage.setItem('suez_data',JSON.stringify(suezEntries.map(e=>{const c={...e};delete c.flag_data;return c;})));}
+
+function suezRenderList(){
+  const el=document.getElementById('suez-admin-list');
+  const cnt=document.getElementById('suez-list-count');
+  const filterSt=document.getElementById('suez-filter-statut')?.value||'';
+  const items=filterSt?suezEntries.filter(e=>e.statut===filterSt):suezEntries;
+  if(cnt)cnt.textContent=`${suezEntries.length} pays enregistré${suezEntries.length!==1?'s':''}`;
+  if(!el)return;
+  if(!items.length){el.innerHTML=`<div style="font-family:monospace;font-size:10px;color:var(--text3);padding:24px;text-align:center;border:1px solid var(--border);">Aucun pays. Utilisez le formulaire ci-dessus.</div>`;return;}
+  const statusLabel={autorise:'✅ Autorisé',partiel:'⚠️ Conditionnel',interdit:'🚫 Interdit'};
+  const statusColor={autorise:'var(--teal-bright)',partiel:'var(--amber)',interdit:'var(--spice)'};
+  el.innerHTML=items.map((e,absIdx)=>{
+    const flagSrc=e.flag_data||(e.flag_path?`https://bjbellum.github.io/UKN/${e.flag_path}`:null);
+    return`<div style="background:var(--card-bg);border:1px solid var(--border);border-left:3px solid ${statusColor[e.statut]||'var(--border2)'};display:flex;align-items:center;gap:12px;padding:10px 14px;margin-bottom:6px;transition:border-left-color .2s;">
+      ${flagSrc
+        ?`<img src="${flagSrc}" alt="${e.nom}" style="width:36px;height:36px;object-fit:cover;border:1px solid var(--border2);border-radius:2px;flex-shrink:0;" onerror="this.style.display='none'">`
+        :`<div style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;border:1px solid var(--border2);border-radius:2px;">🏳</div>`}
+      <div style="flex:1;min-width:0;">
+        <div style="font-family:monospace;font-size:11px;color:var(--text);font-weight:500;">${e.nom}</div>
+        <div style="font-family:monospace;font-size:9px;color:${statusColor[e.statut]||'var(--text3)'};margin-top:2px;">${statusLabel[e.statut]||e.statut}</div>
+        ${e.note?`<div style="font-family:monospace;font-size:8px;color:var(--text3);margin-top:2px;font-style:italic;">${e.note}</div>`:''}
+      </div>
+      <div style="font-family:monospace;font-size:8px;color:var(--text3);text-align:right;white-space:nowrap;padding:0 8px;line-height:1.8;">
+        Gen: <span style="color:var(--gold);">${e.tax_gen||0}%</span><br>
+        Mat: <span style="color:var(--gold);">${e.tax_mat||0}%</span><br>
+        Mil: <span style="color:var(--spice);">${e.tax_mil||0}%</span><br>
+        Enr: <span style="color:var(--teal-bright);">${e.tax_ener||0}%</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px;flex-shrink:0;margin-right:4px;">
+        <button class="btn btn-ghost btn-xs" title="Monter" onclick="suezMove('${e.id}',-1)" style="padding:2px 6px;font-size:12px;line-height:1;">↑</button>
+        <button class="btn btn-ghost btn-xs" title="Descendre" onclick="suezMove('${e.id}',1)" style="padding:2px 6px;font-size:12px;line-height:1;">↓</button>
+      </div>
+      <div style="display:flex;gap:5px;flex-shrink:0;">
+        <button class="btn btn-ghost btn-sm" onclick="suezEdit('${e.id}')">Modifier</button>
+        <button class="btn btn-danger btn-xs" onclick="suezDelete('${e.id}')">✕</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function suezMove(id,dir){
+  const idx=suezEntries.findIndex(x=>x.id===id);
+  if(idx<0)return;
+  const filterSt=document.getElementById('suez-filter-statut')?.value||'';
+  if(filterSt){
+    const filtered=suezEntries.map((it,i)=>({it,i})).filter(({it})=>it.statut===filterSt);
+    const pos=filtered.findIndex(({it})=>it.id===id);
+    const tp=pos+dir;if(tp<0||tp>=filtered.length)return;
+    const aIdx=filtered[pos].i,bIdx=filtered[tp].i;
+    [suezEntries[aIdx],suezEntries[bIdx]]=[suezEntries[bIdx],suezEntries[aIdx]];
+  } else {
+    const swapIdx=idx+dir;if(swapIdx<0||swapIdx>=suezEntries.length)return;
+    [suezEntries[idx],suezEntries[swapIdx]]=[suezEntries[swapIdx],suezEntries[idx]];
+  }
+  suezSaveState();suezRenderList();toast('Ordre mis à jour.');
+}
+
+function suezSaveEntry(){
+  const nom=document.getElementById('suez-f-nom')?.value.trim();
+  if(!nom){toast('Nom du pays obligatoire.','err');return;}
+  const obj={
+    id:suezEditId||'suez_'+Date.now(),
+    nom,
+    statut:document.getElementById('suez-f-statut')?.value||'autorise',
+    tax_gen:parseFloat(document.getElementById('suez-f-tax-gen')?.value)||0,
+    tax_mat:parseFloat(document.getElementById('suez-f-tax-mat')?.value)||0,
+    tax_mil:parseFloat(document.getElementById('suez-f-tax-mil')?.value)||0,
+    tax_ener:parseFloat(document.getElementById('suez-f-tax-ener')?.value)||0,
+    note:document.getElementById('suez-f-note')?.value.trim()||'',
+    flag_data:document.getElementById('suez-f-flag-data')?.value||'',
+    flag_path:document.getElementById('suez-f-flag-path')?.value||'',
+  };
+  if(suezEditId){const idx=suezEntries.findIndex(x=>x.id===suezEditId);if(idx>=0)suezEntries[idx]=obj;}
+  else suezEntries.push(obj);
+  suezSaveState();suezCancelEdit();suezRenderList();toast(suezEditId?'Pays modifié.':'Pays ajouté.');
+}
+
+function suezEdit(id){
+  const e=suezEntries.find(x=>x.id===id);if(!e)return;
+  suezEditId=id;
+  document.getElementById('suez-form-title').textContent='✎ Modifier — '+e.nom;
+  document.getElementById('suez-f-nom').value=e.nom||'';
+  document.getElementById('suez-f-statut').value=e.statut||'autorise';
+  document.getElementById('suez-f-tax-gen').value=e.tax_gen||0;
+  document.getElementById('suez-f-tax-mat').value=e.tax_mat||0;
+  document.getElementById('suez-f-tax-mil').value=e.tax_mil||0;
+  document.getElementById('suez-f-tax-ener').value=e.tax_ener||0;
+  document.getElementById('suez-f-note').value=e.note||'';
+  document.getElementById('suez-f-flag-data').value=e.flag_data||'';
+  document.getElementById('suez-f-flag-path').value=e.flag_path||'';
+  const prev=document.getElementById('suez-flag-preview');
+  const src=e.flag_data||(e.flag_path?`https://bjbellum.github.io/UKN/${e.flag_path}`:null);
+  if(prev){prev.innerHTML=src?`<img src="${src}" style="width:100%;height:100%;object-fit:cover;">`:`<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);">🏳</span>`;}
+  const fn=document.getElementById('suez-flag-filename');
+  if(fn)fn.textContent=e.flag_path?e.flag_path.split('/').pop():'Aucun drapeau';
+  const pb=document.getElementById('suez-flag-push-btn');if(pb)pb.style.display=e.flag_data?'inline-flex':'none';
+  document.getElementById('suez-edit-id').value=id;
+  document.getElementById('suez-f-nom').focus();
+}
+
+function suezCancelEdit(){
+  suezEditId=null;suezFlagFile=null;
+  document.getElementById('suez-form-title').textContent='+ Ajouter un pays';
+  ['suez-f-nom','suez-f-tax-gen','suez-f-tax-mat','suez-f-tax-mil','suez-f-tax-ener','suez-f-note','suez-f-flag-data','suez-f-flag-path','suez-edit-id'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  document.getElementById('suez-f-statut').value='autorise';
+  const prev=document.getElementById('suez-flag-preview');
+  if(prev)prev.innerHTML=`<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);">🏳</span>`;
+  const fn=document.getElementById('suez-flag-filename');if(fn)fn.textContent='Aucun drapeau sélectionné';
+  const pb=document.getElementById('suez-flag-push-btn');if(pb)pb.style.display='none';
+  document.getElementById('suez-flag-input').value='';
+}
+
+function suezDelete(id){
+  const e=suezEntries.find(x=>x.id===id);
+  if(!confirm(`Supprimer « ${e?.nom||id} » du Canal de Suez ?`))return;
+  suezEntries=suezEntries.filter(x=>x.id!==id);
+  suezSaveState();suezRenderList();toast('Pays supprimé.');
+}
+
+function suezHandleFlag(input){
+  const file=input.files[0];if(!file)return;
+  suezFlagFile=file;
+  const sanitized=file.name.replace(/[^a-zA-Z0-9._-]/g,'_').toLowerCase();
+  const flagPath=SUEZ_FLAG_PATH+sanitized;
+  document.getElementById('suez-f-flag-path').value=flagPath;
+  document.getElementById('suez-flag-filename').textContent=sanitized;
+  document.getElementById('suez-flag-push-btn').style.display='inline-flex';
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const b64=e.target.result;
+    document.getElementById('suez-f-flag-data').value=b64;
+    const prev=document.getElementById('suez-flag-preview');
+    if(prev)prev.innerHTML=`<img src="${b64}" style="width:100%;height:100%;object-fit:cover;">`;
+  };
+  reader.readAsDataURL(file);
+}
+
+function suezClearFlag(){
+  suezFlagFile=null;
+  document.getElementById('suez-f-flag-data').value='';
+  document.getElementById('suez-f-flag-path').value='';
+  document.getElementById('suez-flag-filename').textContent='Aucun drapeau sélectionné';
+  document.getElementById('suez-flag-push-btn').style.display='none';
+  document.getElementById('suez-flag-input').value='';
+  const prev=document.getElementById('suez-flag-preview');
+  if(prev)prev.innerHTML=`<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);">🏳</span>`;
+}
+
+async function suezPushFlagToGH(){
+  const pat=getPat();if(!pat||pat.length<10){toast('Configurez votre PAT.','err');return;}
+  const imgData=document.getElementById('suez-f-flag-data')?.value;
+  const imgPath=document.getElementById('suez-f-flag-path')?.value;
+  if(!imgData||!imgPath){toast('Aucun drapeau à pousser.','err');return;}
+  const base64=imgData.split(',')[1];if(!base64){toast('Format invalide.','err');return;}
+  const btn=document.getElementById('suez-flag-push-btn');if(btn)btn.disabled=true;
+  toast('Envoi du drapeau…','ok');
+  try{
+    let sha=null;
+    const sr=await fetch(`https://api.github.com/repos/${REPO}/contents/${imgPath}`,{headers:{'Authorization':`token ${pat}`,'Accept':'application/vnd.github.v3+json'},cache:'no-store'});
+    if(sr.ok){const sd=await sr.json();sha=sd.sha||null;}
+    const body={message:`add flag: ${imgPath}`,content:base64};if(sha)body.sha=sha;
+    const pr=await fetch(`https://api.github.com/repos/${REPO}/contents/${imgPath}`,{method:'PUT',headers:{'Authorization':`token ${pat}`,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)});
+    if(pr.ok)toast('Drapeau uploadé sur GitHub !','ok');
+    else{const ed=await pr.json();toast(`Erreur: ${pr.status} — ${ed.message||''}`, 'err');}
+  }catch(e){toast(`Erreur: ${e.message}`,'err');}
+  if(btn)btn.disabled=false;
+}
+
+async function suezPushToGH(){
+  const pat=getPat();if(!pat||pat.length<10){toast('Configurez votre PAT.','err');return;}
+  toast('Sauvegarde Canal de Suez…','ok');
+  try{
+    const payload=suezEntries.map(({flag_data,...rest})=>rest);
+    let sha=null;
+    const sr=await fetch(`https://api.github.com/repos/${REPO}/contents/${SUEZ_FILE}`,{headers:{'Authorization':`token ${pat}`,'Accept':'application/vnd.github.v3+json'},cache:'no-store'});
+    if(sr.ok){const sd=await sr.json();sha=sd.sha||null;}
+    else if(sr.status!==404){toast(`Erreur SHA: ${sr.status}`,'err');return;}
+    const encoded=btoa(unescape(encodeURIComponent(JSON.stringify(payload,null,2))));
+    const body={message:`update canal-suez.json — ${suezEntries.length} pays`,content:encoded};if(sha)body.sha=sha;
+    const pr=await fetch(`https://api.github.com/repos/${REPO}/contents/${SUEZ_FILE}`,{method:'PUT',headers:{'Authorization':`token ${pat}`,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify(body)});
+    if(pr.ok)toast('Canal de Suez sauvegardé sur GitHub !','ok');
+    else{const ed=await pr.json();toast(`Erreur: ${pr.status} — ${ed.message||''}`, 'err');}
+  }catch(e){toast(`Erreur: ${e.message}`,'err');}
+}
+
+async function suezLoadFromGH(){
+  try{
+    const r=await fetch(`https://api.github.com/repos/${REPO}/contents/${SUEZ_FILE}`,{headers:{'Accept':'application/vnd.github.v3.raw'},cache:'no-store'});
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const d=await r.json();
+    if(Array.isArray(d)){suezEntries=d;suezSaveState();suezRenderList();toast(`${suezEntries.length} pays chargés.`);}
+  }catch(e){toast('Erreur chargement: '+e.message,'err');}
+}
+
+function renderSuezAdmin(){suezLoadState();suezRenderList();}
 
 // ════════════════════════════════════════════════
 //  WEBHOOK DISCORD — stocké dans data/config.json
