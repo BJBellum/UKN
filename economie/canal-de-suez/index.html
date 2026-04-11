@@ -1,1 +1,570 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canal de Suez · Royaume-Uni du Nil</title>
+<meta property="og:title" content="Canal de Suez · قناة السويس">
+<meta property="og:description" content="Régulation du passage maritime impérial — statuts d'accès et taxes douanières par nation.">
+<meta property="og:image" content="https://BJBellum.github.io/UKN/assets/images/UKNSite.png">
+<meta property="og:image:alt" content="Portail National — Royaume-Uni du Nil">
+<meta name="theme-color" content="#22B89A">
+<link rel="icon" type="image/png" href="../../assets/images/UKNSite.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&family=Noto+Kufi+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/dune.css">
+<style>
+*{box-sizing:border-box;}
 
+/* ── NAV SPECIFIQUE ── */
+.canal-hero{
+  min-height:52vh;
+  background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(34,184,154,.12) 0%,transparent 60%);
+  position:relative;overflow:hidden;
+}
+.canal-hero::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 80px,
+    rgba(34,184,154,.03) 80px,
+    rgba(34,184,154,.03) 81px
+  );
+  pointer-events:none;
+}
+
+/* ── HERO WAVE DECO ── */
+.canal-wave{
+  position:absolute;bottom:0;left:0;right:0;height:60px;opacity:.18;
+}
+
+/* ── STATS HEADER ── */
+.canal-stats-bar{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0;
+  border:1px solid var(--border);
+  border-top:2px solid rgba(34,184,154,.6);
+  margin-bottom:36px;
+  background:var(--card-bg);
+}
+@media(max-width:640px){.canal-stats-bar{grid-template-columns:1fr 1fr;}}
+.cs-stat{
+  padding:16px 20px;
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;gap:4px;text-align:center;
+}
+.cs-stat:last-child{border-right:none;}
+.cs-stat-lbl{font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;}
+.cs-stat-val{font-family:'Dune Rise',serif;font-size:22px;letter-spacing:.04em;}
+.cs-stat-val.teal{color:var(--teal-bright);}
+.cs-stat-val.amber{color:var(--amber);}
+.cs-stat-val.red{color:var(--spice);}
+.cs-stat-val.gold{color:var(--gold);}
+
+/* ── FILTER BAR ── */
+.filter-bar{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:20px;
+  padding:10px 14px;
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-left:3px solid rgba(34,184,154,.5);
+}
+.filter-lbl{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.14em;color:var(--text3);text-transform:uppercase;white-space:nowrap;}
+.filter-btn{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;
+  padding:4px 12px;border-radius:2px;cursor:pointer;border:1px solid var(--border2);
+  background:transparent;color:var(--text3);transition:all .15s;
+}
+.filter-btn:hover{border-color:rgba(34,184,154,.5);color:var(--teal-bright);}
+.filter-btn.active{background:rgba(34,184,154,.12);border-color:rgba(34,184,154,.5);color:var(--teal-bright);}
+.filter-btn.amber.active{background:rgba(240,160,48,.12);border-color:rgba(240,160,48,.5);color:var(--amber);}
+.filter-btn.red.active{background:rgba(232,92,13,.12);border-color:rgba(232,92,13,.4);color:var(--spice);}
+
+/* ── SEARCH ── */
+.search-wrap{flex:1;min-width:160px;}
+.search-in{
+  width:100%;background:var(--bg);border:1px solid var(--border2);
+  color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:11px;
+  padding:5px 10px;border-radius:2px;outline:none;transition:border-color .2s;
+}
+.search-in:focus{border-color:rgba(34,184,154,.6);}
+
+/* ── TABLE HEADER ── */
+.tbl-hdr{
+  display:grid;
+  grid-template-columns:48px 1fr 100px 80px 80px 80px 80px;
+  gap:0;
+  padding:6px 14px;
+  background:rgba(34,184,154,.06);
+  border:1px solid var(--border);
+  border-bottom:none;
+  font-family:'IBM Plex Mono',monospace;font-size:7px;
+  letter-spacing:.14em;color:var(--text3);text-transform:uppercase;
+}
+@media(max-width:900px){
+  .tbl-hdr{grid-template-columns:40px 1fr 90px 70px 70px 70px 0;}
+  .tbl-hdr span:last-child{display:none;}
+}
+@media(max-width:640px){
+  .tbl-hdr{display:none;}
+}
+
+/* ── COUNTRY ROW ── */
+.country-row{
+  display:grid;
+  grid-template-columns:48px 1fr 100px 80px 80px 80px 80px;
+  gap:0;
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-top:none;
+  transition:background .15s,border-left-color .15s;
+  border-left:3px solid transparent;
+  align-items:center;
+}
+.country-row:first-child{border-top:1px solid var(--border);}
+.country-row.row-autorise{border-left-color:rgba(34,184,154,.45);}
+.country-row.row-partiel{border-left-color:rgba(240,160,48,.45);}
+.country-row.row-interdit{border-left-color:rgba(232,92,13,.45);}
+.country-row:hover{background:rgba(34,184,154,.03);}
+@media(max-width:900px){
+  .country-row{grid-template-columns:40px 1fr 90px 70px 70px 70px 0;}
+  .country-row .col-ener{display:none;}
+}
+@media(max-width:640px){
+  .country-row{
+    display:flex;flex-direction:column;align-items:flex-start;gap:0;
+    padding:10px 14px;border-left:3px solid transparent;
+  }
+}
+
+/* ── CELLS ── */
+.col-flag{padding:8px 10px;display:flex;align-items:center;justify-content:center;}
+.col-flag img{width:32px;height:32px;object-fit:cover;border-radius:2px;border:1px solid var(--border2);}
+.col-flag .flag-ph{width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:18px;background:var(--bg2);border:1px solid var(--border2);border-radius:2px;}
+.col-nom{padding:8px 12px 8px 6px;}
+.col-nom-name{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;color:var(--text);letter-spacing:.02em;}
+.col-nom-note{font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);margin-top:2px;font-style:italic;line-height:1.4;}
+.col-statut{padding:8px 6px;display:flex;align-items:center;}
+.statut-badge{
+  font-family:'IBM Plex Mono',monospace;font-size:8px;padding:3px 8px;border-radius:2px;border:1px solid;
+  letter-spacing:.07em;white-space:nowrap;display:inline-flex;align-items:center;gap:4px;
+}
+.sb-autorise{background:rgba(34,184,154,.1);border-color:rgba(34,184,154,.35);color:var(--teal-bright);}
+.sb-partiel{background:rgba(240,160,48,.1);border-color:rgba(240,160,48,.35);color:var(--amber);}
+.sb-interdit{background:rgba(232,92,13,.1);border-color:rgba(232,92,13,.35);color:var(--spice);}
+.col-tax{padding:8px 10px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;}
+.tax-val{color:var(--text2);}
+.tax-val.zero{color:var(--text3);opacity:.55;}
+.tax-val.high{color:var(--spice);}
+
+/* Mobile row details */
+.mobile-details{display:none;width:100%;padding-top:8px;border-top:1px solid var(--border);margin-top:4px;}
+@media(max-width:640px){
+  .mobile-details{display:flex;flex-wrap:wrap;gap:6px;}
+  .col-flag,.col-nom,.col-statut{padding:0;}
+  .col-nom{flex:1;}
+  .country-row-top{display:flex;align-items:center;gap:8px;width:100%;margin-bottom:8px;}
+  .col-tax{display:none;}
+}
+.mob-tax{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text2);background:var(--bg2);border:1px solid var(--border);padding:3px 8px;border-radius:2px;}
+.mob-tax-lbl{color:var(--text3);}
+
+/* ── SECTION SEPARATOR ── */
+.section-sep{
+  font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.2em;
+  color:var(--text3);text-transform:uppercase;
+  padding:8px 0 5px;border-bottom:1px solid var(--border);
+  margin:16px 0 0;display:flex;align-items:center;gap:8px;
+}
+.section-sep::before{content:'';width:3px;height:9px;background:var(--teal-bright);opacity:.6;flex-shrink:0;}
+.section-sep.amber::before{background:var(--amber);}
+.section-sep.red::before{background:var(--spice);}
+
+/* ── EMPTY ── */
+.empty-state{
+  text-align:center;padding:64px 24px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text3);
+  letter-spacing:.1em;line-height:2;
+  border:1px dashed var(--border);
+}
+
+/* ── LEGEND ── */
+.legend-grid{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;}
+.legend-item{
+  display:flex;align-items:center;gap:6px;
+  font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:.06em;
+  background:var(--card-bg);border:1px solid var(--border);
+  padding:5px 10px;border-radius:2px;
+}
+.legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+</style>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Royaume-Uni du Nil">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-left">
+    <div class="nav-logo">
+      <svg viewBox="0 0 20 20" fill="none" width="18" height="18">
+        <path d="M3 10C3 10 6 6 10 10s7 0 7 0" stroke="#22B89A" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <line x1="10" y1="3" x2="10" y2="17" stroke="#22B89A" stroke-width=".8" stroke-dasharray="2 1.5" opacity=".6"/>
+        <rect x="2" y="13" width="16" height="4" rx=".5" stroke="#22B89A" stroke-width=".8" fill="none" opacity=".5"/>
+      </svg>
+    </div>
+    <span class="nav-brand">Canal de Suez</span>
+    <span class="nav-sub">قناة السويس</span>
+  </div>
+  <div class="nav-right">
+    <a href="../" class="nav-back">← Économie</a>
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <svg id="toggle-icon" width="12" height="12" viewBox="0 0 24 24" fill="none">
+        <path id="icon-path" d="M21 12.79A9 9 0 0 1 12 21a9 9 0 0 1 0-18 7 7 0 0 0 9 9.79z" fill="currentColor"/>
+      </svg>
+      <span id="toggle-lbl">NUIT</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero canal-hero">
+  <div class="hero-desert"></div>
+  <div class="hero-content" style="padding-top:56px;padding-bottom:64px;">
+    <div class="hero-eyebrow">Ministere du Commerce · Royaume-Uni du Nil</div>
+    <h1 class="hero-title" style="color:var(--teal-bright);">Canal de Suez</h1>
+    <div class="hero-arabic" style="color:rgba(34,184,154,.8);">قناة السويس · ممر بحري امبراطوري</div>
+    <div class="hero-ornament">
+      <div class="hero-ornament-line" style="background:linear-gradient(90deg,transparent,rgba(34,184,154,.5));"></div>
+      <div class="hero-ornament-diamond" style="background:var(--teal-bright);"></div>
+      <div class="hero-ornament-line" style="transform:scaleX(-1);background:linear-gradient(90deg,transparent,rgba(34,184,154,.5));"></div>
+    </div>
+    <p class="hero-desc">
+      Répertoire officiel des nations autorisées à naviguer dans les eaux impériales du Canal de Suez.
+      Chaque pays est classé par <strong style="color:var(--teal-bright);">statut d'accès</strong> et soumis à des
+      <strong style="color:var(--teal-bright);">taxes douanières</strong> variables selon la catégorie de marchandise.
+    </p>
+    <div class="hero-stats">
+      <div class="hstat"><span class="hstat-lbl">Pays autorisés</span><span class="hstat-val teal" id="stat-ok">…</span></div>
+      <div class="hstat"><span class="hstat-lbl">Conditionnels</span><span class="hstat-val amber" id="stat-cond">…</span></div>
+      <div class="hstat"><span class="hstat-lbl">Interdits</span><span class="hstat-val" style="color:var(--spice);" id="stat-no">…</span></div>
+      <div class="hstat"><span class="hstat-lbl">Nations totales</span><span class="hstat-val" id="stat-total">…</span></div>
+    </div>
+  </div>
+  <!-- Vague décorative -->
+  <svg class="canal-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="none">
+    <path d="M0 30C240 50 480 10 720 30C960 50 1200 10 1440 30V60H0Z" fill="rgba(34,184,154,.15)"/>
+    <path d="M0 40C240 20 480 55 720 40C960 20 1200 55 1440 40V60H0Z" fill="rgba(34,184,154,.08)"/>
+  </svg>
+</section>
+
+<div class="page">
+
+  <!-- STATS BAR -->
+  <div class="canal-stats-bar" id="stats-bar" style="display:none;">
+    <div class="cs-stat">
+      <span class="cs-stat-lbl">Autorisés</span>
+      <span class="cs-stat-val teal" id="bar-ok">—</span>
+    </div>
+    <div class="cs-stat">
+      <span class="cs-stat-lbl">Conditionnels</span>
+      <span class="cs-stat-val amber" id="bar-cond">—</span>
+    </div>
+    <div class="cs-stat">
+      <span class="cs-stat-lbl">Interdits</span>
+      <span class="cs-stat-val red" id="bar-no">—</span>
+    </div>
+    <div class="cs-stat">
+      <span class="cs-stat-lbl">Nations totales</span>
+      <span class="cs-stat-val gold" id="bar-total">—</span>
+    </div>
+  </div>
+
+  <!-- LÉGENDE + FILTRE -->
+  <div class="filter-bar">
+    <span class="filter-lbl">Filtre</span>
+    <button class="filter-btn active" id="btn-all" onclick="setFilter('')">Tous</button>
+    <button class="filter-btn" id="btn-ok" onclick="setFilter('autorise')">✅ Autorisés</button>
+    <button class="filter-btn amber" id="btn-cond" onclick="setFilter('partiel')">⚠️ Conditionnels</button>
+    <button class="filter-btn red" id="btn-no" onclick="setFilter('interdit')">🚫 Interdits</button>
+    <div class="search-wrap">
+      <input type="text" class="search-in" id="search-in" placeholder="Rechercher un pays…" oninput="onSearch()">
+    </div>
+  </div>
+
+  <!-- LÉGENDE TAXES -->
+  <div class="legend-grid">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--gold);"></div>Marchandises générales</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--teal-bright);"></div>Matières premières</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--spice);"></div>Matériel militaire</div>
+    <div class="legend-item"><div class="legend-dot" style="background:rgba(74,158,255,.9);"></div>Énergie &amp; Hydrocarbures</div>
+    <div class="legend-item" style="margin-left:auto;border-color:rgba(34,184,154,.25);"><span style="color:var(--text3);">Taxes exprimées en</span>&nbsp;<strong style="color:var(--gold);">%</strong></div>
+  </div>
+
+  <!-- TABLE HEADER (desktop) -->
+  <div class="tbl-hdr">
+    <span></span>
+    <span>Nation</span>
+    <span>Statut</span>
+    <span style="text-align:center;">Gén. %</span>
+    <span style="text-align:center;">Mat. %</span>
+    <span style="text-align:center;">Mil. %</span>
+    <span class="col-ener" style="text-align:center;">Enr. %</span>
+  </div>
+
+  <!-- LIST -->
+  <div id="country-list"></div>
+
+  <!-- LÉGENDE NOTE -->
+  <div style="margin-top:24px;font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--text3);letter-spacing:.06em;line-height:1.9;padding:10px 14px;border:1px solid var(--border);border-left:2px solid rgba(34,184,154,.3);">
+    <strong style="color:var(--text2);">Note :</strong> Les taxes s'appliquent sur la valeur déclarée de la cargaison au passage du Canal.
+    Un pays « conditionnel » peut naviguer sous réserve d'accord diplomatique préalable ou dans des conditions restreintes.
+    Les pays « interdits » se voient refuser l'accès aux eaux territoriales impériales.
+  </div>
+
+  <footer class="footer" style="margin-top:56px;">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-left">CANAL DE SUEZ · قناة السويس · ROYAUME-UNI DU NIL<br>NAVIGATION IMPERIALE · LE CAIRE · 2306</div>
+        <div class="footer-credit">Projet Résurgence © 2026 · Police: Dune Rise — Fontswan (SIL OFL 1.1)</div>
+      </div>
+      <div class="footer-right">قناة السويس · مملكة النيل</div>
+    </div>
+  </footer>
+</div>
+
+<script src="../../assets/dune-init.js"></script>
+
+<script>
+/* ── THEME ── */
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  var lbl=document.getElementById('toggle-lbl'),path=document.getElementById('icon-path');
+  if(lbl)lbl.textContent=t==='dark'?'NUIT':'JOUR';
+  if(path)path.setAttribute('d',t==='dark'
+    ?'M21 12.79A9 9 0 0 1 12 21a9 9 0 0 1 0-18 7 7 0 0 0 9 9.79z'
+    :'M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 2a8 8 0 1 1 0 16A8 8 0 0 1 12 4z');
+  localStorage.setItem('run-theme',t);
+}
+function toggleTheme(){applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');}
+(function(){var s=localStorage.getItem('run-theme'),mq=window.matchMedia('(prefers-color-scheme: dark)');applyTheme(s||(mq.matches?'dark':'light'));})();
+
+/* ── DATA ── */
+var allData=[];
+var activeFilter='';
+var searchQ='';
+
+function setFilter(f){
+  activeFilter=f;
+  ['btn-all','btn-ok','btn-cond','btn-no'].forEach(function(id){
+    var el=document.getElementById(id);if(!el)return;
+    el.classList.remove('active');
+  });
+  var map={'':'btn-all','autorise':'btn-ok','partiel':'btn-cond','interdit':'btn-no'};
+  var btn=document.getElementById(map[f]||'btn-all');
+  if(btn)btn.classList.add('active');
+  render();
+}
+
+function onSearch(){
+  searchQ=(document.getElementById('search-in').value||'').toLowerCase().trim();
+  render();
+}
+
+function taxClass(v){
+  if(!v||v===0)return'zero';
+  if(v>=50)return'high';
+  return'';
+}
+
+function buildRow(e){
+  var flagSrc=e.flag_path?'https://bjbellum.github.io/UKN/'+e.flag_path:'';
+  var statusCls={'autorise':'sb-autorise','partiel':'sb-partiel','interdit':'sb-interdit'}[e.statut]||'sb-autorise';
+  var statusLbl={'autorise':'✅ Autorisé','partiel':'⚠️ Conditionnel','interdit':'🚫 Interdit'}[e.statut]||e.statut;
+  var rowCls={'autorise':'row-autorise','partiel':'row-partiel','interdit':'row-interdit'}[e.statut]||'';
+  var taxGen=e.tax_gen!=null?e.tax_gen:0;
+  var taxMat=e.tax_mat!=null?e.tax_mat:0;
+  var taxMil=e.tax_mil!=null?e.tax_mil:0;
+  var taxEner=e.tax_ener!=null?e.tax_ener:0;
+
+  // Desktop row
+  var html='<div class="country-row '+rowCls+'">';
+
+  // Flag
+  html+='<div class="col-flag">';
+  if(flagSrc){
+    html+='<img src="'+flagSrc+'" alt="'+e.nom+'" loading="lazy" onerror="this.parentNode.innerHTML=\'<div class=\\"flag-ph\\">🏳</div>\'">';
+  } else {
+    html+='<div class="flag-ph">🏳</div>';
+  }
+  html+='</div>';
+
+  // Nom + note
+  html+='<div class="col-nom">';
+  html+='<div class="col-nom-name">'+e.nom+'</div>';
+  if(e.note)html+='<div class="col-nom-note">'+e.note+'</div>';
+  html+='</div>';
+
+  // Statut
+  html+='<div class="col-statut"><span class="statut-badge '+statusCls+'">'+statusLbl+'</span></div>';
+
+  // Taxes (desktop)
+  html+='<div class="col-tax" style="color:var(--gold);"><span class="tax-val '+taxClass(taxGen)+'">'+taxGen+'%</span></div>';
+  html+='<div class="col-tax" style="color:var(--teal-bright);"><span class="tax-val '+taxClass(taxMat)+'">'+taxMat+'%</span></div>';
+  html+='<div class="col-tax" style="color:var(--spice);"><span class="tax-val '+taxClass(taxMil)+'">'+taxMil+'%</span></div>';
+  html+='<div class="col-tax col-ener" style="color:rgba(74,158,255,.9);"><span class="tax-val '+taxClass(taxEner)+'">'+taxEner+'%</span></div>';
+
+  // Mobile detail row (hidden on desktop via CSS)
+  html+='</div>'; // /country-row — not closed yet
+  // Actually we need a wrapper. Let me restructure:
+
+  return html;
+}
+
+function buildRowFull(e){
+  var flagSrc=e.flag_path?'https://bjbellum.github.io/UKN/'+e.flag_path:'';
+  var statusCls={'autorise':'sb-autorise','partiel':'sb-partiel','interdit':'sb-interdit'}[e.statut]||'sb-autorise';
+  var statusLbl={'autorise':'✅ Autorisé','partiel':'⚠️ Conditionnel','interdit':'🚫 Interdit'}[e.statut]||e.statut;
+  var rowCls={'autorise':'row-autorise','partiel':'row-partiel','interdit':'row-interdit'}[e.statut]||'';
+  var taxGen=e.tax_gen!=null?Number(e.tax_gen):0;
+  var taxMat=e.tax_mat!=null?Number(e.tax_mat):0;
+  var taxMil=e.tax_mil!=null?Number(e.tax_mil):0;
+  var taxEner=e.tax_ener!=null?Number(e.tax_ener):0;
+
+  var html='<div class="country-row '+rowCls+'">';
+
+  // Flag
+  html+='<div class="col-flag">';
+  if(flagSrc){html+='<img src="'+flagSrc+'" alt="'+e.nom+'" loading="lazy" onerror="this.parentNode.innerHTML=\'<div class=\\"flag-ph\\">🏳</div>\'">';}
+  else{html+='<div class="flag-ph">🏳</div>';}
+  html+='</div>';
+
+  // Nom + note
+  html+='<div class="col-nom"><div class="col-nom-name">'+e.nom+'</div>'+(e.note?'<div class="col-nom-note">'+e.note+'</div>':'')+'</div>';
+
+  // Statut
+  html+='<div class="col-statut"><span class="statut-badge '+statusCls+'">'+statusLbl+'</span></div>';
+
+  // Taxes desktop
+  html+='<div class="col-tax"><span class="tax-val '+(taxGen===0?'zero':taxGen>=50?'high':'')+'">'+taxGen+'%</span></div>';
+  html+='<div class="col-tax"><span class="tax-val '+(taxMat===0?'zero':taxMat>=50?'high':'')+'">'+taxMat+'%</span></div>';
+  html+='<div class="col-tax"><span class="tax-val '+(taxMil===0?'zero':taxMil>=50?'high':'')+'">'+taxMil+'%</span></div>';
+  html+='<div class="col-tax col-ener"><span class="tax-val '+(taxEner===0?'zero':taxEner>=50?'high':'')+'">'+taxEner+'%</span></div>';
+
+  html+='</div>'; // /country-row
+
+  // Mobile companion (visible only on mobile via CSS)
+  html+='<div class="mobile-details" style="display:none;padding:6px 14px 10px;gap:6px;flex-wrap:wrap;background:var(--card-bg);border:1px solid var(--border);border-top:none;margin-bottom:0;" id="mob-'+e.id+'">';
+  html+='<span class="mob-tax"><span class="mob-tax-lbl">Gén. </span>'+taxGen+'%</span>';
+  html+='<span class="mob-tax"><span class="mob-tax-lbl">Mat. </span>'+taxMat+'%</span>';
+  html+='<span class="mob-tax"><span class="mob-tax-lbl">Mil. </span>'+taxMil+'%</span>';
+  html+='<span class="mob-tax"><span class="mob-tax-lbl">Enr. </span>'+taxEner+'%</span>';
+  if(e.note)html+='<span style="width:100%;font-family:\'IBM Plex Mono\',monospace;font-size:8px;color:var(--text3);font-style:italic;">'+e.note+'</span>';
+  html+='</div>';
+
+  return html;
+}
+
+function render(){
+  var el=document.getElementById('country-list');if(!el)return;
+
+  var items=allData.slice();
+  if(activeFilter)items=items.filter(function(e){return e.statut===activeFilter;});
+  if(searchQ)items=items.filter(function(e){return (e.nom||'').toLowerCase().indexOf(searchQ)>=0||(e.note||'').toLowerCase().indexOf(searchQ)>=0;});
+
+  if(!items.length){
+    el.innerHTML='<div class="empty-state">Aucun résultat'+(searchQ?' pour « '+searchQ+' »':'')+'.</div>';
+    return;
+  }
+
+  // Group by statut when no filter
+  if(!activeFilter&&!searchQ){
+    var groups=[
+      {key:'autorise',label:'Nations Autorisées',cls:''},
+      {key:'partiel', label:'Nations Conditionnelles',cls:'amber'},
+      {key:'interdit',label:'Nations Interdites',cls:'red'}
+    ];
+    var html='';
+    groups.forEach(function(g){
+      var gItems=items.filter(function(e){return e.statut===g.key;});
+      if(!gItems.length)return;
+      html+='<div class="section-sep '+g.cls+'">'+g.label+' <span style="color:var(--text3);font-weight:400;">('+gItems.length+')</span></div>';
+      gItems.forEach(function(e){html+=buildRowFull(e);});
+    });
+    el.innerHTML=html;
+  } else {
+    var html='';
+    items.forEach(function(e){html+=buildRowFull(e);});
+    el.innerHTML=html;
+  }
+
+  // Responsive: show mobile detail bands on small screens
+  applyMobileLayout();
+}
+
+function applyMobileLayout(){
+  if(window.innerWidth>640)return;
+  // Show mobile detail bands
+  document.querySelectorAll('[id^="mob-"]').forEach(function(el){
+    el.style.display='flex';
+  });
+  // Hide desktop tax cells in rows
+  document.querySelectorAll('.country-row .col-tax').forEach(function(el){
+    el.style.display='none';
+  });
+}
+
+window.addEventListener('resize',function(){
+  if(window.innerWidth<=640)applyMobileLayout();
+});
+
+/* ── STATS ── */
+function updateStats(data){
+  var ok=data.filter(function(x){return x.statut==='autorise';}).length;
+  var cond=data.filter(function(x){return x.statut==='partiel';}).length;
+  var no=data.filter(function(x){return x.statut==='interdit';}).length;
+  var total=data.length;
+  var s=function(id,v){var el=document.getElementById(id);if(el)el.textContent=v;};
+  s('stat-ok',ok);s('stat-cond',cond);s('stat-no',no);s('stat-total',total);
+  s('bar-ok',ok);s('bar-cond',cond);s('bar-no',no);s('bar-total',total);
+  var bar=document.getElementById('stats-bar');if(bar)bar.style.display='grid';
+}
+
+/* ── LOAD ── */
+(function(){
+  // Try localStorage cache first for instant render
+  try{
+    var cached=localStorage.getItem('suez_data');
+    if(cached){
+      allData=JSON.parse(cached);
+      updateStats(allData);
+      render();
+    }
+  }catch(_){}
+
+  // Then sync from GitHub
+  fetch('https://api.github.com/repos/BJBellum/UKN/contents/data/canal-suez.json',{
+    headers:{'Accept':'application/vnd.github.v3.raw'},cache:'no-store'
+  }).then(function(r){return r.ok?r.json():null;})
+  .then(function(d){
+    if(!d||!Array.isArray(d))return;
+    allData=d;
+    // Cache locally (strip flag_data to keep lean)
+    try{
+      var toCache=d.map(function(e){var c=Object.assign({},e);delete c.flag_data;return c;});
+      localStorage.setItem('suez_data',JSON.stringify(toCache));
+    }catch(_){}
+    updateStats(allData);
+    render();
+  }).catch(function(){
+    if(!allData.length){
+      document.getElementById('country-list').innerHTML='<div class="empty-state">Données non disponibles.<br>Vérifiez la connexion GitHub.</div>';
+    }
+  });
+})();
+</script>
+<script src="../../pharos-auth.js"></script>
+</body>
+</html>
