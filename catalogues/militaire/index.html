@@ -542,6 +542,15 @@ function buildItemHTML(item){
   if(item.disponibilite)html+='<span class="int-tech">'+item.disponibilite+'</span>';
   html+='</div>';
 
+  // Inspiration technologique
+  if(item.inspiration){
+    html+='<div style="padding:4px 14px 5px;border-bottom:1px solid var(--border);background:rgba(74,158,255,.04);display:flex;align-items:center;gap:6px;flex-shrink:0;">';
+    html+='<svg viewBox="0 0 12 12" fill="none" width="10" height="10" style="flex-shrink:0;opacity:.55;"><circle cx="6" cy="5" r="3.5" stroke="#4A9EFF" stroke-width="1" fill="none"/><line x1="6" y1="8.5" x2="6" y2="11" stroke="#4A9EFF" stroke-width="1" stroke-linecap="round"/><line x1="4" y1="9.5" x2="8" y2="9.5" stroke="#4A9EFF" stroke-width=".8" stroke-linecap="round"/></svg>';
+    html+='<span style="font-family:\'IBM Plex Mono\',monospace;font-size:7px;letter-spacing:.12em;color:rgba(74,158,255,.7);text-transform:uppercase;flex-shrink:0;">Inspiration</span>';
+    html+='<span style="font-family:\'IBM Plex Mono\',monospace;font-size:9px;color:rgba(74,158,255,.9);letter-spacing:.04em;">'+item.inspiration+'</span>';
+    html+='</div>';
+  }
+
   // Collapsible specs toggle
   html+='<div class="item-specs-toggle" onclick="toggleItem(\''+item.id+'\')">';
   html+='<div class="ist-label"><span class="ist-tri">&#8250;</span> Caracteristiques <span style="color:var(--text3);font-size:9px;">('+specKeys.length+')</span></div>';
