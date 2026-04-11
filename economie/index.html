@@ -191,6 +191,48 @@
     </div>
   </a>
 
+  <!-- CANAL DE SUEZ -->
+  <div class="section-header" style="margin-top:48px;margin-bottom:20px;">
+    <span class="section-eyebrow">Commerce International · Navigation</span>
+    <div class="section-line"></div>
+  </div>
+  <a href="./canal-de-suez/" class="bourse-card" style="border-top-color:var(--teal-bright);">
+    <div class="bourse-header" style="background:linear-gradient(135deg,rgba(34,184,154,.06) 0%,transparent 60%);">
+      <div class="bourse-ref" style="color:var(--teal-bright);">CANAL-SUE-001 · Navigation Internationale · <span style="color:var(--teal-bright);">Données publiques</span></div>
+      <div class="bourse-title" style="color:var(--teal-bright);font-size:20px;">Canal de Suez</div>
+      <div class="bourse-arabic" style="color:rgba(34,184,154,.75);">قناة السويس · Controle des Eaux Imperiales</div>
+    </div>
+    <div class="bourse-stats" style="grid-template-columns:repeat(3,1fr);">
+      <div class="bourse-stat">
+        <span class="bourse-stat-lbl">Pays autorisés</span>
+        <span class="bourse-stat-val teal" id="suez-stat-ok">…</span>
+      </div>
+      <div class="bourse-stat">
+        <span class="bourse-stat-lbl">Conditionnels</span>
+        <span class="bourse-stat-val amber" id="suez-stat-cond">…</span>
+      </div>
+      <div class="bourse-stat">
+        <span class="bourse-stat-lbl">Interdits</span>
+        <span class="bourse-stat-val" style="color:var(--spice);" id="suez-stat-no">…</span>
+      </div>
+    </div>
+    <div class="bourse-desc">
+      Le Canal de Suez impérial régule le passage des navires marchands à travers les eaux territoriales du Royaume-Uni du Nil.
+      Chaque nation reçoit un statut et des <strong>taxes douanières par catégorie de marchandise</strong>
+      — matières premières, produits manufacturés, énergie et matériels militaires.
+    </div>
+    <div class="bourse-criteria">
+      <span class="criteria-tag">Marchandises générales <strong>variable</strong></span>
+      <span class="criteria-tag">Matières premières <strong>variable</strong></span>
+      <span class="criteria-tag">Énergie &amp; Hydrocarbures <strong>variable</strong></span>
+      <span class="criteria-tag">Matériel militaire <strong>variable</strong></span>
+    </div>
+    <div class="bourse-cta" style="color:var(--teal-bright);">
+      <span>Consulter la liste des pays et tarifs douaniers</span>
+      <span>→</span>
+    </div>
+  </a>
+
   <!-- SYSTÈME ESS -->
   <div class="section-header" style="margin-top:56px;margin-bottom:20px;">
     <span class="section-eyebrow">Systeme ESS — Economie Sociale et Solidaire</span>
@@ -356,5 +398,24 @@ function setEl(id, val) {
 </script>
 
 <script src="../pharos-auth.js"></script>
-</body>
+<script>
+// Canal de Suez stats
+(async function(){
+  try{
+    var r=await fetch('https://api.github.com/repos/BJBellum/UKN/contents/data/canal-suez.json',{
+      headers:{'Accept':'application/vnd.github.v3.raw'},cache:'no-store'
+    });
+    if(!r.ok)throw new Error('fetch');
+    var d=await r.json();
+    var ok=d.filter(x=>x.statut==='autorise').length;
+    var cond=d.filter(x=>x.statut==='partiel').length;
+    var no=d.filter(x=>x.statut==='interdit').length;
+    var s=function(id,v){var el=document.getElementById(id);if(el)el.textContent=v;};
+    s('suez-stat-ok',ok);s('suez-stat-cond',cond);s('suez-stat-no',no);
+  }catch(e){
+    var s=function(id,v){var el=document.getElementById(id);if(el)el.textContent=v;};
+    s('suez-stat-ok','—');s('suez-stat-cond','—');s('suez-stat-no','—');
+  }
+})();
+</script>
 </html>
