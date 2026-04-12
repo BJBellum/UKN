@@ -1,0 +1,13 @@
+[
+  {
+    "id": "suez_1775994801589",
+    "nom": "Empire Romain d'Orient",
+    "statut": "autorise",
+    "tax_gen": 20,
+    "tax_mat": 20,
+    "tax_mil": 50,
+    "tax_ener": 20,
+    "note": "Aucunes notes.",
+    "flag_path": "economie/canal-de-suez/assets/images/flag_ero.png"
+  }
+]
