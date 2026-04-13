@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated": "2026-04-10",
+  "updated": "2026-04-13",
   "bataillons": [
     {
       "id": "bat_01",
@@ -570,6 +570,15 @@
         "cout_prod": 367332,
         "cout_vente": 599999,
         "id": "eq_1775746097886"
+      },
+      {
+        "nom": "TR-200",
+        "categorie": "Aerospatiale",
+        "niveau_requis": 5,
+        "cout_slots": 3120,
+        "cout_prod": 328666,
+        "cout_vente": 328666,
+        "id": "eq_1776106029995"
       }
     ]
   },
