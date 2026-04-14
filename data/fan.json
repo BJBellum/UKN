@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated": "2026-04-13",
+  "updated": "2026-04-14",
   "bataillons": [
     {
       "id": "bat_01",
@@ -489,6 +489,15 @@
         "cout_prod": 19333,
         "cout_vente": 22999,
         "id": "eq_1775778833510"
+      },
+      {
+        "nom": "HW-81",
+        "categorie": "Terrestre",
+        "niveau_requis": 2,
+        "cout_slots": 40,
+        "cout_prod": 516,
+        "cout_vente": 999,
+        "id": "eq_1776175835115"
       },
       {
         "id": "eq_12",
